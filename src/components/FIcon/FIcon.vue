@@ -1,6 +1,6 @@
 <template>
   <span>
-    <material
+    <f-icon-material
       v-if="lib === 'material'"
       v-bind="{ name: $props.name, type: $props.type }"
       style="font-size: 48px"
@@ -9,12 +9,12 @@
 </template>
 
 <script>
-import Material from "./components/Material";
+import FIconMaterial from "./components/FIconMaterial";
 
 export default {
   name: "f-icon",
   components: {
-    Material
+    FIconMaterial
   },
   props: {
     lib: {

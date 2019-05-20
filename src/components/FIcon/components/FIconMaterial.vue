@@ -4,6 +4,7 @@
 
 <script>
 export default {
+  name: "f-icon-material",
   data: () => ({
     types: {
       outlined: "material-icons-outlined",

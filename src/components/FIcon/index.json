@@ -1,0 +1,5 @@
+{
+  "name": "f-icon",
+  "private": true,
+  "main": "./FIcon.vue" 
+}

@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import FIcon from "@/components/FIcon/FIcon";
+import FIcon from "@/components/FIcon";
 
 export default {
   components: {
