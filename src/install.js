@@ -15,6 +15,7 @@ export default function(Vue, opts = {}) {
   opts.components &&
     Object.keys(opts.components).forEach(key => {
       const c = opts.components[key];
+      console.log({ key, c });
       if (typeof c === "function") {
         Vue.component(c.options.name, c);
       }
