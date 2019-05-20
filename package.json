@@ -1,6 +1,6 @@
 {
-  "name": "style-guide",
-  "version": "0.0.3",
+  "name": "flux",
+  "version": "0.0.0-alpha1",
   "license": "MIT",
   "main": "src/index.esm.js",
   "scripts": {
