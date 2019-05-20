@@ -1,6 +1,6 @@
 {
   "name": "flux",
-  "version": "0.0.0-alpha6",
+  "version": "0.0.0-alpha7",
   "license": "MIT",
   "main": "src/index.esm.js",
   "scripts": {
