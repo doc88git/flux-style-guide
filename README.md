@@ -1,34 +1,13 @@
-# style-guide
+# Flux Style Guide
 
-## Project setup
+## Install 
 ```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn run serve
+yarn add git+ssh://git@gitlab-cloud.doc88.com.br:flux/widgets/style-guide#master
 ```
 
-### Compiles and minifies for production
+## Contribuition
 ```
-yarn run build
+git clone git@gitlab-cloud.doc88.com.br:flux/widgets/style-guide.git
+cd style-guide
+yarn serve
 ```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Run your unit tests
-```
-yarn run test:unit
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
