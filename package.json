@@ -1,7 +1,8 @@
 {
   "name": "style-guide",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
+  "main": "src/index.esm.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "preserve": "yarn install",
