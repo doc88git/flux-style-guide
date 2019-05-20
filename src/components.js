@@ -1,1 +1,1 @@
-export * from "./components/FIcon";
+export * from "./components/FIcon/index.js";
