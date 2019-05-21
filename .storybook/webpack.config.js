@@ -6,7 +6,8 @@ module.exports = ({ config }) => {
 		test: /\.scss$/,
 		use: [
 			'vue-style-loader',
-			'css-loader',
+      'css-loader',
+      'postcss-loader',
 			{
 				loader: 'sass-loader',
 				options: {
@@ -14,7 +15,7 @@ module.exports = ({ config }) => {
 						@import "@/assets/f-style-guide.scss";
 					`
 				}
-			}
+      }
 		],
   })
 

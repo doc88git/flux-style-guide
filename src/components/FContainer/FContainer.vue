@@ -1,5 +1,5 @@
 <template>
-  <div v-bind="$attrs" class="container">{{ slot }}</div>
+  <div v-bind="$attrs" class="container">a</div>
 </template>
 
 <script>

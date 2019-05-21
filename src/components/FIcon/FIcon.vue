@@ -3,7 +3,6 @@
     <f-icon-material
       v-if="lib === 'material'"
       v-bind="{ name: $props.name, type: $props.type }"
-      style="font-size: 48px"
     />
   </span>
 </template>
@@ -22,7 +21,7 @@ export default {
       type: String
     },
     type: {
-      default: "",
+      default: "default",
       type: String
     },
     name: {
@@ -34,6 +33,9 @@ export default {
 };
 </script>
 
-<style lang="scss">
-// @import "@/assets/f-style-guide.scss";
+<style lang="scss" scoped>
+span {
+  margin: 0;
+  padding: 0;
+}
 </style>
