@@ -12,6 +12,8 @@ storiesOf("Template|Container", module).add(
     </f-container>`
   }),
   {
-    info: "Container component"
+    info: {
+      sumary: "Container component"
+    }
   }
 );
