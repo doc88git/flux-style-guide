@@ -52,9 +52,6 @@ import { FIcon } from "@/components/FIcon";
 export default {
   components: {
     FIcon
-  },
-  mounted() {
-    console.log(FIcon);
   }
 };
 </script>
