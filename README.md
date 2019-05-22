@@ -2,12 +2,16 @@
 
 ## Install 
 ```
-yarn add git+ssh://git@gitlab-cloud.doc88.com.br:flux/widgets/style-guide#master
+yarn add @doc88/flux-style-guide
+npm install @doc88/flux-style-guide
 ```
 
-## Contribuition
+## Documentation
 ```
-git clone git@gitlab-cloud.doc88.com.br:flux/widgets/style-guide.git
-cd style-guide
-yarn serve
+yarn storybook
+```
+
+## Unit Tests
+```
+yarn test:unit
 ```
