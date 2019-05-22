@@ -33,9 +33,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-span {
-  margin: 0;
-  padding: 0;
-}
-</style>
+<style lang="scss" scoped></style>

@@ -1,6 +1,11 @@
 <template>
-  <button class="btn" :class="[btnStyle, btnHover, btnIcon]">
-    <f-icon v-if="icon" class="btn__icon" :name="icon" />
+  <button class="btn" :class="[btnStyle, btnIcon]">
+    <f-icon
+      v-if="icon"
+      class="btn__slot__icon"
+      :class="[btnCenter]"
+      :name="icon"
+    />
     {{ label }}
     <slot></slot>
   </button>
@@ -41,15 +46,15 @@ export default {
         ["btn__outline"]: this.type === "outline"
       };
     },
-    btnHover() {
-      return {
-        ["hover:bg-blue-300"]: this.type === "default",
-        ["hover:text-gray-700"]: this.type === "flat",
-        ["hover:border-blue-400 hover:text-blue-400"]: this.type === "outline"
-      };
-    },
     btnIcon() {
-      return this.icon ? "inline-flex items-center" : "";
+      return this.icon ? "btn--flex" : "";
+    },
+    btnCenter() {
+      if (this.name || this.hasDefaultSlot) return "";
+      return "btn__slot__icon--center";
+    },
+    hasDefaultSlot() {
+      return !!this.$slots.default;
     }
   }
 };
@@ -60,15 +65,32 @@ export default {
   @apply text-center py-1 px-2 m-1 rounded;
   &__default {
     @apply bg-blue-500 text-white;
+    &:hover {
+      @apply bg-blue-300;
+    }
   }
   &__flat {
     @apply bg-transparent;
+    &:hover {
+      @apply text-gray-700;
+    }
   }
   &__outline {
     @apply bg-transparent border border-blue-500 text-blue-700 rounded;
+    &:hover {
+      @apply border-blue-400 text-blue-400;
+    }
   }
-  &__icon {
-    @apply fill-current w-8 h-6 -ml-4;
+  &--flex {
+    @apply inline-flex items-center;
+  }
+  &__slot {
+    &__icon {
+      @apply fill-current h-6 mr-2;
+      &--center {
+        @apply ml-2;
+      }
+    }
   }
 }
 </style>
