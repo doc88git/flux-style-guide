@@ -2,6 +2,7 @@
   <div class="f-field">
     <label v-if="label" v-text="label" class="f-field__label" />
     <slot />
+    <p v-if="hasError" class="f-field__error-label">{{ errorMessage }}</p>
   </div>
 </template>
 
@@ -13,15 +14,25 @@ export default {
       default: "",
       type: String
     }
-  }
+  },
+  data: () => ({
+    errorMessage: "Preencha o campo corretamente",
+    hasError: false
+  })
 };
 </script>
 
 <style lang="scss" scoped>
 .f-field {
-  @apply w-full;
+  @apply w-full mb-6;
+  &:md {
+    @apply mb-0;
+  }
   &__label {
-    @apply block text-gray-700 text-sm font-bold mb-2;
+    @apply block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2;
+  }
+  &__error-label {
+    @apply text-red-500 text-xs italic;
   }
 }
 </style>
