@@ -1,6 +1,10 @@
 module.exports = {
   plugins: {
-    tailwindcss: {},
+    tailwindcss: {
+      variants: {
+        // backgroundColor: ["group-hover"]
+      }
+    },
     autoprefixer: {}
   }
 };

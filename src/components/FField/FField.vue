@@ -13,11 +13,14 @@ export default {
     label: {
       default: "",
       type: String
+    },
+    hasError: {
+      default: false,
+      type: Boolean
     }
   },
   data: () => ({
-    errorMessage: "Preencha o campo corretamente",
-    hasError: false
+    errorMessage: "Preencha o campo corretamente"
   })
 };
 </script>
