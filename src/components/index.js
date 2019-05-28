@@ -5,11 +5,6 @@ import * as FField from "./FField/index.js";
 import * as FLayout from "./FLayout/index.js";
 import * as FList from "./FList/index.js";
 
-export default {
-  ...FIcon,
-  ...FContainer,
-  ...FButton,
-  ...FField,
-  ...FLayout,
-  ...FList
-};
+const components = [FIcon, FContainer, FButton, FField, FLayout, FList];
+
+export default components;
