@@ -83,9 +83,9 @@
 </template>
 
 <script>
-import { FIcon } from "@/components/FIcon";
-import { FButton } from "@/components/FButton";
-import { FList, FItem } from "@/components/FList";
+import { FIcon } from "../FIcon";
+import { FButton } from "../FButton";
+import { FList, FItem } from "../FList";
 
 export default {
   name: "f-layout",

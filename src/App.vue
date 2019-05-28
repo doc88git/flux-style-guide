@@ -2,6 +2,22 @@
   <f-container class="content">
     <div class="flux-logo"><span>[</span>Flux<span>]</span>Style Guide</div>
 
+    <FContainer>
+      <f-layout>
+        <slot v-name="logo">A</slot>
+      </f-layout>
+
+      <f-list>
+        <f-item to="/" title="Create from scratch">
+          Create a repository without any source code
+        </f-item>
+        <f-item
+          title="Fork"
+          label="Start a project base on the source of an existing one."
+        />
+      </f-list>
+    </FContainer>
+
     <ul class="menu">
       <li v-for="(item, index) in menuItems" :key="index">
         <a target="_blank" :href="item.url">
@@ -13,12 +29,10 @@
 </template>
 
 <script>
-import { FContainer } from "@/components/FContainer";
+import Components from "@/components/index";
 
 export default {
-  components: {
-    FContainer
-  },
+  components: Components,
   data: () => ({
     menuItems: [
       {
