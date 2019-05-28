@@ -117,8 +117,6 @@ export default {
 };
 </script>
 
-<style lang="scss" src="@/assets/f-style-guide.scss"></style>
-
 <style lang="scss" scoped>
 .f-layout {
   background-image: repeating-linear-gradient(to right, theme("colors.light"));
