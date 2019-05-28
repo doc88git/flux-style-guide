@@ -2,22 +2,6 @@
   <f-container class="content">
     <div class="flux-logo"><span>[</span>Flux<span>]</span>Style Guide</div>
 
-    <FContainer>
-      <f-layout>
-        <slot v-name="logo">A</slot>
-      </f-layout>
-
-      <f-list>
-        <f-item to="/" title="Create from scratch">
-          Create a repository without any source code
-        </f-item>
-        <f-item
-          title="Fork"
-          label="Start a project base on the source of an existing one."
-        />
-      </f-list>
-    </FContainer>
-
     <ul class="menu">
       <li v-for="(item, index) in menuItems" :key="index">
         <a target="_blank" :href="item.url">
@@ -29,10 +13,12 @@
 </template>
 
 <script>
-import Components from "@/components/index";
+import { FContainer } from "@/components/FContainer";
 
 export default {
-  components: Components,
+  components: {
+    FContainer
+  },
   data: () => ({
     menuItems: [
       {
@@ -62,17 +48,20 @@ export default {
 .content {
   @apply flex flex-wrap mx-auto items-center justify-center h-screen;
   .flux-logo {
-    @apply w-full text-center m-0 text-5xl text-gray-500;
+    @apply w-full text-center m-0 text-5xl;
+    color: theme("colors.primary");
     span {
-      @apply text-green-300 text-6xl mx-2;
+      @apply text-6xl mx-2;
+      color: theme("colors.secondary");
     }
   }
   ul.menu {
     @apply w-full text-center uppercase;
     li {
-      @apply text-gray-700 inline mx-10;
+      @apply inline mx-10;
+      color: theme("colors.secondary");
       a:hover {
-        @apply text-gray-600;
+        color: theme("colors.black");
       }
     }
   }
