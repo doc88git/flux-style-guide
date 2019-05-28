@@ -23,7 +23,7 @@ export default {
   },
   computed: {
     tag() {
-      return this.to ? "nuxt-link" : "a";
+      return this.to ? "a" : "a";
     }
   }
 };

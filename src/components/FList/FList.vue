@@ -17,7 +17,7 @@ export default {
 .f-list {
   @apply font-sans flex items-center w-full;
   &__content {
-    @apply overflow-hidden bg-white rounded max-w-xs w-full leading-normal;
+    @apply overflow-hidden bg-white rounded w-full leading-normal;
   }
 }
 </style>
