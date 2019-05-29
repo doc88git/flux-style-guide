@@ -1,6 +1,6 @@
 <template>
   <div class="f-list-item">
-    <component :is="tag" :href="link" :to="to">
+    <component :is="tag" :to="to" :link="link">
       <p v-if="title" class="f-list-item__item--title">
         {{ title }}
       </p>
@@ -10,8 +10,13 @@
 </template>
 
 <script>
+import { FLink } from "../../Flink";
+
 export default {
   name: "f-item",
+  components: {
+    FLink
+  },
   props: {
     title: String,
     label: String,
@@ -23,7 +28,7 @@ export default {
   },
   computed: {
     tag() {
-      return this.to ? "a" : "a";
+      return this.to || this.link ? FLink : "a";
     }
   }
 };
