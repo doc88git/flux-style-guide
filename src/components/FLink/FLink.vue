@@ -1,3 +1,4 @@
+<script>
 const vueTag = {
   vue: "router-link",
   nuxt: "nuxt-link"
@@ -39,3 +40,4 @@ export default {
     return h(tag, options, slot);
   }
 };
+</script>
