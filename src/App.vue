@@ -14,10 +14,12 @@
 
 <script>
 import { FContainer } from "@/components/FContainer";
+import { FLink } from "@/components/FLink";
 
 export default {
   components: {
-    FContainer
+    FContainer,
+    FLink
   },
   data: () => ({
     menuItems: [

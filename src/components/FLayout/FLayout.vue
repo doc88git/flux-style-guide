@@ -74,7 +74,7 @@
     </section>
 
     <main>
-      <slot name="main" />
+      <slot />
     </main>
     <footer>
       <slot name="footer" />

@@ -1,16 +1,20 @@
 import { version } from "../package.json";
 
 export const $f = {
-  version
+  version,
+  linkComponent: "nuxt"
 };
 
 export default function(Vue, opts = {}) {
   if (this.__installed) return;
   this.__installed = true;
 
-  // const cfg = opts.config || {}
+  const cfg = opts.config || {};
 
-  Vue.prototype.$f = $f;
+  Vue.prototype.$f = {
+    ...$f,
+    ...cfg
+  };
 
   opts.components &&
     Object.keys(opts.components).forEach(key => {

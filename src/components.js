@@ -4,3 +4,4 @@ export * from "./components/FButton/index.js";
 export * from "./components/FField/index.js";
 export * from "./components/FLayout/index.js";
 export * from "./components/FList/index.js";
+export * from "./components/FLink/index.js";
