@@ -1,6 +1,9 @@
 <template>
   <div>
-    <template v-if="type === 'text'">
+    <template v-if="type === 'textarea'">
+      <textarea :class="classes" v-bind="$attrs"></textarea>
+    </template>
+    <template v-else>
       <input
         v-bind="$attrs"
         :type="type"
@@ -9,9 +12,6 @@
         :readonly="readonly"
         @input="$emit('input', $event.target.value)"
       />
-    </template>
-    <template v-if="type === 'textarea'">
-      <textarea :class="classes" v-bind="$attrs"></textarea>
     </template>
   </div>
 </template>
