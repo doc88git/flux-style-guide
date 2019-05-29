@@ -12,6 +12,7 @@ module.exports = ({ config }) => {
 				loader: 'sass-loader',
 				options: {
 					data: `
+            @import "@/assets/f-variables.scss";
 						@import "@/assets/f-style-guide.scss";
 					`
 				}

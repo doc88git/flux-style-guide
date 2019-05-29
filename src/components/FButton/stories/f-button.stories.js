@@ -1,20 +1,13 @@
 import { storiesOf } from "@storybook/vue";
-import { select, text } from "@storybook/addon-knobs";
+import { text } from "@storybook/addon-knobs";
 import FButton from "../FButton.vue";
 
-const label = "Button Type";
-const defaultValue = "default";
-const options = {
-  Default: "default",
-  Outline: "outline",
-  Flat: "flat"
-};
 const groupId = "BUTTON-OPTIONS-ID1";
 const summary = `
 ## Label
 - Use label or slot
 
-## Types
+## Theme
 - outlined
 - flat
 - default
@@ -32,19 +25,50 @@ storiesOf("Components|Button", module)
         label: {
           default: text("label", "Button", groupId)
         },
-        type: {
-          default: select(label, options, defaultValue, groupId)
+        icon: {
+          default: text("icon", "", groupId)
+        }
+      },
+      template: `<f-button :label="label" :icon="icon" />`
+    }),
+    {
+      info: { summary }
+    }
+  )
+  .add(
+    "Button: Flat",
+    () => ({
+      components: { FButton },
+      props: {
+        label: {
+          default: text("label", "Button", groupId)
         },
         icon: {
           default: text("icon", "", groupId)
         }
       },
-      template: `<f-button :label="label" :type="type" :icon="icon" />`
+      template: `<f-button flat :label="label" :icon="icon" />`
     }),
     {
-      info: {
-        summary
-      }
+      info: { summary }
+    }
+  )
+  .add(
+    "Button: Outline",
+    () => ({
+      components: { FButton },
+      props: {
+        label: {
+          default: text("label", "Button", groupId)
+        },
+        icon: {
+          default: text("icon", "", groupId)
+        }
+      },
+      template: `<f-button outline :label="label" :icon="icon" />`
+    }),
+    {
+      info: { summary }
     }
   )
   .add(
@@ -55,19 +79,32 @@ storiesOf("Components|Button", module)
         label: {
           default: text("label", "Button", groupId)
         },
-        type: {
-          default: select(label, options, defaultValue, groupId)
+        icon: {
+          default: text("icon", "home", groupId)
+        }
+      },
+      template: `<f-button :label="label" :icon="icon" />`
+    }),
+    {
+      info: { summary }
+    }
+  )
+  .add(
+    "Button: Icon Flat",
+    () => ({
+      components: { FButton },
+      props: {
+        label: {
+          default: text("label", "Button", groupId)
         },
         icon: {
           default: text("icon", "home", groupId)
         }
       },
-      template: `<f-button :label="label" :type="type" :icon="icon" />`
+      template: `<f-button :label="label" :icon="icon" flat />`
     }),
     {
-      info: {
-        summary
-      }
+      info: { summary }
     }
   )
   .add(
@@ -81,18 +118,13 @@ storiesOf("Components|Button", module)
         label: {
           default: text("label", "", groupId)
         },
-        type: {
-          default: select(label, options, defaultValue, groupId)
-        },
         icon: {
           default: text("icon", "", groupId)
         }
       },
-      template: `<f-button :label="label" :type="type" :icon="icon">{{ text }}</f-button>`
+      template: `<f-button :label="label" :icon="icon">{{ text }}</f-button>`
     }),
     {
-      info: {
-        summary
-      }
+      info: { summary }
     }
   );

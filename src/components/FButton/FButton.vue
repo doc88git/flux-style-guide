@@ -41,7 +41,7 @@ export default {
   },
   computed: {
     hasName() {
-      return this.name === "";
+      return this.label === "";
     },
     btnStyle() {
       return {
@@ -54,7 +54,7 @@ export default {
       return this.icon ? "btn--flex" : "";
     },
     btnCenter() {
-      if (this.name || this.hasDefaultSlot) return "";
+      if (this.label || this.hasDefaultSlot) return "";
       return "btn__slot__icon--center";
     },
     hasDefaultSlot() {

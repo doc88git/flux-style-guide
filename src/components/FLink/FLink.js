@@ -1,4 +1,3 @@
-<script>
 const vueTag = {
   vue: "router-link",
   nuxt: "nuxt-link"
@@ -23,7 +22,7 @@ const generateLink = $props => {
 };
 
 export default {
-  name: "f-link",
+  name: "FLink",
   props: {
     label: String,
     to: String,
@@ -32,7 +31,10 @@ export default {
   render(h) {
     let tag = "a";
 
-    if (this.to) tag = vueTag[this.$f.linkComponent] || vueTag.vue;
+    const linkComponent =
+      this.$f && this.$f.linkComponent ? this.$f.linkComponent : null;
+
+    if (this.to) tag = vueTag[linkComponent] || vueTag.vue;
 
     let options = generateLink(this.$props);
     let slot = [this.label, this.$slots.default];
@@ -40,4 +42,3 @@ export default {
     return h(tag, options, slot);
   }
 };
-</script>

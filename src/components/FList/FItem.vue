@@ -10,13 +10,10 @@
 </template>
 
 <script>
-import { FLink } from "../../Flink";
+import { FLink } from "../FLink";
 
 export default {
   name: "f-item",
-  components: {
-    FLink
-  },
   props: {
     title: String,
     label: String,

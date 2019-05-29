@@ -2,8 +2,6 @@
   <f-container class="content">
     <div class="flux-logo"><span>[</span>Flux<span>]</span>Style Guide</div>
 
-    <FButton label="teste" />
-
     <ul class="menu">
       <li v-for="(item, index) in menuItems" :key="index">
         <a target="_blank" :href="item.url">
@@ -16,12 +14,10 @@
 
 <script>
 import { FContainer } from "@/components/FContainer";
-import { FButton } from "@/components/FButton";
 
 export default {
   components: {
-    FContainer,
-    FButton
+    FContainer
   },
   data: () => ({
     menuItems: [
