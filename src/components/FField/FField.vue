@@ -35,7 +35,7 @@ export default {
     @apply block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2;
   }
   &__error-label {
-    @apply text-red-500 text-xs italic;
+    @apply text-red-300 text-xs italic;
   }
 }
 </style>

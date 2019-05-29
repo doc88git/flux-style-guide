@@ -20,9 +20,13 @@ export default {
     FIcon
   },
   props: {
-    type: {
-      default: "default",
-      type: String
+    outline: {
+      default: false,
+      type: Boolean
+    },
+    flat: {
+      default: false,
+      type: Boolean
     },
     label: {
       default: "",
@@ -41,9 +45,9 @@ export default {
     },
     btnStyle() {
       return {
-        ["btn__default"]: this.type === "default",
-        ["btn__flat"]: this.type === "flat",
-        ["btn__outline"]: this.type === "outline"
+        ["btn__default"]: !this.flat && !this.outline,
+        ["btn__flat"]: this.flat === true,
+        ["btn__outline"]: this.outline === true
       };
     },
     btnIcon() {
@@ -64,21 +68,26 @@ export default {
 .btn {
   @apply text-center py-1 px-2 m-1 rounded;
   &__default {
-    @apply bg-blue-500 text-white;
+    @apply text-white;
+    background-color: theme("colors.primary");
     &:hover {
-      @apply bg-blue-300;
+      background-color: theme("colors.primary-lighter");
     }
   }
   &__flat {
     @apply bg-transparent;
+    color: theme("colors.primary");
     &:hover {
-      @apply text-gray-700;
+      color: theme("colors.primary-lighter");
     }
   }
   &__outline {
-    @apply bg-transparent border border-blue-500 text-blue-700 rounded;
+    @apply bg-transparent border rounded;
+    color: theme("colors.primary");
+    border-color: theme("colors.primary");
     &:hover {
-      @apply border-blue-400 text-blue-400;
+      color: theme("colors.primary-lighter");
+      border-color: theme("colors.primary-lighter");
     }
   }
   &--flex {

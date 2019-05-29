@@ -54,7 +54,7 @@ export default {
     @apply w-full;
   }
   &--hasError {
-    @apply border border-red-500;
+    @apply border border-red-300;
   }
   &--readonly {
     @apply text-gray-300;
