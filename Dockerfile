@@ -14,5 +14,5 @@ COPY . .
 
 EXPOSE 3000
 
-CMD [ "npm", "run", "storybook"]
+CMD [ "npm", "run", "build-storybook"]
 
