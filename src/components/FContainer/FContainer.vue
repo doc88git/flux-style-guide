@@ -1,5 +1,5 @@
 <template>
-  <div v-bind="$attrs" class="container">
+  <div v-bind="$attrs" class="f-container">
     <slot></slot>
   </div>
 </template>
@@ -10,4 +10,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.f-container {
+  @apply mx-auto px-4;
+}
+</style>

@@ -1,6 +1,6 @@
 {
   "name": "@doc88/flux-style-guide",
-  "version": "0.0.0-alpha.33",
+  "version": "0.0.0-alpha.34",
   "license": "MIT",
   "main": "src/index.esm.js",
   "scripts": {
@@ -10,12 +10,12 @@
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
     "storybook": "start-storybook --port 3000",
-    "build-storybook": "build-storybook -c .storybook"
+    "build:storybook": "build-storybook -c .storybook"
   },
   "dependencies": {
     "core-js": "^2.6.5",
     "postcss-import": "^12.0.1",
-    "tailwindcss": "^1.0.1",
+    "tailwindcss": "^1.0.3",
     "vue": "^2.6.10"
   },
   "devDependencies": {

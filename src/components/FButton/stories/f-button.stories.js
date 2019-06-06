@@ -27,9 +27,12 @@ storiesOf("Components|Button", module)
         },
         icon: {
           default: text("icon", "", groupId)
+        },
+        color: {
+          default: text("color", "primary", groupId)
         }
       },
-      template: `<f-button :label="label" :icon="icon" />`
+      template: `<f-button :label="label" :icon="icon" :color="color" />`
     }),
     {
       info: { summary }
@@ -45,9 +48,12 @@ storiesOf("Components|Button", module)
         },
         icon: {
           default: text("icon", "", groupId)
+        },
+        color: {
+          default: text("color", "primary", groupId)
         }
       },
-      template: `<f-button flat :label="label" :icon="icon" />`
+      template: `<f-button flat :label="label" :icon="icon" :color="color" />`
     }),
     {
       info: { summary }
@@ -63,9 +69,12 @@ storiesOf("Components|Button", module)
         },
         icon: {
           default: text("icon", "", groupId)
+        },
+        color: {
+          default: text("color", "primary", groupId)
         }
       },
-      template: `<f-button outline :label="label" :icon="icon" />`
+      template: `<f-button outline :label="label" :icon="icon" :color="color" />`
     }),
     {
       info: { summary }
@@ -81,9 +90,12 @@ storiesOf("Components|Button", module)
         },
         icon: {
           default: text("icon", "home", groupId)
+        },
+        color: {
+          default: text("color", "primary", groupId)
         }
       },
-      template: `<f-button :label="label" :icon="icon" />`
+      template: `<f-button :label="label" :icon="icon" :color="color" />`
     }),
     {
       info: { summary }
@@ -99,9 +111,12 @@ storiesOf("Components|Button", module)
         },
         icon: {
           default: text("icon", "home", groupId)
+        },
+        color: {
+          default: text("color", "primary", groupId)
         }
       },
-      template: `<f-button :label="label" :icon="icon" flat />`
+      template: `<f-button :label="label" :icon="icon" :color="color" flat />`
     }),
     {
       info: { summary }

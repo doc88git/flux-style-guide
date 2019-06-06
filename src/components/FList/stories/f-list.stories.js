@@ -19,7 +19,7 @@ storiesOf("Components|List", module).add(
         default: text("to", "#/home", groupId)
       },
       link: {
-        default: text("link", "#/url", groupId)
+        default: text("link", "http://", groupId)
       }
     },
     template: `
