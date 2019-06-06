@@ -1,21 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp");
 
-@tailwind base;
-@tailwind utilities;
-@tailwind components;
-
 @import "~tailwindcss/base";
 @import "~tailwindcss/utilities";
 @import "~tailwindcss/components";
 
-button {
-  &:hover {
-    @apply outline-none;
-  }
-  &:focus {
-    @apply outline-none;
-  }
-  &:active {
-    @apply outline-none;
-  }
-}

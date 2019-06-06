@@ -19,7 +19,8 @@
       </f-card-body>
       <f-card-separator />
       <f-card-actions>
-        <f-button label="Ver mais" icon="list" outline color="red"></f-button>
+        <f-button label="Ver mais" icon="list" outline color="blue"></f-button>
+        <f-button label="Cancelar" icon="close" flat color="green"></f-button>
         <f-button label="Cancelar" icon="close"></f-button>
       </f-card-actions>
     </f-card>
@@ -77,8 +78,6 @@ export default {
   })
 };
 </script>
-
-<style lang="scss" src="@/assets/f-style-guide.scss"></style>
 
 <style lang="scss">
 .content {
