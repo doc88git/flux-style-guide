@@ -1,6 +1,6 @@
 <template>
   <f-container class="content">
-    <div class="flux-logo"><span>[</span>Flux<span>]</span>Style Guide</div>
+    <h1 class="flux-logo">D-STYLES</h1>
 
     <ul class="menu">
       <li v-for="(item, index) in menuItems" :key="index">
@@ -46,17 +46,14 @@ export default {
 .content {
   @apply flex flex-wrap mx-auto items-center justify-center h-screen;
   .flux-logo {
-    @apply w-full text-center m-0 text-5xl text-primary;
-    span {
-      @apply text-6xl mx-2 text-secondary;
-    }
+    @apply w-full text-center m-0 text-primary;
   }
   ul.menu {
     @apply w-full text-center uppercase;
     li {
-      @apply inline mx-10 text-primary;
+      @apply inline mx-10 text-secondary;
       a:hover {
-        @apply text-primary-light;
+        @apply text-secondary-light;
       }
     }
   }

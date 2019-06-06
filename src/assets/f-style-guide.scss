@@ -2,8 +2,35 @@
 @import url("https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp");
 
 @import "~tailwindcss/base";
-@import "~tailwindcss/utilities";
-@import "~tailwindcss/components";
+
+body {
+  font-size: 14px;
+  @apply font-secondary
+}
+
+h1, h2, h3, h4, h5, h6, button, a {
+  @apply font-primary
+}
+
+h1 {
+  @apply text-6xl
+}
+h2 {
+  @apply text-5xl
+}
+h3 {
+  @apply text-4xl
+}
+h4 {
+  @apply text-3xl
+}
+h5 {
+  @apply text-2xl
+}
+h6 {
+  @apply text-xl
+}
+
 
 @screen sm {
   *, *::before, *::after {
@@ -17,14 +44,5 @@
   }
 }
 
-@screen lg {
-  *, *::before, *::after {
-    font-size: 14px
-  }
-}
-
-@screen xl {
-  *, *::before, *::after {
-    font-size: 14px
-  }
-}
+@import "~tailwindcss/utilities";
+@import "~tailwindcss/components";
