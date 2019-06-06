@@ -6,6 +6,7 @@ import * as FLayout from "./FLayout/index.js";
 import * as FList from "./FList/index.js";
 import * as FLink from "./FLink/index.js";
 import * as FCard from "./FCard/index.js";
+import * as FImage from "./FImage/index.js";
 
 const components = [
   FIcon,
@@ -15,7 +16,8 @@ const components = [
   FLayout,
   FList,
   FLink,
-  FCard
+  FCard,
+  FImage
 ];
 
 export default components;

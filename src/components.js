@@ -6,3 +6,4 @@ export * from "./components/FLayout/index.js";
 export * from "./components/FList/index.js";
 export * from "./components/FLink/index.js";
 export * from "./components/FCard/index.js";
+export * from "./components/FImage/index.js";
