@@ -10,7 +10,7 @@ export default {};
 
 <style lang="scss" scoped>
 .f-card-title {
-  @apply w-full font-bold mb-4 text-lg;
+  @apply font-primary w-full font-bold mb-4 text-lg;
   color: theme("colors.primary");
 }
 </style>

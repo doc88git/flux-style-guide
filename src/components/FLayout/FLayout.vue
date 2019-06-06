@@ -134,7 +134,7 @@ export default {
     display: none;
   }
   .header {
-    background: theme("colors.lighter");
+    background: theme("colors.light");
     grid-area: header;
     display: grid;
     grid-template-columns: 1fr minmax(150px, 75rem) 1fr;
@@ -269,7 +269,7 @@ export default {
       "footer";
     background: theme("colors.white");
     .header--mob {
-      background: theme("colors.lighter");
+      background: theme("colors.light");
       grid-area: header;
       position: fixed;
       height: 5rem;
@@ -425,7 +425,7 @@ input {
   &.btn-outline {
     background: transparent;
     &:hover {
-      background: theme("colors.lighter");
+      background: theme("colors.light");
     }
     &.btn-primary {
       border-color: theme("colors.primary");

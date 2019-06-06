@@ -1,4 +1,4 @@
-const { colors } = require("tailwindcss/defaultTheme");
+const { colors, fontFamily } = require("tailwindcss/defaultTheme");
 
 module.exports = {
   theme: {
@@ -6,14 +6,12 @@ module.exports = {
       colors: {
         primary: "var(--color-primary)",
         secondary: "var(--color-secondary)",
-        ["primary-lighter"]: "var(--color-primary-lighter)",
+        ["primary-light"]: "var(--color-primary-light)",
         ["primary-dark"]: "var(--color-primary-dark)",
-        ["secondary-lighter"]: "var(--color-secondary-lighter)",
+        ["secondary-light"]: "var(--color-secondary-light)",
         ["secondary-dark"]: "var(--color-secondary-dark)",
-        white: "var(--color-white)",
-        lighter: "var(--color-lighter)",
         light: "var(--color-light)",
-        black: "var(--color-black)",
+        dark: "var(--color-dark)",
         gray: {
           ...colors.gray,
           default: colors.gray[500]
@@ -55,6 +53,17 @@ module.exports = {
           default: colors.pink[500]
         }
       }
+    },
+
+    fontFamily: {
+      ...fontFamily,
+      primary: [
+        "Titillium Web",
+        "-apple-system",
+        "BlinkMacSystemFont",
+        "sans-serif"
+      ],
+      secondary: ["Roboto", "-apple-system", "BlinkMacSystemFont", "sans-serif"]
     }
   },
   experiments: {

@@ -7,8 +7,10 @@
     @click.stop="blur"
   >
     <f-icon v-if="icon" class="btn__icon" :class="[btnCenter]" :name="icon" />
-    {{ label }}
-    <slot></slot>
+    <span>
+      {{ label }}
+      <slot></slot>
+    </span>
   </button>
 </template>
 
@@ -23,6 +25,8 @@ export default {
   props: {
     outline: Boolean,
     flat: Boolean,
+    small: Boolean,
+    bigger: Boolean,
     label: String,
     icon: String,
     color: {
@@ -58,6 +62,8 @@ export default {
         ...btnDefault,
         ...btnOutline,
         ...btnFlat,
+        ["btn--small"]: this.small,
+        ["btn--bigger"]: this.bigger,
         [`color--text--${this.textColor}`]: !!this.textColor
       };
     },
@@ -82,7 +88,7 @@ export default {
 
 <style lang="scss">
 .btn {
-  @apply text-center py-1 px-2 m-1 rounded;
+  @apply font-primary text-center py-1 px-3 m-1 rounded text-base uppercase;
   &:hover {
     @apply outline-none;
   }
@@ -93,14 +99,17 @@ export default {
     @apply outline-none;
   }
 
+  &--small {
+    // @apply py-0 px-1 m-1 text-xs;
+    zoom: 0.8;
+  }
+  &--bigger {
+    @apply py-2 px-3 m-1 text-xl;
+    zoom: 1.2;
+  }
+
   &--default {
     @apply text-white bg-primary;
-    // &:hover {
-    //   @apply bg-primary-lighter;
-    // }
-    // &:focus {
-    //   @apply bg-primary-dark;
-    // }
   }
 
   &--flat {
@@ -111,11 +120,11 @@ export default {
   }
 
   &--flex {
-    @apply inline-flex items-center;
+    @apply inline-flex items-center content-center;
   }
 
   &__icon {
-    @apply fill-current h-6 mr-2;
+    @apply flex fill-current mr-2 h-full items-center content-center;
     &--center {
       @apply ml-2;
     }
@@ -125,6 +134,26 @@ export default {
 $colors: gray red orange yellow green teal blue indigo purple pink;
 
 .color {
+  &--text {
+    &--white {
+      @apply text-white #{!important};
+      &:hover {
+        @apply text-white;
+      }
+      &:focus {
+        @apply text-white;
+      }
+    }
+    &--black {
+      @apply text-black #{!important};
+      &:hover {
+        @apply text-black;
+      }
+      &:focus {
+        @apply text-black;
+      }
+    }
+  }
   @each $color in $colors {
     &--text {
       &--#{$color} {
@@ -175,7 +204,7 @@ $colors: gray red orange yellow green teal blue indigo purple pink;
     &--primary {
       @apply bg-transparent text-primary;
       &:hover {
-        @apply text-primary-lighter;
+        @apply text-primary-light;
       }
       &:focus {
         @apply text-primary-dark;
@@ -184,7 +213,7 @@ $colors: gray red orange yellow green teal blue indigo purple pink;
     &--secondary {
       @apply bg-transparent text-secondary;
       &:hover {
-        @apply text-secondary-lighter;
+        @apply text-secondary-light;
       }
       &:focus {
         @apply text-secondary-dark;
@@ -195,7 +224,7 @@ $colors: gray red orange yellow green teal blue indigo purple pink;
     &--primary {
       @apply bg-transparent text-primary border-primary;
       &:hover {
-        @apply text-primary-lighter border-primary-lighter;
+        @apply text-primary-light border-primary-light;
       }
       &:focus {
         @apply text-primary-dark border-primary-dark;
@@ -204,7 +233,7 @@ $colors: gray red orange yellow green teal blue indigo purple pink;
     &--secondary {
       @apply bg-transparent text-secondary;
       &:hover {
-        @apply text-secondary-lighter;
+        @apply text-secondary-light;
       }
       &:focus {
         @apply text-secondary-dark;
@@ -215,7 +244,7 @@ $colors: gray red orange yellow green teal blue indigo purple pink;
     &--primary {
       @apply bg-primary text-white;
       &:hover {
-        @apply bg-primary-lighter;
+        @apply bg-primary-light;
       }
       &:focus {
         @apply bg-primary-dark;
@@ -224,7 +253,7 @@ $colors: gray red orange yellow green teal blue indigo purple pink;
     &--secondary {
       @apply bg-secondary text-white;
       &:hover {
-        @apply bg-secondary-lighter;
+        @apply bg-secondary-light;
       }
       &:focus {
         @apply bg-secondary-dark;

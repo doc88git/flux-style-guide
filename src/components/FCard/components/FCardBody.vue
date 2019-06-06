@@ -10,6 +10,6 @@ export default {};
 
 <style lang="scss" scoped>
 .f-card-body {
-  @apply my-4;
+  @apply font-secondary my-4;
 }
 </style>

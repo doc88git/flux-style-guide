@@ -19,9 +19,9 @@
       </f-card-body>
       <f-card-separator />
       <f-card-actions>
-        <f-button label="Ver mais" icon="list" outline color="blue"></f-button>
-        <f-button label="Cancelar" icon="close" flat color="green"></f-button>
-        <f-button label="Cancelar" icon="close"></f-button>
+        <f-button label="Ver mais" bigger></f-button>
+        <f-button label="Ver mais" outline></f-button>
+        <f-button label="Cancelar" color="red"></f-button>
       </f-card-actions>
     </f-card>
 
@@ -93,7 +93,7 @@ export default {
     li {
       @apply inline mx-10 text-primary;
       a:hover {
-        @apply text-primary-lighter;
+        @apply text-primary-light;
       }
     }
   }

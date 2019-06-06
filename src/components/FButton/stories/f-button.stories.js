@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/vue";
-import { text } from "@storybook/addon-knobs";
+import { text, boolean } from "@storybook/addon-knobs";
 import FButton from "../FButton.vue";
 
 const groupId = "BUTTON-OPTIONS-ID1";
@@ -30,9 +30,18 @@ storiesOf("Components|Button", module)
         },
         color: {
           default: text("color", "primary", groupId)
+        },
+        textColor: {
+          default: text("textColor", "white", groupId)
+        },
+        small: {
+          default: boolean("small", false, groupId)
+        },
+        bigger: {
+          default: boolean("bigger", false, groupId)
         }
       },
-      template: `<f-button :label="label" :icon="icon" :color="color" />`
+      template: `<f-button :label="label" :icon="icon" :color="color" :text-color="textColor" :small="small" :bigger="bigger" />`
     }),
     {
       info: { summary }
@@ -93,9 +102,12 @@ storiesOf("Components|Button", module)
         },
         color: {
           default: text("color", "primary", groupId)
+        },
+        textColor: {
+          default: text("textColor", "white", groupId)
         }
       },
-      template: `<f-button :label="label" :icon="icon" :color="color" />`
+      template: `<f-button :label="label" :icon="icon" :color="color" :text-color="textColor" />`
     }),
     {
       info: { summary }
@@ -135,9 +147,15 @@ storiesOf("Components|Button", module)
         },
         icon: {
           default: text("icon", "", groupId)
+        },
+        color: {
+          default: text("color", "white", groupId)
+        },
+        textColor: {
+          default: text("textColor", "white", groupId)
         }
       },
-      template: `<f-button :label="label" :icon="icon">{{ text }}</f-button>`
+      template: `<f-button :label="label" :icon="icon" :text-color="textColor" :color="color">{{ text }}</f-button>`
     }),
     {
       info: { summary }

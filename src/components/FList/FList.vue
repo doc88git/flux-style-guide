@@ -15,7 +15,7 @@ export default {
 
 <style lang="scss" scoped>
 .f-list {
-  @apply font-sans flex items-center w-full;
+  @apply flex items-center w-full;
   &__content {
     @apply overflow-hidden bg-white rounded w-full leading-normal;
   }
