@@ -14,24 +14,10 @@
 
 <script>
 import { FContainer } from "@/components/FContainer";
-import { FButton } from "@/components/FButton";
-import {
-  FCard,
-  FCardActions,
-  FCardBody,
-  FCardTitle,
-  FCardSeparator
-} from "@/components/FCard";
 
 export default {
   components: {
-    FContainer,
-    FCard,
-    FCardActions,
-    FCardBody,
-    FCardTitle,
-    FCardSeparator,
-    FButton
+    FContainer
   },
   data: () => ({
     menuItems: [
