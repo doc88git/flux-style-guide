@@ -3,7 +3,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "f-card-separator"
+};
 </script>
 
 <style lang="scss" scoped>

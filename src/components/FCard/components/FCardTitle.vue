@@ -5,12 +5,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "f-card-title"
+};
 </script>
 
 <style lang="scss" scoped>
 .f-card-title {
-  @apply font-primary w-full font-bold mb-4 text-lg;
-  color: theme("colors.primary");
+  @apply font-primary w-full font-bold mb-4 text-lg text-primary;
 }
 </style>

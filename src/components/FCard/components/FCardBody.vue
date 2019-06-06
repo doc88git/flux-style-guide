@@ -5,7 +5,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "f-card-body"
+};
 </script>
 
 <style lang="scss" scoped>
