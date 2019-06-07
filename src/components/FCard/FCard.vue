@@ -25,7 +25,7 @@ export default {
 
 <style lang="scss" scoped>
 .f-card {
-  @apply max-w-sm mx-auto bg-white rounded-lg shadow-md;
+  @apply max-w-full mx-auto bg-white rounded-lg shadow-md;
   .f-card__content {
     @apply p-6;
   }
