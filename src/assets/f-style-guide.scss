@@ -4,7 +4,7 @@
 @import "~tailwindcss/base";
 
 body {
-  font-size: 14px;
+  font-size: 16px;
   @apply font-secondary
 }
 
@@ -35,6 +35,21 @@ h6 {
 @screen sm {
   *, *::before, *::after {
     font-size: 16px
+  }
+}
+@screen md {
+  *, *::before, *::after {
+    font-size: 16px
+  }
+}
+@screen lg {
+  *, *::before, *::after {
+    font-size: 14px
+  }
+}
+@screen xl {
+  *, *::before, *::after {
+    font-size: 14px
   }
 }
 
