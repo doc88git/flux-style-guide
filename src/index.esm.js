@@ -2,9 +2,11 @@ import VuePlugin from "./vue-plugin";
 
 import * as components from "./components.js";
 import * as directives from "./directives.js";
+import * as plugins from "./plugins.js";
 
 export * from "./components.js";
 export * from "./directives.js";
+export * from "./plugins.js";
 
 export default {
   ...VuePlugin,
@@ -12,7 +14,7 @@ export default {
     VuePlugin.install(Vue, {
       components,
       directives,
-      // plugins,
+      plugins,
       ...opts
     });
   }
