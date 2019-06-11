@@ -1,7 +1,7 @@
 import VeeValidate from "vee-validate";
 
 export default {
-  install({ $f, cfg }) {
-    $f.use(VeeValidate);
+  install({ Vue, $f, cfg }) {
+    Vue.use(VeeValidate);
   }
 };
