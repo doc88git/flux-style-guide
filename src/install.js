@@ -31,4 +31,14 @@ export default function(Vue, opts = {}) {
         Vue.directive(d.name, d);
       }
     });
+
+  if (opts.plugins) {
+    const param = { $f, cfg };
+    Object.keys(opts.plugins).forEach(key => {
+      const p = opts.plugins[key];
+      if (typeof p.install === "function") {
+        p.install(param);
+      }
+    });
+  }
 }
