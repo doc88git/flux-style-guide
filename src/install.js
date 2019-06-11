@@ -23,4 +23,12 @@ export default function(Vue, opts = {}) {
         Vue.component(c.name, c);
       }
     });
+
+  opts.directives &&
+    Object.keys(opts.directives).forEach(key => {
+      const d = opts.directives[key];
+      if (d.name !== undefined && d.unbind !== void 0) {
+        Vue.directive(d.name, d);
+      }
+    });
 }
