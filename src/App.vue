@@ -2,6 +2,19 @@
   <f-container class="content">
     <h1 class="flux-logo">D-STYLES</h1>
 
+    <f-field label="Nome completo" hint="Escreva seu nome">
+      <f-input v-model="teste" placeholder="Seu nome aqui" type="search" />
+      <template v-slot:before>
+        <f-avatar src="https://cdn.quasar.dev/img/avatar5.jpg" />
+      </template>
+      <template v-slot:after>
+        <f-button>Salvar</f-button>
+      </template>
+      <template v-slot:append>
+        <f-button flat icon="search" />
+      </template>
+    </f-field>
+
     <ul class="menu">
       <li v-for="(item, index) in menuItems" :key="index">
         <a target="_blank" :href="item.url">
@@ -14,12 +27,20 @@
 
 <script>
 import { FContainer } from "@/components/FContainer";
+import { FButton } from "@/components/FButton";
+import { FAvatar } from "@/components/FAvatar";
+import { FField, FInput } from "@/components/FField";
 
 export default {
   components: {
-    FContainer
+    FContainer,
+    FButton,
+    FField,
+    FInput,
+    FAvatar
   },
   data: () => ({
+    teste: "oi",
     menuItems: [
       {
         name: "Documentation",

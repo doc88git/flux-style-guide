@@ -3,8 +3,8 @@
     class="btn"
     :class="[btnStyle, btnIcon]"
     @click="$emit('click')"
-    @mouseleave="blur"
     @click.stop="blur"
+    @mouseleave="blur"
   >
     <f-icon v-if="icon" class="btn__icon" :class="[btnCenter]" :name="icon" />
     <span>
@@ -80,6 +80,7 @@ export default {
   },
   methods: {
     blur(e) {
+      console.log({ e });
       e.target.blur();
     }
   }
@@ -88,7 +89,12 @@ export default {
 
 <style lang="scss">
 .btn {
-  @apply font-primary text-center py-1 px-3 m-1 rounded text-base uppercase;
+  @apply font-primary text-center py-1 px-3 m-1 rounded text-base uppercase h-10;
+  // padding: 0;
+  //   height: 2.4em;
+  //   width: 2.4em;
+  //   min-height: 2.4em;
+  //   min-width: 2.4em;
   &:hover {
     @apply outline-none;
   }

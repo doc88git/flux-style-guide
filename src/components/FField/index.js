@@ -1,4 +1,4 @@
 import FField from "./FField";
-import FInput from "./components/FInput";
+import FInput from "./FInput";
 
 export { FField, FInput };

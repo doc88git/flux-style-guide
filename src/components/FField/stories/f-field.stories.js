@@ -1,47 +1,60 @@
 import { storiesOf } from "@storybook/vue";
-import { text } from "@storybook/addon-knobs";
+import { text, boolean } from "@storybook/addon-knobs";
 import { FField, FInput } from "..";
+import { FButton } from "../../FButton";
+import { FAvatar } from "../../FAvatar";
 
 const groupId = "FIELD-OPTIONS-ID1";
 const summary = `
 ## Label
 `;
 
-storiesOf("Form|Field", module)
-  .add(
-    "Field",
-    () => ({
-      components: { FField, FInput },
-      props: {
-        label: {
-          default: text("label", "Nome", groupId)
-        }
+storiesOf("Form|Field", module).add(
+  "Field Component",
+  () => ({
+    components: { FField, FInput, FButton, FAvatar },
+    props: {
+      label: {
+        default: text("label", "Nome completo", groupId)
       },
-      template: `<f-field :label="label"><f-input /></f-field >`
-    }),
-    {
-      info: {
-        summary
-      }
-    }
-  )
-  .add(
-    "Field with error",
-    () => ({
-      components: { FField, FInput },
-      props: {
-        label: {
-          default: text("label", "Nome", groupId)
-        },
-        hasError: {
-          default: text("error", true, groupId)
-        }
+      avatar: {
+        default: text(
+          "avatar",
+          "https://cdn.quasar.dev/img/avatar5.jpg",
+          groupId
+        )
       },
-      template: `<f-field :label="label" :hasError="hasError"><f-input /></f-field >`
-    }),
-    {
-      info: {
-        summary
+      hint: {
+        default: text("hint", "Escreva seu nome", groupId)
+      },
+      error: {
+        default: boolean("error", false, groupId)
+      },
+      errorMessage: {
+        default: text("errorMessage", "", groupId)
+      },
+      icon: {
+        default: text("icon", "search", groupId)
       }
+    },
+    template: `
+        <f-field :label="label" :hint="hint" :error="error" :errorMessage="errorMessage">
+          <f-input placeholder="Seu nome aqui" type="search" />
+          <template v-slot:before>
+            <f-avatar :src="avatar" v-if="avatar" />
+          </template>
+          <template v-slot:after>
+            <f-button>Salvar</f-button>
+          </template>
+          <template v-slot:append>
+            <f-button flat :icon="icon" />
+          </template>
+        </f-field>
+      `
+  }),
+  {
+    info: {
+      summary
     }
-  );
+  }
+);
