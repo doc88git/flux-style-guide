@@ -5,6 +5,7 @@
     :class="classes"
     :disabled="disable"
     :readonly="readonly"
+    v-bind="$attrs"
     @input="runMask"
     ref="input"
     class="f-input"

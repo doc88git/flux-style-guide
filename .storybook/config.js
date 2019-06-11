@@ -1,7 +1,10 @@
 import Vue from 'vue';
+import VeeValidate from "vee-validate";
 import { configure, addDecorator } from '@storybook/vue';
 import { withInfo, setDefaults } from 'storybook-addon-vue-info'
 import { withKnobs } from '@storybook/addon-knobs';
+
+Vue.use(VeeValidate);
 
 import '@/assets/f-style-guide.scss'
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="f-field">
+  <div class="f-field" rules="required|email" mode="eager">
     <div v-if="$slots.before" class="f-field__before f-field__marginal">
       <slot name="before"> </slot>
     </div>
@@ -13,18 +13,27 @@
         class="f-field__inner__field"
         :class="{
           'f-field__inner--hasAppend': $slots.append,
-          'f-field__inner--hasError': error
+          'f-field__inner--hasError': hasError
         }"
       >
-        <slot />
-      </div>
+        <ValidationProvider :rules="rules" tag="div" :name="name">
+          <template v-slot="{ errors }">
+            <slot />
 
-      <div v-if="($slots.hint || hint) && !error" class="f-field__inner__hint">
-        <slot name="hint">{{ hint }}</slot>
-      </div>
+            <div
+              v-if="($slots.hint || hint) && (!hasError && !errors[0])"
+              class="f-field__inner__hint"
+            >
+              <slot name="hint">{{ hint }}</slot>
+            </div>
 
-      <div v-if="error" class="f-field__inner__error">
-        <slot name="error">{{ errorMessage || "Há um erro neste campo" }}</slot>
+            <div v-if="errors[0] || hasError" class="f-field__inner__error">
+              <slot name="error">
+                {{ errorMessage || errors[0] || "Há um erro neste campo" }}
+              </slot>
+            </div>
+          </template>
+        </ValidationProvider>
       </div>
 
       <div
@@ -42,22 +51,34 @@
 </template>
 
 <script>
+import { ValidationProvider } from "vee-validate";
 export default {
   name: "f-field",
+  components: {
+    ValidationProvider
+  },
   props: {
     label: {
       default: "",
       type: String
     },
-    error: {
+    hasError: {
       default: false,
       type: Boolean
     },
     hint: String,
+    name: String,
+    rules: String,
     errorMessage: {
       default: "",
       type: String
     }
+  },
+  data: () => ({
+    value: ""
+  }),
+  mounted() {
+    console.log(this.errors);
   }
 };
 </script>

@@ -13,9 +13,30 @@ storiesOf("Form|Field", module).add(
   "Field Component",
   () => ({
     components: { FField, FInput, FButton, FAvatar },
+    data: () => ({
+      value: ""
+    }),
     props: {
+      name: {
+        default: text("name", "name", groupId)
+      },
       label: {
         default: text("label", "Nome completo", groupId)
+      },
+      hint: {
+        default: text("hint", "Escreva seu nome", groupId)
+      },
+      rules: {
+        default: text("rules", "required|email", groupId)
+      },
+      hasError: {
+        default: boolean("hasError", false, groupId)
+      },
+      errorMessage: {
+        default: text("errorMessage", "", groupId)
+      },
+      type: {
+        default: text("type", "text", groupId)
       },
       avatar: {
         default: text(
@@ -24,22 +45,20 @@ storiesOf("Form|Field", module).add(
           groupId
         )
       },
-      hint: {
-        default: text("hint", "Escreva seu nome", groupId)
-      },
-      error: {
-        default: boolean("error", false, groupId)
-      },
-      errorMessage: {
-        default: text("errorMessage", "", groupId)
-      },
       icon: {
         default: text("icon", "search", groupId)
       }
     },
     template: `
-        <f-field :label="label" :hint="hint" :error="error" :errorMessage="errorMessage">
-          <f-input placeholder="Seu nome aqui" type="search" />
+        <f-field
+          :name="name"
+          :label="label"
+          :hint="hint"
+          :rules="rules"
+          :hasError="hasError"
+          :errorMessage="errorMessage"
+          >
+          <f-input placeholder="Seu nome aqui" :type="type" v-model="value" />
           <template v-slot:before>
             <f-avatar :src="avatar" v-if="avatar" />
           </template>
