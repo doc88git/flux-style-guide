@@ -1,6 +1,7 @@
 <template>
   <button
     class="btn"
+    type="button"
     :class="[btnStyle, btnIcon]"
     @click="$emit('click')"
     @click.stop="blur"
