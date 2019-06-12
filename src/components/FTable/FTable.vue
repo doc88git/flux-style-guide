@@ -19,14 +19,14 @@
         <table class="f-table__content">
           <thead>
             <tr>
-              <th v-for="item in 17" :key="`th:${item}`">
+              <th v-for="item in 20" :key="`th:${item}`">
                 Col Title {{ item }}
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="line in 17" :key="`tr:${line}`">
-              <td v-for="item in 17" :key="`td:${item}`">
+            <tr v-for="line in 20" :key="`tr:${line}`">
+              <td v-for="item in 20" :key="`td:${item}`">
                 Content collum {{ item }}
               </td>
             </tr>
@@ -72,23 +72,26 @@ export default {
   &__body {
     @apply overflow-auto;
     table {
-      @apply table-auto;
-      tr {
-        @apply bg-white;
-        &:hover {
-          @apply bg-gray-100;
-        }
-        th,
-        td {
-          @apply p-2 whitespace-no-wrap;
-        }
+      @apply table-auto bg-white;
+      th,
+      td {
+        @apply p-2 whitespace-no-wrap;
+      }
+      thead {
         th {
           @apply border-gray-600 mb-4 bg-white;
           border-bottom-width: 1px;
         }
-        td {
-          @apply border-gray-200 mb-4;
-          border-bottom-width: 1px;
+      }
+      tbody {
+        tr {
+          &:hover {
+            @apply bg-gray-100;
+          }
+          td {
+            @apply border-gray-200 mb-4;
+            border-bottom-width: 1px;
+          }
         }
       }
     }
