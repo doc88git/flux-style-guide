@@ -1,11 +1,20 @@
 <template>
   <div class="f-field" rules="required|email" mode="eager">
-    <div v-if="$slots.before" class="f-field__before f-field__marginal">
+    <div
+      v-if="$slots.before"
+      class="f-field__before "
+      :class="{ 'f-field__marginal': $slots.label || label }"
+    >
       <slot name="before"> </slot>
     </div>
 
-    <div class="f-field__inner">
-      <label class="f-field__inner__label">
+    <div
+      class="f-field__inner"
+      :class="{
+        'f-field__inner--hasLabel': $slots.label || label
+      }"
+    >
+      <label v-if="$slots.label || label" class="f-field__inner__label">
         <slot name="label">{{ label || "&nbsp;" }}</slot>
       </label>
 
@@ -23,7 +32,16 @@
           ref="ValidationProvider"
         >
           <template v-slot="validation">
-            <slot />
+            <div class="f-field__inner__input">
+              <slot />
+              <div
+                v-if="$slots.append"
+                class="f-field__inner__append"
+                :class="{ 'f-field__marginal': $slots.label || label }"
+              >
+                <slot name="append"> </slot>
+              </div>
+            </div>
 
             <div
               v-if="
@@ -49,16 +67,13 @@
           </template>
         </ValidationProvider>
       </div>
-
-      <div
-        v-if="$slots.append"
-        class="f-field__inner__append f-field__marginal"
-      >
-        <slot name="append"> </slot>
-      </div>
     </div>
 
-    <div v-if="$slots.after" class="f-field__after f-field__marginal">
+    <div
+      v-if="$slots.after"
+      class="f-field__after"
+      :class="{ 'f-field__marginal': $slots.label || label }"
+    >
       <slot name="after"> </slot>
     </div>
   </div>
@@ -96,14 +111,17 @@ export default {
 .f-field {
   @apply flex flex-wrap w-full mb-6 mt-2;
   &__marginal {
-    @apply h-20;
+    @apply h-20 items-end;
     transition: color 0.36s cubic-bezier(0.4, 0, 0.2, 1);
   }
   &__before {
     @apply flex flex-no-wrap items-center pr-4;
   }
   &__after {
-    @apply flex flex-wrap items-end;
+    @apply flex flex-wrap;
+    button {
+      @apply mt-0 mb-0;
+    }
   }
   &__inner {
     @apply w-auto relative;
@@ -119,10 +137,18 @@ export default {
     &__error {
       @apply block tracking-wide text-red text-sm mb-2 mt-2;
     }
+    &__input {
+      @apply relative;
+    }
     &__append {
-      @apply absolute top-0 right-0 h-8 mt-8;
+      @apply h-8 absolute bottom-0 right-0 mb-4 z-10;
       button {
         @apply ml-0 mr-0 pl-2 pr-2;
+      }
+    }
+    &--hasLabel {
+      .f-field__inner__input {
+        @apply pt-1 pb-1;
       }
     }
     &--hasError {

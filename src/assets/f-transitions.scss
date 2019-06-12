@@ -1,0 +1,36 @@
+$transition: all 0.2s ease-out;
+
+.slide {
+  &-up {
+    &-enter-active {
+      transition: $transition;
+    }
+    &-leave-active {
+      transition: $transition;
+    }
+    &-enter {
+      opacity: 0;
+      transform: translateY(45px);
+    }
+    &-leave-to {
+      opacity: 0;
+      transform: translateY(45px);
+    }
+  }
+  &-down {
+    &-enter-active {
+      transition: $transition;
+    }
+    &-leave-active {
+      transition: $transition;
+    }
+    &-enter {
+      opacity: 0;
+      transform: translateY(-45px);
+    }
+    &-leave-to {
+      opacity: 0;
+      transform: translateY(-45px);
+    }
+  }
+}
