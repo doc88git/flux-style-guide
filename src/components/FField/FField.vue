@@ -16,20 +16,34 @@
           'f-field__inner--hasError': hasError
         }"
       >
-        <ValidationProvider :rules="rules" tag="div" :name="name">
-          <template v-slot="{ errors }">
+        <ValidationProvider
+          :rules="rules"
+          :name="name"
+          tag="div"
+          ref="ValidationProvider"
+        >
+          <template v-slot="validation">
             <slot />
 
             <div
-              v-if="($slots.hint || hint) && (!hasError && !errors[0])"
+              v-if="
+                ($slots.hint || hint) && (!hasError && !validation.errors[0])
+              "
               class="f-field__inner__hint"
             >
               <slot name="hint">{{ hint }}</slot>
             </div>
 
-            <div v-if="errors[0] || hasError" class="f-field__inner__error">
+            <div
+              v-if="validation.errors[0] || hasError"
+              class="f-field__inner__error"
+            >
               <slot name="error">
-                {{ errorMessage || errors[0] || "Há um erro neste campo" }}
+                {{
+                  errorMessage ||
+                    validation.errors[0] ||
+                    "Há um erro neste campo"
+                }}
               </slot>
             </div>
           </template>
@@ -52,6 +66,7 @@
 
 <script>
 import { ValidationProvider } from "vee-validate";
+
 export default {
   name: "f-field",
   components: {
@@ -73,12 +88,6 @@ export default {
       default: "",
       type: String
     }
-  },
-  data: () => ({
-    value: ""
-  }),
-  mounted() {
-    console.log(this.errors);
   }
 };
 </script>

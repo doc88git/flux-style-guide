@@ -32,6 +32,9 @@ storiesOf("Form|Field", module).add(
       hasError: {
         default: boolean("hasError", false, groupId)
       },
+      mask: {
+        default: text("mask", "", groupId)
+      },
       errorMessage: {
         default: text("errorMessage", "", groupId)
       },
@@ -58,7 +61,7 @@ storiesOf("Form|Field", module).add(
           :hasError="hasError"
           :errorMessage="errorMessage"
           >
-          <f-input placeholder="Seu nome aqui" :type="type" v-model="value" />
+          <f-input placeholder="Seu nome aqui" :type="type" :mask="mask" v-model="value" />
           <template v-slot:before>
             <f-avatar :src="avatar" v-if="avatar" />
           </template>
