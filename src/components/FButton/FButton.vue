@@ -81,7 +81,6 @@ export default {
   },
   methods: {
     blur(e) {
-      console.log({ e });
       e.target.blur();
     }
   }
