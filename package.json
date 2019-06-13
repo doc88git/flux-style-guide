@@ -9,7 +9,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
-    "storybook": "start-storybook --port 3000",
+    "storybook": "start-storybook --port 3001",
     "build:storybook": "build-storybook -c .storybook"
   },
   "dependencies": {

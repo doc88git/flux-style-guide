@@ -17,6 +17,7 @@ export default {
     classes() {
       return {
         ["f-card-actions--align-center"]: this.align === "center",
+        ["f-card-actions--align-justify"]: this.align === "justify",
         ["f-card-actions--align-left"]: this.align === "left",
         ["f-card-actions--align-right"]: this.align === "right"
       };
@@ -29,6 +30,9 @@ export default {
 .f-card-actions {
   @apply flex items-center content-center;
   &--align-center {
+    @apply justify-center;
+  }
+  &--align-justify {
     @apply justify-between;
   }
   &--align-left {
