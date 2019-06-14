@@ -143,6 +143,7 @@ export default {
 
 <style lang="scss" scoped>
 .f-pagination {
+  @apply select-none;
   ul,
   li {
     @apply inline-block min-h-full;

@@ -163,6 +163,4 @@ export default {
     }
   }
 }
-
-// @apply w-auto flex flex-wrap pt-12 pr-2 -ml-6 z-10;
 </style>

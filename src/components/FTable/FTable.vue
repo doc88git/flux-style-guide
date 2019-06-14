@@ -3,9 +3,7 @@
     <f-card>
       <div class="f-table__header">
         <div class="f-table__header__left">
-          <slot name="header_left">
-            <f-button icon="add">Add</f-button>
-          </slot>
+          <slot name="header_left" />
         </div>
         <div class="f-table__header__center">
           <slot name="header_center" />
@@ -20,15 +18,25 @@
           <table class="f-table__content">
             <thead>
               <tr>
-                <th v-for="item in 20" :key="`th:${item}`">
-                  Col Title {{ item }}
+                <th
+                  v-for="head in keysHeaders"
+                  :key="`th:${head}`"
+                  @click="setSortBy(head)"
+                >
+                  <f-icon
+                    dense
+                    :name="sortIcon"
+                    color="gray"
+                    v-if="sortBy === head"
+                  />
+                  {{ header[head] }}
                 </th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="line in 20" :key="`tr:${line}`">
-                <td v-for="item in 20" :key="`td:${item}`">
-                  Content collum {{ item }}
+              <tr v-for="(row, index) in show" :key="`tr:${index}`">
+                <td v-for="head in keysHeaders" :key="`td:${head}`">
+                  {{ row[head] }}
                 </td>
               </tr>
             </tbody>
@@ -41,14 +49,7 @@
             <slot name="footer_left" />
           </div>
           <div class="f-table__footer__center">
-            <slot name="footer_center">
-              <f-pagination
-                :currentPage="1"
-                :total="100"
-                :perPage="6"
-                :max="10"
-              />
-            </slot>
+            <slot name="footer_center" />
           </div>
           <div class="f-table__footer__right">
             <slot name="footer_right" />
@@ -60,20 +61,58 @@
 </template>
 
 <script>
+import collect from "collect.js";
 import { FCard, FCardSeparator, FCardBody, FCardActions } from "../FCard";
-import { FButton } from "../FButton";
-import { FPagination } from "../FPagination";
+import { FIcon } from "../FIcon";
+
 export default {
   name: "f-table",
   components: {
     FCard,
     FCardSeparator,
     FCardBody,
-    FButton,
-    FPagination,
+    FIcon,
     FCardActions
   },
-  props: {}
+  props: {
+    data: Array,
+    header: Object
+  },
+  data: () => ({
+    sortBy: "",
+    sortDirection: "asc"
+  }),
+  computed: {
+    keysHeaders() {
+      return Object.keys(this.header);
+    },
+    sortIcon() {
+      return this.sortDirection === "asc" ? "arrow_downward" : "arrow_upward";
+    },
+    content() {
+      let data = this.data.length ? this.data : [];
+      return collect(data);
+    },
+    show() {
+      let data = this.content;
+
+      if (this.sortBy) {
+        let method = this.sortDirection === "desc" ? "sortByDesc" : "sortBy";
+        data = this.content[method](this.sortBy);
+      }
+
+      return data.all();
+    }
+  },
+  methods: {
+    setSortBy(item) {
+      this.sortBy = item;
+      this.setSortDirection();
+    },
+    setSortDirection() {
+      this.sortDirection = this.sortDirection === "asc" ? "desc" : "asc";
+    }
+  }
 };
 </script>
 
@@ -98,12 +137,18 @@ export default {
       @apply table-auto bg-white;
       th,
       td {
-        @apply p-4 whitespace-no-wrap text-left;
+        @apply p-4 whitespace-no-wrap text-left align-middle;
       }
       thead {
         th {
-          @apply border-gray-600 mb-4 bg-white;
+          @apply border-gray-600 mb-4 bg-white  select-none;
           border-bottom-width: 1px;
+          &:hover {
+            @apply opacity-75 cursor-pointer;
+          }
+          .f-icon {
+            @apply -ml-2 text-xs;
+          }
         }
       }
       tbody {

@@ -34,5 +34,9 @@ storiesOf("Components|Dropdown", module).add("Default", () => ({
       default: text("type", "outlined", groupId)
     }
   },
-  template: `<div class="p-8"><f-dropdown :list="list" :caret="caret" :position="position" :type="type" /></div>`
+  template: `
+    <div class="p-8">
+      <f-dropdown :list="list" :caret="caret" :position="position" :type="type" />
+    </div>
+  `
 }));

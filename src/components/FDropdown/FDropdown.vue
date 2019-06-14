@@ -117,7 +117,8 @@ export default {
 @import "../../assets/f-transitions.scss";
 
 .f-dropdown {
-  @apply relative leading-normal select-none;
+  @apply relative leading-normal select-none min-w-full text-left;
+  min-width: 150px;
   &--up {
     .f-dropdown__list {
       @apply shadow;
@@ -127,10 +128,10 @@ export default {
     @apply mb-0 relative z-10 bg-white;
   }
   &__button {
-    @apply mt-2;
+    @apply mt-1;
   }
   &__selected {
-    @apply py-2 px-4 border rounded border-solid cursor-pointer relative;
+    @apply py-2 px-4 border rounded border-solid cursor-pointer relative pr-10;
   }
   &__current {
     @apply relative align-middle;

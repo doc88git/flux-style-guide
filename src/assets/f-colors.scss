@@ -1,0 +1,131 @@
+
+$colors: gray red orange yellow green teal blue indigo purple pink;
+
+.color {
+  &--text {
+    &--white {
+      @apply text-white #{!important};
+      &:hover {
+        @apply text-white;
+      }
+      &:focus {
+        @apply text-white;
+      }
+    }
+    &--black {
+      @apply text-black #{!important};
+      &:hover {
+        @apply text-black;
+      }
+      &:focus {
+        @apply text-black;
+      }
+    }
+  }
+  @each $color in $colors {
+    &--text {
+      &--#{$color} {
+        @apply text-#{$color} #{!important};
+        &:hover {
+          @apply text-#{$color}-400;
+        }
+        &:focus {
+          @apply text-#{$color}-600;
+        }
+      }
+    }
+    &--flat {
+      &--#{$color} {
+        @apply bg-transparent text-#{$color};
+        &:hover {
+          @apply text-#{$color}-400;
+        }
+        &:focus {
+          @apply text-#{$color}-600;
+        }
+      }
+    }
+    &--outline {
+      &--#{$color} {
+        @apply bg-transparent text-#{$color} border-#{$color};
+        &:hover {
+          @apply text-#{$color}-400 border-#{$color}-400;
+        }
+        &:focus {
+          @apply text-#{$color}-600 border-#{$color}-600;
+        }
+      }
+    }
+    &--default {
+      &--#{$color} {
+        @apply bg-#{$color};
+        &:hover {
+          @apply bg-#{$color}-400;
+        }
+        &:focus {
+          @apply bg-#{$color}-600;
+        }
+      }
+    }
+  }
+  &--flat {
+    &--primary {
+      @apply bg-transparent text-primary;
+      &:hover {
+        @apply text-primary-light;
+      }
+      &:focus {
+        @apply text-primary-dark;
+      }
+    }
+    &--secondary {
+      @apply bg-transparent text-secondary;
+      &:hover {
+        @apply text-secondary-light;
+      }
+      &:focus {
+        @apply text-secondary-dark;
+      }
+    }
+  }
+  &--outline {
+    &--primary {
+      @apply bg-transparent text-primary border-primary;
+      &:hover {
+        @apply text-primary-light border-primary-light;
+      }
+      &:focus {
+        @apply text-primary-dark border-primary-dark;
+      }
+    }
+    &--secondary {
+      @apply bg-transparent text-secondary;
+      &:hover {
+        @apply text-secondary-light;
+      }
+      &:focus {
+        @apply text-secondary-dark;
+      }
+    }
+  }
+  &--default {
+    &--primary {
+      @apply bg-primary text-white;
+      &:hover {
+        @apply bg-primary-light;
+      }
+      &:focus {
+        @apply bg-primary-dark;
+      }
+    }
+    &--secondary {
+      @apply bg-secondary text-white;
+      &:hover {
+        @apply bg-secondary-light;
+      }
+      &:focus {
+        @apply bg-secondary-dark;
+      }
+    }
+  }
+}

@@ -1,10 +1,10 @@
 <template>
-  <span>
-    <f-icon-material
-      v-if="lib === 'material'"
-      v-bind="{ name: $props.name, type: $props.type }"
-    />
-  </span>
+  <f-icon-material
+    v-if="lib === 'material'"
+    v-bind="{ name: $props.name, type: $props.type }"
+    :class="classes"
+    class="f-icon"
+  />
 </template>
 
 <script>
@@ -16,6 +16,7 @@ export default {
     FIconMaterial
   },
   props: {
+    color: String,
     lib: {
       default: "material",
       type: String
@@ -29,8 +30,17 @@ export default {
       type: String,
       required: true
     }
+  },
+  computed: {
+    classes() {
+      return {
+        [`color--text--${this.color}`]: !!this.color
+      };
+    }
   }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import "../../assets/f-colors.scss";
+</style>
