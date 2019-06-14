@@ -28,7 +28,7 @@ export default {
 
 <style lang="scss" scoped>
 .f-card-actions {
-  @apply flex items-center content-center;
+  @apply flex flex-no-wrap items-center content-center;
   &--align-center {
     @apply justify-center;
   }
