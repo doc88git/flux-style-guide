@@ -1,5 +1,6 @@
 <template>
   <div class="f-dropdown" :class="classes">
+    <input ref="input" v-bind="$attrs" type="hidden" />
     <div
       class="f-dropdown__inner"
       @click="toggleDropdown"
@@ -18,7 +19,7 @@
           <li
             @click="clickOnItem(item, index)"
             v-for="(item, index) in list"
-            :key="item"
+            :key="`dwn:${index}`"
           >
             {{ item.label }}
           </li>
@@ -30,13 +31,15 @@
 
 <script>
 import { FIcon } from "../FIcon/index.js";
+import { setTimeout } from "timers";
 
 export default {
   name: "f-dropdown",
   components: { FIcon },
   data: () => ({
     isOpen: false,
-    selected: 0
+    selected: 0,
+    innerInput: ""
   }),
   props: {
     list: {
@@ -53,6 +56,7 @@ export default {
         );
       }
     },
+    input: Boolean,
     caret: {
       type: Boolean,
       default: true
@@ -78,6 +82,10 @@ export default {
     }
   },
   computed: {
+    teste() {
+      console.log({ self: this });
+      return "";
+    },
     isOutlined() {
       return this.type === "outlined";
     },
@@ -90,11 +98,30 @@ export default {
     labelSelected() {
       return this.list[this.selected].label;
     },
+    valueSelected() {
+      return this.list[this.selected].value;
+    },
     classes() {
       return this.isOutlined ? "f-dropdown--outlined" : "";
     }
   },
+  mounted() {
+    this.getBindValue();
+  },
   methods: {
+    getBindValue() {
+      // if (!this.$refs.input) {
+      //   setTimeout(() => {
+      //     this.getBindValue();
+      //   });
+      //   return false;
+      // }
+
+      let val = this.$refs.input.value;
+      this.list.map((item, index) => {
+        if (String(item.value) === String(val)) this.selected = index;
+      });
+    },
     toggleDropdown(e) {
       this.isOpen = !this.isOpen;
       if (!process.browser) return;
@@ -110,6 +137,7 @@ export default {
       this.selected = index;
       if (item.action) item.action();
       if (item.emit) this.$emit("emit", item.emit);
+      if (this.input) this.$emit("input", this.valueSelected);
     }
   },
   destroyed() {
@@ -122,10 +150,12 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../assets/f-transitions.scss";
+@import "../../assets/f-colors.scss";
 
 .f-dropdown {
   @apply select-none relative;
   min-width: 200px;
+  width: 200px;
   &__inner {
     @apply flex flex-no-wrap justify-between bg-primary rounded text-white w-full py-2 px-3 min-w-full;
     &__content {

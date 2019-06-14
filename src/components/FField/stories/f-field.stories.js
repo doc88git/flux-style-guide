@@ -53,6 +53,7 @@ storiesOf("Form|Field", module).add(
       }
     },
     template: `
+      <div class="p-8">
         <f-field
           :name="name"
           :label="label"
@@ -72,6 +73,7 @@ storiesOf("Form|Field", module).add(
             <f-button flat :icon="icon" />
           </template>
         </f-field>
+      </div>
       `
   }),
   {
