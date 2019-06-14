@@ -4,15 +4,15 @@ import FDropdown from "../FDropdown.vue";
 
 const arrList = [
   {
-    label: "primeiro item",
+    label: "Primeiro item",
     emit: "emit primeiro item"
   },
   {
-    label: "segundo item",
+    label: "Segundo item",
     emit: "emit segundo item"
   },
   {
-    label: "terceiro item",
+    label: "Terceiro item",
     emit: "emit terceiro item"
   }
 ];

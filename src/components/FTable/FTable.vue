@@ -134,7 +134,7 @@ export default {
   &__body {
     @apply overflow-auto;
     table {
-      @apply table-auto bg-white;
+      @apply table-auto bg-white w-full;
       th,
       td {
         @apply p-4 whitespace-no-wrap text-left align-middle;
