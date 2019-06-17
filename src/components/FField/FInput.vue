@@ -66,9 +66,9 @@ export default {
 
 <style lang="scss" scoped>
 .f-input {
-  @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight h-10 inline w-full;
+  @apply appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight h-10 inline w-full;
   &:focus {
-    @apply outline-none shadow-md;
+    @apply outline-none;
   }
   &__textarea {
     @apply w-full;
