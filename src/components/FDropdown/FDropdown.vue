@@ -9,7 +9,7 @@
       }"
     >
       <div class="f-dropdown__inner__content">{{ labelSelected }}</div>
-      <div class="f-dropdown__inner__append">
+      <div v-if="caret" class="f-dropdown__inner__append">
         <f-icon :name="iconName" :color="iconColor" />
       </div>
     </div>
@@ -31,7 +31,6 @@
 
 <script>
 import { FIcon } from "../FIcon/index.js";
-import { setTimeout } from "timers";
 
 export default {
   name: "f-dropdown",
@@ -110,13 +109,6 @@ export default {
   },
   methods: {
     getBindValue() {
-      // if (!this.$refs.input) {
-      //   setTimeout(() => {
-      //     this.getBindValue();
-      //   });
-      //   return false;
-      // }
-
       let val = this.$refs.input.value;
       this.list.map((item, index) => {
         if (String(item.value) === String(val)) this.selected = index;
@@ -153,8 +145,7 @@ export default {
 @import "../../assets/f-colors.scss";
 
 .f-dropdown {
-  @apply select-none relative;
-  min-width: 200px;
+  @apply select-none relative max-w-full;
   width: 200px;
   &__inner {
     @apply flex flex-no-wrap justify-between bg-primary rounded text-white w-full py-2 px-3 min-w-full;
