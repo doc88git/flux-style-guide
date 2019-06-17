@@ -7,3 +7,7 @@ export * from "./components/FList/index.js";
 export * from "./components/FLink/index.js";
 export * from "./components/FCard/index.js";
 export * from "./components/FImage/index.js";
+export * from "./components/FDropdown/index.js";
+export * from "./components/FAvatar/index.js";
+export * from "./components/FPagination/index.js";
+export * from "./components/FTable/index.js";
