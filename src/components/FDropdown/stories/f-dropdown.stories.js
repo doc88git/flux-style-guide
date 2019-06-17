@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/vue";
-import { text, array, boolean } from "@storybook/addon-knobs";
+import { select, array, boolean } from "@storybook/addon-knobs";
 import FDropdown from "../FDropdown.vue";
 
 const arrList = [
@@ -19,6 +19,10 @@ const arrList = [
     emit: "emit terceiro item"
   }
 ];
+const typeList = {
+  default: "default",
+  outlined: "outlined"
+};
 const groupId = "FDROPDOWN-ID1";
 
 storiesOf("Components|Dropdown", module).add("Default", () => ({
@@ -37,13 +41,18 @@ storiesOf("Components|Dropdown", module).add("Default", () => ({
       default: boolean("is input", false, groupId)
     },
     type: {
-      default: text("type", "outlined", groupId)
+      default: select("type", typeList, "default", groupId)
     }
   },
   template: `
     <div class="p-8">
       <span v-if="input">Selected: {{ value }}</span>
-      <f-dropdown :list="list" :caret="caret" :type="type" v-model="value" :input="input" />
+      <f-dropdown
+        :list="list"
+        :caret="caret"
+        :type="type"
+        :input="input"
+        v-model="value" />
     </div>
   `
 }));
