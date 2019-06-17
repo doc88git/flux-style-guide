@@ -89,8 +89,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../assets/f-colors.scss";
-
 .btn {
   @apply font-primary text-center py-1 px-3 m-1 rounded text-base uppercase h-10;
   &:hover {
@@ -137,4 +135,6 @@ export default {
     }
   }
 }
+
+@import "../../assets/f-colors.scss";
 </style>

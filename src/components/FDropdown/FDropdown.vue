@@ -81,10 +81,6 @@ export default {
     }
   },
   computed: {
-    teste() {
-      console.log({ self: this });
-      return "";
-    },
     isOutlined() {
       return this.type === "outlined";
     },

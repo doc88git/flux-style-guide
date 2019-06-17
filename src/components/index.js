@@ -13,6 +13,7 @@ import * as FAvatar from "./FAvatar/index.js";
 import * as FDropdown from "./FDropdown/index.js";
 import * as FPagination from "./FPagination/index.js";
 import * as FTable from "./FTable/index.js";
+import * as FBadge from "./FBadge/index.js";
 
 const components = [
   FIcon,
@@ -29,7 +30,8 @@ const components = [
   FAvatar,
   FDropdown,
   FPagination,
-  FTable
+  FTable,
+  FBadge
 ];
 
 export default components;

@@ -5,7 +5,7 @@ import FDropdown from "../FDropdown.vue";
 const arrList = [
   {
     value: 1,
-    label: "Primeiro item",
+    label: "Primeiro item com valor muito grande",
     emit: "emit primeiro item"
   },
   {
@@ -28,7 +28,7 @@ const groupId = "FDROPDOWN-ID1";
 storiesOf("Components|Dropdown", module).add("Default", () => ({
   components: { FDropdown },
   data: () => ({
-    value: 1
+    value: 2
   }),
   props: {
     list: {
