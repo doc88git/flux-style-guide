@@ -1,0 +1,110 @@
+<template>
+  <div class="f-chip" :class="classes" @click="onClick">
+    <div class="f-chip__icon" v-if="icon">
+      <slot name="icon">
+        <f-icon :name="selected ? 'check' : icon" />
+      </slot>
+    </div>
+    <div class="f-chip__content">
+      <slot>{{ label }}</slot>
+    </div>
+    <div class="f-chip__close" v-if="removable" @click="onRemove">
+      <slot name="close">
+        <f-icon name="close" />
+      </slot>
+    </div>
+  </div>
+</template>
+
+<script>
+import { FIcon } from "..";
+export default {
+  name: "f-chip",
+  components: {
+    FIcon
+  },
+  props: {
+    label: String,
+    color: String,
+    textColor: String,
+    icon: String,
+    removable: Boolean,
+    disable: Boolean,
+    selected: {
+      type: Boolean,
+      default: null
+    }
+  },
+  computed: {
+    colors() {
+      return {
+        [`color--text--${this.textColor}`]: !!this.textColor,
+        [`color--${this.color}`]: !!this.color
+      };
+    },
+    isDisabled() {
+      if (!this.disable) return {};
+      return { ["f-chip--disabled"]: this.disable };
+    },
+    classes() {
+      return {
+        ...this.colors,
+        ...this.isDisabled
+      };
+    }
+  },
+  methods: {
+    onRemove(e) {
+      if (e.keyCode === void 0 || e.keyCode === 13) {
+        !this.disable && this.$emit("remove", false);
+      }
+    },
+    onClick(e) {
+      if (this.disable) return false;
+
+      this.$emit("update:selected", !this.selected);
+      this.$emit("click", e);
+    }
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+.f-chip {
+  @apply flex flex-no-wrap inline-flex items-center cursor-pointer;
+  @apply bg-primary text-white;
+  @apply py-1 px-3 rounded-full align-middle;
+  @apply outline-none m-1 relative select-none;
+  transition: 0.3s;
+
+  &__icon {
+    @apply flex align-middle align-middle rounded-full m-0 p-0 mr-2 leading-normal;
+    i {
+      @apply text-xl;
+    }
+  }
+  &__content {
+    @apply flex align-middle flex-no-wrap whitespace-no-wrap;
+    @apply font-light font-secondary text-base antialiased;
+  }
+  &__close {
+    @apply flex align-middle rounded-full m-0 p-0 ml-2 -mr-1 text-sm bg-white opacity-50;
+    i {
+      @apply text-gray-600;
+    }
+    &:hover {
+      @apply bg-white opacity-75;
+    }
+  }
+  &--disabled {
+    @apply opacity-75;
+    .f-chip__close {
+      &:hover {
+        @apply opacity-50;
+      }
+    }
+  }
+}
+
+@import "../../assets/f-colors.scss";
+</style>
