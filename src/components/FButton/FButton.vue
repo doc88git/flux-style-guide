@@ -9,8 +9,7 @@
   >
     <f-icon v-if="icon" class="btn__icon" :class="[btnCenter]" :name="icon" />
     <span>
-      {{ label }}
-      <slot></slot>
+      <slot> {{ label }} </slot>
     </span>
   </button>
 </template>
@@ -94,11 +93,6 @@ export default {
 
 .btn {
   @apply font-primary text-center py-1 px-3 m-1 rounded text-base uppercase h-10;
-  // padding: 0;
-  //   height: 2.4em;
-  //   width: 2.4em;
-  //   min-height: 2.4em;
-  //   min-width: 2.4em;
   &:hover {
     @apply outline-none;
   }
