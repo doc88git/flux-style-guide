@@ -1,13 +1,14 @@
 import { storiesOf } from "@storybook/vue";
 import { text } from "@storybook/addon-knobs";
 import { FList, FItem } from "..";
+import { FCard, FCardBody } from "@/components/FCard";
 
 const groupId = "FIELD-LIST-ID1";
 
 storiesOf("Components|List", module).add(
   "List",
   () => ({
-    components: { FList, FItem },
+    components: { FList, FItem, FCard, FCardBody },
     props: {
       title: {
         default: text("title", "This is a title", groupId)
@@ -23,11 +24,17 @@ storiesOf("Components|List", module).add(
       }
     },
     template: `
-      <f-list>
-        <f-item :title="title" :link="link">{{ label }}</f-item>
-        <f-item :title="title" :label="label" :to="to" />
-        <f-item :title="'Title #3'">Item #4</f-item>
-      </f-list>
+      <div class="p-8" style="width:600px">
+        <f-card>
+          <f-card-body>
+            <f-list>
+              <f-item :title="title" :link="link">{{ label }}</f-item>
+              <f-item :title="title" :label="label" :to="to" />
+              <f-item :title="'Title #3'">Item #4</f-item>
+            </f-list>
+          </f-card-body>
+        </f-card>
+      </div>
     `
   }),
   {

@@ -41,7 +41,11 @@ storiesOf("Components|Button", module)
           default: boolean("bigger", false, groupId)
         }
       },
-      template: `<f-button :label="label" :icon="icon" :color="color" :text-color="textColor" :small="small" :bigger="bigger" />`
+      template: `
+        <div class="p-8">
+          <f-button :label="label" :icon="icon" :color="color" :text-color="textColor" :small="small" :bigger="bigger" />
+        </div>
+      `
     }),
     {
       info: { summary }
@@ -62,7 +66,11 @@ storiesOf("Components|Button", module)
           default: text("color", "primary", groupId)
         }
       },
-      template: `<f-button flat :label="label" :icon="icon" :color="color" />`
+      template: `
+        <div class="p-8">
+          <f-button flat :label="label" :icon="icon" :color="color" />
+        </div>
+      `
     }),
     {
       info: { summary }
@@ -83,7 +91,11 @@ storiesOf("Components|Button", module)
           default: text("color", "primary", groupId)
         }
       },
-      template: `<f-button outline :label="label" :icon="icon" :color="color" />`
+      template: `
+        <div class="p-8">
+          <f-button outline :label="label" :icon="icon" :color="color" />
+        </div>
+      `
     }),
     {
       info: { summary }
@@ -107,7 +119,11 @@ storiesOf("Components|Button", module)
           default: text("textColor", "white", groupId)
         }
       },
-      template: `<f-button :label="label" :icon="icon" :color="color" :text-color="textColor" />`
+      template: `
+        <div class="p-8">
+          <f-button :label="label" :icon="icon" :color="color" :text-color="textColor" />
+        </div>
+      `
     }),
     {
       info: { summary }
@@ -128,7 +144,11 @@ storiesOf("Components|Button", module)
           default: text("color", "primary", groupId)
         }
       },
-      template: `<f-button :label="label" :icon="icon" :color="color" flat />`
+      template: `
+        <div class="p-8">
+          <f-button :label="label" :icon="icon" :color="color" flat />
+        </div>
+      `
     }),
     {
       info: { summary }
@@ -155,7 +175,11 @@ storiesOf("Components|Button", module)
           default: text("textColor", "white", groupId)
         }
       },
-      template: `<f-button :label="label" :icon="icon" :text-color="textColor" :color="color">{{ text }}</f-button>`
+      template: `
+        <div class="p-8">
+          <f-button :label="label" :icon="icon" :text-color="textColor" :color="color">{{ text }}</f-button>
+        </div>
+      `
     }),
     {
       info: { summary }

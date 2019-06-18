@@ -9,7 +9,7 @@ storiesOf("Components|Image", module)
     () => ({
       components: { FContainer, FImage },
       template: `
-        <f-container>
+        <f-container style="width: 600px" class="m-8">
           <f-image src="https://altitude-community.aircanada.com/app/webroot/img/default-bg-card.png" />
         </f-container>`,
       propsDescription: {
@@ -35,7 +35,7 @@ storiesOf("Components|Image", module)
     () => ({
       components: { FContainer, FImage },
       template: `
-        <f-container>
+        <f-container style="width: 600px" class="m-8">
           <f-image rounded src="https://altitude-community.aircanada.com/app/webroot/img/default-bg-card.png" />
         </f-container>`,
       propsDescription: {

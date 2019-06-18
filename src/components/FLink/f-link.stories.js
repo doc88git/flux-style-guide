@@ -8,7 +8,10 @@ storiesOf("Components|Link", module)
     () => ({
       components: { FLink },
       template: `
-        <f-link to="/">Link</f-link>`
+        <div class="p-8">
+          <f-link to="/">Link</f-link>
+        </div>
+      `
     }),
     {
       info: {
@@ -21,7 +24,10 @@ storiesOf("Components|Link", module)
     () => ({
       components: { FLink },
       template: `
-        <f-link link="http://" label="http://">`
+        <div class="p-8">
+          <f-link link="http://" label="http://">
+        </div>
+      `
     }),
     {
       info: {

@@ -29,7 +29,11 @@ storiesOf("Components|Icon", module).add(
         default: select("Lib", { Material: "material" }, "material", groupId)
       }
     },
-    template: `<f-icon :name="name" :type="type" :lib="lib" />`
+    template: `
+      <div class="p-8">
+        <f-icon :name="name" :type="type" :lib="lib" />
+      </div>
+    `
   }),
   {
     info: {
