@@ -1,11 +1,11 @@
 <template>
-  <div class="f-chip" :class="classes" @click="onClick">
-    <div class="f-chip__icon" v-if="icon">
+  <div class="f-chip" :class="classes">
+    <div class="f-chip__icon" v-if="icon" @click="onClick">
       <slot name="icon">
         <f-icon :name="selected ? 'check' : icon" />
       </slot>
     </div>
-    <div class="f-chip__content">
+    <div class="f-chip__content" @click="onClick">
       <slot>{{ label }}</slot>
     </div>
     <div class="f-chip__close" v-if="removable" @click="onRemove">
