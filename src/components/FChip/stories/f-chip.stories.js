@@ -4,50 +4,50 @@ import FChip from "../FChip.vue";
 
 const groupId = "FChip-ID1";
 
-storiesOf("Components|Chip", module).add("Default", () => ({
-  components: { FChip },
-  data: () => ({
-    value: 2,
-    select: {
-      car: false,
-      bus: false,
-      train: false
+storiesOf("Components|Chip", module)
+  .add("Default", () => ({
+    components: { FChip },
+    data: () => ({
+      value: 2,
+      select: {
+        car: false,
+        bus: false,
+        train: false
+      },
+      list: ["car", "bus", "train"],
+      icons: {
+        car: "directions_car",
+        bus: "directions_bus",
+        train: "train"
+      }
+    }),
+    methods: {
+      remove(item) {
+        let newList = this.list.filter(v => v !== item);
+        this.list = newList;
+      }
     },
-    list: ["car", "bus", "train"],
-    icons: {
-      car: "directions_car",
-      bus: "directions_bus",
-      train: "train"
-    }
-  }),
-  methods: {
-    remove(item) {
-      let newList = this.list.filter(v => v !== item);
-      this.list = newList;
-    }
-  },
-  props: {
-    color: {
-      default: text("color", "primary", groupId)
+    props: {
+      color: {
+        default: text("color", "primary", groupId)
+      },
+      textColor: {
+        default: text("textColor", "white", groupId)
+      },
+      label: {
+        default: text("label", "Doc88", groupId)
+      },
+      icon: {
+        default: text("icon", "home", groupId)
+      },
+      removable: {
+        default: boolean("removable", true, groupId)
+      },
+      disable: {
+        default: boolean("disable", false, groupId)
+      }
     },
-    textColor: {
-      default: text("textColor", "white", groupId)
-    },
-    label: {
-      default: text("label", "Doc88", groupId)
-    },
-    icon: {
-      default: text("icon", "home", groupId)
-    },
-    removable: {
-      default: boolean("removable", true, groupId)
-    },
-    disable: {
-      default: boolean("disable", false, groupId)
-    }
-  },
-  template: `
-    <section>
+    template: `
       <div class="p-8">
         <f-chip
           :label="label"
@@ -80,6 +80,51 @@ storiesOf("Components|Chip", module).add("Default", () => ({
           :disable="false"
         />
       </div>
+    `
+  }))
+  .add("Select", () => ({
+    components: { FChip },
+    data: () => ({
+      value: 2,
+      select: {
+        car: false,
+        bus: false,
+        train: false
+      },
+      list: ["car", "bus", "train"],
+      icons: {
+        car: "directions_car",
+        bus: "directions_bus",
+        train: "train"
+      }
+    }),
+    methods: {
+      remove(item) {
+        let newList = this.list.filter(v => v !== item);
+        this.list = newList;
+      }
+    },
+    props: {
+      color: {
+        default: text("color", "primary", groupId)
+      },
+      textColor: {
+        default: text("textColor", "white", groupId)
+      },
+      label: {
+        default: text("label", "Doc88", groupId)
+      },
+      icon: {
+        default: text("icon", "home", groupId)
+      },
+      removable: {
+        default: boolean("removable", true, groupId)
+      },
+      disable: {
+        default: boolean("disable", false, groupId)
+      }
+    },
+    template: `
       <div class="p-8">
         <f-chip
           v-for="(item, i) in list" :key="i"
@@ -95,6 +140,5 @@ storiesOf("Components|Chip", module).add("Default", () => ({
           :disable="disable"
         />
       </div>
-    </section>
-  `
-}));
+    `
+  }));
