@@ -1,11 +1,11 @@
 <template>
-  <div class="f-chip" :class="classes">
-    <div class="f-chip__icon" v-if="icon" @click="onClick">
+  <div class="f-chip" :class="classes" @click="onClick">
+    <div class="f-chip__icon" v-if="icon">
       <slot name="icon">
         <f-icon :name="selected ? 'check' : icon" />
       </slot>
     </div>
-    <div class="f-chip__content" @click="onClick">
+    <div class="f-chip__content">
       <slot>{{ label }}</slot>
     </div>
     <div class="f-chip__close" v-if="removable" @click="onRemove">
@@ -58,6 +58,7 @@ export default {
       if (e.keyCode === void 0 || e.keyCode === 13) {
         !this.disable && this.$emit("remove", false);
       }
+      e.stopPropagation();
     },
     onClick(e) {
       if (this.disable) return false;

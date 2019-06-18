@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/vue";
-import { select, boolean, text } from "@storybook/addon-knobs";
+import { boolean, text } from "@storybook/addon-knobs";
 import FChip from "../FChip.vue";
 
 const groupId = "FChip-ID1";
@@ -44,9 +44,6 @@ storiesOf("Components|Chip", module).add("Default", () => ({
     },
     disable: {
       default: boolean("disable", false, groupId)
-    },
-    selected: {
-      default: boolean("selected", false, groupId)
     }
   },
   template: `
