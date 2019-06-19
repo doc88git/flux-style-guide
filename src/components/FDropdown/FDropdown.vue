@@ -1,8 +1,7 @@
 <template>
-  <div class="f-dropdown" :class="classes">
+  <div class="f-dropdown" :class="classes" @click="toggleDropdown">
     <div
       class="f-dropdown__inner"
-      @click="toggleDropdown"
       :class="{
         'f-dropdown__inner--opened': isOpen
       }"
@@ -20,7 +19,7 @@
           <li
             v-for="(item, index) in list"
             :key="`dwn:${index}`"
-            @click="clickOnItem(item)"
+            @click="clickOnItem($event, item)"
           >
             {{ item.label }}
           </li>
@@ -57,6 +56,10 @@ export default {
 
         return filter.length === list.length;
       }
+    },
+    closeOnClick: {
+      type: Boolean,
+      default: true
     },
     input: Boolean,
     open: Boolean,
@@ -115,25 +118,61 @@ export default {
   watch: {
     open: {
       handler: function(value) {
-        this.toggleDropdown(null, value);
+        if (value) return this.openList();
+        return this.closeList();
+        // this.toggleDropdown(null, value);
       }
     }
   },
   methods: {
-    toggleDropdown(e, open) {
-      this.isOpen = open || !this.isOpen;
-      if (!process.browser) return;
+    isClickedOut(e) {
+      let isOut = e.path.filter(item => {
+        if (item.classList) return item.classList.contains("f-dropdown");
+        return false;
+      });
 
-      if (this.isOpen) {
-        window.addEventListener("click", this.toggleDropdown);
-      } else {
+      return !isOut.length;
+    },
+    closeList() {
+      this.isOpen = false;
+
+      if (process.browser) {
         window.removeEventListener("click", this.toggleDropdown);
       }
-      if (e) e.stopPropagation();
+
+      this.emitStatus();
     },
-    clickOnItem(item) {
+    openList() {
+      this.isOpen = true;
+
+      if (process.browser) {
+        window.addEventListener("click", this.toggleDropdown);
+      }
+
+      this.emitStatus();
+    },
+    emitStatus() {
+      this.$emit("status", this.isOpen);
+    },
+    toggleDropdown(e) {
+      if (this.isClickedOut(e)) {
+        this.closeList();
+        e.stopPropagation();
+
+        return false;
+      }
+
+      this.openList();
+
+      e.stopPropagation();
+    },
+    clickOnItem(e, item) {
       this.selected = item.value;
       this.$emit("selected", item.value);
+
+      if (this.closeOnClick) this.closeList();
+
+      e.stopPropagation();
     }
   },
   destroyed() {

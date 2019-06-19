@@ -9,7 +9,7 @@
     @input="runMask"
     @focus="$emit('focus', $event)"
     @blur="$emit('blur', $event)"
-    ref="input"
+    @keyup="$emit('keyup', $event)"
     class="f-input"
   />
 </template>
