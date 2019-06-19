@@ -7,6 +7,8 @@
     :readonly="readonly"
     v-bind="$attrs"
     @input="runMask"
+    @focus="$emit('focus', $event)"
+    @blur="$emit('blur', $event)"
     ref="input"
     class="f-input"
   />

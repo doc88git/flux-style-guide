@@ -1,6 +1,5 @@
 <template>
   <div class="f-dropdown" :class="classes">
-    <input ref="input" v-bind="$attrs" type="hidden" />
     <div
       class="f-dropdown__inner"
       @click="toggleDropdown"
@@ -8,7 +7,9 @@
         'f-dropdown__inner--opened': isOpen
       }"
     >
-      <div class="f-dropdown__inner__content">{{ labelSelected }}</div>
+      <div class="f-dropdown__inner__content">
+        <slot>{{ labelSelected }}</slot>
+      </div>
       <div v-if="caret" class="f-dropdown__inner__append">
         <f-icon :name="iconName" :color="iconColor" />
       </div>
@@ -17,9 +18,9 @@
       <div class="f-dropdown__list" v-if="isOpen">
         <ul>
           <li
-            @click="clickOnItem(item, index)"
             v-for="(item, index) in list"
             :key="`dwn:${index}`"
+            @click="clickOnItem(item)"
           >
             {{ item.label }}
           </li>
@@ -37,25 +38,28 @@ export default {
   components: { FIcon },
   data: () => ({
     isOpen: false,
-    selected: 0,
-    innerInput: ""
+    selected: null
   }),
   props: {
     list: {
       type: Array,
       required: true,
-      validator: items => {
-        return (
-          items.filter(item => {
-            return (
-              item.hasOwnProperty("label") &&
-              (item.hasOwnProperty("action") || item.hasOwnProperty("emit"))
-            );
-          }).length === items.length
-        );
+      validator: list => {
+        let required = ["label", "value"];
+
+        let filter = list.filter(() => {
+          return (
+            list.filter(item => {
+              return required.filter(r => !!item[r]).length === required.length;
+            }).length === list.length
+          );
+        });
+
+        return filter.length === list.length;
       }
     },
     input: Boolean,
+    open: Boolean,
     caret: {
       type: Boolean,
       default: true
@@ -90,28 +94,34 @@ export default {
     iconColor() {
       return this.isOutlined ? this.color : this.textWhite;
     },
+    selectedItem() {
+      let selectedItem = this.list.filter(item => item.value === this.selected);
+      return selectedItem.length ? selectedItem[0] : this.list[0];
+    },
     labelSelected() {
-      return this.list[this.selected].label;
+      return this.selectedItem && this.selectedItem.label
+        ? this.selectedItem.label
+        : "";
     },
     valueSelected() {
-      return this.list[this.selected].value;
+      return this.selectedItem && this.selectedItem.value
+        ? this.selectedItem.value
+        : "";
     },
     classes() {
       return this.isOutlined ? "f-dropdown--outlined" : "";
     }
   },
-  mounted() {
-    this.getBindValue();
+  watch: {
+    open: {
+      handler: function(value) {
+        this.toggleDropdown(null, value);
+      }
+    }
   },
   methods: {
-    getBindValue() {
-      let val = this.$refs.input.value;
-      this.list.map((item, index) => {
-        if (String(item.value) === String(val)) this.selected = index;
-      });
-    },
-    toggleDropdown(e) {
-      this.isOpen = !this.isOpen;
+    toggleDropdown(e, open) {
+      this.isOpen = open || !this.isOpen;
       if (!process.browser) return;
 
       if (this.isOpen) {
@@ -121,11 +131,9 @@ export default {
       }
       if (e) e.stopPropagation();
     },
-    clickOnItem(item, index) {
-      this.selected = index;
-      if (item.action) item.action();
-      if (item.emit) this.$emit("emit", item.emit);
-      if (this.input) this.$emit("input", this.valueSelected);
+    clickOnItem(item) {
+      this.selected = item.value;
+      this.$emit("selected", item.value);
     }
   },
   destroyed() {

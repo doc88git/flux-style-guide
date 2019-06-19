@@ -5,18 +5,15 @@ import FDropdown from "../FDropdown.vue";
 const arrList = [
   {
     value: 1,
-    label: "Primeiro item com valor muito grande",
-    emit: "emit primeiro item"
+    label: "Primeiro item com valor muito grande"
   },
   {
     value: 2,
-    label: "Segundo item",
-    emit: "emit segundo item"
+    label: "Segundo item"
   },
   {
     value: 3,
-    label: "Terceiro item",
-    emit: "emit terceiro item"
+    label: "Terceiro item"
   }
 ];
 const typeList = {
