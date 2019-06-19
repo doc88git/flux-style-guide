@@ -2,20 +2,7 @@ import { storiesOf } from "@storybook/vue";
 import { select, array } from "@storybook/addon-knobs";
 import FSelect from "../FSelect.vue";
 
-const arrList = [
-  {
-    value: 1,
-    label: "Primeiro item"
-  },
-  {
-    value: 2,
-    label: "Segundo item"
-  },
-  {
-    value: 3,
-    label: "Terceiro item"
-  }
-];
+const arr = ["Powerview", "Simplifica", "Flux", "Petz", "Castlight"];
 
 const typeList = {
   default: "default",
@@ -31,7 +18,11 @@ storiesOf("Form|Select", module).add("Default", () => ({
   }),
   props: {
     options: {
-      default: array("options", arrList, groupId)
+      default: array(
+        "options",
+        arr.map((v, i) => ({ value: ++i, label: v })),
+        groupId
+      )
     },
     type: {
       default: select("type", typeList, "default", groupId)
