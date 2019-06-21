@@ -8,7 +8,11 @@
     <div class="f-chip__content">
       <slot>{{ label }}</slot>
     </div>
-    <div class="f-chip__close" v-if="removable" @click="onRemove">
+    <div
+      class="f-chip__close"
+      v-if="removable"
+      @click="onRemove($event, value)"
+    >
       <slot name="close">
         <f-icon name="close" />
       </slot>
@@ -25,6 +29,7 @@ export default {
   },
   props: {
     label: String,
+    value: [String, Number],
     color: String,
     textColor: String,
     icon: String,
@@ -54,10 +59,9 @@ export default {
     }
   },
   methods: {
-    onRemove(e) {
-      if (e.keyCode === void 0 || e.keyCode === 13) {
-        !this.disable && this.$emit("remove", false);
-      }
+    onRemove(e, value) {
+      if (!this.disable) this.$emit("remove", value);
+
       e.stopPropagation();
     },
     onClick(e) {
@@ -65,6 +69,8 @@ export default {
 
       this.$emit("update:selected", !this.selected);
       this.$emit("click", e);
+
+      e.stopPropagation();
     }
   }
 };

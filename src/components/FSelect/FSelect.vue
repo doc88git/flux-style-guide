@@ -6,14 +6,29 @@
       :textColor="textColor"
       :type="type"
       @selected="setValue"
+      :closeOnClick="closeOnClick"
       @status="setStatus"
     >
-      <div v-show="!openList" class="f-select__label">
+      <div v-show="showLabel" class="f-select__label">
         {{ labelSelected || "Selecione" }}
       </div>
+
+      <div v-show="multiple" class="f-select__multiple">
+        <f-chip
+          v-for="item in multipleList"
+          :key="item.id"
+          :label="item.label"
+          :value="item.value"
+          :removable="true"
+          color="gray"
+          textColor="black"
+          @remove="removeChip"
+        />
+      </div>
+
       <f-input
         ref="input"
-        v-show="openList"
+        v-show="openList && search"
         v-model="innerValue"
         class="f-select__input"
         :class="inputClasses"
@@ -25,6 +40,8 @@
 <script>
 import { FDropdown } from "../FDropdown/index.js";
 import { FInput } from "../FField/index.js";
+import { FChip } from "../FChip/index.js";
+
 import Fuse from "fuse.js";
 
 const fuseOptions = {
@@ -35,13 +52,14 @@ const fuseOptions = {
 
 export default {
   name: "f-select",
-  components: { FDropdown, FInput },
+  components: { FDropdown, FInput, FChip },
   data: () => ({
     innerValue: "",
     selected: null,
     selectedOld: null,
     openList: false,
-    event: null
+    event: null,
+    list: []
   }),
   props: {
     type: String,
@@ -57,6 +75,12 @@ export default {
           ).length === items.length
         );
       }
+    },
+    search: Boolean,
+    multiple: Boolean,
+    closeOnClick: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {
@@ -78,11 +102,42 @@ export default {
       return {
         ["f-select--outlined"]: this.type === "outlined"
       };
+    },
+    multipleList() {
+      return this.list.map(item => {
+        let v = this.options.filter(option => option.value === item);
+        if (v.length) return v[0];
+      });
+    },
+    showLabel() {
+      if (!this.search && !this.multiple) return true;
+
+      if (this.search && !this.openList) return true;
+
+      console.log({
+        multiple: this.multiple,
+        multipleList: this.multipleList.length
+      });
+
+      if (this.multiple) {
+        return this.multipleList.length === 0;
+      }
+
+      return false;
     }
   },
   methods: {
+    removeChip(value) {
+      this.list = this.list.filter(item => item !== value);
+    },
     setValue(value) {
+      if (this.multiple) return this.addMultiple(value);
       this.selected = value;
+    },
+    addMultiple(value) {
+      if (this.list.includes(value)) return false;
+
+      this.list.push(value);
     },
     setFocus() {
       this.selectedOld = this.selected;
@@ -124,6 +179,9 @@ export default {
   }
   &__input {
     @apply bg-transparent border-none text-white p-0 m-0 h-6;
+  }
+  &__multiple {
+    @apply flex-wrap;
   }
 
   &--outlined {

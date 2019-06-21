@@ -196,7 +196,7 @@ export default {
 
 .f-dropdown {
   @apply select-none relative max-w-full;
-  width: 200px;
+  min-width: 200px;
   &__inner {
     @apply flex flex-no-wrap justify-between bg-primary rounded text-white w-full py-2 px-3 min-w-full;
     &__content {
