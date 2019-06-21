@@ -14,7 +14,7 @@
       @click="onRemove($event, value)"
     >
       <slot name="close">
-        <f-icon name="close" />
+        <f-icon name="close" size="sm" />
       </slot>
     </div>
   </div>
@@ -78,11 +78,13 @@ export default {
 
 <style lang="scss" scoped>
 .f-chip {
-  @apply flex flex-no-wrap inline-flex items-center cursor-pointer;
+  @apply flex flex-no-wrap inline-flex items-center align-middle;
   @apply bg-primary text-white;
-  @apply py-1 px-3 rounded-full align-middle;
-  @apply outline-none m-1 relative select-none;
+  @apply py-1 px-3 mx-1 rounded-full;
+  @apply outline-none relative select-none cursor-pointer;
+  @apply border;
   transition: 0.3s;
+  min-height: 23px;
 
   &__icon {
     @apply flex align-middle align-middle rounded-full m-0 p-0 mr-2 leading-normal;
@@ -92,15 +94,12 @@ export default {
   }
   &__content {
     @apply flex align-middle flex-no-wrap whitespace-no-wrap;
-    @apply font-light font-secondary text-base antialiased;
+    @apply font-light font-secondary text-sm antialiased leading-none;
   }
   &__close {
-    @apply flex align-middle rounded-full m-0 p-0 ml-2 -mr-1 text-sm bg-white opacity-50;
-    i {
-      @apply text-gray-600;
-    }
+    @apply flex align-middle m-0 p-0 ml-2 -mr-1;
     &:hover {
-      @apply bg-white opacity-75;
+      @apply opacity-50;
     }
   }
   &--disabled {

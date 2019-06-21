@@ -20,7 +20,7 @@
           :label="item.label"
           :value="item.value"
           :removable="true"
-          color="gray"
+          color="white"
           textColor="black"
           @remove="removeChip"
         />
@@ -111,17 +111,9 @@ export default {
     },
     showLabel() {
       if (!this.search && !this.multiple) return true;
-
       if (this.search && !this.openList) return true;
 
-      console.log({
-        multiple: this.multiple,
-        multipleList: this.multipleList.length
-      });
-
-      if (this.multiple) {
-        return this.multipleList.length === 0;
-      }
+      if (this.multiple) return this.multipleList.length === 0;
 
       return false;
     }
