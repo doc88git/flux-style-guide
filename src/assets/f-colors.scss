@@ -2,6 +2,24 @@
 $colors: gray red orange yellow green teal blue indigo purple pink;
 
 .color {
+  &--white {
+    @apply bg-white;
+    &:hover {
+      @apply text-gray-100;
+    }
+    &:focus {
+      @apply text-gray-200;
+    }
+  }
+  &--black {
+    @apply bg-black;
+    &:hover {
+      @apply text-gray-800;
+    }
+    &:focus {
+      @apply text-gray-900;
+    }
+  }
   &--text {
     &--white {
       @apply text-white #{!important};
