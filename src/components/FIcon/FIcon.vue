@@ -51,7 +51,8 @@ export default {
 $size: xs sm base lg;
 
 .f-icon {
-  @apply p-0 m-0 leading-none;
+  @apply p-0 m-0;
+  line-height: 0;
 
   @each $s in $size {
     &--#{$s} {
