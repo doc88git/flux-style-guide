@@ -26,6 +26,10 @@ export default {
       default: "default",
       type: String
     },
+    size: {
+      default: "base",
+      type: String
+    },
     name: {
       default: "",
       type: String,
@@ -35,7 +39,8 @@ export default {
   computed: {
     classes() {
       return {
-        [`color--text--${this.color}`]: !!this.color
+        [`color--text--${this.color}`]: !!this.color,
+        [`f-icon--${this.size}`]: !!this.size
       };
     }
   }
@@ -43,8 +48,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$size: xs sm base lg;
+
 .f-icon {
   @apply p-0 m-0 leading-none;
+
+  @each $s in $size {
+    &--#{$s} {
+      @apply text-#{$s};
+    }
+  }
 }
 
 @import "../../assets/f-colors.scss";
