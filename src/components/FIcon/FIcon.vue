@@ -1,10 +1,11 @@
 <template>
-  <f-icon-material
-    v-if="lib === 'material'"
-    v-bind="{ name: $props.name, type: $props.type }"
-    :class="classes"
-    class="f-icon"
-  />
+  <span class="f-icon">
+    <f-icon-material
+      v-if="lib === 'material'"
+      v-bind="{ name: $props.name, type: $props.type }"
+      :class="classes"
+    />
+  </span>
 </template>
 
 <script>
@@ -42,5 +43,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.f-icon {
+  @apply p-0 m-0 leading-none;
+}
+
 @import "../../assets/f-colors.scss";
 </style>

@@ -125,13 +125,20 @@ export default {
     }
   },
   methods: {
-    isClickedOut(e) {
-      let isOut = e.path.filter(item => {
-        if (item.classList) return item.classList.contains("f-dropdown");
-        return false;
+    isClickedIn(e, classItem) {
+      let isClicked = e.path.filter(item => {
+        return item.classList ? item.classList.contains(classItem) : false;
       });
 
-      return !isOut.length;
+      return isClicked.length;
+    },
+    isClickedOut(e) {
+      return !this.isClickedIn(e, "f-dropdown");
+    },
+    clickedInCaret(e) {
+      return (
+        this.isClickedIn(e, "f-icon") && this.iconName === "keyboard_arrow_up"
+      );
     },
     closeList() {
       this.isOpen = false;
@@ -155,7 +162,7 @@ export default {
       this.$emit("status", this.isOpen);
     },
     toggleDropdown(e) {
-      if (this.isClickedOut(e)) {
+      if (this.isClickedOut(e) || this.clickedInCaret(e)) {
         this.closeList();
         e.stopPropagation();
 
@@ -197,6 +204,9 @@ export default {
     }
     &__append {
       @apply flex flex-no-wrap items-center items-center w-1 pl-4 pr-4;
+      .f-icon {
+        @apply p-2 -m-2 cursor-pointer;
+      }
     }
     &--opened {
       @apply rounded-none rounded-t;

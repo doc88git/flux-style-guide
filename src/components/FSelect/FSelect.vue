@@ -91,12 +91,15 @@ export default {
       setTimeout(() => {
         this.$refs.input.$el.focus();
       }, 200);
-
-      console.log(this.$refs.input.$el);
     },
     setStatus(status) {
       if (status) this.setFocus();
+
       this.openList = status;
+
+      if (!status && !this.selected) this.selected = this.selectedOld;
+
+      if (!status) this.resetInnerValue();
     },
     resetInnerValue() {
       this.innerValue = "";
