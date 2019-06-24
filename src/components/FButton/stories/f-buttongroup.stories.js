@@ -32,6 +32,8 @@ storiesOf("Components|Button", module).add(
     template: `
         <div class="p-8">
           <f-button-group :options="options" />
+          <f-button-group outline :options="options" />
+          <f-button-group tab :options="options" />
         </div>
       `
   }),

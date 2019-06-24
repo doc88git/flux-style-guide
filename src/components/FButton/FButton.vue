@@ -42,7 +42,7 @@ export default {
     textColor: String
   },
   mounted() {
-    console.log({ FIcon });
+    console.log({ props: this.$props });
   },
   computed: {
     hasName() {

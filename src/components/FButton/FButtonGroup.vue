@@ -3,10 +3,15 @@
     <f-button
       v-for="opt in options"
       :key="opt.value"
-      :label="opt.label"
       @click="change(opt.value)"
-      :class="{ 'f-button-group--selected': opt.value === selected }"
-    />
+      :class="{
+        ...classes,
+        'f-button-group__tab--selected': isFlat && opt.value === selected
+      }"
+      v-bind="btnOptions(opt.value)"
+    >
+      {{ opt.label }}
+    </f-button>
   </div>
 </template>
 
@@ -22,18 +27,56 @@ export default {
     options: {
       type: Array,
       required: true
-    }
+    },
+    outline: Boolean,
+    tab: Boolean
   },
   data: () => ({
     selected: null
   }),
-  mounted() {
-    console.log({ options: this.options });
+  computed: {
+    isOutline() {
+      return this.outline;
+    },
+    isFlat() {
+      return this.tab;
+    },
+    isDefault() {
+      return !this.outline && !this.tab;
+    },
+    classes() {
+      return {
+        "f-button-group__tab": this.isFlat
+      };
+    }
   },
   methods: {
     change(item) {
       this.selected = item;
       this.$emit("change", this.selected);
+    },
+    btnOptions(id) {
+      let mustBeO = true;
+
+      if (this.isOutline && id === this.selected) {
+        mustBeO = false;
+      }
+
+      if (this.isDefault) {
+        mustBeO = id === this.selected;
+      }
+
+      if (this.isFlat) {
+        mustBeO = false;
+      }
+
+      return {
+        outline: mustBeO,
+        flat: this.isFlat
+      };
+    },
+    isSelected(id) {
+      return id === this.selected;
     }
   }
 };
@@ -41,8 +84,13 @@ export default {
 
 <style lang="scss" scoped>
 .f-button-group {
-  &--selected {
-    filter: opacity(0.75);
+  &__tab {
+    @apply text-gray;
+    @apply rounded-none;
+    &--selected {
+      @apply text-primary;
+      @apply border-b border-primary border-solid;
+    }
   }
 }
 </style>
