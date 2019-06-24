@@ -117,6 +117,35 @@ storiesOf("Components|Button", module)
       },
       template: `
         <div class="p-8">
+          <f-button :icon="icon" :color="color" :text-color="textColor" />
+          <f-button :icon="icon" flat />
+        </div>
+      `
+    }),
+    {
+      info: { summary }
+    }
+  )
+  .add(
+    "Button: Icon With Text",
+    () => ({
+      components: { FButton },
+      props: {
+        label: {
+          default: text("label", "Button", groupId)
+        },
+        icon: {
+          default: text("icon", "home", groupId)
+        },
+        color: {
+          default: text("color", "primary", groupId)
+        },
+        textColor: {
+          default: text("textColor", "white", groupId)
+        }
+      },
+      template: `
+        <div class="p-8">
           <f-button :label="label" :icon="icon" :color="color" :text-color="textColor" />
         </div>
       `

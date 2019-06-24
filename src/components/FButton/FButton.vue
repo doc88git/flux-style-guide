@@ -8,10 +8,10 @@
     @mouseleave="blur"
   >
     <div class="btn__inner">
-      <div class="btn__inner__icon" v-if="icon">
-        <f-icon :class="[btnCenter]" :name="icon" />
+      <div class="btn__inner__icon" :class="[btnCenter]" v-if="icon">
+        <f-icon :name="icon" />
       </div>
-      <div class="btn__inner__content">
+      <div class="btn__inner__content" v-if="label || $slots.default">
         <slot> {{ label }} </slot>
       </div>
     </div>
@@ -82,7 +82,7 @@ export default {
     },
     btnCenter() {
       if (this.label || this.hasDefaultSlot) return "";
-      return "btn__icon--center";
+      return "btn__inner__icon--center";
     },
     hasDefaultSlot() {
       return !!this.$slots.default;
@@ -133,23 +133,28 @@ export default {
     @apply border rounded;
   }
 
-  &--flex {
-    @apply inline-flex items-center content-center;
-  }
-
   &__inner {
     @apply flex flex-no-wrap items-center content-center w-full;
     &__icon {
-      @apply h-full mr-2 #{!important};
+      @apply h-full items-center w-full mr-2;
       line-height: 0;
       &--center {
-        @apply ml-2;
+        @apply mr-0 #{!important};
       }
     }
     &__content {
       @apply h-full items-center w-full;
       line-height: 0;
     }
+  }
+
+  &--flex {
+    // @apply inline-flex items-center content-center;
+    // .btn__inner {
+    //   .btn__inner__icon {
+    //     @apply m-0;
+    //   }
+    // }
   }
 }
 
