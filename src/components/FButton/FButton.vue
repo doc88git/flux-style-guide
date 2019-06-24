@@ -33,6 +33,7 @@ export default {
     bigger: Boolean,
     dense: Boolean,
     label: String,
+    disabled: Boolean,
     icon: String,
     color: {
       type: String,
@@ -137,16 +138,16 @@ export default {
   }
 
   &__inner {
-    @apply flex flex-no-wrap items-center content-center;
+    @apply flex flex-no-wrap items-center content-center w-full;
     &__icon {
-      @apply flex fill-current h-full items-center content-center mr-2 #{!important};
+      @apply h-full mr-2 #{!important};
       line-height: 0;
       &--center {
         @apply ml-2;
       }
     }
     &__content {
-      @apply flex fill-current h-full items-center content-center;
+      @apply h-full items-center w-full;
       line-height: 0;
     }
   }
