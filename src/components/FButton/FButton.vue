@@ -41,9 +41,6 @@ export default {
     },
     textColor: String
   },
-  mounted() {
-    console.log({ props: this.$props });
-  },
   computed: {
     hasName() {
       return this.label === "";
