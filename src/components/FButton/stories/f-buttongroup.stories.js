@@ -29,11 +29,16 @@ storiesOf("Components|Button", module).add(
     data: () => ({
       options
     }),
+    methods: {
+      change: value => {
+        console.log({ value });
+      }
+    },
     template: `
         <div class="p-8">
-          <f-button-group :options="options" />
-          <f-button-group outline :options="options" />
-          <f-button-group tab :options="options" />
+          <f-button-group :default="1" :options="options" @change="change" />
+          <f-button-group :default="1" outline :options="options" @change="change" />
+          <f-button-group :default="1" tab :options="options" @change="change" />
         </div>
       `
   }),

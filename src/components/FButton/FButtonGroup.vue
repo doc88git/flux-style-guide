@@ -29,7 +29,8 @@ export default {
       required: true
     },
     outline: Boolean,
-    tab: Boolean
+    tab: Boolean,
+    default: [String, Number]
   },
   data: () => ({
     selected: null
@@ -50,9 +51,12 @@ export default {
       };
     }
   },
+  mounted() {
+    if (this.default) this.change(this.default);
+  },
   methods: {
-    change(item) {
-      this.selected = item;
+    change(value) {
+      this.selected = value;
       this.$emit("change", this.selected);
     },
     btnOptions(id) {
