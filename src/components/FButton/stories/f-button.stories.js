@@ -117,8 +117,16 @@ storiesOf("Components|Button", module)
       },
       template: `
         <div class="p-8">
-          <f-button :icon="icon" :color="color" :text-color="textColor" />
-          <f-button :icon="icon" flat />
+          <div class="mb-4">
+            Normal<br>
+            <f-button :icon="icon" :color="color" :text-color="textColor" />
+            <f-button :icon="icon" flat />
+          </div>
+          <div class="mb-4">
+            Dense<br>
+            <f-button dense :icon="icon" :color="color" :text-color="textColor"/>
+            <f-button dense :icon="icon" flat />
+          </div>
         </div>
       `
     }),

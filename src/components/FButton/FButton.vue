@@ -77,9 +77,6 @@ export default {
         [`color--text--${this.textColor}`]: !!this.textColor
       };
     },
-    btnIcon() {
-      return this.icon ? "btn--flex" : "";
-    },
     btnCenter() {
       if (this.label || this.hasDefaultSlot) return "";
       return "btn__inner__icon--center";
@@ -119,7 +116,7 @@ export default {
     zoom: 1.2;
   }
   &--dense {
-    @apply py-0 px-1 m-0 h-0;
+    @apply py-0 px-1 m-0 h-6;
   }
 
   &--default {
@@ -146,15 +143,6 @@ export default {
       @apply h-full items-center w-full;
       line-height: 0;
     }
-  }
-
-  &--flex {
-    // @apply inline-flex items-center content-center;
-    // .btn__inner {
-    //   .btn__inner__icon {
-    //     @apply m-0;
-    //   }
-    // }
   }
 }
 
