@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/vue";
-import { text, boolean } from "@storybook/addon-knobs";
+import { text } from "@storybook/addon-knobs";
 import FButton from "../FButton.vue";
 
 const groupId = "BUTTON-OPTIONS-ID1";
