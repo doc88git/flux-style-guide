@@ -163,7 +163,7 @@ storiesOf("Components|Button", module)
           default: text("text", "Button", groupId)
         },
         label: {
-          default: text("label", "", groupId)
+          default: text("label", "Button", groupId)
         },
         icon: {
           default: text("icon", "", groupId)

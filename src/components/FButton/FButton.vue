@@ -7,10 +7,12 @@
     @click.stop="blur"
     @mouseleave="blur"
   >
-    <f-icon v-if="icon" class="btn__icon" :class="[btnCenter]" :name="icon" />
-    <span>
+    <div class="btn__icon" v-if="icon">
+      <f-icon :class="[btnCenter]" :name="icon" />
+    </div>
+    <div class="btn__content">
       <slot> {{ label }} </slot>
-    </span>
+    </div>
   </button>
 </template>
 
@@ -35,6 +37,9 @@ export default {
       default: "primary"
     },
     textColor: String
+  },
+  mounted() {
+    console.log({ FIcon });
   },
   computed: {
     hasName() {
@@ -90,7 +95,7 @@ export default {
 
 <style lang="scss">
 .btn {
-  @apply font-primary text-center py-1 px-3 m-1 rounded text-base uppercase h-10;
+  @apply flex flex-no-wrap font-primary text-center py-1 px-3 m-1 rounded text-base uppercase h-10;
   &:hover {
     @apply outline-none;
   }
@@ -129,10 +134,15 @@ export default {
   }
 
   &__icon {
-    @apply flex fill-current mr-2 h-full items-center content-center;
+    @apply flex fill-current h-full items-center content-center pr-2 #{!important};
+    line-height: 0;
     &--center {
       @apply ml-2;
     }
+  }
+  &__content {
+    @apply flex fill-current h-full items-center content-center;
+    line-height: 0;
   }
 }
 

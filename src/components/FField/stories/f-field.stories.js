@@ -63,15 +63,6 @@ storiesOf("Form|Field", module).add(
           :errorMessage="errorMessage"
           >
           <f-input placeholder="Seu nome aqui" :type="type" :mask="mask" v-model="value" />
-          <template v-slot:before>
-            <f-avatar :src="avatar" v-if="avatar" />
-          </template>
-          <template v-slot:after>
-            <f-button>Salvar</f-button>
-          </template>
-          <template v-slot:append>
-            <f-button flat :icon="icon" />
-          </template>
         </f-field>
       </div>
       `
