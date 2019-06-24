@@ -88,6 +88,7 @@ export default {
 
 <style lang="scss" scoped>
 .f-button-group {
+  @apply flex;
   &__tab {
     @apply text-gray;
     @apply rounded-none;
