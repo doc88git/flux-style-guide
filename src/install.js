@@ -10,6 +10,7 @@ export default function(Vue, opts = {}) {
   this.__installed = true;
 
   const cfg = opts.config || {};
+  console.log({ opts });
 
   Vue.prototype.$f = {
     ...$f,
