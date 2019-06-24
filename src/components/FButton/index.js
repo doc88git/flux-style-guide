@@ -1,3 +1,4 @@
 import FButton from "./FButton";
+import FButtonGroup from "./FButtonGroup";
 
-export { FButton };
+export { FButton, FButtonGroup };
