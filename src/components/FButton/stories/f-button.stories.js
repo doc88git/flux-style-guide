@@ -33,17 +33,13 @@ storiesOf("Components|Button", module)
         },
         textColor: {
           default: text("textColor", "white", groupId)
-        },
-        small: {
-          default: boolean("small", false, groupId)
-        },
-        bigger: {
-          default: boolean("bigger", false, groupId)
         }
       },
       template: `
         <div class="p-8">
-          <f-button :label="label" :icon="icon" :color="color" :text-color="textColor" :small="small" :bigger="bigger" />
+          <div class="mt-4">Small:</div> <f-button :label="label" :icon="icon" :color="color" :text-color="textColor" :small="true" />
+          <div class="mt-4">Normal:</div> <f-button :label="label" :icon="icon" :color="color" :text-color="textColor" />
+          <div class="mt-4">Bigger:</div> <f-button :label="label" :icon="icon" :color="color" :text-color="textColor" :bigger="true" />
         </div>
       `
     }),

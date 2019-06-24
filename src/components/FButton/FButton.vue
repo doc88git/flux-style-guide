@@ -7,11 +7,13 @@
     @click.stop="blur"
     @mouseleave="blur"
   >
-    <div class="btn__icon" v-if="icon">
-      <f-icon :class="[btnCenter]" :name="icon" />
-    </div>
-    <div class="btn__content">
-      <slot> {{ label }} </slot>
+    <div class="btn__inner">
+      <div class="btn__inner__icon" v-if="icon">
+        <f-icon :class="[btnCenter]" :name="icon" />
+      </div>
+      <div class="btn__inner__content">
+        <slot> {{ label }} </slot>
+      </div>
     </div>
   </button>
 </template>
@@ -95,7 +97,8 @@ export default {
 
 <style lang="scss">
 .btn {
-  @apply flex flex-no-wrap font-primary text-center py-1 px-3 m-1 rounded text-base uppercase h-10;
+  @apply font-primary text-center py-1 px-3 m-1 rounded text-base uppercase h-10;
+  width: auto;
   &:hover {
     @apply outline-none;
   }
@@ -107,11 +110,11 @@ export default {
   }
 
   &--small {
-    // @apply py-0 px-1 m-1 text-xs;
+    @apply text-xs h-6 py-0 px-2;
     zoom: 0.8;
   }
   &--bigger {
-    @apply py-2 px-3 m-1 text-xl;
+    @apply py-2 px-3 m-1 h-12 text-xl;
     zoom: 1.2;
   }
   &--dense {
@@ -133,16 +136,19 @@ export default {
     @apply inline-flex items-center content-center;
   }
 
-  &__icon {
-    @apply flex fill-current h-full items-center content-center pr-2 #{!important};
-    line-height: 0;
-    &--center {
-      @apply ml-2;
+  &__inner {
+    @apply flex flex-no-wrap items-center content-center;
+    &__icon {
+      @apply flex fill-current h-full items-center content-center mr-2 #{!important};
+      line-height: 0;
+      &--center {
+        @apply ml-2;
+      }
     }
-  }
-  &__content {
-    @apply flex fill-current h-full items-center content-center;
-    line-height: 0;
+    &__content {
+      @apply flex fill-current h-full items-center content-center;
+      line-height: 0;
+    }
   }
 }
 
