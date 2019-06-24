@@ -10,7 +10,7 @@
           icon="keyboard_arrow_left"
           @click="jumpTo('prev')"
           color="gray"
-          v-if="localCurrentPage !== 1"
+          disabled="localCurrentPage !== 1"
         />
       </li>
       <li v-for="i in show" :key="i">
@@ -27,7 +27,7 @@
           icon="keyboard_arrow_right"
           @click="jumpTo('next')"
           color="gray"
-          v-if="localCurrentPage !== totalPages"
+          disabled="localCurrentPage !== totalPages"
         />
       </li>
       <li>
@@ -146,15 +146,16 @@ export default {
   @apply select-none;
   ul,
   li {
-    @apply inline-block min-h-full;
+    @apply inline-block min-h-full text-center;
   }
   ul {
     @apply flex items-center content-center list-none;
     li {
+      button {
+        @apply capitalize p-0 text-center h-6;
+        min-width: 35px;
+      }
     }
-  }
-  button {
-    @apply capitalize p-2;
   }
 }
 </style>
