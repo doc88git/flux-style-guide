@@ -2,7 +2,7 @@
   <button
     class="btn"
     type="button"
-    :class="[btnStyle, btnIcon]"
+    :class="[btnStyle]"
     @click="$emit('click')"
     @click.stop="blur"
     @mouseleave="blur"
