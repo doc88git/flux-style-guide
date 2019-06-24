@@ -14,7 +14,7 @@
       </div>
     </div>
     <transition :name="`slide-${position}`">
-      <div class="f-dropdown__list" v-if="isOpen">
+      <div class="f-dropdown__list" v-show="isOpen">
         <ul>
           <li
             v-for="(item, index) in list"
@@ -191,14 +191,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/f-transitions.scss";
-@import "../../assets/f-colors.scss";
-
 .f-dropdown {
   @apply select-none relative max-w-full;
   min-width: 200px;
   &__inner {
     @apply flex flex-no-wrap justify-between bg-primary rounded text-white w-full py-2 px-3 min-w-full;
+    position: relative;
+    z-index: 1;
     &__content {
       @apply truncate;
     }
@@ -214,7 +213,7 @@ export default {
   }
 
   &__list {
-    @apply absolute m-0 pt-2 pb-2 rounded-b bg-primary cursor-pointer shadow-md w-full z-10 text-white text-left;
+    @apply absolute m-0 pt-2 pb-2 rounded-b bg-primary cursor-pointer shadow-md w-full text-white text-left;
     ul {
       @apply list-none;
       li {
@@ -242,4 +241,7 @@ export default {
     }
   }
 }
+
+@import "../../assets/f-transitions.scss";
+@import "../../assets/f-colors.scss";
 </style>

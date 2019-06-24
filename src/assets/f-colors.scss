@@ -21,6 +21,24 @@ $colors: gray red orange yellow green teal blue indigo purple pink;
     }
   }
   &--text {
+    &--primary {
+      @apply text-primary #{!important};
+      &:hover {
+        @apply text-primary;
+      }
+      &:focus {
+        @apply text-primary;
+      }
+    }
+    &--secondary {
+      @apply text-secondary #{!important};
+      &:hover {
+        @apply text-secondary;
+      }
+      &:focus {
+        @apply text-secondary;
+      }
+    }
     &--white {
       @apply text-white #{!important};
       &:hover {

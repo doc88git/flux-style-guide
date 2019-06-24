@@ -26,11 +26,11 @@ $transition: all 0.2s ease-out;
     }
     &-enter {
       opacity: 0;
-      transform: translateY(-45px);
+      transform: translateY(-35px);
     }
     &-leave-to {
       opacity: 0;
-      transform: translateY(-45px);
+      transform: translateY(-35px);
     }
   }
 }

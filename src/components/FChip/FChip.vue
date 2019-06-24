@@ -80,7 +80,7 @@ export default {
 .f-chip {
   @apply flex flex-no-wrap inline-flex items-center align-middle;
   @apply bg-primary text-white;
-  @apply py-1 px-3 mx-1 rounded-full;
+  @apply py-1 px-3 mx-1 rounded-lg;
   @apply outline-none relative select-none cursor-pointer;
   @apply border;
   transition: 0.3s;
@@ -94,7 +94,7 @@ export default {
   }
   &__content {
     @apply flex align-middle flex-no-wrap whitespace-no-wrap;
-    @apply font-light font-secondary text-sm antialiased leading-none;
+    @apply font-secondary text-sm antialiased leading-none;
   }
   &__close {
     @apply flex align-middle m-0 p-0 ml-2 -mr-1;

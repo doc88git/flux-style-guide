@@ -21,7 +21,7 @@
           :value="item.value"
           :removable="true"
           color="white"
-          textColor="black"
+          textColor="primary"
           @remove="removeChip"
         />
       </div>
