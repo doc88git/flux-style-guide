@@ -135,7 +135,6 @@ storiesOf("Form|Field", module)
       template: `
       <div class="p-8">
         <f-field
-          :name="name"
           :label="label"
           :hint="hint"
           :rules="rules"
@@ -202,7 +201,6 @@ storiesOf("Form|Field", module)
       template: `
       <div class="p-8">
         <f-field
-          :name="name"
           :label="label"
           :hint="hint"
           :rules="rules"
@@ -269,7 +267,6 @@ storiesOf("Form|Field", module)
       template: `
       <div class="p-8">
         <f-field
-          :name="name"
           :label="label"
           :hint="hint"
           :rules="rules"
@@ -336,7 +333,6 @@ storiesOf("Form|Field", module)
       template: `
       <div class="p-8">
         <f-field
-          :name="name"
           :label="label"
           :hint="hint"
           :rules="rules"
