@@ -20,11 +20,14 @@ export default {
     FContainer
   },
   data: () => ({
-    teste: "oi",
     menuItems: [
       {
         name: "Documentation",
         url: "https://github.com/doc88git/flux-style-guide"
+      },
+      {
+        name: "Storybook",
+        url: "http://flux-dev.doc88.com.br:3001"
       },
       {
         name: "Widget Base",
