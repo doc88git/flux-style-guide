@@ -25,47 +25,29 @@
           'f-field__inner--hasError': hasError
         }"
       >
-        <ValidationProvider
-          :rules="rules"
-          :name="name"
-          tag="div"
-          ref="ValidationProvider"
+        <div class="f-field__inner__input">
+          <slot />
+          <div
+            v-if="$slots.append"
+            class="f-field__inner__append"
+            :class="{ 'f-field__marginal': $slots.label || label }"
+          >
+            <slot name="append"> </slot>
+          </div>
+        </div>
+
+        <div
+          v-if="($slots.hint || hint) && !hasError"
+          class="f-field__inner__hint"
         >
-          <template v-slot="validation">
-            <div class="f-field__inner__input">
-              <slot />
-              <div
-                v-if="$slots.append"
-                class="f-field__inner__append"
-                :class="{ 'f-field__marginal': $slots.label || label }"
-              >
-                <slot name="append"> </slot>
-              </div>
-            </div>
+          <slot name="hint">{{ hint }}</slot>
+        </div>
 
-            <div
-              v-if="
-                ($slots.hint || hint) && (!hasError && !validation.errors[0])
-              "
-              class="f-field__inner__hint"
-            >
-              <slot name="hint">{{ hint }}</slot>
-            </div>
-
-            <div
-              v-if="validation.errors[0] || hasError"
-              class="f-field__inner__error"
-            >
-              <slot name="error">
-                {{
-                  errorMessage ||
-                    validation.errors[0] ||
-                    "Há um erro neste campo"
-                }}
-              </slot>
-            </div>
-          </template>
-        </ValidationProvider>
+        <div v-if="hasError" class="f-field__inner__error">
+          <slot name="error">
+            {{ errorMessage || "Há um erro neste campo" }}
+          </slot>
+        </div>
       </div>
     </div>
 
@@ -80,21 +62,17 @@
 </template>
 
 <script>
-import { ValidationProvider } from "vee-validate";
+// import { ValidationProvider } from "vee-validate";
 
 export default {
   name: "f-field",
   components: {
-    ValidationProvider
+    // ValidationProvider
   },
   props: {
     label: {
       default: "",
       type: String
-    },
-    hasError: {
-      default: false,
-      type: Boolean
     },
     hint: String,
     name: String,
@@ -102,6 +80,18 @@ export default {
     errorMessage: {
       default: "",
       type: String
+    }
+  },
+  computed: {
+    hasError() {
+      if (!this.$slots.error) return false;
+
+      let slotText = this.$slots.error
+        .map(item => item.text)
+        .join("")
+        .trim();
+
+      return !!slotText || !!this.errorMessage;
     }
   }
 };

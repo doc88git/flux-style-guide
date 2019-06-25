@@ -3,8 +3,9 @@
     :is="componentIs"
     :type="type"
     :class="classes"
-    :disabled="disable"
+    :disabled="disabled"
     :readonly="readonly"
+    :name="name"
     v-bind="$attrs"
     @input="runMask"
     @focus="$emit('focus', $event)"
@@ -22,17 +23,34 @@ export default {
   components: {},
   mixins: [MaskMixin],
   data() {
-    return { innerValue: this.__getInitialMaskedValue() };
+    return {
+      innerValue: this.__getInitialMaskedValue()
+    };
   },
   props: {
     value: [String, Number],
 
-    disable: Boolean,
+    disabled: Boolean,
     readonly: Boolean,
 
+    name: {
+      default: "",
+      type: String,
+      required: true
+    },
     type: {
       default: "text",
-      type: String
+      type: String,
+      validator: val =>
+        [
+          "text",
+          "password",
+          "tel",
+          "url",
+          "email",
+          "textarea",
+          "number"
+        ].includes(val)
     }
   },
   computed: {
@@ -47,7 +65,7 @@ export default {
         "f-input": true,
         "f-input__textarea": this.type === "textarea",
         "f-input--readonly": this.readonly,
-        "f-input--disabled": this.disable
+        "f-input--disabled": this.disabled
       };
     }
   },

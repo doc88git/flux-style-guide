@@ -10,7 +10,7 @@ import * as plugins from "./plugins.js";
 
 Vue.config.productionTip = false;
 
-Vue.use(VeeValidate);
+Vue.use(VeeValidate, { events: "change|blur|keyup" });
 
 Vue.prototype.$f = {
   linkComponent: "vue" // nuxt
