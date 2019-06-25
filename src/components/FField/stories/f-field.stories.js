@@ -6,7 +6,7 @@ import { FAvatar } from "../../FAvatar";
 
 const groupId = "FIELD-OPTIONS-ID1";
 const summary = `
-## Label
+## Form => Field
 `;
 
 storiesOf("Form|Field", module)
@@ -53,17 +53,32 @@ storiesOf("Form|Field", module)
           default: text("icon", "search", groupId)
         }
       },
+      propsDescription: {
+        FField: {
+          label: "Label of field",
+          hint: "Hint",
+          rules: "Rules for VeeValidate",
+          errorMessage: "Message error"
+        },
+        FInput: {
+          name: "Name of field"
+        }
+      },
       template: `
       <div class="p-8">
         <f-field
-          :name="name"
           :label="label"
           :hint="hint"
           :rules="rules"
           :hasError="hasError"
           :errorMessage="errorMessage"
           >
-          <f-input placeholder="Seu nome aqui" :type="type" :mask="mask" v-model="value" />
+          <f-input
+            placeholder="Seu nome aqui"
+            :type="type"
+            :mask="mask"
+            :name="name"
+            v-model="value" />
         </f-field>
       </div>
       `
@@ -340,6 +355,75 @@ storiesOf("Form|Field", module)
           </template>
         </f-field>
       </div>
+      `
+    }),
+    {
+      info: {
+        summary
+      }
+    }
+  )
+  .add(
+    "Example Validation",
+    () => ({
+      components: { FField, FInput, FButton },
+      data: () => ({
+        form: {
+          name: "",
+          email: "",
+          age: ""
+        },
+        message: ""
+      }),
+      methods: {
+        submit() {
+          this.$validator.validate().then(valid => {
+            const is = valid ? "is" : "NOT is";
+
+            this.message = `This form ${is} valid!`;
+          });
+        }
+      },
+      template: `
+        <div class="p-8" style="width: 400px">
+          <f-field label="Name" hint="Name is required">
+            <f-input
+              placeholder="Your name here"
+              v-model="form.name"
+              v-validate="'required'"
+              name="name"
+            />
+            <template v-slot:error>
+              {{ errors.first("name") }}
+            </template>
+          </f-field>
+
+          <f-field label="E-mail" hint="E-mail is required">
+            <f-input
+              placeholder="Your email here"
+              v-model="form.email"
+              v-validate="'required|email'"
+              name="email"
+            />
+            <template v-slot:error>
+              {{ errors.first("email") }}
+            </template>
+          </f-field>
+
+          <f-field label="Age" hint="Only numbers please">
+            <f-input
+              placeholder="Your age here"
+              v-model="form.age"
+              v-validate="'required|numeric|max:2'"
+              name="age"
+            />
+            <template v-slot:error>
+              {{ errors.first("age") }}
+            </template>
+          </f-field>
+
+          <f-button @click="submit" label="send" /> {{ message }}
+        </div>
       `
     }),
     {
