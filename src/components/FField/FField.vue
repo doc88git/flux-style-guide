@@ -62,20 +62,14 @@
 </template>
 
 <script>
-// import { ValidationProvider } from "vee-validate";
-
 export default {
   name: "f-field",
-  components: {
-    // ValidationProvider
-  },
   props: {
     label: {
       default: "",
       type: String
     },
     hint: String,
-    name: String,
     rules: String,
     errorMessage: {
       default: "",
