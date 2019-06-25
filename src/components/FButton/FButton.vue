@@ -130,7 +130,7 @@ export default {
   &__inner {
     @apply flex flex-no-wrap items-center content-center w-full;
     &__icon {
-      @apply h-full items-center w-full mr-2;
+      @apply h-full items-center mr-2;
       line-height: 0;
       &--center {
         @apply mr-0 #{!important};
