@@ -5,7 +5,7 @@ import FDropdown from "../FDropdown.vue";
 const arrList = [
   {
     value: 1,
-    label: "Primeiro item com valor muito grande"
+    label: "Primeiro item"
   },
   {
     value: 2,
