@@ -34,3 +34,18 @@ $transition: all 0.2s ease-out;
     }
   }
 }
+
+.fade {
+  &-enter-active {
+    transition: $transition;
+  }
+  &-leave-active {
+    transition: $transition;
+  }
+  &-enter {
+    opacity: 1;
+  }
+  &-leave-to {
+    opacity: 0;
+  }
+}

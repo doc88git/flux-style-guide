@@ -1,16 +1,16 @@
 <template>
   <div class="f-tooltip">
     <slot>
-      <FButton
+      <f-button
         tag="a"
         @click="toggleVisible"
         @mouseover="show"
         @mouseleave="hide"
         v-bind="[$props, $attrs]"
         >{{ label }}
-      </FButton>
+      </f-button>
     </slot>
-    <transition v-if="isVisible" name="fade">
+    <transition v-if="isVisible" :name="transition">
       <div class="f-tooltip__item" :class="classDynamic">
         <slot name="content" />
         <div :class="classDynamicArrow" />
@@ -54,6 +54,9 @@ export default {
         "f-tooltip__item__arrow",
         `f-tooltip__item__arrow--${this.position}`
       ];
+    },
+    transition() {
+      return this.click ? "fade" : `slide-${this.position}`;
     }
   },
   methods: {
@@ -147,16 +150,6 @@ export default {
         left: calc(100% - 5px);
         transform: translate(0%, -50%) rotate(-90deg);
       }
-    }
-  }
-  .fade {
-    &-enter-active,
-    &-leave-active {
-      transition: opacity 0.3s;
-    }
-    &-enter,
-    &-leave-to {
-      opacity: 0;
     }
   }
 }
