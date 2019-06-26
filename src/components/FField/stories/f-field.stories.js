@@ -412,6 +412,7 @@ storiesOf("Form|Field", module)
               v-model="form.age"
               v-validate="'required|numeric|max:2'"
               name="age"
+              :mask="'##'"
             />
             <template v-slot:error>
               {{ errors.first("age") }}
