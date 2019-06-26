@@ -5,7 +5,8 @@
     :class="[btnStyle]"
     @click="$emit('click')"
     @click.stop="blur"
-    @mouseleave="blur"
+    @mouseover="mouseover"
+    @mouseleave="mouseleave"
   >
     <div class="btn__inner">
       <div class="btn__inner__icon" :class="[btnCenter]" v-if="icon">
@@ -85,6 +86,13 @@ export default {
   methods: {
     blur(e) {
       e.target.blur();
+    },
+    mouseover(e) {
+      this.$emit("mouseover", e);
+    },
+    mouseleave(e) {
+      this.blur(e);
+      this.$emit("mouseleave", e);
     }
   }
 };
