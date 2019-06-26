@@ -12,6 +12,7 @@
     @blur="$emit('blur', $event)"
     @keyup="$emit('keyup', $event)"
     class="f-input"
+    ref="input"
   />
 </template>
 
