@@ -36,16 +36,32 @@ $transition: all 0.2s ease-out;
 }
 
 .fade {
-  &-enter-active {
-    transition: $transition;
+  &-in {
+    &-enter-active {
+      transition: opacity .25s;
+    }
+    &-leave-active {
+      transition: opacity .25s;
+    }
+    &-enter {
+      opacity: 0;
+    }
+    &-leave-to {
+      opacity: 0;
+    }
   }
-  &-leave-active {
-    transition: $transition;
-  }
-  &-enter {
-    opacity: 1;
-  }
-  &-leave-to {
-    opacity: 0;
+  &-out {
+    &-enter-active {
+      transition: opacity .25s;
+    }
+    &-leave-active {
+      transition: opacity .25s;
+    }
+    &-enter {
+      opacity: 0;
+    }
+    &-leave-to {
+      opacity: 0;
+    }
   }
 }

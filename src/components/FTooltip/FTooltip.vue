@@ -10,7 +10,7 @@
         >{{ label }}
       </f-button>
     </slot>
-    <transition v-if="isVisible" :name="transition">
+    <transition v-if="isVisible" :name="`fade-${transition}`">
       <div class="f-tooltip__item" :class="classDynamic">
         <slot name="content" />
         <div :class="classDynamicArrow" />
@@ -56,7 +56,8 @@ export default {
       ];
     },
     transition() {
-      return this.click ? "fade" : `slide-${this.position}`;
+      return this.isVisible ? "in" : "out";
+      // return this.click ? "fade" : `slide-${this.position}`;
     }
   },
   methods: {
