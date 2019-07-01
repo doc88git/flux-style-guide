@@ -182,7 +182,7 @@ function getPlatform(userAgent) {
   browser.name = matched.browser;
   browser.platform = matched.platform;
 
-  if (process.client) {
+  if (process.isClient) {
     if (
       window.process &&
       window.process.versions &&

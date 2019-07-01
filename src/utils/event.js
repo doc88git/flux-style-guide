@@ -17,8 +17,10 @@ try {
       return true;
     }
   });
-  window.addEventListener("qtest", null, opts);
-  window.removeEventListener("qtest", null, opts);
+  if (process.isClient) {
+    window.addEventListener("ftest", null, opts);
+    window.removeEventListener("ftest", null, opts);
+  }
 } catch (e) {
   console.log({ e });
 }
