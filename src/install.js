@@ -1,5 +1,6 @@
 import { version } from "../package.json";
 import Platform, { isSSR } from "./plugins/Platform.js";
+import Screen from "./plugins/Screen.js";
 
 export const queues = {
   server: [], // on SSR update
@@ -24,6 +25,7 @@ export default function(Vue, opts = {}) {
 
   // required plugins
   Platform.install($f, queues);
+  Screen.install($f, queues);
 
   if (isSSR === true) {
     Vue.mixin({
