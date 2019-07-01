@@ -3,9 +3,11 @@
     <slot name="image-header">
       <f-image v-if="headerBg" rounded-t :src="headerBg" />
     </slot>
-    <main class="f-card__content">
-      <slot></slot>
-    </main>
+    <slot name="content">
+      <main class="f-card__content">
+        <slot></slot>
+      </main>
+    </slot>
   </section>
 </template>
 

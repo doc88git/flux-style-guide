@@ -62,13 +62,4 @@ export default function(Vue, opts = {}) {
       }
     });
   }
-  // if (opts.plugins) {
-  //   const param = { Vue, $f, cfg };
-  //   Object.keys(opts.plugins).forEach(key => {
-  //     const p = opts.plugins[key];
-  //     if (typeof p.install === "function") {
-  //       p.install(param);
-  //     }
-  //   });
-  // }
 }
