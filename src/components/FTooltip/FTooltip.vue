@@ -2,7 +2,6 @@
   <div class="f-tooltip">
     <slot>
       <f-button
-        tag="a"
         @click="toggleVisible"
         @mouseover="show"
         @mouseleave="hide"
@@ -11,7 +10,7 @@
       </f-button>
     </slot>
     <transition v-if="isVisible" :name="`fade-${transition}`">
-      <div class="f-tooltip__item" :class="classDynamic">
+      <div class="f-tooltip__item" :class="[classDynamic, bgColor]">
         <slot name="content" />
         <div :class="classDynamicArrow" />
       </div>
@@ -42,11 +41,24 @@ export default {
       default: "default",
       validator: val => ["default", "secondary"].includes(val)
     },
-    click: Boolean
+    click: Boolean,
+    bgColor: {
+      type: String,
+      default: "black"
+    },
+    textColor: {
+      type: String,
+      default: "white"
+    }
   },
   computed: {
     classDynamic() {
-      return [`f-tooltip--${this.color}`, `f-tooltip__item--${this.position}`];
+      return [
+        `f-tooltip--${this.color}`,
+        `f-tooltip__item--${this.position}`,
+        `bg-${bgColor}`,
+        `text-${textColor}`
+      ];
     },
     classDynamicArrow() {
       return [
@@ -79,7 +91,7 @@ export default {
   @apply relative cursor-pointer inline-block;
 
   &__item {
-    @apply absolute px-2 py-1 text-sm rounded-lg shadow self-center bg-black text-white text-center;
+    @apply absolute px-2 py-1 text-sm rounded-lg shadow self-center text-center;
     width: 7rem;
     max-width: 10rem;
     min-width: 3rem;

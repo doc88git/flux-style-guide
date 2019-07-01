@@ -1,4 +1,10 @@
 import { version } from "../package.json";
+import Platform, { isSSR } from "./plugins/Platform.js";
+
+export const queues = {
+  server: [], // on SSR update
+  takeover: [] // on client takeover
+};
 
 export const $f = {
   version,
@@ -15,6 +21,19 @@ export default function(Vue, opts = {}) {
     ...$f,
     ...cfg
   };
+
+  // required plugins
+  Platform.install($f, queues);
+
+  if (isSSR === true) {
+    Vue.mixin({
+      beforeCreate() {
+        this.$f = this.$root.$options.$f;
+      }
+    });
+  } else {
+    Vue.prototype.$f = $f;
+  }
 
   opts.components &&
     Object.keys(opts.components).forEach(key => {
@@ -33,12 +52,21 @@ export default function(Vue, opts = {}) {
     });
 
   if (opts.plugins) {
-    const param = { Vue, $f, cfg };
+    const param = { Vue, $f, queues, cfg };
     Object.keys(opts.plugins).forEach(key => {
       const p = opts.plugins[key];
-      if (typeof p.install === "function") {
+      if (typeof p.install === "function" && p !== Platform && p !== Screen) {
         p.install(param);
       }
     });
   }
+  // if (opts.plugins) {
+  //   const param = { Vue, $f, cfg };
+  //   Object.keys(opts.plugins).forEach(key => {
+  //     const p = opts.plugins[key];
+  //     if (typeof p.install === "function") {
+  //       p.install(param);
+  //     }
+  //   });
+  // }
 }
