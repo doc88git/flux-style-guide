@@ -108,6 +108,7 @@ export default {
 
   &--default {
     @apply border rounded border-gray-200;
+    @apply bg-white text-gray-700;
   }
 
   &--fill {
