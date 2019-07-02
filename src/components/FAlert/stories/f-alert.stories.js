@@ -7,7 +7,9 @@ const groupId = "FAlert-ID1";
 storiesOf("Components|Alerts", module).add("Default", () => ({
   components: { FAlert },
   data: () => ({
-    value: 2
+    title: "Contrary to popular belief",
+    content:
+      "There are many variations of passages of Lorem Ipsum available, but the majority."
   }),
   props: {
     src: {
@@ -16,7 +18,7 @@ storiesOf("Components|Alerts", module).add("Default", () => ({
   },
   template: `
     <div class="p-8">
-      <f-alert :src="src" />
+      <f-alert :title=title :content=content />
     </div>
   `
 }));
