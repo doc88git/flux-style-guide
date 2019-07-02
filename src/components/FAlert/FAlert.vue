@@ -82,10 +82,11 @@ export default {
 
 <style lang="scss" scoped>
 .f-alert {
-  @apply absolute;
   @apply max-w-full p-2;
   @apply whitespace-normal;
   @apply rounded-lg mx-auto bg-white shadow-md;
+  @apply bg-white text-gray-700;
+  @apply mb-2;
   width: 300px;
 
   &__close {
@@ -108,7 +109,6 @@ export default {
 
   &--default {
     @apply border rounded border-gray-200;
-    @apply bg-white text-gray-700;
   }
 
   &--fill {

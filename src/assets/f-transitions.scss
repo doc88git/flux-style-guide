@@ -35,19 +35,27 @@ $transition: all 0.2s ease-out;
   }
 }
 
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .25s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
 .fade {
   &-in {
     &-enter-active {
-      transition: opacity .25s;
+      opacity: 0;
     }
     &-leave-active {
-      transition: opacity .25s;
+      opacity: 0;
     }
     &-enter {
-      opacity: 0;
+      transition: opacity .25s;
     }
     &-leave-to {
-      opacity: 0;
+      transition: opacity .25s;
     }
   }
   &-out {

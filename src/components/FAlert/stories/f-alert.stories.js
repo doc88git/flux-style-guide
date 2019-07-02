@@ -1,39 +1,62 @@
 import { storiesOf } from "@storybook/vue";
 import { text, boolean } from "@storybook/addon-knobs";
 import FAlert from "../FAlert.vue";
+import FAlertController from "../FAlertController.vue";
 
 const groupId = "FAlert-ID1";
 const title = "Contrary to popular belief";
 const content =
   "There are many variations of passages of Lorem Ipsum available, but the majority.";
 
-storiesOf("Components|Alerts", module).add("Default", () => ({
-  components: { FAlert },
-  data: () => ({}),
-  props: {
-    fill: {
-      default: boolean("fill", false, groupId)
+storiesOf("Components|Alerts", module)
+  .add("Controller", () => ({
+    components: { FAlertController },
+    data: () => ({
+      alerts: []
+    }),
+    props: {},
+    methods: {
+      addAlert() {
+        this.alerts.push({
+          title: "Sou um título",
+          content: `Um conteúdo pontual: ${new Date().toISOString()}`
+        });
+      }
     },
-    outline: {
-      default: boolean("outline", false, groupId)
+    template: `
+    <div class="p-8">
+      <FAlertController :alerts="alerts" :timeout="5" />
+      <button @click="addAlert">Add +</button>
+    </div>
+  `
+  }))
+  .add("Default", () => ({
+    components: { FAlert },
+    data: () => ({}),
+    props: {
+      fill: {
+        default: boolean("fill", false, groupId)
+      },
+      outline: {
+        default: boolean("outline", false, groupId)
+      },
+      closable: {
+        default: boolean("closable", false, groupId)
+      },
+      color: {
+        default: text("color", "", groupId)
+      },
+      textColor: {
+        default: text("textColor", "", groupId)
+      },
+      title: {
+        default: text("title", title, groupId)
+      },
+      content: {
+        default: text("content", content, groupId)
+      }
     },
-    closable: {
-      default: boolean("closable", false, groupId)
-    },
-    color: {
-      default: text("color", "", groupId)
-    },
-    textColor: {
-      default: text("textColor", "", groupId)
-    },
-    title: {
-      default: text("title", title, groupId)
-    },
-    content: {
-      default: text("content", content, groupId)
-    }
-  },
-  template: `
+    template: `
     <div class="p-8">
       <f-alert
         color="primary"
@@ -46,4 +69,4 @@ storiesOf("Components|Alerts", module).add("Default", () => ({
         :content="content" />
     </div>
   `
-}));
+  }));
