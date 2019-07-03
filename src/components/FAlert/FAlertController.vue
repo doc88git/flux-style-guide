@@ -1,13 +1,11 @@
 <script>
 import FAlert from "./FAlert";
 import Screen from "@/plugins/Screen";
-import { setTimeout } from "timers";
 
 export default {
   data: () => ({
     width: Screen.width,
-
-    toClear: 0
+    size: 0
   }),
   props: {
     alerts: {
@@ -20,11 +18,6 @@ export default {
       default: 3
     }
   },
-  computed: {
-    list() {
-      return this.alerts.reverse();
-    }
-  },
   watch: {
     alerts: {
       handler: "verifty",
@@ -33,12 +26,13 @@ export default {
   },
   methods: {
     verifty() {
-      if (!this.alerts.length) {
-        clearTimeout(this.toClear);
-        return false;
+      if (!this.alerts.length) return false;
+
+      if (this.alerts.length > this.size || this.alerts.length === this.size) {
+        setTimeout(this.kill, this.timeout * 1000);
       }
 
-      this.toClear = setTimeout(this.kill, this.timeout * 1000);
+      this.size = this.alerts.length;
     },
     kill() {
       if (!this.alerts.length) return false;
@@ -55,9 +49,10 @@ export default {
       }
     };
 
-    const alert = this.list.map((item, index) => {
+    const alert = this.alerts.map((item, index) => {
       return h(FAlert, {
         key: index,
+        class: ["f-alert-dialog"],
         props: {
           title: item.title,
           content: item.content
@@ -66,7 +61,14 @@ export default {
     });
 
     const transition = [
-      h("transition-group", { props: { name: "fade" } }, [alert])
+      h(
+        "transition-group",
+        {
+          props: { name: "fade", tag: "div" },
+          class: ["f-alert-controller-transition"]
+        },
+        [alert]
+      )
     ];
 
     return h("div", dataObject, transition);
@@ -77,6 +79,9 @@ export default {
 <style lang="scss" scoped>
 .f-alert-controller {
   @apply absolute;
+  &-transition {
+    @apply flex flex-col-reverse;
+  }
 }
 
 .fade-enter-active,

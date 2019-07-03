@@ -87,6 +87,7 @@ export default {
   @apply rounded-lg mx-auto bg-white shadow-md;
   @apply bg-white text-gray-700;
   @apply mb-2;
+  @apply flex flex-col;
   width: 300px;
 
   &__close {
