@@ -10,15 +10,15 @@ import Users from "../../../mocks/userList.json";
 const arrList = [
   {
     label: "Aprovado",
-    emit: "aprovado"
+    value: "aprovado"
   },
   {
     label: "Aguardando conferência",
-    emit: "aguardando"
+    value: "aguardando"
   },
   {
     label: "Pago",
-    emit: "pago"
+    value: "pago"
   }
 ];
 

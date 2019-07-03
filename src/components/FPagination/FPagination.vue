@@ -10,7 +10,7 @@
           icon="keyboard_arrow_left"
           @click="jumpTo('prev')"
           color="gray"
-          disabled="localCurrentPage !== 1"
+          :disabled="localCurrentPage !== 1"
         />
       </li>
       <li v-for="i in show" :key="i">
@@ -27,7 +27,7 @@
           icon="keyboard_arrow_right"
           @click="jumpTo('next')"
           color="gray"
-          disabled="localCurrentPage !== totalPages"
+          :disabled="localCurrentPage !== totalPages"
         />
       </li>
       <li>
@@ -98,7 +98,7 @@ export default {
     }
   },
   mounted() {
-    this.localCurrentPage = this.currentPage;
+    this.localCurrentPage = parseInt(this.currentPage);
   },
   methods: {
     setCurrentPage(value) {
