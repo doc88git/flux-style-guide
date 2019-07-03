@@ -24,7 +24,6 @@ export default {
   },
   install(args) {
     if (!isSSR) return false;
-    console.log({ args });
 
     init.call(this, args);
 

@@ -37,6 +37,12 @@ export default {
     kill() {
       if (!this.alerts.length) return false;
       this.alerts.shift();
+    },
+    add(opts) {
+      this.alert.push({
+        title: opts.title,
+        content: opts.content
+      });
     }
   },
   render(h) {
