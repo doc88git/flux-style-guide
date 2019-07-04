@@ -5,8 +5,10 @@ import { isSSR } from "./Platform.js";
 let defaults = {};
 
 function init() {
-  const node = document.createElement("div");
-  document.body.appendChild(node);
+  if (!isSSR || typeof window === "undefined") return false;
+
+  const node = window.document.createElement("div");
+  window.document.body.appendChild(node);
 
   this.__vm = new Vue(FAlertController);
   this.__vm.$mount(node);

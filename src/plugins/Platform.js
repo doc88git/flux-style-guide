@@ -4,7 +4,7 @@
 
 import Vue from "vue";
 
-export const isSSR = typeof window === "undefined";
+export const isSSR = process.server || typeof window === "undefined";
 export let fromSSR = false;
 export let onSSR = isSSR;
 
