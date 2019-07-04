@@ -15,6 +15,7 @@ import * as FPagination from "./FPagination/index.js";
 import * as FTable from "./FTable/index.js";
 import * as FBadge from "./FBadge/index.js";
 import * as FTooltip from "./FTooltip/index.js";
+import * as FSelect from "./FSelect/index.js";
 
 const components = [
   FIcon,
@@ -33,7 +34,8 @@ const components = [
   FPagination,
   FTable,
   FBadge,
-  FTooltip
+  FTooltip,
+  FSelect
 ];
 
 export default components;
