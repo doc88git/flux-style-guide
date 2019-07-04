@@ -28,6 +28,7 @@
 
       <f-input
         ref="input"
+        :name="name"
         v-show="openList && search"
         v-model="innerValue"
         class="f-select__input"
@@ -62,6 +63,7 @@ export default {
     list: []
   }),
   props: {
+    name: String,
     type: String,
     color: String,
     textColor: String,
