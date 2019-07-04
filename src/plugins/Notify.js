@@ -5,7 +5,7 @@ import { isSSR } from "./Platform.js";
 let defaults = {};
 
 function init() {
-  if (!isSSR || typeof window === "undefined") return false;
+  if (!isSSR) return false;
 
   const node = window.document.createElement("div");
   window.document.body.appendChild(node);
@@ -25,13 +25,13 @@ export default {
     Object.assign(defaults, opts);
   },
   install(args) {
-    if (!isSSR) return false;
+    if (!isSSR) {
+      init.call(this, args);
 
-    init.call(this, args);
+      args.cfg.notify && this.setDefaults(args.cfg.notify);
 
-    args.cfg.notify && this.setDefaults(args.cfg.notify);
-
-    args.$f.notify = this.create.bind(this);
-    args.$f.notify.setDefaults = this.setDefaults;
+      args.$f.notify = this.create.bind(this);
+      args.$f.notify.setDefaults = this.setDefaults;
+    }
   }
 };
