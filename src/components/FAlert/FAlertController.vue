@@ -1,6 +1,6 @@
 <script>
 import FAlert from "./FAlert";
-import Screen from "@/plugins/Screen";
+import Screen from "../../plugins/Screen";
 
 export default {
   data: () => ({
