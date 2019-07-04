@@ -108,7 +108,7 @@ export default {
     }
   }
   &__inner {
-    @apply w-auto relative;
+    @apply w-auto relative max-w-full;
     flex-grow: 10000;
     flex-shrink: 1;
     flex-basis: 0%;
