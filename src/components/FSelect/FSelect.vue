@@ -127,6 +127,7 @@ export default {
     setValue(value) {
       if (this.multiple) return this.addMultiple(value);
       this.selected = value;
+      this.$emit("input", value);
     },
     addMultiple(value) {
       if (this.list.includes(value)) return false;
