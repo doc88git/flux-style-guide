@@ -195,7 +195,7 @@ export default {
   @apply select-none relative max-w-full;
   min-width: 200px;
   &__inner {
-    @apply flex flex-no-wrap justify-between bg-primary rounded text-white w-full py-2 px-3 min-w-full;
+    @apply flex flex-no-wrap justify-between bg-primary rounded text-white w-full py-2 px-3 min-w-full max-w-full;
     position: relative;
     z-index: 1;
     &__content {
