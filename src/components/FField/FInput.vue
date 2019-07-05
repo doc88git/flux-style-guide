@@ -6,7 +6,7 @@
     :disabled="disabled"
     :readonly="readonly"
     :name="name"
-    v-bind="$attrs"
+    v-bind="[$attrs, $props]"
     @input="runMask"
     @focus="$emit('focus', $event)"
     @blur="$emit('blur', $event)"

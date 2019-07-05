@@ -15,7 +15,7 @@ storiesOf("Form|Field", module)
     () => ({
       components: { FField, FInput, FButton, FAvatar },
       data: () => ({
-        value: ""
+        value: "oi"
       }),
       props: {
         name: {
