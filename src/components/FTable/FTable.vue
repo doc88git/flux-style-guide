@@ -34,7 +34,7 @@
               </tr>
             </thead>
             <tbody>
-              <slot name="tr" v-for="(row, index) in show">
+              <slot name="tr" v-for="(row, index) in show" v-bind="row">
                 <tr :key="`tr:${index}`">
                   <td v-for="head in keysHeaders" :key="`td:${head}`">
                     {{ row[head] }}
