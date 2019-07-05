@@ -34,11 +34,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(row, index) in show" :key="`tr:${index}`">
-                <td v-for="head in keysHeaders" :key="`td:${head}`">
-                  {{ row[head] }}
-                </td>
-              </tr>
+              <slot name="tr" v-for="(row, index) in show">
+                <tr :key="`tr:${index}`">
+                  <td v-for="head in keysHeaders" :key="`td:${head}`">
+                    {{ row[head] }}
+                  </td>
+                </tr>
+              </slot>
             </tbody>
           </table>
         </div>
