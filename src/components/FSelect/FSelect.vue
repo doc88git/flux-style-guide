@@ -85,8 +85,13 @@ export default {
       default: true
     }
   },
-  mounted() {
-    this.selected = this.$attrs.value;
+  watch: {
+    "$attrs.value": {
+      handler: function() {
+        this.selected = this.$attrs.value;
+      },
+      immediate: true
+    }
   },
   computed: {
     dropdownType() {
