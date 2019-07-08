@@ -16,10 +16,13 @@ const arrList = [
     label: "Terceiro item"
   }
 ];
+
 const typeList = {
   default: "default",
-  outlined: "outlined"
+  outlined: "outlined",
+  input: "input"
 };
+
 const groupId = "FDROPDOWN-ID1";
 
 storiesOf("Components|Dropdown", module).add("Default", () => ({

@@ -71,7 +71,7 @@ export default {
       type: String,
       default: "default",
       validator: item => {
-        return ["default", "outlined"].includes(item);
+        return ["default", "outlined", "input"].includes(item);
       }
     },
     position: {
@@ -112,7 +112,11 @@ export default {
         : "";
     },
     classes() {
-      return this.isOutlined ? "f-dropdown--outlined" : "";
+      return {
+        "f-dropdown--outlined": this.type === "outlined",
+        "f-dropdown--input": this.type === "input"
+      };
+      // return this.isOutlined ? "f-dropdown--outlined" : "";
     }
   },
   watch: {
@@ -231,6 +235,22 @@ export default {
     }
     .f-dropdown__list {
       @apply bg-white text-gray-600 border border-t-0 border-solid border-gray;
+      ul {
+        li {
+          &:hover {
+            @apply bg-white;
+          }
+        }
+      }
+    }
+  }
+
+  &--input {
+    .f-dropdown__inner {
+      @apply bg-white text-black border border-solid;
+    }
+    .f-dropdown__list {
+      @apply bg-white text-gray-600 border border-t-0 border-solid;
       ul {
         li {
           &:hover {
