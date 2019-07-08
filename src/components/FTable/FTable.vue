@@ -111,7 +111,13 @@ export default {
   methods: {
     getContent(item) {
       this.keysHeaders.map(h => {
-        item[h] = h.split(".").reduce((o, i) => o[i], item);
+        item[h] = h.split(".").reduce((o, i) => {
+          try {
+            return o[i];
+          } catch (e) {
+            return "";
+          }
+        }, item);
       });
 
       return item;
