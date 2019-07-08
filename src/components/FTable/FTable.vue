@@ -103,10 +103,19 @@ export default {
         data = this.content[method](this.sortBy);
       }
 
+      data.keyBy(item => this.getContent(item));
+
       return data.all();
     }
   },
   methods: {
+    getContent(item) {
+      this.keysHeaders.map(h => {
+        item[h] = h.split(".").reduce((o, i) => o[i], item);
+      });
+
+      return item;
+    },
     setSortBy(item) {
       this.sortBy = item;
       this.setSortDirection();

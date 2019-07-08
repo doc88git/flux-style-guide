@@ -42,17 +42,17 @@ storiesOf("Components|Table", module).add("Default", () => ({
     },
     header: {
       default: {
+        first_name: "Nome",
+        last_name: "Sobrenome",
+        title: "Título",
         email: "Email",
         gender: "Sexo",
         phone_number: "Telefone",
         birthdate: "Data de Nascimento",
-        street: "Endereço",
-        city: "Cidade",
-        state: "Estado",
-        postcode: "CEP",
-        first_name: "Nome",
-        last_name: "Sobrenome",
-        title: "Título"
+        "location.street": "Endereço",
+        "location.postcode": "CEP",
+        "location.city": "Cidade",
+        "location.state": "Estado"
       }
     }
   },
