@@ -64,18 +64,18 @@ export default {
   }),
   props: {
     name: String,
-    type: String,
+    type: {
+      type: String,
+      default: "input"
+    },
     color: String,
     textColor: String,
     options: {
       type: Array,
       required: true,
       validator: items => {
-        return (
-          items.filter(
-            item => item.hasOwnProperty("label") && item.hasOwnProperty("value")
-          ).length === items.length
-        );
+        let filter = items.filter(item => "label" in item && "value" in item);
+        return filter.length === items.length;
       }
     },
     search: Boolean,
@@ -85,7 +85,13 @@ export default {
       default: true
     }
   },
+  mounted() {
+    this.selected = this.$attrs.value;
+  },
   computed: {
+    dropdownType() {
+      return this.type === "fill" ? "default" : "this.type";
+    },
     labelSelected() {
       let selectedItem = this.options
         .filter(item => item.value === this.selected)

@@ -5,8 +5,9 @@ import FSelect from "../FSelect.vue";
 const arr = ["Powerview", "Simplifica", "Flux", "Petz", "Castlight"];
 
 const typeList = {
-  default: "default",
-  outlined: "outlined"
+  fill: "fill",
+  outlined: "outlined",
+  input: "input"
 };
 
 const groupId = "FSelect-ID1";
@@ -15,7 +16,7 @@ storiesOf("Form|Select", module)
   .add("Default", () => ({
     components: { FSelect },
     data: () => ({
-      value: 1
+      value: null
     }),
     props: {
       options: {
@@ -26,7 +27,7 @@ storiesOf("Form|Select", module)
         )
       },
       type: {
-        default: select("type", typeList, "default", groupId)
+        default: select("type", typeList, "input", groupId)
       }
     },
     template: `
@@ -36,6 +37,7 @@ storiesOf("Form|Select", module)
         :options="options"
         :type="type"
         v-model="value" />
+      {{ value}}
     </div>
   `
   }))
