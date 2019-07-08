@@ -218,7 +218,8 @@ export default {
 
   &__list {
     @apply absolute m-0 pt-2 pb-2 rounded-b bg-primary cursor-pointer shadow-md w-full text-white text-left z-10 overflow-auto;
-    height: 200px;
+    height: 35px;
+    max-height: 200px;
     ul {
       @apply list-none;
       li {
