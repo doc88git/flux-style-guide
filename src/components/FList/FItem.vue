@@ -3,7 +3,9 @@
     <p v-if="title" class="f-list-item__item--title">
       {{ title }}
     </p>
-    <p class="f-list-item__item--label">{{ label }}<slot></slot></p>
+    <p class="f-list-item__item--label">
+      <slot>{{ label }}</slot>
+    </p>
   </component>
 </template>
 
@@ -38,18 +40,10 @@ export default {
   }
   &__item {
     &--title {
-      @apply font-semibold mb-1; // group-hover:text-white
+      @apply font-semibold mb-1;
     }
     &--label {
-      @apply text-gray-800 mb-1; // group-hover:text-white
-    }
-  }
-}
-
-@group-hover {
-  .f-list-item {
-    &__item {
-      @apply text-white;
+      @apply text-gray-800 mb-1;
     }
   }
 }

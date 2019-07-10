@@ -1,5 +1,13 @@
 <template>
-  <div class="f-dropdown" :class="classes" @click="toggleDropdown">
+  <div
+    class="f-dropdown"
+    :class="classes"
+    @click="toggleDropdown"
+    ref="__refDropdown"
+    tabindex="0"
+    @keyup="onKeyUp"
+    :data-name="dropdownId"
+  >
     <div
       class="f-dropdown__inner"
       :class="{
@@ -31,13 +39,15 @@
 
 <script>
 import { FIcon } from "../FIcon/index.js";
+import uid from "../../utils/uid.js";
 
 export default {
   name: "f-dropdown",
   components: { FIcon },
   data: () => ({
     isOpen: false,
-    selected: null
+    selected: null,
+    dropdownId: uid()
   }),
   props: {
     list: {
@@ -117,6 +127,9 @@ export default {
         "f-dropdown--input": this.type === "input"
       };
       // return this.isOutlined ? "f-dropdown--outlined" : "";
+    },
+    el() {
+      return this.$refs.__refDropdown;
     }
   },
   watch: {
@@ -128,7 +141,34 @@ export default {
       }
     }
   },
+  mounted() {
+    console.log(this.$refs);
+    console.log(uid());
+  },
   methods: {
+    onKeyUp(e) {
+      // let el = this.$refs.dropdown;
+      let active = document.activeElement;
+
+      if (!active.dataset.name !== this.dropdownId) {
+        // return false;
+      }
+
+      console.log({ keyCode: e.keyCode });
+
+      // console.log({ dropdownId: this.dropdownId });
+      // console.log({ el: el.dataset.name });
+      // console.log({ active: active.dataset.name });
+      // console.log({ active: active.dataset.name });
+
+      console.log({ "document.activeElement": active });
+
+      // down
+      if (e.keyCode === 40) {
+        this.openList();
+        e.stopPropagation();
+      }
+    },
     isClickedIn(e, classItem) {
       let isClicked = e.path.filter(item => {
         return item.classList ? item.classList.contains(classItem) : false;
@@ -173,6 +213,7 @@ export default {
         return false;
       }
 
+      this.focus();
       this.openList();
 
       e.stopPropagation();
@@ -184,6 +225,14 @@ export default {
       if (this.closeOnClick) this.closeList();
 
       e.stopPropagation();
+    },
+    focus() {
+      let node = this.el;
+
+      if (node !== void 0 && node.contains(document.activeElement) !== true) {
+        node = node.querySelector("[autofocus]") || node;
+        node.focus();
+      }
     }
   },
   destroyed() {
@@ -198,6 +247,9 @@ export default {
 .f-dropdown {
   @apply select-none relative max-w-full;
   min-width: 200px;
+  &:focus {
+    @apply shadow-none outline-none;
+  }
   &__inner {
     @apply flex flex-no-wrap justify-between bg-primary rounded text-white w-full py-2 px-3 min-w-full max-w-full;
     position: relative;

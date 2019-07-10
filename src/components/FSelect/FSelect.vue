@@ -9,7 +9,7 @@
       :closeOnClick="closeOnClick"
       @status="setStatus"
     >
-      <div tabindex="0" v-show="showLabel" class="f-select__label">
+      <div v-show="showLabel" class="f-select__label">
         {{ labelSelected || "Selecione" }}
       </div>
 
