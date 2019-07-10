@@ -56,8 +56,8 @@ export default {
       return [
         `f-tooltip--${this.color}`,
         `f-tooltip__item--${this.position}`,
-        `bg-${bgColor}`,
-        `text-${textColor}`
+        `bg-${this.bgColor}`,
+        `text-${this.textColor}`
       ];
     },
     classDynamicArrow() {
