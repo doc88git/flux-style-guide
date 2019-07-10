@@ -1,5 +1,5 @@
 <template>
-  <div class="f-select">
+  <div class="f-select" tabindex="-1">
     <f-dropdown
       :list="optionsFiltered"
       :color="color"
@@ -9,7 +9,7 @@
       :closeOnClick="closeOnClick"
       @status="setStatus"
     >
-      <div v-show="showLabel" class="f-select__label">
+      <div tabindex="0" v-show="showLabel" class="f-select__label">
         {{ labelSelected || "Selecione" }}
       </div>
 
