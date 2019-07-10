@@ -1,12 +1,10 @@
 <template>
-  <div class="f-list-item">
-    <component :is="tag" :to="to" :link="link">
-      <p v-if="title" class="f-list-item__item--title">
-        {{ title }}
-      </p>
-      <p class="f-list-item__item--label">{{ label }}<slot></slot></p>
-    </component>
-  </div>
+  <component class="f-list-item" :is="tag" :to="to" :link="link" tabindex="0">
+    <p v-if="title" class="f-list-item__item--title">
+      {{ title }}
+    </p>
+    <p class="f-list-item__item--label">{{ label }}<slot></slot></p>
+  </component>
 </template>
 
 <script>
@@ -34,7 +32,8 @@ export default {
 <style lang="scss" scoped>
 .f-list-item {
   @apply block px-4 py-2 border-b text-sm;
-  &:hover {
+  &:hover,
+  &:focus {
     @apply bg-gray-300;
   }
   &__item {
