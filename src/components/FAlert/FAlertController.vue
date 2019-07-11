@@ -1,12 +1,15 @@
 <script>
 import FAlert from "./FAlert";
 import Screen from "../../plugins/Screen";
+import uid from "../../utils/uid.js";
 
 export default {
   data: () => ({
     width: Screen.width,
     size: 0,
-    list: []
+    list: [],
+    active: "",
+    interval: 0
   }),
   props: {
     fill: Boolean,
@@ -16,35 +19,65 @@ export default {
     textColor: String,
     timeout: {
       type: Number,
-      default: 3
+      default: 10
     }
+  },
+  mounted() {
+    // this.interval = setInterval(this.verify, 1000);
   },
   watch: {
     list: {
-      handler: "verifty",
+      handler: "doInterval",
       immediate: true
     }
   },
+  beforeDestroy() {
+    clearInterval(this.interval);
+  },
   methods: {
-    verifty() {
-      if (!this.list.length) return false;
-
-      if (this.list.length > this.size || this.list.length === this.size) {
-        setTimeout(this.kill, this.timeout * 1000);
+    doInterval() {
+      if (!this.list.length) {
+        clearInterval(this.interval);
+        return false;
       }
 
-      this.size = this.list.length;
+      this.interval = setInterval(this.autoRemove, 1000);
     },
-    kill() {
-      if (!this.list.length) return false;
-      this.list.shift();
+    autoRemove() {
+      let now = this.getTime();
+
+      for (let item of this.list) {
+        if (!item.id || !item.time) continue;
+
+        if (now - this.timeout > item.time) {
+          this.kill(item.id);
+        }
+      }
+    },
+    getTime() {
+      return Math.floor(Date.now() / 1000);
     },
     add(opts) {
-      this.list.push({
-        ...opts
-        // title: opts.title,
-        // content: opts.content
-      });
+      const alert = {
+        ...opts,
+        id: uid(),
+        time: this.getTime()
+      };
+      this.list.push(alert);
+    },
+    keepAlive(id) {
+      this.active = id;
+    },
+    letDie(id) {
+      this.active = null;
+      for (let item of this.list) {
+        if (item.id === id) item.time = this.getTime();
+      }
+    },
+    kill(id) {
+      for (let i in this.list) {
+        if (this.list[i] && this.list[i].id === id) this.list.splice(i, 1);
+      }
     }
   },
   render(h) {
@@ -80,13 +113,29 @@ export default {
         };
       }
 
+      const vm = this;
+
       return h(FAlert, {
         key: index,
         class: ["f-alert-dialog"],
+        on: {
+          close({ id }) {
+            vm.kill(id);
+          },
+          mouseover(e) {
+            vm.keepAlive(e.id);
+          },
+          mouseleave(e) {
+            vm.letDie(e.id);
+          }
+        },
         props: {
           ...props,
+          closable: true,
           fill: props.type === "fill",
-          outline: props.type === "outline"
+          outline: props.type === "outline",
+          id: item.id,
+          time: item.time
         }
       });
     });

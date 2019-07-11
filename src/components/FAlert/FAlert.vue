@@ -1,5 +1,10 @@
 <template>
-  <div class="f-alert" :class="alertStyle">
+  <div
+    class="f-alert"
+    :class="alertStyle"
+    @mouseover="$emit('mouseover', { id, e: $event })"
+    @mouseleave="$emit('mouseleave', { id, e: $event })"
+  >
     <div class="f-alert__close" v-if="closable">
       <f-button flat dense icon="close" :color="closeColor" @click="close" />
     </div>
@@ -29,7 +34,9 @@ export default {
     textColor: String,
     fill: Boolean,
     outline: Boolean,
-    closable: Boolean
+    closable: Boolean,
+    time: Number,
+    id: [String, Number]
   },
   computed: {
     closeColor() {
@@ -73,8 +80,9 @@ export default {
     }
   },
   methods: {
-    close(e) {
-      this.$emit("close", e);
+    close() {
+      const { time, id } = this;
+      this.$emit("close", { time, id });
     }
   }
 };
@@ -82,13 +90,14 @@ export default {
 
 <style lang="scss" scoped>
 .f-alert {
+  @apply relative;
   @apply max-w-full p-2;
   @apply whitespace-normal;
   @apply rounded-lg mx-auto bg-white shadow-md;
   @apply bg-white text-gray-700;
   @apply mb-2;
   @apply flex flex-col;
-  width: 300px;
+  width: 350px;
 
   &__close {
     @apply absolute;
@@ -98,6 +107,7 @@ export default {
 
   &__header {
     @apply text-sm font-bold p-0 m-0 mb-2;
+    padding-right: 20px;
   }
 
   &__body {
