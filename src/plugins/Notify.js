@@ -5,7 +5,7 @@ import { isSSR } from "./Platform.js";
 let defaults = {};
 
 function init() {
-  if (!isSSR) return false;
+  if (isSSR) return false;
 
   const node = window.document.createElement("div");
   window.document.body.appendChild(node);
@@ -16,7 +16,7 @@ function init() {
 
 export default {
   create(opts) {
-    if (isSSR === true) {
+    if (isSSR === true || this.__vm === void 0) {
       return () => {};
     }
     return this.__vm.add(opts);

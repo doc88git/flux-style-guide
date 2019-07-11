@@ -51,6 +51,7 @@ export default {
     const dataObject = {
       class: ["f-alert-controller"],
       style: {
+        top: "15px",
         width: `${this.width * 0.3}px`,
         left: "50%",
         transform: `translateX(-${(this.width * 0.3) / 2}px)`
