@@ -17,7 +17,7 @@ storiesOf("Components|Alerts", module)
     props: {},
     methods: {
       addAlert() {
-        this.alerts.push({
+        this.$refs.alertController.add({
           title: "Sou um título",
           content: `Um conteúdo pontual: ${new Date().toISOString()}`
         });
@@ -25,7 +25,7 @@ storiesOf("Components|Alerts", module)
     },
     template: `
     <div class="p-8">
-      <FAlertController :alerts="alerts" :timeout="5" />
+      <FAlertController ref="alertController" :alerts="alerts" :timeout="5" />
       <button @click="addAlert">Add +</button>
     </div>
   `

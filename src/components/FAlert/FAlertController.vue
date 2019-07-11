@@ -5,43 +5,45 @@ import Screen from "../../plugins/Screen";
 export default {
   data: () => ({
     width: Screen.width,
-    size: 0
+    size: 0,
+    list: []
   }),
   props: {
-    alerts: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
+    fill: Boolean,
+    outline: Boolean,
+    closable: Boolean,
+    color: String,
+    textColor: String,
     timeout: {
       type: Number,
       default: 3
     }
   },
   watch: {
-    alerts: {
+    list: {
       handler: "verifty",
       immediate: true
     }
   },
   methods: {
     verifty() {
-      if (!this.alerts.length) return false;
+      if (!this.list.length) return false;
 
-      if (this.alerts.length > this.size || this.alerts.length === this.size) {
+      if (this.list.length > this.size || this.list.length === this.size) {
         setTimeout(this.kill, this.timeout * 1000);
       }
 
-      this.size = this.alerts.length;
+      this.size = this.list.length;
     },
     kill() {
-      if (!this.alerts.length) return false;
-      this.alerts.shift();
+      if (!this.list.length) return false;
+      this.list.shift();
     },
     add(opts) {
-      this.alert.push({
-        title: opts.title,
-        content: opts.content
+      this.list.push({
+        ...opts
+        // title: opts.title,
+        // content: opts.content
       });
     }
   },
@@ -55,13 +57,35 @@ export default {
       }
     };
 
-    const alert = this.alerts.map((item, index) => {
+    const alert = this.list.map((item, index) => {
+      let props = {
+        type: "fill",
+        color: "primary"
+      };
+
+      if (typeof item === "string") {
+        props = {
+          ...props,
+          content: item
+        };
+      }
+
+      if (typeof item === "object") {
+        props = {
+          ...props,
+          ...item,
+          title: item.title || "",
+          content: item.content
+        };
+      }
+
       return h(FAlert, {
         key: index,
         class: ["f-alert-dialog"],
         props: {
-          title: item.title,
-          content: item.content
+          ...props,
+          fill: props.type === "fill",
+          outline: props.type === "outline"
         }
       });
     });
