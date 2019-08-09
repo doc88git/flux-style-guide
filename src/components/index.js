@@ -16,6 +16,7 @@ import * as FTable from "./FTable/index.js";
 import * as FBadge from "./FBadge/index.js";
 import * as FTooltip from "./FTooltip/index.js";
 import * as FSelect from "./FSelect/index.js";
+import * as FHeader from "./FHeader/index.js";
 
 const components = [
   FIcon,
@@ -35,7 +36,8 @@ const components = [
   FTable,
   FBadge,
   FTooltip,
-  FSelect
+  FSelect,
+  FHeader
 ];
 
 export default components;

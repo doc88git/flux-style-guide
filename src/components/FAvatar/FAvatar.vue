@@ -17,7 +17,7 @@ export default {
 
 <style lang="scss" scoped>
 .f-avatar {
-  @apply items-center h-16 w-16 relative align-middle inline-block rounded-full object-cover bg-center;
+  @apply items-center h-12 w-12 relative align-middle inline-block rounded-full object-cover bg-center;
   font-size: 48px;
 }
 </style>

@@ -14,13 +14,13 @@ storiesOf("Components|Image", module)
         </f-container>`,
       propsDescription: {
         FImage: {
-          rounded: "Rounded all coners",
-          roundedT: "Rounded on top coners",
-          roundedB: "Rounded on bottom coners",
-          roundedTl: "Rounded on top left coner",
-          roundedTr: "Rounded on top right coner",
-          roundedBl: "Rounded on bottom left coner",
-          roundedBr: "Rounded on bottom right coner"
+          rounded: "Rounded all corners",
+          roundedT: "Rounded on top corners",
+          roundedB: "Rounded on bottom corners",
+          roundedTl: "Rounded on top left corner",
+          roundedTr: "Rounded on top right corner",
+          roundedBl: "Rounded on bottom left corner",
+          roundedBr: "Rounded on bottom right corner"
         }
       }
     }),
@@ -40,13 +40,13 @@ storiesOf("Components|Image", module)
         </f-container>`,
       propsDescription: {
         FImage: {
-          rounded: "Rounded all coners",
-          roundedT: "Rounded on top coners",
-          roundedB: "Rounded on bottom coners",
-          roundedTl: "Rounded on top left coner",
-          roundedTr: "Rounded on top right coner",
-          roundedBl: "Rounded on bottom left coner",
-          roundedBr: "Rounded on bottom right coner"
+          rounded: "Rounded all corners",
+          roundedT: "Rounded on top corners",
+          roundedB: "Rounded on bottom corners",
+          roundedTl: "Rounded on top left corner",
+          roundedTr: "Rounded on top right corner",
+          roundedBl: "Rounded on bottom left corner",
+          roundedBr: "Rounded on bottom right corner"
         }
       }
     }),

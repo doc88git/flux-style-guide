@@ -13,3 +13,4 @@ export * from "./components/FPagination/index.js";
 export * from "./components/FTable/index.js";
 export * from "./components/FBadge/index.js";
 export * from "./components/FSelect/index.js";
+export * from "./components/FHeader/index.js";
