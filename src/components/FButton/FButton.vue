@@ -100,43 +100,50 @@ export default {
 
 <style lang="scss">
 .btn {
-  @apply font-primary text-center py-1 px-3 m-1 rounded text-base uppercase h-10;
+  @apply font-primary text-center py-1 px-3 h-12 m-1 rounded uppercase;
   width: auto;
   &:hover {
     @apply outline-none;
   }
+
   &:focus {
     @apply outline-none;
   }
+
   &:active {
     @apply outline-none;
   }
 
+  &--default {
+    @apply text-white px-6 bg-primary;
+  }
+
   &--small {
-    @apply text-xs h-6 py-0 px-2;
-    zoom: 0.8;
+    @apply text-left py-1 px-4 h-8 text-xl;
+
+    * {
+      @apply text-sm;
+    }
   }
   &--bigger {
-    @apply py-2 px-3 m-1 h-12 text-xl;
-    zoom: 1.2;
+    @apply text-base py-8 px-3 m-1 w-1/12;
+  }
+  &--bigger-x {
+    @apply py-2 px-4 m-1 h-12 text-xl;
   }
   &--dense {
     @apply py-0 px-1 m-0 h-6;
-  }
-
-  &--default {
-    @apply text-white bg-primary;
   }
 
   &--flat {
   }
 
   &--outline {
-    @apply border rounded;
+    @apply border rounded px-6;
   }
 
   &__inner {
-    @apply flex flex-no-wrap items-center content-center w-full;
+    @apply flex flex-no-wrap items-center content-center w-full h-auto;
     &__icon {
       @apply h-full items-center mr-2;
       line-height: 0;
@@ -147,6 +154,7 @@ export default {
     &__content {
       @apply h-full items-center w-full;
       line-height: 0;
+      letter-spacing: 1px;
     }
   }
 }

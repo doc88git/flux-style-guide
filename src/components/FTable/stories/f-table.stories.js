@@ -22,7 +22,8 @@ const arrList = [
   }
 ];
 
-storiesOf("Components|Table", module).add("Default", () => ({
+storiesOf("Components|Table", module)
+.add("Default", () => ({
   components: { FTable, FButton, FPagination, FDropdown },
   data: () => ({
     list: arrList,
@@ -65,6 +66,64 @@ storiesOf("Components|Table", module).add("Default", () => ({
         :header="header">
         <template v-slot:header_left>
           <f-button icon="add">Add</f-button>
+        </template>
+        <template v-slot:header_right>
+          <f-dropdown :list="list" :caret="caret" :position="position" :type="type" />
+        </template>
+        <template v-slot:footer_center>
+          <f-pagination
+            :currentPage="1"
+            :total="100"
+            :perPage="6"
+            :max="10"
+          />
+        </template>
+      </f-table>
+    </div>`
+}))
+.add("Custom", () => ({
+  components: { FTable, FButton, FPagination, FDropdown },
+  data: () => ({
+    list: arrList,
+    caret: true,
+    position: "down",
+    type: "outlined"
+  }),
+  props: {
+    sortBy: {
+      default: text("sortBy", "")
+    },
+    sortDirection: {
+      default: text("sortDirection", "asc")
+    },
+    data: {
+      default: Users
+    },
+    header: {
+      default: {
+        first_name: "Nome",
+        last_name: "Sobrenome",
+        title: "Título",
+        email: "Email",
+        gender: "Sexo",
+        phone_number: "Telefone",
+        birthdate: "Data de Nascimento",
+        "location.street": "Endereço",
+        "location.postcode": "CEP",
+        "location.city": "Cidade",
+        "location.state": "Estado"
+      }
+    }
+  },
+  template: `
+    <div class="p-8">
+      <f-table
+        :sortBy="sortBy"
+        :sortDirection="sortDirection"
+        :data="data"
+        :header="header">
+        <template v-slot:header_left>
+          <span>Aproximadamente: 58 resultados
         </template>
         <template v-slot:header_right>
           <f-dropdown :list="list" :caret="caret" :position="position" :type="type" />

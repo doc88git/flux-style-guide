@@ -1,17 +1,16 @@
 <template>
   <header class="main-header">
     <!-- <slot name="menu"></slot> -->
-    <f-menu></f-menu>
     <h4 class="main-header__title">{{ mainTitle }}</h4>
-    <slot name="avatar"></slot>
+    <!-- <slot name="settings"></slot> -->
   </header>
 </template>
 
 <script>
-import { FMenu } from '../FMenu';
+import { FButton } from '../FButton';
 export default {
   name: 'f-header',
-  components: { FMenu },
+  components: { FButton },
   props: {
     mainTitle: {
       type: String,
@@ -23,11 +22,15 @@ export default {
 
 <style lang="scss" scoped>
   .main-header {
-    @apply flex justify-between w-full p-4 text-center shadow-xxxl;
+    @apply flex justify-between w-full p-4 text-center items-center shadow-xxxl;
     &__title {
       @apply w-full font-bold;
       color: #666;
     }
+  }
+
+  .f-icon--base {
+    font-size: 1.5rem;
   }
 </style>
 
