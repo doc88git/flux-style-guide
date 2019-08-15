@@ -113,7 +113,7 @@ export default {
     flex-shrink: 1;
     flex-basis: 0%;
     &__label {
-      @apply block tracking-wide text-gray-700 font-bold mb-3;
+      @apply block tracking-wide text-gray-700 font-bold;
     }
     &__hint {
       @apply block tracking-wide text-gray text-sm mb-2 mt-2;

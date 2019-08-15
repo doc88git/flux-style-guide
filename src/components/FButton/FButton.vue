@@ -126,10 +126,10 @@ export default {
     }
   }
   &--bigger {
-    @apply text-base py-8 px-6 m-1 w-auto;
+    @apply text-base h-16 px-6 m-1 w-auto;
   }
   &--bigger-x {
-    @apply py-2 px-4 m-1 h-12 text-xl;
+    @apply py-2 px-4 m-1 h-20 text-xl;
   }
   &--dense {
     @apply py-0 px-1 m-0 h-6;
