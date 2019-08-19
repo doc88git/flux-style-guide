@@ -1,5 +1,5 @@
 <template>
-  <div class="f-checkbox">
+  <div class="checkbox">
     <label :for="id">
       <input
         type="checkbox"
@@ -8,7 +8,6 @@
         :value='value'
         :disabled="isDisabled"
         :label="label"
-        :checked="checked"
         @change="$emit('checkbox', $event.target.checked)"  
         hidden
       >
@@ -53,14 +52,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .f-checkbox {    
+  .f-checkbox {
+    display: inline-flex;
+    appearance: none;    
     &__custom {
       cursor: pointer;
       height: 15px;
       width: 15px;
       background-color: transparent;
       border-radius: 3px;
-      transition: all .1s ease-in-out;
       display: inline-flex;
       border: 1px solid #cdcdcd;
       position: relative;
@@ -71,8 +71,12 @@ export default {
 
       .f-icon {
         opacity: 0;
-        transition: all .2s ease-in-out;
-        color: lightseagreen
+        color: lightseagreen;
+        transform: scale(.9);
+
+        &--base {
+          @apply text-xl;
+        }
       }
     }
 
@@ -81,6 +85,34 @@ export default {
         border: 1px solid lightseagreen;
         .f-icon {
           opacity: 1;
+        }
+      }
+    }
+  }
+
+  .f-checkbox--gray {
+    .f-checkbox__custom {      
+      background-color: #ccc;
+      border: 1px solid #cdcdcd;
+
+      &:hover {
+        border: 1px solid transparent;
+        background: darken(#ccc, 20%);
+      }
+
+      .f-icon {
+        color: lightseagreen;
+      }
+    }
+
+    .f-checkbox {
+      &:checked {
+        ~ .f-checkbox__custom {
+          background: lightseagreen;
+          border: 1px solid transparent;
+          .f-icon {
+            color: #fff;
+          }
         }
       }
     }

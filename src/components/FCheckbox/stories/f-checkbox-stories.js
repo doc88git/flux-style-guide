@@ -27,10 +27,11 @@ stories.add("Default", () => ({
     },
     template: `
       <div class="p-8">
+
+        <h3>Checkbox</h3>
+        <f-checkbox :isDisabled="isDisabled" class="f-checkbox--gray">
+        </f-checkbox>
         <f-checkbox :isDisabled="isDisabled">
-          <label>
-            {{ label }}
-          </label>
         </f-checkbox>
       </div>
     `
