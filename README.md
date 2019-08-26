@@ -15,3 +15,6 @@ yarn storybook
 ```
 yarn test:unit
 ```
+
+## Publish
+npm publish --access=public
