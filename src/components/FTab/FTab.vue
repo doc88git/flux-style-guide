@@ -72,6 +72,7 @@ export default {
   methods: {
     setSelected(id) {
       this.selected = id;
+      console.log(id);
     },
     drag(e) {
       console.log(this.$refs);

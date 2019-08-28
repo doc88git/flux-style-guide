@@ -25,11 +25,14 @@ storiesOf("Components|Button", module)
         label: {
           default: text("label", "Button", groupId)
         },
+        disabled: {
+          default: false
+        },
         icon: {
           default: text("icon", "", groupId)
         },
         color: {
-          default: text("color", "primary", groupId)
+          default: text("color", "", groupId)
         },
         textColor: {
           default: text("textColor", "white", groupId)
@@ -37,7 +40,7 @@ storiesOf("Components|Button", module)
       },
       template: `
         <div class="p-8">
-          <div class="mt-4">Small:</div> <f-button :label="label" :icon="icon" :color="color" :text-color="textColor" :small="true" />
+          <div class="mt-4">Small:</div> <f-button :disabled="disabled" :label="label" :icon="icon" :color="color" :text-color="textColor" :small="true" />
           <div class="mt-4">Normal:</div> <f-button :label="label" :icon="icon" :color="color" :text-color="textColor" />
           <div class="mt-4">Bigger:</div> <f-button :label="label" :icon="icon" :color="color" :text-color="textColor" :bigger="true" />
         </div>

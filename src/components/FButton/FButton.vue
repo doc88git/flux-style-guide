@@ -38,7 +38,7 @@ export default {
     icon: String,
     color: {
       type: String,
-      default: "primary"
+      default: ''
     },
     textColor: String
   },
@@ -119,7 +119,7 @@ export default {
   }
 
   &--small {
-    @apply text-left py-1 px-4 h-8 text-xl;
+    @apply text-left py-1 px-2 h-8 text-xl;
 
     * {
       @apply text-sm;
