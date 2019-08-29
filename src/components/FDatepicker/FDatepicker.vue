@@ -26,7 +26,7 @@ export default {
     },
     rangeSeparator: {
       type: String,
-      default: ''
+      default: "até"
     }
   },
   data() {
