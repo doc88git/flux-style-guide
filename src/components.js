@@ -15,3 +15,4 @@ export * from "./components/FBadge/index.js";
 export * from "./components/FSelect/index.js";
 export * from "./components/FHeader/index.js";
 export * from "./components/FCheckbox/index.js";
+export * from "./components/FMenu/index.js";

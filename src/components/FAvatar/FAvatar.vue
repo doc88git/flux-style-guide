@@ -8,8 +8,7 @@ export default {
   props: {
     src: {
       type: String,
-      default: "https://cdn.quasar.dev/img/avatar5.jpg",
-      required: true
+      default: "https://cdn.quasar.dev/img/avatar5.jpg"
     }
   }
 };
@@ -17,7 +16,10 @@ export default {
 
 <style lang="scss" scoped>
 .f-avatar {
-  @apply items-center h-12 w-12 relative align-middle inline-block rounded-full object-cover bg-center;
+  @apply items-center border-2 relative align-middle inline-block rounded-full object-cover bg-center;
+  height: 50px;
+  width: 50px;
   font-size: 48px;
+  padding: 1px;
 }
 </style>

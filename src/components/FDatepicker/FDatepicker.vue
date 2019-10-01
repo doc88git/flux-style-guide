@@ -69,9 +69,8 @@ export default {
     :-moz-placeholder { /* Firefox 18- */
       color: black;
     }
-  }
 
-  .mx-calendar {
+    .mx-calendar {
     * {
       @apply text-gray-700;
     }
@@ -88,12 +87,17 @@ export default {
   .mx-calendar-content {
     .cell {
       &.actived {
-        @apply bg-primary text-white rounded-sm;
+        @apply bg-secondary text-white rounded-sm;
       }
 
       &.inrange {
-        @apply bg-purple-100;
+        @apply bg-secondary-lighter text-gray-700;
+      }
+
+      &.disabled {
+        @apply bg-gray-100 text-gray-300;
       }
     }
+    } 
   }
 </style>
