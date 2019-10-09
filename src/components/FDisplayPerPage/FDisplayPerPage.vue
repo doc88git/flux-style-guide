@@ -1,6 +1,6 @@
 <template>
   <div class="f-display-per-page" :class="theme">
-    <span class="text-gray-800 text-sm">Exibir por página:</span>
+    <span class="text-gray-800">Exibir por página:</span>
     <button v-for="item in options" :key="item.id" class="btn" :class="{ 'selected': item.selected }" :value="item.label" @click="change">
       {{ item.label }}
     </button>
@@ -78,7 +78,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .f-display-per-page {
   @apply flex items-center;
 

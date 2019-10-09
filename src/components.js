@@ -16,3 +16,4 @@ export * from "./components/FSelect/index.js";
 export * from "./components/FHeader/index.js";
 export * from "./components/FCheckbox/index.js";
 export * from "./components/FMenu/index.js";
+export * from "./components/FDisplayPerPage/index.js";

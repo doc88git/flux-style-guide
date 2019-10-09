@@ -10,7 +10,7 @@
       @status="setStatus"
     >
       <div v-show="showLabel" class="f-select__label">
-        {{ labelSelected || "Selecione" }}
+        {{ labelSelected || customLabel }}
       </div>
 
       <div v-show="multiple" class="f-select__multiple">
@@ -67,6 +67,10 @@ export default {
     type: {
       type: String,
       default: "input"
+    },
+    customLabel: {
+      type: String,
+      default: "Selecione"
     },
     color: String,
     textColor: String,
