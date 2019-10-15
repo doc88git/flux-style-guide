@@ -30,7 +30,7 @@ export default {
 <style lang="scss">
   .f-widget {
     @apply cursor-pointer flex flex-wrap;
-    width: 40px;
+    width: 35px;
     &.primary {
       @apply text-primary; 
     }

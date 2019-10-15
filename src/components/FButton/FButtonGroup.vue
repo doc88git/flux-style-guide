@@ -51,7 +51,7 @@ export default {
       };
     }
   },
-  mounted() {
+  created() {
     if (this.default) this.change(this.default);
   },
   methods: {
