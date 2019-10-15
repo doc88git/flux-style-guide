@@ -1,5 +1,5 @@
 <template>
-  <img :src="src" class="f-avatar" />
+  <img :src="src" @click="click" class="f-avatar" />
 </template>
 
 <script>
@@ -9,6 +9,10 @@ export default {
     src: {
       type: String,
       default: "https://cdn.quasar.dev/img/avatar5.jpg"
+    },
+    click: {
+      type: Function,
+      default: () => ({})
     }
   }
 };
