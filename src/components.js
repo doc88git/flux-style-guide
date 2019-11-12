@@ -1,4 +1,6 @@
 export * from "./components/FIcon/index.js";
+export * from "./components/FAlert/index.js";
+export * from "./components/FAlertController/index.js";
 export * from "./components/FContainer/index.js";
 export * from "./components/FButton/index.js";
 export * from "./components/FField/index.js";
