@@ -78,7 +78,10 @@ export default {
       type: Array,
       required: true,
       validator: items => {
-        let filter = items.filter(item => "label" in item && "value" in item);
+        let filter = items.filter(item => {
+          ("label" in item && "value" in item) ||
+            ("id" in item && "name" in item);
+        });
         return filter.length === items.length;
       }
     },
