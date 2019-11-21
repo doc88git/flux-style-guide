@@ -198,9 +198,6 @@ storiesOf("Components|Button", module)
         text: {
           default: text("text", "Button", groupId)
         },
-        label: {
-          default: text("label", "Button", groupId)
-        },
         icon: {
           default: text("icon", "", groupId)
         },

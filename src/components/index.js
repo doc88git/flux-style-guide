@@ -17,6 +17,7 @@ import * as FBadge from "./FBadge/index.js";
 import * as FTooltip from "./FTooltip/index.js";
 import * as FSelect from "./FSelect/index.js";
 import * as FHeader from "./FHeader/index.js";
+import * as FChip from "./FChip/index.js";
 
 const components = [
   FIcon,
@@ -37,7 +38,8 @@ const components = [
   FBadge,
   FTooltip,
   FSelect,
-  FHeader
+  FHeader,
+  FChip
 ];
 
 export default components;
