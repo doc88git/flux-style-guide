@@ -85,12 +85,18 @@ storiesOf("Form|Select", module)
         default: select("type", typeList, "default", groupId)
       }
     },
+    methods: {
+      searchValue(value) {
+        console.log({ emited: value });
+      }
+    },
     template: `
     <div class="p-8">
       <f-select
-        :options="[]"
+        :options="options"
         :type="type"
         :search="true"
+        @search-value="searchValue"
         v-model="value" />
     </div>
   `
