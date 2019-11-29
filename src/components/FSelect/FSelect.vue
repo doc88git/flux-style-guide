@@ -117,7 +117,8 @@ export default {
     },
     inputClasses() {
       return {
-        ["f-select--outlined"]: this.type === "outlined"
+        ["f-select--outlined"]: this.type === "outlined",
+        ["f-select--input"]: this.type === "input"
       };
     },
     multipleList() {
@@ -196,6 +197,10 @@ export default {
 
   &--outlined {
     @apply text-primary;
+  }
+
+  &--input {
+    @apply text-black;
   }
 }
 

@@ -68,6 +68,33 @@ storiesOf("Form|Select", module)
     </div>
   `
   }))
+  .add("SearchRequest", () => ({
+    components: { FSelect },
+    data: () => ({
+      value: 1
+    }),
+    props: {
+      options: {
+        default: array(
+          "options",
+          arr.map((v, i) => ({ value: ++i, label: v })),
+          groupId
+        )
+      },
+      type: {
+        default: select("type", typeList, "default", groupId)
+      }
+    },
+    template: `
+    <div class="p-8">
+      <f-select
+        :options="[]"
+        :type="type"
+        :search="true"
+        v-model="value" />
+    </div>
+  `
+  }))
   .add("Multiple", () => ({
     components: { FSelect },
     data: () => ({
