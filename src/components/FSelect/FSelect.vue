@@ -51,6 +51,8 @@ const fuseOptions = {
   shouldSort: false
 };
 
+let intTimeout = 0;
+
 export default {
   name: "f-select",
   components: { FDropdown, FInput, FChip },
@@ -98,6 +100,11 @@ export default {
         this.selected = this.$attrs.value;
       },
       immediate: true
+    },
+    innerValue: {
+      handler: function() {
+        this.debounceInput(this.innerValue);
+      }
     }
   },
   computed: {
@@ -120,7 +127,8 @@ export default {
     },
     inputClasses() {
       return {
-        ["f-select--outlined"]: this.type === "outlined"
+        ["f-select--outlined"]: this.type === "outlined",
+        ["f-select--input"]: this.type === "input"
       };
     },
     multipleList() {
@@ -142,9 +150,18 @@ export default {
     removeChip(value) {
       this.list = this.list.filter(item => item !== value);
     },
+    debounceInput(value) {
+      if (intTimeout) clearTimeout(intTimeout);
+      if (!value) return false;
+
+      intTimeout = setTimeout(() => {
+        this.$emit("search-value", value);
+      }, 100);
+    },
     setValue(value) {
       if (this.multiple) return this.addMultiple(value);
       this.selected = value;
+
       this.$emit("input", value);
     },
     addMultiple(value) {
@@ -199,6 +216,10 @@ export default {
 
   &--outlined {
     @apply text-primary;
+  }
+
+  &--input {
+    @apply text-black;
   }
 }
 
