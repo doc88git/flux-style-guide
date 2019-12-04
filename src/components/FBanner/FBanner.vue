@@ -108,6 +108,7 @@ export default {
   data() {
     return {
       currentNumber: 0,
+      lastCurrentNumber: 0,
       animation: false,
       images: [banner1, banner2, banner3, banner4]
     };
@@ -122,6 +123,16 @@ export default {
       return {
         "FBanner--out-slider": ""
       };
+    }
+  },
+  watch: {
+    currentNumber() {
+      if (Math.abs(this.lastCurrentNumber - this.currentNumber) >= 2) {
+        this.animation = true;
+        this.currentNumber++;
+        // { "slide__active image-show" index === this.currentNumber };
+      }
+      this.lastCurrentNumber = this.currentNumber;
     }
   },
   methods: {
@@ -187,6 +198,7 @@ export default {
   &__container {
     max-width: 100%;
     max-height: 700px;
+    position: relative;
   }
 
   &__slider-arrow {
@@ -225,20 +237,20 @@ export default {
 
     &--out-slider {
       fill: #ccc;
-      top: 42%;
+      top: 44%;
 
       &--right:hover,
       &--left:hover {
         fill: #1a202c;
       }
       &--right {
-        right: 45px;
+        right: 30px;
         &:hover {
           transform: scale(1.5);
         }
       }
       &--left {
-        left: 45px;
+        left: 30px;
         transform: rotate(180deg);
         &:hover {
           transform: scale(1.5) rotate(180deg);
