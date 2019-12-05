@@ -1,24 +1,80 @@
 <template>
-  <div class="FBanner">
-    <div class="FBanner__banner-slider-box">
+  <div class="FBanner" :class="bannerStyle">
+    <div class="FBanner__container">
       <svg
         @click="prev()"
-        class="FBanner__slider-arrow FBanner__slider-arrow--left"
-        id="Layer_1"
+        class="FBanner__slider-arrow--out-slider--left FBanner__slider-arrow FBanner__slider-arrow--out-slider"
         data-name="Layer 1"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 16 16"
-        v-if="currentNumber != 0"
+        v-if="currentNumber != 0 && outSlider && !bullet"
       >
         <path
           d="M3.65,15.85a.48.48,0,0,0,.7,0l7.5-7.5a.48.48,0,0,0,0-.7L4.35.15a.48.48,0,0,0-.7,0,.48.48,0,0,0,0,.7L10.79,8,3.65,15.15A.48.48,0,0,0,3.65,15.85Z"
         />
       </svg>
+      <div class="FBanner__banner-slider-box">
+        <svg
+          @click="prev()"
+          class="FBanner__slider-arrow FBanner__slider-arrow--left"
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 16 16"
+          v-if="currentNumber != 0 && !bullet && !outSlider"
+        >
+          <path
+            d="M3.65,15.85a.48.48,0,0,0,.7,0l7.5-7.5a.48.48,0,0,0,0-.7L4.35.15a.48.48,0,0,0-.7,0,.48.48,0,0,0,0,.7L10.79,8,3.65,15.15A.48.48,0,0,0,3.65,15.85Z"
+          />
+        </svg>
+
+        <svg
+          @click="next()"
+          v-if="
+            currentNumber >= 0 &&
+              currentNumber != this.images.length - 1 &&
+              !bullet &&
+              !outSlider
+          "
+          class="FBanner__slider-arrow FBanner__slider-arrow--right"
+          data-name="Layer 2"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M3.65,15.85a.48.48,0,0,0,.7,0l7.5-7.5a.48.48,0,0,0,0-.7L4.35.15a.48.48,0,0,0-.7,0,.48.48,0,0,0,0,.7L10.79,8,3.65,15.15A.48.48,0,0,0,3.65,15.85Z"
+          />
+        </svg>
+
+        <div
+          class="FBanner__banner-box FBanner__banner-box--out-slider-banner-box"
+        >
+          <img
+            class="FBanner__banner-slider-image"
+            v-for="(image, key) in images"
+            :key="key"
+            :src="image"
+            :class="imageClass(key)"
+          />
+        </div>
+        <div class="FBanner__bullet" v-if="bullet && !outSlider">
+          <button
+            v-for="(image, key) in images"
+            :key="key"
+            :class="imageClass(key)"
+            class="FBanner__bullet-button"
+            @click="setImage(key)"
+          ></button>
+        </div>
+      </div>
       <svg
         @click="next()"
-        v-if="currentNumber >= 0 && currentNumber != this.images.length - 1"
-        class="FBanner__slider-arrow FBanner__slider-arrow--right"
-        id="slider-arrow-right"
+        v-if="
+          currentNumber >= 0 &&
+            currentNumber != this.images.length - 1 &&
+            outSlider &&
+            !bullet
+        "
+        class="FBanner__slider-arrow FBanner__slider-arrow--out-slider FBanner__slider-arrow--out-slider--right"
         data-name="Layer 2"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 16 16"
@@ -27,14 +83,14 @@
           d="M3.65,15.85a.48.48,0,0,0,.7,0l7.5-7.5a.48.48,0,0,0,0-.7L4.35.15a.48.48,0,0,0-.7,0,.48.48,0,0,0,0,.7L10.79,8,3.65,15.15A.48.48,0,0,0,3.65,15.85Z"
         />
       </svg>
-      <div class="FBanner__banner-box">
-        <img
-          class="FBanner__banner-slider-image"
+      <div class="FBanner__bullet-out" v-if="bullet && outSlider">
+        <button
           v-for="(image, key) in images"
           :key="key"
-          :src="image"
           :class="imageClass(key)"
-        />
+          class="FBanner__bullet-out-button-out"
+          @click="setImage(key)"
+        ></button>
       </div>
     </div>
   </div>
@@ -45,21 +101,27 @@ import banner1 from "../../assets/images/u509_banner_1.png";
 import banner2 from "../../assets/images/bg-gradient_u9_banner_2.png";
 import banner3 from "../../assets/images/u510_banner_1.png";
 import banner4 from "../../assets/images/bg-gradient_u9_banner_2.png";
-import json from "./banner.json";
+// import json from "./banner.json";
 import { setTimeout } from "timers";
 
 export default {
   data() {
     return {
-      images: [banner1, banner2, banner3, banner4],
       currentNumber: 0,
-      json,
-      animation: false
+      animation: false,
+      images: [banner1, banner2, banner3, banner4]
     };
   },
+  props: {
+    bullet: Boolean,
+    outSlider: Boolean
+    // images: Array
+  },
   computed: {
-    assetUrl() {
-      return require(this.images);
+    bannerStyle() {
+      return {
+        "FBanner--out-slider": ""
+      };
     }
   },
   methods: {
@@ -99,6 +161,22 @@ export default {
           }, 1500);
         }
       }
+    },
+    setImage(index) {
+      if (!this.animation) {
+        this.animation = true;
+        this.currentNumber = index;
+        setTimeout(() => {
+          this.animation = false;
+        }, 1500);
+        if (index > this.currentNumber + 2) {
+          this.animation = true;
+          this.currentNumber++;
+          setTimeout(() => {
+            this.animation = false;
+          }, 1500);
+        }
+      }
     }
   }
 };
@@ -106,15 +184,19 @@ export default {
 
 <style lang="scss" scoped>
 .FBanner {
+  &__container {
+    max-width: 100%;
+    max-height: 700px;
+  }
+
   &__slider-arrow {
     position: absolute;
     display: block;
     z-index: 1;
-    fill: #fff;
-    // fill: #1a202c;
+    fill: #ccc;
     margin-right: 2px;
     margin-bottom: 2px;
-    top: 260px;
+    top: 44%;
     right: 20px;
     width: 90;
     height: 80px;
@@ -125,7 +207,7 @@ export default {
 
     &--right:hover,
     &--left:hover {
-      fill: #fff;
+      fill: #ccc;
     }
     &--right {
       right: 4px;
@@ -140,21 +222,44 @@ export default {
         transform: scale(1.5) rotate(180deg);
       }
     }
+
+    &--out-slider {
+      fill: #ccc;
+      top: 42%;
+
+      &--right:hover,
+      &--left:hover {
+        fill: #1a202c;
+      }
+      &--right {
+        right: 45px;
+        &:hover {
+          transform: scale(1.5);
+        }
+      }
+      &--left {
+        left: 45px;
+        transform: rotate(180deg);
+        &:hover {
+          transform: scale(1.5) rotate(180deg);
+        }
+      }
+    }
   }
 
   &__banner-slider-box {
-    width: 1410px;
-    height: 600px;
     border-radius: 10px;
+    max-height: 600px;
+    max-width: calc(100% - 180px);
     overflow: hidden;
-    margin: 5px;
-    position: absolute;
+    margin: auto;
+    position: relative;
     background-color: #ccc;
   }
 
   &__banner-slider-image {
+    top: 0;
     position: absolute;
-    object-fit: cover;
     &:not(.image-show) {
       display: none;
     }
@@ -177,12 +282,64 @@ export default {
   }
 
   &__banner-box {
-    bottom: 97px;
+    padding-top: 56.25%;
     position: relative;
   }
 
   &__slider-box {
-    max-height: 100%;
+    padding-top: 56.25%;
+  }
+
+  &__bullet {
+    justify-content: center;
+    display: flex;
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    &-button {
+      background-color: #ccc;
+      cursor: pointer;
+      z-index: 5;
+      position: relative;
+      padding: 10px;
+      margin: 0 5px 0 5px;
+      border-radius: 50px;
+      height: 0.5px;
+      width: 0.5px;
+      opacity: 0.6;
+      &:hover {
+        opacity: 0.9;
+      }
+      &:active {
+        opacity: 0.9;
+      }
+    }
+  }
+
+  &__bullet-out {
+    justify-content: center;
+    display: flex;
+    position: relative;
+    width: auto;
+    margin-top: 10px;
+    &-button-out {
+      background-color: #ccc;
+      cursor: pointer;
+      z-index: 5;
+      position: relative;
+      padding: 10px;
+      margin: 0 5px 0 5px;
+      border-radius: 50px;
+      height: 0.5px;
+      width: 0.5px;
+      opacity: 0.6;
+      &:hover {
+        opacity: 0.9;
+      }
+      &:active {
+        opacity: 0.9;
+      }
+    }
   }
 }
 </style>
