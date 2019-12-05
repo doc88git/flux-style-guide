@@ -53,14 +53,13 @@
             v-for="(image, key) in images"
             :key="key"
             :src="image"
-            :class="imageClass(key)"
+            :class="classImages[key]"
           />
         </div>
         <div class="FBanner__bullet" v-if="bullet && !outSlider">
           <button
             v-for="(image, key) in images"
             :key="key"
-            :class="imageClass(key)"
             class="FBanner__bullet-button"
             @click="setImage(key)"
           ></button>
@@ -87,7 +86,6 @@
         <button
           v-for="(image, key) in images"
           :key="key"
-          :class="imageClass(key)"
           class="FBanner__bullet-out-button-out"
           @click="setImage(key)"
         ></button>
@@ -110,7 +108,11 @@ export default {
       currentNumber: 0,
       lastCurrentNumber: 0,
       animation: false,
-      images: [banner1, banner2, banner3, banner4]
+      images: [banner1, banner2, banner3, banner4],
+      classImages: [],
+      activeImage: "slide__active image-show",
+      nextImage: "slide__next image-show",
+      prevImage: "slide__prev image-show"
     };
   },
   props: {
@@ -128,34 +130,32 @@ export default {
   watch: {
     currentNumber() {
       if (Math.abs(this.lastCurrentNumber - this.currentNumber) >= 2) {
-        this.animation = true;
-        this.currentNumber++;
-        // { "slide__active image-show" index === this.currentNumber };
+        // this.animation = true;
+        // this.currentNumber++;
       }
-      this.lastCurrentNumber = this.currentNumber;
+      // this.lastCurrentNumber = this.currentNumber;
     }
   },
+  created() {
+    this.classImages = Array.from({ length: this.images.length }, () => null);
+    this.classImages[0] = this.activeImage;
+    this.classImages[1] = this.nextImage;
+  },
   methods: {
-    imageClass(index) {
-      return [
-        {
-          "slide__prev image-show":
-            index < this.currentNumber &&
-            Math.abs(index - this.currentNumber) <= 1
-        },
-        { "slide__active image-show": index === this.currentNumber },
-        {
-          "slide__next image-show next-to":
-            index > this.currentNumber &&
-            Math.abs(index - this.currentNumber) <= 1
-        }
-      ];
-    },
     next() {
       if (!this.animation) {
         if (this.images.length - 1 > this.currentNumber) {
+          let initialImages = Array.from(
+            { length: this.images.length },
+            () => null
+          );
           this.animation = true;
+          this.lastCurrentNumber = this.currentNumber;
           this.currentNumber++;
+          initialImages[this.currentNumber] = this.activeImage;
+          initialImages[this.currentNumber + 1] = this.nextImage;
+          initialImages[this.currentNumber - 1] = this.prevImage;
+          this.classImages = initialImages;
         }
         setTimeout(() => {
           this.animation = false;
@@ -165,8 +165,17 @@ export default {
     prev() {
       if (!this.animation) {
         if (this.currentNumber > 0) {
+          let initialImages = Array.from(
+            { length: this.images.length },
+            () => null
+          );
           this.animation = true;
+          this.lastCurrentNumber = this.currentNumber;
           this.currentNumber--;
+          initialImages[this.currentNumber] = this.activeImage;
+          initialImages[this.currentNumber + 1] = this.nextImage;
+          initialImages[this.currentNumber - 1] = this.prevImage;
+          this.classImages = initialImages;
           setTimeout(() => {
             this.animation = false;
           }, 1500);
@@ -175,14 +184,43 @@ export default {
     },
     setImage(index) {
       if (!this.animation) {
-        this.animation = true;
-        this.currentNumber = index;
-        setTimeout(() => {
-          this.animation = false;
-        }, 1500);
-        if (index > this.currentNumber + 2) {
+        console.log(this.lastCurrentNumber, this.currentNumber);
+        if (Math.abs(this.lastCurrentNumber - this.currentNumber) >= 2) {
+          // let initialImages = Array.from(
+          //   { length: this.images.length },
+          //   () => null
+          // );
+          // this.animation = true;
+          // this.lastCurrentNumber = this.currentNumber;
+          // this.currentNumber = index;
+          // // Esta parte vai mudar o inicio
+          // if (this.lastCurrentNumber - this.currentNumber < 0) {
+          //   initialImages[this.currentNumber - 1] = this.prevImage;
+
+          // } else {
+
+          // }
+          // initialImages[this.currentNumber] = this.activeImage;
+          // initialImages[this.currentNumber + 1] = this.nextImage;
+          // initialImages[this.currentNumber - 1] = this.prevImage;
+          // // Esta parte vai mudar o final
+          // this.classImages = initialImages;
+          // setTimeout(() => {
+          //   this.animation = false;
+          // }, 1500);
+          console.log("caso especial");
+        } else {
+          let initialImages = Array.from(
+            { length: this.images.length },
+            () => null
+          );
           this.animation = true;
-          this.currentNumber++;
+          this.lastCurrentNumber = this.currentNumber;
+          this.currentNumber = index;
+          initialImages[this.currentNumber] = this.activeImage;
+          initialImages[this.currentNumber + 1] = this.nextImage;
+          initialImages[this.currentNumber - 1] = this.prevImage;
+          this.classImages = initialImages;
           setTimeout(() => {
             this.animation = false;
           }, 1500);
@@ -277,14 +315,15 @@ export default {
     }
     &.slide__prev {
       transform: translateX(-100%);
-      z-index: 3;
+      z-index: 4;
     }
     &.slide__active {
       transform: translateX(0%);
-      z-index: 2;
+      z-index: 3;
     }
     &.slide__next {
       transform: translateX(50%);
+      z-index: 2;
     }
     &.slide__prev,
     &.slide__active,
