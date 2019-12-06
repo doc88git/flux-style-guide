@@ -1,14 +1,10 @@
 <template>
   <div class="f-tooltip">
-    <slot>
-      <f-button
-        @click="toggleVisible"
-        @mouseover="show"
-        @mouseleave="hide"
-        v-bind="[$props, $attrs]"
-        >{{ label }}
-      </f-button>
-    </slot>
+    <div @click="toggleVisible" @mouseover="show" @mouseleave="hide">
+      <slot>
+        <f-button v-bind="[$props, $attrs]">{{ label }} </f-button>
+      </slot>
+    </div>
     <transition v-if="isVisible" :name="`fade-${transition}`">
       <div class="f-tooltip__item" :class="[classDynamic, bgColor]">
         <slot name="content" />
