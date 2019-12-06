@@ -67,12 +67,12 @@ export default {
     align-items: center;
     border: 1px solid;
     padding-top: 4px;
-    padding-right: 9px;
+    padding-right: 10px;
     padding-left: 7px;
     padding-bottom: 4px;
     border-radius: 5px;
     display: flex;
-    min-width: 60px;
+    min-width: 65px;
     justify-content: center;
   }
 

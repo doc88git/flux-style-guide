@@ -1,14 +1,10 @@
 <template>
   <div class="f-tooltip">
-    <slot>
-      <f-button
-        @click="toggleVisible"
-        @mouseover="show"
-        @mouseleave="hide"
-        v-bind="[$props, $attrs]"
-        >{{ label }}
-      </f-button>
-    </slot>
+    <div @click="toggleVisible" @mouseover="show" @mouseleave="hide">
+      <slot>
+        <f-button v-bind="[$props, $attrs]">{{ label }} </f-button>
+      </slot>
+    </div>
     <transition v-if="isVisible" :name="`fade-${transition}`">
       <div class="f-tooltip__item" :class="[classDynamic, bgColor]">
         <slot name="content" />
@@ -56,7 +52,7 @@ export default {
       return [
         `f-tooltip--${this.color}`,
         `f-tooltip__item--${this.position}`,
-        `bg-${this.bgColor}`,
+        `f-tooltip__item--${this.bgColor}`,
         `text-${this.textColor}`
       ];
     },
@@ -64,7 +60,8 @@ export default {
       return [
         `f-tooltip__item--${this.position}`,
         "f-tooltip__item__arrow",
-        `f-tooltip__item__arrow--${this.position}`
+        `f-tooltip__item__arrow--${this.position}`,
+        `f-tooltip__item__arrow--${this.bgColor}`
       ];
     },
     transition() {
@@ -91,11 +88,20 @@ export default {
   @apply relative cursor-pointer inline-block;
 
   &__item {
-    @apply absolute px-2 py-1 text-sm rounded-lg shadow self-center text-center;
+    @apply absolute bg-black px-2 py-1 text-sm rounded-lg shadow self-center text-center;
     width: 7rem;
     max-width: 10rem;
     min-width: 3rem;
     left: 100%;
+
+    &--primary {
+      @apply bg-primary text-white;
+      .f-tooltip__arrow {
+        &:after {
+          @apply bg-primary;
+        }
+      }
+    }
 
     &--secondary {
       @apply bg-secondary text-white;
@@ -135,7 +141,7 @@ export default {
       width: 18px;
       height: 10px;
       &:after {
-        @apply absolute  bg-black shadow;
+        @apply absolute bg-black shadow;
         content: "";
         width: 10px;
         height: 10px;
@@ -162,6 +168,16 @@ export default {
         top: 50%;
         left: calc(100% - 5px);
         transform: translate(0%, -50%) rotate(-90deg);
+      }
+      &--primary {
+        &:after {
+          @apply bg-primary;
+        }
+      }
+      &--secondary {
+        &:after {
+          @apply bg-secondary;
+        }
       }
     }
   }

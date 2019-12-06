@@ -10,9 +10,9 @@ storiesOf("Components|Tags", module).add(
       bgColor: text("Background", "white"),
       lineColor: text("Line Color", "black"),
       legend: text("Label", "Empresa"),
-      icon: text("Icon", "done"),
-      iconColor: text("Icon Color", "orange"),
-      text: text("Text", "Doc88 Software Development")
+      icon: text("Icon", "dashboard"),
+      iconColor: text("Icon Color", "purple"),
+      text: text("Text", "Flux Services")
     }),
     methods: {},
     props: {},

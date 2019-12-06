@@ -8,26 +8,22 @@ const options = [
   { label: 50, value: 3, selected: false }
 ];
 
-storiesOf("Components|DisplayPerPage", module)
-  .add(
-    "Default",
-    () => ({
-      components: { FDisplayPerPage },
-      data: () => ({
-        options
-      }),
-      methods: {
-        handleChange: value => {
-          const elem = document.querySelector('.selected');
-          elem.classList.remove('selected');
-          value.target.classList.add('selected');
-          console.log(value.target.value);
-        }
-      },
-      template: `
+storiesOf("Components|DisplayPerPage", module).add("Default", () => ({
+  components: { FDisplayPerPage },
+  data: () => ({
+    options
+  }),
+  methods: {
+    handleChange: value => {
+      const elem = document.querySelector(".selected");
+      elem.classList.remove("selected");
+      value.target.classList.add("selected");
+      console.log(value.target.value);
+    }
+  },
+  template: `
         <div>
           <f-display-per-page :options="options" :change="handleChange" theme="secondary"></f-display-per-page>
         </div>
       `
-    })
-  )
+}));
