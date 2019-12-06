@@ -44,7 +44,9 @@ storiesOf("Components|Tooltip", module)
   }))
   .add("All", () => ({
     components: { FTooltip },
-    data: () => ({}),
+    data: () => ({
+      name: false
+    }),
     props: {
       position: {
         default: select("position", ["top", "bottom", "left", "right"], "top")
@@ -52,22 +54,22 @@ storiesOf("Components|Tooltip", module)
     },
     template: `
       <div class="p-10 w-full text-center">
-        <f-tooltip position="top" label="top">
+        <f-tooltip position="top" label="top" bgColor="primary">
           <template v-slot:content>
             tooltip on top
           </template>
         </f-tooltip>
-        <f-tooltip position="bottom" label="bottom">
+        <f-tooltip position="bottom" label="bottom" bgColor="primary">
           <template v-slot:content>
             tooltip on bottom
           </template>
         </f-tooltip>
-        <f-tooltip position="left" label="left">
+        <f-tooltip position="left" label="left" bgColor="primary">
           <template v-slot:content>
             tooltip on left
           </template>
         </f-tooltip>
-        <f-tooltip position="right" label="right">
+        <f-tooltip position="right" label="right" bgColor="primary">
           <template v-slot:content>
             tooltip on right
           </template>
