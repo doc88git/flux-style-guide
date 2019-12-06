@@ -194,15 +194,20 @@ export default {
           // this.lastCurrentNumber = this.currentNumber;
           // this.currentNumber = index;
           // // Esta parte vai mudar o inicio
-          // if (this.lastCurrentNumber - this.currentNumber < 0) {
+          // if (this.lastCurrentNumber - this.currentNumber > 0) {
+          //   console.log("entrei");
+          //   this.classImages[this.lastCurrentNumber - 1] = null;
+          //   this.classImages[this.currentNumber] = this.prevImage;
+          //   initialImages[this.currentNumber] = this.activeImage;
+          //   initialImages[this.lastCurrentNumber] = this.nextImage;
           //   initialImages[this.currentNumber - 1] = this.prevImage;
-
+          //   this.classImages = initialImages;
           // } else {
-
+          //   //outrladja
           // }
-          // initialImages[this.currentNumber] = this.activeImage;
-          // initialImages[this.currentNumber + 1] = this.nextImage;
-          // initialImages[this.currentNumber - 1] = this.prevImage;
+          // // initialImages[this.currentNumber] = this.activeImage;
+          // // initialImages[this.currentNumber + 1] = this.nextImage;
+          // // initialImages[this.currentNumber - 1] = this.prevImage;
           // // Esta parte vai mudar o final
           // this.classImages = initialImages;
           // setTimeout(() => {
