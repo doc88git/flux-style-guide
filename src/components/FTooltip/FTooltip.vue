@@ -2,7 +2,9 @@
   <div class="f-tooltip">
     <div @click="toggleVisible" @mouseover="show" @mouseleave="hide">
       <slot>
-        <f-button v-bind="[$props, $attrs]">{{ label }} </f-button>
+        <f-button @click="toggleVisible" v-bind="[$props, $attrs]"
+          >{{ label }}
+        </f-button>
       </slot>
     </div>
     <transition v-if="isVisible" :name="`fade-${transition}`">
@@ -66,7 +68,6 @@ export default {
     },
     transition() {
       return this.isVisible ? "in" : "out";
-      // return this.click ? "fade" : `slide-${this.position}`;
     }
   },
   methods: {
@@ -93,6 +94,7 @@ export default {
     max-width: 10rem;
     min-width: 3rem;
     left: 100%;
+    z-index: 10;
 
     &--primary {
       @apply bg-primary text-white;
