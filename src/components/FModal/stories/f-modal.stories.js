@@ -55,7 +55,6 @@ storiesOf("Components|Modal", module).add(
               <f-button label="Cancelar" flat @click="toggleModal"></f-button>
               <f-button label="Adicionar" color="primary" flat></f-button>
             </f-card-actions>
-            <input>
           </f-card>
         </f-modal>
       </div>
