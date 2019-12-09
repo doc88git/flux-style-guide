@@ -1,14 +1,20 @@
 <template>
   <div class="f-display-per-page" :class="theme">
     <span class="text-gray-800">Exibir por página:</span>
-    <button v-for="item in options" :key="item.id" class="btn" :class="{ 'selected': item.selected }" :value="item.label" @click="change">
+    <button
+      v-for="item in options"
+      :key="item.id"
+      class="btn"
+      :class="{ selected: item.selected }"
+      :value="item.label"
+      @click="change"
+    >
       {{ item.label }}
     </button>
   </div>
 </template>
 
 <script>
-
 export default {
   name: "f-display-per-page",
   components: {},
@@ -26,7 +32,7 @@ export default {
     },
     theme: {
       type: String,
-      default: 'primary'
+      default: "primary"
     },
     value: {
       type: String,

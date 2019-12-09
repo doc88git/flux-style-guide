@@ -4,6 +4,7 @@ import Screen from "../../plugins/Screen";
 import uid from "../../utils/uid.js";
 
 export default {
+  name: "f-alert-controller",
   data: () => ({
     width: Screen.width,
     size: 0,
