@@ -8,7 +8,7 @@
     @mouseover="mouseover"
     @mouseleave="mouseleave"
   >
-    <div class="btn__inner">
+    <div class="btn__inner" :class="[btnInnerCenter]">
       <div class="btn__inner__icon" :class="[btnCenter]" v-if="icon">
         <f-icon :name="icon" />
       </div>
@@ -40,6 +40,10 @@ export default {
       type: String,
       default: ''
     },
+    radius: {
+      type: Boolean,
+      default: true
+    },
     textColor: String
   },
   computed: {
@@ -65,10 +69,15 @@ export default {
         [`color--outline--${this.color}`]: !!this.color && this.outline
       };
 
+      let btnRadius = {
+        ["btn--noradius"]: this.radius === false,
+      };
+
       return {
         ...btnDefault,
         ...btnOutline,
         ...btnFlat,
+        ...btnRadius,
         ["btn--small"]: this.small,
         ["btn--bigger"]: this.bigger,
         ["btn--dense"]: this.dense,
@@ -78,6 +87,10 @@ export default {
     btnCenter() {
       if (this.label || this.hasDefaultSlot) return "";
       return "btn__inner__icon--center";
+    },
+    btnInnerCenter() {
+      if (this.label || this.hasDefaultSlot) return "";
+      return "btn__inner--center";
     },
     hasDefaultSlot() {
       return !!this.$slots.default;
@@ -114,6 +127,10 @@ export default {
     @apply outline-none;
   }
 
+  &--noradius {
+    border-radius: 0px;
+  }
+
   &--default {
     @apply text-white px-6 bg-primary;
   }
@@ -144,6 +161,9 @@ export default {
 
   &__inner {
     @apply flex flex-no-wrap items-center content-center w-full h-auto;
+    &--center {
+      justify-content: center;
+    }
     &__icon {
       @apply h-full items-center mr-2;
       line-height: 0;
