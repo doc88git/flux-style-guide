@@ -25,7 +25,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .f-card {
   @apply max-w-full mx-auto bg-white rounded-lg shadow-md;
   .f-card__content {

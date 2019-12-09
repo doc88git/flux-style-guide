@@ -18,6 +18,7 @@ import * as FTooltip from "./FTooltip/index.js";
 import * as FSelect from "./FSelect/index.js";
 import * as FHeader from "./FHeader/index.js";
 import * as FChip from "./FChip/index.js";
+import * as FModal from "./FMoldal/index.js";
 
 const components = [
   FIcon,
@@ -39,7 +40,8 @@ const components = [
   FTooltip,
   FSelect,
   FHeader,
-  FChip
+  FChip,
+  FModal
 ];
 
 export default components;

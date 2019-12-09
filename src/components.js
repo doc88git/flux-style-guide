@@ -20,3 +20,4 @@ export * from "./components/FCheckbox/index.js";
 export * from "./components/FMenu/index.js";
 export * from "./components/FDisplayPerPage/index.js";
 export * from "./components/FWidget/index.js";
+export * from "./components/FModal/index.js";
