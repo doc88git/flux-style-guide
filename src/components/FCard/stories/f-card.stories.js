@@ -81,7 +81,7 @@ storiesOf("Components|Card", module)
               of Lorem Ipsum.
             </f-card-body>
             <f-card-separator />
-            <f-card-actions>
+            <f-card-actions >
               <f-button label="Ver mais" icon="list" outline></f-button>
               <f-button label="Cancelar" icon="close"></f-button>
             </f-card-actions>
