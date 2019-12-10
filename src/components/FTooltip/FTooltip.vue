@@ -5,8 +5,8 @@
         <f-button v-bind="[$props, $attrs]">{{ label }} </f-button>
       </slot>
     </div>
-    <transition v-if="isVisible" :name="`fade-${transition}`">
-      <div class="f-tooltip__item" :class="[classDynamic, bgColor]">
+    <transition v-if="isVisible && !disabled" :name="`fade-${transition}`">
+      <div class="f-tooltip__item" :class="[classDynamic, bgColor]" size="large">
         <slot name="content" />
         <div :class="classDynamicArrow" />
       </div>
@@ -38,6 +38,7 @@ export default {
       validator: val => ["default", "secondary"].includes(val)
     },
     click: Boolean,
+    disabled: Boolean,
     bgColor: {
       type: String,
       default: "black"

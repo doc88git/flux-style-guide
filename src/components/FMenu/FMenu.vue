@@ -1,20 +1,11 @@
 <template>
-  <div>
     <section class="Fmenu-side">
       <f-button
-        v-show="menuExpand"
         class="Fmenu-side__button"
-        icon="chevron_left"
+        :icon="iconMenu"
         :bigger="true"
         :radius="false"
-        @click="menuExpand = !menuExpand"
-      />
-      <f-button
-        v-show="!menuExpand"
-        class="Fmenu-side__button"
-        icon="menu"
-        :bigger="true"
-        :radius="false"
+        :color="color"
         @click="menuExpand = !menuExpand"
       />
       <nav class="Fmenu-side__nav">
@@ -22,24 +13,37 @@
           class="Fmenu-side__nav__ul"
           :class="{ 'Fmenu-side__nav__ul--expand': menuExpand }"
         >
-          <li v-for="n in 10" :key="n" class="Fmenu-side__nav__li">
-            <f-tooltip position="right" :label="`link` + n">
-              teste asdasd
-              <template v-slot:content>
-                <a class="Fmenu-side__nav__li_link" href="#">
-                  <f-icon name="home" />
-                  <span v-show="menuExpand">link {{ n }}</span></a
-                >
-              </template>
+          <li
+            v-for="menu in menuItems"
+            :key="menu.id"
+            class="Fmenu-side__nav__ul__li"
+          >
+            <f-tooltip
+              position="right"
+              class="Fmenu-side__nav__ul__tooltip"
+              :disabled="menuExpand"
+              :bgColor="color"
+              :label="menu.name"
+            >
+              <a
+                class="Fmenu-side__nav__ul__li__link text-gray"
+                :class="[menuSelected === menu.id ? textColor : textHoverColor]"
+                :href="menu.url"
+                @click="clickButton(menu)"
+              >
+                <f-icon :name="menu.icon" size="xl" type="outlined" />
+                <span
+                  v-show="menuExpand"
+                  class="Fmenu-side__nav__ul__li__text"
+                  >{{ menu.name }}</span
+                ></a
+              >
+              <template v-slot:content>{{ menu.name }} </template>
             </f-tooltip>
           </li>
         </ul>
       </nav>
     </section>
-    <!-- <button>
-      <span v-for="n in 4" :key="n" :class="'icon-widget'"></span>
-    </button> -->
-  </div>
 </template>
 
 <script>
@@ -59,18 +63,45 @@ export default {
     menuExpand: false
   }),
   props: {
+    menuItems: {
+      type: Array,
+      default: () => {
+        return [
+          { name: "Home", url: "#", id: "home", icon: "home" },
+          { name: "Empresa", url: "#", id: "company", icon: "apartment" },
+          {
+            name: "Configurações",
+            url: "#",
+            id: "configuration",
+            icon: "brightness_5"
+          }
+        ];
+      }
+    },
+    menuSelected: {
+      type: String,
+      default: "company"
+    },
     color: {
       type: String,
       default: "primary"
+    }
+  },
+  computed: {
+    textHoverColor() {
+      return `hover:text-${this.color}`;
     },
-    action: {
-      type: Function
+    textColor() {
+      return `color--text--${this.color}`;
+    },
+    iconMenu() {
+      return this.menuExpand ? "chevron_left" : "menu";
     }
   },
   methods: {
-    toggleMenu({ payload, context }) {
-      console.log("toggled");
-      this.$emit("click", payload);
+    clickButton(menu) {
+      this.menuExpand = false;
+      this.$emit("click", menu);
     }
   }
 };
@@ -86,7 +117,6 @@ span.icon-widget {
 .Fmenu-side {
   width: 70px;
   height: 100%;
-  background: #ccc;
   min-height: 300px;
   display: flex;
   flex-direction: column;
@@ -109,12 +139,13 @@ span.icon-widget {
       top: 0;
       left: 0;
       padding: 10px 0 0;
-      background: green;
       width: 100%;
       height: 100%;
-      padding-left: 27px;
       // overflow-x: scroll;
       @include transition(0.1s);
+      -webkit-box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
+      -moz-box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
+      box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
 
       &::-webkit-scrollbar {
         width: 0px;
@@ -124,6 +155,38 @@ span.icon-widget {
         width: 230px;
         @include transition(0.1s);
         text-align: left;
+      }
+
+      &__tooltip {
+        width: 100%;
+      }
+
+      &__li {
+        margin: 0px 0 8px;
+        width: 100%;
+
+        &__link {
+          padding-left: 27px;
+          width: 100%;
+          display: inline-block;
+
+          &:hover {
+            .Fmenu-side__nav__ul__li__text {
+              margin-left: 5px;
+            }
+          }
+
+          &--selected {
+            font-weight: bold;
+          }
+        }
+
+        &__text {
+          font-size: 15px;
+          position: relative;
+          top: -2px;
+          @include transition(0.1s);
+        }
       }
     }
   }

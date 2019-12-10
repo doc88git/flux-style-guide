@@ -1,6 +1,6 @@
 <template>
   <header class="main-header">
-    <slot name="menu"></slot>
+    <slot name="menu1"></slot>
     <h2 class="main-header__title">{{ mainTitle }}</h2>
     <slot name="settings"></slot>
   </header>
@@ -22,7 +22,7 @@ export default {
     },
     weight: {
       type: String,
-      default: 500
+      default: '500'
     },
     styles: {
       type: String,
@@ -46,4 +46,3 @@ export default {
     font-size: 1.5rem;
   }
 </style>
-
