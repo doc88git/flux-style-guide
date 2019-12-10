@@ -125,6 +125,7 @@ span.icon-widget {
     margin: 0;
     width: 100%;
     text-align: center;
+    min-height: 70px;
   }
 
   &__nav {
@@ -135,6 +136,7 @@ span.icon-widget {
     flex-grow: 1;
 
     &__ul {
+      background-color: #FFF;
       position: absolute;
       top: 0;
       left: 0;

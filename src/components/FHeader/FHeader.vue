@@ -1,6 +1,6 @@
 <template>
   <header class="main-header">
-    <slot name="menu1"></slot>
+    <slot name="menu"></slot>
     <h2 class="main-header__title">{{ mainTitle }}</h2>
     <slot name="settings"></slot>
   </header>
