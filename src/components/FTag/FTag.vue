@@ -43,6 +43,8 @@ export default {
 .FTag {
   &__fieldset {
     display: flex;
+    margin-right: 20px;
+    white-space: nowrap;
     &:hover {
       .FTag__legend {
         display: block;
@@ -53,7 +55,7 @@ export default {
   &__legend {
     display: none;
     padding-right: 7px;
-    padding-left: 3px;
+    padding-left: 7px;
     padding-bottom: 0;
     position: absolute;
     transform: translateY(-9px);
