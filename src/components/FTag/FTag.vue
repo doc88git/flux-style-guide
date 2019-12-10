@@ -44,6 +44,7 @@ export default {
   &__fieldset {
     display: flex;
     margin-right: 20px;
+    white-space: nowrap;
     &:hover {
       .FTag__legend {
         display: block;

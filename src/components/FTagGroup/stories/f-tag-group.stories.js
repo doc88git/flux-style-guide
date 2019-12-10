@@ -24,6 +24,22 @@ storiesOf("Components|Tag Groups", module).add(
             <f-tag :bg-color="bgColor" :line-color="lineColor" legend="Cidade | Estado" icon="home" icon-color="green" text="Wallaby Way - Sydney"/>
             <f-tag :bg-color="bgColor" :line-color="lineColor" legend="UC" text="40028922"/>
             <f-tag :bg-color="bgColor" :line-color="lineColor" legend="Nº de série" icon="" icon-color="" text="2345678"/>
+            <f-tag :bg-color="bgColor" :line-color="lineColor" :legend="legend" :icon="icon" :icon-color="iconColor" :text="text"/>
+            <f-tag :bg-color="bgColor" :line-color="lineColor" legend="Cidade | Estado" icon="home" icon-color="green" text="Wallaby Way - Sydney"/>
+            <f-tag :bg-color="bgColor" :line-color="lineColor" legend="UC" text="40028922"/>
+            <f-tag :bg-color="bgColor" :line-color="lineColor" legend="Nº de série" icon="" icon-color="" text="2345678"/>
+            <f-tag :bg-color="bgColor" :line-color="lineColor" :legend="legend" :icon="icon" :icon-color="iconColor" :text="text"/>
+            <f-tag :bg-color="bgColor" :line-color="lineColor" legend="Cidade | Estado" icon="home" icon-color="green" text="Wallaby Way - Sydney"/>
+            <f-tag :bg-color="bgColor" :line-color="lineColor" legend="UC" text="40028922"/>
+            <f-tag :bg-color="bgColor" :line-color="lineColor" legend="Nº de série" icon="" icon-color="" text="2345678"/>
+            <f-tag :bg-color="bgColor" :line-color="lineColor" :legend="legend" :icon="icon" :icon-color="iconColor" :text="text"/>
+            <f-tag :bg-color="bgColor" :line-color="lineColor" legend="Cidade | Estado" icon="home" icon-color="green" text="Wallaby Way - Sydney"/>
+            <f-tag :bg-color="bgColor" :line-color="lineColor" legend="UC" text="40028922"/>
+            <f-tag :bg-color="bgColor" :line-color="lineColor" legend="Nº de série" icon="" icon-color="" text="2345678"/>
+            <f-tag :bg-color="bgColor" :line-color="lineColor" :legend="legend" :icon="icon" :icon-color="iconColor" :text="text"/>
+            <f-tag :bg-color="bgColor" :line-color="lineColor" legend="Cidade | Estado" icon="home" icon-color="green" text="Wallaby Way - Sydney"/>
+            <f-tag :bg-color="bgColor" :line-color="lineColor" legend="UC" text="40028922"/>
+            <f-tag :bg-color="bgColor" :line-color="lineColor" legend="Nº de série" icon="" icon-color="" text="2345678"/>
           </f-tag-group>
         </div>
       `
