@@ -21,3 +21,4 @@ export * from "./components/FMenu/index.js";
 export * from "./components/FDisplayPerPage/index.js";
 export * from "./components/FWidget/index.js";
 export * from "./components/FModal/index.js";
+export * from "./components/FTableCustom/index.js";

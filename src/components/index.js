@@ -19,6 +19,7 @@ import * as FSelect from "./FSelect/index.js";
 import * as FHeader from "./FHeader/index.js";
 import * as FChip from "./FChip/index.js";
 import * as FModal from "./FMoldal/index.js";
+import * as FTableCustom from "./FTableCustom/index.js";
 
 const components = [
   FIcon,
@@ -41,7 +42,8 @@ const components = [
   FSelect,
   FHeader,
   FChip,
-  FModal
+  FModal,
+  FTableCustom
 ];
 
 export default components;
