@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/vue";
-import { FLayout } from "..";
+import FLayout from "../FLayout";
 
 const summary = `
 ## Layout
