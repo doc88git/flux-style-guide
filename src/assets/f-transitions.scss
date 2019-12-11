@@ -73,3 +73,11 @@ $transition: all 0.2s ease-out;
     }
   }
 }
+
+@mixin transition($var) {
+    -webkit-transition: all $var linear;
+    -moz-transition: all $var linear;
+    -ms-transition: all $var linear;
+    -o-transition: all $var linear;
+    transition: all $var linear;
+}

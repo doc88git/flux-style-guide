@@ -22,7 +22,7 @@ export default {
     },
     weight: {
       type: String,
-      default: 500
+      default: '500'
     },
     styles: {
       type: String,
@@ -46,4 +46,3 @@ export default {
     font-size: 1.5rem;
   }
 </style>
-
