@@ -22,8 +22,7 @@ const arrList = [
   }
 ];
 
-storiesOf("Components|Table", module)
-.add("Default", () => ({
+storiesOf("Components|Table", module).add("Default", () => ({
   components: { FTable, FButton, FPagination, FDropdown },
   data: () => ({
     list: arrList,

@@ -8,7 +8,11 @@
       </slot>
     </div>
     <transition v-if="isVisible && !disabled" :name="`fade-${transition}`">
-      <div class="f-tooltip__item" :class="[classDynamic, bgColor]" size="large">
+      <div
+        class="f-tooltip__item"
+        :class="[classDynamic, bgColor]"
+        size="large"
+      >
         <slot name="content" />
         <div :class="classDynamicArrow" />
       </div>

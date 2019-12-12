@@ -1,49 +1,47 @@
 <template>
-    <section class="Fmenu-side">
-      <f-button
-        class="Fmenu-side__button"
-        :icon="iconMenu"
-        :bigger="true"
-        :radius="false"
-        :color="color"
-        @click="menuExpand = !menuExpand"
-      />
-      <nav class="Fmenu-side__nav">
-        <ul
-          class="Fmenu-side__nav__ul"
-          :class="{ 'Fmenu-side__nav__ul--expand': menuExpand }"
+  <section class="Fmenu-side">
+    <f-button
+      class="Fmenu-side__button"
+      :icon="iconMenu"
+      :bigger="true"
+      :radius="false"
+      :color="color"
+      @click="menuExpand = !menuExpand"
+    />
+    <nav class="Fmenu-side__nav">
+      <ul
+        class="Fmenu-side__nav__ul"
+        :class="{ 'Fmenu-side__nav__ul--expand': menuExpand }"
+      >
+        <li
+          v-for="menu in menuItems"
+          :key="menu.id"
+          class="Fmenu-side__nav__ul__li"
         >
-          <li
-            v-for="menu in menuItems"
-            :key="menu.id"
-            class="Fmenu-side__nav__ul__li"
+          <f-tooltip
+            position="right"
+            class="Fmenu-side__nav__ul__tooltip"
+            :disabled="menuExpand"
+            :bgColor="color"
+            :label="menu.name"
           >
-            <f-tooltip
-              position="right"
-              class="Fmenu-side__nav__ul__tooltip"
-              :disabled="menuExpand"
-              :bgColor="color"
-              :label="menu.name"
+            <a
+              class="Fmenu-side__nav__ul__li__link text-gray"
+              :class="[menuSelected === menu.id ? textColor : textHoverColor]"
+              :href="menu.url"
+              @click="clickButton(menu)"
             >
-              <a
-                class="Fmenu-side__nav__ul__li__link text-gray"
-                :class="[menuSelected === menu.id ? textColor : textHoverColor]"
-                :href="menu.url"
-                @click="clickButton(menu)"
-              >
-                <f-icon :name="menu.icon" size="xl" type="outlined" />
-                <span
-                  v-show="menuExpand"
-                  class="Fmenu-side__nav__ul__li__text"
-                  >{{ menu.name }}</span
-                ></a
-              >
-              <template v-slot:content>{{ menu.name }} </template>
-            </f-tooltip>
-          </li>
-        </ul>
-      </nav>
-    </section>
+              <f-icon :name="menu.icon" size="xl" type="outlined" />
+              <span v-show="menuExpand" class="Fmenu-side__nav__ul__li__text">{{
+                menu.name
+              }}</span></a
+            >
+            <template v-slot:content>{{ menu.name }} </template>
+          </f-tooltip>
+        </li>
+      </ul>
+    </nav>
+  </section>
 </template>
 
 <script>
@@ -136,7 +134,7 @@ span.icon-widget {
     flex-grow: 1;
 
     &__ul {
-      background-color: #FFF;
+      background-color: #fff;
       position: absolute;
       top: 0;
       left: 0;

@@ -38,7 +38,7 @@ export default {
     icon: String,
     color: {
       type: String,
-      default: ''
+      default: ""
     },
     radius: {
       type: Boolean,
@@ -70,7 +70,7 @@ export default {
       };
 
       let btnRadius = {
-        ["btn--noradius"]: this.radius === false,
+        ["btn--noradius"]: this.radius === false
       };
 
       return {

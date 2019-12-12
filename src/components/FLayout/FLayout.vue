@@ -15,7 +15,6 @@
       <div class="f-layout__content">
         <slot name="content"></slot>
       </div>
-
     </div>
   </section>
 </template>
@@ -63,7 +62,7 @@ export default {
 
   &__header {
     width: calc(100% - 70px);
-    background-color: #FFF;
+    background-color: #fff;
     z-index: 80;
   }
 

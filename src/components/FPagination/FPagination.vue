@@ -87,9 +87,7 @@ export default {
         .map((item, index) => index)
         .filter(
           item =>
-            item >= pgFrom &&
-            (item > 0 && item < pgTo) &&
-            item <= this.totalPages
+            item >= pgFrom && item > 0 && item < pgTo && item <= this.totalPages
         );
 
       result = result.filter(item => item <= this.totalPages);

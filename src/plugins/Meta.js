@@ -13,7 +13,10 @@ function normalize(meta) {
     delete meta.titleTemplate;
   }
 
-  [["meta", "content"], ["link", "href"]].forEach(type => {
+  [
+    ["meta", "content"],
+    ["link", "href"]
+  ].forEach(type => {
     const metaType = meta[type[0]],
       metaProp = type[1];
 
@@ -76,12 +79,14 @@ function diff(meta, other) {
     add[type] = {};
 
     for (let key in old) {
-      if (cur.hasOwnProperty(key) === false) {
+      if (cur === false) {
+        // if (cur.hasOwnProperty(key) === false) {
         remove[type].push(key);
       }
     }
     for (let key in cur) {
-      if (old.hasOwnProperty(key) === false) {
+      if (old === false) {
+        // if (old.hasOwnProperty(key) === false) {
         add[type][key] = cur[key];
       } else if (changed(old[key], cur[key]) === true) {
         remove[type].push(key);

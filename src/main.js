@@ -1,7 +1,6 @@
 import Vue from "vue";
 import App from "./App.vue";
 import VeeValidate from "vee-validate";
-import validationLocale from "";
 import VuePlugin from "./vue-plugin";
 
 import "@/assets/f-style-guide.scss";
@@ -14,10 +13,7 @@ Vue.config.productionTip = false;
 Vue.use(VeeValidate, {
   events: "change|blur|keyup",
   locale: "pt_BR",
-  dictionary: {
-    en: { attributes: attributesEn },
-    pt_BR: { messages: messagesBR, attributes: attributesBR }
-  }
+  dictionary: {}
 });
 
 Vue.prototype.$f = {
