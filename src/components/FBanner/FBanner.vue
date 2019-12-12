@@ -1,31 +1,7 @@
 <template>
   <div class="FBanner">
     <section class="FBanner__container">
-      <!-- v-if="currentNumber != 0 && outSlider && !bullet" -->
-      <!-- <svg
-        @click="prev()"
-        class="FBanner__slider-arrow--out-slider--left FBanner__slider-arrow FBanner__slider-arrow--out-slider"
-        data-name="Layer 1"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 16 16"
-      >
-        <path
-          d="M3.65,15.85a.48.48,0,0,0,.7,0l7.5-7.5a.48.48,0,0,0,0-.7L4.35.15a.48.48,0,0,0-.7,0,.48.48,0,0,0,0,.7L10.79,8,3.65,15.15A.48.48,0,0,0,3.65,15.85Z"
-        />
-      </svg> -->
-      <!-- v-if="currentNumber != 0 && !bullet && !outSlider" -->
       <div class="FBanner__images">
-        <svg
-          v-if="isFirstImage"
-          @click="prev()"
-          class="FBanner__slider-arrow FBanner__slider-arrow--left"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 16 16"
-        >
-          <path
-            d="M3.65,15.85a.48.48,0,0,0,.7,0l7.5-7.5a.48.48,0,0,0,0-.7L4.35.15a.48.48,0,0,0-.7,0,.48.48,0,0,0,0,.7L10.79,8,3.65,15.15A.48.48,0,0,0,3.65,15.85Z"
-          />
-        </svg>
         <img
           v-for="(image, i) in images"
           :key="image.id"
@@ -33,26 +9,42 @@
           :class="slideClass(image.class, i)"
           :style="slideStyle(i)"
         />
-        <svg
-          v-if="isLastImage"
-          @click="next()"
-          class="FBanner__slider-arrow FBanner__slider-arrow--right"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 16 16"
-        >
-          <path
-            d="M3.65,15.85a.48.48,0,0,0,.7,0l7.5-7.5a.48.48,0,0,0,0-.7L4.35.15a.48.48,0,0,0-.7,0,.48.48,0,0,0,0,.7L10.79,8,3.65,15.15A.48.48,0,0,0,3.65,15.85Z"
-          />
-        </svg>
+        <div class="FBanner__arrow-button">
+          <svg
+            v-if="isFirstImage && !bullet && !outSlider"
+            @click="prev()"
+            class="FBanner__slider-arrow FBanner__slider-arrow--left"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M3.65,15.85a.48.48,0,0,0,.7,0l7.5-7.5a.48.48,0,0,0,0-.7L4.35.15a.48.48,0,0,0-.7,0,.48.48,0,0,0,0,.7L10.79,8,3.65,15.15A.48.48,0,0,0,3.65,15.85Z"
+            />
+          </svg>
+        </div>
+        <div class="FBanner__arrow-button">
+          <svg
+            v-if="isLastImage && !bullet && !outSlider"
+            @click="next()"
+            class="FBanner__slider-arrow FBanner__slider-arrow--right"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M3.65,15.85a.48.48,0,0,0,.7,0l7.5-7.5a.48.48,0,0,0,0-.7L4.35.15a.48.48,0,0,0-.7,0,.48.48,0,0,0,0,.7L10.79,8,3.65,15.15A.48.48,0,0,0,3.65,15.85Z"
+            />
+          </svg>
+        </div>
+      </div>
+      <div class="FBanner__buttons" v-if="bullet && !outSlider">
+        <span
+          v-for="(image, i) in images"
+          :key="image.id"
+          :class="slideClass(image.class, i)"
+          @click="handleActiveSlider(i)"
+        ></span>
       </div>
     </section>
-    <div class="FBanner__buttons">
-      <span
-        v-for="(image, i) in images"
-        :key="image.id"
-        @click="handleActiveSlider(i)"
-      ></span>
-    </div>
   </div>
 </template>
 
@@ -61,6 +53,7 @@ import banner1 from "../../assets/images/u509_banner_1.png";
 import banner2 from "../../assets/images/bg-gradient_u9_banner_2.png";
 import banner3 from "../../assets/images/u510_banner_1.png";
 import banner4 from "../../assets/images/bg-gradient_u10_banner_2.png";
+import { setTimeout } from "timers";
 
 export default {
   data() {
@@ -90,6 +83,10 @@ export default {
       activeBanner: 0
     };
   },
+  props: {
+    bullet: Boolean,
+    outSlider: Boolean
+  },
   computed: {
     isLastImage() {
       return this.activeBanner < this.images.length - 1;
@@ -102,7 +99,6 @@ export default {
     this.handleActiveSlider(0);
   },
   methods: {
-    setImages() {},
     handleActiveSlider(index) {
       this.lastBanner = this.activeBanner;
       this.activeBanner = index;
@@ -112,6 +108,7 @@ export default {
       return [
         `${classes}`,
         { show: this.activeBanner === i },
+        { active: this.activeBanner === i },
         { after: this.activeBanner < i },
         { animation: this.activeBanner === i || this.lastBanner === i }
       ];
@@ -123,6 +120,10 @@ export default {
 
     next() {
       this.handleActiveSlider(this.activeBanner + 1);
+      setTimeout(() => {
+        this.activeBanner + 1;
+        console.log("um de cada vez");
+      }, 1500);
     },
 
     prev() {
@@ -135,24 +136,33 @@ export default {
 <style lang="scss" scoped>
 .FBanner {
   &__container {
-    overflow: hidden;
-    max-width: 100%;
-    border-radius: 10px;
-    height: 600px;
+    // overflow: hidden;
+    // max-width: 100%;
+    // border-radius: 10px;
+    // height: 600px;
+    // max-height: 100%;
   }
 
   &__images {
-    border-radius: 10px;
-    width: 100%;
-    height: 600;
-    position: relative;
+    // border-radius: 10px;
+    // width: 100%;
+    // // height: 600;
+    // position: relative;
+  }
+
+  &__arrow-button {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 1;
+    height: 350px;
+    width: 50px;
   }
 
   img {
-    width: 100%;
-    border-radius: 10px;
-    max-width: 100%;
-    height: 600px;
+    // width: 100%;
+    // border-radius: 10px;
+    // max-width: 100%;
     position: absolute;
     object-fit: cover;
     transform: translateX(-100%);
@@ -160,17 +170,18 @@ export default {
   }
 
   img.show {
-    border-radius: 10px;
+    // border-radius: 10px;
     transform: translateX(0%);
   }
 
   img.after {
-    border-radius: 10px;
-    width: 100%;
+    // border-radius: 10px;
+    // width: 100%;
     transform: translateX(50%);
   }
 
   img.animation {
+    // border-radius: 10px;
     transition: all 1s ease;
     visibility: visible;
   }
@@ -178,8 +189,9 @@ export default {
   &__buttons {
     display: flex;
     position: relative;
-    justify-content: center;
-    padding: 10px;
+    // justify-content: center;
+    // padding: 10px;
+    // top: 95%;
     span {
       width: 10px;
       height: 10px;
@@ -191,30 +203,20 @@ export default {
         background-color: rgb(146, 146, 146);
         transition: 0.3s;
       }
-      &:active {
-        background-color: rgb(146, 146, 146);
+      &.active {
+        background-color: rgb(92, 90, 90);
       }
     }
-  }
-
-  &__banner-slider-box {
-    border-radius: 10px;
-    max-height: 600px;
-    max-width: calc(100% - 180px);
-    overflow: hidden;
-    margin: auto;
-    position: relative;
-    background-color: #ccc;
   }
 
   &__slider-arrow {
     position: absolute;
     display: block;
     fill: #ccc;
-    margin-right: 2px;
-    margin-bottom: 2px;
-    top: 50%;
-    right: 20px;
+    // margin-right: 2px;
+    // margin-bottom: 2px;
+    // top: 275px;
+    // right: 20px;
     width: 90;
     height: 80px;
     padding: 30px;
