@@ -1,10 +1,21 @@
 <template>
   <section class="f-layout">
     <div class="f-layout__left">
-      <f-menu class="f-layout__left__menu" />
+      <f-menu
+        :menuItems="menuItems"
+        :menuSelected="menuSelected"
+        :color="color"
+        class="f-layout__left__menu"
+      />
     </div>
     <div class="f-layout__right">
-      <f-header class="f-layout__header" mainTitle="test">
+      <f-header
+        :mainTitle="mainTitle"
+        :align="align"
+        :weight="weight"
+        :styles="styles"
+        class="f-layout__header"
+      >
         <template v-slot:settings>
           <div class="flex items-center justify-center">
             <f-widget></f-widget>
@@ -32,6 +43,47 @@ export default {
     FHeader,
     FWidget,
     FAvatar
+  },
+  props: {
+    menuItems: {
+      type: Array,
+      default: () => {
+        return [
+          { name: "Home", url: "#", id: "home", icon: "home" },
+          { name: "Empresa", url: "#", id: "company", icon: "apartment" },
+          {
+            name: "Configurações",
+            url: "#",
+            id: "configuration",
+            icon: "brightness_5"
+          }
+        ];
+      }
+    },
+    menuSelected: {
+      type: String,
+      default: "home"
+    },
+    color: {
+      type: String,
+      default: "primary"
+    },
+    mainTitle: {
+      type: String,
+      default: "Main Title"
+    },
+    align: {
+      type: String,
+      default: "center"
+    },
+    weight: {
+      type: String,
+      default: "500"
+    },
+    styles: {
+      type: String,
+      default: null
+    }
   }
 };
 </script>
