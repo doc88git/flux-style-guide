@@ -66,13 +66,7 @@ export default {
       default: () => {
         return [
           { name: "Home", url: "#", id: "home", icon: "home" },
-          { name: "Empresa", url: "#", id: "company", icon: "apartment" },
-          {
-            name: "Configurações",
-            url: "#",
-            id: "configuration",
-            icon: "brightness_5"
-          }
+          { name: "Empresa", url: "#", id: "company", icon: "apartment" }
         ];
       }
     },
@@ -127,34 +121,48 @@ span.icon-widget {
   }
 
   &__nav {
+    display: inline-block;
     padding: 0;
     margin: 0;
+    top: 0;
     position: relative;
     width: 100%;
+    height: auto;
     flex-grow: 1;
 
     &__ul {
-      background-color: #fff;
-      position: absolute;
-      top: 0;
-      left: 0;
-      padding: 10px 0 0;
       width: 100%;
       height: 100%;
-      // overflow-x: scroll;
-      @include transition(0.1s);
-      -webkit-box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
-      -moz-box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
-      box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
+      padding: 10px 0 0;
+      background-color: #fff;
+      position: fixed;
+      top: 70px;
+      left: -100%;
+
+      @media screen and (min-width: $size-tablet) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        // overflow-x: scroll;
+        @include transition(0.1s);
+        -webkit-box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
+        -moz-box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
+        box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
+      }
 
       &::-webkit-scrollbar {
         width: 0px;
       }
 
       &--expand {
-        width: 230px;
+        left: 0;
         @include transition(0.1s);
-        text-align: left;
+        text-align: center;
+
+        @media screen and (min-width: $size-tablet) {
+          width: 230px;
+          text-align: left;
+        }
       }
 
       &__tooltip {
@@ -172,7 +180,9 @@ span.icon-widget {
 
           &:hover {
             .Fmenu-side__nav__ul__li__text {
-              margin-left: 5px;
+              @media screen and (min-width: $size-tablet) {
+                margin-left: 5px;
+              }
             }
           }
 
