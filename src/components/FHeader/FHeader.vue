@@ -1,7 +1,10 @@
 <template>
   <header class="main-header">
     <slot name="menu"></slot>
-    <h2 class="main-header__title">{{ mainTitle }}</h2>
+    <div class="main-header__logo" v-if="logo">
+      <img :src="logo" alt="Logo" />
+    </div>
+    <h2 class="main-header__title" v-else>{{ mainTitle }}</h2>
     <slot name="settings"></slot>
   </header>
 </template>
@@ -13,6 +16,10 @@ export default {
     mainTitle: {
       type: String,
       default: "Main Title"
+    },
+    logo: {
+      type: String,
+      default: ""
     },
     align: {
       type: String,
@@ -33,10 +40,17 @@ export default {
 <style lang="scss" scoped>
 .main-header {
   @apply flex justify-between pr-5 w-full text-center items-center shadow-xxxl top-0 fixed;
-  min-height: 70px;
+  max-height: 70px;
   &__title {
     @apply w-full px-5 font-normal text-xl text-left;
     color: #666;
+  }
+
+  &__logo {
+    @apply w-full px-5 py-3 font-normal text-xl text-left;
+    img {
+      height: 46px;
+    }
   }
 }
 

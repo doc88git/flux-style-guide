@@ -3,6 +3,7 @@
     <div class="f-layout__top">
       <f-header
         :mainTitle="mainTitle"
+        :logo="logo"
         :align="align"
         :weight="weight"
         :styles="styles"
@@ -81,6 +82,10 @@ export default {
     mainTitle: {
       type: String,
       default: "Main Title"
+    },
+    logo: {
+      type: String,
+      default: ""
     },
     align: {
       type: String,
