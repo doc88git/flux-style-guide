@@ -35,7 +35,7 @@ export default {
   @apply flex justify-between pr-5 w-full text-center items-center shadow-xxxl top-0 fixed;
   min-height: 70px;
   &__title {
-    @apply w-full font-normal text-xl text-left;
+    @apply w-full px-5 font-normal text-xl text-left;
     color: #666;
   }
 }
