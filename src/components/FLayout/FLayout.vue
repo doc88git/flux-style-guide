@@ -9,11 +9,7 @@
         class="f-layout__header"
       >
         <template v-slot:menu>
-          <f-menu-button
-            :handler="handleMenu"
-            :expanded="menuExpand"
-            :color="color"
-          />
+          <f-menu-button :handler="handleMenu" :expanded="menuExpand" :color="color" />
         </template>
         <template v-slot:settings>
           <div class="flex items-center justify-center">
@@ -33,90 +29,7 @@
         class="f-layout__wrapper__menu"
       />
       <div class="f-layout__wrapper__content">
-        <slot name="content">
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-          <p>oi</p>
-        </slot>
+        <slot name="content"></slot>
       </div>
     </div>
   </section>
