@@ -1,14 +1,6 @@
 <template>
   <section class="f-layout">
-    <div class="f-layout__left">
-      <f-menu
-        :menuItems="menuItems"
-        :menuSelected="menuSelected"
-        :color="color"
-        class="f-layout__left__menu"
-      />
-    </div>
-    <div class="f-layout__right">
+    <div class="f-layout__top">
       <f-header
         :mainTitle="mainTitle"
         :align="align"
@@ -16,6 +8,13 @@
         :styles="styles"
         class="f-layout__header"
       >
+        <template v-slot:menu>
+          <f-menu-button
+            :handler="handleMenu"
+            :expanded="menuExpand"
+            :color="color"
+          />
+        </template>
         <template v-slot:settings>
           <div class="flex items-center justify-center">
             <f-widget></f-widget>
@@ -23,8 +22,101 @@
           </div>
         </template>
       </f-header>
-      <div class="f-layout__content">
-        <slot name="content"></slot>
+    </div>
+    <div class="f-layout__wrapper">
+      <f-menu
+        :menuItems="menuItems"
+        :menuSelected="menuSelected"
+        :menuExpand="menuExpand"
+        :color="color"
+        @click="handleClickMenuItem"
+        class="f-layout__wrapper__menu"
+      />
+      <div class="f-layout__wrapper__content">
+        <slot name="content">
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+          <p>oi</p>
+        </slot>
       </div>
     </div>
   </section>
@@ -33,6 +125,7 @@
 <script>
 import { FMenu } from "../FMenu";
 import { FHeader } from "../FHeader";
+import { FMenuButton } from "../FMenu";
 import { FWidget } from "../FWidget";
 import { FAvatar } from "../FAvatar";
 
@@ -41,9 +134,13 @@ export default {
   components: {
     FMenu,
     FHeader,
+    FMenuButton,
     FWidget,
     FAvatar
   },
+  data: () => ({
+    menuExpand: false
+  }),
   props: {
     menuItems: {
       type: Array,
@@ -84,6 +181,14 @@ export default {
       type: String,
       default: null
     }
+  },
+  methods: {
+    handleMenu() {
+      this.menuExpand = !this.menuExpand;
+    },
+    handleClickMenuItem() {
+      this.menuExpand = false;
+    }
   }
 };
 </script>
@@ -91,37 +196,46 @@ export default {
 <style lang="scss" scoped>
 .f-layout {
   display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
 
-  &__left {
-    flex-grow: 0;
-    width: 70px;
-    z-index: 100;
-
+  &__wrapper {
+    display: flex;
     &__menu {
       position: fixed;
-      left: 0;
-      top: 0;
+      flex-grow: 0;
+      width: 70px;
+      z-index: 90;
+      height: calc(100vh - 70px);
+
+      @media screen and (max-width: $size-tablet) {
+        position: fixed;
+      }
+    }
+
+    &__content {
+      width: 100%;
+      position: relative;
+      z-index: 10;
+      padding: 10px 10px 10px 80px;
+
+      @media screen and (max-width: $size-tablet) {
+        padding: 10px;
+      }
     }
   }
 
-  &__content {
-    width: 100%;
-    position: relative;
-    z-index: 10;
-  }
-
   &__header {
-    width: calc(100% - 70px);
+    width: 100%;
     background-color: #fff;
     z-index: 80;
   }
 
-  &__right {
-    z-index: 90;
+  &__top {
+    z-index: 100;
     flex-grow: 1;
-    padding: 80px 10px 0;
+    padding: 70px 0 0;
   }
 }
 </style>

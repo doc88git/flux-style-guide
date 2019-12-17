@@ -32,7 +32,7 @@ export default {
 
 <style lang="scss" scoped>
 .main-header {
-  @apply flex justify-between px-5 py-1 w-full text-center items-center shadow-xxxl top-0 fixed;
+  @apply flex justify-between pr-5 w-full text-center items-center shadow-xxxl top-0 fixed;
   min-height: 70px;
   &__title {
     @apply w-full font-normal text-xl text-left;
