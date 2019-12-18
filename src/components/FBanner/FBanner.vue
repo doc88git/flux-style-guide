@@ -3,15 +3,24 @@
     <section class="FBanner__container">
       <div class="FBanner__images">
         <img
+          class="FBanner__image-box"
           v-for="(image, i) in images"
           :key="image.id"
           :src="image.src"
           :class="slideClass(image.class, i)"
           :style="slideStyle(i)"
         />
-        <div class="FBanner__arrow-button">
+        <div class="FBanner__buttons" v-if="isSliderBullet">
+          <span
+            v-for="(image, i) in images"
+            :key="image.id"
+            :class="slideClass(image.class, i)"
+            @click="handleActiveSlider(i)"
+          ></span>
+        </div>
+        <div class="FBanner__arrow-button FBanner__arrow-button--left">
           <svg
-            v-if="isFirstImage && !bullet && !outSlider"
+            v-if="isLastArrow"
             @click="prev()"
             class="FBanner__slider-arrow FBanner__slider-arrow--left"
             xmlns="http://www.w3.org/2000/svg"
@@ -22,9 +31,9 @@
             />
           </svg>
         </div>
-        <div class="FBanner__arrow-button">
+        <div class="FBanner__arrow-button FBanner__arrow-button--right">
           <svg
-            v-if="isLastImage && !bullet && !outSlider"
+            v-if="isFirstArrow"
             @click="next()"
             class="FBanner__slider-arrow FBanner__slider-arrow--right"
             xmlns="http://www.w3.org/2000/svg"
@@ -35,14 +44,6 @@
             />
           </svg>
         </div>
-      </div>
-      <div class="FBanner__buttons" v-if="bullet && !outSlider">
-        <span
-          v-for="(image, i) in images"
-          :key="image.id"
-          :class="slideClass(image.class, i)"
-          @click="handleActiveSlider(i)"
-        ></span>
       </div>
     </section>
   </div>
@@ -93,6 +94,18 @@ export default {
     },
     isFirstImage() {
       return this.activeBanner > 0;
+    },
+    isSlider() {
+      return !this.bullet && !this.outSlider;
+    },
+    isSliderBullet() {
+      return this.bullet && !this.outSlider;
+    },
+    isFirstArrow() {
+      return this.isLastImage && this.isSlider;
+    },
+    isLastArrow() {
+      return this.isFirstImage && this.isSlider;
     }
   },
   mounted() {
@@ -135,63 +148,67 @@ export default {
 
 <style lang="scss" scoped>
 .FBanner {
+  position: relative;
+
   &__container {
-    // overflow: hidden;
-    // max-width: 100%;
-    // border-radius: 10px;
-    // height: 600px;
-    // max-height: 100%;
+    max-width: 100%;
+    max-height: 100%;
   }
 
   &__images {
-    // border-radius: 10px;
-    // width: 100%;
-    // // height: 600;
-    // position: relative;
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+    padding-top: 56.25%;
+    border-radius: 10px;
+  }
+
+  &__image-box {
+    position: absolute;
   }
 
   &__arrow-button {
     position: absolute;
-    top: 50%;
-    left: 0;
     z-index: 1;
-    height: 350px;
     width: 50px;
+    top: 50%;
+    &--left {
+      left: 1px;
+    }
+    &--right {
+      right: 20px;
+    }
   }
 
   img {
-    // width: 100%;
-    // border-radius: 10px;
-    // max-width: 100%;
     position: absolute;
-    object-fit: cover;
     transform: translateX(-100%);
     visibility: hidden;
+    border-radius: 10px;
+    top: 0;
+    height: 100%;
   }
 
   img.show {
-    // border-radius: 10px;
     transform: translateX(0%);
   }
 
   img.after {
-    // border-radius: 10px;
-    // width: 100%;
     transform: translateX(50%);
   }
 
   img.animation {
-    // border-radius: 10px;
     transition: all 1s ease;
     visibility: visible;
   }
 
   &__buttons {
+    align-items: flex-end;
     display: flex;
     position: relative;
-    // justify-content: center;
-    // padding: 10px;
-    // top: 95%;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
     span {
       width: 10px;
       height: 10px;
@@ -210,15 +227,11 @@ export default {
   }
 
   &__slider-arrow {
-    position: absolute;
+    position: relative;
     display: block;
     fill: #ccc;
-    // margin-right: 2px;
-    // margin-bottom: 2px;
-    // top: 275px;
-    // right: 20px;
-    width: 90;
     height: 80px;
+    top: 50%;
     padding: 30px;
     transition: transform 0.2s;
     z-index: 100;
@@ -229,39 +242,14 @@ export default {
       fill: #ccc;
     }
     &--right {
-      right: 4px;
       &:hover {
         transform: scale(1.5);
       }
     }
     &--left {
-      left: 4px;
       transform: rotate(180deg);
       &:hover {
         transform: scale(1.5) rotate(180deg);
-      }
-    }
-
-    &--out-slider {
-      fill: #ccc;
-      top: 44%;
-
-      &--right:hover,
-      &--left:hover {
-        fill: #1a202c;
-      }
-      &--right {
-        right: 30px;
-        &:hover {
-          transform: scale(1.5);
-        }
-      }
-      &--left {
-        left: 30px;
-        transform: rotate(180deg);
-        &:hover {
-          transform: scale(1.5) rotate(180deg);
-        }
       }
     }
   }
