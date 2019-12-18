@@ -4,7 +4,9 @@
     <div class="main-header__logo" v-if="!!$slots.logo">
       <slot name="logo"></slot>
     </div>
-    <h2 class="main-header__title" v-if="!$slots.logo">{{ mainTitle }}</h2>
+    <h2 class="main-header__title" v-if="!$slots.logo && mainTitle">
+      {{ mainTitle }}
+    </h2>
     <div class="main-header__settings" v-if="!!$slots.settings">
       <slot name="settings"></slot>
     </div>
@@ -17,7 +19,7 @@ export default {
   props: {
     mainTitle: {
       type: String,
-      default: "Main Title"
+      default: ""
     },
     align: {
       type: String,

@@ -25,7 +25,7 @@ storiesOf("Template|Layout", module).add(
       hasMenu: true
     }),
     template: `
-      <f-layout :menuItems="menuItems" :hasMenu="hasMenu">
+      <f-layout :menuItems="menuItems" :hasMenu="hasMenu" mainTitle="Main Title">
         <template v-slot:settings>
           <f-widget></f-widget>
           <f-avatar></f-avatar>

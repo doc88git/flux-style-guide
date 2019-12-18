@@ -81,7 +81,7 @@ export default {
     },
     mainTitle: {
       type: String,
-      default: "Main Title"
+      default: ""
     },
     align: {
       type: String,
