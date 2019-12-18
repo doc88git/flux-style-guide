@@ -1,23 +1,8 @@
 <template>
-  <section class="Fmenu-side">
-    <f-button
-      class="Fmenu-side__button"
-      :icon="iconMenu"
-      :bigger="true"
-      :radius="false"
-      :color="color"
-      @click="menuExpand = !menuExpand"
-    />
+  <aside class="Fmenu-side">
     <nav class="Fmenu-side__nav">
-      <ul
-        class="Fmenu-side__nav__ul"
-        :class="{ 'Fmenu-side__nav__ul--expand': menuExpand }"
-      >
-        <li
-          v-for="menu in menuItems"
-          :key="menu.id"
-          class="Fmenu-side__nav__ul__li"
-        >
+      <ul class="Fmenu-side__nav__ul" :class="{ 'Fmenu-side__nav__ul--expand': menuExpand }">
+        <li v-for="menu in menuItems" :key="menu.id" class="Fmenu-side__nav__ul__li">
           <f-tooltip
             position="right"
             class="Fmenu-side__nav__ul__tooltip"
@@ -32,33 +17,28 @@
               @click="clickButton(menu)"
             >
               <f-icon :name="menu.icon" size="xl" type="outlined" />
-              <span v-show="menuExpand" class="Fmenu-side__nav__ul__li__text">{{
-                menu.name
-              }}</span></a
-            >
-            <template v-slot:content>{{ menu.name }} </template>
+              <span v-show="menuExpand" class="Fmenu-side__nav__ul__li__text">{{ menu.name }}</span>
+            </a>
+            <template v-slot:content>{{ menu.name }}</template>
           </f-tooltip>
         </li>
       </ul>
     </nav>
-  </section>
+  </aside>
 </template>
 
 <script>
-import { FButton } from "../FButton";
 import { FIcon } from "../FIcon";
 import { FTooltip } from "../FTooltip";
 
 export default {
   name: "f-menu",
   components: {
-    FButton,
     FIcon,
     FTooltip
   },
   data: () => ({
-    appTitle: "reembolso",
-    menuExpand: false
+    appTitle: "reembolso"
   }),
   props: {
     menuItems: {
@@ -77,6 +57,10 @@ export default {
     color: {
       type: String,
       default: "primary"
+    },
+    menuExpand: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -85,14 +69,10 @@ export default {
     },
     textColor() {
       return `color--text--${this.color}`;
-    },
-    iconMenu() {
-      return this.menuExpand ? "chevron_left" : "menu";
     }
   },
   methods: {
     clickButton(menu) {
-      this.menuExpand = false;
       this.$emit("click", menu);
     }
   }

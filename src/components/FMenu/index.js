@@ -1,3 +1,4 @@
 import FMenu from "./FMenu";
+import FMenuButton from "./FMenuButton";
 
-export { FMenu };
+export { FMenu, FMenuButton };
