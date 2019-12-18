@@ -1,10 +1,10 @@
 <template>
   <header class="main-header">
     <slot name="menu"></slot>
-    <div class="main-header__logo" v-if="logo">
-      <img :src="logo" alt="Logo" />
+    <div class="main-header__logo" v-if="!!$slots.logo">
+      <slot name="logo"></slot>
     </div>
-    <h2 class="main-header__title" v-else>{{ mainTitle }}</h2>
+    <h2 class="main-header__title">{{ mainTitle }}</h2>
     <slot name="settings"></slot>
   </header>
 </template>
@@ -16,10 +16,6 @@ export default {
     mainTitle: {
       type: String,
       default: "Main Title"
-    },
-    logo: {
-      type: String,
-      default: ""
     },
     align: {
       type: String,
@@ -47,7 +43,7 @@ export default {
   }
 
   &__logo {
-    @apply w-full px-5 py-3 font-normal text-xl text-left;
+    @apply px-5 py-3;
     img {
       height: 46px;
     }

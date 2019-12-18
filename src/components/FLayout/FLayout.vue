@@ -3,19 +3,25 @@
     <div class="f-layout__top">
       <f-header
         :mainTitle="mainTitle"
-        :logo="logo"
         :align="align"
         :weight="weight"
         :styles="styles"
         class="f-layout__header"
+        :class="{ '--no-menu': menuItems.length === 0 || !hasMenu }"
       >
-        <template v-slot:menu>
-          <f-menu-button :handler="handleMenu" :expanded="menuExpand" :color="color" />
+        <template v-slot:menu v-if="menuItems.length || hasMenu">
+          <f-menu-button
+            :handler="handleMenu"
+            :expanded="menuExpand"
+            :color="color"
+          />
+        </template>
+        <template v-slot:logo>
+          <slot name="logo"></slot>
         </template>
         <template v-slot:settings>
           <div class="flex items-center justify-center">
-            <f-widget></f-widget>
-            <f-avatar></f-avatar>
+            <slot name="settings"></slot>
           </div>
         </template>
       </f-header>
@@ -28,9 +34,16 @@
         :color="color"
         @click="handleClickMenuItem"
         class="f-layout__wrapper__menu"
+        v-if="menuItems.length || hasMenu"
       />
-      <div class="f-layout__wrapper__content">
+      <div
+        class="f-layout__wrapper__content"
+        :class="{
+          '--no-extra-padding': menuItems.length === 0 && !hasMenu
+        }"
+      >
         <slot name="content"></slot>
+        <p>teste</p>
       </div>
     </div>
   </section>
@@ -40,17 +53,13 @@
 import { FMenu } from "../FMenu";
 import { FHeader } from "../FHeader";
 import { FMenuButton } from "../FMenu";
-import { FWidget } from "../FWidget";
-import { FAvatar } from "../FAvatar";
 
 export default {
   name: "f-layout",
   components: {
     FMenu,
     FHeader,
-    FMenuButton,
-    FWidget,
-    FAvatar
+    FMenuButton
   },
   data: () => ({
     menuExpand: false
@@ -58,18 +67,11 @@ export default {
   props: {
     menuItems: {
       type: Array,
-      default: () => {
-        return [
-          { name: "Home", url: "#", id: "home", icon: "home" },
-          { name: "Empresa", url: "#", id: "company", icon: "apartment" },
-          {
-            name: "Configurações",
-            url: "#",
-            id: "configuration",
-            icon: "brightness_5"
-          }
-        ];
-      }
+      default: () => []
+    },
+    hasMenu: {
+      type: Boolean,
+      default: false
     },
     menuSelected: {
       type: String,
@@ -82,10 +84,6 @@ export default {
     mainTitle: {
       type: String,
       default: "Main Title"
-    },
-    logo: {
-      type: String,
-      default: ""
     },
     align: {
       type: String,
@@ -139,7 +137,11 @@ export default {
       padding: 10px 10px 10px 80px;
 
       @media screen and (max-width: $size-tablet) {
-        padding: 10px;
+        padding: 1.25rem;
+      }
+
+      &.--no-extra-padding {
+        padding: 1.25rem;
       }
     }
   }
@@ -148,6 +150,10 @@ export default {
     width: 100%;
     background-color: #fff;
     z-index: 80;
+
+    &.--no-menu {
+      @apply py-5;
+    }
   }
 
   &__top {
