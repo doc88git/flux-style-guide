@@ -20,9 +20,7 @@
           <slot name="logo"></slot>
         </template>
         <template v-slot:settings>
-          <div class="flex items-center justify-center">
-            <slot name="settings"></slot>
-          </div>
+          <slot name="settings"></slot>
         </template>
       </f-header>
     </div>
@@ -83,7 +81,7 @@ export default {
     },
     mainTitle: {
       type: String,
-      default: "Main Title"
+      default: ""
     },
     align: {
       type: String,
