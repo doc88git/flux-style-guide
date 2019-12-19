@@ -1,15 +1,15 @@
 <template>
-  <div class="f-card-separator"></div>
+  <div class="f-separator"></div>
 </template>
 
 <script>
 export default {
-  name: "f-card-separator"
+  name: "f-separator"
 };
 </script>
 
 <style lang="scss">
-.f-card-separator {
+.f-separator {
   @apply block w-full shadow bg-gray-500 opacity-25;
   height: 1px;
   min-height: 1px;

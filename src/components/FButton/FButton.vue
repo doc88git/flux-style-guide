@@ -115,8 +115,10 @@ export default {
 .btn {
   @apply font-primary text-center py-1 px-3 h-12 m-1 rounded uppercase;
   width: auto;
+  cursor: pointer;
   &:hover {
     @apply outline-none;
+    opacity: 0.7;
   }
 
   &:focus {

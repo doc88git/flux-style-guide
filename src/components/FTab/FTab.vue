@@ -14,7 +14,7 @@
           @change="setSelected"
         />
       </FCardTitle>
-      <FCardSeparator />
+      <FSeparator />
       <FCardBody
         v-for="(item, index) in options"
         :key="index"
@@ -29,7 +29,8 @@
 </template>
 
 <script>
-import { FCard, FCardBody, FCardSeparator, FCardTitle } from "../FCard";
+import { FCard, FCardBody, FCardTitle } from "../FCard";
+import { FSeparator } from "@/components/FSeparator";
 import { FButtonGroup } from "../FButton";
 
 export default {
@@ -37,7 +38,7 @@ export default {
   components: {
     FCard,
     FCardBody,
-    FCardSeparator,
+    FSeparator,
     FButtonGroup,
     FCardTitle
   },

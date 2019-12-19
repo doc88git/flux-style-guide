@@ -12,7 +12,7 @@
           <slot name="header_right" />
         </div>
       </div>
-      <FCardSeparator />
+      <FSeparator />
       <FCardBody>
         <div class="f-table__body" style="height: 400px">
           <table class="f-table__content">
@@ -64,14 +64,15 @@
 
 <script>
 import collect from "collect.js";
-import { FCard, FCardSeparator, FCardBody, FCardActions } from "../FCard";
+import { FCard, FCardBody, FCardActions } from "../FCard";
+import { FSeparator } from "@/components/FSeparator";
 import { FIcon } from "../FIcon";
 
 export default {
   name: "f-table",
   components: {
     FCard,
-    FCardSeparator,
+    FSeparator,
     FCardBody,
     FIcon,
     FCardActions

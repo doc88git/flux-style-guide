@@ -1,13 +1,8 @@
 import { storiesOf } from "@storybook/vue";
 import { FButton } from "@/components/FButton";
 import { FModal } from "@/components/FModal";
-import {
-  FCard,
-  FCardActions,
-  FCardBody,
-  FCardTitle,
-  FCardSeparator
-} from "@/components/FCard";
+import { FSeparator } from "@/components/FSeparator";
+import { FCard, FCardActions, FCardBody, FCardTitle } from "@/components/FCard";
 
 storiesOf("Components|Modal", module).add(
   "Default",
@@ -21,8 +16,8 @@ storiesOf("Components|Modal", module).add(
       FCardActions,
       FCardBody,
       FCardTitle,
-      FCardSeparator,
-      FButton
+      FButton,
+      FSeparator
     },
     methods: {
       toggleModal() {
@@ -38,13 +33,13 @@ storiesOf("Components|Modal", module).add(
             Where does it come from?
             <f-button flat @click="toggleModal">x</f-button>
             </f-card-title>
-            <f-card-separator></f-card-separator>
+            <f-separator></f-separator>
             <f-card-body>
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text ever
               since the 1500s, when an
             </f-card-body>
-            <f-card-separator></f-card-separator>
+            <f-separator></f-separator>
             <f-card-actions align="justify">
               <f-button label="Cancelar" flat @click="toggleModal"></f-button>
               <f-button label="Adicionar" color="primary" flat></f-button>
