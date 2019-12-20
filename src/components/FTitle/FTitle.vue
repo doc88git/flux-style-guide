@@ -32,7 +32,8 @@ export default {
   margin-bottom: 10px;
 
   &__hr {
-    border-bottom: 1px solid #ccc;
+    border-color: #ccc;
+    margin-top: 20px;
   }
 
   &__text {
