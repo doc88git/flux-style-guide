@@ -3,6 +3,7 @@
     <slot name="before" />
     <h1 class="FTitle__text">{{ text }}</h1>
     <slot name="after" />
+    <hr class="FTitle__hr" />
   </div>
 </template>
 
@@ -30,7 +31,7 @@ export default {
   padding: 10px 0;
   margin-bottom: 10px;
 
-  &--border {
+  &__hr {
     border-bottom: 1px solid #ccc;
   }
 
