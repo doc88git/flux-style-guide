@@ -3,9 +3,10 @@ import { text } from "@storybook/addon-knobs";
 import FHeader from "../FHeader";
 import FWidget from "../../FWidget/FWidget.vue";
 import FAvatar from "../../FAvatar/FAvatar.vue";
+import FMenuButton from "../../FMenu/FMenuButton.vue";
 
 storiesOf("Components|Header", module).add("Default", () => ({
-  components: { FHeader, FWidget, FAvatar },
+  components: { FHeader, FWidget, FAvatar, FMenuButton },
   props: {
     label: {
       default: text("label")
@@ -14,6 +15,7 @@ storiesOf("Components|Header", module).add("Default", () => ({
   template: `
       <f-header mainTitle="Reembolso de Despesas" align="left" weight="300">
         <template v-slot:menu>
+          <f-menu-button />
         </template>
         <template v-slot:settings>
           <div class="flex items-center justify-center">
