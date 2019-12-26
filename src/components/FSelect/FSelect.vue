@@ -78,13 +78,13 @@ export default {
     textColor: String,
     options: {
       type: Array,
-      required: true,
-      validator: items => {
-        let filter = items.filter(item => {
-          "label" in item && "value" in item;
-        });
-        return filter.length === items.length;
-      }
+      required: true
+      // validator: items => {
+      //   let filter = items.filter(item => {
+      //     "label" in item && "value" in item;
+      //   });
+      //   return filter.length === items.length;
+      // }
     },
     search: Boolean,
     multiple: Boolean,
