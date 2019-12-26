@@ -20,6 +20,11 @@ import * as FHeader from "./FHeader/index.js";
 import * as FChip from "./FChip/index.js";
 import * as FModal from "./FMoldal/index.js";
 import * as FTableCustom from "./FTableCustom/index.js";
+import * as FSeparator from "./FSeparator/index.js";
+import * as FTitle from "./FTitle/index.js";
+import * as FTag from "./FTag/index.js";
+import * as FTagGroup from "./FTagGroup/index.js";
+import * as FDatepicker from "./FDatepicker/index.js";
 
 const components = [
   FIcon,
@@ -43,7 +48,12 @@ const components = [
   FHeader,
   FChip,
   FModal,
-  FTableCustom
+  FTableCustom,
+  FSeparator,
+  FTitle,
+  FTag,
+  FTagGroup,
+  FDatepicker
 ];
 
 export default components;
