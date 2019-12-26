@@ -68,7 +68,7 @@
 </template>
 
 <script>
-import { FSeparator } from "@/components/FSeparator";
+import { FSeparator } from "../FSeparator";
 export default {
   name: "f-table-custom",
   components: {

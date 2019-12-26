@@ -65,7 +65,7 @@
 <script>
 import collect from "collect.js";
 import { FCard, FCardBody, FCardActions } from "../FCard";
-import { FSeparator } from "@/components/FSeparator";
+import { FSeparator } from "../FSeparator";
 import { FIcon } from "../FIcon";
 
 export default {
