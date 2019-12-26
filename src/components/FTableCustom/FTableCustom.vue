@@ -13,7 +13,7 @@
       </span>
       <slot></slot>
     </div>
-    <f-card-separator></f-card-separator>
+    <f-separator></f-separator>
     <div class="table-head">
       <div
         v-for="(item, i) in headers"
@@ -68,11 +68,11 @@
 </template>
 
 <script>
-import FCardSeparator from "../FCard/components/FCardSeparator";
+import { FSeparator } from "../FSeparator";
 export default {
   name: "f-table-custom",
   components: {
-    FCardSeparator
+    FSeparator
   },
   props: {
     headers: {

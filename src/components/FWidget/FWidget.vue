@@ -29,6 +29,7 @@ export default {
   width: 35px;
   &.primary {
     @apply text-primary;
+    cursor: pointer;
   }
 
   .f-icon {

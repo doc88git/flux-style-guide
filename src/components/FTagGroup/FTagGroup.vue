@@ -47,6 +47,4 @@ export default {
     }
   }
 }
-
-@import "../../assets/f-colors.scss";
 </style>
