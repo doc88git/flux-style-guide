@@ -34,13 +34,10 @@ export default {
       this.reset();
     },
     reset() {
+      clearTimeout(this.time);
       this.time = setTimeout(() => {
         this.arrowMenu = "";
-        this.clearTimeOut();
       }, 300);
-    },
-    clearTimeOut() {
-      clearTimeout(this.time);
     }
   }
 };
