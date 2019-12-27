@@ -2,9 +2,11 @@
   <div class="FMenuButton" :class="arrowMenu">
     <div class="FMenuButton__container" @click="main">
       <div class="FMenuButton__icon">
-        <div class="FMenuButton__line"></div>
-        <div class="FMenuButton__line"></div>
-        <div class="FMenuButton__line"></div>
+        <div
+          v-for="(line, index) in 3"
+          :key="index"
+          class="FMenuButton__line"
+        ></div>
       </div>
     </div>
   </div>
@@ -15,7 +17,8 @@ export default {
   name: "f-menu-button",
   data: () => ({
     isOpen: false,
-    arrowMenu: ""
+    arrowMenu: "",
+    time: ""
   }),
   methods: {
     main() {
@@ -31,9 +34,13 @@ export default {
       this.reset();
     },
     reset() {
-      setTimeout(() => {
+      this.time = setTimeout(() => {
         this.arrowMenu = "";
+        this.clearTimeOut();
       }, 300);
+    },
+    clearTimeOut() {
+      clearTimeout(this.time);
     }
   }
 };
@@ -43,6 +50,8 @@ export default {
 $lineW: 18px;
 $middleLineW: 13px;
 $lastLineW: 16px;
+$timeAnimation: 0.3s;
+$timeTransition: 0.2s;
 
 .FMenuButton {
   &__container {
@@ -110,11 +119,11 @@ $lastLineW: 16px;
     background-color: #fff;
     border-radius: 5px;
     transition-property: transform;
-    transition-duration: 0.2s;
+    transition-duration: $timeTransition;
     transition-timing-function: ease-in-out;
     position: relative;
     transform-origin: center;
-    animation-duration: 0.3s;
+    animation-duration: $timeAnimation;
     animation-fill-mode: both;
     animation-timing-function: ease-in-out;
     &:nth-child(1) {
