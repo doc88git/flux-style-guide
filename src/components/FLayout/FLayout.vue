@@ -24,6 +24,7 @@
         </template>
       </f-header>
     </div>
+    <!-- https://codepen.io/spolidorio/pen/QWwpvLQ -->
     <div class="f-layout__wrapper">
       <f-menu
         :menuItems="menuItems"
@@ -41,7 +42,6 @@
         }"
       >
         <slot name="content"></slot>
-        <p>teste</p>
       </div>
     </div>
   </section>
