@@ -41,7 +41,6 @@
         }"
       >
         <slot name="content"></slot>
-        <p>teste</p>
       </div>
     </div>
   </section>
