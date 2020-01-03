@@ -1,7 +1,14 @@
 
+@import "f-variables";
 $colors: gray red orange yellow green teal blue indigo purple pink;
 
 .color {
+  &--primary {
+    background-color: var(--color-primary);
+  }
+  &--secondary {
+    background-color: var(--color-secondary);
+  }
   &--white {
     @apply bg-white;
     &:hover {

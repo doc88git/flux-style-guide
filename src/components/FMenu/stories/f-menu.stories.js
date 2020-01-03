@@ -1,4 +1,5 @@
 import { storiesOf } from "@storybook/vue";
+import { text } from "@storybook/addon-knobs";
 import FMenu from "../FMenu.vue";
 import FMenuButton from "../FMenuButton.vue";
 
@@ -6,10 +7,14 @@ storiesOf("Components|Menu", module)
   .add("Default", () => ({
     components: { FMenu },
     data: () => ({}),
-    props: {},
+    props: {
+      color: {
+        default: text("color", "primary")
+      }
+    },
     template: `
       <div class="p-8">
-        <f-menu :action="showSidebar" />
+        <f-menu :action="showSidebar" :color="color"/>
       </div>
     `,
     methods: {
@@ -30,10 +35,14 @@ storiesOf("Components|Menu", module)
       FMenuButton
     },
     data: () => ({}),
-    props: {},
+    props: {
+      color: {
+        default: text("color", "primary")
+      }
+    },
     template: `
       <div class="p-8">
-        <f-menu-button />
+        <f-menu-button :color="color"/>
       </div>
     `,
     methods: {}
