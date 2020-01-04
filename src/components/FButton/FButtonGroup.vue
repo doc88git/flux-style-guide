@@ -30,7 +30,11 @@ export default {
     },
     outline: Boolean,
     tab: Boolean,
-    default: [String, Number]
+    default: [String, Number],
+    size: {
+      type: String,
+      default: ""
+    }
   },
   data: () => ({
     selected: null
@@ -76,7 +80,9 @@ export default {
 
       return {
         outline: mustBeO,
-        flat: this.isFlat
+        flat: this.isFlat,
+        small: this.size === "small",
+        bigger: this.size === "bigger"
       };
     },
     isSelected(id) {

@@ -28,6 +28,7 @@ export default {
 <style lang="scss">
 .f-card {
   @apply max-w-full mx-auto bg-white rounded-lg shadow-md;
+  width: 100%;
   .f-card__content {
     @apply p-6;
   }

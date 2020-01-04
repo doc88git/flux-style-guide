@@ -35,6 +35,8 @@ export default {
   width: 100%;
   display: flex;
   top: 0;
+  left: 0;
+  z-index: 100;
 
   .f-card-title {
     display: flex;
@@ -45,7 +47,6 @@ export default {
 
 .f-modal__content {
   padding: 20px;
-  max-width: 960px;
   margin: auto;
 }
 </style>

@@ -1,8 +1,15 @@
 <template>
   <aside class="Fmenu-side">
     <nav class="Fmenu-side__nav">
-      <ul class="Fmenu-side__nav__ul" :class="{ 'Fmenu-side__nav__ul--expand': menuExpand }">
-        <li v-for="menu in menuItems" :key="menu.id" class="Fmenu-side__nav__ul__li">
+      <ul
+        class="Fmenu-side__nav__ul"
+        :class="{ 'Fmenu-side__nav__ul--expand': menuExpand }"
+      >
+        <li
+          v-for="menu in menuItems"
+          :key="menu.id"
+          class="Fmenu-side__nav__ul__li"
+        >
           <f-tooltip
             position="right"
             class="Fmenu-side__nav__ul__tooltip"
@@ -16,8 +23,15 @@
               :href="menu.url"
               @click="clickButton(menu)"
             >
-              <f-icon :name="menu.icon" size="xl" type="outlined" />
-              <span v-show="menuExpand" class="Fmenu-side__nav__ul__li__text">{{ menu.name }}</span>
+              <f-icon
+                :name="menu.icon"
+                size="xl"
+                type="outlined"
+                style="zoom: 1.5;"
+              />
+              <span v-show="menuExpand" class="Fmenu-side__nav__ul__li__text">{{
+                menu.name
+              }}</span>
             </a>
             <template v-slot:content>{{ menu.name }}</template>
           </f-tooltip>
@@ -114,7 +128,7 @@ span.icon-widget {
     &__ul {
       width: 100%;
       height: 100%;
-      padding: 10px 0 0;
+      padding: 25px 0 0;
       background-color: #fff;
       position: fixed;
       top: 70px;
@@ -151,13 +165,14 @@ span.icon-widget {
       }
 
       &__li {
-        margin: 0px 0 8px;
+        margin: 0px 0 20px;
         width: 100%;
 
         &__link {
-          padding-left: 27px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
           width: 100%;
-          display: inline-block;
 
           &:hover {
             .Fmenu-side__nav__ul__li__text {

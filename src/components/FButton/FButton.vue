@@ -134,18 +134,18 @@ export default {
   }
 
   &--default {
-    @apply text-white px-6 bg-primary;
+    @apply text-white px-5 bg-primary;
   }
 
   &--small {
-    @apply text-left py-1 px-2 h-8 text-xl;
+    @apply text-left py-1 px-5 h-8 text-xl;
 
     * {
       @apply text-sm;
     }
   }
   &--bigger {
-    @apply text-base h-16 px-6 m-1 w-auto;
+    @apply text-base h-16 px-5 m-1 w-auto;
   }
   &--bigger-x {
     @apply py-2 px-4 m-1 h-20 text-xl;
@@ -158,7 +158,7 @@ export default {
   }
 
   &--outline {
-    @apply border rounded px-6;
+    @apply border rounded px-4;
   }
 
   &__inner {
