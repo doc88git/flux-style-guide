@@ -1,8 +1,14 @@
 <template>
   <div :class="{ 'FTitle--border': !noBorder }" class="FTitle">
-    <slot name="before" />
-    <h1 class="FTitle__text">{{ text }}</h1>
-    <slot name="after" />
+    <div class="FTitle__wrapper">
+      <div v-if="$slots.before" class="FTitle__wrapper--before">
+        <slot name="before" />
+      </div>
+      <h1 class="FTitle__text">{{ text }}</h1>
+      <div v-if="$slots.after" class="FTitle__wrapper--after">
+        <slot name="after" />
+      </div>
+    </div>
     <hr class="FTitle__hr" />
   </div>
 </template>
@@ -30,6 +36,22 @@ export default {
   width: 100%;
   padding: 10px 0;
   margin-bottom: 10px;
+
+  &__wrapper {
+    display: flex;
+
+    &--before {
+      display: flex;
+      align-items: center;
+      margin-right: 20px;
+    }
+
+    &--after {
+      display: flex;
+      align-items: center;
+      margin-left: 20px;
+    }
+  }
 
   &__hr {
     border-color: #ccc;
