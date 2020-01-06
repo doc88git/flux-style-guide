@@ -18,10 +18,10 @@
 </template>
 
 <script>
-import { FButton } from "../FButton/index.js";
+import { FButton } from '../FButton/index.js'
 
 export default {
-  name: "f-alert",
+  name: 'f-alert',
   components: {
     FButton
   },
@@ -41,51 +41,51 @@ export default {
   computed: {
     closeColor() {
       // default
-      if (!this.outline && !this.fill) return this.color;
+      if (!this.outline && !this.fill) return this.color
       // fill
-      if (this.fill) return "white";
+      if (this.fill) return 'white'
       // outline
-      if (this.outline) return this.color;
+      if (this.outline) return this.color
 
-      return "primary";
+      return 'primary'
     },
     hasTitle() {
-      return this.$slots.title || !!this.title;
+      return this.$slots.title || !!this.title
     },
     hasContent() {
-      return this.$slots.content || !!this.content;
+      return this.$slots.content || !!this.content
     },
     alertStyle() {
       let btnDefault = {
-        ["f-alert--default"]: !this.outline && !this.fill,
+        ['f-alert--default']: !this.outline && !this.fill,
         [`color--text--${this.color}`]: !this.outline && !this.fill
-      };
+      }
 
       let btnFill = {
-        ["f-alert--fill"]: this.fill === true,
+        ['f-alert--fill']: this.fill === true,
         [`color--default--${this.color}`]: !!this.color && this.fill
-      };
+      }
 
       let btnOutline = {
-        ["f-alert--outline"]: this.outline === true,
+        ['f-alert--outline']: this.outline === true,
         [`color--outline--${this.color}`]: !!this.color && this.outline
-      };
+      }
 
       return {
         ...btnDefault,
         ...btnFill,
         ...btnOutline,
         [`color--text--${this.textColor}`]: !!this.textColor
-      };
+      }
     }
   },
   methods: {
     close() {
-      const { time, id } = this;
-      this.$emit("close", { time, id });
+      const { time, id } = this
+      this.$emit('close', { time, id })
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -94,9 +94,10 @@ export default {
   @apply max-w-full p-2;
   @apply whitespace-normal;
   @apply rounded-lg mx-auto bg-white shadow-md;
-  @apply bg-white text-gray-700;
+  @apply bg-white;
   @apply mb-2;
   @apply flex flex-col;
+  color: var(--color-gray-700);
   width: 350px;
 
   &__close {
@@ -119,7 +120,10 @@ export default {
   }
 
   &--default {
-    @apply border rounded border-gray-200;
+    @apply rounded;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--color-gray-200);
   }
 
   &--fill {
@@ -142,5 +146,5 @@ export default {
   }
 }
 
-@import "../../assets/f-colors.scss";
+@import '../../assets/f-colors.scss';
 </style>

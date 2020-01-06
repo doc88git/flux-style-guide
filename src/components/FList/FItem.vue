@@ -10,25 +10,25 @@
 </template>
 
 <script>
-import { FLink } from "../FLink";
+import { FLink } from '../FLink'
 
 export default {
-  name: "f-item",
+  name: 'f-item',
   props: {
     title: String,
     label: String,
     to: String,
     link: {
       type: String,
-      default: "#"
+      default: '#'
     }
   },
   computed: {
     tag() {
-      return this.to || this.link ? FLink : "a";
+      return this.to || this.link ? FLink : 'a'
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -36,14 +36,15 @@ export default {
   @apply block px-4 py-2 border-b text-sm;
   &:hover,
   &:focus {
-    @apply bg-gray-300;
+    background-color: var(--color-gray-300);
   }
   &__item {
     &--title {
       @apply font-semibold mb-1;
     }
     &--label {
-      @apply text-gray-800 mb-1;
+      @apply mb-1;
+      color: var(--color-gray-800);
     }
   }
 }

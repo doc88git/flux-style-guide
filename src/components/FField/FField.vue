@@ -15,7 +15,7 @@
       }"
     >
       <label v-if="$slots.label || label" class="f-field__inner__label">
-        <slot name="label">{{ label || "&nbsp;" }}</slot>
+        <slot name="label">{{ label || '&nbsp;' }}</slot>
       </label>
 
       <div
@@ -45,7 +45,7 @@
 
         <div v-if="hasError" class="f-field__inner__error">
           <slot name="error">
-            {{ errorMessage || "Há um erro neste campo" }}
+            {{ errorMessage || 'Há um erro neste campo' }}
           </slot>
         </div>
       </div>
@@ -63,32 +63,32 @@
 
 <script>
 export default {
-  name: "f-field",
+  name: 'f-field',
   props: {
     label: {
-      default: "",
+      default: '',
       type: String
     },
     hint: String,
     rules: String,
     errorMessage: {
-      default: "",
+      default: '',
       type: String
     }
   },
   computed: {
     hasError() {
-      if (!this.$slots.error) return false;
+      if (!this.$slots.error) return false
 
       let slotText = this.$slots.error
         .map(item => item.text)
-        .join("")
-        .trim();
+        .join('')
+        .trim()
 
-      return !!slotText || !!this.errorMessage;
+      return !!slotText || !!this.errorMessage
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -113,10 +113,12 @@ export default {
     flex-shrink: 1;
     flex-basis: 0%;
     &__label {
-      @apply block tracking-wide text-gray-700 font-bold;
+      @apply block tracking-wide font-bold;
+      color: var(--color-gray-700);
     }
     &__hint {
-      @apply block tracking-wide text-gray text-sm mb-2 mt-2;
+      @apply block tracking-wide text-sm mb-2 mt-2;
+      color: var(--color-gray);
     }
     &__error {
       @apply block tracking-wide text-red text-sm mb-2 mt-2;

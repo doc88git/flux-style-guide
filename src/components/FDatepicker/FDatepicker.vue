@@ -26,7 +26,7 @@ export default {
     },
     rangeSeparator: {
       type: String,
-      default: "até"
+      default: 'até'
     }
   },
   data() {
@@ -35,14 +35,32 @@ export default {
       // custom lang
       lang: {
         days: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
-        months: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-        pickers: ['próximos 7 dias', 'próximos 30 dias', '7 dias anteriores', '30 dias anteriores'],
+        months: [
+          'Jan',
+          'Fev',
+          'Mar',
+          'Abr',
+          'Mai',
+          'Jun',
+          'Jul',
+          'Ago',
+          'Set',
+          'Out',
+          'Nov',
+          'Dez'
+        ],
+        pickers: [
+          'próximos 7 dias',
+          'próximos 30 dias',
+          '7 dias anteriores',
+          '30 dias anteriores'
+        ],
         placeholder: {
           date: 'Selecione uma data',
           dateRange: 'Selecione um período'
         }
       },
-      timePickerOptions:{
+      timePickerOptions: {
         start: '00:00',
         step: '00:30',
         end: '23:30'
@@ -53,26 +71,30 @@ export default {
 </script>
 
 <style lang="scss">
-  .mx-datepicker {
-    @apply w-full;
-    font-family: 'Roboto', -apple-system, 'BlinkMacSystemFont', sans-serif;
+.mx-datepicker {
+  @apply w-full;
+  font-family: 'Roboto', -apple-system, 'BlinkMacSystemFont', sans-serif;
 
-    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-      color: black;
-    }
-    ::-moz-placeholder { /* Firefox 19+ */
-      color: black;
-    }
-    :-ms-input-placeholder { /* IE 10+ */
-      color: black;
-    }
-    :-moz-placeholder { /* Firefox 18- */
-      color: black;
-    }
+  ::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: black;
+  }
+  ::-moz-placeholder {
+    /* Firefox 19+ */
+    color: black;
+  }
+  :-ms-input-placeholder {
+    /* IE 10+ */
+    color: black;
+  }
+  :-moz-placeholder {
+    /* Firefox 18- */
+    color: black;
+  }
 
-    .mx-calendar {
+  .mx-calendar {
     * {
-      @apply text-gray-700;
+      color: var(--color-gray-700);
     }
   }
 
@@ -91,13 +113,15 @@ export default {
       }
 
       &.inrange {
-        @apply bg-secondary-lighter text-gray-700;
+        @apply bg-secondary-lighter;
+        color: var(--color-gray-700);
       }
 
       &.disabled {
-        @apply bg-gray-100 text-gray-300;
+        background-color: var(--color-gray-100);
+        color: var(--color-gray-300);
       }
     }
-    } 
   }
+}
 </style>

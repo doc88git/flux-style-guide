@@ -16,10 +16,10 @@
 </template>
 
 <script>
-import FButton from "./FButton";
+import FButton from './FButton'
 
 export default {
-  name: "f-button-group",
+  name: 'f-button-group',
   components: {
     FButton
   },
@@ -37,61 +37,61 @@ export default {
   }),
   computed: {
     isOutline() {
-      return this.outline;
+      return this.outline
     },
     isFlat() {
-      return this.tab;
+      return this.tab
     },
     isDefault() {
-      return !this.outline && !this.tab;
+      return !this.outline && !this.tab
     },
     classes() {
       return {
-        "f-button-group__tab": this.isFlat
-      };
+        'f-button-group__tab': this.isFlat
+      }
     }
   },
   created() {
-    if (this.default) this.change(this.default);
+    if (this.default) this.change(this.default)
   },
   methods: {
     change(value) {
-      this.selected = value;
-      this.$emit("change", this.selected);
+      this.selected = value
+      this.$emit('change', this.selected)
     },
     btnOptions(id) {
-      let mustBeO = true;
+      let mustBeO = true
 
       if (this.isOutline && id === this.selected) {
-        mustBeO = false;
+        mustBeO = false
       }
 
       if (this.isDefault) {
-        mustBeO = id === this.selected;
+        mustBeO = id === this.selected
       }
 
       if (this.isFlat) {
-        mustBeO = false;
+        mustBeO = false
       }
 
       return {
         outline: mustBeO,
         flat: this.isFlat
-      };
+      }
     },
     isSelected(id) {
-      return id === this.selected;
+      return id === this.selected
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
 .f-button-group {
   @apply flex;
   &__tab {
-    @apply text-gray;
     @apply rounded-none;
+    color: var(--color-gray);
     &--selected {
       @apply text-primary;
       @apply border-b border-primary border-solid;

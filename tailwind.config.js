@@ -4,23 +4,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "var(--color-primary)",
-        secondary: "var(--color-secondary)",
-        ["primary-light"]: "var(--color-primary-light)",
-        ["primary-lighter"]: "var(--color-primary-lighter)",
-        ["primary-dark"]: "var(--color-primary-dark)",
-        ["secondary-light"]: "var(--color-secondary-light)",
-        ["secondary-lighter"]: "var(--color-secondary-lighter)",
-        ["secondary-dark"]: "var(--color-secondary-dark)",
-        light: "var(--color-light)",
-        lighter: "var(--color-lighter)",
-        dark: "var(--color-dark)",
-        black: "#000000",
-        White: "#FFFFFF",
-        gray: {
-          ...colors.gray,
-          default: colors.gray[500]
-        },
+        primary: 'var(--color-primary)',
+        secondary: 'var(--color-secondary)',
+        ['primary-light']: 'var(--color-primary-light)',
+        ['primary-lighter']: 'var(--color-primary-lighter)',
+        ['primary-dark']: 'var(--color-primary-dark)',
+        ['secondary-light']: 'var(--color-secondary-light)',
+        ['secondary-lighter']: 'var(--color-secondary-lighter)',
+        ['secondary-dark']: 'var(--color-secondary-dark)',
+        light: 'var(--color-light)',
+        lighter: 'var(--color-lighter)',
+        dark: 'var(--color-dark)',
+        black: '#000000',
+        White: '#FFFFFF',
+
         red: {
           ...colors.red,
           default: colors.red[500]

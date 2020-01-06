@@ -9,10 +9,10 @@
     @mouseleave="mouseleave"
   >
     <div class="btn__inner">
-      <div class="btn__inner__icon" :class="[btnCenter]" v-if="icon">
-        <f-icon :name="icon" />
+      <div v-if="icon" class="btn__inner__icon" :class="[btnCenter]">
+        <FIcon :name="icon" />
       </div>
-      <div class="btn__inner__content" v-if="label || $slots.default">
+      <div v-if="label || $slots.default" class="btn__inner__content">
         <slot> {{ label }} </slot>
       </div>
     </div>
@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import { FIcon } from "../FIcon";
+import { FIcon } from '../FIcon'
 
 export default {
-  name: "f-button",
+  name: 'FButton',
   components: {
     FIcon
   },
@@ -44,58 +44,58 @@ export default {
   },
   computed: {
     hasName() {
-      return this.label === "";
+      return this.label === ''
     },
     hasBg() {
-      return !this.flat && !this.outline;
+      return !this.flat && !this.outline
     },
     btnStyle() {
       let btnDefault = {
-        ["btn--default"]: !this.flat && !this.outline,
+        ['btn--default']: !this.flat && !this.outline,
         [`color--default--${this.color}`]: !this.flat && !this.outline
-      };
+      }
 
       let btnFlat = {
-        ["btn--flat"]: this.flat === true,
+        ['btn--flat']: this.flat === true,
         [`color--flat--${this.color}`]: !!this.color && this.flat
-      };
+      }
 
       let btnOutline = {
-        ["btn--outline"]: this.outline === true,
+        ['btn--outline']: this.outline === true,
         [`color--outline--${this.color}`]: !!this.color && this.outline
-      };
+      }
 
       return {
         ...btnDefault,
         ...btnOutline,
         ...btnFlat,
-        ["btn--small"]: this.small,
-        ["btn--bigger"]: this.bigger,
-        ["btn--dense"]: this.dense,
+        ['btn--small']: this.small,
+        ['btn--bigger']: this.bigger,
+        ['btn--dense']: this.dense,
         [`color--text--${this.textColor}`]: !!this.textColor
-      };
+      }
     },
     btnCenter() {
-      if (this.label || this.hasDefaultSlot) return "";
-      return "btn__inner__icon--center";
+      if (this.label || this.hasDefaultSlot) return ''
+      return 'btn__inner__icon--center'
     },
     hasDefaultSlot() {
-      return !!this.$slots.default;
+      return !!this.$slots.default
     }
   },
   methods: {
     blur(e) {
-      e.target.blur();
+      e.target.blur()
     },
     mouseover(e) {
-      this.$emit("mouseover", e);
+      this.$emit('mouseover', e)
     },
     mouseleave(e) {
-      this.blur(e);
-      this.$emit("mouseleave", e);
+      this.blur(e)
+      this.$emit('mouseleave', e)
     }
   }
-};
+}
 </script>
 
 <style lang="scss">
@@ -159,5 +159,5 @@ export default {
   }
 }
 
-@import "../../assets/f-colors.scss";
+@import '../../assets/f-colors.scss';
 </style>

@@ -30,10 +30,10 @@
 </template>
 
 <script>
-import { FIcon } from "../FIcon/index.js";
+import { FIcon } from '../FIcon/index.js'
 
 export default {
-  name: "f-dropdown",
+  name: 'f-dropdown',
   components: { FIcon },
   data: () => ({
     isOpen: false,
@@ -44,17 +44,17 @@ export default {
       type: Array,
       required: true,
       validator: list => {
-        let required = ["label", "value"];
+        let required = ['label', 'value']
 
         let filter = list.filter(() => {
           return (
             list.filter(item => {
-              return required.filter(r => !!item[r]).length === required.length;
+              return required.filter(r => !!item[r]).length === required.length
             }).length === list.length
-          );
-        });
+          )
+        })
 
-        return filter.length === list.length;
+        return filter.length === list.length
       }
     },
     closeOnClick: {
@@ -69,61 +69,61 @@ export default {
     },
     type: {
       type: String,
-      default: "default",
+      default: 'default',
       validator: item => {
-        return ["default", "outlined", "input"].includes(item);
+        return ['default', 'outlined', 'input'].includes(item)
       }
     },
     position: {
       type: String,
-      default: "down"
+      default: 'down'
     },
     color: {
       type: String,
-      default: "primary"
+      default: 'primary'
     },
     textColor: {
       type: String,
-      default: "white"
+      default: 'white'
     }
   },
   computed: {
     isOutlined() {
-      return this.type === "outlined";
+      return this.type === 'outlined'
     },
     iconName() {
-      return this.isOpen ? "keyboard_arrow_up" : "keyboard_arrow_down";
+      return this.isOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down'
     },
     iconColor() {
-      return this.isOutlined ? this.color : this.textWhite;
+      return this.isOutlined ? this.color : this.textWhite
     },
     selectedItem() {
-      let selectedItem = this.list.filter(item => item.value === this.selected);
-      return selectedItem.length ? selectedItem[0] : this.list[0];
+      let selectedItem = this.list.filter(item => item.value === this.selected)
+      return selectedItem.length ? selectedItem[0] : this.list[0]
     },
     labelSelected() {
       return this.selectedItem && this.selectedItem.label
         ? this.selectedItem.label
-        : "";
+        : ''
     },
     valueSelected() {
       return this.selectedItem && this.selectedItem.value
         ? this.selectedItem.value
-        : "";
+        : ''
     },
     classes() {
       return {
-        "f-dropdown--outlined": this.type === "outlined",
-        "f-dropdown--input": this.type === "input"
-      };
+        'f-dropdown--outlined': this.type === 'outlined',
+        'f-dropdown--input': this.type === 'input'
+      }
       // return this.isOutlined ? "f-dropdown--outlined" : "";
     }
   },
   watch: {
     open: {
       handler: function(value) {
-        if (value) return this.openList();
-        return this.closeList();
+        if (value) return this.openList()
+        return this.closeList()
         // this.toggleDropdown(null, value);
       }
     }
@@ -131,67 +131,67 @@ export default {
   methods: {
     isClickedIn(e, classItem) {
       let isClicked = e.path.filter(item => {
-        return item.classList ? item.classList.contains(classItem) : false;
-      });
+        return item.classList ? item.classList.contains(classItem) : false
+      })
 
-      return isClicked.length;
+      return isClicked.length
     },
     isClickedOut(e) {
-      return !this.isClickedIn(e, "f-dropdown");
+      return !this.isClickedIn(e, 'f-dropdown')
     },
     clickedInCaret(e) {
       return (
-        this.isClickedIn(e, "f-icon") && this.iconName === "keyboard_arrow_up"
-      );
+        this.isClickedIn(e, 'f-icon') && this.iconName === 'keyboard_arrow_up'
+      )
     },
     closeList() {
-      this.isOpen = false;
+      this.isOpen = false
 
       if (process.browser) {
-        window.removeEventListener("click", this.toggleDropdown);
+        window.removeEventListener('click', this.toggleDropdown)
       }
 
-      this.emitStatus();
+      this.emitStatus()
     },
     openList() {
-      this.isOpen = true;
+      this.isOpen = true
 
       if (process.browser) {
-        window.addEventListener("click", this.toggleDropdown);
+        window.addEventListener('click', this.toggleDropdown)
       }
 
-      this.emitStatus();
+      this.emitStatus()
     },
     emitStatus() {
-      this.$emit("status", this.isOpen);
+      this.$emit('status', this.isOpen)
     },
     toggleDropdown(e) {
       if (this.isClickedOut(e) || this.clickedInCaret(e)) {
-        this.closeList();
-        e.stopPropagation();
+        this.closeList()
+        e.stopPropagation()
 
-        return false;
+        return false
       }
 
-      this.openList();
+      this.openList()
 
-      e.stopPropagation();
+      e.stopPropagation()
     },
     clickOnItem(e, item) {
-      this.selected = item.value;
-      this.$emit("selected", item.value);
+      this.selected = item.value
+      this.$emit('selected', item.value)
 
-      if (this.closeOnClick) this.closeList();
+      if (this.closeOnClick) this.closeList()
 
-      e.stopPropagation();
+      e.stopPropagation()
     }
   },
   destroyed() {
     if (process.browser) {
-      window.removeEventListener("click", this.toggleDropdown);
+      window.removeEventListener('click', this.toggleDropdown)
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -227,7 +227,8 @@ export default {
       li {
         @apply py-1 px-2 align-middle;
         &:hover {
-          @apply bg-gray-300 text-primary;
+          @apply text-primary;
+          background-color: var(--color-gray-300);
         }
       }
     }
@@ -238,7 +239,12 @@ export default {
       @apply bg-white text-primary border border-solid border-primary;
     }
     .f-dropdown__list {
-      @apply bg-white text-gray-600 border border-t-0 border-solid border-gray;
+      @apply bg-white;
+      border-width: 1px;
+      border-top-width: 0;
+      border-style: solid;
+      border-color: var(--color-gray);
+      color: var(--color-gray-600);
       ul {
         li {
           &:hover {
@@ -254,7 +260,8 @@ export default {
       @apply bg-white text-black border border-solid;
     }
     .f-dropdown__list {
-      @apply bg-white text-gray-600 border border-t-0 border-solid;
+      @apply bg-white border border-t-0 border-solid;
+      color: var(--color-gray-600);
       ul {
         li {
           &:hover {
@@ -266,6 +273,6 @@ export default {
   }
 }
 
-@import "../../assets/f-transitions.scss";
-@import "../../assets/f-colors.scss";
+@import '../../assets/f-transitions.scss';
+@import '../../assets/f-colors.scss';
 </style>

@@ -63,12 +63,12 @@
 </template>
 
 <script>
-import collect from "collect.js";
-import { FCard, FCardSeparator, FCardBody, FCardActions } from "../FCard";
-import { FIcon } from "../FIcon";
+import collect from 'collect.js'
+import { FCard, FCardSeparator, FCardBody, FCardActions } from '../FCard'
+import { FIcon } from '../FIcon'
 
 export default {
-  name: "f-table",
+  name: 'f-table',
   components: {
     FCard,
     FCardSeparator,
@@ -81,56 +81,56 @@ export default {
     header: Object
   },
   data: () => ({
-    sortBy: "",
-    sortDirection: "asc"
+    sortBy: '',
+    sortDirection: 'asc'
   }),
   computed: {
     keysHeaders() {
-      return Object.keys(this.header);
+      return Object.keys(this.header)
     },
     sortIcon() {
-      return this.sortDirection === "asc" ? "arrow_downward" : "arrow_upward";
+      return this.sortDirection === 'asc' ? 'arrow_downward' : 'arrow_upward'
     },
     content() {
-      let data = this.data.length ? this.data : [];
-      return collect(data);
+      let data = this.data.length ? this.data : []
+      return collect(data)
     },
     show() {
-      let data = this.content;
+      let data = this.content
 
       if (this.sortBy) {
-        let method = this.sortDirection === "desc" ? "sortByDesc" : "sortBy";
-        data = this.content[method](this.sortBy);
+        let method = this.sortDirection === 'desc' ? 'sortByDesc' : 'sortBy'
+        data = this.content[method](this.sortBy)
       }
 
-      data.keyBy(item => this.getContent(item));
+      data.keyBy(item => this.getContent(item))
 
-      return data.all();
+      return data.all()
     }
   },
   methods: {
     getContent(item) {
       this.keysHeaders.map(h => {
-        item[h] = h.split(".").reduce((o, i) => {
+        item[h] = h.split('.').reduce((o, i) => {
           try {
-            return o[i];
+            return o[i]
           } catch (e) {
-            return "";
+            return ''
           }
-        }, item);
-      });
+        }, item)
+      })
 
-      return item;
+      return item
     },
     setSortBy(item) {
-      this.sortBy = item;
-      this.setSortDirection();
+      this.sortBy = item
+      this.setSortDirection()
     },
     setSortDirection() {
-      this.sortDirection = this.sortDirection === "asc" ? "desc" : "asc";
+      this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc'
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -158,7 +158,10 @@ export default {
       }
       thead {
         th {
-          @apply border-gray-600 mb-4 bg-white  select-none;
+          @apply mb-4 bg-white select-none;
+          border-width: 1px;
+          border-style: solid;
+          border-color: var(--color-gray);
           border-bottom-width: 1px;
           &:hover {
             @apply opacity-75 cursor-pointer;
@@ -171,7 +174,7 @@ export default {
       tbody {
         tr {
           &:hover {
-            @apply bg-gray-100;
+            background-color: var(--color-gray-100);
           }
           td {
             @apply border-gray-200 mb-4;
