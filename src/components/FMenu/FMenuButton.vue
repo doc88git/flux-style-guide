@@ -32,9 +32,10 @@ export default {
     }
   },
   methods: {
-    main() {
+    main($event) {
       this.isOpen = !this.isOpen;
       this.setArrowMenu();
+      this.$emit("click", $event);
     },
     setArrowMenu() {
       if (this.isOpen) {

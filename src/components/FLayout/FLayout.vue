@@ -11,7 +11,7 @@
       >
         <template v-slot:menu v-if="menuItems.length || hasMenu">
           <f-menu-button
-            :handler="handleMenu"
+            @click="handleMenu"
             :expanded="menuExpand"
             :color="color"
           />
@@ -24,7 +24,6 @@
         </template>
       </f-header>
     </div>
-    <!-- https://codepen.io/spolidorio/pen/QWwpvLQ -->
     <div class="f-layout__wrapper">
       <f-menu
         :menuItems="menuItems"
@@ -139,7 +138,7 @@ export default {
         padding: 1.25rem;
       }
 
-      &.--no-extra-padding {
+      &--no-extra-padding {
         padding: 1.25rem;
       }
     }
@@ -150,7 +149,7 @@ export default {
     background-color: #fff;
     z-index: 80;
 
-    &.--no-menu {
+    &--no-menu {
       @apply py-5;
     }
   }
