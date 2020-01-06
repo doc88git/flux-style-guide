@@ -59,6 +59,8 @@ export default {
   }
 
   &__text {
+    display: flex;
+    align-items: center;
     font-size: 1.3em;
     color: #000;
     padding: 0;

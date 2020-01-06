@@ -31,6 +31,7 @@ export default {
   width: 100%;
   .f-card__content {
     @apply p-6;
+    height: 100%;
   }
 }
 </style>
