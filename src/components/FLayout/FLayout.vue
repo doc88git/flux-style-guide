@@ -37,12 +37,10 @@
       <div
         class="f-layout__wrapper__content"
         :class="{
-          '--no-extra-padding': true
+          '--no-extra-padding': menuItems.length === 0 && !hasMenu
         }"
       >
-        <slot name="content">
-          <p>kaudsfa</p>
-        </slot>
+        <slot name="content"></slot>
       </div>
     </div>
   </section>

@@ -66,7 +66,6 @@ $timeTransition: 0.2s;
   &__container {
     width: 70px;
     height: 70px;
-    // background-color: #755fff;
     display: flex;
     justify-content: center;
     align-items: center;
