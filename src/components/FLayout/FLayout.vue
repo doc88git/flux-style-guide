@@ -11,7 +11,7 @@
       >
         <template v-slot:menu v-if="menuItems.length || hasMenu">
           <f-menu-button
-            :handler="handleMenu"
+            @click="handleMenu"
             :expanded="menuExpand"
             :color="color"
           />
@@ -24,7 +24,6 @@
         </template>
       </f-header>
     </div>
-    <!-- https://codepen.io/spolidorio/pen/QWwpvLQ -->
     <div class="f-layout__wrapper">
       <f-menu
         :menuItems="menuItems"
