@@ -1,5 +1,12 @@
+@import './f-variables';
 
-$colors: gray red orange yellow green teal blue indigo purple pink;
+// Generate variables css native
+:root {
+  // custom colors
+  @each $name, $color in $colorsTailwind {
+    --color-#{$name}: #{$color};
+  }
+}
 
 .color {
   &--white {
