@@ -1,6 +1,6 @@
 <template>
   <div class="FMenuButton" :class="arrowMenu">
-    <div class="FMenuButton__container" @click="main">
+    <div class="FMenuButton__container" @click="main" :class="btnStyle">
       <div class="FMenuButton__icon">
         <div
           v-for="(line, index) in 3"
@@ -20,6 +20,17 @@ export default {
     arrowMenu: "",
     time: ""
   }),
+  props: {
+    color: {
+      type: String,
+      default: "primary"
+    }
+  },
+  computed: {
+    btnStyle() {
+      return `color--${this.color}`;
+    }
+  },
   methods: {
     main() {
       this.isOpen = !this.isOpen;
@@ -54,7 +65,7 @@ $timeTransition: 0.2s;
   &__container {
     width: 70px;
     height: 70px;
-    background-color: #755fff;
+    // background-color: #755fff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -196,4 +207,6 @@ $timeTransition: 0.2s;
     width: $lastLineW;
   }
 }
+
+@import "../../assets/f-colors.scss";
 </style>
