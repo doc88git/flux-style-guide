@@ -1,16 +1,16 @@
-import { storiesOf } from "@storybook/vue";
+import { storiesOf } from '@storybook/vue'
 // import { boolean, text } from "@storybook/addon-knobs";
-import FBanner from "../FBanner.vue";
+import FBanner from '../FBanner.vue'
 
-const images = "";
+const images = ''
 // const images = [
 //   "https://www.webdesignerdepot.com/cdn-origin/uploads/2017/03/getting_started_with_vue_banner.png",
 //   "https://miro.medium.com/max/1500/1*XRzDO0hdmXGQw_CmNvrL3w.jpeg"
 // ];
 
-storiesOf("Components|Banners", module)
+storiesOf('Components|Banners', module)
   .add(
-    "Banner: Slider",
+    'Banner: Slider',
     () => ({
       components: { FBanner },
       data: () => ({ images }),
@@ -31,7 +31,7 @@ storiesOf("Components|Banners", module)
     }
   )
   .add(
-    "Banner: Slider with Bullet",
+    'Banner: Slider with Bullet',
     () => ({
       components: { FBanner },
       data: () => ({ images }),
@@ -52,7 +52,7 @@ storiesOf("Components|Banners", module)
     }
   )
   .add(
-    "Banner: Out Slider",
+    'Banner: Out Slider',
     () => ({
       components: { FBanner },
       data: () => ({ images }),
@@ -73,7 +73,7 @@ storiesOf("Components|Banners", module)
     }
   )
   .add(
-    "Banner: Out Slider with Bullet",
+    'Banner: Out Slider with Bullet',
     () => ({
       components: { FBanner },
       data: () => ({ images }),
@@ -92,4 +92,4 @@ storiesOf("Components|Banners", module)
         `
       }
     }
-  );
+  )

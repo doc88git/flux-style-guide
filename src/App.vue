@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { FContainer } from "@/components/FContainer";
+import { FContainer } from '@/components/FContainer'
 
 export default {
   components: {
@@ -22,28 +22,28 @@ export default {
   data: () => ({
     menuItems: [
       {
-        name: "Documentation",
-        url: "https://github.com/doc88git/flux-style-guide"
+        name: 'Documentation',
+        url: 'https://github.com/doc88git/flux-style-guide'
       },
       {
-        name: "Storybook",
-        url: "http://flux-dev.doc88.com.br:3001"
+        name: 'Storybook',
+        url: 'http://flux-dev.doc88.com.br:3001'
       },
       {
-        name: "Widget Base",
-        url: "https://github.com/doc88git/flux-widget-base"
+        name: 'Widget Base',
+        url: 'https://github.com/doc88git/flux-widget-base'
       },
       {
-        name: "Flux-CLI",
-        url: "https://github.com/doc88git/flux-cli"
+        name: 'Flux-CLI',
+        url: 'https://github.com/doc88git/flux-cli'
       },
       {
-        name: "Doc88",
-        url: "http://doc88.com.br"
+        name: 'Doc88',
+        url: 'http://doc88.com.br'
       }
     ]
   })
-};
+}
 </script>
 
 <style lang="scss">

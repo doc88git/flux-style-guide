@@ -1,37 +1,35 @@
 let toString = Object.prototype.toString,
   hasOwn = Object.prototype.hasOwnProperty,
-  class2type = {};
+  class2type = {}
 
-"Boolean Number String Function Array Date RegExp Object"
-  .split(" ")
+'Boolean Number String Function Array Date RegExp Object'
+  .split(' ')
   .forEach(name => {
-    class2type["[object " + name + "]"] = name.toLowerCase();
-  });
+    class2type['[object ' + name + ']'] = name.toLowerCase()
+  })
 
 function type(obj) {
-  return obj === null
-    ? String(obj)
-    : class2type[toString.call(obj)] || "object";
+  return obj === null ? String(obj) : class2type[toString.call(obj)] || 'object'
 }
 
 function isPlainObject(obj) {
-  if (!obj || type(obj) !== "object") {
-    return false;
+  if (!obj || type(obj) !== 'object') {
+    return false
   }
 
   if (
     obj.constructor &&
-    !hasOwn.call(obj, "constructor") &&
-    !hasOwn.call(obj.constructor.prototype, "isPrototypeOf")
+    !hasOwn.call(obj, 'constructor') &&
+    !hasOwn.call(obj.constructor.prototype, 'isPrototypeOf')
   ) {
-    return false;
+    return false
   }
 
-  let key;
+  let key
   // for (key in obj) {
   // }
 
-  return key === undefined || hasOwn.call(obj, key);
+  return key === undefined || hasOwn.call(obj, key)
 }
 
 export default function extend() {
@@ -44,52 +42,52 @@ export default function extend() {
     target = arguments[0] || {},
     i = 1,
     length = arguments.length,
-    deep = false;
+    deep = false
 
-  if (typeof target === "boolean") {
-    deep = target;
-    target = arguments[1] || {};
-    i = 2;
+  if (typeof target === 'boolean') {
+    deep = target
+    target = arguments[1] || {}
+    i = 2
   }
 
-  if (Object(target) !== target && type(target) !== "function") {
-    target = {};
+  if (Object(target) !== target && type(target) !== 'function') {
+    target = {}
   }
 
   if (length === i) {
-    target = this;
-    i--;
+    target = this
+    i--
   }
 
   for (; i < length; i++) {
     if ((options = arguments[i]) !== null) {
       for (name in options) {
-        src = target[name];
-        copy = options[name];
+        src = target[name]
+        copy = options[name]
 
         if (target === copy) {
-          continue;
+          continue
         }
 
         if (
           deep &&
           copy &&
-          (isPlainObject(copy) || (copyIsArray = type(copy) === "array"))
+          (isPlainObject(copy) || (copyIsArray = type(copy) === 'array'))
         ) {
           if (copyIsArray) {
-            copyIsArray = false;
-            clone = src && type(src) === "array" ? src : [];
+            copyIsArray = false
+            clone = src && type(src) === 'array' ? src : []
           } else {
-            clone = src && isPlainObject(src) ? src : {};
+            clone = src && isPlainObject(src) ? src : {}
           }
 
-          target[name] = extend(deep, clone, copy);
+          target[name] = extend(deep, clone, copy)
         } else if (copy !== undefined) {
-          target[name] = copy;
+          target[name] = copy
         }
       }
     }
   }
 
-  return target;
+  return target
 }

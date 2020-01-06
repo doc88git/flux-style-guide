@@ -1,3 +1,3 @@
-import FBadge from "./FBadge";
+import FBadge from './FBadge'
 
-export { FBadge };
+export { FBadge }

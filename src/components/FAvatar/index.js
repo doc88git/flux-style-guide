@@ -1,3 +1,3 @@
-import FAvatar from "./FAvatar";
+import FAvatar from './FAvatar'
 
-export { FAvatar };
+export { FAvatar }

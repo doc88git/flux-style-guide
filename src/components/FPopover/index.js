@@ -1,3 +1,3 @@
-import FPopover from "./FPopover";
+import FPopover from './FPopover'
 
-export { FPopover };
+export { FPopover }

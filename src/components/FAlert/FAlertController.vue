@@ -1,15 +1,15 @@
 <script>
-import FAlert from "./FAlert";
-import Screen from "../../plugins/Screen";
-import uid from "../../utils/uid.js";
+import FAlert from './FAlert'
+import Screen from '../../plugins/Screen'
+import uid from '../../utils/uid.js'
 
 export default {
-  name: "f-alert-controller",
+  name: 'f-alert-controller',
   data: () => ({
     width: Screen.width,
     size: 0,
     list: [],
-    active: "",
+    active: '',
     interval: 0
   }),
   props: {
@@ -28,133 +28,133 @@ export default {
   },
   watch: {
     list: {
-      handler: "doInterval",
+      handler: 'doInterval',
       immediate: true
     }
   },
   beforeDestroy() {
-    clearInterval(this.interval);
+    clearInterval(this.interval)
   },
   methods: {
     doInterval() {
       if (!this.list.length) {
-        clearInterval(this.interval);
-        return false;
+        clearInterval(this.interval)
+        return false
       }
 
-      this.interval = setInterval(this.autoRemove, 1000);
+      this.interval = setInterval(this.autoRemove, 1000)
     },
     autoRemove() {
-      let now = this.getTime();
+      let now = this.getTime()
 
       for (let item of this.list) {
-        if (!item.id || !item.time) continue;
+        if (!item.id || !item.time) continue
 
         if (now - this.timeout > item.time) {
-          this.kill(item.id);
+          this.kill(item.id)
         }
       }
     },
     getTime() {
-      return Math.floor(Date.now() / 1000);
+      return Math.floor(Date.now() / 1000)
     },
     add(opts) {
       const alert = {
         ...opts,
         id: uid(),
         time: this.getTime()
-      };
-      this.list.push(alert);
+      }
+      this.list.push(alert)
     },
     keepAlive(id) {
-      this.active = id;
+      this.active = id
     },
     letDie(id) {
-      this.active = null;
+      this.active = null
       for (let item of this.list) {
-        if (item.id === id) item.time = this.getTime();
+        if (item.id === id) item.time = this.getTime()
       }
     },
     kill(id) {
       for (let i in this.list) {
-        if (this.list[i] && this.list[i].id === id) this.list.splice(i, 1);
+        if (this.list[i] && this.list[i].id === id) this.list.splice(i, 1)
       }
     }
   },
   render(h) {
     const dataObject = {
-      class: ["f-alert-controller"],
+      class: ['f-alert-controller'],
       style: {
-        top: "15px",
+        top: '15px',
         width: `${this.width * 0.3}px`,
-        left: "50%",
+        left: '50%',
         transform: `translateX(-${(this.width * 0.3) / 2}px)`
       }
-    };
+    }
 
     const alert = this.list.map((item, index) => {
       let props = {
-        type: "fill",
-        color: "primary"
-      };
+        type: 'fill',
+        color: 'primary'
+      }
 
-      if (typeof item === "string") {
+      if (typeof item === 'string') {
         props = {
           ...props,
           content: item
-        };
+        }
       }
 
-      if (typeof item === "object") {
+      if (typeof item === 'object') {
         props = {
           ...props,
           ...item,
-          title: item.title || "",
+          title: item.title || '',
           content: item.content
-        };
+        }
       }
 
-      const vm = this;
+      const vm = this
 
       return h(FAlert, {
         key: index,
-        class: ["f-alert-dialog"],
+        class: ['f-alert-dialog'],
         on: {
           close({ id }) {
-            vm.kill(id);
+            vm.kill(id)
           },
           mouseover(e) {
-            vm.keepAlive(e.id);
+            vm.keepAlive(e.id)
           },
           mouseleave(e) {
-            vm.letDie(e.id);
+            vm.letDie(e.id)
           }
         },
         props: {
           ...props,
           closable: true,
-          fill: props.type === "fill",
-          outline: props.type === "outline",
+          fill: props.type === 'fill',
+          outline: props.type === 'outline',
           id: item.id,
           time: item.time
         }
-      });
-    });
+      })
+    })
 
     const transition = [
       h(
-        "transition-group",
+        'transition-group',
         {
-          props: { name: "fade", tag: "div" },
-          class: ["f-alert-controller-transition"]
+          props: { name: 'fade', tag: 'div' },
+          class: ['f-alert-controller-transition']
         },
         [alert]
       )
-    ];
+    ]
 
-    return h("div", dataObject, transition);
+    return h('div', dataObject, transition)
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

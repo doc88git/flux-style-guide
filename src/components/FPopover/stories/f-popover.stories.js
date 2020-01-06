@@ -1,17 +1,17 @@
-import { storiesOf } from "@storybook/vue";
-import { select, boolean } from "@storybook/addon-knobs";
-import { FPopover } from "../index.js";
+import { storiesOf } from '@storybook/vue'
+import { select, boolean } from '@storybook/addon-knobs'
+import { FPopover } from '../index.js'
 
-storiesOf("Components|Popover", module)
-  .add("Default", () => ({
+storiesOf('Components|Popover', module)
+  .add('Default', () => ({
     components: { FPopover },
     data: () => ({}),
     props: {
       position: {
-        default: select("position", ["top", "bottom", "left", "right"], "top")
+        default: select('position', ['top', 'bottom', 'left', 'right'], 'top')
       },
       click: {
-        default: boolean("click", false)
+        default: boolean('click', false)
       }
     },
     template: `
@@ -24,12 +24,12 @@ storiesOf("Components|Popover", module)
       </div>
     `
   }))
-  .add("Click", () => ({
+  .add('Click', () => ({
     components: { FPopover },
     data: () => ({}),
     props: {
       position: {
-        default: select("position", ["top", "bottom", "left", "right"], "top")
+        default: select('position', ['top', 'bottom', 'left', 'right'], 'top')
       }
     },
     template: `
@@ -42,12 +42,12 @@ storiesOf("Components|Popover", module)
       </div>
     `
   }))
-  .add("All", () => ({
+  .add('All', () => ({
     components: { FPopover },
     data: () => ({}),
     props: {
       position: {
-        default: select("position", ["top", "bottom", "left", "right"], "top")
+        default: select('position', ['top', 'bottom', 'left', 'right'], 'top')
       }
     },
     template: `
@@ -74,4 +74,4 @@ storiesOf("Components|Popover", module)
         </f-popover>
       </div>
     `
-  }));
+  }))

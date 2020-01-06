@@ -1,3 +1,3 @@
-import FDisplay from "./FDisplay";
+import FDisplay from './FDisplay'
 
-export { FDisplay };
+export { FDisplay }

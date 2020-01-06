@@ -15,10 +15,10 @@
 </template>
 
 <script>
-import { FButton } from "../FButton";
+import { FButton } from '../FButton'
 
 export default {
-  name: "f-tooltip",
+  name: 'f-tooltip',
   components: {
     FButton
   },
@@ -29,22 +29,22 @@ export default {
     label: String,
     position: {
       type: String,
-      default: "top",
-      validator: val => ["top", "bottom", "left", "right"].includes(val)
+      default: 'top',
+      validator: val => ['top', 'bottom', 'left', 'right'].includes(val)
     },
     color: {
       type: String,
-      default: "default",
-      validator: val => ["default", "secondary"].includes(val)
+      default: 'default',
+      validator: val => ['default', 'secondary'].includes(val)
     },
     click: Boolean,
     bgColor: {
       type: String,
-      default: "black"
+      default: 'black'
     },
     textColor: {
       type: String,
-      default: "white"
+      default: 'white'
     }
   },
   computed: {
@@ -54,33 +54,33 @@ export default {
         `f-tooltip__item--${this.position}`,
         `f-tooltip__item--${this.bgColor}`,
         `text-${this.textColor}`
-      ];
+      ]
     },
     classDynamicArrow() {
       return [
         `f-tooltip__item--${this.position}`,
-        "f-tooltip__item__arrow",
+        'f-tooltip__item__arrow',
         `f-tooltip__item__arrow--${this.position}`,
         `f-tooltip__item__arrow--${this.bgColor}`
-      ];
+      ]
     },
     transition() {
-      return this.isVisible ? "in" : "out";
+      return this.isVisible ? 'in' : 'out'
       // return this.click ? "fade" : `slide-${this.position}`;
     }
   },
   methods: {
     toggleVisible() {
-      if (this.click) this.isVisible = !this.isVisible;
+      if (this.click) this.isVisible = !this.isVisible
     },
     show() {
-      if (!this.click) this.isVisible = true;
+      if (!this.click) this.isVisible = true
     },
     hide() {
-      if (!this.click) this.isVisible = false;
+      if (!this.click) this.isVisible = false
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -142,7 +142,7 @@ export default {
       height: 10px;
       &:after {
         @apply absolute bg-black shadow;
-        content: "";
+        content: '';
         width: 10px;
         height: 10px;
         transform: translateX(-50%) translateY(-50%) rotate(45deg);
@@ -183,6 +183,6 @@ export default {
   }
 }
 
-@import "../../assets/f-transitions.scss";
-@import "../../assets/f-colors.scss";
+@import '../../assets/f-transitions.scss';
+@import '../../assets/f-colors.scss';
 </style>

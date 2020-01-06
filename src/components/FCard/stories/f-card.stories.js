@@ -1,17 +1,17 @@
-import { storiesOf } from "@storybook/vue";
-import { FButton } from "@/components/FButton";
-import { FImage } from "@/components/FImage";
+import { storiesOf } from '@storybook/vue'
+import { FButton } from '@/components/FButton'
+import { FImage } from '@/components/FImage'
 import {
   FCard,
   FCardActions,
   FCardBody,
   FCardTitle,
   FCardSeparator
-} from "@/components/FCard";
+} from '@/components/FCard'
 
-storiesOf("Components|Card", module)
+storiesOf('Components|Card', module)
   .add(
-    "Default",
+    'Default',
     () => ({
       components: {
         FCard,
@@ -53,7 +53,7 @@ storiesOf("Components|Card", module)
     }
   )
   .add(
-    "With Image",
+    'With Image',
     () => ({
       components: {
         FCard,
@@ -90,12 +90,12 @@ storiesOf("Components|Card", module)
     }),
     {
       info: {
-        sumary: "Container component"
+        sumary: 'Container component'
       }
     }
   )
   .add(
-    "Card Title",
+    'Card Title',
     () => ({
       components: {
         FCard,
@@ -114,12 +114,12 @@ storiesOf("Components|Card", module)
     }),
     {
       info: {
-        sumary: "Container component"
+        sumary: 'Container component'
       }
     }
   )
   .add(
-    "Card Separator",
+    'Card Separator',
     () => ({
       components: {
         FCard,
@@ -138,12 +138,12 @@ storiesOf("Components|Card", module)
     }),
     {
       info: {
-        sumary: "Container component"
+        sumary: 'Container component'
       }
     }
   )
   .add(
-    "Card Body",
+    'Card Body',
     () => ({
       components: {
         FCard,
@@ -172,12 +172,12 @@ storiesOf("Components|Card", module)
     }),
     {
       info: {
-        sumary: "Container component"
+        sumary: 'Container component'
       }
     }
   )
   .add(
-    "Card Actions",
+    'Card Actions',
     () => ({
       components: {
         FCard,
@@ -224,12 +224,12 @@ storiesOf("Components|Card", module)
     }),
     {
       info: {
-        sumary: "Container component"
+        sumary: 'Container component'
       }
     }
   )
   .add(
-    "Slot: With Image",
+    'Slot: With Image',
     () => ({
       components: {
         FCard,
@@ -268,7 +268,7 @@ storiesOf("Components|Card", module)
     }),
     {
       info: {
-        sumary: "Container component"
+        sumary: 'Container component'
       }
     }
-  );
+  )

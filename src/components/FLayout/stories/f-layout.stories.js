@@ -1,12 +1,12 @@
-import { storiesOf } from "@storybook/vue";
-import { FLayout } from "..";
+import { storiesOf } from '@storybook/vue'
+import { FLayout } from '..'
 
 const summary = `
 ## Layout
-`;
+`
 
-storiesOf("Template|Layout", module).add(
-  "Layout",
+storiesOf('Template|Layout', module).add(
+  'Layout',
   () => ({
     components: { FLayout },
     props: {},
@@ -21,4 +21,4 @@ storiesOf("Template|Layout", module).add(
       summary
     }
   }
-);
+)

@@ -1,36 +1,36 @@
-import { storiesOf } from "@storybook/vue";
-import { select, boolean, text } from "@storybook/addon-knobs";
-import FBadge from "../FBadge.vue";
+import { storiesOf } from '@storybook/vue'
+import { select, boolean, text } from '@storybook/addon-knobs'
+import FBadge from '../FBadge.vue'
 
-const groupId = "FBADGE-ID1";
+const groupId = 'FBADGE-ID1'
 
-storiesOf("Components|Badge", module).add("Default", () => ({
+storiesOf('Components|Badge', module).add('Default', () => ({
   components: { FBadge },
   data: () => ({
     value: 2
   }),
   props: {
     color: {
-      default: text("color", "primary", groupId)
+      default: text('color', 'primary', groupId)
     },
     textColor: {
-      default: text("textColor", "white", groupId)
+      default: text('textColor', 'white', groupId)
     },
     floating: {
-      default: boolean("floating", false, groupId)
+      default: boolean('floating', false, groupId)
     },
     transparent: {
-      default: boolean("transparent", false, groupId)
+      default: boolean('transparent', false, groupId)
     },
     multiLine: {
-      default: boolean("multiLine", false, groupId)
+      default: boolean('multiLine', false, groupId)
     },
 
     label: {
-      default: text("label", "v1.0.0-beta.2", groupId)
+      default: text('label', 'v1.0.0-beta.2', groupId)
     },
     align: {
-      default: select("align", ["top", "middle", "bottom"], "top", groupId)
+      default: select('align', ['top', 'middle', 'bottom'], 'top', groupId)
     }
   },
   template: `
@@ -47,4 +47,4 @@ storiesOf("Components|Badge", module).add("Default", () => ({
       </div>
     </div>
   `
-}));
+}))

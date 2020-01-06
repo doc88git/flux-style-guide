@@ -1,3 +1,3 @@
-import FImage from "./FImage";
+import FImage from './FImage'
 
-export { FImage };
+export { FImage }

@@ -1,3 +1,3 @@
-import FDatepicker from './FDatepicker';
+import FDatepicker from './FDatepicker'
 
-export { FDatepicker };
+export { FDatepicker }

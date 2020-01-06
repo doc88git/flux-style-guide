@@ -1,47 +1,47 @@
-import { storiesOf } from "@storybook/vue";
-import { select, array, boolean } from "@storybook/addon-knobs";
-import FDropdown from "../FDropdown.vue";
+import { storiesOf } from '@storybook/vue'
+import { select, array, boolean } from '@storybook/addon-knobs'
+import FDropdown from '../FDropdown.vue'
 
 const arrList = [
   {
     value: 1,
-    label: "Primeiro item"
+    label: 'Primeiro item'
   },
   {
     value: 2,
-    label: "Segundo item"
+    label: 'Segundo item'
   },
   {
     value: 3,
-    label: "Terceiro item"
+    label: 'Terceiro item'
   }
-];
+]
 
 const typeList = {
-  default: "default",
-  outlined: "outlined",
-  input: "input"
-};
+  default: 'default',
+  outlined: 'outlined',
+  input: 'input'
+}
 
-const groupId = "FDROPDOWN-ID1";
+const groupId = 'FDROPDOWN-ID1'
 
-storiesOf("Components|Dropdown", module).add("Default", () => ({
+storiesOf('Components|Dropdown', module).add('Default', () => ({
   components: { FDropdown },
   data: () => ({
     value: 2
   }),
   props: {
     list: {
-      default: array("list", arrList, groupId)
+      default: array('list', arrList, groupId)
     },
     caret: {
-      default: boolean("caret", true, groupId)
+      default: boolean('caret', true, groupId)
     },
     input: {
-      default: boolean("is input", false, groupId)
+      default: boolean('is input', false, groupId)
     },
     type: {
-      default: select("type", typeList, "default", groupId)
+      default: select('type', typeList, 'default', groupId)
     }
   },
   template: `
@@ -55,4 +55,4 @@ storiesOf("Components|Dropdown", module).add("Default", () => ({
         v-model="value" />
     </div>
   `
-}));
+}))

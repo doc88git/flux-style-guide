@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import FIcon from "../FIcon/FIcon";
+import FIcon from '../FIcon/FIcon'
 
 export default {
-  name: "FTag",
+  name: 'FTag',
   components: {
     FIcon
   },
@@ -30,13 +30,13 @@ export default {
   },
   computed: {
     classBgColor() {
-      return this.bgColor ? `FTag--${this.bgColor}` : "";
+      return this.bgColor ? `FTag--${this.bgColor}` : ''
     },
     classLineColor() {
-      return this.lineColor ? `FTag__fieldset--${this.lineColor}` : "";
+      return this.lineColor ? `FTag__fieldset--${this.lineColor}` : ''
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -84,5 +84,5 @@ export default {
   }
 }
 
-@import "../../assets/f-colors.scss";
+@import '../../assets/f-colors.scss';
 </style>

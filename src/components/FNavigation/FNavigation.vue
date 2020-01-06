@@ -1,8 +1,8 @@
 <template>
   <div class="f-navigation">
-   <button>
-     Click Me
-   </button>
+    <button>
+      Click Me
+    </button>
   </div>
 </template>
 
@@ -13,8 +13,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  h2 {
-    margin: 0;
-    padding: 0;
-  }
+h2 {
+  margin: 0;
+  padding: 0;
+}
 </style>

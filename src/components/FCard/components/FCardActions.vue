@@ -6,24 +6,24 @@
 
 <script>
 export default {
-  name: "f-card-actions",
+  name: 'f-card-actions',
   props: {
     align: {
       type: String,
-      default: "center"
+      default: 'center'
     }
   },
   computed: {
     classes() {
       return {
-        ["f-card-actions--align-center"]: this.align === "center",
-        ["f-card-actions--align-justify"]: this.align === "justify",
-        ["f-card-actions--align-left"]: this.align === "left",
-        ["f-card-actions--align-right"]: this.align === "right"
-      };
+        ['f-card-actions--align-center']: this.align === 'center',
+        ['f-card-actions--align-justify']: this.align === 'justify',
+        ['f-card-actions--align-left']: this.align === 'left',
+        ['f-card-actions--align-right']: this.align === 'right'
+      }
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

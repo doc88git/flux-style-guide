@@ -1,15 +1,15 @@
-import { storiesOf } from "@storybook/vue";
-import { text, boolean } from "@storybook/addon-knobs";
-import FAlert from "../FAlert.vue";
-import FAlertController from "../FAlertController.vue";
+import { storiesOf } from '@storybook/vue'
+import { text, boolean } from '@storybook/addon-knobs'
+import FAlert from '../FAlert.vue'
+import FAlertController from '../FAlertController.vue'
 
-const groupId = "FAlert-ID1";
-const title = "Contrary to popular belief";
+const groupId = 'FAlert-ID1'
+const title = 'Contrary to popular belief'
 const content =
-  "There are many variations of passages of Lorem Ipsum available, but the majority.";
+  'There are many variations of passages of Lorem Ipsum available, but the majority.'
 
-storiesOf("Components|Alerts", module)
-  .add("Controller", () => ({
+storiesOf('Components|Alerts', module)
+  .add('Controller', () => ({
     components: { FAlertController },
     data: () => ({
       alerts: []
@@ -18,9 +18,9 @@ storiesOf("Components|Alerts", module)
     methods: {
       addAlert() {
         this.$refs.alertController.add({
-          title: "Sou um título",
+          title: 'Sou um título',
           content: `Um conteúdo pontual: ${new Date().toISOString()}`
-        });
+        })
       }
     },
     template: `
@@ -30,30 +30,30 @@ storiesOf("Components|Alerts", module)
     </div>
   `
   }))
-  .add("Default", () => ({
+  .add('Default', () => ({
     components: { FAlert },
     data: () => ({}),
     props: {
       fill: {
-        default: boolean("fill", false, groupId)
+        default: boolean('fill', false, groupId)
       },
       outline: {
-        default: boolean("outline", false, groupId)
+        default: boolean('outline', false, groupId)
       },
       closable: {
-        default: boolean("closable", false, groupId)
+        default: boolean('closable', false, groupId)
       },
       color: {
-        default: text("color", "", groupId)
+        default: text('color', '', groupId)
       },
       textColor: {
-        default: text("textColor", "", groupId)
+        default: text('textColor', '', groupId)
       },
       title: {
-        default: text("title", title, groupId)
+        default: text('title', title, groupId)
       },
       content: {
-        default: text("content", content, groupId)
+        default: text('content', content, groupId)
       }
     },
     template: `
@@ -69,4 +69,4 @@ storiesOf("Components|Alerts", module)
         :content="content" />
     </div>
   `
-  }));
+  }))

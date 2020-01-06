@@ -10,7 +10,7 @@
 export default {
   name: 'f-menu',
   data: () => ({
-    appTitle: "reembolso"
+    appTitle: 'reembolso'
   }),
   props: {
     color: {
@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     toggleMenu({ payload, context }) {
-      console.log("toggled")
+      console.log('toggled')
       this.$emit('click', payload)
     }
   }
@@ -31,8 +31,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  span.icon-widget {
-    height: 100px;
-    width: 10px;
-  }
+span.icon-widget {
+  height: 100px;
+  width: 10px;
+}
 </style>

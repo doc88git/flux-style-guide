@@ -1,3 +1,3 @@
-import FCheckbox from "./FCheckbox";
+import FCheckbox from './FCheckbox'
 
-export { FCheckbox };
+export { FCheckbox }

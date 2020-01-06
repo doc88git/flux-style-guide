@@ -8,9 +8,9 @@
 
 <script>
 export default {
-  name: "f-list",
+  name: 'f-list',
   components: {}
-};
+}
 </script>
 
 <style lang="scss" scoped>

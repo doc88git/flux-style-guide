@@ -1,7 +1,7 @@
-import VeeValidate from "vee-validate";
+import VeeValidate from 'vee-validate'
 
 export default {
   install({ Vue }) {
-    Vue.use(VeeValidate);
+    Vue.use(VeeValidate)
   }
-};
+}

@@ -9,29 +9,29 @@
 </template>
 
 <script>
-import FIconMaterial from "./components/FIconMaterial";
+import FIconMaterial from './components/FIconMaterial'
 
 export default {
-  name: "f-icon",
+  name: 'f-icon',
   components: {
     FIconMaterial
   },
   props: {
     color: String,
     lib: {
-      default: "material",
+      default: 'material',
       type: String
     },
     type: {
-      default: "default",
+      default: 'default',
       type: String
     },
     size: {
-      default: "base",
+      default: 'base',
       type: String
     },
     name: {
-      default: "",
+      default: '',
       type: String,
       required: true
     }
@@ -41,10 +41,10 @@ export default {
       return {
         [`color--text--${this.color}`]: !!this.color,
         [`f-icon--${this.size}`]: !!this.size
-      };
+      }
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -61,5 +61,5 @@ $size: xs sm base lg;
   }
 }
 
-@import "../../assets/f-colors.scss";
+@import '../../assets/f-colors.scss';
 </style>

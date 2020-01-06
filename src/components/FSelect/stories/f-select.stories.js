@@ -1,19 +1,19 @@
-import { storiesOf } from "@storybook/vue";
-import { select, array } from "@storybook/addon-knobs";
-import FSelect from "../FSelect.vue";
+import { storiesOf } from '@storybook/vue'
+import { select, array } from '@storybook/addon-knobs'
+import FSelect from '../FSelect.vue'
 
-const arr = ["Powerview", "Simplifica", "Flux", "Petz", "Castlight"];
+const arr = ['Powerview', 'Simplifica', 'Flux', 'Petz', 'Castlight']
 
 const typeList = {
-  fill: "fill",
-  outlined: "outlined",
-  input: "input"
-};
+  fill: 'fill',
+  outlined: 'outlined',
+  input: 'input'
+}
 
-const groupId = "FSelect-ID1";
+const groupId = 'FSelect-ID1'
 
-storiesOf("Form|Select", module)
-  .add("Default", () => ({
+storiesOf('Form|Select', module)
+  .add('Default', () => ({
     components: { FSelect },
     data: () => ({
       value: null
@@ -21,13 +21,13 @@ storiesOf("Form|Select", module)
     props: {
       options: {
         default: array(
-          "options",
+          'options',
           arr.map((v, i) => ({ value: ++i, label: v })),
           groupId
         )
       },
       type: {
-        default: select("type", typeList, "input", groupId)
+        default: select('type', typeList, 'input', groupId)
       }
     },
     template: `
@@ -41,7 +41,7 @@ storiesOf("Form|Select", module)
     </div>
   `
   }))
-  .add("Search", () => ({
+  .add('Search', () => ({
     components: { FSelect },
     data: () => ({
       value: 1
@@ -49,13 +49,13 @@ storiesOf("Form|Select", module)
     props: {
       options: {
         default: array(
-          "options",
+          'options',
           arr.map((v, i) => ({ value: ++i, label: v })),
           groupId
         )
       },
       type: {
-        default: select("type", typeList, "default", groupId)
+        default: select('type', typeList, 'default', groupId)
       }
     },
     template: `
@@ -68,7 +68,7 @@ storiesOf("Form|Select", module)
     </div>
   `
   }))
-  .add("SearchRequest", () => ({
+  .add('SearchRequest', () => ({
     components: { FSelect },
     data: () => ({
       value: 1
@@ -76,18 +76,18 @@ storiesOf("Form|Select", module)
     props: {
       options: {
         default: array(
-          "options",
+          'options',
           arr.map((v, i) => ({ value: ++i, label: v })),
           groupId
         )
       },
       type: {
-        default: select("type", typeList, "default", groupId)
+        default: select('type', typeList, 'default', groupId)
       }
     },
     methods: {
       searchValue(value) {
-        console.log({ emited: value });
+        console.log({ emited: value })
       }
     },
     template: `
@@ -101,7 +101,7 @@ storiesOf("Form|Select", module)
     </div>
   `
   }))
-  .add("Multiple", () => ({
+  .add('Multiple', () => ({
     components: { FSelect },
     data: () => ({
       value: 1
@@ -109,13 +109,13 @@ storiesOf("Form|Select", module)
     props: {
       options: {
         default: array(
-          "options",
+          'options',
           arr.map((v, i) => ({ value: ++i, label: v })),
           groupId
         )
       },
       type: {
-        default: select("type", typeList, "default", groupId)
+        default: select('type', typeList, 'default', groupId)
       }
     },
     template: `
@@ -128,4 +128,4 @@ storiesOf("Form|Select", module)
         v-model="value" />
     </div>
   `
-  }));
+  }))

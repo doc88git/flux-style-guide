@@ -1,3 +1,3 @@
-import FMenu from "./FMenu";
+import FMenu from './FMenu'
 
-export { FMenu };
+export { FMenu }

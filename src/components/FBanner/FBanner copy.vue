@@ -95,12 +95,12 @@
 </template>
 
 <script>
-import banner1 from "../../assets/images/u509_banner_1.png";
-import banner2 from "../../assets/images/bg-gradient_u9_banner_2.png";
-import banner3 from "../../assets/images/u510_banner_1.png";
-import banner4 from "../../assets/images/bg-gradient_u9_banner_2.png";
+import banner1 from '../../assets/images/u509_banner_1.png'
+import banner2 from '../../assets/images/bg-gradient_u9_banner_2.png'
+import banner3 from '../../assets/images/u510_banner_1.png'
+import banner4 from '../../assets/images/bg-gradient_u9_banner_2.png'
 // import json from "./banner.json";
-import { setTimeout } from "timers";
+import { setTimeout } from 'timers'
 
 export default {
   data() {
@@ -110,10 +110,10 @@ export default {
       animation: false,
       images: [banner1, banner2, banner3, banner4],
       classImages: [],
-      activeImage: "slide__active image-show",
-      nextImage: "slide__next image-show",
-      prevImage: "slide__prev image-show"
-    };
+      activeImage: 'slide__active image-show',
+      nextImage: 'slide__next image-show',
+      prevImage: 'slide__prev image-show'
+    }
   },
   props: {
     bullet: Boolean,
@@ -123,8 +123,8 @@ export default {
   computed: {
     bannerStyle() {
       return {
-        "FBanner--out-slider": ""
-      };
+        'FBanner--out-slider': ''
+      }
     }
   },
   watch: {
@@ -137,9 +137,9 @@ export default {
     }
   },
   created() {
-    this.classImages = Array.from({ length: this.images.length }, () => null);
-    this.classImages[0] = this.activeImage;
-    this.classImages[1] = this.nextImage;
+    this.classImages = Array.from({ length: this.images.length }, () => null)
+    this.classImages[0] = this.activeImage
+    this.classImages[1] = this.nextImage
   },
   methods: {
     next() {
@@ -148,18 +148,18 @@ export default {
           let initialImages = Array.from(
             { length: this.images.length },
             () => null
-          );
-          this.animation = true;
-          this.lastCurrentNumber = this.currentNumber;
-          this.currentNumber++;
-          initialImages[this.currentNumber] = this.activeImage;
-          initialImages[this.currentNumber + 1] = this.nextImage;
-          initialImages[this.currentNumber - 1] = this.prevImage;
-          this.classImages = initialImages;
+          )
+          this.animation = true
+          this.lastCurrentNumber = this.currentNumber
+          this.currentNumber++
+          initialImages[this.currentNumber] = this.activeImage
+          initialImages[this.currentNumber + 1] = this.nextImage
+          initialImages[this.currentNumber - 1] = this.prevImage
+          this.classImages = initialImages
         }
         setTimeout(() => {
-          this.animation = false;
-        }, 1500);
+          this.animation = false
+        }, 1500)
       }
     },
     prev() {
@@ -168,23 +168,23 @@ export default {
           let initialImages = Array.from(
             { length: this.images.length },
             () => null
-          );
-          this.animation = true;
-          this.lastCurrentNumber = this.currentNumber;
-          this.currentNumber--;
-          initialImages[this.currentNumber] = this.activeImage;
-          initialImages[this.currentNumber + 1] = this.nextImage;
-          initialImages[this.currentNumber - 1] = this.prevImage;
-          this.classImages = initialImages;
+          )
+          this.animation = true
+          this.lastCurrentNumber = this.currentNumber
+          this.currentNumber--
+          initialImages[this.currentNumber] = this.activeImage
+          initialImages[this.currentNumber + 1] = this.nextImage
+          initialImages[this.currentNumber - 1] = this.prevImage
+          this.classImages = initialImages
           setTimeout(() => {
-            this.animation = false;
-          }, 1500);
+            this.animation = false
+          }, 1500)
         }
       }
     },
     setImage(index) {
       if (!this.animation) {
-        console.log(this.lastCurrentNumber, this.currentNumber);
+        console.log(this.lastCurrentNumber, this.currentNumber)
         if (Math.abs(this.lastCurrentNumber - this.currentNumber) >= 2) {
           // let initialImages = Array.from(
           //   { length: this.images.length },
@@ -213,27 +213,27 @@ export default {
           // setTimeout(() => {
           //   this.animation = false;
           // }, 1500);
-          console.log("caso especial");
+          console.log('caso especial')
         } else {
           let initialImages = Array.from(
             { length: this.images.length },
             () => null
-          );
-          this.animation = true;
-          this.lastCurrentNumber = this.currentNumber;
-          this.currentNumber = index;
-          initialImages[this.currentNumber] = this.activeImage;
-          initialImages[this.currentNumber + 1] = this.nextImage;
-          initialImages[this.currentNumber - 1] = this.prevImage;
-          this.classImages = initialImages;
+          )
+          this.animation = true
+          this.lastCurrentNumber = this.currentNumber
+          this.currentNumber = index
+          initialImages[this.currentNumber] = this.activeImage
+          initialImages[this.currentNumber + 1] = this.nextImage
+          initialImages[this.currentNumber - 1] = this.prevImage
+          this.classImages = initialImages
           setTimeout(() => {
-            this.animation = false;
-          }, 1500);
+            this.animation = false
+          }, 1500)
         }
       }
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

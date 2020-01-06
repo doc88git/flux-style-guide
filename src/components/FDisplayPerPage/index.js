@@ -1,3 +1,3 @@
-import FDisplayPerPage from "./FDisplayPerPage";
+import FDisplayPerPage from './FDisplayPerPage'
 
-export { FDisplayPerPage };
+export { FDisplayPerPage }

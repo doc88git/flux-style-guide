@@ -1,3 +1,3 @@
-import FLayout from "./FLayout";
+import FLayout from './FLayout'
 
-export { FLayout };
+export { FLayout }

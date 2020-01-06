@@ -21,9 +21,9 @@
 </template>
 
 <script>
-import { FIcon } from "..";
+import { FIcon } from '..'
 export default {
-  name: "f-chip",
+  name: 'f-chip',
   components: {
     FIcon
   },
@@ -45,35 +45,35 @@ export default {
       return {
         [`color--text--${this.textColor}`]: !!this.textColor,
         [`color--${this.color}`]: !!this.color
-      };
+      }
     },
     isDisabled() {
-      if (!this.disable) return {};
-      return { ["f-chip--disabled"]: this.disable };
+      if (!this.disable) return {}
+      return { ['f-chip--disabled']: this.disable }
     },
     classes() {
       return {
         ...this.colors,
         ...this.isDisabled
-      };
+      }
     }
   },
   methods: {
     onRemove(e, value) {
-      if (!this.disable) this.$emit("remove", value);
+      if (!this.disable) this.$emit('remove', value)
 
-      e.stopPropagation();
+      e.stopPropagation()
     },
     onClick(e) {
-      if (this.disable) return false;
+      if (this.disable) return false
 
-      this.$emit("update:selected", !this.selected);
-      this.$emit("click", e);
+      this.$emit('update:selected', !this.selected)
+      this.$emit('click', e)
 
-      e.stopPropagation();
+      e.stopPropagation()
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -112,5 +112,5 @@ export default {
   }
 }
 
-@import "../../assets/f-colors.scss";
+@import '../../assets/f-colors.scss';
 </style>

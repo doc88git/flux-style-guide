@@ -1,17 +1,17 @@
-import { storiesOf } from "@storybook/vue";
-import { select, boolean } from "@storybook/addon-knobs";
-import { FTooltip } from "../index.js";
+import { storiesOf } from '@storybook/vue'
+import { select, boolean } from '@storybook/addon-knobs'
+import { FTooltip } from '../index.js'
 
-storiesOf("Components|Tooltip", module)
-  .add("Default", () => ({
+storiesOf('Components|Tooltip', module)
+  .add('Default', () => ({
     components: { FTooltip },
     data: () => ({}),
     props: {
       position: {
-        default: select("position", ["top", "bottom", "left", "right"], "top")
+        default: select('position', ['top', 'bottom', 'left', 'right'], 'top')
       },
       click: {
-        default: boolean("click", false)
+        default: boolean('click', false)
       }
     },
     template: `
@@ -24,12 +24,12 @@ storiesOf("Components|Tooltip", module)
       </div>
     `
   }))
-  .add("Click", () => ({
+  .add('Click', () => ({
     components: { FTooltip },
     data: () => ({}),
     props: {
       position: {
-        default: select("position", ["top", "bottom", "left", "right"], "top")
+        default: select('position', ['top', 'bottom', 'left', 'right'], 'top')
       }
     },
     template: `
@@ -42,14 +42,14 @@ storiesOf("Components|Tooltip", module)
       </div>
     `
   }))
-  .add("All", () => ({
+  .add('All', () => ({
     components: { FTooltip },
     data: () => ({
       name: false
     }),
     props: {
       position: {
-        default: select("position", ["top", "bottom", "left", "right"], "top")
+        default: select('position', ['top', 'bottom', 'left', 'right'], 'top')
       }
     },
     template: `
@@ -76,4 +76,4 @@ storiesOf("Components|Tooltip", module)
         </f-tooltip>
       </div>
     `
-  }));
+  }))

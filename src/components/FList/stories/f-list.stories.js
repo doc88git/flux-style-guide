@@ -1,26 +1,26 @@
-import { storiesOf } from "@storybook/vue";
-import { text } from "@storybook/addon-knobs";
-import { FList, FItem } from "..";
-import { FCard, FCardBody } from "@/components/FCard";
+import { storiesOf } from '@storybook/vue'
+import { text } from '@storybook/addon-knobs'
+import { FList, FItem } from '..'
+import { FCard, FCardBody } from '@/components/FCard'
 
-const groupId = "FIELD-LIST-ID1";
+const groupId = 'FIELD-LIST-ID1'
 
-storiesOf("Components|List", module).add(
-  "List",
+storiesOf('Components|List', module).add(
+  'List',
   () => ({
     components: { FList, FItem, FCard, FCardBody },
     props: {
       title: {
-        default: text("title", "This is a title", groupId)
+        default: text('title', 'This is a title', groupId)
       },
       label: {
-        default: text("label", "Text label", groupId)
+        default: text('label', 'Text label', groupId)
       },
       to: {
-        default: text("to", "#/home", groupId)
+        default: text('to', '#/home', groupId)
       },
       link: {
-        default: text("link", "http://", groupId)
+        default: text('link', 'http://', groupId)
       }
     },
     template: `
@@ -39,7 +39,7 @@ storiesOf("Components|List", module).add(
   }),
   {
     info: {
-      sumary: "List > Item component"
+      sumary: 'List > Item component'
     }
   }
-);
+)

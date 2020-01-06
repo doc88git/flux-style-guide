@@ -83,12 +83,12 @@
 </template>
 
 <script>
-import { FIcon } from "../FIcon";
-import { FButton } from "../FButton";
-import { FList, FItem } from "../FList";
+import { FIcon } from '../FIcon'
+import { FButton } from '../FButton'
+import { FList, FItem } from '../FList'
 
 export default {
-  name: "f-layout",
+  name: 'f-layout',
   components: {
     FIcon,
     FList,
@@ -96,30 +96,30 @@ export default {
     FButton
   },
   mounted() {
-    const fMenuLButton = document.querySelector(".togglef-menu--left");
-    const fMenuL = document.querySelector(".f-menu--left");
+    const fMenuLButton = document.querySelector('.togglef-menu--left')
+    const fMenuL = document.querySelector('.f-menu--left')
 
     function togglefMenuLView() {
-      fMenuL.classList.toggle("active");
+      fMenuL.classList.toggle('active')
     }
 
-    fMenuLButton.addEventListener("click", togglefMenuLView);
+    fMenuLButton.addEventListener('click', togglefMenuLView)
 
-    const menuButton = document.querySelector(".toggleMenu");
-    const menu = document.querySelector(".header");
+    const menuButton = document.querySelector('.toggleMenu')
+    const menu = document.querySelector('.header')
 
     function toggleMenuView() {
-      menu.classList.toggle("active");
+      menu.classList.toggle('active')
     }
 
-    menuButton.addEventListener("click", toggleMenuView);
+    menuButton.addEventListener('click', toggleMenuView)
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
 .f-layout {
-  background-image: repeating-linear-gradient(to right, theme("colors.light"));
+  background-image: repeating-linear-gradient(to right, theme('colors.light'));
   display: grid;
   width: 100vw;
   min-height: 100vh;
@@ -127,22 +127,22 @@ export default {
   grid-template-rows: 10rem 1fr 2rem;
   grid-gap: 0px;
   grid-template-areas:
-    "header header header"
-    "f-menu--left main main"
-    "footer footer footer";
+    'header header header'
+    'f-menu--left main main'
+    'footer footer footer';
   .header--mob {
     display: none;
   }
   .header {
-    background: theme("colors.light");
+    background: theme('colors.light');
     grid-area: header;
     display: grid;
     grid-template-columns: 1fr minmax(150px, 75rem) 1fr;
     grid-template-rows: 1fr;
     grid-gap: 0.5rem;
     grid-template-areas:
-      "emptyleft top emptyright"
-      "menu menu menu";
+      'emptyleft top emptyright'
+      'menu menu menu';
     .top {
       padding-top: 0.5rem;
       grid-area: top;
@@ -151,7 +151,7 @@ export default {
       grid-gap: 0.5rem;
       .logo {
         font-size: 2rem;
-        color: theme("colors.primary");
+        color: theme('colors.primary');
       }
       div {
         display: flex;
@@ -160,7 +160,7 @@ export default {
           width: 100%;
           padding: 0.5rem 1rem;
           border-radius: 0.25rem;
-          border: 1px solid theme("colors.light");
+          border: 1px solid theme('colors.light');
           font-size: 1rem;
         }
       }
@@ -172,7 +172,7 @@ export default {
       }
     }
     .menu {
-      background: theme("colors.primary");
+      background: theme('colors.primary');
       grid-area: menu;
       color: #fff;
       position: relative;
@@ -201,7 +201,7 @@ export default {
             .submenu {
               overflow: hidden;
               position: absolute;
-              background: theme("colors.secondary");
+              background: theme('colors.secondary');
               width: 100vw;
               max-width: 100vw;
               max-height: 0rem;
@@ -210,7 +210,7 @@ export default {
               top: 2.5rem;
               display: grid;
               grid-template-columns: 1fr 75rem 1fr;
-              grid-template-areas: "emptyleft submenu emptyright";
+              grid-template-areas: 'emptyleft submenu emptyright';
               ul {
                 grid-area: submenu;
                 li:last-child {
@@ -224,20 +224,20 @@ export default {
     }
   }
   .f-menu--left {
-    background-color: theme("colors.light");
-    grid-area: "f-menu--left";
+    background-color: theme('colors.light');
+    grid-area: 'f-menu--left';
     @apply shadow px-2 py-1;
     ul {
       list-style: none;
       li {
         padding: 1.5rem;
         margin-bottom: 1rem;
-        background: theme("colors.gray");
+        background: theme('colors.gray');
       }
     }
   }
   main {
-    background: theme("colors.white");
+    background: theme('colors.white');
     grid-area: main;
     padding: 1rem;
     h1,
@@ -250,7 +250,7 @@ export default {
     }
   }
   footer {
-    background: theme("colors.light");
+    background: theme('colors.light');
     grid-area: footer;
     p {
       width: 100%;
@@ -264,12 +264,12 @@ export default {
     grid-template-rows: 5rem 1fr 2rem;
     grid-row-gap: 1rem;
     grid-template-areas:
-      "header"
-      "main"
-      "footer";
-    background: theme("colors.white");
+      'header'
+      'main'
+      'footer';
+    background: theme('colors.white');
     .header--mob {
-      background: theme("colors.light");
+      background: theme('colors.light');
       grid-area: header;
       position: fixed;
       height: 5rem;
@@ -277,13 +277,13 @@ export default {
       display: grid;
       grid-template-columns: 5rem 1fr 5rem;
       grid-gap: 0.5rem;
-      border-bottom: 1px solid theme("colors.primary");
+      border-bottom: 1px solid theme('colors.primary');
       .logo {
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 2rem;
-        color: theme("colors.primary");
+        color: theme('colors.primary');
       }
       button {
         border: 0 none;
@@ -291,16 +291,16 @@ export default {
         cursor: pointer;
         transition: background 0.25s;
         &:hover {
-          background: theme("colors.light");
+          background: theme('colors.light');
           transition: background 0.25s;
         }
         svg {
-          fill: theme("colors.primary");
+          fill: theme('colors.primary');
         }
       }
     }
     .header {
-      background: theme("colors.primary");
+      background: theme('colors.primary');
       grid-area: none;
       position: fixed;
       right: 0;
@@ -313,8 +313,8 @@ export default {
       grid-template-columns: 1fr;
       grid-template-rows: 3rem 1fr;
       grid-template-areas:
-        "top"
-        "menu";
+        'top'
+        'menu';
       &.active {
         transform: translateX(0%);
         transition: transform 0.25s;
@@ -332,8 +332,8 @@ export default {
           .header__mid-input {
             width: 5rem;
             transition: width 0.25s;
-            background: theme("colors.primary");
-            color: theme("colors.white");
+            background: theme('colors.primary');
+            color: theme('colors.white');
             padding: 0.25rem 0.5rem;
             font-size: 0.75rem;
             &:focus {
@@ -348,10 +348,10 @@ export default {
             font-size: 0.75rem;
           }
           .btn-outline {
-            color: theme("colors.white");
-            border-color: theme("colors.white");
+            color: theme('colors.white');
+            border-color: theme('colors.white');
             &:hover {
-              background: theme("colors.black");
+              background: theme('colors.black');
             }
           }
         }
@@ -375,7 +375,7 @@ export default {
                 max-height: 200vh;
                 position: static;
                 display: block;
-                background: theme("colors.primary");
+                background: theme('colors.primary');
               }
             }
           }
@@ -411,34 +411,34 @@ input {
 .btn {
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
-  border: 1px solid theme("colors.gray");
-  background: theme("colors.light");
+  border: 1px solid theme('colors.gray');
+  background: theme('colors.light');
   transition: background 0.25s;
-  color: theme("colors.black");
+  color: theme('colors.black');
   font-size: 1rem;
   outline: none;
   cursor: pointer;
   &:hover {
-    background: theme("colors.gray");
+    background: theme('colors.gray');
     transition: background 0.25s;
   }
   &.btn-outline {
     background: transparent;
     &:hover {
-      background: theme("colors.light");
+      background: theme('colors.light');
     }
     &.btn-primary {
-      border-color: theme("colors.primary");
-      color: theme("colors.primary");
+      border-color: theme('colors.primary');
+      color: theme('colors.primary');
     }
   }
   &.btn-info {
-    color: theme("colors.white");
-    background: theme("colors.primary");
-    border-color: theme("colors.primary");
+    color: theme('colors.white');
+    background: theme('colors.primary');
+    border-color: theme('colors.primary');
     &:hover {
-      background: theme("colors.primary");
-      border-color: theme("colors.primary");
+      background: theme('colors.primary');
+      border-color: theme('colors.primary');
     }
   }
 }

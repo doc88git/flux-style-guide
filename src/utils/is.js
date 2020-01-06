@@ -1,23 +1,23 @@
 export function isDeepEqual(a, b) {
   if (a === b) {
-    return true;
+    return true
   }
 
   if (a instanceof Date && b instanceof Date) {
-    return a.getTime() === b.getTime();
+    return a.getTime() === b.getTime()
   }
 
   if (a !== Object(a) || b !== Object(b)) {
-    return false;
+    return false
   }
 
-  const props = Object.keys(a);
+  const props = Object.keys(a)
 
   if (props.length !== Object.keys(b).length) {
-    return false;
+    return false
   }
 
-  return props.every(prop => isDeepEqual(a[prop], b[prop]));
+  return props.every(prop => isDeepEqual(a[prop], b[prop]))
 }
 
 export function isPrintableChar(v) {
@@ -29,25 +29,25 @@ export function isPrintableChar(v) {
     (v > 95 && v < 112) || // numpad keys
     (v > 185 && v < 193) || // ;=,-./` (in order)
     (v > 218 && v < 223)
-  );
+  )
 }
 
 export function isObject(v) {
-  return Object(v) === v;
+  return Object(v) === v
 }
 
 export function isDate(v) {
-  return Object.prototype.toString.call(v) === "[object Date]";
+  return Object.prototype.toString.call(v) === '[object Date]'
 }
 
 export function isRegexp(v) {
-  return Object.prototype.toString.call(v) === "[object RegExp]";
+  return Object.prototype.toString.call(v) === '[object RegExp]'
 }
 
 export function isNumber(v) {
-  return typeof v === "number" && isFinite(v);
+  return typeof v === 'number' && isFinite(v)
 }
 
 export function isString(v) {
-  return typeof v === "string";
+  return typeof v === 'string'
 }

@@ -1,3 +1,3 @@
-import FTable from "./FTable";
+import FTable from './FTable'
 
-export { FTable };
+export { FTable }

@@ -1,67 +1,67 @@
-import { storiesOf } from "@storybook/vue";
-import { text, boolean } from "@storybook/addon-knobs";
-import { FField, FInput } from "..";
-import { FButton } from "../../FButton";
-import { FAvatar } from "../../FAvatar";
+import { storiesOf } from '@storybook/vue'
+import { text, boolean } from '@storybook/addon-knobs'
+import { FField, FInput } from '..'
+import { FButton } from '../../FButton'
+import { FAvatar } from '../../FAvatar'
 
-const groupId = "FIELD-OPTIONS-ID1";
+const groupId = 'FIELD-OPTIONS-ID1'
 const summary = `
 ## Form => Field
-`;
+`
 
-storiesOf("Form|Field", module)
+storiesOf('Form|Field', module)
   .add(
-    "Basic",
+    'Basic',
     () => ({
       components: { FField, FInput, FButton, FAvatar },
       data: () => ({
-        value: "oi"
+        value: 'oi'
       }),
       props: {
         name: {
-          default: text("name", "name", groupId)
+          default: text('name', 'name', groupId)
         },
         label: {
-          default: text("label", "Nome completo", groupId)
+          default: text('label', 'Nome completo', groupId)
         },
         hint: {
-          default: text("hint", "Escreva seu nome", groupId)
+          default: text('hint', 'Escreva seu nome', groupId)
         },
         rules: {
-          default: text("rules", "required|email", groupId)
+          default: text('rules', 'required|email', groupId)
         },
         hasError: {
-          default: boolean("hasError", false, groupId)
+          default: boolean('hasError', false, groupId)
         },
         mask: {
-          default: text("mask", "", groupId)
+          default: text('mask', '', groupId)
         },
         errorMessage: {
-          default: text("errorMessage", "", groupId)
+          default: text('errorMessage', '', groupId)
         },
         type: {
-          default: text("type", "text", groupId)
+          default: text('type', 'text', groupId)
         },
         avatar: {
           default: text(
-            "avatar",
-            "https://cdn.quasar.dev/img/avatar5.jpg",
+            'avatar',
+            'https://cdn.quasar.dev/img/avatar5.jpg',
             groupId
           )
         },
         icon: {
-          default: text("icon", "search", groupId)
+          default: text('icon', 'search', groupId)
         }
       },
       propsDescription: {
         FField: {
-          label: "Label of field",
-          hint: "Hint",
-          rules: "Rules for VeeValidate",
-          errorMessage: "Message error"
+          label: 'Label of field',
+          hint: 'Hint',
+          rules: 'Rules for VeeValidate',
+          errorMessage: 'Message error'
         },
         FInput: {
-          name: "Name of field"
+          name: 'Name of field'
         }
       },
       template: `
@@ -90,46 +90,46 @@ storiesOf("Form|Field", module)
     }
   )
   .add(
-    "Before",
+    'Before',
     () => ({
       components: { FField, FInput, FButton, FAvatar },
       data: () => ({
-        value: ""
+        value: ''
       }),
       props: {
         name: {
-          default: text("name", "name", groupId)
+          default: text('name', 'name', groupId)
         },
         label: {
-          default: text("label", "Nome completo", groupId)
+          default: text('label', 'Nome completo', groupId)
         },
         hint: {
-          default: text("hint", "Escreva seu nome", groupId)
+          default: text('hint', 'Escreva seu nome', groupId)
         },
         rules: {
-          default: text("rules", "required|email", groupId)
+          default: text('rules', 'required|email', groupId)
         },
         hasError: {
-          default: boolean("hasError", false, groupId)
+          default: boolean('hasError', false, groupId)
         },
         mask: {
-          default: text("mask", "", groupId)
+          default: text('mask', '', groupId)
         },
         errorMessage: {
-          default: text("errorMessage", "", groupId)
+          default: text('errorMessage', '', groupId)
         },
         type: {
-          default: text("type", "text", groupId)
+          default: text('type', 'text', groupId)
         },
         avatar: {
           default: text(
-            "avatar",
-            "https://cdn.quasar.dev/img/avatar5.jpg",
+            'avatar',
+            'https://cdn.quasar.dev/img/avatar5.jpg',
             groupId
           )
         },
         icon: {
-          default: text("icon", "search", groupId)
+          default: text('icon', 'search', groupId)
         }
       },
       template: `
@@ -156,46 +156,46 @@ storiesOf("Form|Field", module)
     }
   )
   .add(
-    "After",
+    'After',
     () => ({
       components: { FField, FInput, FButton, FAvatar },
       data: () => ({
-        value: ""
+        value: ''
       }),
       props: {
         name: {
-          default: text("name", "name", groupId)
+          default: text('name', 'name', groupId)
         },
         label: {
-          default: text("label", "Nome completo", groupId)
+          default: text('label', 'Nome completo', groupId)
         },
         hint: {
-          default: text("hint", "Escreva seu nome", groupId)
+          default: text('hint', 'Escreva seu nome', groupId)
         },
         rules: {
-          default: text("rules", "required|email", groupId)
+          default: text('rules', 'required|email', groupId)
         },
         hasError: {
-          default: boolean("hasError", false, groupId)
+          default: boolean('hasError', false, groupId)
         },
         mask: {
-          default: text("mask", "", groupId)
+          default: text('mask', '', groupId)
         },
         errorMessage: {
-          default: text("errorMessage", "", groupId)
+          default: text('errorMessage', '', groupId)
         },
         type: {
-          default: text("type", "text", groupId)
+          default: text('type', 'text', groupId)
         },
         avatar: {
           default: text(
-            "avatar",
-            "https://cdn.quasar.dev/img/avatar5.jpg",
+            'avatar',
+            'https://cdn.quasar.dev/img/avatar5.jpg',
             groupId
           )
         },
         icon: {
-          default: text("icon", "search", groupId)
+          default: text('icon', 'search', groupId)
         }
       },
       template: `
@@ -222,46 +222,46 @@ storiesOf("Form|Field", module)
     }
   )
   .add(
-    "Append",
+    'Append',
     () => ({
       components: { FField, FInput, FButton, FAvatar },
       data: () => ({
-        value: ""
+        value: ''
       }),
       props: {
         name: {
-          default: text("name", "name", groupId)
+          default: text('name', 'name', groupId)
         },
         label: {
-          default: text("label", "Nome completo", groupId)
+          default: text('label', 'Nome completo', groupId)
         },
         hint: {
-          default: text("hint", "Escreva seu nome", groupId)
+          default: text('hint', 'Escreva seu nome', groupId)
         },
         rules: {
-          default: text("rules", "required|email", groupId)
+          default: text('rules', 'required|email', groupId)
         },
         hasError: {
-          default: boolean("hasError", false, groupId)
+          default: boolean('hasError', false, groupId)
         },
         mask: {
-          default: text("mask", "", groupId)
+          default: text('mask', '', groupId)
         },
         errorMessage: {
-          default: text("errorMessage", "", groupId)
+          default: text('errorMessage', '', groupId)
         },
         type: {
-          default: text("type", "text", groupId)
+          default: text('type', 'text', groupId)
         },
         avatar: {
           default: text(
-            "avatar",
-            "https://cdn.quasar.dev/img/avatar5.jpg",
+            'avatar',
+            'https://cdn.quasar.dev/img/avatar5.jpg',
             groupId
           )
         },
         icon: {
-          default: text("icon", "search", groupId)
+          default: text('icon', 'search', groupId)
         }
       },
       template: `
@@ -288,46 +288,46 @@ storiesOf("Form|Field", module)
     }
   )
   .add(
-    "Complete",
+    'Complete',
     () => ({
       components: { FField, FInput, FButton, FAvatar },
       data: () => ({
-        value: ""
+        value: ''
       }),
       props: {
         name: {
-          default: text("name", "name", groupId)
+          default: text('name', 'name', groupId)
         },
         label: {
-          default: text("label", "Nome completo", groupId)
+          default: text('label', 'Nome completo', groupId)
         },
         hint: {
-          default: text("hint", "Escreva seu nome", groupId)
+          default: text('hint', 'Escreva seu nome', groupId)
         },
         rules: {
-          default: text("rules", "required|email", groupId)
+          default: text('rules', 'required|email', groupId)
         },
         hasError: {
-          default: boolean("hasError", false, groupId)
+          default: boolean('hasError', false, groupId)
         },
         mask: {
-          default: text("mask", "", groupId)
+          default: text('mask', '', groupId)
         },
         errorMessage: {
-          default: text("errorMessage", "", groupId)
+          default: text('errorMessage', '', groupId)
         },
         type: {
-          default: text("type", "text", groupId)
+          default: text('type', 'text', groupId)
         },
         avatar: {
           default: text(
-            "avatar",
-            "https://cdn.quasar.dev/img/avatar5.jpg",
+            'avatar',
+            'https://cdn.quasar.dev/img/avatar5.jpg',
             groupId
           )
         },
         icon: {
-          default: text("icon", "search", groupId)
+          default: text('icon', 'search', groupId)
         }
       },
       template: `
@@ -360,24 +360,24 @@ storiesOf("Form|Field", module)
     }
   )
   .add(
-    "Example Validation",
+    'Example Validation',
     () => ({
       components: { FField, FInput, FButton },
       data: () => ({
         form: {
-          name: "",
-          email: "",
-          age: ""
+          name: '',
+          email: '',
+          age: ''
         },
-        message: ""
+        message: ''
       }),
       methods: {
         submit() {
           this.$validator.validate().then(valid => {
-            const is = valid ? "is" : "NOT is";
+            const is = valid ? 'is' : 'NOT is'
 
-            this.message = `This form ${is} valid!`;
-          });
+            this.message = `This form ${is} valid!`
+          })
         }
       },
       template: `
@@ -428,4 +428,4 @@ storiesOf("Form|Field", module)
         summary
       }
     }
-  );
+  )

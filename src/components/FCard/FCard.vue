@@ -12,17 +12,17 @@
 </template>
 
 <script>
-import FImage from "../FImage/FImage";
+import FImage from '../FImage/FImage'
 
 export default {
-  name: "f-card",
+  name: 'f-card',
   components: {
     FImage
   },
   props: {
     headerBg: String
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

@@ -1,3 +1,3 @@
-import FDropdown from "./FDropdown";
+import FDropdown from './FDropdown'
 
-export { FDropdown };
+export { FDropdown }

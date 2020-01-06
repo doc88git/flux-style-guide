@@ -1,27 +1,27 @@
-import { isDeepEqual } from "./is";
+import { isDeepEqual } from './is'
 
-const trailingSlashRE = /\/?$/;
+const trailingSlashRE = /\/?$/
 
 function queryIncludes(current, target) {
   for (const key in target) {
     if (!(key in current)) {
-      return false;
+      return false
     }
   }
-  return true;
+  return true
 }
 
 export function isSameRoute(current, target) {
   if (!target) {
-    return false;
+    return false
   }
   if (current.path && target.path) {
     return (
-      current.path.replace(trailingSlashRE, "") ===
-        target.path.replace(trailingSlashRE, "") &&
+      current.path.replace(trailingSlashRE, '') ===
+        target.path.replace(trailingSlashRE, '') &&
       current.hash === target.hash &&
       isDeepEqual(current.query, target.query)
-    );
+    )
   }
   if (current.name && target.name) {
     return (
@@ -29,17 +29,17 @@ export function isSameRoute(current, target) {
       current.hash === target.hash &&
       isDeepEqual(current.query, target.query) &&
       isDeepEqual(current.params, target.params)
-    );
+    )
   }
-  return false;
+  return false
 }
 
 export function isIncludedRoute(current, target) {
   return (
     current.path
-      .replace(trailingSlashRE, "/")
-      .indexOf(target.path.replace(trailingSlashRE, "/")) === 0 &&
+      .replace(trailingSlashRE, '/')
+      .indexOf(target.path.replace(trailingSlashRE, '/')) === 0 &&
     (!target.hash || current.hash === target.hash) &&
     queryIncludes(current.query, target.query)
-  );
+  )
 }

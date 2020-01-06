@@ -1,3 +1,3 @@
-import FHeader from "./FHeader";
+import FHeader from './FHeader'
 
-export { FHeader };
+export { FHeader }

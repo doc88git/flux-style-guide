@@ -4,18 +4,18 @@
 
 <script>
 export default {
-  name: "f-avatar",
+  name: 'f-avatar',
   props: {
     src: {
       type: String,
-      default: "https://cdn.quasar.dev/img/avatar5.jpg"
+      default: 'https://cdn.quasar.dev/img/avatar5.jpg'
     },
     click: {
       type: Function,
       default: () => ({})
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

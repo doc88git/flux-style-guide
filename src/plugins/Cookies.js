@@ -1,20 +1,20 @@
-import { isSSR } from "./Platform.js";
+import { isSSR } from './Platform.js'
 
 function encode(string) {
-  return encodeURIComponent(string);
+  return encodeURIComponent(string)
 }
 
 function decode(string) {
-  return decodeURIComponent(string);
+  return decodeURIComponent(string)
 }
 
 function stringifyCookieValue(value) {
-  return encode(value === Object(value) ? JSON.stringify(value) : "" + value);
+  return encode(value === Object(value) ? JSON.stringify(value) : '' + value)
 }
 
 function read(string) {
-  if (string === "") {
-    return string;
+  if (string === '') {
+    return string
   }
 
   if (string.indexOf('"') === 0) {
@@ -22,117 +22,117 @@ function read(string) {
     string = string
       .slice(1, -1)
       .replace(/\\"/g, '"')
-      .replace(/\\\\/g, "\\");
+      .replace(/\\\\/g, '\\')
   }
 
   // Replace server-side written pluses with spaces.
   // If we can't decode the cookie, ignore it, it's unusable.
   // If we can't parse the cookie, ignore it, it's unusable.
-  string = decode(string.replace(/\+/g, " "));
+  string = decode(string.replace(/\+/g, ' '))
 
   try {
-    string = JSON.parse(string);
+    string = JSON.parse(string)
   } catch (e) {
-    console.log({ e });
+    console.log({ e })
   }
 
-  return string;
+  return string
 }
 
 function set(key, val, opts = {}, ssr) {
-  let expire, expireValue;
+  let expire, expireValue
 
   if (opts.expires !== void 0) {
-    expireValue = parseFloat(opts.expires);
+    expireValue = parseFloat(opts.expires)
 
     if (isNaN(expireValue)) {
-      expire = opts.expires;
+      expire = opts.expires
     } else {
-      expire = new Date();
-      expire.setMilliseconds(expire.getMilliseconds() + expireValue * 864e5);
-      expire = expire.toUTCString();
+      expire = new Date()
+      expire.setMilliseconds(expire.getMilliseconds() + expireValue * 864e5)
+      expire = expire.toUTCString()
     }
   }
 
-  const keyValue = `${encode(key)}=${stringifyCookieValue(val)}`;
+  const keyValue = `${encode(key)}=${stringifyCookieValue(val)}`
 
   const cookie = [
     keyValue,
-    expire !== void 0 ? "; Expires=" + expire : "", // use expires attribute, max-age is not supported by IE
-    opts.path ? "; Path=" + opts.path : "",
-    opts.domain ? "; Domain=" + opts.domain : "",
-    opts.httpOnly ? "; HttpOnly" : "",
-    opts.secure ? "; Secure" : ""
-  ].join("");
+    expire !== void 0 ? '; Expires=' + expire : '', // use expires attribute, max-age is not supported by IE
+    opts.path ? '; Path=' + opts.path : '',
+    opts.domain ? '; Domain=' + opts.domain : '',
+    opts.httpOnly ? '; HttpOnly' : '',
+    opts.secure ? '; Secure' : ''
+  ].join('')
 
   if (ssr) {
     if (ssr.req.qCookies) {
-      ssr.req.qCookies.push(cookie);
+      ssr.req.qCookies.push(cookie)
     } else {
-      ssr.req.qCookies = [cookie];
+      ssr.req.qCookies = [cookie]
     }
 
-    ssr.res.setHeader("Set-Cookie", ssr.req.qCookies);
+    ssr.res.setHeader('Set-Cookie', ssr.req.qCookies)
 
     // make temporary update so future get()
     // within same SSR timeframe would return the set value
 
-    let all = ssr.req.headers.cookie || "";
+    let all = ssr.req.headers.cookie || ''
 
     if (expire !== void 0 && expireValue < 0) {
-      const val = get(key, ssr);
+      const val = get(key, ssr)
       if (val !== undefined) {
         all = all
-          .replace(`${key}=${val}; `, "")
-          .replace(`; ${key}=${val}`, "")
-          .replace(`${key}=${val}`, "");
+          .replace(`${key}=${val}; `, '')
+          .replace(`; ${key}=${val}`, '')
+          .replace(`${key}=${val}`, '')
       }
     } else {
-      all = all ? `${keyValue}; ${all}` : cookie;
+      all = all ? `${keyValue}; ${all}` : cookie
     }
 
-    ssr.req.headers.cookie = all;
+    ssr.req.headers.cookie = all
   } else {
-    document.cookie = cookie;
+    document.cookie = cookie
   }
 }
 
 function get(key, ssr) {
   let result = key ? undefined : {},
     cookieSource = ssr ? ssr.req.headers : document,
-    cookies = cookieSource.cookie ? cookieSource.cookie.split("; ") : [],
+    cookies = cookieSource.cookie ? cookieSource.cookie.split('; ') : [],
     i = 0,
     l = cookies.length,
     parts,
     name,
-    cookie;
+    cookie
 
   for (; i < l; i++) {
-    parts = cookies[i].split("=");
-    name = decode(parts.shift());
-    cookie = parts.join("=");
+    parts = cookies[i].split('=')
+    name = decode(parts.shift())
+    cookie = parts.join('=')
 
     if (!key) {
-      result[name] = cookie;
+      result[name] = cookie
     } else if (key === name) {
-      result = read(cookie);
-      break;
+      result = read(cookie)
+      break
     }
   }
 
-  return result;
+  return result
 }
 
 function remove(key, options, ssr) {
-  set(key, "", { ...options, expires: -1 }, ssr);
+  set(key, '', { ...options, expires: -1 }, ssr)
 }
 
 function has(key, ssr) {
-  return get(key, ssr) !== undefined;
+  return get(key, ssr) !== undefined
 }
 
 export function getObject(ctx = {}) {
-  const ssr = ctx.ssr;
+  const ssr = ctx.ssr
 
   return {
     get: key => get(key, ssr),
@@ -140,22 +140,22 @@ export function getObject(ctx = {}) {
     has: key => has(key, ssr),
     remove: (key, options) => remove(key, options, ssr),
     getAll: () => get(null, ssr)
-  };
+  }
 }
 
 export default {
   parseSSR(/* ssrContext */ ssr) {
-    return ssr ? getObject({ ssr }) : this;
+    return ssr ? getObject({ ssr }) : this
   },
 
   install({ $f, queues }) {
     if (isSSR === true) {
       queues.server.push((q, ctx) => {
-        q.cookies = getObject(ctx);
-      });
+        q.cookies = getObject(ctx)
+      })
     } else {
-      Object.assign(this, getObject());
-      $f.cookies = this;
+      Object.assign(this, getObject())
+      $f.cookies = this
     }
   }
-};
+}

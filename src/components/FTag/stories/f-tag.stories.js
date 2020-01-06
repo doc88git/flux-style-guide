@@ -1,18 +1,18 @@
-import { storiesOf } from "@storybook/vue";
-import { text } from "@storybook/addon-knobs";
-import FTag from "../FTag.vue";
+import { storiesOf } from '@storybook/vue'
+import { text } from '@storybook/addon-knobs'
+import FTag from '../FTag.vue'
 
-storiesOf("Components|Tags", module).add(
-  "Tag",
+storiesOf('Components|Tags', module).add(
+  'Tag',
   () => ({
     components: { FTag },
     data: () => ({
-      bgColor: text("Background", "white"),
-      lineColor: text("Line Color", "black"),
-      legend: text("Label", "Empresa"),
-      icon: text("Icon", "dashboard"),
-      iconColor: text("Icon Color", "purple"),
-      text: text("Text", "Flux Services")
+      bgColor: text('Background', 'white'),
+      lineColor: text('Line Color', 'black'),
+      legend: text('Label', 'Empresa'),
+      icon: text('Icon', 'dashboard'),
+      iconColor: text('Icon Color', 'purple'),
+      text: text('Text', 'Flux Services')
     }),
     methods: {},
     props: {},
@@ -29,4 +29,4 @@ storiesOf("Components|Tags", module).add(
         `
     }
   }
-);
+)

@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "f-badge",
+  name: 'f-badge',
   props: {
     color: String,
     textColor: String,
@@ -19,36 +19,36 @@ export default {
 
     align: {
       type: String,
-      validator: v => ["top", "middle", "bottom"].includes(v)
+      validator: v => ['top', 'middle', 'bottom'].includes(v)
     }
   },
   computed: {
     lineType() {
-      let type = this.multiLine ? "multi" : "single";
-      return { [`f-badge--${type}-line`]: true };
+      let type = this.multiLine ? 'multi' : 'single'
+      return { [`f-badge--${type}-line`]: true }
     },
     colors() {
       return {
         [`color--text--${this.textColor}`]: !!this.textColor,
         [`color--${this.color}`]: !!this.color
-      };
+      }
     },
     position() {
-      if (!this.align) return {};
+      if (!this.align) return {}
 
-      return { [`f-badge--align-${this.align}`]: !!this.align };
+      return { [`f-badge--align-${this.align}`]: !!this.align }
     },
     classes() {
       return {
-        ["f-badge--floating"]: this.floating,
-        ["f-badge--transparent"]: this.transparent,
+        ['f-badge--floating']: this.floating,
+        ['f-badge--transparent']: this.transparent,
         ...this.colors,
         ...this.lineType,
         ...this.position
-      };
+      }
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -89,5 +89,5 @@ export default {
   }
 }
 
-@import "../../assets/f-colors.scss";
+@import '../../assets/f-colors.scss';
 </style>

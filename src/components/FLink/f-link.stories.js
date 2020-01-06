@@ -1,10 +1,10 @@
-import { storiesOf } from "@storybook/vue";
+import { storiesOf } from '@storybook/vue'
 
-import { FLink } from "@/components/FLink";
+import { FLink } from '@/components/FLink'
 
-storiesOf("Components|Link", module)
+storiesOf('Components|Link', module)
   .add(
-    "Router",
+    'Router',
     () => ({
       components: { FLink },
       template: `
@@ -15,12 +15,12 @@ storiesOf("Components|Link", module)
     }),
     {
       info: {
-        sumary: "Link component"
+        sumary: 'Link component'
       }
     }
   )
   .add(
-    "Link",
+    'Link',
     () => ({
       components: { FLink },
       template: `
@@ -31,7 +31,7 @@ storiesOf("Components|Link", module)
     }),
     {
       info: {
-        sumary: "Link component"
+        sumary: 'Link component'
       }
     }
-  );
+  )

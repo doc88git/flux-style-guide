@@ -6,8 +6,8 @@
 
 <script>
 export default {
-  name: "f-container"
-};
+  name: 'f-container'
+}
 </script>
 
 <style lang="scss" scoped>

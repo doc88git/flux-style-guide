@@ -1,3 +1,3 @@
-import FTooltip from "./FTooltip";
+import FTooltip from './FTooltip'
 
-export { FTooltip };
+export { FTooltip }

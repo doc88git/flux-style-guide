@@ -1,3 +1,3 @@
-import FPagination from "./FPagination";
+import FPagination from './FPagination'
 
-export { FPagination };
+export { FPagination }

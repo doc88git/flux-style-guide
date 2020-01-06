@@ -1,4 +1,4 @@
-import FAlert from "./FAlert";
-import FAlertController from "./FAlertController";
+import FAlert from './FAlert'
+import FAlertController from './FAlertController'
 
-export { FAlert, FAlertController };
+export { FAlert, FAlertController }

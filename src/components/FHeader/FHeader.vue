@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { FButton } from '../FButton';
+import { FButton } from '../FButton'
 export default {
   name: 'f-header',
   components: { FButton },
@@ -33,17 +33,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .main-header {
-    @apply flex justify-between px-5 py-1 w-full text-center items-center shadow-xxxl top-0 fixed;
-    min-height: 70px;
-    &__title {
-      @apply w-full font-normal text-xl text-left;
-      color: #666;
-    }
+.main-header {
+  @apply flex justify-between px-5 py-1 w-full text-center items-center shadow-xxxl top-0 fixed;
+  min-height: 70px;
+  &__title {
+    @apply w-full font-normal text-xl text-left;
+    color: #666;
   }
+}
 
-  .f-icon--base {
-    font-size: 1.5rem;
-  }
+.f-icon--base {
+  font-size: 1.5rem;
+}
 </style>
-

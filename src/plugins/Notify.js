@@ -1,37 +1,37 @@
-import Vue from "vue";
-import FAlertController from "../components/FAlert/FAlertController";
-import { isSSR } from "./Platform.js";
+import Vue from 'vue'
+import FAlertController from '../components/FAlert/FAlertController'
+import { isSSR } from './Platform.js'
 
-let defaults = {};
+let defaults = {}
 
 function init() {
-  if (isSSR) return false;
+  if (isSSR) return false
 
-  const node = window.document.createElement("div");
-  window.document.body.appendChild(node);
+  const node = window.document.createElement('div')
+  window.document.body.appendChild(node)
 
-  this.__vm = new Vue(FAlertController);
-  this.__vm.$mount(node);
+  this.__vm = new Vue(FAlertController)
+  this.__vm.$mount(node)
 }
 
 export default {
   create(opts) {
     if (isSSR === true || this.__vm === void 0) {
-      return () => {};
+      return () => {}
     }
-    return this.__vm.add(opts);
+    return this.__vm.add(opts)
   },
   setDefaults(opts) {
-    Object.assign(defaults, opts);
+    Object.assign(defaults, opts)
   },
   install(args) {
     if (!isSSR) {
-      init.call(this, args);
+      init.call(this, args)
 
-      args.cfg.notify && this.setDefaults(args.cfg.notify);
+      args.cfg.notify && this.setDefaults(args.cfg.notify)
 
-      args.$f.notify = this.create.bind(this);
-      args.$f.notify.setDefaults = this.setDefaults;
+      args.$f.notify = this.create.bind(this)
+      args.$f.notify.setDefaults = this.setDefaults
     }
   }
-};
+}

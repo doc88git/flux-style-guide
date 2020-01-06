@@ -6,8 +6,8 @@
 
 <script>
 export default {
-  name: "f-card-title"
-};
+  name: 'f-card-title'
+}
 </script>
 
 <style lang="scss" scoped>

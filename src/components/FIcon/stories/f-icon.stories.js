@@ -1,32 +1,32 @@
-import { storiesOf } from "@storybook/vue";
-import { select, text } from "@storybook/addon-knobs";
+import { storiesOf } from '@storybook/vue'
+import { select, text } from '@storybook/addon-knobs'
 
-import FIcon from "../FIcon.vue";
+import FIcon from '../FIcon.vue'
 
-const label = "Icon Type";
-const defaultValue = "default";
+const label = 'Icon Type'
+const defaultValue = 'default'
 const options = {
-  Outlined: "outlined",
-  Sharp: "sharp",
-  "Two Tone": "twoTone",
-  Round: "round",
-  Default: "default"
-};
-const groupId = "ICON-OPTIONS-ID1";
+  Outlined: 'outlined',
+  Sharp: 'sharp',
+  'Two Tone': 'twoTone',
+  Round: 'round',
+  Default: 'default'
+}
+const groupId = 'ICON-OPTIONS-ID1'
 
-storiesOf("Components|Icon", module).add(
-  "Icon",
+storiesOf('Components|Icon', module).add(
+  'Icon',
   () => ({
     components: { FIcon },
     props: {
       name: {
-        default: text("name", "extension", groupId)
+        default: text('name', 'extension', groupId)
       },
       type: {
         default: select(label, options, defaultValue, groupId)
       },
       lib: {
-        default: select("Lib", { Material: "material" }, "material", groupId)
+        default: select('Lib', { Material: 'material' }, 'material', groupId)
       }
     },
     template: `
@@ -50,4 +50,4 @@ storiesOf("Components|Icon", module).add(
         `
     }
   }
-);
+)
