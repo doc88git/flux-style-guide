@@ -37,10 +37,12 @@
       <div
         class="f-layout__wrapper__content"
         :class="{
-          '--no-extra-padding': menuItems.length === 0 && !hasMenu
+          '--no-extra-padding': true
         }"
       >
-        <slot name="content"></slot>
+        <slot name="content">
+          <p>kaudsfa</p>
+        </slot>
       </div>
     </div>
   </section>
@@ -138,7 +140,7 @@ export default {
         padding: 1.25rem;
       }
 
-      &--no-extra-padding {
+      &.--no-extra-padding {
         padding: 1.25rem;
       }
     }
@@ -149,7 +151,7 @@ export default {
     background-color: #fff;
     z-index: 80;
 
-    &--no-menu {
+    &.--no-menu {
       @apply py-5;
     }
   }
