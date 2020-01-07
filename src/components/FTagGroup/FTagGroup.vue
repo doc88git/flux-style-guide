@@ -1,14 +1,46 @@
 <template>
   <div class="FTagGroup">
-    <div class="FTagGroup__box">
-      <slot />
+    <div
+      class="FTagGroup__box"
+      @mouseover="setShowLegend(true)"
+      @mouseout="setShowLegend(false)"
+    >
+      <FTag
+        v-for="(tag, i) in list"
+        :key="i"
+        :bgColor="tag.bgColor"
+        :lineColor="tag.lineColor"
+        :legend="tag.legend"
+        :icon="tag.icon"
+        :iconColor="tag.iconColor"
+        :text="tag.text"
+        :textColor="tag.textColor"
+        :showLegend="showLegend"
+      />
     </div>
   </div>
 </template>
 
 <script>
+import { FTag } from "@/components/FTag";
+
 export default {
-  name: "FTagGroup"
+  name: "FTagGroup",
+  components: { FTag },
+  data: () => ({
+    showLegend: false
+  }),
+  props: {
+    list: {
+      type: Array,
+      required: true
+    }
+  },
+  methods: {
+    setShowLegend(bool) {
+      this.showLegend = bool;
+    }
+  }
 };
 </script>
 
@@ -38,7 +70,7 @@ export default {
       content: "";
       width: 20px;
       height: 1px;
-      background-color: black;
+      background-color: #c1c1c1;
       position: absolute;
       transform: translateX(-100%) translateY(15px);
     }
