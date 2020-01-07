@@ -6,11 +6,7 @@
       @mouseover="onHover = true"
       @mouseout="onHover = false"
     >
-      <div
-        class="FTag__legend"
-        ref="fTagLegend"
-        :style="[styleLegend, showLegend]"
-      >
+      <div class="FTag__legend" ref="fTagLegend" :style="[styleLegend]">
         {{ legend }}
       </div>
       <div class="FTag__slot-div" :style="styleLineColor">
@@ -123,8 +119,8 @@ export default {
 
   &__legend {
     visibility: hidden;
-    padding-right: 7px;
-    padding-left: 7px;
+    padding-right: 4px;
+    padding-left: 4px;
     padding-bottom: 0;
     position: absolute;
     transform: translateY(-7px);
