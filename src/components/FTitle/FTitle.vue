@@ -4,7 +4,7 @@
       <div v-if="$slots.before" class="FTitle__wrapper--before">
         <slot name="before" />
       </div>
-      <h1 class="FTitle__text">{{ text }}</h1>
+      <h1 class="FTitle__wrapper__text">{{ text }}</h1>
       <div v-if="$slots.after" class="FTitle__wrapper--after">
         <slot name="after" />
       </div>
@@ -36,6 +36,7 @@ export default {
   width: 100%;
   padding: 10px 0;
   margin-bottom: 10px;
+  color: #333333;
 
   &__wrapper {
     display: flex;
@@ -44,6 +45,14 @@ export default {
       display: flex;
       align-items: center;
       margin-right: 20px;
+    }
+
+    &__text {
+      display: flex;
+      align-items: center;
+      font-size: 1.3em;
+      padding: 0;
+      margin: 0;
     }
 
     &--after {
@@ -56,15 +65,6 @@ export default {
   &__hr {
     border-color: #ccc;
     margin-top: 20px;
-  }
-
-  &__text {
-    display: flex;
-    align-items: center;
-    font-size: 1.3em;
-    color: #000;
-    padding: 0;
-    margin: 0;
   }
 }
 </style>

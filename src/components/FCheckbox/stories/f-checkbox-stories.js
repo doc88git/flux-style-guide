@@ -16,22 +16,25 @@ stories.add("Default", () => ({
       type: Boolean,
       default: boolean("Disabled", false)
     },
+    checked: {
+      type: Boolean,
+      default: boolean("Checked", false)
+    },
     label: {
       type: String,
       default: text("label")
-    },
-    color: {
-      type: String,
-      default: color("color", "black")
     }
   },
   template: `
       <div class="p-8">
 
         <h3>Checkbox</h3>
-        <f-checkbox :isDisabled="isDisabled" class="f-checkbox--gray">
+        <f-checkbox :isDisabled="isDisabled" class="f-checkbox--gray" v-model="checked" :label="label">
+          <template v-slot:label>
+            <span>teste</span>
+          </template>
         </f-checkbox>
-        <f-checkbox :isDisabled="isDisabled">
+        <f-checkbox :isDisabled="isDisabled" v-model="checked">
         </f-checkbox>
       </div>
     `

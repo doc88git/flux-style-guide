@@ -46,6 +46,9 @@ export default {
 .main-header {
   @apply flex pr-5 w-full text-center items-center shadow-xxxl top-0 fixed;
   max-height: 70px;
+  -webkit-box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
+  -moz-box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
+  box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
   &__title {
     @apply px-10 font-normal text-xl text-left;
     color: #666;
