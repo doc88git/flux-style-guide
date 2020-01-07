@@ -1,6 +1,6 @@
 <template>
   <f-container class="content">
-    <h1 class="flux-logo">D-STYLES</h1>
+    <h1 class="flux-logo">{{ styleGuideName }}</h1>
 
     <ul class="menu">
       <li v-for="(item, index) in menuItems" :key="index">
@@ -15,11 +15,13 @@
 <script>
 import { FContainer } from '@/components/FContainer'
 
+const styleGuideName = 'Flux Style Guide'
 export default {
   components: {
     FContainer
   },
   data: () => ({
+    styleGuideName,
     menuItems: [
       {
         name: 'Documentation',
