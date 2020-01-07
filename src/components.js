@@ -28,3 +28,4 @@ export * from "./components/FTag/index.js";
 export * from "./components/FTagGroup/index.js";
 export * from "./components/FDatepicker/index.js";
 export * from "./components/FTablePure/index.js";
+export * from "./components/FToggle/index.js";
