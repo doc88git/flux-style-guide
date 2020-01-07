@@ -40,7 +40,6 @@ export default {
   },
   methods: {
     switchToggle() {
-      console.log("ta mexeno", this.value);
       this.$emit("input", !this.value);
     }
   }
