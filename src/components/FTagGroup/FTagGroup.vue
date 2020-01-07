@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { FTag } from "@/components/FTag";
+import { FTag } from "../FTag";
 
 export default {
   name: "FTagGroup",
