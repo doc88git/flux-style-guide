@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue'
-import { select, text } from '@storybook/addon-knobs'
+import { select } from '@storybook/addon-knobs'
 import { FWidget } from '../../FWidget'
 
 storiesOf('Components|Widget', module).add('Default', () => ({
@@ -14,8 +14,6 @@ storiesOf('Components|Widget', module).add('Default', () => ({
     }
   },
   template: `
-      <f-widget>
-      
-      </f-widget>
+      <f-widget />
     `
 }))

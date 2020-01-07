@@ -1,9 +1,9 @@
 import { storiesOf } from '@storybook/vue'
 import { text } from '@storybook/addon-knobs'
-import FTableCustom from '../FTableCustom.vue'
+import { FTableCustom } from '../../FTableCustom//index.js'
 import { FButton } from '../../FButton/index.js'
-import { FPagination } from '../../FPagination/index.js'
-import { FDropdown } from '../../FDropdown/index.js'
+import { FPagination } from '../../FPagination//index.js'
+import { FDropdown } from '../../FDropdown//index.js'
 
 import Users from '../../../mocks/userList.json'
 
@@ -23,7 +23,7 @@ const arrList = [
 ]
 
 storiesOf('Components|TableCustom', module).add('Default', () => ({
-  components: { FTableCustom, FButton, FPagination, FDropdown },
+  components: { FButton, FPagination, FDropdown, FTableCustom },
   data: () => ({
     list: arrList,
     caret: true,
@@ -40,34 +40,33 @@ storiesOf('Components|TableCustom', module).add('Default', () => ({
     data: {
       default: Users
     },
-    header: {
-      default: {
-        first_name: 'Nome',
-        last_name: 'Sobrenome',
-        title: 'Título',
-        email: 'Email',
-        gender: 'Sexo',
-        phone_number: 'Telefone',
-        birthdate: 'Data de Nascimento',
-        'location.street': 'Endereço',
-        'location.postcode': 'CEP',
-        'location.city': 'Cidade',
-        'location.state': 'Estado'
+    headerData: [
+      {
+        id: 1,
+        label: 'Id'
+      },
+      {
+        id: 2,
+        label: 'Descrição'
+      },
+      {
+        id: 3,
+        label: 'Status'
       }
-    }
+    ]
   },
   template: `
     <div class="p-8">
       <f-table-custom
         :sortBy="sortBy"
         :sortDirection="sortDirection"
-        :data="data"
-        :header="header">
+        :body="data"
+        :header="headerData">
         <template v-slot:header_left>
-          <span><strong class="text-gray-700">Aproximadamente:</strong> 58 resultados</span>
+          <f-button icon="add">Add</f-button>
         </template>
         <template v-slot:header_right>
-          <f-display-per-page></f-display-per-page>
+          <f-dropdown :list="list" :caret="caret" :position="position" :type="type" />
         </template>
         <template v-slot:footer_center>
           <f-pagination

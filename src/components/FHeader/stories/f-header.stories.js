@@ -15,7 +15,7 @@ storiesOf('Components|Header', module).add('Default', () => ({
   template: `
       <f-header mainTitle="Reembolso de Despesas" align="left" weight="300">
         <template v-slot:menu>
-          <f-menu></f-menu>
+          <f-menu-button />
         </template>
         <template v-slot:settings>
           <div class="flex items-center justify-center">

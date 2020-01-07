@@ -1,184 +1,208 @@
 <template>
-  <section class="f-table">
-    <f-card>
-      <div class="f-table__header">
-        <div class="f-table__header__left">
-          <slot name="header_left" />
-        </div>
-        <div class="f-table__header__center">
-          <slot name="header_center" />
-        </div>
-        <div class="f-table__header__right">
-          <slot name="header_right" />
-        </div>
+  <div>
+    <div class="flex items-center justify-between">
+      <span class="block ">
+        <strong class="font-bold">Total:</strong>
+        <span v-if="totalResults > 0">
+          {{
+            totalResults > 1
+              ? totalResults + ' resultados'
+              : totalResults + ' resultado'
+          }}</span
+        >
+      </span>
+      <slot></slot>
+    </div>
+    <f-separator></f-separator>
+    <div class="table-head">
+      <div
+        v-for="(item, i) in headers"
+        :key="`th-${item.id}-${i}`"
+        class="flex items-center"
+      >
+        <span v-if="sortBy === item" :class="sortIcon" class="mr-1"></span>
+        <button
+          v-if="item.sortable"
+          class="font-bold cursor-pointer"
+          @click.prevent="setSortBy(item)"
+        >
+          {{ item.label }}
+        </button>
+        <span v-else class="font-bold">
+          {{ item.label }}
+        </span>
       </div>
-      <FCardSeparator />
-      <FCardBody>
-        <div class="f-table__body" style="height: 400px">
-          <table class="f-table__content">
-            <thead>
-              <tr>
-                <th
-                  v-for="head in keysHeaders"
-                  :key="`th:${head}`"
-                  @click="setSortBy(head)"
-                >
-                  <f-icon
-                    dense
-                    :name="sortIcon"
-                    color="gray"
-                    v-if="sortBy === head"
-                  />
-                  {{ header[head] }}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <slot name="tr" v-for="(row, index) in show" v-bind="row">
-                <tr :key="`tr:${index}`">
-                  <td v-for="head in keysHeaders" :key="`td:${head}`">
-                    {{ row[head] }}
-                  </td>
-                </tr>
-              </slot>
-            </tbody>
-          </table>
-        </div>
-      </FCardBody>
-      <FCardActions align="center">
-        <div class="f-table__footer">
-          <div class="f-table__footer__left">
-            <slot name="footer_left" />
-          </div>
-          <div class="f-table__footer__center">
-            <slot name="footer_center" />
-          </div>
-          <div class="f-table__footer__right">
-            <slot name="footer_right" />
-          </div>
-        </div>
-      </FCardActions>
-    </f-card>
-  </section>
+    </div>
+    <div v-if="body.length" class="table-body">
+      <div
+        v-for="(item, i) in body"
+        :id="item.id"
+        :key="`field-${i}`"
+        :class="{ active: item.id === isActive }"
+        class="table-body__itens cell"
+      >
+        <span
+          v-for="(elem, index) in item"
+          :key="index"
+          class="item-cell"
+          :class="{ inactive: item.deleted_at }"
+          @click.stop="$emit('detail', item.id)"
+        >
+          {{ setElem(elem) }}
+        </span>
+        <span>
+          <slot :item="item"></slot>
+        </span>
+        <slot :id="item.id" name="detail"></slot>
+      </div>
+    </div>
+    <div v-else class="table-body">
+      <div class="table-body__itens cell no-data">
+        <span class="item-cell text-center">
+          Sem dados
+        </span>
+      </div>
+    </div>
+    <slot name="pagination"></slot>
+  </div>
 </template>
 
 <script>
-import collect from 'collect.js'
-import { FCard, FCardSeparator, FCardBody, FCardActions } from '../FCard'
-import { FIcon } from '../FIcon'
-
+import { FSeparator } from '../FSeparator'
 export default {
-  name: 'f-table',
+  name: 'f-table-custom',
   components: {
-    FCard,
-    FCardSeparator,
-    FCardBody,
-    FIcon,
-    FCardActions
+    FSeparator
   },
   props: {
-    data: Array,
-    header: Object
+    headers: {
+      type: [Array, Object],
+      default: () => ({})
+    },
+    totalResults: {
+      type: Number,
+      default: 0
+    },
+    body: {
+      type: [Array, Object],
+      default: () => ({})
+    },
+    rowItem: {
+      type: Number,
+      default: null
+    },
+    isActive: {
+      type: Number,
+      default: 0
+    },
+    itemDetail: {
+      type: Function,
+      default: () => ({})
+    }
   },
   data: () => ({
+    options: [
+      { label: 10, value: 1, selected: true },
+      { label: 25, value: 2, selected: false },
+      { label: 50, value: 3, selected: false }
+    ],
     sortBy: '',
-    sortDirection: 'asc'
+    sortDirection: false
   }),
   computed: {
-    keysHeaders() {
-      return Object.keys(this.header)
-    },
     sortIcon() {
-      return this.sortDirection === 'asc' ? 'arrow_downward' : 'arrow_upward'
-    },
-    content() {
-      let data = this.data.length ? this.data : []
-      return collect(data)
-    },
-    show() {
-      let data = this.content
-
-      if (this.sortBy) {
-        let method = this.sortDirection === 'desc' ? 'sortByDesc' : 'sortBy'
-        data = this.content[method](this.sortBy)
-      }
-
-      data.keyBy(item => this.getContent(item))
-
-      return data.all()
+      return this.sortDirection === 'asc'
+        ? 'icon-chevron-up small'
+        : 'icon-chevron-down small'
     }
   },
   methods: {
-    getContent(item) {
-      this.keysHeaders.map(h => {
-        item[h] = h.split('.').reduce((o, i) => {
-          try {
-            return o[i]
-          } catch (e) {
-            return ''
-          }
-        }, item)
-      })
-
-      return item
+    setElem(elem) {
+      return elem || '---'
+    },
+    handleChange(value) {
+      const elem = document.querySelector('.selected')
+      const val = parseInt(value.target.value)
+      elem.classList.remove('selected')
+      value.target.classList.add('selected')
+      this.$emit('per_page', val)
     },
     setSortBy(item) {
       this.sortBy = item
       this.setSortDirection()
+      this.$emit('update:order_by', item.id)
     },
     setSortDirection() {
       this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc'
+      this.$emit('update:sort', this.sortDirection)
+    },
+    toggleActivateUser(payload) {
+      const val = payload[0]
+      this.$emit('toogle:user-status', val)
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.f-table {
-  &__header,
-  &__footer {
-    @apply flex flex-no-wrap items-center justify-between;
-    &__left {
-      @apply text-left;
-    }
-    &__center {
-      @apply text-center;
-    }
-    &__right {
-      @apply text-right;
+.table-head,
+.table-body__itens {
+  display: grid;
+  grid-template-columns: repeat(1, auto);
+}
+
+.table-head {
+  .items-center {
+    padding: 10px;
+  }
+}
+
+.table-body__itens {
+  border: 1px solid transparent;
+  background: var(--color-gray--light);
+  border-radius: 5px;
+  margin-bottom: 5px;
+  overflow: hidden;
+
+  span {
+    display: flex;
+    align-items: center;
+    word-break: break-word;
+    padding: 7px 10px;
+    height: 40px;
+  }
+
+  .icon {
+    padding: 0;
+  }
+
+  // Tabela exibida quando não ha dados
+  &.no-data {
+    display: flex;
+    justify-content: center;
+  }
+
+  &:hover {
+    background: #fff;
+    border: 1px solid var(--color-gray--light);
+  }
+}
+
+/* Exibir por página */
+.f-display-per-page {
+  .btn {
+    padding: 0;
+    height: 30px;
+    width: 30px;
+  }
+  &.standard {
+    .btn.selected {
+      background-color: var(--color-standard);
     }
   }
-  &__body {
-    @apply overflow-auto;
-    table {
-      @apply table-auto bg-white w-full;
-      th,
-      td {
-        @apply p-4 whitespace-no-wrap text-left align-middle;
-      }
-      thead {
-        th {
-          @apply border-gray-600 mb-4 bg-white  select-none;
-          border-bottom-width: 1px;
-          &:hover {
-            @apply opacity-75 cursor-pointer;
-          }
-          .f-icon {
-            @apply -ml-2 text-xs;
-          }
-        }
-      }
-      tbody {
-        tr {
-          &:hover {
-            background-color: var(--color-gray-100);
-          }
-          td {
-            @apply border-gray-200 mb-4;
-            border-bottom-width: 1px;
-          }
-        }
-      }
+  &.secondary {
+    .btn.selected {
+      background-color: var(--color-blue);
     }
   }
 }

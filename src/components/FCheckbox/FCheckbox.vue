@@ -1,22 +1,22 @@
 <template>
-  <div class="checkbox">
-    <label :for="id">
-      <input
-        type="checkbox"
-        class="f-checkbox"
-        :id="id"
-        :value="value"
-        :disabled="isDisabled"
-        :label="label"
-        @change="$emit('checkbox', $event.target.checked)"
-        hidden
-      />
-      <span class="f-checkbox__custom">
-        <f-icon name="check" class="f-checkbox__custom__icon"></f-icon>
-      </span>
+  <label :for="id" class="f-checkbox__wrapper">
+    <input
+      type="checkbox"
+      class="f-checkbox"
+      :id="id"
+      :checked="checked"
+      :disabled="isDisabled"
+      :label="label"
+      @change="$emit('change', $event.target.checked)"
+      hidden
+    />
+    <span class="f-checkbox__custom">
+      <f-icon name="check" class="f-checkbox__custom__icon"></f-icon>
+    </span>
+    <div class="f-checkbox__label" v-if="$slots.label">
       <slot name="label"></slot>
-    </label>
-  </div>
+    </div>
+  </label>
 </template>
 
 <script>
@@ -24,19 +24,17 @@ import FIcon from '../FIcon/FIcon.vue'
 export default {
   name: 'f-checkbox',
   components: { FIcon },
+  model: {
+    prop: 'checked',
+    event: 'change'
+  },
   props: {
-    color: {
-      type: String
-    },
     id: {
       type: [Number, String]
     },
-    filled: {
-      type: Boolean
-    },
-    value: {
-      type: String,
-      default: 'Termos'
+    checked: {
+      type: Boolean,
+      default: false
     },
     isDisabled: {
       type: Boolean,
@@ -54,6 +52,12 @@ export default {
 .f-checkbox {
   display: inline-flex;
   appearance: none;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+  }
+
   &__custom {
     cursor: pointer;
     height: 15px;
@@ -97,6 +101,27 @@ export default {
     &:hover {
       border: 1px solid transparent;
       background: darken(#ccc, 20%);
+    }
+
+    .f-icon {
+      color: lightseagreen;
+      &__label {
+        display: flex;
+        align-items: center;
+        margin-left: 7px;
+      }
+    }
+  }
+
+  .f-checkbox--gray {
+    .f-checkbox__custom {
+      background-color: #ccc;
+      border: 1px solid #cdcdcd;
+
+      &:hover {
+        border: 1px solid transparent;
+        background: darken(#ccc, 20%);
+      }
     }
 
     .f-icon {

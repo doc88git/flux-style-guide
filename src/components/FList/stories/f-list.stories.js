@@ -30,7 +30,11 @@ storiesOf('Components|List', module).add(
             <f-list>
               <f-item :title="title" :link="link">{{ label }}</f-item>
               <f-item :title="title" :label="label" :to="to" />
-              <f-item :title="'Title #3'">Item #4</f-item>
+              <f-item>
+                <div>
+                  Slot Label
+                </div>
+              </f-item>
             </f-list>
           </f-card-body>
         </f-card>

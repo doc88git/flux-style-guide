@@ -1,5 +1,4 @@
 import { storiesOf } from '@storybook/vue'
-import { boolean, text } from '@storybook/addon-knobs'
 import FNavigation from '../FNavigation'
 
 storiesOf('Components|Navigation', module).add('Default', () => ({

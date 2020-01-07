@@ -8,12 +8,8 @@
 </template>
 
 <script>
-import { FIcon } from '../FIcon'
 export default {
   name: 'f-widget',
-  components: {
-    FIcon
-  },
   props: {
     theme: {
       type: String,
@@ -33,6 +29,7 @@ export default {
   width: 35px;
   &.primary {
     @apply text-primary;
+    cursor: pointer;
   }
 
   .f-icon {

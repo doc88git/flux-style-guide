@@ -8,17 +8,18 @@ storiesOf('Components|Tags', module).add(
     components: { FTag },
     data: () => ({
       bgColor: text('Background', 'white'),
-      lineColor: text('Line Color', 'black'),
+      lineColor: text('Line Color', '#c1c1c1'),
       legend: text('Label', 'Empresa'),
       icon: text('Icon', 'dashboard'),
       iconColor: text('Icon Color', 'purple'),
-      text: text('Text', 'Flux Services')
+      text: text('Text', 'Flux Services'),
+      textColor: text('Text Color', '#7F7F7F')
     }),
     methods: {},
     props: {},
     template: `
         <div class="p-8">
-          <f-tag :bg-color="bgColor" :line-color="lineColor" :legend="legend" :icon="icon" :icon-color="iconColor" :text="text"/>
+          <f-tag :bg-color="bgColor" :line-color="lineColor" :legend="legend" :icon="icon" :icon-color="iconColor" :text="text" :text-color="textColor"/>
         </div>
       `
   }),

@@ -5,13 +5,13 @@
 </template>
 <script>
 export default {
-  name: 'f-display',
+  name: "f-display",
   props: {
     color: {
       type: String,
-      default: 'gray'
+      default: "gray"
     }
   }
-}
+};
 </script>
 <style lang="scss" scoped></style>

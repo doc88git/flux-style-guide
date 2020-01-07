@@ -18,6 +18,14 @@ import * as FTooltip from './FTooltip/index.js'
 import * as FSelect from './FSelect/index.js'
 import * as FHeader from './FHeader/index.js'
 import * as FChip from './FChip/index.js'
+import * as FModal from './FMoldal/index.js'
+import * as FTableCustom from './FTableCustom/index.js'
+import * as FSeparator from './FSeparator/index.js'
+import * as FTitle from './FTitle/index.js'
+import * as FTag from './FTag/index.js'
+import * as FTagGroup from './FTagGroup/index.js'
+import * as FDatepicker from './FDatepicker/index.js'
+import * as FTablePure from './FTablePure/index.js'
 
 const components = [
   FIcon,
@@ -39,7 +47,15 @@ const components = [
   FTooltip,
   FSelect,
   FHeader,
-  FChip
+  FChip,
+  FModal,
+  FTableCustom,
+  FSeparator,
+  FTitle,
+  FTag,
+  FTagGroup,
+  FDatepicker,
+  FTablePure
 ]
 
 export default components

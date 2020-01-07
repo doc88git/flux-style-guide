@@ -1,11 +1,13 @@
 <template>
   <component class="f-list-item" :is="tag" :to="to" :link="link" tabindex="0">
-    <p v-if="title" class="f-list-item__item--title">
-      {{ title }}
-    </p>
-    <p class="f-list-item__item--label">
-      <slot>{{ label }}</slot>
-    </p>
+    <slot>
+      <p v-if="title" class="f-list-item__item--title">
+        {{ title }}
+      </p>
+      <p class="f-list-item__item--label">
+        {{ label }}
+      </p>
+    </slot>
   </component>
 </template>
 

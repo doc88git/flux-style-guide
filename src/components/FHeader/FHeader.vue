@@ -1,20 +1,30 @@
 <template>
   <header class="main-header">
-    <slot name="menu"></slot>
-    <h2 class="main-header__title">{{ mainTitle }}</h2>
-    <slot name="settings"></slot>
+    <slot name="menu">
+      <f-menu-button />
+    </slot>
+    <div class="main-header__logo" v-if="!!$slots.logo">
+      <slot name="logo"></slot>
+    </div>
+    <h2 class="main-header__title" v-if="!$slots.logo && mainTitle">
+      {{ mainTitle }}
+    </h2>
+    <div class="main-header__settings" v-if="!!$slots.settings">
+      <slot name="settings"></slot>
+    </div>
   </header>
 </template>
 
 <script>
-import { FButton } from '../FButton'
+import FMenuButton from '../FMenu/FMenuButton'
+
 export default {
   name: 'f-header',
-  components: { FButton },
+  components: { FMenuButton },
   props: {
     mainTitle: {
       type: String,
-      default: 'Main Title'
+      default: ''
     },
     align: {
       type: String,
@@ -22,7 +32,7 @@ export default {
     },
     weight: {
       type: String,
-      default: 500
+      default: '500'
     },
     styles: {
       type: String,
@@ -34,11 +44,29 @@ export default {
 
 <style lang="scss" scoped>
 .main-header {
-  @apply flex justify-between px-5 py-1 w-full text-center items-center shadow-xxxl top-0 fixed;
-  min-height: 70px;
+  @apply flex pr-5 w-full text-center items-center shadow-xxxl top-0 fixed;
+  max-height: 70px;
+  -webkit-box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
+  -moz-box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
+  box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
   &__title {
-    @apply w-full font-normal text-xl text-left;
+    @apply px-10 font-normal text-xl text-left;
     color: #666;
+  }
+
+  &__logo {
+    @apply px-10 py-3;
+    height: 70px;
+    img {
+      height: 46px;
+    }
+  }
+
+  &__settings {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
   }
 }
 

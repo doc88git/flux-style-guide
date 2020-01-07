@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue'
-// import { text, boolean } from "@storybook/addon-knobs";
+import { text } from '@storybook/addon-knobs'
 import FButtonGroup from '../FButtonGroup.vue'
 
 const options = [
@@ -27,6 +27,11 @@ storiesOf('Components|Button', module)
     'Button Group: Default',
     () => ({
       components: { FButtonGroup },
+      props: {
+        size: {
+          default: text('size', 'small')
+        }
+      },
       data: () => ({
         options
       }),
@@ -37,7 +42,7 @@ storiesOf('Components|Button', module)
       },
       template: `
         <div class="p-8">
-          <f-button-group :default="1" :options="options" @change="change" />\
+          <f-button-group :default="1" :options="options" @change="change" :size="size" />
         </div>
       `
     }),

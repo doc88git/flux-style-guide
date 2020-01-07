@@ -8,9 +8,9 @@
     @mouseover="mouseover"
     @mouseleave="mouseleave"
   >
-    <div class="btn__inner">
-      <div v-if="icon" class="btn__inner__icon" :class="[btnCenter]">
-        <FIcon :name="icon" />
+    <div class="btn__inner" :class="[btnInnerCenter]">
+      <div class="btn__inner__icon" :class="[btnCenter]" v-if="icon">
+        <f-icon :name="icon" />
       </div>
       <div v-if="label || $slots.default" class="btn__inner__content">
         <slot> {{ label }} </slot>
@@ -40,6 +40,10 @@ export default {
       type: String,
       default: ''
     },
+    radius: {
+      type: Boolean,
+      default: true
+    },
     textColor: String
   },
   computed: {
@@ -65,10 +69,15 @@ export default {
         [`color--outline--${this.color}`]: !!this.color && this.outline
       }
 
+      let btnRadius = {
+        ['btn--noradius']: this.radius === false
+      }
+
       return {
         ...btnDefault,
         ...btnOutline,
         ...btnFlat,
+        ...btnRadius,
         ['btn--small']: this.small,
         ['btn--bigger']: this.bigger,
         ['btn--dense']: this.dense,
@@ -78,6 +87,10 @@ export default {
     btnCenter() {
       if (this.label || this.hasDefaultSlot) return ''
       return 'btn__inner__icon--center'
+    },
+    btnInnerCenter() {
+      if (this.label || this.hasDefaultSlot) return ''
+      return 'btn__inner--center'
     },
     hasDefaultSlot() {
       return !!this.$slots.default
@@ -102,8 +115,10 @@ export default {
 .btn {
   @apply font-primary text-center py-1 px-3 h-12 m-1 rounded uppercase;
   width: auto;
+  cursor: pointer;
   &:hover {
     @apply outline-none;
+    opacity: 0.7;
   }
 
   &:focus {
@@ -114,19 +129,23 @@ export default {
     @apply outline-none;
   }
 
+  &--noradius {
+    border-radius: 0px;
+  }
+
   &--default {
-    @apply text-white px-6 bg-primary;
+    @apply text-white px-5 bg-primary;
   }
 
   &--small {
-    @apply text-left py-1 px-2 h-8 text-xl;
+    @apply text-left py-1 px-5 h-8 text-xl;
 
     * {
       @apply text-sm;
     }
   }
   &--bigger {
-    @apply text-base h-16 px-6 m-1 w-auto;
+    @apply text-base h-16 px-5 m-1 w-auto;
   }
   &--bigger-x {
     @apply py-2 px-4 m-1 h-20 text-xl;
@@ -139,11 +158,14 @@ export default {
   }
 
   &--outline {
-    @apply border rounded px-6;
+    @apply border rounded px-4;
   }
 
   &__inner {
     @apply flex flex-no-wrap items-center content-center w-full h-auto;
+    &--center {
+      justify-content: center;
+    }
     &__icon {
       @apply h-full items-center mr-2;
       line-height: 0;

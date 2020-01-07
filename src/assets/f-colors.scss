@@ -9,6 +9,12 @@
 }
 
 .color {
+  &--primary {
+    background-color: var(--color-primary);
+  }
+  &--secondary {
+    background-color: var(--color-secondary);
+  }
   &--white {
     background-color: var(--color-white);
 

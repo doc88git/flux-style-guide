@@ -1,13 +1,8 @@
 import { storiesOf } from '@storybook/vue'
 import { FButton } from '@/components/FButton'
 import { FImage } from '@/components/FImage'
-import {
-  FCard,
-  FCardActions,
-  FCardBody,
-  FCardTitle,
-  FCardSeparator
-} from '@/components/FCard'
+import { FSeparator } from '@/components/FSeparator'
+import { FCard, FCardActions, FCardBody, FCardTitle } from '@/components/FCard'
 
 storiesOf('Components|Card', module)
   .add(
@@ -18,8 +13,8 @@ storiesOf('Components|Card', module)
         FCardActions,
         FCardBody,
         FCardTitle,
-        FCardSeparator,
-        FButton
+        FButton,
+        FSeparator
       },
       template: `
         <div class="p-8" style="width: 600px">
@@ -46,7 +41,6 @@ storiesOf('Components|Card', module)
 
           - Card Title
           - Card Body
-          - Card Separator
           - Card Actions
         `
       }
@@ -60,8 +54,8 @@ storiesOf('Components|Card', module)
         FCardActions,
         FCardBody,
         FCardTitle,
-        FCardSeparator,
-        FButton
+        FButton,
+        FSeparator
       },
       template: `
         <div class="p-8" style="width: 600px">
@@ -80,8 +74,8 @@ storiesOf('Components|Card', module)
               with desktop publishing software like Aldus PageMaker including versions
               of Lorem Ipsum.
             </f-card-body>
-            <f-card-separator />
-            <f-card-actions>
+            <f-separator />
+            <f-card-actions >
               <f-button label="Ver mais" icon="list" outline></f-button>
               <f-button label="Cancelar" icon="close"></f-button>
             </f-card-actions>
@@ -102,37 +96,12 @@ storiesOf('Components|Card', module)
         FCardActions,
         FCardBody,
         FCardTitle,
-        FCardSeparator,
         FButton
       },
       template: `
         <div class="p-8" style="width: 600px">
           <f-card>
             <f-card-title>Where does it come from?</f-card-title>
-          </f-card>
-        </div>`
-    }),
-    {
-      info: {
-        sumary: 'Container component'
-      }
-    }
-  )
-  .add(
-    'Card Separator',
-    () => ({
-      components: {
-        FCard,
-        FCardActions,
-        FCardBody,
-        FCardTitle,
-        FCardSeparator,
-        FButton
-      },
-      template: `
-        <div class="p-8" style="width: 600px">
-          <f-card>
-            <f-card-separator />
           </f-card>
         </div>`
     }),
@@ -150,7 +119,6 @@ storiesOf('Components|Card', module)
         FCardActions,
         FCardBody,
         FCardTitle,
-        FCardSeparator,
         FButton
       },
       template: `
@@ -184,8 +152,8 @@ storiesOf('Components|Card', module)
         FCardActions,
         FCardBody,
         FCardTitle,
-        FCardSeparator,
-        FButton
+        FButton,
+        FSeparator
       },
       template: `
         <div class="p-8" style="width: 600px">
@@ -195,25 +163,25 @@ storiesOf('Components|Card', module)
               <f-button label="Ver mais" icon="list" outline></f-button>
               <f-button label="Cancelar" icon="close"></f-button>
             </f-card-actions>
-            <f-card-separator />
+            <f-separator />
             <card-title>Left</card-title>
             <f-card-actions align="left">
               <f-button label="Ver mais" icon="list" outline></f-button>
               <f-button label="Cancelar" icon="close"></f-button>
             </f-card-actions>
-            <f-card-separator />
+            <f-separator />
             <card-title>Right</card-title>
             <f-card-actions align="right">
               <f-button label="Ver mais" icon="list" outline></f-button>
               <f-button label="Cancelar" icon="close"></f-button>
             </f-card-actions>
-            <f-card-separator />
+            <f-separator />
             <card-title>Center</card-title>
             <f-card-actions align="center">
               <f-button label="Ver mais" icon="list" outline></f-button>
               <f-button label="Cancelar" icon="close"></f-button>
             </f-card-actions>
-            <f-card-separator />
+            <f-separator />
             <card-title>Justify</card-title>
             <f-card-actions align="justify">
               <f-button label="Ver mais" icon="list" outline></f-button>
@@ -236,9 +204,9 @@ storiesOf('Components|Card', module)
         FCardActions,
         FCardBody,
         FCardTitle,
-        FCardSeparator,
         FButton,
-        FImage
+        FImage,
+        FSeparator
       },
       template: `
         <div class="p-8" style="width: 600px">
@@ -258,7 +226,7 @@ storiesOf('Components|Card', module)
               with desktop publishing software like Aldus PageMaker including versions
               of Lorem Ipsum.
             </f-card-body>
-            <f-card-separator />
+            <f-separator />
             <f-card-actions align="justify">
               <f-button label="Ver mais" icon="list" outline></f-button>
               <f-button label="Cancelar" icon="close"></f-button>
