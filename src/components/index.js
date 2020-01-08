@@ -27,6 +27,7 @@ import * as FTagGroup from "./FTagGroup/index.js";
 import * as FDatepicker from "./FDatepicker/index.js";
 import * as FTablePure from "./FTablePure/index.js";
 import * as FToggle from "./FToggle/index.js";
+import * as FUpload from "./FUpload/index.js";
 
 const components = [
   FIcon,
@@ -57,7 +58,8 @@ const components = [
   FTagGroup,
   FDatepicker,
   FTablePure,
-  FToggle
+  FToggle,
+  FUpload
 ];
 
 export default components;
