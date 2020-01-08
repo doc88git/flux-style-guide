@@ -11,15 +11,7 @@
       <div v-if="files" class="files">
         <img :src="path" alt="" class="thumb" />
         {{ files }}
-        <f-button
-          :disabled="false"
-          label="Remover"
-          color="standard"
-          text-color="white"
-          icon="delete"
-          :small="true"
-          @click="clearFiles()"
-        />
+        <slot></slot>
       </div>
       <div v-else>
         Arraste aqui seu arquivo ou
@@ -50,11 +42,6 @@ export default {
     path: null,
     hover: false
   }),
-  computed: {
-    classDynamic() {
-      return [`f-upload--${this.hover}`];
-    }
-  },
   methods: {
     dropHandler(e) {
       // Prevent default behavior (Prevent file from being opened)
@@ -126,7 +113,6 @@ export default {
 .files {
   display: flex;
   align-items: center;
-  font-weight: bold;
   justify-content: space-between;
   padding: 10px;
   box-shadow: 0 0 10px #ccc;
