@@ -47,8 +47,12 @@
 </template>
 
 <script>
+import { FHeader } from '../FHeader'
+import { FMenu, FMenuButton } from '../FMenu'
+
 export default {
   name: 'f-layout',
+  components: { FHeader, FMenu, FMenuButton },
   data: () => ({
     menuExpand: false
   }),
