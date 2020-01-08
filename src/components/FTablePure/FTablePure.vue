@@ -102,33 +102,49 @@ export default {
 <style lang="scss" scoped>
 .f-table {
   &__body {
-    @apply overflow-auto;
+    overflow: auto;
     table {
-      @apply table-auto bg-white w-full;
+      table-layout: auto;
+      background: white;
+      width: 100%;
       th,
       td {
-        @apply p-4 whitespace-no-wrap text-left align-middle;
+        padding: 1rem;
+        white-space: nowrap;
+        text-align: left;
+        vertical-align: middle;
       }
       thead {
-        th {
-          @apply border-gray-600 mb-4 bg-white  select-none;
+        tr {
+          color: #666666;
+          border-color: #d2d2d2;
+          margin-bottom: 4px;
+          background: white;
+          user-select: none;
+          font-weight: 600;
           border-bottom-width: 1px;
+        }
+
+        th {
           &:hover {
-            @apply opacity-75 cursor-pointer;
+            opacity: 0.75;
+            cursor: pointer;
           }
           .f-icon {
-            @apply -ml-2 text-xs;
+            margin-left: 0.5rem;
+            font-size: 0.75rem;
           }
         }
       }
       tbody {
         tr {
           &:hover {
-            @apply bg-gray-100;
+            background: rgba(245, 245, 245, 1);
           }
           td {
-            @apply border-gray-200 mb-4;
             border-bottom-width: 1px;
+            border-color: #edf2f7;
+            margin-bottom: 1rem;
           }
         }
       }

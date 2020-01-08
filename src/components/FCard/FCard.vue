@@ -1,5 +1,5 @@
 <template>
-  <section class="f-card">
+  <section class="f-card" :style="{ boxShadow: shadow }">
     <slot name="image-header">
       <f-image v-if="headerBg" rounded-t :src="headerBg" />
     </slot>
@@ -20,7 +20,11 @@ export default {
     FImage
   },
   props: {
-    headerBg: String
+    headerBg: String,
+    shadow: {
+      type: String,
+      default: "0px 5px 25px 0px rgba(0, 0, 0, .1)"
+    }
   }
 }
 </script>
