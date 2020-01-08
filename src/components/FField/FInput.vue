@@ -52,6 +52,10 @@ export default {
           "textarea",
           "number"
         ].includes(val)
+    },
+    color: {
+      type: String,
+      default: "primary"
     }
   },
   computed: {
@@ -86,22 +90,39 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../assets/f-variables";
 .f-input {
-  @apply appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight h-10 inline w-full;
+  border-width: 1px;
+  border-radius: 0.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  color: #4a5568;
+  line-height: 1.25;
+  height: 2.5rem;
+  display: inline;
+  width: 100%;
+
   &:focus {
-    @apply outline-none;
+    outline: 0;
+    border-color: var(--color-primary);
+  }
+  &:hover {
+    border-color: var(--color-primary);
   }
   &__textarea {
-    @apply w-full;
+    width: 100%;
   }
   &--hasError {
-    @apply border border-red-500;
+    border-width: 1px;
+    border-color: #f56565;
   }
   &--readonly {
-    @apply text-gray-300;
+    color: #e2e8f0;
   }
   &--disabled {
-    @apply text-gray-300;
+    color: #e2e8f0;
   }
 }
 </style>
