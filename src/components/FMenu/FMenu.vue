@@ -138,7 +138,6 @@ span.icon-widget {
         position: absolute;
         top: 0;
         left: 0;
-        // overflow-x: scroll;
         @include transition(0.1s);
         -webkit-box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
         -moz-box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
