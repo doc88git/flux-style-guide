@@ -7,7 +7,9 @@
         :weight="weight"
         :styles="styles"
         class="f-layout__header"
-        :class="{ '--no-menu': menuItems.length === 0 || !hasMenu }"
+        :class="{
+          'f-layout__header--no-menu': menuItems.length === 0 || !hasMenu
+        }"
       >
         <template v-slot:menu v-if="menuItems.length || hasMenu">
           <f-menu-button
@@ -37,7 +39,8 @@
       <div
         class="f-layout__wrapper__content"
         :class="{
-          '--no-extra-padding': menuItems.length === 0 && !hasMenu
+          'f-layout__wrapper__content--no-extra-padding':
+            menuItems.length === 0 && !hasMenu
         }"
       >
         <slot name="content"></slot>
@@ -133,7 +136,7 @@ export default {
         padding: 1.25rem;
       }
 
-      &.--no-extra-padding {
+      &--no-extra-padding {
         padding: 1.25rem;
       }
     }
@@ -144,7 +147,7 @@ export default {
     background-color: #fff;
     z-index: 80;
 
-    &.--no-menu {
+    &--no-menu {
       @apply py-5;
     }
   }
