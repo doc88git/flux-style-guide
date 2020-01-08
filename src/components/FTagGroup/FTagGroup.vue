@@ -46,6 +46,8 @@ export default {
 
 <style lang="scss" scoped>
 .FTagGroup {
+  display: flex;
+  align-items: center;
   min-height: 57px;
   min-width: 700px;
   overflow: auto;
@@ -59,9 +61,6 @@ export default {
 
   &__box {
     display: flex;
-    padding: 10px;
-    padding-left: 0;
-    padding-bottom: 0;
   }
 
   .FTag {
