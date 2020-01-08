@@ -24,6 +24,7 @@
               @click="clickButton(menu)"
             >
               <f-icon
+                class="Fmenu-side__nav__ul__li__link--icon"
                 :name="menu.icon"
                 size="xl"
                 type="outlined"
@@ -173,12 +174,17 @@ span.icon-widget {
           align-items: center;
           width: 100%;
 
-          &:hover {
-            .Fmenu-side__nav__ul__li__text {
-              @media screen and (min-width: $size-tablet) {
-                margin-left: 5px;
+          @media screen and (min-width: $size-tablet) {
+            justify-content: flex-start;
+            &:hover {
+              .Fmenu-side__nav__ul__li__text {
+                margin-left: 7px;
               }
             }
+          }
+
+          &--icon {
+            margin-left: 15px;
           }
 
           &--selected {
@@ -189,7 +195,7 @@ span.icon-widget {
         &__text {
           font-size: 15px;
           position: relative;
-          top: -2px;
+          margin-left: 5px;
           @include transition(0.1s);
         }
       }
