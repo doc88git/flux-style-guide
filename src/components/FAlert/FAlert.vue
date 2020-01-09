@@ -90,48 +90,59 @@ export default {
 
 <style lang="scss" scoped>
 .f-alert {
-  @apply relative;
-  @apply max-w-full p-2;
-  @apply whitespace-normal;
-  @apply rounded-lg mx-auto bg-white shadow-md;
-  @apply bg-white;
-  @apply mb-2;
-  @apply flex flex-col;
+  position: relative;
+  max-width: 100%;
+  padding: 0.5rem;
+  white-space: normal;
+  border-radius: 0.5rem;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: var(--color-white);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
   color: var(--color-gray-700);
   width: 350px;
 
   &__close {
-    @apply absolute;
+    position: absolute;
     top: 6px;
     right: 5px;
   }
 
   &__header {
-    @apply text-sm font-bold p-0 m-0 mb-2;
+    font-size: 0.875rem;
+    font-weight: 700;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 0.5rem;
     padding-right: 20px;
   }
 
   &__body {
-    @apply text-sm m-0;
+    font-size: 0.875rem;
+    margin: 0;
   }
 
   &__separator {
-    @apply my-2;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
   }
 
   &--default {
-    @apply rounded;
+    border-radius: 0.25rem;
     border-width: 1px;
     border-style: solid;
     border-color: var(--color-gray-200);
   }
 
   &--fill {
-    // @apply bg-primary text-white;
   }
 
   &--outline {
-    @apply border rounded;
+    border-radius: 0.25rem;
   }
 
   &--top {

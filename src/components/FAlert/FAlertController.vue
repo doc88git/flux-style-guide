@@ -159,9 +159,10 @@ export default {
 
 <style lang="scss" scoped>
 .f-alert-controller {
-  @apply absolute;
+  position: absolute;
   &-transition {
-    @apply flex flex-col-reverse;
+    display: flex;
+    flex-direction: column-reverse;
   }
 }
 
