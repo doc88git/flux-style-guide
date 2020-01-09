@@ -4,42 +4,44 @@
 @import "~tailwindcss/base";
 
 body {
-  @apply font-secondary text-base
+  font-size: 1rem;
+  color: var(--color-secondary);
 }
 
 h1, h2, h3, h4, h5, h6, button, th {
-  @apply font-primary
+  color: var(--color-primary);
 }
 
 h1 {
-  @apply text-6xl
+  font-size: 4rem;
 }
 h2 {
-  @apply text-5xl
+  font-size: 3rem;
 }
 h3 {
-  @apply text-4xl
+  font-size: 2.25rem;
 }
 h4 {
-  @apply text-3xl
+  font-size: 1.875rem;
 }
 h5 {
-  @apply text-2xl
+  font-size: 1.5rem;
 }
 h6 {
-  @apply text-xl
+  font-size: 1.25rem;
 }
 
 
-@screen sm {}
-@screen md {}
 
-@screen lg {
+@media (min-width: 640px) {}
+@media (min-width: 768px) {}
+
+@media (min-width: 1024px) {
   *, *::before, *::after {
     font-size: 14px
   }
 }
-@screen xl {
+@media (min-width: 1280px) {
   *, *::before, *::after {
     font-size: 14px
   }
