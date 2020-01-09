@@ -113,20 +113,26 @@ export default {
 
 <style lang="scss">
 .btn {
-  @apply font-primary text-center py-1 px-3 h-12 m-1 rounded uppercase;
+  color: var(--color-primary);
+  text-align: center;
+  padding: 0.25rem 0.75rem;
+  height: 3rem;
+  margin: 0.25rem;
+  border-radius: 0.25rem;
+  text-transform: uppercase;
   width: auto;
   cursor: pointer;
   &:hover {
-    @apply outline-none;
+    outline: 0;
     opacity: 0.7;
   }
 
   &:focus {
-    @apply outline-none;
+    outline: 0;
   }
 
   &:active {
-    @apply outline-none;
+    outline: 0;
   }
 
   &--noradius {
@@ -134,47 +140,74 @@ export default {
   }
 
   &--default {
-    @apply text-white px-5 bg-primary;
+    color: var(--color-white);
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+    background-color: var(--color-primary);
   }
 
   &--small {
-    @apply text-left py-1 px-5 h-8 text-xl;
+    text-align: left;
+    padding: 0.25rem 1.25rem;
+    height: 2rem;
 
     * {
-      @apply text-sm;
+      font-size: 0.875rem;
     }
   }
   &--bigger {
-    @apply text-base h-16 px-5 m-1 w-auto;
+    font-size: 1rem;
+    height: 4rem;
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+    margin: 0.25rem;
+    width: auto;
   }
   &--bigger-x {
-    @apply py-2 px-4 m-1 h-20 text-xl;
+    padding: 0.5rem 1rem;
+    margin: 0.25rem;
+    height: 5rem;
+    font-size: 1.25rem;
   }
   &--dense {
-    @apply py-0 px-1 m-0 h-6;
+    padding: 0 0.25rem;
+    margin: 0;
+    height: 1.5rem;
   }
 
   &--flat {
   }
 
   &--outline {
-    @apply border rounded px-4;
+    border: 1px solid;
+    border-radius: 0.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   &__inner {
-    @apply flex flex-no-wrap items-center content-center w-full h-auto;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    height: auto;
     &--center {
       justify-content: center;
     }
     &__icon {
-      @apply h-full items-center mr-2;
+      height: 100%;
+      align-items: center;
+      margin-right: 0.5rem;
       line-height: 0;
       &--center {
-        @apply mr-0 #{!important};
+        margin-right: 0;
       }
     }
     &__content {
-      @apply h-full items-center w-full;
+      height: 100%;
+      align-items: center;
+      width: 100%;
       line-height: 0;
       letter-spacing: 1px;
     }

@@ -94,13 +94,14 @@ export default {
 
 <style lang="scss" scoped>
 .f-button-group {
-  @apply flex;
+  display: flex;
   &__tab {
-    @apply rounded-none;
+    border-radius: 0;
     color: var(--color-gray);
     &--selected {
-      @apply text-primary;
-      @apply border-b border-primary border-solid;
+      color: var(--color-primary);
+      border-bottom-width: 1px;
+      border-color: var(--color-primary);
     }
   }
 }
