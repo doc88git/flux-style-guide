@@ -53,38 +53,51 @@ export default {
 
 <style lang="scss" scoped>
 .f-badge {
-  @apply flex inline-flex items-center;
-  @apply bg-primary text-white;
-  @apply py-1 px-2 rounded-lg text-xs align-baseline;
+  display: inline-flex;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: var(--color-primary);
+  color: #fff;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  vertical-align: baseline;
   line-height: 0.875rem;
 
   &--single-line {
-    @apply truncate;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   &--multi-line {
-    @apply break-all break-words;
+    word-break: break-all;
+    overflow-wrap: break-word;
   }
 
   &--floating {
-    @apply absolute pointer-events-none;
+    position: absolute;
+    pointer-events: none;
     top: -4px;
     right: -3px;
   }
 
   &--transparent {
-    @apply opacity-75;
+    opacity: 0.75;
   }
 
   &--align {
     &-top {
-      @apply align-top #{!important};
+      vertical-align: top;
     }
     &-middle {
-      @apply align-middle #{!important};
+      vertical-align: middle;
     }
     &-bottom {
-      @apply align-bottom #{!important};
+      vertical-align: bottom;
     }
   }
 }
