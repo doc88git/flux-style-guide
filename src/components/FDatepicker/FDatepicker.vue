@@ -1,13 +1,11 @@
 <template>
-  <div class="p-8">
-    <DatePicker
-      v-model="time1"
-      format="DD-MM-YYYY"
-      :lang="setLang"
-      :range="range"
-      :range-separator="rangeSeparator"
-    ></DatePicker>
-  </div>
+  <DatePicker
+    v-model="time1"
+    format="DD-MM-YYYY"
+    :lang="setLang"
+    :range="range"
+    :range-separator="rangeSeparator"
+  ></DatePicker>
 </template>
 
 <script>
