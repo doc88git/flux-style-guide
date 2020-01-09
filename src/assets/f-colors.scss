@@ -26,7 +26,7 @@
     }
   }
   &--black {
-    @apply bg-black;
+    background-color: var(--color-black);
     &:hover {
       color: var(--color-gray-800);
     }
@@ -36,39 +36,39 @@
   }
   &--text {
     &--primary {
-      @apply text-primary #{!important};
+      color: var(--color-primary);
       &:hover {
         color: var(--color-primary);
       }
       &:focus {
-        @apply text-primary;
+        color: var(--color-primary);
       }
     }
     &--secondary {
-      @apply text-secondary #{!important};
+      color: var(--color-secondary);
       &:hover {
-        @apply text-secondary;
+        color: var(--color-secondary);
       }
       &:focus {
-        @apply text-secondary;
+        color: var(--color-secondary);
       }
     }
     &--white {
-      @apply text-white #{!important};
+      color: var(--color-white);
       &:hover {
-        @apply text-white;
+        color: var(--color-white);
       }
       &:focus {
-        @apply text-white;
+        color: var(--color-white);
       }
     }
     &--black {
-      @apply text-black #{!important};
+      color: var(--color-black);
       &:hover {
-        @apply text-black;
+        color: var(--color-black);
       }
       &:focus {
-        @apply text-black;
+        color: var(--color-black);
       }
     }
   }
@@ -140,65 +140,70 @@
   }
   &--flat {
     &--primary {
-      @apply text-primary;
+      color: var(--color-primary);
       background-color: var(--color-transparent);
       &:hover {
-        @apply text-primary-light;
+        color: var(--color-primary-light);
       }
       &:focus {
-        @apply text-primary-dark;
+        color: var(--color-primary-dark);
       }
     }
     &--secondary {
-      @apply text-secondary;
+      color: var(--color-secondary);
       background-color: var(--color-transparent);
       &:hover {
-        @apply text-secondary-light;
+        color: var(--color-secondary-light);
       }
       &:focus {
-        @apply text-secondary-dark;
+        color: var(--color-secondary-dark);
       }
     }
   }
   &--outline {
     &--primary {
-      @apply text-primary border-primary;
+      color: var(--color-primary);
+      border-color: var(--color-primary);
       background-color: var(--color-transparent);
       &:hover {
-        @apply text-primary-light border-primary-light;
+        color: var(--color-primary-light);
+        border-color: var(--color-primary-light);
       }
       &:focus {
-        @apply text-primary-dark border-primary-dark;
+        color: var(--color-primary-dark);
+        border-color: var(--color-primary-dark);
       }
     }
     &--secondary {
-      @apply text-secondary;
+      color: var(--color-secondary);
       background-color: var(--color-transparent);
       &:hover {
-        @apply text-secondary-light;
+        color: var(--color-secondary-light);
       }
       &:focus {
-        @apply text-secondary-dark;
+        color: var(--color-secondary-dark);
       }
     }
   }
   &--default {
     &--primary {
-      @apply bg-primary text-white;
+      background-color: var(--color-primary);
+      color: var(--color-white);
       &:hover {
-        @apply bg-primary-light;
+        background-color: var(--color-primary-light);
       }
       &:focus {
-        @apply bg-primary-dark;
+        background-color: var(--color-primary-dark);
       }
     }
     &--secondary {
-      @apply bg-secondary text-white;
+      background-color: var(--color-secondary);
+      color: var(--color-white);
       &:hover {
-        @apply bg-secondary-light;
+        color: var(--color-secondary-light);
       }
       &:focus {
-        @apply bg-secondary-dark;
+        color: var(--color-secondary-dark);
       }
     }
   }
