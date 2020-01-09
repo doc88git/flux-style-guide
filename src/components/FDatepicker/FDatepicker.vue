@@ -5,6 +5,7 @@
     :lang="setLang"
     :range="range"
     :range-separator="rangeSeparator"
+    @change="getValue"
   ></DatePicker>
 </template>
 
@@ -25,6 +26,10 @@ export default {
     rangeSeparator: {
       type: String,
       default: "até"
+    },
+    getValue: {
+      type: Function,
+      default: () => ({})
     }
   },
   data() {

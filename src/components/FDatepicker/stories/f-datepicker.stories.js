@@ -29,9 +29,15 @@ storiesOf("Components|Datepicker", module)
         }
       }
     }),
+    methods: {
+      printValue(payload) {
+        console.log(payload);
+        return payload;
+      }
+    },
     template: `
       <div class="p-8">
-        <f-datepicker :setLang="lang"></f-datepicker>
+        <f-datepicker :setLang="lang" :getValue="printValue"></f-datepicker>
       </div>
     `
   }))
