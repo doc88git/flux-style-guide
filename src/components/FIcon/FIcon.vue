@@ -48,16 +48,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$size: xs sm base lg;
-
 .f-icon {
-  @apply p-0 m-0;
+  padding: 0;
+  margin: 0;
   line-height: 0;
 
-  @each $s in $size {
-    &--#{$s} {
-      @apply text-#{$s};
-    }
+  &--xs {
+    font-size: 0.75rem;
+  }
+
+  &--sm {
+    font-size: 0.875rem;
+  }
+
+  &--base {
+    font-size: 1rem;
+  }
+
+  &--lg {
+    font-size: 1.25rem;
   }
 }
 
