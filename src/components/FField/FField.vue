@@ -93,58 +93,88 @@ export default {
 
 <style lang="scss" scoped>
 .f-field {
-  @apply flex flex-wrap w-full mb-6 mt-2;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1.5rem;
+  margin-top: 0.5rem;
   &__marginal {
-    @apply h-20 items-end;
+    height: 5rem;
+    align-items: flex-end;
     transition: color 0.36s cubic-bezier(0.4, 0, 0.2, 1);
   }
   &__before {
-    @apply flex flex-no-wrap items-center pr-4;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding-right: 1rem;
   }
   &__after {
-    @apply flex flex-wrap;
+    flex-wrap: wrap;
+    display: flex;
     button {
-      @apply mt-0 mb-0;
+      margin-top: 0;
+      margin-bottom: 0;
     }
   }
   &__inner {
-    @apply w-auto relative max-w-full;
+    width: auto;
+    position: relative;
+    max-width: 100%;
     flex-grow: 10000;
     flex-shrink: 1;
     flex-basis: 0%;
     &__label {
-      @apply block tracking-wide font-bold;
+      display: block;
+      letter-spacing: 0.025em;
+      font-weight: 700;
       color: var(--color-gray-700);
     }
     &__hint {
-      @apply block tracking-wide text-sm mb-2 mt-2;
+      display: block;
+      letter-spacing: 0.025em;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+      margin-top: 0.5rem;
       color: var(--color-gray);
     }
     &__error {
-      @apply block tracking-wide text-red text-sm mb-2 mt-2;
+      display: block;
+      letter-spacing: 0.025em;
+      color: var(--color-red);
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+      margin-top: 0.5rem;
     }
     &__input {
-      @apply relative;
+      position: relative;
     }
     &__append {
-      @apply h-8 absolute bottom-0 right-0 mb-4 z-10;
+      height: 2rem;
+      position: absolute;
+      bottom: 0;
+      margin-bottom: 1rem;
+      z-index: 10;
       button {
-        @apply ml-0 mr-0 pl-2 pr-2;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
       }
     }
     &--hasLabel {
       .f-field__inner__input {
-        @apply pt-1 pb-1;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
       }
     }
     &--hasError {
       input {
-        @apply border border-red-500;
+        border: 1px solid var(--color-red);
       }
     }
     &--hasAppend {
       input {
-        @apply pr-12;
+        padding-right: 3rem;
       }
     }
   }
