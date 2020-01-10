@@ -148,7 +148,8 @@ export default {
     z-index: 80;
 
     &--no-menu {
-      @apply py-5;
+      padding-top: 1.25rem;
+      padding-bottom: 1.25rem;
     }
   }
 
