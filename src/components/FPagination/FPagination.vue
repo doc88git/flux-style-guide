@@ -141,16 +141,24 @@ export default {
 
 <style lang="scss" scoped>
 .f-pagination {
-  @apply select-none;
+  user-select: none;
   ul,
   li {
-    @apply inline-block min-h-full text-center;
+    display: inline-block;
+    min-height: 100%;
+    text-align: center;
   }
   ul {
-    @apply flex items-center content-center list-none;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    list-style-type: none;
     li {
       button {
-        @apply capitalize p-0 text-center h-6;
+        text-transform: capitalize;
+        padding: 0;
+        text-align: center;
+        height: 1.5rem;
         min-width: 35px;
       }
     }
