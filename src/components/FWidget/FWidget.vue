@@ -25,16 +25,18 @@ export default {
 
 <style lang="scss">
 .f-widget {
-  @apply cursor-pointer flex flex-wrap;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
   width: 35px;
   &.primary {
-    @apply text-primary;
+    color: var(--color-primary);
     cursor: pointer;
   }
 
   .f-icon {
     i {
-      @apply text-3xl;
+      font-size: 1.875rem;
     }
   }
   > span {
@@ -47,7 +49,7 @@ export default {
   }
 
   &:hover {
-    @apply opacity-75;
+    opacity: 0.75;
   }
 }
 </style>
