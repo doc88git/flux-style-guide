@@ -166,13 +166,13 @@ export default {
         vertical-align: middle;
       }
       thead {
+        border-radius: 50px;
         th {
           margin-bottom: 1rem;
           background-color: var(--color-white);
           user-select: none;
-          border-width: 1px;
           border-style: solid;
-          border-color: var(--color-gray);
+          border-color: var(--color-gray-500);
           border-bottom-width: 1px;
           &:hover {
             opacity: 0.75;

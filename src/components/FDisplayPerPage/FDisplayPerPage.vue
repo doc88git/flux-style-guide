@@ -108,7 +108,7 @@ export default {
   &.secondary {
     .btn {
       &.selected {
-        background-color: var(--color-secondary);
+        background-color: var(--color-primary);
         color: var(--color-white);
       }
     }
