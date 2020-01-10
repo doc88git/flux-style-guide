@@ -138,37 +138,59 @@ export default {
 .f-table {
   &__header,
   &__footer {
-    @apply flex flex-no-wrap items-center justify-between;
+    // @apply flex flex-no-wrap items-center justify-between;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
     &__left {
-      @apply text-left;
+      // @apply text-left;
+      text-align: left;
     }
     &__center {
-      @apply text-center;
+      // @apply text-center;
+      text-align: center;
     }
     &__right {
-      @apply text-right;
+      // @apply text-right;
+      text-align: right;
     }
   }
   &__body {
-    @apply overflow-auto;
+    // @apply overflow-auto;
+    overflow: auto;
     table {
-      @apply table-auto bg-white w-full;
+      // @apply table-auto bg-white w-full;
+      table-layout: auto;
+      background-color: var(--color-white);
+      width: 100%;
       th,
       td {
-        @apply p-4 whitespace-no-wrap text-left align-middle;
+        // @apply p-4 whitespace-no-wrap text-left align-middle;
+        padding: 1rem;
+        white-space: nowrap;
+        text-align: left;
+        vertical-align: middle;
       }
       thead {
         th {
-          @apply mb-4 bg-white select-none;
+          // @apply mb-4 bg-white select-none;
+          margin-bottom: 1rem;
+          background-color: var(--color-white);
+          user-select: none;
           border-width: 1px;
           border-style: solid;
           border-color: var(--color-gray);
           border-bottom-width: 1px;
           &:hover {
-            @apply opacity-75 cursor-pointer;
+            // @apply opacity-75 cursor-pointer;
+            opacity: 0.75;
+            cursor: pointer;
           }
           .f-icon {
-            @apply -ml-2 text-xs;
+            // @apply -ml-2 text-xs;
+            margin-left: -0.5rem;
+            font-size: 0.75rem;
           }
         }
       }
@@ -178,7 +200,8 @@ export default {
             background-color: var(--color-gray-100);
           }
           td {
-            @apply border-gray-200 mb-4;
+            // @apply border-gray-200 mb-4;
+            border-color: var(--color-gray-200);
             border-bottom-width: 1px;
           }
         }
