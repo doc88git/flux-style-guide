@@ -196,38 +196,76 @@ export default {
 
 <style lang="scss" scoped>
 .f-dropdown {
-  @apply select-none relative max-w-full;
+  user-select: none;
+  position: relative;
+  max-width: 100%;
   min-width: 200px;
   &:focus {
-    @apply shadow-none outline-none;
+    box-shadow: none;
+    outline: 0;
   }
   &__inner {
-    @apply flex flex-no-wrap justify-between bg-primary rounded text-white w-full py-2 px-3 min-w-full max-w-full;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    background-color: var(--color-primary);
+    border-radius: 0.25rem;
+    color: var(--color-white);
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    min-width: 100%;
+    max-width: 100%;
     position: relative;
     z-index: 1;
     &__content {
-      @apply truncate;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     &__append {
-      @apply flex flex-no-wrap items-center items-center w-1 pl-4 pr-4;
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      width: 0.25rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
       .f-icon {
-        @apply p-2 -m-2 cursor-pointer;
+        padding: 0.5rem;
+        margin: -0.5rem;
+        cursor: pointer;
       }
     }
     &--opened {
-      @apply rounded-none rounded-t;
+      border-radius: 0;
+      border-top-left-radius: 0.25rem;
+      border-top-right-radius: 0.25rem;
     }
   }
 
   &__list {
-    @apply absolute m-0 pt-2 pb-2 rounded-b bg-primary cursor-pointer shadow-md w-full text-white text-left z-10 overflow-auto;
+    position: absolute;
+    margin: 0;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+    background-color: var(--color-primary);
+    cursor: pointer;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    width: 100%;
+    color: var(--color-white);
+    text-align: left;
+    z-index: 10;
+    overflow: auto;
     max-height: 200px;
     ul {
-      @apply list-none;
+      list-style-type: none;
       li {
-        @apply py-1 px-2 align-middle;
+        padding: 0.25rem 0.5rem;
+        vertical-align: middle;
         &:hover {
-          @apply text-primary;
+          color: var(--color-primary);
           background-color: var(--color-gray-300);
         }
       }
@@ -236,10 +274,12 @@ export default {
 
   &--outlined {
     .f-dropdown__inner {
-      @apply bg-white text-primary border border-solid border-primary;
+      background-color: var(--color-white);
+      color: var(--color-primary);
+      border: 1px solid var(--color-primary);
     }
     .f-dropdown__list {
-      @apply bg-white;
+      background-color: var(--color-white);
       border-width: 1px;
       border-top-width: 0;
       border-style: solid;
@@ -248,7 +288,7 @@ export default {
       ul {
         li {
           &:hover {
-            @apply bg-white;
+            background-color: var(--color-white);
           }
         }
       }
@@ -257,15 +297,19 @@ export default {
 
   &--input {
     .f-dropdown__inner {
-      @apply bg-white text-black border border-solid;
+      background-color: var(--color-white);
+      color: var(--color-black);
+      border: 1px solid;
     }
     .f-dropdown__list {
-      @apply bg-white border border-t-0 border-solid;
+      background-color: var(--color-white);
       color: var(--color-gray-600);
+      border: 1px solid;
+      border-top-width: 0;
       ul {
         li {
           &:hover {
-            @apply bg-white;
+            background-color: var(--color-white);
           }
         }
       }
