@@ -298,8 +298,8 @@ export default {
   &--input {
     .f-dropdown__inner {
       background-color: var(--color-white);
-      color: var(--color-black);
-      border: 1px solid;
+      color: var(--color-gray-600);
+      border: 1px solid var(--color-primary);
     }
     .f-dropdown__list {
       background-color: var(--color-white);

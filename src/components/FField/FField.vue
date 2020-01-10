@@ -95,10 +95,8 @@ export default {
 .f-field {
   display: flex;
   flex-wrap: wrap;
-  margin: 1.5rem;
-  margin-top: 0.5rem;
   &__marginal {
-    height: 5rem;
+    height: 4.5rem;
     align-items: flex-end;
     transition: color 0.36s cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -149,10 +147,12 @@ export default {
       position: relative;
     }
     &__append {
-      height: 2rem;
+      right: 4.85px;
+      display: flex;
+      align-items: center;
+      height: 100%;
       position: absolute;
       bottom: 0;
-      margin-bottom: 1rem;
       z-index: 10;
       button {
         margin-left: 0;
