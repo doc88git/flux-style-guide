@@ -35,17 +35,21 @@ export default {
 
 <style lang="scss" scoped>
 .f-list-item {
-  @apply block px-4 py-2 border-b text-sm;
+  display: block;
+  padding: 0.5rem 1rem;
+  border-bottom-width: 1px;
+  font-size: 0.875rem;
   &:hover,
   &:focus {
     background-color: var(--color-gray-300);
   }
   &__item {
     &--title {
-      @apply font-semibold mb-1;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
     }
     &--label {
-      @apply mb-1;
+      margin-bottom: 0.25rem;
       color: var(--color-gray-800);
     }
   }

@@ -15,9 +15,15 @@ export default {
 
 <style lang="scss" scoped>
 .f-list {
-  @apply flex items-center w-full;
+  display: flex;
+  align-items: center;
+  width: 100%;
   &__content {
-    @apply overflow-hidden bg-white rounded w-full leading-normal;
+    overflow: hidden;
+    background-color: var(--color-white);
+    border-radius: 0.25rem;
+    width: 100%;
+    line-height: 1.5;
   }
 }
 </style>
