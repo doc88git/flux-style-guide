@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: "FTitle",
+  name: 'FTitle',
   components: {},
   props: {
     noBorder: {
@@ -23,11 +23,11 @@ export default {
     },
     text: {
       type: String,
-      default: ""
+      default: ''
     }
   },
   methods: {}
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -36,7 +36,7 @@ export default {
   width: 100%;
   padding: 10px 0;
   margin-bottom: 10px;
-  color: #333333;
+  color: var(--color-dark);
 
   &__wrapper {
     display: flex;
