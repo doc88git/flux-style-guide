@@ -34,27 +34,28 @@ export default {
 
 <style lang="scss" scoped>
 .f-image {
-  @apply w-full h-full;
   &--rounded {
-    @apply rounded-lg;
+    border-radius: 0.5rem;
   }
   &--rounded-t {
-    @apply rounded-t-lg;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
   }
   &--rounded-b {
-    @apply rounded-b-lg;
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
   }
   &--rounded-tl {
-    @apply rounded-tl-lg;
+    border-top-left-radius: 0.5rem;
   }
   &--rounded-tr {
-    @apply rounded-tl-lg;
+    border-top-right-radius: 0.5rem;
   }
   &--rounded-bl {
-    @apply rounded-bl-lg;
+    border-bottom-left-radius: 0.5rem;
   }
   &--rounded-br {
-    @apply rounded-bl-lg;
+    border-bottom-right-radius: 0.5rem;
   }
 }
 </style>
