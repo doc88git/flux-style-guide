@@ -86,25 +86,30 @@ export default {
 
 <style lang="scss">
 .f-display-per-page {
-  @apply flex items-center;
+  display: flex;
+  align-items: center;
 
   .text-gray-800 {
     color: var(--color-gray-200);
   }
 
   .btn {
-    @apply px-3 py-2 text-xs h-auto;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    height: auto;
     background-color: var(--color-gray-200);
     color: var(--color-gray-700);
     &.selected {
-      @apply bg-primary text-white;
+      background-color: var(--color-primary);
+      color: var(--color-white);
     }
   }
 
   &.secondary {
     .btn {
       &.selected {
-        @apply bg-secondary text-white;
+        background-color: var(--color-secondary);
+        color: var(--color-white);
       }
     }
   }
