@@ -78,35 +78,62 @@ export default {
 
 <style lang="scss" scoped>
 .f-chip {
-  @apply flex flex-no-wrap inline-flex items-center align-middle;
-  @apply bg-primary text-white;
-  @apply py-1 px-3 mx-1 rounded-lg;
-  @apply outline-none relative select-none cursor-pointer;
-  @apply border;
+  flex-wrap: nowrap;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
+  outline: 0;
+  position: relative;
+  user-select: none;
+  cursor: pointer;
+  border-width: 1px;
   transition: 0.3s;
   min-height: 23px;
 
   &__icon {
-    @apply flex align-middle align-middle rounded-full m-0 p-0 mr-2 leading-normal;
+    display: flex;
+    vertical-align: middle;
+    border-radius: 9999px;
+    margin: 0;
+    padding: 0;
+    margin-right: 0.5rem;
+    line-height: 1.5;
     i {
-      @apply text-xl;
+      font-size: 1.25rem;
     }
   }
   &__content {
-    @apply flex align-middle flex-no-wrap whitespace-no-wrap;
-    @apply font-secondary text-sm antialiased leading-none;
+    display: flex;
+    vertical-align: middle;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+
+    color: var(--color-white);
+    font-size: 0.875rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1;
   }
   &__close {
-    @apply flex align-middle m-0 p-0 ml-2 -mr-1;
+    display: flex;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    margin-left: 0.5rem;
+    margin-right: -0.25rem;
     &:hover {
-      @apply opacity-50;
+      opacity: 0.5;
     }
   }
   &--disabled {
-    @apply opacity-75;
+    opacity: 0.75;
     .f-chip__close {
       &:hover {
-        @apply opacity-50;
+        opacity: 0.5;
       }
     }
   }
