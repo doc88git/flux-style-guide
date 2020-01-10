@@ -92,7 +92,7 @@ export default {
 <style lang="scss" scoped>
 .f-tab {
   &__header {
-    @apply overflow-auto;
+    overflow: auto;
   }
 }
 </style>
