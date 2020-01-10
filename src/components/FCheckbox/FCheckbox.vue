@@ -78,7 +78,7 @@ export default {
       transform: scale(0.9);
 
       &--base {
-        @apply text-xl;
+        font-size: 1.25rem;
       }
     }
   }
