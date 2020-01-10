@@ -25,7 +25,7 @@ export default {
     },
     rangeSeparator: {
       type: String,
-      default: "até"
+      default: 'até'
     },
     getValue: {
       type: Function,
@@ -75,7 +75,7 @@ export default {
 
 <style lang="scss">
 .mx-datepicker {
-  @apply w-full;
+  width: 100%;
   font-family: 'Roboto', -apple-system, 'BlinkMacSystemFont', sans-serif;
 
   ::-webkit-input-placeholder {
@@ -112,11 +112,13 @@ export default {
   .mx-calendar-content {
     .cell {
       &.actived {
-        @apply bg-secondary text-white rounded-sm;
+        background-color: var(--color-primary);
+        color: var(--color-white);
+        border-radius: 0.125rem;
       }
 
       &.inrange {
-        @apply bg-secondary-lighter;
+        background-color: var(--color-primary-lighter);
         color: var(--color-gray-700);
       }
 
