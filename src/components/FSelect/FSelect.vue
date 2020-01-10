@@ -200,24 +200,29 @@ export default {
 
 <style lang="scss" scoped>
 .f-select {
-  @apply max-w-full;
+  max-width: 100%;
 
   &__label {
     padding-right: 100%;
   }
   &__input {
-    @apply bg-transparent border-none text-white p-0 m-0 h-6;
+    background-color: transparent;
+    border-style: none;
+    color: var(--color-white);
+    padding: 0;
+    margin: 0;
+    height: 1.5rem;
   }
   &__multiple {
-    @apply flex-wrap;
+    flex-wrap: wrap;
   }
 
   &--outlined {
-    @apply text-primary;
+    color: var(--color-primary);
   }
 
   &--input {
-    @apply text-black;
+    color: var(--color-black);
   }
 }
 
