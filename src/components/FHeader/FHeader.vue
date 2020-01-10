@@ -44,18 +44,29 @@ export default {
 
 <style lang="scss" scoped>
 .main-header {
-  @apply flex pr-5 w-full text-center items-center shadow-xxxl top-0 fixed;
+  display: flex;
+  padding-right: 1.25rem;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
+  top: 0;
+  position: fixed;
   max-height: 70px;
   -webkit-box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
   -moz-box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
   box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
   &__title {
-    @apply px-10 font-normal text-xl text-left;
+    padding-right: 2.5rem;
+    padding-left: 2.5rem;
+    font-weight: 400;
+    font-size: 1.25rem;
+    text-align: left;
     color: #666;
   }
 
   &__logo {
-    @apply px-10 py-3;
+    padding: 0.75rem 2.5rem;
     height: 70px;
     img {
       height: 46px;
