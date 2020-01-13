@@ -49,19 +49,33 @@ export default {
 </script>
 
 <style lang="scss">
-// .content {
-//   @apply flex flex-wrap mx-auto items-center justify-center h-screen;
-//   .flux-logo {
-//     @apply w-full text-center m-0 text-primary;
-//   }
-//   ul.menu {
-//     @apply w-full text-center uppercase;
-//     li {
-//       @apply inline mx-10 text-secondary;
-//       a:hover {
-//         @apply text-secondary-light;
-//       }
-//     }
-//   }
-// }
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: auto;
+  margin-left: auto;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  .flux-logo {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    color: var(--color-primary);
+  }
+  ul.menu {
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    li {
+      display: inline;
+      margin-right: 2.5rem;
+      margin-left: 2.5rem;
+      color: var(--color-secondary);
+      a:hover {
+        color: var(--color-secondary-light);
+      }
+    }
+  }
+}
 </style>

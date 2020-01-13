@@ -121,6 +121,7 @@ export default {
   border-radius: 0.25rem;
   text-transform: uppercase;
   width: auto;
+  border: none;
   cursor: pointer;
   &:hover {
     outline: 0;
