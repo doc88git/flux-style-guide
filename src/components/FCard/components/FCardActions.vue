@@ -28,25 +28,20 @@ export default {
 
 <style lang="scss" scoped>
 .f-card-actions {
-  // @apply flex flex-no-wrap items-center content-center;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   align-content: center;
   &--align-center {
-    @apply justify-center;
     justify-content: center;
   }
   &--align-justify {
-    @apply justify-between;
     justify-content: space-between;
   }
   &--align-left {
-    @apply justify-start;
     justify-content: flex-start;
   }
   &--align-right {
-    @apply justify-end;
     justify-content: flex-end;
   }
 }
