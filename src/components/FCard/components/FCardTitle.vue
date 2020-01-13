@@ -12,6 +12,10 @@ export default {
 
 <style lang="scss" scoped>
 .f-card-title {
-  @apply font-primary w-full font-bold mb-4 text-lg;
+  font-family: var(--font-primary);
+  font-weight: bold;
+  margin-bottom: 1rem;
+  width: 100%;
+  font-size: var(--text-xl);
 }
 </style>

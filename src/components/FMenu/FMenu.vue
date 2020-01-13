@@ -136,7 +136,7 @@ span.icon-widget {
       top: 70px;
       left: -100%;
 
-      @media screen and (min-width: $size-tablet) {
+      @media screen and (min-width: var(--size-tablet)) {
         position: absolute;
         top: 0;
         left: 0;
@@ -155,7 +155,7 @@ span.icon-widget {
         @include transition(0.1s);
         text-align: center;
 
-        @media screen and (min-width: $size-tablet) {
+        @media screen and (min-width: var(--size-tablet)) {
           width: 230px;
           text-align: left;
         }
@@ -175,7 +175,7 @@ span.icon-widget {
           align-items: center;
           width: 100%;
 
-          @media screen and (min-width: $size-tablet) {
+          @media screen and (min-width: var(--size-tablet)) {
             justify-content: flex-start;
             &:hover {
               .Fmenu-side__nav__ul__li__text {

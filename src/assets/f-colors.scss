@@ -1,13 +1,3 @@
-@import './f-variables';
-
-// Generate variables css native
-:root {
-  // custom colors
-  @each $name, $color in $colorsTailwind {
-    --color-#{$name}: #{$color};
-  }
-}
-
 .color {
   &--primary {
     background-color: var(--color-primary);

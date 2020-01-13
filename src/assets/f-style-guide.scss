@@ -1,58 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i|Titillium+Web:200,200i,300,300i,400,400i,600,600i,700,700i,900&display=swap');
-@import url("https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp");
+@import './f-variables';
 
-@import "~tailwindcss/base";
+// here
 
-body {
-  font-size: 1rem;
-  color: var(--color-black);
-}
+@import './f-root';
+@import './f-colors';
+@import './f-transitions';
 
-h1, h2, h3, h4, h5, h6, button, th {
-  color: var(--color-dark);
-}
-
-h1 {
-  font-size: 4rem;
-}
-h2 {
-  font-size: 3rem;
-}
-h3 {
-  font-size: 2.25rem;
-}
-h4 {
-  font-size: 1.875rem;
-}
-h5 {
-  font-size: 1.5rem;
-}
-h6 {
-  font-size: 1.25rem;
-}
-
-
-
-@media (min-width: 640px) {}
-@media (min-width: 768px) {}
-
-@media (min-width: 1024px) {
-  *, *::before, *::after {
-    font-size: 14px
-  }
-}
-@media (min-width: 1280px) {
-  *, *::before, *::after {
-    font-size: 14px
-  }
-}
-
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration {
-  display: none;
-}
-
-@import "~tailwindcss/utilities";
-@import "~tailwindcss/components";
+@import './f-base';

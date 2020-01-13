@@ -1,0 +1,21 @@
+// Generate variables css native
+:root {
+  // custom colors
+  @each $name, $color in $colors-theme {
+    --color-#{$name}: #{$color};
+  }
+
+  // custom text sizes
+  @each $name, $size in $textSizes {
+    --text-#{$name}: #{$size};
+  }
+
+  // custom screen sizes
+  @each $name, $size in $sizes {
+    --size-#{$name}: #{$size};
+  }
+
+  // custom font
+  --font-primary: #{$font-primary};
+  --font-secondary: #{$font-secondary};
+}

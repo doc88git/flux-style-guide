@@ -1,7 +1,34 @@
-$colors: gray red orange yellow green teal blue indigo purple pink;
+$font-primary: Titillium Web, -apple-system, BlinkMacSystemFont, sans-serif;
+$font-secondary: Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+
+// Screen sizes
+$sizes: (
+  'bigest': '1200px',
+  'web': '1024px',
+  'large': '980px',
+  'tablet': '768px',
+  'tablet-content': '620px',
+  'content': '930px',
+  'cell': '324px'
+);
+
+// Font sizes
+$textSizes: (
+  'xs': '0.75rem',
+  'sm': '0.875rem',
+  'base': '16px',
+  'lg': '1.125rem',
+  'xl': '1.25rem',
+  '2xl': '1.5rem',
+  '3xl': '1.875rem',
+  '4xl': '2.25rem',
+  '5xl': '3rem',
+  '6xl': '4rem'
+);
 
 // Color system
-$colorsTailwind: (
+$colors: gray red orange yellow green teal blue indigo purple pink;
+$colors-theme: (
   'primary': #805ad5,
   'primary-light': lighten(#805ad5, 5%),
   'primary-lighter': lighten(#805ad5, 45%),
@@ -11,7 +38,6 @@ $colorsTailwind: (
   'secondary-lighter': lighten(#3182ce, 45%),
   'secondary-dark': darken(#3182ce, 5%),
   'light': #f7fafc,
-  // lighter: 'var(--color-lighter)',
   'dark': #1a202c,
   'transparent': transparent,
   'black': #000,
@@ -117,12 +143,3 @@ $colorsTailwind: (
   'pink-900': '#702459',
   'pink': '#ed64a6'
 );
-
-//sizes
-$size-bigest: 1200px;
-$size-web: 1024px;
-$size-large: 980px;
-$size-tablet: 768px;
-$size-tablet-content: 620px;
-$size-content: 930px;
-$size-cell: 324px;
