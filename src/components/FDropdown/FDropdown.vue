@@ -14,12 +14,15 @@
       </div>
     </div>
     <transition :name="`slide-${position}`">
-      <div class="f-dropdown__list" v-show="isOpen">
+      <div class="f-dropdown__list" v-show="isOpen" @keyup="itemNavigation">
         <ul>
           <li
             v-for="(item, index) in list"
             :key="`dwn:${index}`"
             @click="clickOnItem($event, item)"
+            :class="{
+              'f-dropdown__active-item': currentItem === item.value
+            }"
           >
             {{ item.label }}
           </li>
@@ -37,7 +40,8 @@ export default {
   components: { FIcon },
   data: () => ({
     isOpen: false,
-    selected: null
+    selected: null,
+    currentItem: 1
   }),
   props: {
     list: {
@@ -53,6 +57,8 @@ export default {
             }).length === list.length
           )
         })
+
+        console.log({ list, filter })
 
         return filter.length === list.length
       }
@@ -86,6 +92,10 @@ export default {
       type: String,
       default: 'white'
     }
+  },
+  mounted() {
+    document.addEventListener('keyup', this.itemNavigation)
+    document.addEventListener('keypress', this.onEnter)
   },
   computed: {
     isOutlined() {
@@ -129,6 +139,11 @@ export default {
     }
   },
   methods: {
+    onEnter(e) {
+      if (e.keyCode === 13) {
+        this.selectItem()
+      }
+    },
     isClickedIn(e, classItem) {
       let isClicked = e.path.filter(item => {
         return item.classList ? item.classList.contains(classItem) : false
@@ -177,18 +192,36 @@ export default {
 
       e.stopPropagation()
     },
+    selectItem() {
+      this.selected = this.currentItem
+      this.$emit('selected', this.currentItem)
+
+      this.closeList()
+    },
     clickOnItem(e, item) {
       this.selected = item.value
       this.$emit('selected', item.value)
+      console.log('mescolheram')
 
       if (this.closeOnClick) this.closeList()
 
       e.stopPropagation()
+    },
+    itemNavigation(event) {
+      if (event.keyCode == 38 && this.currentItem > 1) {
+        console.log(this.list[0].value, this.currentItem)
+        this.currentItem--
+      } else if (event.keyCode == 40 && this.currentItem < this.list.length) {
+        console.log(this.currentItem)
+        this.currentItem++
+      }
     }
   },
   destroyed() {
     if (process.browser) {
       window.removeEventListener('click', this.toggleDropdown)
+      window.removeEventListener('keyup', () => {})
+      window.removeEventListener('keypress', () => {})
     }
   }
 }
@@ -240,6 +273,11 @@ export default {
       border-top-left-radius: 0.25rem;
       border-top-right-radius: 0.25rem;
     }
+  }
+
+  &__active-item {
+    background-color: var(--color-gray-300);
+    color: var(--color-primary);
   }
 
   &__list {
