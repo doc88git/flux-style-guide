@@ -17,7 +17,7 @@ storiesOf('Components|Banners', module)
       methods: {},
       props: {},
       template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <f-banner :images="images"/>
         </div>
       `
@@ -38,7 +38,7 @@ storiesOf('Components|Banners', module)
       methods: {},
       props: {},
       template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <f-banner bullet :images="images"/>
         </div>
       `
@@ -59,7 +59,7 @@ storiesOf('Components|Banners', module)
       methods: {},
       props: {},
       template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <f-banner out-slider :images="images"/>
         </div>
       `
@@ -80,7 +80,7 @@ storiesOf('Components|Banners', module)
       methods: {},
       props: {},
       template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <f-banner out-slider bullet :images="images"/>
         </div>
       `

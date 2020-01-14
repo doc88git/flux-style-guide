@@ -39,7 +39,7 @@ storiesOf('Components|Button', module)
         }
       },
       template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <div class="mt-4">Small:</div> <f-button :disabled="disabled" :label="label" :icon="icon" :color="color" :text-color="textColor" :small="true" />
           <div class="mt-4">Normal:</div> <f-button :label="label" :icon="icon" :color="color" :text-color="textColor" />
           <div class="mt-4">Bigger:</div> <f-button :label="label" :icon="icon" :color="color" :text-color="textColor" :bigger="true" />
@@ -66,7 +66,7 @@ storiesOf('Components|Button', module)
         }
       },
       template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <f-button flat :label="label" :icon="icon" :color="color" />
         </div>
       `
@@ -91,7 +91,7 @@ storiesOf('Components|Button', module)
         }
       },
       template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <f-button outline :label="label" :icon="icon" :color="color" />
         </div>
       `
@@ -119,7 +119,7 @@ storiesOf('Components|Button', module)
         }
       },
       template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <div class="mb-4">
             Normal<br>
             <f-button :icon="icon" :color="color" :text-color="textColor" />
@@ -156,7 +156,7 @@ storiesOf('Components|Button', module)
         }
       },
       template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <f-button :label="label" :icon="icon" :color="color" :text-color="textColor" />
         </div>
       `
@@ -181,7 +181,7 @@ storiesOf('Components|Button', module)
         }
       },
       template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <f-button :label="label" :icon="icon" :color="color" flat />
         </div>
       `
@@ -209,7 +209,7 @@ storiesOf('Components|Button', module)
         }
       },
       template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <f-button :label="label" :icon="icon" :text-color="textColor" :color="color">{{ text }}</f-button>
         </div>
       `

@@ -110,6 +110,7 @@ export default {
     min-width: 3rem;
     left: 100%;
     z-index: 10;
+    color: var(--color-white);
 
     &--primary {
       background-color: var(--color-primary);

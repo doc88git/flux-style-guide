@@ -56,7 +56,7 @@ storiesOf('Components|TableCustom', module).add('Default', () => ({
     ]
   },
   template: `
-    <div class="p-8">
+    <div style="padding: 20px;">
       <f-table-custom
         :sortBy="sortBy"
         :sortDirection="sortDirection"

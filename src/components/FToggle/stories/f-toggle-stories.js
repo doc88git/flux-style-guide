@@ -15,7 +15,7 @@ storiesOf('Components|Toggle', module).add(
     methods: {},
     props: {},
     template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <f-toggle v-model="isToggled" />
         </div>
       `

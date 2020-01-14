@@ -26,7 +26,7 @@ stories.add('Default', () => ({
     }
   },
   template: `
-      <div class="p-8">
+      <div style="padding: 20px;">
 
         <h3>Checkbox</h3>
         <f-checkbox :isDisabled="isDisabled" class="f-checkbox--gray" v-model="checked" :label="label">

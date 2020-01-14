@@ -19,7 +19,7 @@ storiesOf('Components|Pagination', module).add('Default', () => ({
     }
   },
   template: `
-    <div class="p-8">
+    <div style="padding: 20px;">
       <f-pagination :currentPage="currentPage" :total="total" :perPage="perPage" :max="max" />
     </div>
   `

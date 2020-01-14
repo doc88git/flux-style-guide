@@ -30,7 +30,7 @@ storiesOf('Components|Icon', module).add(
       }
     },
     template: `
-      <div class="p-8">
+      <div style="padding: 20px;">
         <f-icon :name="name" :type="type" :lib="lib" />
       </div>
     `

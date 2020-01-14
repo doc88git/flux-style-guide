@@ -65,7 +65,7 @@ storiesOf('Form|Field', module)
         }
       },
       template: `
-      <div class="p-8">
+      <div style="padding: 20px;">
         <f-field
           :label="label"
           :hint="hint"
@@ -133,7 +133,7 @@ storiesOf('Form|Field', module)
         }
       },
       template: `
-      <div class="p-8">
+      <div style="padding: 20px;">
         <f-field
           :label="label"
           :hint="hint"
@@ -199,7 +199,7 @@ storiesOf('Form|Field', module)
         }
       },
       template: `
-      <div class="p-8">
+      <div style="padding: 20px;">
         <f-field
           :label="label"
           :hint="hint"
@@ -265,7 +265,7 @@ storiesOf('Form|Field', module)
         }
       },
       template: `
-      <div class="p-8">
+      <div style="padding: 20px;">
         <f-field
           :label="label"
           :hint="hint"
@@ -331,7 +331,7 @@ storiesOf('Form|Field', module)
         }
       },
       template: `
-      <div class="p-8">
+      <div style="padding: 20px;">
         <f-field
           :label="label"
           :hint="hint"
@@ -381,7 +381,7 @@ storiesOf('Form|Field', module)
         }
       },
       template: `
-        <div class="p-8" style="width: 400px">
+        <div style="padding: 20px;" style="width: 400px">
           <f-field label="Name" hint="Name is required">
             <f-input
               placeholder="Your name here"

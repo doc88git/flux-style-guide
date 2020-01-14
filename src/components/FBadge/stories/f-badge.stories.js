@@ -34,8 +34,8 @@ storiesOf('Components|Badge', module).add('Default', () => ({
     }
   },
   template: `
-    <div class="p-8 h-8">
-      <div class="text-6xl">Application
+    <div >
+      <div style="font-size: var(--text-6xl);">Application
         <f-badge
           :color="color"
           :textColor="textColor"

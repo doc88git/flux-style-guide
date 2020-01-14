@@ -22,7 +22,7 @@ storiesOf('Components|Tab', module)
     }),
     props: {},
     template: `
-    <div class="p-8">
+    <div style="padding: 20px;">
       <f-tab :options="options">
         <template slot="content-1">Content A</template>
         <template slot="content-2">Content B</template>
@@ -51,7 +51,7 @@ storiesOf('Components|Tab', module)
     }),
     props: {},
     template: `
-    <div class="p-8">
+    <div style="padding: 20px;">
       <f-tab fill :options="options">
         <template slot="content-1">Content A</template>
         <template slot="content-2">Content B</template>

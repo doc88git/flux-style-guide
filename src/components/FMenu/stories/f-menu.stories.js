@@ -13,7 +13,7 @@ storiesOf('Components|Menu', module)
       }
     },
     template: `
-      <div class="p-8">
+      <div style="padding: 20px;">
         <f-menu :action="showSidebar" :color="color"/>
       </div>
     `,
@@ -41,7 +41,7 @@ storiesOf('Components|Menu', module)
       }
     },
     template: `
-      <div class="p-8">
+      <div style="padding: 20px;">
         <f-menu-button :color="color"/>
       </div>
     `,

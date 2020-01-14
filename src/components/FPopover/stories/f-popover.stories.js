@@ -15,7 +15,7 @@ storiesOf('Components|Popover', module)
       }
     },
     template: `
-      <div class="p-10 w-full text-center">
+      <div style="padding: 40px; width: 100%; text-align: center;">
         <f-popover :position="position" :click="click" label="Button">
           <template v-slot:content>
             tooltip content
@@ -33,7 +33,7 @@ storiesOf('Components|Popover', module)
       }
     },
     template: `
-      <div class="p-10 w-full text-center">
+      <div style="padding: 40px; width: 100%; text-align: center;">
         <f-popover click :position="position" label="Button">
           <template v-slot:content>
             tooltip content
@@ -51,7 +51,7 @@ storiesOf('Components|Popover', module)
       }
     },
     template: `
-      <div class="p-10 w-full text-center">
+      <div style="padding: 40px; width: 100%; text-align: center;">
         <f-popover position="top" label="top">
           <template v-slot:content>
             tooltip on top

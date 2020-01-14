@@ -12,7 +12,7 @@ storiesOf("Components|Title", module).add(
     methods: {},
     props: {},
     template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <f-title :text="text">
             <template v-slot:before>before</template>
             <template v-slot:after>after</template>

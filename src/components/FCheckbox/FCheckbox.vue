@@ -50,7 +50,7 @@ export default {
 
 <style lang="scss" scoped>
 .f-checkbox {
-  display: inline-flex;
+  display: none;
   appearance: none;
 
   &__wrapper {

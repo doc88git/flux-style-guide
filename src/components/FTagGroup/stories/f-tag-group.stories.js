@@ -39,7 +39,7 @@ storiesOf("Components|Tag Groups", module).add(
     methods: {},
     props: {},
     template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <f-tag-group :list="list" />
         </div>
       `

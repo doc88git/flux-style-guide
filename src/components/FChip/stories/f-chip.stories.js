@@ -48,7 +48,7 @@ storiesOf('Components|Chip', module)
       }
     },
     template: `
-      <div class="p-8">
+      <div style="padding: 20px;">
         <f-chip
           :label="label"
           :color="color"
@@ -125,7 +125,7 @@ storiesOf('Components|Chip', module)
       }
     },
     template: `
-      <div class="p-8">
+      <div style="padding: 20px;">
         <f-chip
           v-for="(item, i) in list" :key="i"
           :label="item"

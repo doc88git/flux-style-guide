@@ -24,7 +24,7 @@ storiesOf('Components|Alerts', module)
       }
     },
     template: `
-    <div class="p-8">
+    <div style="padding: 20px;">
       <FAlertController ref="alertController" :alerts="alerts" :timeout="5" />
       <button @click="addAlert">Add +</button>
     </div>
@@ -57,7 +57,7 @@ storiesOf('Components|Alerts', module)
       }
     },
     template: `
-    <div class="p-8">
+    <div style="padding: 20px;">
       <f-alert
         color="primary"
         :fill="fill"

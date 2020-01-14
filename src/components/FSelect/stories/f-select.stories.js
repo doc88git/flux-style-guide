@@ -31,7 +31,7 @@ storiesOf('Form|Select', module)
       }
     },
     template: `
-    <div class="p-8">
+    <div style="padding: 20px;">
       <f-select
         :search="false"
         :options="options"
@@ -59,7 +59,7 @@ storiesOf('Form|Select', module)
       }
     },
     template: `
-    <div class="p-8">
+    <div style="padding: 20px;">
       <f-select
         :options="options"
         :type="type"
@@ -91,7 +91,7 @@ storiesOf('Form|Select', module)
       }
     },
     template: `
-    <div class="p-8">
+    <div style="padding: 20px;">
       <f-select
         :options="options"
         :type="type"
@@ -119,7 +119,7 @@ storiesOf('Form|Select', module)
       }
     },
     template: `
-    <div class="p-8">
+    <div style="padding: 20px;">
       <f-select
         :multiple="true"
         :options="options"

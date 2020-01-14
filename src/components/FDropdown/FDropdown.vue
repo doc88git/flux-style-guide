@@ -348,6 +348,7 @@ export default {
       color: var(--color-gray-600);
       border: 1px solid;
       border-top-width: 0;
+      border-color: var(--color-primary);
       ul {
         li {
           &:hover {

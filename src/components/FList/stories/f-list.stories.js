@@ -24,7 +24,7 @@ storiesOf('Components|List', module).add(
       }
     },
     template: `
-      <div class="p-8" style="width:600px">
+      <div style="padding: 20px;" style="width:600px">
         <f-card>
           <f-card-body>
             <f-list>

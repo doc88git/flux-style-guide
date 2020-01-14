@@ -8,7 +8,7 @@ storiesOf("Components|Upload", module).add("Default", () => ({
   data: () => ({}),
   props: {},
   template: `
-      <div class="p-10 w-full text-center">
+      <div style="padding: 40px; width: 100%; text-align: center;">
         <f-upload>
           <f-button
             :disabled="false"

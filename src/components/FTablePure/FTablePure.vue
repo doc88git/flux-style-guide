@@ -113,6 +113,8 @@ export default {
         white-space: nowrap;
         text-align: left;
         vertical-align: middle;
+        font-weight: 600;
+        color: #666666;
       }
       thead {
         tr {

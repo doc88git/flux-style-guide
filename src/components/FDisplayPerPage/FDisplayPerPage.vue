@@ -90,7 +90,7 @@ export default {
   align-items: center;
 
   .text-gray-800 {
-    color: var(--color-gray-200);
+    color: var(--color-gray-800);
   }
 
   .btn {

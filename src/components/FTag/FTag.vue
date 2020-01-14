@@ -123,7 +123,7 @@ export default {
     padding-left: 4px;
     padding-bottom: 0;
     position: absolute;
-    transform: translateY(-7px);
+    transform: translateY(-10px);
     margin-left: 0;
     font-size: var(--text-xs);
     z-index: 2;

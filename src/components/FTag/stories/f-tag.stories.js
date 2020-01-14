@@ -18,7 +18,7 @@ storiesOf('Components|Tags', module).add(
     methods: {},
     props: {},
     template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <f-tag :bg-color="bgColor" :line-color="lineColor" :legend="legend" :icon="icon" :icon-color="iconColor" :text="text" :text-color="textColor"/>
         </div>
       `

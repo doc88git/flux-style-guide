@@ -41,7 +41,7 @@ storiesOf('Components|Button', module)
         }
       },
       template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <f-button-group :default="1" :options="options" @change="change" :size="size" />
         </div>
       `
@@ -63,7 +63,7 @@ storiesOf('Components|Button', module)
         }
       },
       template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <f-button-group :default="1" outline :options="options" @change="change" />
         </div>
       `
@@ -85,7 +85,7 @@ storiesOf('Components|Button', module)
         }
       },
       template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <f-button-group :default="1" tab :options="options" @change="change" />
         </div>
       `

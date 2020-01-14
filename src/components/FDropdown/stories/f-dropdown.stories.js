@@ -45,7 +45,7 @@ storiesOf('Components|Dropdown', module).add('Default', () => ({
     }
   },
   template: `
-    <div class="p-8">
+    <div style="padding: 20px;">
       <span v-if="input">Selected: {{ value }}</span>
       <f-dropdown
         :list="list"

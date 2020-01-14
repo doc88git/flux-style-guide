@@ -36,7 +36,7 @@ storiesOf('Components|Datepicker', module)
       }
     },
     template: `
-      <div class="p-8">
+      <div style="padding: 20px;">
         <f-datepicker :setLang="lang" :getValue="printValue"></f-datepicker>
       </div>
     `
