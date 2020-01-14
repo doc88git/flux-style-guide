@@ -113,7 +113,7 @@ export default {
   }
 
   &__header {
-    font-size: 0.875rem;
+    font-size: var(--text-sm);
     font-weight: 700;
     padding: 0;
     margin: 0;
@@ -122,7 +122,7 @@ export default {
   }
 
   &__body {
-    font-size: 0.875rem;
+    font-size: var(--text-sm);
     margin: 0;
   }
 

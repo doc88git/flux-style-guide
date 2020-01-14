@@ -25,6 +25,11 @@
             }"
           >
             {{ item.label }}
+            <f-icon
+              v-if="currentItem === item.value"
+              :name="iconStatus"
+              :color="iconColor"
+            />
           </li>
         </ul>
       </div>
@@ -58,10 +63,12 @@ export default {
           )
         })
 
-        console.log({ list, filter })
-
         return filter.length === list.length
       }
+    },
+    iconStatus: {
+      type: String,
+      default: 'check'
     },
     closeOnClick: {
       type: Boolean,
@@ -201,7 +208,6 @@ export default {
     clickOnItem(e, item) {
       this.selected = item.value
       this.$emit('selected', item.value)
-      console.log('mescolheram')
 
       if (this.closeOnClick) this.closeList()
 
@@ -209,10 +215,8 @@ export default {
     },
     itemNavigation(event) {
       if (event.keyCode == 38 && this.currentItem > 1) {
-        console.log(this.list[0].value, this.currentItem)
         this.currentItem--
       } else if (event.keyCode == 40 && this.currentItem < this.list.length) {
-        console.log(this.currentItem)
         this.currentItem++
       }
     }
@@ -347,7 +351,7 @@ export default {
       ul {
         li {
           &:hover {
-            background-color: var(--color-white);
+            background-color: var(--color-gray-300);
           }
         }
       }

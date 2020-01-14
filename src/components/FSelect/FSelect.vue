@@ -76,6 +76,10 @@ export default {
     },
     color: String,
     textColor: String,
+    iconStatus: {
+      type: String,
+      default: 'check'
+    },
     options: {
       type: Array,
       required: true
