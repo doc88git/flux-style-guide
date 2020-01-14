@@ -60,7 +60,7 @@ export default {
     padding-right: 2.5rem;
     padding-left: 2.5rem;
     font-weight: 400;
-    font-size: 1.25rem;
+    font-size: var(--text-xl);
     text-align: left;
     color: #666;
   }
