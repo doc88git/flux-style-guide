@@ -153,7 +153,7 @@ export default {
     height: 2rem;
 
     * {
-      font-size: 0.875rem;
+      font-size: var(--text-sm);
     }
   }
   &--bigger {
