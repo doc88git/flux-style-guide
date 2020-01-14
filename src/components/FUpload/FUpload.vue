@@ -31,9 +31,9 @@
 </template>
 
 <script>
-import { FButton } from "../FButton";
+import { FButton } from '../FButton'
 export default {
-  name: "f-upload",
+  name: 'f-upload',
   components: {
     FButton
   },
@@ -46,45 +46,45 @@ export default {
     dropHandler(e) {
       // Prevent default behavior (Prevent file from being opened)
 
-      e.preventDefault();
-      const file = e.dataTransfer.files[0];
+      e.preventDefault()
+      const file = e.dataTransfer.files[0]
 
-      if (file.type.match("image.*")) {
-        this.readFile(file);
+      if (file.type.match('image.*')) {
+        this.readFile(file)
       }
-      this.hover = false;
+      this.hover = false
     },
     dragHandlerOver(e) {
       // Prevent default behavior (Prevent file from being opened)
-      this.hover = true;
-      e.preventDefault();
+      this.hover = true
+      e.preventDefault()
     },
     dragLeave() {
-      this.hover = false;
+      this.hover = false
     },
     handleUpload(e) {
       // const fileName = e.target.files[0].name
-      const file = e.target.files[0];
-      this.readFile(file);
+      const file = e.target.files[0]
+      this.readFile(file)
     },
     readFile(file) {
-      const reader = new FileReader();
-      this.files = file.name;
+      const reader = new FileReader()
+      this.files = file.name
       reader.onload = e => {
-        this.path = e.target.result;
-        this.$emit("upload_data", e.target.result);
-      };
-      this.$emit("upload_label", this.files);
-      reader.readAsDataURL(file);
+        this.path = e.target.result
+        this.$emit('upload_data', e.target.result)
+      }
+      this.$emit('upload_label', this.files)
+      reader.readAsDataURL(file)
     },
     clearFiles() {
-      this.files = null;
-      this.path = null;
-      this.$emit("upload_label", this.files);
-      this.$emit("upload_data", this.path);
+      this.files = null
+      this.path = null
+      this.$emit('upload_label', this.files)
+      this.$emit('upload_data', this.path)
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -96,7 +96,7 @@ export default {
   border: 1px dashed;
   border-radius: 5px;
   text-align: center;
-  font-size: 14px;
+  font-size: var(--text-base);
   padding: 0 3em;
   transition: all 0.2s ease-out;
 
