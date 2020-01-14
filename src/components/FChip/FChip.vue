@@ -103,7 +103,7 @@ export default {
     margin-right: 0.5rem;
     line-height: 1.5;
     i {
-      font-size: 1.25rem;
+      font-size: var(--text-xl);
     }
   }
   &__content {
