@@ -50,7 +50,7 @@ export default {
     &__text {
       display: flex;
       align-items: center;
-      font-size: 1.3em;
+      font-size: var(--text-xl);
       padding: 0;
       margin: 0;
     }
