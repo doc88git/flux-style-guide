@@ -125,7 +125,7 @@ export default {
     position: absolute;
     transform: translateY(-7px);
     margin-left: 0;
-    font-size: 0.8em;
+    font-size: var(--text-xs);
     z-index: 2;
   }
 
