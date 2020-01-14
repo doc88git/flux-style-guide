@@ -130,7 +130,7 @@ export default {
     &__hint {
       display: block;
       letter-spacing: 0.025em;
-      font-size: 0.875rem;
+      font-size: var(--text-sm);
       margin-bottom: 0.5rem;
       margin-top: 0.5rem;
       color: var(--color-gray);
