@@ -25,11 +25,11 @@
             }"
           >
             {{ item.label }}
-            <f-icon
+            <!-- <f-icon
               v-if="currentItem === item.value"
               :name="iconStatus"
               :color="iconColor"
-            />
+            /> -->
           </li>
         </ul>
       </div>
@@ -66,10 +66,10 @@ export default {
         return filter.length === list.length
       }
     },
-    iconStatus: {
-      type: String,
-      default: 'check'
-    },
+    // iconStatus: {
+    //   type: String,
+    //   default: 'check'
+    // },
     closeOnClick: {
       type: Boolean,
       default: true
