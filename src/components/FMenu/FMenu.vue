@@ -194,7 +194,7 @@ span.icon-widget {
         }
 
         &__text {
-          font-size: 15px;
+          font-size: var(--text-base);
           position: relative;
           margin-left: 5px;
           @include transition(0.1s);
