@@ -100,7 +100,7 @@ export default {
     position: absolute;
     background-color: var(--color-black);
     padding: 0.25rem 0.5rem;
-    font-size: 0.875rem;
+    font-size: var(--text-sm);
     border-radius: 0.5rem;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     align-self: center;
