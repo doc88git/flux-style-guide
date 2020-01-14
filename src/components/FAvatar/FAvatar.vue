@@ -30,7 +30,7 @@ export default {
   background-position: center;
   height: 50px;
   width: 50px;
-  font-size: 48px;
+  font-size: var(--text-5xl);
   padding: 1px;
 }
 </style>
