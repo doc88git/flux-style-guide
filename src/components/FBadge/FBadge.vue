@@ -63,7 +63,7 @@ export default {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   border-radius: 0.5rem;
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   vertical-align: baseline;
   line-height: 0.875rem;
 
