@@ -95,7 +95,7 @@ export default {
 
   .btn {
     padding: 0.5rem 0.75rem;
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     height: auto;
     background-color: var(--color-gray-200);
     color: var(--color-gray-700);
