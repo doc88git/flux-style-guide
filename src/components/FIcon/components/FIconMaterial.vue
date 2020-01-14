@@ -35,6 +35,6 @@ export default {
 
 <style lang="scss" scoped>
 .material-icons {
-  font-size: 16px;
+  font-size: var(--text-base);
 }
 </style>
