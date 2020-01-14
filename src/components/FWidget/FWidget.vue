@@ -36,7 +36,7 @@ export default {
 
   .f-icon {
     i {
-      font-size: 1.875rem;
+      font-size: var(--text-3xl);
     }
   }
   > span {
