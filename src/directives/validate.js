@@ -1,3 +1,3 @@
-import VeeValidate from "vee-validate";
+import VeeValidate from 'vee-validate'
 
-export default VeeValidate;
+export default VeeValidate

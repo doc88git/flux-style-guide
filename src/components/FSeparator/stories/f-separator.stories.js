@@ -1,12 +1,12 @@
-import { storiesOf } from "@storybook/vue";
-import { FSeparator } from "@/components/FSeparator";
+import { storiesOf } from '@storybook/vue'
+import { FSeparator } from '@/components/FSeparator'
 
-storiesOf("Components|Separator", module).add(
-  "Default",
+storiesOf('Components|Separator', module).add(
+  'Default',
   () => ({
     components: { FSeparator },
     template: `
-      <div class="p-8" style="width: 600px">
+      <div style="width: 600px; padding: 20px;">
         <f-separator />
       </div>`
   }),
@@ -17,4 +17,4 @@ storiesOf("Components|Separator", module).add(
         `
     }
   }
-);
+)

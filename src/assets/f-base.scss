@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i|Titillium+Web:200,200i,300,300i,400,400i,600,600i,700,700i,900&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp");
+
+html, body {
+  font-size: var(--text-base);
+  color: var(--color-black);
+  font-family: var(--font-secondary) 
+}
+
+h1, h2, h3, h4, h5, h6, button, th {
+  color: var(--color-dark);
+  font-family: var(--font-primary) 
+}
+
+h1 {
+  font-size: var(--text-6xl)
+}
+h2 {
+  font-size: var(--text-5xl)
+}
+h3 {
+  font-size: var(--text-4xl)
+}
+h4 {
+  font-size: var(--text-3xl)
+}
+h5 {
+  font-size: var(--text-2xl)
+}
+h6 {
+  font-size: var(--text-xl)
+}
+
+@media (min-width: 640px) {
+  *, *::before, *::after {
+    font-size: var(--text-sm)
+  }
+}
+@media (min-width: 768px) {
+  *, *::before, *::after {
+    font-size: var(--text-sm)
+  }
+}
+
+@media (min-width: 1024px) {
+  *, *::before, *::after {
+    font-size: var(--text-sm)
+  }
+}
+@media (min-width: 1280px) {
+  *, *::before, *::after {
+    font-size: var(--text-base)
+  }
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}

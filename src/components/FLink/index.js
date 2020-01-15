@@ -1,3 +1,3 @@
-import FLink from "./FLink.js";
+import FLink from './FLink.js'
 
-export { FLink };
+export { FLink }

@@ -10,10 +10,10 @@
 </template>
 
 <script>
-import DatePicker from "vue2-datepicker";
+import DatePicker from 'vue2-datepicker'
 
 export default {
-  name: "f-datepicker",
+  name: 'f-datepicker',
   components: { DatePicker },
   props: {
     range: {
@@ -25,7 +25,7 @@ export default {
     },
     rangeSeparator: {
       type: String,
-      default: "até"
+      default: 'até'
     },
     getValue: {
       type: Function,
@@ -34,49 +34,49 @@ export default {
   },
   data() {
     return {
-      time1: "",
+      time1: '',
       // custom lang
       lang: {
-        days: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
+        days: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
         months: [
-          "Jan",
-          "Fev",
-          "Mar",
-          "Abr",
-          "Mai",
-          "Jun",
-          "Jul",
-          "Ago",
-          "Set",
-          "Out",
-          "Nov",
-          "Dez"
+          'Jan',
+          'Fev',
+          'Mar',
+          'Abr',
+          'Mai',
+          'Jun',
+          'Jul',
+          'Ago',
+          'Set',
+          'Out',
+          'Nov',
+          'Dez'
         ],
         pickers: [
-          "próximos 7 dias",
-          "próximos 30 dias",
-          "7 dias anteriores",
-          "30 dias anteriores"
+          'próximos 7 dias',
+          'próximos 30 dias',
+          '7 dias anteriores',
+          '30 dias anteriores'
         ],
         placeholder: {
-          date: "Selecione uma data",
-          dateRange: "Selecione um período"
+          date: 'Selecione uma data',
+          dateRange: 'Selecione um período'
         }
       },
       timePickerOptions: {
-        start: "00:00",
-        step: "00:30",
-        end: "23:30"
+        start: '00:00',
+        step: '00:30',
+        end: '23:30'
       }
-    };
+    }
   }
-};
+}
 </script>
 
 <style lang="scss">
 .mx-datepicker {
-  @apply w-full;
-  font-family: "Roboto", -apple-system, "BlinkMacSystemFont", sans-serif;
+  width: 100%;
+  font-family: 'Roboto', -apple-system, 'BlinkMacSystemFont', sans-serif;
 
   ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
@@ -97,7 +97,7 @@ export default {
 
   .mx-calendar {
     * {
-      @apply text-gray-700;
+      color: var(--color-gray-700);
     }
   }
 
@@ -112,15 +112,19 @@ export default {
   .mx-calendar-content {
     .cell {
       &.actived {
-        @apply bg-secondary text-white rounded-sm;
+        background-color: var(--color-primary);
+        color: var(--color-white);
+        border-radius: 0.125rem;
       }
 
       &.inrange {
-        @apply bg-secondary-lighter text-gray-700;
+        background-color: var(--color-primary-lighter);
+        color: var(--color-gray-700);
       }
 
       &.disabled {
-        @apply bg-gray-100 text-gray-300;
+        background-color: var(--color-gray-100);
+        color: var(--color-gray-300);
       }
     }
   }

@@ -1,3 +1,3 @@
-import FTag from "./FTag";
+import FTag from './FTag'
 
-export { FTag };
+export { FTag }

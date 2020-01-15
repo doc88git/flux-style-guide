@@ -1,12 +1,12 @@
-import { storiesOf } from "@storybook/vue";
-import { text } from "@storybook/addon-knobs";
-import FButtonGroup from "../FButtonGroup.vue";
+import { storiesOf } from '@storybook/vue'
+import { text } from '@storybook/addon-knobs'
+import FButtonGroup from '../FButtonGroup.vue'
 
 const options = [
-  { label: "Tab 1", value: 1 },
-  { label: "Tab 2", value: 2 },
-  { label: "Tab 3", value: 3 }
-];
+  { label: 'Tab 1', value: 1 },
+  { label: 'Tab 2', value: 2 },
+  { label: 'Tab 3', value: 3 }
+]
 
 // const groupId = "BUTTON-OPTIONS-ID1";
 const summary = `
@@ -20,16 +20,16 @@ const summary = `
 
 ## Icon
 - Pass icon name as FIcon
-`;
+`
 
-storiesOf("Components|Button", module)
+storiesOf('Components|Button', module)
   .add(
-    "Button Group: Default",
+    'Button Group: Default',
     () => ({
       components: { FButtonGroup },
       props: {
         size: {
-          default: text("size", "small")
+          default: text('size', 'small')
         }
       },
       data: () => ({
@@ -37,11 +37,11 @@ storiesOf("Components|Button", module)
       }),
       methods: {
         change: value => {
-          console.log({ value });
+          console.log({ value })
         }
       },
       template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <f-button-group :default="1" :options="options" @change="change" :size="size" />
         </div>
       `
@@ -51,7 +51,7 @@ storiesOf("Components|Button", module)
     }
   )
   .add(
-    "Button Group: Outline",
+    'Button Group: Outline',
     () => ({
       components: { FButtonGroup },
       data: () => ({
@@ -59,11 +59,11 @@ storiesOf("Components|Button", module)
       }),
       methods: {
         change: value => {
-          console.log({ value });
+          console.log({ value })
         }
       },
       template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <f-button-group :default="1" outline :options="options" @change="change" />
         </div>
       `
@@ -73,7 +73,7 @@ storiesOf("Components|Button", module)
     }
   )
   .add(
-    "Button Group: Tab",
+    'Button Group: Tab',
     () => ({
       components: { FButtonGroup },
       data: () => ({
@@ -81,11 +81,11 @@ storiesOf("Components|Button", module)
       }),
       methods: {
         change: value => {
-          console.log({ value });
+          console.log({ value })
         }
       },
       template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <f-button-group :default="1" tab :options="options" @change="change" />
         </div>
       `
@@ -93,4 +93,4 @@ storiesOf("Components|Button", module)
     {
       info: { summary }
     }
-  );
+  )

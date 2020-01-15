@@ -12,10 +12,10 @@
 </template>
 
 <script>
-import FImage from "../FImage/FImage";
+import FImage from '../FImage/FImage'
 
 export default {
-  name: "f-card",
+  name: 'f-card',
   components: {
     FImage
   },
@@ -23,18 +23,24 @@ export default {
     headerBg: String,
     shadow: {
       type: String,
-      default: "0px 5px 25px 0px rgba(0, 0, 0, .1)"
+      default: '0px 5px 25px 0px rgba(0, 0, 0, .1)'
     }
   }
-};
+}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .f-card {
-  @apply max-w-full mx-auto bg-white rounded-lg shadow-md;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--color-white);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
   width: 100%;
   .f-card__content {
-    @apply p-6;
+    padding: 1.5rem;
     height: 100%;
   }
 }

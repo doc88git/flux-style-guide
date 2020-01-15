@@ -1,7 +1,7 @@
-import { storiesOf } from "@storybook/vue";
-import FNavigation from "../FNavigation";
+import { storiesOf } from '@storybook/vue'
+import FNavigation from '../FNavigation'
 
-storiesOf("Components|Navigation", module).add("Default", () => ({
+storiesOf('Components|Navigation', module).add('Default', () => ({
   components: { FNavigation },
   data: () => ({}),
   props: {},
@@ -10,14 +10,14 @@ storiesOf("Components|Navigation", module).add("Default", () => ({
     `,
   methods: {
     showSidebar(payload) {
-      console.log(payload);
-      this.$emit("click", payload);
+      console.log(payload)
+      this.$emit('click', payload)
     },
     showMenu() {
-      console.log("Menu is open");
+      console.log('Menu is open')
     },
     showNavbar() {
-      console.log("Navbar visible");
+      console.log('Navbar visible')
     }
   }
-}));
+}))

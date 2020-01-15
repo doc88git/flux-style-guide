@@ -8,8 +8,8 @@
 
 <script>
 export default {
-  name: "f-navigation"
-};
+  name: 'f-navigation'
+}
 </script>
 
 <style lang="scss" scoped>

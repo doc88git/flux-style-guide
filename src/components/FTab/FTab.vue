@@ -29,12 +29,12 @@
 </template>
 
 <script>
-import { FCard, FCardBody, FCardTitle } from "../FCard";
-import { FSeparator } from "@/components/FSeparator";
-import { FButtonGroup } from "../FButton";
+import { FCard, FCardBody, FCardTitle } from '../FCard'
+import { FSeparator } from '@/components/FSeparator'
+import { FButtonGroup } from '../FButton'
 
 export default {
-  name: "f-tab",
+  name: 'f-tab',
   components: {
     FCard,
     FCardBody,
@@ -48,19 +48,19 @@ export default {
   },
   computed: {
     isFill() {
-      return this.fill;
+      return this.fill
     },
     headerSize() {
-      console.log({ b: this.$refs.tabHeader });
+      console.log({ b: this.$refs.tabHeader })
       return this.$refs.tabHeader && this.$refs.tabHeader.$el
         ? this.$refs.tabHeader.$el.clientWidth
-        : 0;
+        : 0
     },
     btnGroupSize() {
-      console.log({ b: this.$refs.btnGroup });
+      console.log({ b: this.$refs.btnGroup })
       return this.$refs.btnGroup && this.$refs.btnGroup.$el
         ? this.$refs.btnGroup.$el.clientWidth
-        : 0;
+        : 0
     }
   },
   data: () => ({
@@ -72,27 +72,27 @@ export default {
   },
   methods: {
     setSelected(id) {
-      this.selected = id;
-      console.log(id);
+      this.selected = id
+      console.log(id)
     },
     drag(e) {
-      console.log(this.$refs);
-      console.log({ e });
+      console.log(this.$refs)
+      console.log({ e })
     },
     stopDrag(e) {
-      console.log({ e });
+      console.log({ e })
     },
     userSwiped(e) {
-      console.log({ userSwiped: e });
+      console.log({ userSwiped: e })
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
 .f-tab {
   &__header {
-    @apply overflow-auto;
+    overflow: auto;
   }
 }
 </style>

@@ -1,30 +1,31 @@
-import Vue from "vue";
-import App from "./App.vue";
-import VeeValidate from "vee-validate";
-import VuePlugin from "./vue-plugin";
+import Vue from 'vue'
+import App from './App.vue'
+import VeeValidate from 'vee-validate'
+import validationLocale from ''
+import VuePlugin from './vue-plugin'
 
-import "@/assets/f-style-guide.scss";
+import '@/assets/f-style-guide.scss'
 
-import * as directives from "./directives.js";
-import * as plugins from "./plugins.js";
+import * as directives from './directives.js'
+import * as plugins from './plugins.js'
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = false
 
 Vue.use(VeeValidate, {
-  events: "change|blur|keyup",
-  locale: "pt_BR",
+  events: 'change|blur|keyup',
+  locale: 'pt_BR',
   dictionary: {}
-});
+})
 
 Vue.prototype.$f = {
-  linkComponent: "vue" // nuxt
-};
+  linkComponent: 'vue' // nuxt
+}
 
 VuePlugin.install(Vue, {
   ...directives,
   ...plugins
-});
+})
 
 new Vue({
   render: h => h(App)
-}).$mount("#app");
+}).$mount('#app')

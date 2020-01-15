@@ -1,23 +1,23 @@
 export default function(fn) {
   let wait = false,
-    frame;
+    frame
 
   function debounced(...args) {
     if (wait) {
-      return;
+      return
     }
 
-    wait = true;
+    wait = true
     frame = requestAnimationFrame(() => {
-      fn.apply(this, args);
-      wait = false;
-    });
+      fn.apply(this, args)
+      wait = false
+    })
   }
 
   debounced.cancel = () => {
-    window.cancelAnimationFrame(frame);
-    wait = false;
-  };
+    window.cancelAnimationFrame(frame)
+    wait = false
+  }
 
-  return debounced;
+  return debounced
 }

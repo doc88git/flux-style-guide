@@ -9,32 +9,34 @@
 
 <script>
 export default {
-  name: "f-widget",
+  name: 'f-widget',
   props: {
     theme: {
       type: String,
-      default: "primary"
+      default: 'primary'
     },
     size: {
       type: String,
-      default: ""
+      default: ''
     }
   }
-};
+}
 </script>
 
 <style lang="scss">
 .f-widget {
-  @apply cursor-pointer flex flex-wrap;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
   width: 35px;
   &.primary {
-    @apply text-primary;
+    color: var(--color-primary);
     cursor: pointer;
   }
 
   .f-icon {
     i {
-      @apply text-3xl;
+      font-size: var(--text-3xl);
     }
   }
   > span {
@@ -47,7 +49,7 @@ export default {
   }
 
   &:hover {
-    @apply opacity-75;
+    opacity: 0.75;
   }
 }
 </style>

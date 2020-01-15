@@ -1,3 +1,3 @@
-import FWidget from "./FWidget";
+import FWidget from './FWidget'
 
-export { FWidget };
+export { FWidget }

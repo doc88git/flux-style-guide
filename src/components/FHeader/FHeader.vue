@@ -16,46 +16,57 @@
 </template>
 
 <script>
-import FMenuButton from "../FMenu/FMenuButton";
+import FMenuButton from '../FMenu/FMenuButton'
 
 export default {
-  name: "f-header",
+  name: 'f-header',
   components: { FMenuButton },
   props: {
     mainTitle: {
       type: String,
-      default: ""
+      default: ''
     },
     align: {
       type: String,
-      default: "center"
+      default: 'center'
     },
     weight: {
       type: String,
-      default: "500"
+      default: '500'
     },
     styles: {
       type: String,
       default: null
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
 .main-header {
-  @apply flex pr-5 w-full text-center items-center shadow-xxxl top-0 fixed;
+  display: flex;
+  padding-right: 1.25rem;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
+  top: 0;
+  position: fixed;
   max-height: 70px;
   -webkit-box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
   -moz-box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
   box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
   &__title {
-    @apply px-10 font-normal text-xl text-left;
+    padding-right: 2.5rem;
+    padding-left: 2.5rem;
+    font-weight: 400;
+    font-size: var(--text-xl);
+    text-align: left;
     color: #666;
   }
 
   &__logo {
-    @apply px-10 py-3;
+    padding: 0.75rem 2.5rem;
     height: 70px;
     img {
       height: 46px;

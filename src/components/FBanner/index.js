@@ -1,3 +1,3 @@
-import FBanner from "./FBanner";
+import FBanner from './FBanner'
 
-export { FBanner };
+export { FBanner }

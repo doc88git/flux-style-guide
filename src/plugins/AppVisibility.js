@@ -1,39 +1,39 @@
-import Vue from "vue";
+import Vue from 'vue'
 
-import { isSSR } from "./Platform.js";
+import { isSSR } from './Platform.js'
 
 export default {
   appVisible: false,
 
   install({ $f }) {
     if (isSSR === true) {
-      this.appVisible = $f.appVisible = true;
-      return;
+      this.appVisible = $f.appVisible = true
+      return
     }
 
-    let prop, evt;
+    let prop, evt
 
-    if (typeof document.hidden !== "undefined") {
+    if (typeof document.hidden !== 'undefined') {
       // Opera 12.10 and Firefox 18 and later support
-      prop = "hidden";
-      evt = "visibilitychange";
-    } else if (typeof document.msHidden !== "undefined") {
-      prop = "msHidden";
-      evt = "msvisibilitychange";
-    } else if (typeof document.webkitHidden !== "undefined") {
-      prop = "webkitHidden";
-      evt = "webkitvisibilitychange";
+      prop = 'hidden'
+      evt = 'visibilitychange'
+    } else if (typeof document.msHidden !== 'undefined') {
+      prop = 'msHidden'
+      evt = 'msvisibilitychange'
+    } else if (typeof document.webkitHidden !== 'undefined') {
+      prop = 'webkitHidden'
+      evt = 'webkitvisibilitychange'
     }
 
     const update = () => {
-      this.appVisible = $f.appVisible = !document[prop];
-    };
+      this.appVisible = $f.appVisible = !document[prop]
+    }
 
-    update();
+    update()
 
-    if (evt && typeof document[prop] !== "undefined") {
-      Vue.util.defineReactive($f, "appVisible", this.appVisible);
-      document.addEventListener(evt, update, false);
+    if (evt && typeof document[prop] !== 'undefined') {
+      Vue.util.defineReactive($f, 'appVisible', this.appVisible)
+      document.addEventListener(evt, update, false)
     }
   }
-};
+}

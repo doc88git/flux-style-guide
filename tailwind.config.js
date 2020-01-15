@@ -1,26 +1,23 @@
-const { colors, fontFamily, boxShadow } = require("tailwindcss/defaultTheme");
+const { colors, fontFamily, boxShadow } = require('tailwindcss/defaultTheme')
 
 module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "var(--color-primary)",
-        secondary: "var(--color-secondary)",
-        ["primary-light"]: "var(--color-primary-light)",
-        ["primary-lighter"]: "var(--color-primary-lighter)",
-        ["primary-dark"]: "var(--color-primary-dark)",
-        ["secondary-light"]: "var(--color-secondary-light)",
-        ["secondary-lighter"]: "var(--color-secondary-lighter)",
-        ["secondary-dark"]: "var(--color-secondary-dark)",
-        light: "var(--color-light)",
-        lighter: "var(--color-lighter)",
-        dark: "var(--color-dark)",
-        black: "#000000",
-        White: "#FFFFFF",
-        gray: {
-          ...colors.gray,
-          default: colors.gray[500]
-        },
+        primary: 'var(--color-primary)',
+        secondary: 'var(--color-secondary)',
+        ['primary-light']: 'var(--color-primary-light)',
+        ['primary-lighter']: 'var(--color-primary-lighter)',
+        ['primary-dark']: 'var(--color-primary-dark)',
+        ['secondary-light']: 'var(--color-secondary-light)',
+        ['secondary-lighter']: 'var(--color-secondary-lighter)',
+        ['secondary-dark']: 'var(--color-secondary-dark)',
+        light: 'var(--color-light)',
+        lighter: 'var(--color-lighter)',
+        dark: 'var(--color-dark)',
+        black: '#000000',
+        White: '#FFFFFF',
+
         red: {
           ...colors.red,
           default: colors.red[500]
@@ -63,32 +60,32 @@ module.exports = {
     fontFamily: {
       ...fontFamily,
       primary: [
-        "Titillium Web",
-        "-apple-system",
-        "BlinkMacSystemFont",
-        "sans-serif"
+        'Titillium Web',
+        '-apple-system',
+        'BlinkMacSystemFont',
+        'sans-serif'
       ],
-      secondary: ["Roboto", "-apple-system", "BlinkMacSystemFont", "sans-serif"]
+      secondary: ['Roboto', '-apple-system', 'BlinkMacSystemFont', 'sans-serif']
     },
 
     boxShadow: {
       ...boxShadow,
-      default: "0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06)",
+      default: '0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06)',
       md:
-        " 0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -1px rgba(0, 0, 0, .06)",
+        ' 0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -1px rgba(0, 0, 0, .06)',
       lg:
-        " 0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -2px rgba(0, 0, 0, .05)",
+        ' 0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -2px rgba(0, 0, 0, .05)',
       xl:
-        " 0 20px 25px -5px rgba(0, 0, 0, .1), 0 10px 10px -5px rgba(0, 0, 0, .04)",
-      xxl: "0 25px 50px -12px rgba(0, 0, 0, .25)",
-      xxxl: "10px 10px 60px rgba(68, 68, 68, 0.1)",
-      inner: "inset 0 2px 4px 0 rgba(0,0,0,0.06)",
-      outline: "0 0 0 3px rgba(66,153,225,0.5)",
-      focus: "0 0 0 3px rgba(66,153,225,0.5)",
-      none: "none"
+        ' 0 20px 25px -5px rgba(0, 0, 0, .1), 0 10px 10px -5px rgba(0, 0, 0, .04)',
+      xxl: '0 25px 50px -12px rgba(0, 0, 0, .25)',
+      xxxl: '10px 10px 60px rgba(68, 68, 68, 0.1)',
+      inner: 'inset 0 2px 4px 0 rgba(0,0,0,0.06)',
+      outline: '0 0 0 3px rgba(66,153,225,0.5)',
+      focus: '0 0 0 3px rgba(66,153,225,0.5)',
+      none: 'none'
     }
   },
   experiments: {
     shadowLookup: true
   }
-};
+}

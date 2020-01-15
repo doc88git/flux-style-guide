@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: "f-display-per-page",
+  name: 'f-display-per-page',
   components: {},
   props: {
     options: {
@@ -32,7 +32,7 @@ export default {
     },
     theme: {
       type: String,
-      default: "primary"
+      default: 'primary'
     },
     value: {
       type: String,
@@ -44,61 +44,72 @@ export default {
   }),
   computed: {
     isOutline() {
-      return this.outline;
+      return this.outline
     },
     isFlat() {
-      return this.tab;
+      return this.tab
     },
     isDefault() {
-      return !this.outline && !this.tab;
+      return !this.outline && !this.tab
     }
   },
   mounted() {
-    if (this.default) this.change(this.default);
+    if (this.default) this.change(this.default)
   },
   methods: {
     btnOptions(id) {
-      let mustBeO = true;
+      let mustBeO = true
 
       if (this.isOutline && id === this.selected) {
-        mustBeO = false;
+        mustBeO = false
       }
 
       if (this.isDefault) {
-        mustBeO = id === this.selected;
+        mustBeO = id === this.selected
       }
 
       if (this.isFlat) {
-        mustBeO = false;
+        mustBeO = false
       }
 
       return {
         outline: mustBeO,
         flat: this.isFlat
-      };
+      }
     },
     isSelected(id) {
-      return id === this.selected;
+      return id === this.selected
     }
   }
-};
+}
 </script>
 
 <style lang="scss">
 .f-display-per-page {
-  @apply flex items-center;
+  display: flex;
+  align-items: center;
+
+  .text-gray-800 {
+    color: var(--color-gray-800);
+  }
 
   .btn {
-    @apply px-3 py-2 bg-gray-200 text-xs h-auto text-gray-700;
+    padding: 0.5rem 0.75rem;
+    font-size: var(--text-xs);
+    height: auto;
+    background-color: var(--color-gray-200);
+    color: var(--color-gray-700);
     &.selected {
-      @apply bg-primary text-white;
+      background-color: var(--color-primary);
+      color: var(--color-white);
     }
   }
 
   &.secondary {
     .btn {
       &.selected {
-        @apply bg-secondary text-white;
+        background-color: var(--color-primary);
+        color: var(--color-white);
       }
     }
   }

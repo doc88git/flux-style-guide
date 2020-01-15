@@ -6,8 +6,8 @@
         <span v-if="totalResults > 0">
           {{
             totalResults > 1
-              ? totalResults + " resultados"
-              : totalResults + " resultado"
+              ? totalResults + ' resultados'
+              : totalResults + ' resultado'
           }}</span
         >
       </span>
@@ -68,9 +68,9 @@
 </template>
 
 <script>
-import { FSeparator } from "../FSeparator";
+import { FSeparator } from '../FSeparator'
 export default {
-  name: "f-table-custom",
+  name: 'f-table-custom',
   components: {
     FSeparator
   },
@@ -106,45 +106,45 @@ export default {
       { label: 25, value: 2, selected: false },
       { label: 50, value: 3, selected: false }
     ],
-    sortBy: "",
+    sortBy: '',
     sortDirection: false
   }),
   computed: {
     sortIcon() {
-      return this.sortDirection === "asc"
-        ? "icon-chevron-up small"
-        : "icon-chevron-down small";
+      return this.sortDirection === 'asc'
+        ? 'icon-chevron-up small'
+        : 'icon-chevron-down small'
     }
   },
   methods: {
     setElem(elem) {
-      return elem || "---";
+      return elem || '---'
     },
     handleChange(value) {
-      const elem = document.querySelector(".selected");
-      const val = parseInt(value.target.value);
-      elem.classList.remove("selected");
-      value.target.classList.add("selected");
-      this.$emit("per_page", val);
+      const elem = document.querySelector('.selected')
+      const val = parseInt(value.target.value)
+      elem.classList.remove('selected')
+      value.target.classList.add('selected')
+      this.$emit('per_page', val)
     },
     setSortBy(item) {
-      this.sortBy = item;
-      this.setSortDirection();
-      this.$emit("update:order_by", item.id);
+      this.sortBy = item
+      this.setSortDirection()
+      this.$emit('update:order_by', item.id)
     },
     setSortDirection() {
-      this.sortDirection = this.sortDirection === "asc" ? "desc" : "asc";
-      this.$emit("update:sort", this.sortDirection);
+      this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc'
+      this.$emit('update:sort', this.sortDirection)
     },
     toggleActivateUser(payload) {
-      const val = payload[0];
-      this.$emit("toogle:user-status", val);
+      const val = payload[0]
+      this.$emit('toogle:user-status', val)
     }
   }
-};
+}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .table-head,
 .table-body__itens {
   display: grid;

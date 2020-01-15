@@ -1,6 +1,3 @@
-
-$colors: gray red orange yellow green teal blue indigo purple pink;
-
 .color {
   &--primary {
     background-color: var(--color-primary);
@@ -9,173 +6,194 @@ $colors: gray red orange yellow green teal blue indigo purple pink;
     background-color: var(--color-secondary);
   }
   &--white {
-    @apply bg-white;
+    background-color: var(--color-white);
+
     &:hover {
-      @apply text-gray-100;
+      color: var(--color-gray-100);
     }
     &:focus {
-      @apply text-gray-200;
+      color: var(--color-gray-200);
     }
   }
   &--black {
-    @apply bg-black;
+    background-color: var(--color-black);
     &:hover {
-      @apply text-gray-800;
+      color: var(--color-gray-800);
     }
     &:focus {
-      @apply text-gray-900;
+      color: var(--color-gray-900);
     }
   }
   &--text {
     &--primary {
-      @apply text-primary #{!important};
+      color: var(--color-primary);
       &:hover {
-        @apply text-primary;
+        color: var(--color-primary);
       }
       &:focus {
-        @apply text-primary;
+        color: var(--color-primary);
       }
     }
     &--secondary {
-      @apply text-secondary #{!important};
+      color: var(--color-secondary);
       &:hover {
-        @apply text-secondary;
+        color: var(--color-secondary);
       }
       &:focus {
-        @apply text-secondary;
+        color: var(--color-secondary);
       }
     }
     &--white {
-      @apply text-white #{!important};
+      color: var(--color-white);
       &:hover {
-        @apply text-white;
+        color: var(--color-white);
       }
       &:focus {
-        @apply text-white;
+        color: var(--color-white);
       }
     }
     &--black {
-      @apply text-black #{!important};
+      color: var(--color-black);
       &:hover {
-        @apply text-black;
+        color: var(--color-black);
       }
       &:focus {
-        @apply text-black;
+        color: var(--color-black);
       }
     }
   }
   @each $color in $colors {
     &--#{$color} {
-      @apply bg-#{$color};
+      background-color: var(--color-#{$color});
       &:hover {
-        @apply bg-#{$color}-400;
+        background-color: var(--color-#{$color}-400);
       }
       &:focus {
-        @apply bg-#{$color}-600;
+        background-color: var(--color-#{$color}-600);
       }
     }
     &--text {
       &--#{$color} {
-        @apply text-#{$color} #{!important};
+        color: var(--color-#{$color}) !important;
         &:hover {
-          @apply text-#{$color}-400;
+          color: var(--color-#{$color}-400);
         }
         &:focus {
-          @apply text-#{$color}-600;
+          color: var(--color-#{$color}-600);
         }
       }
     }
     &--flat {
       &--#{$color} {
-        @apply bg-transparent text-#{$color};
+        background-color: var(--color-transparent);
+        color: var(--color-#{$color});
         &:hover {
-          @apply text-#{$color}-400;
+          color: var(--color-#{$color}-400);
         }
         &:focus {
-          @apply text-#{$color}-600;
+          color: var(--color-#{$color}-600);
         }
       }
     }
     &--outline {
       &--#{$color} {
-        @apply bg-transparent text-#{$color} border-#{$color};
+        background-color: var(--color-transparent);
+        color: var(--color-#{$color});
+        border-width: 1px;
+        border-style: solid;
+        border-color: var(--color-#{$color});
         &:hover {
-          @apply text-#{$color}-400 border-#{$color}-400;
+          color: var(--color-#{$color}-400);
+          border-width: 1px;
+          border-style: solid;
+          border-color: var(--color-#{$color}-400);
         }
         &:focus {
-          @apply text-#{$color}-600 border-#{$color}-600;
+          color: var(--color-#{$color}-600);
+          border-width: 1px;
+          border-style: solid;
+          border-color: var(--color-#{$color}-600);
         }
       }
     }
     &--default {
       &--#{$color} {
-        @apply bg-#{$color};
+        background-color: var(--color-#{$color});
         &:hover {
-          @apply bg-#{$color}-400;
+          background-color: var(--color-#{$color}-400);
         }
         &:focus {
-          @apply bg-#{$color}-600;
+          background-color: var(--color-#{$color}-600);
         }
       }
     }
   }
   &--flat {
     &--primary {
-      @apply bg-transparent text-primary;
+      color: var(--color-primary);
+      background-color: var(--color-transparent);
       &:hover {
-        @apply text-primary-light;
+        color: var(--color-primary-light);
       }
       &:focus {
-        @apply text-primary-dark;
+        color: var(--color-primary-dark);
       }
     }
     &--secondary {
-      @apply bg-transparent text-secondary;
+      color: var(--color-secondary);
+      background-color: var(--color-transparent);
       &:hover {
-        @apply text-secondary-light;
+        color: var(--color-secondary-light);
       }
       &:focus {
-        @apply text-secondary-dark;
+        color: var(--color-secondary-dark);
       }
     }
   }
   &--outline {
     &--primary {
-      @apply bg-transparent text-primary border-primary;
+      color: var(--color-primary);
+      border-color: var(--color-primary);
+      background-color: var(--color-transparent);
       &:hover {
-        @apply text-primary-light border-primary-light;
+        color: var(--color-primary-light);
+        border-color: var(--color-primary-light);
       }
       &:focus {
-        @apply text-primary-dark border-primary-dark;
+        color: var(--color-primary-dark);
+        border-color: var(--color-primary-dark);
       }
     }
     &--secondary {
-      @apply bg-transparent text-secondary;
+      color: var(--color-secondary);
+      background-color: var(--color-transparent);
       &:hover {
-        @apply text-secondary-light;
+        color: var(--color-secondary-light);
       }
       &:focus {
-        @apply text-secondary-dark;
+        color: var(--color-secondary-dark);
       }
     }
   }
   &--default {
     &--primary {
-      @apply bg-primary text-white;
+      background-color: var(--color-primary);
+      color: var(--color-white);
       &:hover {
-        @apply bg-primary-light;
+        background-color: var(--color-primary-light);
       }
       &:focus {
-        @apply bg-primary-dark;
+        background-color: var(--color-primary-dark);
       }
     }
     &--secondary {
-      @apply bg-secondary text-white;
+      background-color: var(--color-secondary);
+      color: var(--color-white);
       &:hover {
-        @apply bg-secondary-light;
+        color: var(--color-secondary-light);
       }
       &:focus {
-        @apply bg-secondary-dark;
+        color: var(--color-secondary-dark);
       }
     }
   }

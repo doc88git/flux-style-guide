@@ -6,12 +6,15 @@
 
 <script>
 export default {
-  name: "f-container"
-};
+  name: 'f-container'
+}
 </script>
 
 <style lang="scss" scoped>
 .f-container {
-  @apply mx-auto px-4;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 </style>

@@ -63,13 +63,13 @@
 </template>
 
 <script>
-import collect from "collect.js";
-import { FCard, FCardBody, FCardActions } from "../FCard";
-import { FSeparator } from "../FSeparator";
-import { FIcon } from "../FIcon";
+import collect from 'collect.js'
+import { FCard, FCardBody, FCardActions } from '../FCard'
+import { FSeparator } from '../FSeparator'
+import { FIcon } from '../FIcon'
 
 export default {
-  name: "f-table",
+  name: 'f-table',
   components: {
     FCard,
     FSeparator,
@@ -82,100 +82,115 @@ export default {
     header: Object
   },
   data: () => ({
-    sortBy: "",
-    sortDirection: "asc"
+    sortBy: '',
+    sortDirection: 'asc'
   }),
   computed: {
     keysHeaders() {
-      return Object.keys(this.header);
+      return Object.keys(this.header)
     },
     sortIcon() {
-      return this.sortDirection === "asc" ? "arrow_downward" : "arrow_upward";
+      return this.sortDirection === 'asc' ? 'arrow_downward' : 'arrow_upward'
     },
     content() {
-      let data = this.data.length ? this.data : [];
-      return collect(data);
+      let data = this.data.length ? this.data : []
+      return collect(data)
     },
     show() {
-      let data = this.content;
+      let data = this.content
 
       if (this.sortBy) {
-        let method = this.sortDirection === "desc" ? "sortByDesc" : "sortBy";
-        data = this.content[method](this.sortBy);
+        let method = this.sortDirection === 'desc' ? 'sortByDesc' : 'sortBy'
+        data = this.content[method](this.sortBy)
       }
 
-      data.keyBy(item => this.getContent(item));
+      data.keyBy(item => this.getContent(item))
 
-      return data.all();
+      return data.all()
     }
   },
   methods: {
     getContent(item) {
       this.keysHeaders.map(h => {
-        item[h] = h.split(".").reduce((o, i) => {
+        item[h] = h.split('.').reduce((o, i) => {
           try {
-            return o[i];
+            return o[i]
           } catch (e) {
-            return "";
+            return ''
           }
-        }, item);
-      });
+        }, item)
+      })
 
-      return item;
+      return item
     },
     setSortBy(item) {
-      this.sortBy = item;
-      this.setSortDirection();
+      this.sortBy = item
+      this.setSortDirection()
     },
     setSortDirection() {
-      this.sortDirection = this.sortDirection === "asc" ? "desc" : "asc";
+      this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc'
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
 .f-table {
   &__header,
   &__footer {
-    @apply flex flex-no-wrap items-center justify-between;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
     &__left {
-      @apply text-left;
+      text-align: left;
     }
     &__center {
-      @apply text-center;
+      text-align: center;
     }
     &__right {
-      @apply text-right;
+      text-align: right;
     }
   }
   &__body {
-    @apply overflow-auto;
+    overflow: auto;
     table {
-      @apply table-auto bg-white w-full;
+      table-layout: auto;
+      background-color: var(--color-white);
+      width: 100%;
       th,
       td {
-        @apply p-4 whitespace-no-wrap text-left align-middle;
+        padding: 1rem;
+        white-space: nowrap;
+        text-align: left;
+        vertical-align: middle;
       }
       thead {
+        border-radius: 50px;
         th {
-          @apply border-gray-600 mb-4 bg-white  select-none;
+          margin-bottom: 1rem;
+          background-color: var(--color-white);
+          user-select: none;
+          border-style: solid;
+          border-color: var(--color-gray-500);
           border-bottom-width: 1px;
           &:hover {
-            @apply opacity-75 cursor-pointer;
+            opacity: 0.75;
+            cursor: pointer;
           }
           .f-icon {
-            @apply -ml-2 text-xs;
+            margin-left: -0.5rem;
+            font-size: var(--text-xs);
           }
         }
       }
       tbody {
         tr {
           &:hover {
-            @apply bg-gray-100;
+            background-color: var(--color-gray-100);
           }
           td {
-            @apply border-gray-200 mb-4;
+            border-color: var(--color-gray-200);
             border-bottom-width: 1px;
           }
         }

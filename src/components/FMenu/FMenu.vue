@@ -43,35 +43,35 @@
 </template>
 
 <script>
-import { FIcon } from "../FIcon";
-import { FTooltip } from "../FTooltip";
+import { FIcon } from '../FIcon'
+import { FTooltip } from '../FTooltip'
 
 export default {
-  name: "f-menu",
+  name: 'f-menu',
   components: {
     FIcon,
     FTooltip
   },
   data: () => ({
-    appTitle: "reembolso"
+    appTitle: 'reembolso'
   }),
   props: {
     menuItems: {
       type: Array,
       default: () => {
         return [
-          { name: "Home", url: "#", id: "home", icon: "home" },
-          { name: "Empresa", url: "#", id: "company", icon: "apartment" }
-        ];
+          { name: 'Home', url: '#', id: 'home', icon: 'home' },
+          { name: 'Empresa', url: '#', id: 'company', icon: 'apartment' }
+        ]
       }
     },
     menuSelected: {
       type: String,
-      default: "company"
+      default: 'company'
     },
     color: {
       type: String,
-      default: "primary"
+      default: 'primary'
     },
     menuExpand: {
       type: Boolean,
@@ -80,23 +80,24 @@ export default {
   },
   computed: {
     textHoverColor() {
-      return `hover:text-${this.color}`;
+      return `hover:text-${this.color}`
     },
     textColor() {
-      return `color--text--${this.color}`;
+      return `color--text--${this.color}`
     }
   },
   methods: {
     clickButton(menu) {
-      this.$emit("click", menu);
+      this.$emit('click', menu)
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/f-transitions";
-@import "../../assets/f-variables";
+@import '../../assets/f-transitions';
+@import '../../assets/f-variables';
+
 span.icon-widget {
   height: 100px;
   width: 10px;
@@ -135,7 +136,7 @@ span.icon-widget {
       top: 70px;
       left: -100%;
 
-      @media screen and (min-width: $size-tablet) {
+      @media screen and (min-width: map-get($sizes, 'tablet' )) {
         position: absolute;
         top: 0;
         left: 0;
@@ -154,7 +155,7 @@ span.icon-widget {
         @include transition(0.1s);
         text-align: center;
 
-        @media screen and (min-width: $size-tablet) {
+        @media screen and (min-width: map-get($sizes, 'tablet' )) {
           width: 230px;
           text-align: left;
         }
@@ -174,7 +175,7 @@ span.icon-widget {
           align-items: center;
           width: 100%;
 
-          @media screen and (min-width: $size-tablet) {
+          @media screen and (min-width: map-get($sizes, 'tablet' )) {
             justify-content: flex-start;
             &:hover {
               .Fmenu-side__nav__ul__li__text {
@@ -193,7 +194,7 @@ span.icon-widget {
         }
 
         &__text {
-          font-size: 15px;
+          font-size: var(--text-base);
           position: relative;
           margin-left: 5px;
           @include transition(0.1s);

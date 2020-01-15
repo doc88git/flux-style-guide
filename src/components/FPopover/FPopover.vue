@@ -9,10 +9,10 @@
 </template>
 
 <script>
-import { FTooltip } from "../FTooltip";
+import { FTooltip } from '../FTooltip'
 
 export default {
-  name: "f-popover",
+  name: 'f-popover',
   components: {
     FTooltip
   },
@@ -22,7 +22,7 @@ export default {
   props: {},
   computed: {},
   methods: {}
-};
+}
 </script>
 
 <style lang="scss" scoped>

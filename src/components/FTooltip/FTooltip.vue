@@ -21,10 +21,10 @@
 </template>
 
 <script>
-import { FButton } from "../FButton";
+import { FButton } from '../FButton'
 
 export default {
-  name: "f-tooltip",
+  name: 'f-tooltip',
   components: {
     FButton
   },
@@ -35,23 +35,23 @@ export default {
     label: String,
     position: {
       type: String,
-      default: "top",
-      validator: val => ["top", "bottom", "left", "right"].includes(val)
+      default: 'top',
+      validator: val => ['top', 'bottom', 'left', 'right'].includes(val)
     },
     color: {
       type: String,
-      default: "default",
-      validator: val => ["default", "secondary"].includes(val)
+      default: 'default',
+      validator: val => ['default', 'secondary'].includes(val)
     },
     click: Boolean,
     disabled: Boolean,
     bgColor: {
       type: String,
-      default: "black"
+      default: 'black'
     },
     textColor: {
       type: String,
-      default: "white"
+      default: 'white'
     }
   },
   computed: {
@@ -61,60 +61,73 @@ export default {
         `f-tooltip__item--${this.position}`,
         `f-tooltip__item--${this.bgColor}`,
         `text-${this.textColor}`
-      ];
+      ]
     },
     classDynamicArrow() {
       return [
         `f-tooltip__item--${this.position}`,
-        "f-tooltip__item__arrow",
+        'f-tooltip__item__arrow',
         `f-tooltip__item__arrow--${this.position}`,
         `f-tooltip__item__arrow--${this.bgColor}`
-      ];
+      ]
     },
     transition() {
-      return this.isVisible ? "in" : "out";
+      return this.isVisible ? 'in' : 'out'
+      // return this.click ? "fade" : `slide-${this.position}`;
     }
   },
   methods: {
     toggleVisible() {
-      if (this.click) this.isVisible = !this.isVisible;
+      if (this.click) this.isVisible = !this.isVisible
     },
     show() {
-      if (!this.click) this.isVisible = true;
+      if (!this.click) this.isVisible = true
     },
     hide() {
-      if (!this.click) this.isVisible = false;
+      if (!this.click) this.isVisible = false
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
 .f-tooltip {
-  @apply relative cursor-pointer inline-block;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
 
   &__item {
-    @apply absolute bg-black px-2 py-1 text-sm rounded-lg shadow self-center text-center;
+    position: absolute;
+    background-color: var(--color-black);
+    padding: 0.25rem 0.5rem;
+    font-size: var(--text-sm);
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    align-self: center;
+    text-align: center;
     width: 7rem;
     max-width: 10rem;
     min-width: 3rem;
     left: 100%;
     z-index: 10;
+    color: var(--color-white);
 
     &--primary {
-      @apply bg-primary text-white;
+      background-color: var(--color-primary);
+      color: var(--color-white);
       .f-tooltip__arrow {
         &:after {
-          @apply bg-primary;
+          background-color: var(--color-primary);
         }
       }
     }
 
     &--secondary {
-      @apply bg-secondary text-white;
+      background-color: var(--color-secondary);
+      color: var(--color-white);
       .f-tooltip__arrow {
         &:after {
-          @apply bg-secondary;
+          background-color: var(--color-secondary);
         }
       }
     }
@@ -144,12 +157,16 @@ export default {
     }
 
     &__arrow {
-      @apply absolute overflow-hidden;
+      position: absolute;
+      overflow: hidden;
       width: 18px;
       height: 10px;
       &:after {
-        @apply absolute bg-black shadow;
-        content: "";
+        position: absolute;
+        background-color: var(--color-black);
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+          0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        content: '';
         width: 10px;
         height: 10px;
         transform: translateX(-50%) translateY(-50%) rotate(45deg);
@@ -178,18 +195,18 @@ export default {
       }
       &--primary {
         &:after {
-          @apply bg-primary;
+          background-color: var(--color-primary);
         }
       }
       &--secondary {
         &:after {
-          @apply bg-secondary;
+          background-color: var(--color-secondary);
         }
       }
     }
   }
 }
 
-@import "../../assets/f-transitions.scss";
-@import "../../assets/f-colors.scss";
+@import '../../assets/f-transitions.scss';
+@import '../../assets/f-colors.scss';
 </style>

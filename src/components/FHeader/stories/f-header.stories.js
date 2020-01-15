@@ -1,15 +1,15 @@
-import { storiesOf } from "@storybook/vue";
-import { text } from "@storybook/addon-knobs";
-import FHeader from "../FHeader";
-import FWidget from "../../FWidget/FWidget.vue";
-import FAvatar from "../../FAvatar/FAvatar.vue";
-import FMenuButton from "../../FMenu/FMenuButton.vue";
+import { storiesOf } from '@storybook/vue'
+import { text } from '@storybook/addon-knobs'
+import FHeader from '../FHeader'
+import FWidget from '../../FWidget/FWidget.vue'
+import FAvatar from '../../FAvatar/FAvatar.vue'
+import FMenu from '../../FMenu/FMenu.vue'
 
-storiesOf("Components|Header", module).add("Default", () => ({
-  components: { FHeader, FWidget, FAvatar, FMenuButton },
+storiesOf('Components|Header', module).add('Default', () => ({
+  components: { FHeader, FMenu, FWidget, FAvatar },
   props: {
     label: {
-      default: text("label")
+      default: text('label')
     }
   },
   template: `
@@ -25,4 +25,4 @@ storiesOf("Components|Header", module).add("Default", () => ({
         </template>
       </f-header>
     `
-}));
+}))

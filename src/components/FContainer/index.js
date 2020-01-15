@@ -1,3 +1,3 @@
-import FContainer from "./FContainer";
+import FContainer from './FContainer'
 
-export { FContainer };
+export { FContainer }

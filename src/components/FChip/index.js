@@ -1,3 +1,3 @@
-import FChip from "./FChip";
+import FChip from './FChip'
 
-export { FChip };
+export { FChip }

@@ -1,8 +1,8 @@
-import Vue from "vue";
+import Vue from 'vue'
 
-import { isSSR } from "./Platform.js";
+import { isSSR } from './Platform.js'
 
-const prefixes = {};
+const prefixes = {}
 
 export default {
   isCapable: false,
@@ -10,66 +10,66 @@ export default {
 
   request(target) {
     if (this.isCapable && !this.isActive) {
-      target = target || document.documentElement;
-      target[prefixes.request]();
+      target = target || document.documentElement
+      target[prefixes.request]()
     }
   },
   exit() {
     if (this.isCapable && this.isActive) {
-      document[prefixes.exit]();
+      document[prefixes.exit]()
     }
   },
   toggle(target) {
     if (this.isActive) {
-      this.exit();
+      this.exit()
     } else {
-      this.request(target);
+      this.request(target)
     }
   },
 
   install({ $f }) {
-    $f.fullscreen = this;
+    $f.fullscreen = this
 
     if (isSSR === true) {
-      return;
+      return
     }
 
     prefixes.request = [
-      "requestFullscreen",
-      "msRequestFullscreen",
-      "mozRequestFullScreen",
-      "webkitRequestFullscreen"
-    ].find(request => document.documentElement[request]);
+      'requestFullscreen',
+      'msRequestFullscreen',
+      'mozRequestFullScreen',
+      'webkitRequestFullscreen'
+    ].find(request => document.documentElement[request])
 
-    this.isCapable = prefixes.request !== undefined;
+    this.isCapable = prefixes.request !== undefined
     if (!this.isCapable) {
       // it means the browser does NOT support it
-      return;
+      return
     }
 
     prefixes.exit = [
-      "exitFullscreen",
-      "msExitFullscreen",
-      "mozCancelFullScreen",
-      "webkitExitFullscreen"
-    ].find(exit => document[exit]);
+      'exitFullscreen',
+      'msExitFullscreen',
+      'mozCancelFullScreen',
+      'webkitExitFullscreen'
+    ].find(exit => document[exit])
 
     this.isActive = !!(
       document.fullscreenElement ||
       document.mozFullScreenElement ||
       document.webkitFullscreenElement ||
       document.msFullscreenElement
-    );
-    [
-      "onfullscreenchange",
-      "onmsfullscreenchange",
-      "onwebkitfullscreenchange"
+    )
+    ;[
+      'onfullscreenchange',
+      'onmsfullscreenchange',
+      'onwebkitfullscreenchange'
     ].forEach(evt => {
       document[evt] = () => {
-        this.isActive = !this.isActive;
-      };
-    });
+        this.isActive = !this.isActive
+      }
+    })
 
-    Vue.util.defineReactive(this, "isActive", this.isActive);
+    Vue.util.defineReactive(this, 'isActive', this.isActive)
   }
-};
+}

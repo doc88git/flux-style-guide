@@ -4,26 +4,33 @@
 
 <script>
 export default {
-  name: "f-avatar",
+  name: 'f-avatar',
   props: {
     src: {
       type: String,
-      default: "https://cdn.quasar.dev/img/avatar5.jpg"
+      default: 'https://cdn.quasar.dev/img/avatar5.jpg'
     },
     click: {
       type: Function,
       default: () => ({})
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
 .f-avatar {
-  @apply items-center border-2 relative align-middle inline-block rounded-full object-cover bg-center;
+  align-items: center;
+  border-width: 2px;
+  position: relative;
+  vertical-align: middle;
+  display: inline-block;
+  border-radius: 9999px;
+  object-fit: cover;
+  background-position: center;
   height: 50px;
   width: 50px;
-  font-size: 48px;
+  font-size: var(--text-5xl);
   padding: 1px;
 }
 </style>

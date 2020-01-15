@@ -1,3 +1,3 @@
-import FTableCustom from "./FTableCustom";
+import FTableCustom from './FTableCustom'
 
-export { FTableCustom };
+export { FTableCustom }

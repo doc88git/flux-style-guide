@@ -1,8 +1,8 @@
-import { storiesOf } from "@storybook/vue";
-import { text } from "@storybook/addon-knobs";
-import FButton from "../FButton.vue";
+import { storiesOf } from '@storybook/vue'
+import { text } from '@storybook/addon-knobs'
+import FButton from '../FButton.vue'
 
-const groupId = "BUTTON-OPTIONS-ID1";
+const groupId = 'BUTTON-OPTIONS-ID1'
 const summary = `
 ## Label
 - Use label or slot
@@ -14,32 +14,32 @@ const summary = `
 
 ## Icon
 - Pass icon name as FIcon
-`;
+`
 
-storiesOf("Components|Button", module)
+storiesOf('Components|Button', module)
   .add(
-    "Button",
+    'Button',
     () => ({
       components: { FButton },
       props: {
         label: {
-          default: text("label", "Button", groupId)
+          default: text('label', 'Button', groupId)
         },
         disabled: {
           default: false
         },
         icon: {
-          default: text("icon", "", groupId)
+          default: text('icon', '', groupId)
         },
         color: {
-          default: text("color", "", groupId)
+          default: text('color', '', groupId)
         },
         textColor: {
-          default: text("textColor", "white", groupId)
+          default: text('textColor', 'white', groupId)
         }
       },
       template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <div class="mt-4">Small:</div> <f-button :disabled="disabled" :label="label" :icon="icon" :color="color" :text-color="textColor" :small="true" />
           <div class="mt-4">Normal:</div> <f-button :label="label" :icon="icon" :color="color" :text-color="textColor" />
           <div class="mt-4">Bigger:</div> <f-button :label="label" :icon="icon" :color="color" :text-color="textColor" :bigger="true" />
@@ -51,22 +51,22 @@ storiesOf("Components|Button", module)
     }
   )
   .add(
-    "Button: Flat",
+    'Button: Flat',
     () => ({
       components: { FButton },
       props: {
         label: {
-          default: text("label", "Button", groupId)
+          default: text('label', 'Button', groupId)
         },
         icon: {
-          default: text("icon", "", groupId)
+          default: text('icon', '', groupId)
         },
         color: {
-          default: text("color", "primary", groupId)
+          default: text('color', 'primary', groupId)
         }
       },
       template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <f-button flat :label="label" :icon="icon" :color="color" />
         </div>
       `
@@ -76,22 +76,22 @@ storiesOf("Components|Button", module)
     }
   )
   .add(
-    "Button: Outline",
+    'Button: Outline',
     () => ({
       components: { FButton },
       props: {
         label: {
-          default: text("label", "Button", groupId)
+          default: text('label', 'Button', groupId)
         },
         icon: {
-          default: text("icon", "", groupId)
+          default: text('icon', '', groupId)
         },
         color: {
-          default: text("color", "primary", groupId)
+          default: text('color', 'primary', groupId)
         }
       },
       template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <f-button outline :label="label" :icon="icon" :color="color" />
         </div>
       `
@@ -101,25 +101,25 @@ storiesOf("Components|Button", module)
     }
   )
   .add(
-    "Button: Icon",
+    'Button: Icon',
     () => ({
       components: { FButton },
       props: {
         label: {
-          default: text("label", "Button", groupId)
+          default: text('label', 'Button', groupId)
         },
         icon: {
-          default: text("icon", "home", groupId)
+          default: text('icon', 'home', groupId)
         },
         color: {
-          default: text("color", "primary", groupId)
+          default: text('color', 'primary', groupId)
         },
         textColor: {
-          default: text("textColor", "white", groupId)
+          default: text('textColor', 'white', groupId)
         }
       },
       template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <div class="mb-4">
             Normal<br>
             <f-button :icon="icon" :color="color" :text-color="textColor" />
@@ -138,25 +138,25 @@ storiesOf("Components|Button", module)
     }
   )
   .add(
-    "Button: Icon With Text",
+    'Button: Icon With Text',
     () => ({
       components: { FButton },
       props: {
         label: {
-          default: text("label", "Button", groupId)
+          default: text('label', 'Button', groupId)
         },
         icon: {
-          default: text("icon", "home", groupId)
+          default: text('icon', 'home', groupId)
         },
         color: {
-          default: text("color", "primary", groupId)
+          default: text('color', 'primary', groupId)
         },
         textColor: {
-          default: text("textColor", "white", groupId)
+          default: text('textColor', 'white', groupId)
         }
       },
       template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <f-button :label="label" :icon="icon" :color="color" :text-color="textColor" />
         </div>
       `
@@ -166,22 +166,22 @@ storiesOf("Components|Button", module)
     }
   )
   .add(
-    "Button: Icon Flat",
+    'Button: Icon Flat',
     () => ({
       components: { FButton },
       props: {
         label: {
-          default: text("label", "Button", groupId)
+          default: text('label', 'Button', groupId)
         },
         icon: {
-          default: text("icon", "home", groupId)
+          default: text('icon', 'home', groupId)
         },
         color: {
-          default: text("color", "primary", groupId)
+          default: text('color', 'primary', groupId)
         }
       },
       template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <f-button :label="label" :icon="icon" :color="color" flat />
         </div>
       `
@@ -191,25 +191,25 @@ storiesOf("Components|Button", module)
     }
   )
   .add(
-    "Button: Slot",
+    'Button: Slot',
     () => ({
       components: { FButton },
       props: {
         text: {
-          default: text("text", "Button", groupId)
+          default: text('text', 'Button', groupId)
         },
         icon: {
-          default: text("icon", "", groupId)
+          default: text('icon', '', groupId)
         },
         color: {
-          default: text("color", "white", groupId)
+          default: text('color', 'white', groupId)
         },
         textColor: {
-          default: text("textColor", "white", groupId)
+          default: text('textColor', 'white', groupId)
         }
       },
       template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <f-button :label="label" :icon="icon" :text-color="textColor" :color="color">{{ text }}</f-button>
         </div>
       `
@@ -217,4 +217,4 @@ storiesOf("Components|Button", module)
     {
       info: { summary }
     }
-  );
+  )

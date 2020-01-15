@@ -1,3 +1,3 @@
-import FIcon from "./FIcon";
+import FIcon from './FIcon'
 
-export { FIcon };
+export { FIcon }

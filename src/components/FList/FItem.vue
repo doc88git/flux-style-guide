@@ -12,40 +12,45 @@
 </template>
 
 <script>
-import { FLink } from "../FLink";
+import { FLink } from '../FLink'
 
 export default {
-  name: "f-item",
+  name: 'f-item',
   props: {
     title: String,
     label: String,
     to: String,
     link: {
       type: String,
-      default: "#"
+      default: '#'
     }
   },
   computed: {
     tag() {
-      return this.to || this.link ? FLink : "a";
+      return this.to || this.link ? FLink : 'a'
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
 .f-list-item {
-  @apply block px-4 py-2 border-b text-sm;
+  display: block;
+  padding: 0.5rem 1rem;
+  border-bottom-width: 1px;
+  font-size: var(--text-sm);
   &:hover,
   &:focus {
-    @apply bg-gray-300;
+    background-color: var(--color-gray-300);
   }
   &__item {
     &--title {
-      @apply font-semibold mb-1;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
     }
     &--label {
-      @apply text-gray-800 mb-1;
+      margin-bottom: 0.25rem;
+      color: var(--color-gray-800);
     }
   }
 }

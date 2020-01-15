@@ -14,14 +14,22 @@
       </div>
     </div>
     <transition :name="`slide-${position}`">
-      <div class="f-dropdown__list" v-show="isOpen">
+      <div class="f-dropdown__list" v-show="isOpen" @keyup="itemNavigation">
         <ul>
           <li
             v-for="(item, index) in list"
             :key="`dwn:${index}`"
             @click="clickOnItem($event, item)"
+            :class="{
+              'f-dropdown__active-item': currentItem === item.value
+            }"
           >
             {{ item.label }}
+            <!-- <f-icon
+              v-if="currentItem === item.value"
+              :name="iconStatus"
+              :color="iconColor"
+            /> -->
           </li>
         </ul>
       </div>
@@ -30,33 +38,38 @@
 </template>
 
 <script>
-import { FIcon } from "../FIcon/index.js";
+import { FIcon } from '../FIcon/index.js'
 
 export default {
-  name: "f-dropdown",
+  name: 'f-dropdown',
   components: { FIcon },
   data: () => ({
     isOpen: false,
-    selected: null
+    selected: null,
+    currentItem: 1
   }),
   props: {
     list: {
       type: Array,
       required: true,
       validator: list => {
-        let required = ["label", "value"];
+        let required = ['label', 'value']
 
         let filter = list.filter(() => {
           return (
             list.filter(item => {
-              return required.filter(r => !!item[r]).length === required.length;
+              return required.filter(r => !!item[r]).length === required.length
             }).length === list.length
-          );
-        });
+          )
+        })
 
-        return filter.length === list.length;
+        return filter.length === list.length
       }
     },
+    // iconStatus: {
+    //   type: String,
+    //   default: 'check'
+    // },
     closeOnClick: {
       type: Boolean,
       default: true
@@ -69,165 +82,233 @@ export default {
     },
     type: {
       type: String,
-      default: "default",
+      default: 'default',
       validator: item => {
-        return ["default", "outlined", "input"].includes(item);
+        return ['default', 'outlined', 'input'].includes(item)
       }
     },
     position: {
       type: String,
-      default: "down"
+      default: 'down'
     },
     color: {
       type: String,
-      default: "primary"
+      default: 'primary'
     },
     textColor: {
       type: String,
-      default: "white"
+      default: 'white'
     }
+  },
+  mounted() {
+    document.addEventListener('keyup', this.itemNavigation)
+    document.addEventListener('keypress', this.onEnter)
   },
   computed: {
     isOutlined() {
-      return this.type === "outlined";
+      return this.type === 'outlined'
     },
     iconName() {
-      return this.isOpen ? "keyboard_arrow_up" : "keyboard_arrow_down";
+      return this.isOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down'
     },
     iconColor() {
-      return this.isOutlined ? this.color : this.textWhite;
+      return this.isOutlined ? this.color : this.textWhite
     },
     selectedItem() {
-      let selectedItem = this.list.filter(item => item.value === this.selected);
-      return selectedItem.length ? selectedItem[0] : this.list[0];
+      let selectedItem = this.list.filter(item => item.value === this.selected)
+      return selectedItem.length ? selectedItem[0] : this.list[0]
     },
     labelSelected() {
       return this.selectedItem && this.selectedItem.label
         ? this.selectedItem.label
-        : "";
+        : ''
     },
     valueSelected() {
       return this.selectedItem && this.selectedItem.value
         ? this.selectedItem.value
-        : "";
+        : ''
     },
     classes() {
       return {
-        "f-dropdown--outlined": this.type === "outlined",
-        "f-dropdown--input": this.type === "input"
-      };
+        'f-dropdown--outlined': this.type === 'outlined',
+        'f-dropdown--input': this.type === 'input'
+      }
       // return this.isOutlined ? "f-dropdown--outlined" : "";
     }
   },
   watch: {
     open: {
       handler: function(value) {
-        if (value) return this.openList();
-        return this.closeList();
+        if (value) return this.openList()
+        return this.closeList()
         // this.toggleDropdown(null, value);
       }
     }
   },
   methods: {
+    onEnter(e) {
+      if (e.keyCode === 13) {
+        this.selectItem()
+      }
+    },
     isClickedIn(e, classItem) {
       let isClicked = e.path.filter(item => {
-        return item.classList ? item.classList.contains(classItem) : false;
-      });
+        return item.classList ? item.classList.contains(classItem) : false
+      })
 
-      return isClicked.length;
+      return isClicked.length
     },
     isClickedOut(e) {
-      return !this.isClickedIn(e, "f-dropdown");
+      return !this.isClickedIn(e, 'f-dropdown')
     },
     clickedInCaret(e) {
       return (
-        this.isClickedIn(e, "f-icon") && this.iconName === "keyboard_arrow_up"
-      );
+        this.isClickedIn(e, 'f-icon') && this.iconName === 'keyboard_arrow_up'
+      )
     },
     closeList() {
-      this.isOpen = false;
+      this.isOpen = false
 
       if (process.browser) {
-        window.removeEventListener("click", this.toggleDropdown);
+        window.removeEventListener('click', this.toggleDropdown)
       }
 
-      this.emitStatus();
+      this.emitStatus()
     },
     openList() {
-      this.isOpen = true;
+      this.isOpen = true
 
       if (process.browser) {
-        window.addEventListener("click", this.toggleDropdown);
+        window.addEventListener('click', this.toggleDropdown)
       }
 
-      this.emitStatus();
+      this.emitStatus()
     },
     emitStatus() {
-      this.$emit("status", this.isOpen);
+      this.$emit('status', this.isOpen)
     },
     toggleDropdown(e) {
       if (this.isClickedOut(e) || this.clickedInCaret(e)) {
-        this.closeList();
-        e.stopPropagation();
+        this.closeList()
+        e.stopPropagation()
 
-        return false;
+        return false
       }
 
-      this.openList();
+      this.openList()
 
-      e.stopPropagation();
+      e.stopPropagation()
+    },
+    selectItem() {
+      this.selected = this.currentItem
+      this.$emit('selected', this.currentItem)
+
+      this.closeList()
     },
     clickOnItem(e, item) {
-      this.selected = item.value;
-      this.$emit("selected", item.value);
+      this.selected = item.value
+      this.$emit('selected', item.value)
 
-      if (this.closeOnClick) this.closeList();
+      if (this.closeOnClick) this.closeList()
 
-      e.stopPropagation();
+      e.stopPropagation()
+    },
+    itemNavigation(event) {
+      if (event.keyCode == 38 && this.currentItem > 1) {
+        this.currentItem--
+      } else if (event.keyCode == 40 && this.currentItem < this.list.length) {
+        this.currentItem++
+      }
     }
   },
   destroyed() {
     if (process.browser) {
-      window.removeEventListener("click", this.toggleDropdown);
+      window.removeEventListener('click', this.toggleDropdown)
+      window.removeEventListener('keyup', () => {})
+      window.removeEventListener('keypress', () => {})
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
 .f-dropdown {
-  @apply select-none relative max-w-full;
+  user-select: none;
+  position: relative;
+  max-width: 100%;
   min-width: 200px;
   &:focus {
-    @apply shadow-none outline-none;
+    box-shadow: none;
+    outline: 0;
   }
   &__inner {
-    @apply flex flex-no-wrap justify-between bg-primary rounded text-white w-full py-2 px-3 min-w-full max-w-full;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    background-color: var(--color-primary);
+    border-radius: 0.25rem;
+    color: var(--color-white);
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    min-width: 100%;
+    max-width: 100%;
     position: relative;
     z-index: 1;
     &__content {
-      @apply truncate;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     &__append {
-      @apply flex flex-no-wrap items-center items-center w-1 pl-4 pr-4;
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      width: 0.25rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
       .f-icon {
-        @apply p-2 -m-2 cursor-pointer;
+        padding: 0.5rem;
+        margin: -0.5rem;
+        cursor: pointer;
       }
     }
     &--opened {
-      @apply rounded-none rounded-t;
+      border-radius: 0;
+      border-top-left-radius: 0.25rem;
+      border-top-right-radius: 0.25rem;
     }
   }
 
+  &__active-item {
+    background-color: var(--color-gray-300);
+    color: var(--color-primary);
+  }
+
   &__list {
-    @apply absolute m-0 pt-2 pb-2 rounded-b bg-primary cursor-pointer shadow-md w-full text-white text-left z-10 overflow-auto;
+    position: absolute;
+    margin: 0;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+    background-color: var(--color-primary);
+    cursor: pointer;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    width: 100%;
+    color: var(--color-white);
+    text-align: left;
+    z-index: 10;
+    overflow: auto;
     max-height: 200px;
     ul {
-      @apply list-none;
+      list-style-type: none;
       li {
-        @apply py-1 px-2 align-middle;
+        padding: 0.25rem 0.5rem;
+        vertical-align: middle;
         &:hover {
-          @apply bg-gray-300 text-primary;
+          color: var(--color-primary);
+          background-color: var(--color-gray-300);
         }
       }
     }
@@ -235,14 +316,21 @@ export default {
 
   &--outlined {
     .f-dropdown__inner {
-      @apply bg-white text-primary border border-solid border-primary;
+      background-color: var(--color-white);
+      color: var(--color-primary);
+      border: 1px solid var(--color-primary);
     }
     .f-dropdown__list {
-      @apply bg-white text-gray-600 border border-t-0 border-solid border-gray;
+      background-color: var(--color-white);
+      border-width: 1px;
+      border-top-width: 0;
+      border-style: solid;
+      border-color: var(--color-gray);
+      color: var(--color-gray-600);
       ul {
         li {
           &:hover {
-            @apply bg-white;
+            background-color: var(--color-white);
           }
         }
       }
@@ -251,14 +339,20 @@ export default {
 
   &--input {
     .f-dropdown__inner {
-      @apply bg-white text-black border border-solid;
+      background-color: var(--color-white);
+      color: var(--color-gray-600);
+      border: 1px solid var(--color-primary);
     }
     .f-dropdown__list {
-      @apply bg-white text-gray-600 border border-t-0 border-solid;
+      background-color: var(--color-white);
+      color: var(--color-gray-600);
+      border: 1px solid;
+      border-top-width: 0;
+      border-color: var(--color-primary);
       ul {
         li {
           &:hover {
-            @apply bg-white;
+            background-color: var(--color-gray-300);
           }
         }
       }
@@ -266,6 +360,6 @@ export default {
   }
 }
 
-@import "../../assets/f-transitions.scss";
-@import "../../assets/f-colors.scss";
+@import '../../assets/f-transitions.scss';
+@import '../../assets/f-colors.scss';
 </style>

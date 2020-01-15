@@ -15,7 +15,7 @@
       }"
     >
       <label v-if="$slots.label || label" class="f-field__inner__label">
-        <slot name="label">{{ label || "&nbsp;" }}</slot>
+        <slot name="label">{{ label || '&nbsp;' }}</slot>
       </label>
 
       <div
@@ -45,7 +45,7 @@
 
         <div v-if="hasError" class="f-field__inner__error">
           <slot name="error">
-            {{ errorMessage || "Há um erro neste campo" }}
+            {{ errorMessage || 'Há um erro neste campo' }}
           </slot>
         </div>
       </div>
@@ -63,86 +63,118 @@
 
 <script>
 export default {
-  name: "f-field",
+  name: 'f-field',
   props: {
     label: {
-      default: "",
+      default: '',
       type: String
     },
     hint: String,
     rules: String,
     errorMessage: {
-      default: "",
+      default: '',
       type: String
     }
   },
   computed: {
     hasError() {
-      if (!this.$slots.error) return false;
+      if (!this.$slots.error) return false
 
       let slotText = this.$slots.error
         .map(item => item.text)
-        .join("")
-        .trim();
+        .join('')
+        .trim()
 
-      return !!slotText || !!this.errorMessage;
+      return !!slotText || !!this.errorMessage
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
 .f-field {
-  @apply flex flex-wrap w-full mb-6 mt-2;
+  display: flex;
+  flex-wrap: wrap;
   &__marginal {
-    @apply h-20 items-end;
+    height: 4.5rem;
+    align-items: flex-end;
     transition: color 0.36s cubic-bezier(0.4, 0, 0.2, 1);
   }
   &__before {
-    @apply flex flex-no-wrap items-center pr-4;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding-right: 1rem;
   }
   &__after {
-    @apply flex flex-wrap;
+    flex-wrap: wrap;
+    display: flex;
     button {
-      @apply mt-0 mb-0;
+      margin-top: 0;
+      margin-bottom: 0;
     }
   }
   &__inner {
-    @apply w-auto relative max-w-full;
+    width: auto;
+    position: relative;
+    max-width: 100%;
     flex-grow: 10000;
     flex-shrink: 1;
     flex-basis: 0%;
     &__label {
-      @apply block tracking-wide text-gray-700 font-bold;
+      display: block;
+      letter-spacing: 0.025em;
+      font-weight: 700;
+      color: var(--color-gray-700);
     }
     &__hint {
-      @apply block tracking-wide text-gray text-sm mb-2 mt-2;
+      display: block;
+      letter-spacing: 0.025em;
+      font-size: var(--text-sm);
+      margin-bottom: 0.5rem;
+      margin-top: 0.5rem;
+      color: var(--color-gray);
     }
     &__error {
-      @apply block tracking-wide text-red text-sm mb-2 mt-2;
+      display: block;
+      letter-spacing: 0.025em;
+      color: var(--color-red);
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+      margin-top: 0.5rem;
     }
     &__input {
-      @apply relative;
+      position: relative;
     }
     &__append {
-      @apply h-8 absolute bottom-0 right-0 mb-4 z-10;
+      right: 4.85px;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      position: absolute;
+      bottom: 0;
+      z-index: 10;
       button {
-        @apply ml-0 mr-0 pl-2 pr-2;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
       }
     }
     &--hasLabel {
       .f-field__inner__input {
-        @apply pt-1 pb-1;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
       }
     }
     &--hasError {
       input {
-        @apply border border-red-500;
+        border: 1px solid var(--color-red);
       }
     }
     &--hasAppend {
       input {
-        @apply pr-12;
+        padding-right: 3rem;
       }
     }
   }

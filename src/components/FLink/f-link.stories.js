@@ -1,37 +1,37 @@
-import { storiesOf } from "@storybook/vue";
+import { storiesOf } from '@storybook/vue'
 
-import { FLink } from "@/components/FLink";
+import { FLink } from '@/components/FLink'
 
-storiesOf("Components|Link", module)
+storiesOf('Components|Link', module)
   .add(
-    "Router",
+    'Router',
     () => ({
       components: { FLink },
       template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <f-link to="/">Link</f-link>
         </div>
       `
     }),
     {
       info: {
-        sumary: "Link component"
+        sumary: 'Link component'
       }
     }
   )
   .add(
-    "Link",
+    'Link',
     () => ({
       components: { FLink },
       template: `
-        <div class="p-8">
+        <div style="padding: 20px;">
           <f-link link="http://" label="http://">
         </div>
       `
     }),
     {
       info: {
-        sumary: "Link component"
+        sumary: 'Link component'
       }
     }
-  );
+  )

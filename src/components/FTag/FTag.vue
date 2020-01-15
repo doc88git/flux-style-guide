@@ -27,41 +27,41 @@
 </template>
 
 <script>
-import FIcon from "../FIcon/FIcon";
+import FIcon from '../FIcon/FIcon'
 
 export default {
-  name: "FTag",
+  name: 'FTag',
   components: {
     FIcon
   },
   props: {
     bgColor: {
       type: String,
-      default: "white"
+      default: 'white'
     },
     lineColor: {
       type: String,
-      default: "#c1c1c1"
+      default: '#c1c1c1'
     },
     legend: {
       type: String,
-      default: "legend"
+      default: 'legend'
     },
     icon: {
       type: String,
-      default: ""
+      default: ''
     },
     iconColor: {
       type: String,
-      default: "purple"
+      default: 'purple'
     },
     text: {
       type: String,
-      default: "Flux Services"
+      default: 'Flux Services'
     },
     textColor: {
       type: String,
-      default: "#7F7F7F"
+      default: '#7F7F7F'
     },
     showLegend: {
       type: Boolean,
@@ -76,37 +76,37 @@ export default {
     styleLegend() {
       return {
         backgroundColor: this.bgColor,
-        visibility: this.onHover || this.showLegend ? "visible" : "hidden"
-      };
+        visibility: this.onHover || this.showLegend ? 'visible' : 'hidden'
+      }
     },
     styleLineColor() {
       return {
         borderColor: this.lineColor,
         minWidth: `${this.legendSize}px`
-      };
+      }
     },
     styleTextColor() {
-      return "color: " + this.textColor;
+      return 'color: ' + this.textColor
     },
     styleBeforeColor() {
-      return ":before: " + this.lineColor;
+      return ':before: ' + this.lineColor
     }
   },
   mounted() {
     this.$nextTick(() => {
-      this.setLegendSize();
-    });
+      this.setLegendSize()
+    })
   },
   methods: {
     setLegendSize() {
       try {
-        this.legendSize = this.$refs.fTagLegend.offsetWidth + 10;
+        this.legendSize = this.$refs.fTagLegend.offsetWidth + 10
       } catch (e) {
-        this.legendSize = 60;
+        this.legendSize = 60
       }
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -123,9 +123,9 @@ export default {
     padding-left: 4px;
     padding-bottom: 0;
     position: absolute;
-    transform: translateY(-7px);
+    transform: translateY(-10px);
     margin-left: 0;
-    font-size: 0.8em;
+    font-size: var(--text-xs);
     z-index: 2;
   }
 
@@ -148,5 +148,5 @@ export default {
   }
 }
 
-@import "../../assets/f-colors.scss";
+@import '../../assets/f-colors.scss';
 </style>

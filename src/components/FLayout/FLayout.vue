@@ -7,7 +7,9 @@
         :weight="weight"
         :styles="styles"
         class="f-layout__header"
-        :class="{ '--no-menu': menuItems.length === 0 || !hasMenu }"
+        :class="{
+          'f-layout__header--no-menu': menuItems.length === 0 || !hasMenu
+        }"
       >
         <template v-slot:menu v-if="menuItems.length || hasMenu">
           <f-menu-button
@@ -37,7 +39,8 @@
       <div
         class="f-layout__wrapper__content"
         :class="{
-          '--no-extra-padding': menuItems.length === 0 && !hasMenu
+          'f-layout__wrapper__content--no-extra-padding':
+            menuItems.length === 0 && !hasMenu
         }"
       >
         <slot name="content"></slot>
@@ -47,17 +50,12 @@
 </template>
 
 <script>
-import { FMenu } from "../FMenu";
-import { FHeader } from "../FHeader";
-import { FMenuButton } from "../FMenu";
+import { FHeader } from '../FHeader'
+import { FMenu, FMenuButton } from '../FMenu'
 
 export default {
-  name: "f-layout",
-  components: {
-    FMenu,
-    FHeader,
-    FMenuButton
-  },
+  name: 'f-layout',
+  components: { FHeader, FMenu, FMenuButton },
   data: () => ({
     menuExpand: false
   }),
@@ -72,23 +70,23 @@ export default {
     },
     menuSelected: {
       type: String,
-      default: "home"
+      default: 'home'
     },
     color: {
       type: String,
-      default: "primary"
+      default: 'primary'
     },
     mainTitle: {
       type: String,
-      default: ""
+      default: ''
     },
     align: {
       type: String,
-      default: "center"
+      default: 'center'
     },
     weight: {
       type: String,
-      default: "500"
+      default: '500'
     },
     styles: {
       type: String,
@@ -97,17 +95,18 @@ export default {
   },
   methods: {
     handleMenu() {
-      this.menuExpand = !this.menuExpand;
+      this.menuExpand = !this.menuExpand
     },
     handleClickMenuItem() {
-      this.menuExpand = false;
+      this.menuExpand = false
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/f-variables";
+@import '../../assets/f-variables';
+
 .f-layout {
   display: flex;
   flex-direction: column;
@@ -123,7 +122,7 @@ export default {
       z-index: 90;
       height: calc(100vh - 70px);
 
-      @media screen and (max-width: $size-tablet) {
+      @media screen and (max-width: var(--size-tablet)) {
         position: fixed;
       }
     }
@@ -134,11 +133,11 @@ export default {
       z-index: 10;
       padding: 10px 10px 10px 80px;
 
-      @media screen and (max-width: $size-tablet) {
+      @media screen and (max-width: var(--size-tablet)) {
         padding: 1.25rem;
       }
 
-      &.--no-extra-padding {
+      &--no-extra-padding {
         padding: 1.25rem;
       }
     }
@@ -149,8 +148,9 @@ export default {
     background-color: #fff;
     z-index: 80;
 
-    &.--no-menu {
-      @apply py-5;
+    &--no-menu {
+      padding-top: 1.25rem;
+      padding-bottom: 1.25rem;
     }
   }
 

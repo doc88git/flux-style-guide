@@ -1,28 +1,28 @@
-import { storiesOf } from "@storybook/vue";
-import FTab from "../FTab.vue";
+import { storiesOf } from '@storybook/vue'
+import FTab from '../FTab.vue'
 
-storiesOf("Components|Tab", module)
-  .add("Default", () => ({
+storiesOf('Components|Tab', module)
+  .add('Default', () => ({
     components: { FTab },
     data: () => ({
       options: [
         {
-          label: "Produtos",
+          label: 'Produtos',
           value: 1
         },
         {
-          label: "Vendas",
+          label: 'Vendas',
           value: 2
         },
         {
-          label: "Vacas",
+          label: 'Vacas',
           value: 3
         }
       ]
     }),
     props: {},
     template: `
-    <div class="p-8">
+    <div style="padding: 20px;">
       <f-tab :options="options">
         <template slot="content-1">Content A</template>
         <template slot="content-2">Content B</template>
@@ -31,27 +31,27 @@ storiesOf("Components|Tab", module)
     </div>
   `
   }))
-  .add("Fill", () => ({
+  .add('Fill', () => ({
     components: { FTab },
     data: () => ({
       options: [
         {
-          label: "Produtos",
+          label: 'Produtos',
           value: 1
         },
         {
-          label: "Vendas",
+          label: 'Vendas',
           value: 2
         },
         {
-          label: "Vacas",
+          label: 'Vacas',
           value: 3
         }
       ]
     }),
     props: {},
     template: `
-    <div class="p-8">
+    <div style="padding: 20px;">
       <f-tab fill :options="options">
         <template slot="content-1">Content A</template>
         <template slot="content-2">Content B</template>
@@ -59,4 +59,4 @@ storiesOf("Components|Tab", module)
       </f-tab>
     </div>
   `
-  }));
+  }))

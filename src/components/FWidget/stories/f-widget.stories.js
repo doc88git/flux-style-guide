@@ -1,19 +1,19 @@
-import { storiesOf } from "@storybook/vue";
-import { select } from "@storybook/addon-knobs";
-import { FWidget } from "../../FWidget";
+import { storiesOf } from '@storybook/vue'
+import { select } from '@storybook/addon-knobs'
+import { FWidget } from '../../FWidget'
 
-storiesOf("Components|Widget", module).add("Default", () => ({
+storiesOf('Components|Widget', module).add('Default', () => ({
   components: { FWidget },
   data: () => ({}),
   props: {
     select: {
-      default: select("class", ["primary", "secondary"])
+      default: select('class', ['primary', 'secondary'])
     },
     size: {
-      default: select("size", ["large", "small", "medium"])
+      default: select('size', ['large', 'small', 'medium'])
     }
   },
   template: `
-      <f-widget></f-widget>
+      <f-widget />
     `
-}));
+}))

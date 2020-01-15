@@ -1,12 +1,12 @@
-import { storiesOf } from "@storybook/vue";
-import { FButton } from "@/components/FButton";
-import { FImage } from "@/components/FImage";
-import { FSeparator } from "@/components/FSeparator";
-import { FCard, FCardActions, FCardBody, FCardTitle } from "@/components/FCard";
+import { storiesOf } from '@storybook/vue'
+import { FButton } from '@/components/FButton'
+import { FImage } from '@/components/FImage'
+import { FSeparator } from '@/components/FSeparator'
+import { FCard, FCardActions, FCardBody, FCardTitle } from '@/components/FCard'
 
-storiesOf("Components|Card", module)
+storiesOf('Components|Card', module)
   .add(
-    "Default",
+    'Default',
     () => ({
       components: {
         FCard,
@@ -17,7 +17,7 @@ storiesOf("Components|Card", module)
         FSeparator
       },
       template: `
-        <div class="p-8" style="width: 600px">
+        <div style="padding: 20px;" style="width: 600px">
           <f-card>
             <f-card-title>Where does it come from?</f-card-title>
             <f-card-body>
@@ -47,7 +47,7 @@ storiesOf("Components|Card", module)
     }
   )
   .add(
-    "With Image",
+    'With Image',
     () => ({
       components: {
         FCard,
@@ -58,7 +58,7 @@ storiesOf("Components|Card", module)
         FSeparator
       },
       template: `
-        <div class="p-8" style="width: 600px">
+        <div style="padding: 20px;" style="width: 600px">
           <f-card
             header-bg="https://altitude-community.aircanada.com/app/webroot/img/default-bg-card.png"
           >
@@ -84,12 +84,12 @@ storiesOf("Components|Card", module)
     }),
     {
       info: {
-        sumary: "Container component"
+        sumary: 'Container component'
       }
     }
   )
   .add(
-    "Card Title",
+    'Card Title',
     () => ({
       components: {
         FCard,
@@ -99,7 +99,7 @@ storiesOf("Components|Card", module)
         FButton
       },
       template: `
-        <div class="p-8" style="width: 600px">
+        <div style="padding: 20px;" style="width: 600px">
           <f-card>
             <f-card-title>Where does it come from?</f-card-title>
           </f-card>
@@ -107,12 +107,12 @@ storiesOf("Components|Card", module)
     }),
     {
       info: {
-        sumary: "Container component"
+        sumary: 'Container component'
       }
     }
   )
   .add(
-    "Card Body",
+    'Card Body',
     () => ({
       components: {
         FCard,
@@ -122,7 +122,7 @@ storiesOf("Components|Card", module)
         FButton
       },
       template: `
-        <div class="p-8" style="width: 600px">
+        <div style="padding: 20px;" style="width: 600px">
           <f-card>
             <f-card-body>
               Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -140,12 +140,12 @@ storiesOf("Components|Card", module)
     }),
     {
       info: {
-        sumary: "Container component"
+        sumary: 'Container component'
       }
     }
   )
   .add(
-    "Card Actions",
+    'Card Actions',
     () => ({
       components: {
         FCard,
@@ -156,7 +156,7 @@ storiesOf("Components|Card", module)
         FSeparator
       },
       template: `
-        <div class="p-8" style="width: 600px">
+        <div style="padding: 20px;" style="width: 600px">
           <f-card>
             <card-title>Default</card-title>
             <f-card-actions>
@@ -192,12 +192,12 @@ storiesOf("Components|Card", module)
     }),
     {
       info: {
-        sumary: "Container component"
+        sumary: 'Container component'
       }
     }
   )
   .add(
-    "Slot: With Image",
+    'Slot: With Image',
     () => ({
       components: {
         FCard,
@@ -209,7 +209,7 @@ storiesOf("Components|Card", module)
         FSeparator
       },
       template: `
-        <div class="p-8" style="width: 600px">
+        <div style="padding: 20px;" style="width: 600px">
           <f-card>
             <template v-slot:image-header>
               <f-image rounded-t src="https://altitude-community.aircanada.com/app/webroot/img/default-bg-card.png" />
@@ -236,7 +236,7 @@ storiesOf("Components|Card", module)
     }),
     {
       info: {
-        sumary: "Container component"
+        sumary: 'Container component'
       }
     }
-  );
+  )

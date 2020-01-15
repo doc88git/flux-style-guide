@@ -1,25 +1,25 @@
-import { storiesOf } from "@storybook/vue";
-import FLayout from "../FLayout";
-import { FWidget } from "../../FWidget";
-import { FAvatar } from "../../FAvatar";
+import { storiesOf } from '@storybook/vue'
+import FLayout from '../FLayout'
+import { FWidget } from '../../FWidget'
+import { FAvatar } from '../../FAvatar'
 
 const summary = `
 ## Layout
-`;
+`
 
-storiesOf("Template|Layout", module).add(
-  "Layout",
+storiesOf('Template|Layout', module).add(
+  'Layout',
   () => ({
     components: { FLayout, FWidget, FAvatar },
     data: () => ({
       menuItems: [
-        { name: "Home", url: "#", id: "home", icon: "home" },
-        { name: "Empresa", url: "#", id: "company", icon: "apartment" },
+        { name: 'Home', url: '#', id: 'home', icon: 'home' },
+        { name: 'Empresa', url: '#', id: 'company', icon: 'apartment' },
         {
-          name: "Configurações",
-          url: "#",
-          id: "configuration",
-          icon: "brightness_5"
+          name: 'Configurações',
+          url: '#',
+          id: 'configuration',
+          icon: 'brightness_5'
         }
       ],
       hasMenu: true
@@ -38,4 +38,4 @@ storiesOf("Template|Layout", module).add(
       summary
     }
   }
-);
+)

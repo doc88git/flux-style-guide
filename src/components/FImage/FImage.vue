@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "f-image",
+  name: 'f-image',
   props: {
     rounded: Boolean,
     roundedT: Boolean,
@@ -19,42 +19,43 @@ export default {
   computed: {
     classes() {
       return {
-        "f-image--rounded": this.rounded === true,
-        "f-image--rounded-t": this.roundedT === true,
-        "f-image--rounded-b": this.roundedB === true,
-        "f-image--rounded-tl": this.roundedTl === true,
-        "f-image--rounded-tr": this.roundedTr === true,
-        "f-image--rounded-bl": this.roundedBl === true,
-        "f-image--rounded-br": this.roundedBr === true
-      };
+        'f-image--rounded': this.rounded === true,
+        'f-image--rounded-t': this.roundedT === true,
+        'f-image--rounded-b': this.roundedB === true,
+        'f-image--rounded-tl': this.roundedTl === true,
+        'f-image--rounded-tr': this.roundedTr === true,
+        'f-image--rounded-bl': this.roundedBl === true,
+        'f-image--rounded-br': this.roundedBr === true
+      }
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
 .f-image {
-  @apply w-full h-full;
   &--rounded {
-    @apply rounded-lg;
+    border-radius: 0.5rem;
   }
   &--rounded-t {
-    @apply rounded-t-lg;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
   }
   &--rounded-b {
-    @apply rounded-b-lg;
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
   }
   &--rounded-tl {
-    @apply rounded-tl-lg;
+    border-top-left-radius: 0.5rem;
   }
   &--rounded-tr {
-    @apply rounded-tl-lg;
+    border-top-right-radius: 0.5rem;
   }
   &--rounded-bl {
-    @apply rounded-bl-lg;
+    border-bottom-left-radius: 0.5rem;
   }
   &--rounded-br {
-    @apply rounded-bl-lg;
+    border-bottom-right-radius: 0.5rem;
   }
 }
 </style>

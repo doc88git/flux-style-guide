@@ -34,11 +34,11 @@
 </template>
 
 <script>
-import collect from "collect.js";
-import { FIcon } from "../FIcon";
+import collect from 'collect.js'
+import { FIcon } from '../FIcon'
 
 export default {
-  name: "f-table-pure",
+  name: 'f-table-pure',
   components: {
     FIcon
   },
@@ -47,56 +47,56 @@ export default {
     header: Object
   },
   data: () => ({
-    sortBy: "",
-    sortDirection: "asc"
+    sortBy: '',
+    sortDirection: 'asc'
   }),
   computed: {
     keysHeaders() {
-      return Object.keys(this.header);
+      return Object.keys(this.header)
     },
     sortIcon() {
-      return this.sortDirection === "asc" ? "arrow_downward" : "arrow_upward";
+      return this.sortDirection === 'asc' ? 'arrow_downward' : 'arrow_upward'
     },
     content() {
-      let data = this.data.length ? this.data : [];
-      return collect(data);
+      let data = this.data.length ? this.data : []
+      return collect(data)
     },
     show() {
-      let data = this.content;
+      let data = this.content
 
       if (this.sortBy) {
-        let method = this.sortDirection === "desc" ? "sortByDesc" : "sortBy";
-        data = this.content[method](this.sortBy);
+        let method = this.sortDirection === 'desc' ? 'sortByDesc' : 'sortBy'
+        data = this.content[method](this.sortBy)
       }
 
-      data.keyBy(item => this.getContent(item));
+      data.keyBy(item => this.getContent(item))
 
-      return data.all();
+      return data.all()
     }
   },
   methods: {
     getContent(item) {
       this.keysHeaders.map(h => {
-        item[h] = h.split(".").reduce((o, i) => {
+        item[h] = h.split('.').reduce((o, i) => {
           try {
-            return o[i];
+            return o[i]
           } catch (e) {
-            return "";
+            return ''
           }
-        }, item);
-      });
+        }, item)
+      })
 
-      return item;
+      return item
     },
     setSortBy(item) {
-      this.sortBy = item;
-      this.setSortDirection();
+      this.sortBy = item
+      this.setSortDirection()
     },
     setSortDirection() {
-      this.sortDirection = this.sortDirection === "asc" ? "desc" : "asc";
+      this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc'
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -113,6 +113,8 @@ export default {
         white-space: nowrap;
         text-align: left;
         vertical-align: middle;
+        font-weight: 600;
+        color: #666666;
       }
       thead {
         tr {
@@ -132,7 +134,7 @@ export default {
           }
           .f-icon {
             margin-left: 0.5rem;
-            font-size: 0.75rem;
+            font-size: var(--text-xs);
           }
         }
       }

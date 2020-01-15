@@ -20,13 +20,13 @@
 </template>
 
 <script>
-import FIcon from "../FIcon/FIcon.vue";
+import FIcon from '../FIcon/FIcon.vue'
 export default {
-  name: "f-checkbox",
+  name: 'f-checkbox',
   components: { FIcon },
   model: {
-    prop: "checked",
-    event: "change"
+    prop: 'checked',
+    event: 'change'
   },
   props: {
     id: {
@@ -42,15 +42,15 @@ export default {
     },
     label: {
       type: String,
-      default: ""
+      default: ''
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
 .f-checkbox {
-  display: inline-flex;
+  display: none;
   appearance: none;
 
   &__wrapper {
@@ -78,7 +78,7 @@ export default {
       transform: scale(0.9);
 
       &--base {
-        @apply text-xl;
+        font-size: var(--text-xl);
       }
     }
   }
@@ -91,12 +91,6 @@ export default {
       }
     }
   }
-
-  &__label {
-    display: flex;
-    align-items: center;
-    margin-left: 7px;
-  }
 }
 
 .f-checkbox--gray {
@@ -107,6 +101,27 @@ export default {
     &:hover {
       border: 1px solid transparent;
       background: darken(#ccc, 20%);
+    }
+
+    .f-icon {
+      color: lightseagreen;
+      &__label {
+        display: flex;
+        align-items: center;
+        margin-left: 7px;
+      }
+    }
+  }
+
+  .f-checkbox--gray {
+    .f-checkbox__custom {
+      background-color: #ccc;
+      border: 1px solid #cdcdcd;
+
+      &:hover {
+        border: 1px solid transparent;
+        background: darken(#ccc, 20%);
+      }
     }
 
     .f-icon {

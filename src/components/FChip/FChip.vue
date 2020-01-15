@@ -21,9 +21,9 @@
 </template>
 
 <script>
-import { FIcon } from "..";
+import { FIcon } from '..'
 export default {
-  name: "f-chip",
+  name: 'f-chip',
   components: {
     FIcon
   },
@@ -45,72 +45,99 @@ export default {
       return {
         [`color--text--${this.textColor}`]: !!this.textColor,
         [`color--${this.color}`]: !!this.color
-      };
+      }
     },
     isDisabled() {
-      if (!this.disable) return {};
-      return { ["f-chip--disabled"]: this.disable };
+      if (!this.disable) return {}
+      return { ['f-chip--disabled']: this.disable }
     },
     classes() {
       return {
         ...this.colors,
         ...this.isDisabled
-      };
+      }
     }
   },
   methods: {
     onRemove(e, value) {
-      if (!this.disable) this.$emit("remove", value);
+      if (!this.disable) this.$emit('remove', value)
 
-      e.stopPropagation();
+      e.stopPropagation()
     },
     onClick(e) {
-      if (this.disable) return false;
+      if (this.disable) return false
 
-      this.$emit("update:selected", !this.selected);
-      this.$emit("click", e);
+      this.$emit('update:selected', !this.selected)
+      this.$emit('click', e)
 
-      e.stopPropagation();
+      e.stopPropagation()
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
 .f-chip {
-  @apply flex flex-no-wrap inline-flex items-center align-middle;
-  @apply bg-primary text-white;
-  @apply py-1 px-3 mx-1 rounded-lg;
-  @apply outline-none relative select-none cursor-pointer;
-  @apply border;
+  flex-wrap: nowrap;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
+  outline: 0;
+  position: relative;
+  user-select: none;
+  cursor: pointer;
+  border-width: 1px;
   transition: 0.3s;
   min-height: 23px;
 
   &__icon {
-    @apply flex align-middle align-middle rounded-full m-0 p-0 mr-2 leading-normal;
+    display: flex;
+    vertical-align: middle;
+    border-radius: 9999px;
+    margin: 0;
+    padding: 0;
+    margin-right: 0.5rem;
+    line-height: 1.5;
     i {
-      @apply text-xl;
+      font-size: var(--text-xl);
     }
   }
   &__content {
-    @apply flex align-middle flex-no-wrap whitespace-no-wrap;
-    @apply font-secondary text-sm antialiased leading-none;
+    display: flex;
+    vertical-align: middle;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+
+    color: var(--color-white);
+    font-size: 0.875rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1;
   }
   &__close {
-    @apply flex align-middle m-0 p-0 ml-2 -mr-1;
+    display: flex;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    margin-left: 0.5rem;
+    margin-right: -0.25rem;
     &:hover {
-      @apply opacity-50;
+      opacity: 0.5;
     }
   }
   &--disabled {
-    @apply opacity-75;
+    opacity: 0.75;
     .f-chip__close {
       &:hover {
-        @apply opacity-50;
+        opacity: 0.5;
       }
     }
   }
 }
 
-@import "../../assets/f-colors.scss";
+@import '../../assets/f-colors.scss';
 </style>

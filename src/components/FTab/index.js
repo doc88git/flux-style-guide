@@ -1,3 +1,3 @@
-import FTab from "./FTab";
+import FTab from './FTab'
 
-export { FTab };
+export { FTab }

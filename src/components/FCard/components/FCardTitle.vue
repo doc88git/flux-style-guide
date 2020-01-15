@@ -6,12 +6,16 @@
 
 <script>
 export default {
-  name: "f-card-title"
-};
+  name: 'f-card-title'
+}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .f-card-title {
-  @apply font-primary w-full font-bold mb-4 text-lg;
+  font-family: var(--font-primary);
+  font-weight: bold;
+  margin-bottom: 1rem;
+  width: 100%;
+  font-size: var(--text-xl);
 }
 </style>

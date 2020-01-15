@@ -17,16 +17,16 @@
 </template>
 
 <script>
-import MaskMixin from "../../mixins/mask.js";
+import MaskMixin from '../../mixins/mask.js'
 
 export default {
-  name: "f-input",
+  name: 'f-input',
   components: {},
   mixins: [MaskMixin],
   data() {
     return {
       innerValue: this.__getInitialMaskedValue()
-    };
+    }
   },
   props: {
     value: [String, Number],
@@ -35,62 +35,62 @@ export default {
     readonly: Boolean,
 
     name: {
-      default: "",
+      default: '',
       type: String,
       required: true
     },
     type: {
-      default: "text",
+      default: 'text',
       type: String,
       validator: val =>
         [
-          "text",
-          "password",
-          "tel",
-          "url",
-          "email",
-          "textarea",
-          "number"
+          'text',
+          'password',
+          'tel',
+          'url',
+          'email',
+          'textarea',
+          'number'
         ].includes(val)
     },
     color: {
       type: String,
-      default: "primary"
+      default: 'primary'
     }
   },
   computed: {
     componentIs() {
-      return this.isTextarea ? "textarea" : "input";
+      return this.isTextarea ? 'textarea' : 'input'
     },
     isTextarea() {
-      return this.type === "textarea";
+      return this.type === 'textarea'
     },
     classes() {
       return {
-        "f-input": true,
-        "f-input__textarea": this.type === "textarea",
-        "f-input--readonly": this.readonly,
-        "f-input--disabled": this.disabled
-      };
+        'f-input': true,
+        'f-input__textarea': this.type === 'textarea',
+        'f-input--readonly': this.readonly,
+        'f-input--disabled': this.disabled
+      }
     }
   },
   methods: {
     runMask(e) {
-      let value = e.target.value;
+      let value = e.target.value
 
-      if (this.mask && !this.isTextarea) return this.__updateMaskValue(value);
+      if (this.mask && !this.isTextarea) return this.__updateMaskValue(value)
 
-      this.__emitValue(value);
+      this.__emitValue(value)
     },
     __emitValue(value) {
-      this.$emit("input", value);
+      this.$emit('input', value)
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/f-variables";
+@import '../../assets/f-variables';
 .f-input {
   border-width: 1px;
   border-radius: 0.25rem;
@@ -119,10 +119,10 @@ export default {
     border-color: #f56565;
   }
   &--readonly {
-    color: #e2e8f0;
+    color: var(--color-gray-300);
   }
   &--disabled {
-    color: #e2e8f0;
+    color: var(--color-gray-300);
   }
 }
 </style>

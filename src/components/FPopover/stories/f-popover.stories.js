@@ -1,21 +1,21 @@
-import { storiesOf } from "@storybook/vue";
-import { select, boolean } from "@storybook/addon-knobs";
-import { FPopover } from "../index.js";
+import { storiesOf } from '@storybook/vue'
+import { select, boolean } from '@storybook/addon-knobs'
+import { FPopover } from '../index.js'
 
-storiesOf("Components|Popover", module)
-  .add("Default", () => ({
+storiesOf('Components|Popover', module)
+  .add('Default', () => ({
     components: { FPopover },
     data: () => ({}),
     props: {
       position: {
-        default: select("position", ["top", "bottom", "left", "right"], "top")
+        default: select('position', ['top', 'bottom', 'left', 'right'], 'top')
       },
       click: {
-        default: boolean("click", false)
+        default: boolean('click', false)
       }
     },
     template: `
-      <div class="p-10 w-full text-center">
+      <div style="padding: 40px; width: 100%; text-align: center;">
         <f-popover :position="position" :click="click" label="Button">
           <template v-slot:content>
             tooltip content
@@ -24,16 +24,16 @@ storiesOf("Components|Popover", module)
       </div>
     `
   }))
-  .add("Click", () => ({
+  .add('Click', () => ({
     components: { FPopover },
     data: () => ({}),
     props: {
       position: {
-        default: select("position", ["top", "bottom", "left", "right"], "top")
+        default: select('position', ['top', 'bottom', 'left', 'right'], 'top')
       }
     },
     template: `
-      <div class="p-10 w-full text-center">
+      <div style="padding: 40px; width: 100%; text-align: center;">
         <f-popover click :position="position" label="Button">
           <template v-slot:content>
             tooltip content
@@ -42,16 +42,16 @@ storiesOf("Components|Popover", module)
       </div>
     `
   }))
-  .add("All", () => ({
+  .add('All', () => ({
     components: { FPopover },
     data: () => ({}),
     props: {
       position: {
-        default: select("position", ["top", "bottom", "left", "right"], "top")
+        default: select('position', ['top', 'bottom', 'left', 'right'], 'top')
       }
     },
     template: `
-      <div class="p-10 w-full text-center">
+      <div style="padding: 40px; width: 100%; text-align: center;">
         <f-popover position="top" label="top">
           <template v-slot:content>
             tooltip on top
@@ -74,4 +74,4 @@ storiesOf("Components|Popover", module)
         </f-popover>
       </div>
     `
-  }));
+  }))

@@ -50,11 +50,11 @@
 </template>
 
 <script>
-import banner1 from "../../assets/images/u509_banner_1.png";
-import banner2 from "../../assets/images/bg-gradient_u9_banner_2.png";
-import banner3 from "../../assets/images/u510_banner_1.png";
-import banner4 from "../../assets/images/bg-gradient_u10_banner_2.png";
-import { setTimeout } from "timers";
+import banner1 from '../../assets/images/u509_banner_1.png'
+import banner2 from '../../assets/images/bg-gradient_u9_banner_2.png'
+import banner3 from '../../assets/images/u510_banner_1.png'
+import banner4 from '../../assets/images/bg-gradient_u10_banner_2.png'
+import { setTimeout } from 'timers'
 
 export default {
   data() {
@@ -62,27 +62,27 @@ export default {
       images: [
         {
           src: banner1,
-          classes: "",
+          classes: '',
           id: 0
         },
         {
           src: banner2,
-          classes: "",
+          classes: '',
           id: 1
         },
         {
           src: banner3,
-          classes: "",
+          classes: '',
           id: 2
         },
         {
           src: banner4,
-          classes: "",
+          classes: '',
           id: 3
         }
       ],
       activeBanner: 0
-    };
+    }
   },
   props: {
     bullet: Boolean,
@@ -90,31 +90,31 @@ export default {
   },
   computed: {
     isLastImage() {
-      return this.activeBanner < this.images.length - 1;
+      return this.activeBanner < this.images.length - 1
     },
     isFirstImage() {
-      return this.activeBanner > 0;
+      return this.activeBanner > 0
     },
     isSlider() {
-      return !this.bullet && !this.outSlider;
+      return !this.bullet && !this.outSlider
     },
     isSliderBullet() {
-      return this.bullet && !this.outSlider;
+      return this.bullet && !this.outSlider
     },
     isFirstArrow() {
-      return this.isLastImage && this.isSlider;
+      return this.isLastImage && this.isSlider
     },
     isLastArrow() {
-      return this.isFirstImage && this.isSlider;
+      return this.isFirstImage && this.isSlider
     }
   },
   mounted() {
-    this.handleActiveSlider(0);
+    this.handleActiveSlider(0)
   },
   methods: {
     handleActiveSlider(index) {
-      this.lastBanner = this.activeBanner;
-      this.activeBanner = index;
+      this.lastBanner = this.activeBanner
+      this.activeBanner = index
     },
 
     slideClass(classes, i) {
@@ -124,26 +124,26 @@ export default {
         { active: this.activeBanner === i },
         { after: this.activeBanner < i },
         { animation: this.activeBanner === i || this.lastBanner === i }
-      ];
+      ]
     },
 
     slideStyle(i) {
-      return `z-index: ${-i}`;
+      return `z-index: ${-i}`
     },
 
     next() {
-      this.handleActiveSlider(this.activeBanner + 1);
+      this.handleActiveSlider(this.activeBanner + 1)
       setTimeout(() => {
-        this.activeBanner + 1;
-        console.log("um de cada vez");
-      }, 1500);
+        this.activeBanner + 1
+        console.log('um de cada vez')
+      }, 1500)
     },
 
     prev() {
-      this.handleActiveSlider(this.activeBanner - 1);
+      this.handleActiveSlider(this.activeBanner - 1)
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

@@ -1,63 +1,63 @@
-import { storiesOf } from "@storybook/vue";
-import { text } from "@storybook/addon-knobs";
-import FTable from "../FTable.vue";
-import { FButton } from "../../FButton/index.js";
-import { FPagination } from "../../FPagination//index.js";
-import { FDropdown } from "../../FDropdown//index.js";
+import { storiesOf } from '@storybook/vue'
+import { text } from '@storybook/addon-knobs'
+import FTable from '../FTable.vue'
+import { FButton } from '../../FButton/index.js'
+import { FPagination } from '../../FPagination//index.js'
+import { FDropdown } from '../../FDropdown//index.js'
 
-import Users from "../../../mocks/userList.json";
+import Users from '../../../mocks/userList.json'
 
 const arrList = [
   {
-    label: "Aprovado",
-    value: "aprovado"
+    label: 'Aprovado',
+    value: 'aprovado'
   },
   {
-    label: "Aguardando conferência",
-    value: "aguardando"
+    label: 'Aguardando conferência',
+    value: 'aguardando'
   },
   {
-    label: "Pago",
-    value: "pago"
+    label: 'Pago',
+    value: 'pago'
   }
-];
+]
 
-storiesOf("Components|Table", module).add("Default", () => ({
+storiesOf('Components|Table', module).add('Default', () => ({
   components: { FTable, FButton, FPagination, FDropdown },
   data: () => ({
     list: arrList,
     caret: true,
-    position: "down",
-    type: "outlined"
+    position: 'down',
+    type: 'outlined'
   }),
   props: {
     sortBy: {
-      default: text("sortBy", "")
+      default: text('sortBy', '')
     },
     sortDirection: {
-      default: text("sortDirection", "asc")
+      default: text('sortDirection', 'asc')
     },
     data: {
       default: Users
     },
     header: {
       default: {
-        first_name: "Nome",
-        last_name: "Sobrenome",
-        title: "Título",
-        email: "Email",
-        gender: "Sexo",
-        phone_number: "Telefone",
-        birthdate: "Data de Nascimento",
-        "location.street": "Endereço",
-        "location.postcode": "CEP",
-        "location.city": "Cidade",
-        "location.state": "Estado"
+        first_name: 'Nome',
+        last_name: 'Sobrenome',
+        title: 'Título',
+        email: 'Email',
+        gender: 'Sexo',
+        phone_number: 'Telefone',
+        birthdate: 'Data de Nascimento',
+        'location.street': 'Endereço',
+        'location.postcode': 'CEP',
+        'location.city': 'Cidade',
+        'location.state': 'Estado'
       }
     }
   },
   template: `
-    <div class="p-8">
+    <div style="padding: 20px;">
       <f-table
         :sortBy="sortBy"
         :sortDirection="sortDirection"
@@ -79,4 +79,4 @@ storiesOf("Components|Table", module).add("Default", () => ({
         </template>
       </f-table>
     </div>`
-}));
+}))
