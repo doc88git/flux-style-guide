@@ -95,9 +95,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../assets/f-transitions';
-@import '../../assets/f-variables';
-
+@import '../../assets/f-variables.scss';
+@import '../../assets/f-transitions.scss';
 span.icon-widget {
   height: 100px;
   width: 10px;

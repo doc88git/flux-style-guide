@@ -90,7 +90,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../assets/f-variables';
 .f-input {
   border-width: 1px;
   border-radius: 0.25rem;

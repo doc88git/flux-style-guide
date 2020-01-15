@@ -229,6 +229,4 @@ export default {
     color: var(--color-black);
   }
 }
-
-@import '../../assets/f-colors.scss';
 </style>

@@ -206,7 +206,4 @@ export default {
     }
   }
 }
-
-@import '../../assets/f-transitions.scss';
-@import '../../assets/f-colors.scss';
 </style>

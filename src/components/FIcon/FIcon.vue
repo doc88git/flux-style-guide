@@ -69,6 +69,4 @@ export default {
     font-size: 1.25rem;
   }
 }
-
-@import '../../assets/f-colors.scss';
 </style>

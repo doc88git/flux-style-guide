@@ -12,15 +12,7 @@ module.exports = ({ config }) => {
     use: [
       'style-loader',
       'css-loader',
-      'postcss-loader',
-      {
-        loader: 'sass-loader',
-        options: {
-          data: `
-          @import "@/assets/f-variables.scss";
-          `
-        }
-      }
+      'sass-loader'
     ],
     include: path.resolve(__dirname, '../')
   })

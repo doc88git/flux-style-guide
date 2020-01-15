@@ -147,6 +147,4 @@ export default {
     padding-bottom: 1px;
   }
 }
-
-@import '../../assets/f-colors.scss';
 </style>

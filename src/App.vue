@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { FContainer } from '@/components/FContainer'
+import { FContainer } from '../src/components/FContainer'
 
 const styleGuideName = 'Flux Style Guide'
 export default {

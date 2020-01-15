@@ -156,6 +156,4 @@ export default {
   &--right {
   }
 }
-
-@import '../../assets/f-colors.scss';
 </style>

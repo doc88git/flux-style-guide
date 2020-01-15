@@ -14,45 +14,45 @@
 
 <script>
 export default {
-  name: "f-menu-button",
+  name: 'f-menu-button',
   data: () => ({
     isOpen: false,
-    arrowMenu: "",
-    time: ""
+    arrowMenu: '',
+    time: ''
   }),
   props: {
     color: {
       type: String,
-      default: "primary"
+      default: 'primary'
     }
   },
   computed: {
     btnStyle() {
-      return `color--${this.color}`;
+      return `color--${this.color}`
     }
   },
   methods: {
     main($event) {
-      this.isOpen = !this.isOpen;
-      this.setArrowMenu();
-      this.$emit("click", $event);
+      this.isOpen = !this.isOpen
+      this.setArrowMenu()
+      this.$emit('click', $event)
     },
     setArrowMenu() {
       if (this.isOpen) {
-        this.arrowMenu = "FMenuButton__container--open";
-        return;
+        this.arrowMenu = 'FMenuButton__container--open'
+        return
       }
-      this.arrowMenu = "FMenuButton__container--close";
-      this.reset();
+      this.arrowMenu = 'FMenuButton__container--close'
+      this.reset()
     },
     reset() {
-      clearTimeout(this.time);
+      clearTimeout(this.time)
       this.time = setTimeout(() => {
-        this.arrowMenu = "";
-      }, 300);
+        this.arrowMenu = ''
+      }, 300)
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -207,6 +207,4 @@ $timeTransition: 0.2s;
     width: $lastLineW;
   }
 }
-
-@import "../../assets/f-colors.scss";
 </style>
