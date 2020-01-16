@@ -26,6 +26,7 @@
               <f-icon
                 class="Fmenu-side__nav__ul__li__link--icon"
                 :name="menu.icon"
+                :color="iconColor"
                 size="xl"
                 type="outlined"
                 style="zoom: 1.5;"
@@ -185,6 +186,9 @@ span.icon-widget {
 
           &--icon {
             margin-left: 15px;
+            &:hover {
+              color: var(--color-primary-lighter);
+            }
           }
 
           &--selected {

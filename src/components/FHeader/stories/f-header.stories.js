@@ -18,10 +18,8 @@ storiesOf('Components|Header', module).add('Default', () => ({
           <f-menu-button />
         </template>
         <template v-slot:settings>
-          <div class="flex items-center justify-center">
             <f-widget></f-widget>
             <f-avatar></f-avatar>
-          </div>
         </template>
       </f-header>
     `

@@ -3,12 +3,12 @@
 
 html, body {
   font-size: var(--text-base);
-  color: var(--color-black);
+  color: var(--color-font-base);
   font-family: var(--font-secondary) 
 }
 
 h1, h2, h3, h4, h5, h6, button, th {
-  color: var(--color-dark);
+  color: var(--color-font-base);
   font-family: var(--font-primary) 
 }
 

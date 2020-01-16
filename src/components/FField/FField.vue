@@ -125,7 +125,7 @@ export default {
       display: block;
       letter-spacing: 0.025em;
       font-weight: 700;
-      color: var(--color-gray-700);
+      color: var(--color-font-base);
     }
     &__hint {
       display: block;
@@ -133,7 +133,7 @@ export default {
       font-size: var(--text-sm);
       margin-bottom: 0.5rem;
       margin-top: 0.5rem;
-      color: var(--color-gray);
+      color: var(--color-font-base);
     }
     &__error {
       display: block;

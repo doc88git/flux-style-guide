@@ -97,7 +97,7 @@ export default {
   padding-bottom: 0.5rem;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
-  color: #4a5568;
+  color: var(--color-font-base);
   line-height: 1.25;
   height: 2.5rem;
   display: inline;

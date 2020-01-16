@@ -31,7 +31,7 @@ $colors: gray red orange yellow green teal blue indigo purple pink;
 $colors-theme: (
   'primary': #805ad5,
   'primary-light': lighten(#805ad5, 5%),
-  'primary-lighter': lighten(#805ad5, 45%),
+  'primary-lighter': lighten(#805ad5, 20%),
   'primary-dark': darken(#805ad5, 5%),
   'secondary': #3182ce,
   'secondary-light': lighten(#3182ce, 5%),
@@ -42,6 +42,7 @@ $colors-theme: (
   'transparent': transparent,
   'black': #000,
   'white': #fff,
+  'font-base': #666666,
   'gray-100': '#f7fafc',
   'gray-200': '#edf2f7',
   'gray-300': '#e2e8f0',

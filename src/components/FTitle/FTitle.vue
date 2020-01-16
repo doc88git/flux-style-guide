@@ -36,7 +36,7 @@ export default {
   width: 100%;
   padding: 10px 0;
   margin-bottom: 10px;
-  color: var(--color-dark);
+  color: var(--color-font-base);
 
   &__wrapper {
     display: flex;
