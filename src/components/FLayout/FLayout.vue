@@ -105,6 +105,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../assets/f-variables.scss';
 .f-layout {
   display: flex;
   flex-direction: column;
@@ -120,7 +121,7 @@ export default {
       z-index: 90;
       height: calc(100vh - 70px);
 
-      @media screen and (max-width: var(--size-tablet)) {
+      @media screen and (max-width: map-get($sizes, 'tablet' )) {
         position: fixed;
       }
     }
@@ -131,7 +132,7 @@ export default {
       z-index: 10;
       padding: 10px 10px 10px 80px;
 
-      @media screen and (max-width: var(--size-tablet)) {
+      @media screen and (max-width: map-get($sizes, 'tablet' )) {
         padding: 1.25rem;
       }
 
