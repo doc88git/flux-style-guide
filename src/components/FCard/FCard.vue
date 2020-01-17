@@ -40,6 +40,8 @@ export default {
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
   width: 100%;
   .f-card__content {
+    display: flex;
+    flex-direction: column;
     padding: 1.5rem;
     height: 100%;
   }
