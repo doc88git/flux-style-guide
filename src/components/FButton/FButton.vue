@@ -118,8 +118,8 @@ export default {
 .btn {
   color: var(--color-primary);
   text-align: center;
-  padding: 0.25rem 0.75rem;
-  height: 3rem;
+  padding: 0.5rem 0.75rem;
+  height: fit-content;
   margin: 0.25rem;
   border-radius: 0.25rem;
   text-transform: uppercase;
@@ -151,14 +151,14 @@ export default {
   }
 
   &--small {
-    text-align: left;
+    text-align: center;
     padding: 0.25rem 1.25rem;
-    height: 2rem;
 
     * {
       font-size: var(--text-sm);
     }
   }
+
   &--bigger {
     font-size: 1rem;
     height: 4rem;
@@ -167,12 +167,14 @@ export default {
     margin: 0.25rem;
     width: auto;
   }
+
   &--bigger-x {
     padding: 0.5rem 1rem;
     margin: 0.25rem;
     height: 5rem;
     font-size: 1.25rem;
   }
+
   &--dense {
     padding: 0 0.25rem;
     margin: 0;
@@ -195,24 +197,24 @@ export default {
     align-items: center;
     align-content: center;
     width: 100%;
-    height: auto;
     &--center {
       justify-content: center;
     }
     &__icon {
       height: 100%;
+      display: flex;
       align-items: center;
       margin-right: 0.5rem;
-      line-height: 0;
       &--center {
         margin-right: 0;
       }
     }
     &__content {
       height: 100%;
+      text-align: center;
+      display: flex;
       align-items: center;
       width: 100%;
-      line-height: 0;
       letter-spacing: 1px;
     }
   }
