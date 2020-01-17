@@ -176,9 +176,8 @@ export default {
   }
 
   &--dense {
-    padding: 0 0.25rem;
+    padding: 0 0.5rem;
     margin: 0;
-    height: 1.5rem;
   }
 
   &--flat {
@@ -205,6 +204,7 @@ export default {
       display: flex;
       align-items: center;
       margin-right: 0.5rem;
+      padding: 0.5rem 0;
       &--center {
         margin-right: 0;
       }
