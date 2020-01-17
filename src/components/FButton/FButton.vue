@@ -7,6 +7,7 @@
     @click.stop="blur"
     @mouseover="mouseover"
     @mouseleave="mouseleave"
+    :disabled="disabled"
   >
     <div class="btn__inner" :class="[btnInnerCenter]">
       <div class="btn__inner__icon" :class="[btnCenter]" v-if="icon">
@@ -137,6 +138,11 @@ export default {
 
   &:active {
     outline: 0;
+  }
+
+  &:disabled {
+    background-color: var(--color-primary-lighter);
+    cursor: not-allowed;
   }
 
   &--noradius {
