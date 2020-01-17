@@ -47,7 +47,7 @@ storiesOf('Components|Alerts', module)
         default: text('color', 'primary', groupId)
       },
       textColor: {
-        default: text('textColor', '', groupId)
+        default: text('textColor', 'black', groupId)
       },
       title: {
         default: text('title', title, groupId)
@@ -59,12 +59,11 @@ storiesOf('Components|Alerts', module)
     template: `
     <div style="padding: 20px;">
       <f-alert
-        :color="color"
         :fill="fill"
-        :outline="outline"
-        :closable="closable"
         :color="color"
         :textColor="textColor"
+        :outline="outline"
+        :closable="closable"
         :title="title"
         :content="content" />
     </div>

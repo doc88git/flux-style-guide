@@ -154,6 +154,7 @@
     &--primary {
       color: var(--color-primary);
       border-color: var(--color-primary);
+      border-width: 1px;
       background-color: var(--color-transparent);
       &:hover {
         color: var(--color-primary-light);
