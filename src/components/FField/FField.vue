@@ -96,7 +96,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   &__marginal {
-    height: 4.5rem;
+    height: 4.25rem;
     align-items: flex-end;
     transition: color 0.36s cubic-bezier(0.4, 0, 0.2, 1);
   }
