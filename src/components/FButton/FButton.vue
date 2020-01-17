@@ -3,7 +3,7 @@
     class="btn"
     type="button"
     :class="[btnStyle]"
-    @click="$emit('click')"
+    @click="click"
     @click.stop="blur"
     @mouseover="mouseover"
     @mouseleave="mouseleave"
@@ -99,6 +99,9 @@ export default {
   methods: {
     blur(e) {
       e.target.blur()
+    },
+    click(e) {
+      this.$emit('click', e)
     },
     mouseover(e) {
       this.$emit('mouseover', e)
