@@ -12,8 +12,7 @@ export default {
 
 <style lang="scss" scoped>
 .f-card-body {
+  flex: 1;
   font-family: var(--font-secondary);
-  margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 </style>
