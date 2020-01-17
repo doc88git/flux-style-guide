@@ -7,6 +7,7 @@
     @click.stop="blur"
     @mouseover="mouseover"
     @mouseleave="mouseleave"
+    :disabled="disabled"
   >
     <div class="btn__inner" :class="[btnInnerCenter]">
       <div class="btn__inner__icon" :class="[btnCenter]" v-if="icon">
@@ -139,6 +140,11 @@ export default {
     outline: 0;
   }
 
+  &:disabled {
+    background-color: var(--color-primary-lighter);
+    cursor: not-allowed;
+  }
+
   &--noradius {
     border-radius: 0px;
   }
@@ -176,9 +182,8 @@ export default {
   }
 
   &--dense {
-    padding: 0 0.25rem;
+    padding: 0 0.5rem;
     margin: 0;
-    height: 1.5rem;
   }
 
   &--flat {
@@ -205,6 +210,7 @@ export default {
       display: flex;
       align-items: center;
       margin-right: 0.5rem;
+      padding: 0.5rem 0;
       &--center {
         margin-right: 0;
       }

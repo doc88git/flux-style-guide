@@ -30,7 +30,10 @@ export default {
   props: {
     label: String,
     value: [String, Number],
-    color: String,
+    color: {
+      type: String,
+      default: 'primary'
+    },
     textColor: String,
     icon: String,
     removable: Boolean,
@@ -82,7 +85,7 @@ export default {
   display: inline-flex;
   align-items: center;
   vertical-align: middle;
-  background-color: var(--color-primary);
+  // background-color: var(--color-secondary);
   color: var(--color-white);
   padding: 0.25rem 0.75rem;
   border-radius: 0.5rem;
