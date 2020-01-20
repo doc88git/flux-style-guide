@@ -49,13 +49,10 @@ export default {
   width: 100%;
   text-align: center;
   align-items: center;
-  box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
   top: 0;
   position: fixed;
   max-height: 70px;
-  -webkit-box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
-  -moz-box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
-  box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
+  box-shadow: var(--shadow-base);
   &__title {
     padding-right: 2.5rem;
     padding-left: 2.5rem;

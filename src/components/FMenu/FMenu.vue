@@ -140,9 +140,7 @@ span.icon-widget {
         top: 0;
         left: 0;
         @include transition(0.1s);
-        -webkit-box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
-        -moz-box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
-        box-shadow: 5px 2px 10px -4px rgba(0, 0, 0, 0.44);
+        box-shadow: var(--shadow-base);
       }
 
       &::-webkit-scrollbar {
