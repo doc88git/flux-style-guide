@@ -141,8 +141,8 @@ export default {
   }
 
   &:disabled {
-    background-color: var(--color-primary-lighter);
-    cursor: not-allowed;
+    opacity: 50%;
+    cursor: default;
   }
 
   &--noradius {
@@ -154,6 +154,7 @@ export default {
     padding-right: 1.25rem;
     padding-left: 1.25rem;
     background-color: var(--color-primary);
+    border: 1px solid var(--color-primary);
   }
 
   &--small {
@@ -187,6 +188,7 @@ export default {
   }
 
   &--flat {
+    background: transparent;
   }
 
   &--outline {
@@ -218,8 +220,6 @@ export default {
     &__content {
       height: 100%;
       text-align: center;
-      display: flex;
-      align-items: center;
       width: 100%;
       letter-spacing: 1px;
     }

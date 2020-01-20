@@ -78,23 +78,6 @@ export default {
   width: 100%;
   font-family: 'Roboto', -apple-system, 'BlinkMacSystemFont', sans-serif;
 
-  ::-webkit-input-placeholder {
-    /* Chrome/Opera/Safari */
-    color: black;
-  }
-  ::-moz-placeholder {
-    /* Firefox 19+ */
-    color: black;
-  }
-  :-ms-input-placeholder {
-    /* IE 10+ */
-    color: black;
-  }
-  :-moz-placeholder {
-    /* Firefox 18- */
-    color: black;
-  }
-
   .mx-calendar {
     * {
       color: var(--color-gray-700);
@@ -102,11 +85,8 @@ export default {
   }
 
   .mx-input {
-    border-color: #e2e8f0;
     box-shadow: none;
-    color: black;
     cursor: pointer;
-    height: 37px;
   }
 
   .mx-calendar-content {

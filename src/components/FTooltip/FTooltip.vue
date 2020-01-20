@@ -185,7 +185,7 @@ export default {
       }
       &--right {
         top: 50%;
-        right: 100%;
+        right: 99%;
         transform: translate(4px, -50%) rotate(90deg);
       }
       &--left {

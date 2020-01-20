@@ -10,6 +10,11 @@
     --text-#{$name}: #{$size};
   }
 
+  // custom shadow
+  @each $name, $shadow in $shadows {
+    --shadow-#{$name}: #{$shadow};
+  }
+
   // custom screen sizes
   @each $name, $size in $sizes {
     --size-#{$name}: #{$size};

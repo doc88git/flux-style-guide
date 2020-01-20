@@ -53,6 +53,10 @@ export default {
   display: none;
   appearance: none;
 
+  &__label {
+    margin-left: 5px;
+  }
+
   &__wrapper {
     display: flex;
     align-items: center;

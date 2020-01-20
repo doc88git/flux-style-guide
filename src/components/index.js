@@ -2,6 +2,7 @@ import * as FIcon from './FIcon/index.js'
 import * as FContainer from './FContainer/index.js'
 import * as FButton from './FButton/index.js'
 import * as Avatar from './Avatar/index.js'
+import * as Alert from './Alert/index.js'
 import * as FField from './FField/index.js'
 import * as FLayout from './FLayout/index.js'
 import * as FList from './FList/index.js'
@@ -30,6 +31,7 @@ import * as FToggle from './FToggle/index.js'
 import * as FUpload from './FUpload/index.js'
 
 const components = [
+  Alert,
   FIcon,
   FContainer,
   FButton,
