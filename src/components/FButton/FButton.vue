@@ -141,8 +141,15 @@ export default {
   }
 
   &:disabled {
-    background-color: var(--color-primary-lighter);
-    cursor: not-allowed;
+    // background-color: var(--color-primary-lighter);
+    // cursor: not-allowed;
+  }
+
+  &:disabled {
+    :hover {
+      // background-color: red;
+      color: inherit;
+    }
   }
 
   &--noradius {
@@ -187,6 +194,7 @@ export default {
   }
 
   &--flat {
+    background: transparent;
   }
 
   &--outline {
