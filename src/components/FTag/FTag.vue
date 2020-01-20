@@ -111,19 +111,25 @@ export default {
 
 <style lang="scss" scoped>
 .FTag {
+  // font-size: 1em;
+  //
   &__fieldset {
     display: flex;
     margin-right: 20px;
     white-space: nowrap;
   }
 
+  // &__text {
+  //   font-size: 1em;
+  // }
+  //
   &__legend {
     visibility: hidden;
     padding-right: 4px;
     padding-left: 4px;
     padding-bottom: 0;
     position: absolute;
-    transform: translateY(-10px);
+    transform: translateY(-6px);
     margin-left: 0;
     font-size: var(--text-xs);
     z-index: 2;
@@ -132,6 +138,7 @@ export default {
   &__slot-div {
     align-items: center;
     border: 1px solid;
+    // font-size: 1em;
     padding-right: 5px;
     padding-left: 5px;
     border-radius: 5px;

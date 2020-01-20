@@ -1,6 +1,6 @@
 <template>
   <div class="f-tooltip">
-    <div @click="toggleVisible" @mouseover="show" @mouseleave="hide">
+    <div @click="toggleVisible" @mouseover="hide" @mouseleave="show">
       <slot>
         <f-button @click="toggleVisible" v-bind="[$props, $attrs]"
           >{{ label }}
@@ -185,7 +185,7 @@ export default {
       }
       &--right {
         top: 50%;
-        right: 100%;
+        right: 99%;
         transform: translate(4px, -50%) rotate(90deg);
       }
       &--left {

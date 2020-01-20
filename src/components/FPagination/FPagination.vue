@@ -2,48 +2,53 @@
   <section class="f-pagination">
     <ul>
       <li>
-        <f-button flat label="Primeira" @click="jumpTo('first')" color="gray" />
+        <button :disabled="localCurrentPage == 1" @click="jumpTo('first')">
+          Primeira
+        </button>
       </li>
       <li>
-        <f-button
-          flat
-          icon="keyboard_arrow_left"
-          @click="jumpTo('prev')"
-          color="gray"
-          :disabled="localCurrentPage !== 1"
-        />
+        <button @click="jumpTo('prev')" :disabled="localCurrentPage == 1">
+          <!-- <f-icon class="f-pagination__icon" name="keyboard_arrow_left" /> -->
+          <
+        </button>
       </li>
       <li v-for="i in show" :key="i">
-        <f-button
-          flat
-          :color="localCurrentPage === i ? 'primary' : 'gray'"
-          :label="String(i)"
+        <button
+          :class="{ selected: localCurrentPage === i }"
           @click="setCurrentPage(i)"
-        />
+        >
+          {{ i }}
+        </button>
       </li>
       <li>
-        <f-button
-          flat
-          icon="keyboard_arrow_right"
+        <button
           @click="jumpTo('next')"
-          color="gray"
-          :disabled="localCurrentPage !== totalPages"
-        />
+          :disabled="localCurrentPage == totalPages"
+        >
+          <!-- <f-icon class="f-pagination__icon" name="keyboard_arrow_right" /> -->
+          >
+        </button>
       </li>
       <li>
-        <f-button flat label="Última" @click="jumpTo('last')" color="gray" />
+        <button
+          :disabled="localCurrentPage == totalPages"
+          @click="jumpTo('last')"
+        >
+          Última
+        </button>
       </li>
     </ul>
+    {{ localCurrentPage }}
   </section>
 </template>
 
 <script>
-import { FButton } from '../FButton'
+import { FIcon } from '../FIcon'
 
 export default {
   name: 'f-pagination',
   components: {
-    FButton
+    FIcon
   },
   props: {
     currentPage: {
@@ -65,6 +70,7 @@ export default {
   },
   data: () => ({
     localCurrentPage: 0
+    // lastPage: this.totalPages.length - 1
   }),
   computed: {
     totalPages() {
@@ -97,6 +103,7 @@ export default {
   },
   mounted() {
     this.localCurrentPage = parseInt(this.currentPage)
+    this.lastPage = this.totalPages.length - 1
   },
   methods: {
     setCurrentPage(value) {
@@ -142,6 +149,10 @@ export default {
 <style lang="scss" scoped>
 .f-pagination {
   user-select: none;
+
+  &__icon {
+    margin: auto;
+  }
   ul,
   li {
     display: inline-block;
@@ -158,8 +169,22 @@ export default {
         text-transform: capitalize;
         padding: 0;
         text-align: center;
-        height: 1.5rem;
         min-width: 35px;
+        outline: none;
+        color: var(--color-gray);
+
+        &.selected {
+          color: var(--color-primary);
+        }
+
+        &:hover {
+          color: var(--color-primary-light);
+        }
+
+        &:disabled {
+          opacity: 50%;
+          cursor: default;
+        }
       }
     }
   }

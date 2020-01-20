@@ -141,14 +141,9 @@ export default {
   }
 
   &:disabled {
-    // background-color: var(--color-primary-lighter);
-    // cursor: not-allowed;
-  }
-
-  &:disabled {
+    opacity: 50%;
     :hover {
-      // background-color: red;
-      color: inherit;
+      cursor: default;
     }
   }
 
@@ -226,8 +221,6 @@ export default {
     &__content {
       height: 100%;
       text-align: center;
-      display: flex;
-      align-items: center;
       width: 100%;
       letter-spacing: 1px;
     }
