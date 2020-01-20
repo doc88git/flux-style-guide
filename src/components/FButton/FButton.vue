@@ -142,9 +142,7 @@ export default {
 
   &:disabled {
     opacity: 50%;
-    :hover {
-      cursor: default;
-    }
+    cursor: default;
   }
 
   &--noradius {
@@ -156,6 +154,7 @@ export default {
     padding-right: 1.25rem;
     padding-left: 1.25rem;
     background-color: var(--color-primary);
+    border: 1px solid var(--color-primary);
   }
 
   &--small {
