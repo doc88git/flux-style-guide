@@ -1,6 +1,6 @@
 <template>
   <div class="f-tooltip">
-    <div @click="toggleVisible" @mouseover="hide" @mouseleave="show">
+    <div @click="toggleVisible" @mouseover="show" @mouseleave="hide">
       <slot>
         <f-button @click="toggleVisible" v-bind="[$props, $attrs]"
           >{{ label }}
