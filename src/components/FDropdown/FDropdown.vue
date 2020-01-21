@@ -237,6 +237,7 @@ export default {
   position: relative;
   max-width: 100%;
   min-width: 200px;
+  height: 100%;
   &:focus {
     box-shadow: none;
     outline: 0;
@@ -254,6 +255,8 @@ export default {
     max-width: 100%;
     position: relative;
     z-index: 1;
+    height: 100%;
+    align-items: center;
     &__content {
       overflow: hidden;
       text-overflow: ellipsis;

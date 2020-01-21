@@ -99,7 +99,7 @@ export default {
   padding-right: 0.75rem;
   color: var(--color-font-base);
   line-height: 1.25;
-  height: 2.5rem;
+  height: 100%;
   display: inline;
   width: 100%;
 

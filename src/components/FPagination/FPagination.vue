@@ -8,7 +8,6 @@
       </li>
       <li>
         <button @click="jumpTo('prev')" :disabled="localCurrentPage == 1">
-          <!-- <f-icon class="f-pagination__icon" name="keyboard_arrow_left" /> -->
           <
         </button>
       </li>
@@ -25,7 +24,6 @@
           @click="jumpTo('next')"
           :disabled="localCurrentPage == totalPages"
         >
-          <!-- <f-icon class="f-pagination__icon" name="keyboard_arrow_right" /> -->
           >
         </button>
       </li>
@@ -38,18 +36,12 @@
         </button>
       </li>
     </ul>
-    {{ localCurrentPage }}
   </section>
 </template>
 
 <script>
-import { FIcon } from '../FIcon'
-
 export default {
   name: 'f-pagination',
-  components: {
-    FIcon
-  },
   props: {
     currentPage: {
       type: Number,
@@ -70,7 +62,6 @@ export default {
   },
   data: () => ({
     localCurrentPage: 0
-    // lastPage: this.totalPages.length - 1
   }),
   computed: {
     totalPages() {
