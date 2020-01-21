@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue'
-import { text } from '@storybook/addon-knobs'
+import { text, boolean } from '@storybook/addon-knobs'
 import FButton from '../FButton.vue'
 
 const groupId = 'BUTTON-OPTIONS-ID1'
@@ -26,7 +26,7 @@ storiesOf('Components|Button', module)
           default: text('label', 'Button', groupId)
         },
         disabled: {
-          default: false
+          default: boolean('disable', false, groupId)
         },
         icon: {
           default: text('icon', '', groupId)
