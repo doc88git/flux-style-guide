@@ -6,7 +6,7 @@
     @mouseleave="$emit('mouseleave', { id, e: $event })"
   >
     <div class="f-alert__close" v-if="closable">
-      <f-button flat dense icon="close" :color="closeColor" @click="close" />
+      <f-button flat dense icon="close" :color="textColor" @click="close" />
     </div>
     <div class="f-alert__header" v-if="hasTitle">
       <slot name="title">{{ title }}</slot>
@@ -30,7 +30,10 @@ export default {
     content: {
       type: String
     },
-    color: String,
+    color: {
+      type: String,
+      default: 'primary'
+    },
     textColor: String,
     fill: Boolean,
     outline: Boolean,
@@ -97,18 +100,16 @@ export default {
   border-radius: 0.5rem;
   margin-right: auto;
   margin-left: auto;
-  background-color: var(--color-white);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
   margin-bottom: 0.5rem;
   display: flex;
   flex-direction: column;
-  color: var(--color-gray-700);
   width: 350px;
 
   &__close {
     position: absolute;
-    top: 6px;
+    top: 0;
     right: 5px;
   }
 
@@ -136,6 +137,8 @@ export default {
     border-width: 1px;
     border-style: solid;
     border-color: var(--color-gray-200);
+    background-color: var(--color-white);
+    color: var(--color-gray-700);
   }
 
   &--fill {

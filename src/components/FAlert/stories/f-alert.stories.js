@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue'
-import { text, boolean } from '@storybook/addon-knobs'
+import { text, boolean, select } from '@storybook/addon-knobs'
 import FAlert from '../FAlert.vue'
 import FAlertController from '../FAlertController.vue'
 
@@ -8,13 +8,26 @@ const title = 'Contrary to popular belief'
 const content =
   'There are many variations of passages of Lorem Ipsum available, but the majority.'
 
+const positionOptions = {
+  topCenter: 'top-center',
+  topRight: 'top-right',
+  topLeft: 'top-left',
+  bottomCenter: 'bottom-center',
+  bottomRight: 'bottom-right',
+  bottomLeft: 'bottom-left'
+}
+
 storiesOf('Components|Alerts', module)
   .add('Controller', () => ({
     components: { FAlertController },
     data: () => ({
       alerts: []
     }),
-    props: {},
+    props: {
+      position: {
+        default: select('position', positionOptions, 'top-center', groupId)
+      }
+    },
     methods: {
       addAlert() {
         this.$refs.alertController.add({
@@ -25,7 +38,7 @@ storiesOf('Components|Alerts', module)
     },
     template: `
     <div style="padding: 20px;">
-      <FAlertController ref="alertController" :alerts="alerts" :timeout="5" />
+      <FAlertController ref="alertController" :position="position" :alerts="alerts" :timeout="5" />
       <button @click="addAlert">Add +</button>
     </div>
   `
@@ -47,7 +60,7 @@ storiesOf('Components|Alerts', module)
         default: text('color', 'primary', groupId)
       },
       textColor: {
-        default: text('textColor', 'black', groupId)
+        default: text('textColor', 'white', groupId)
       },
       title: {
         default: text('title', title, groupId)

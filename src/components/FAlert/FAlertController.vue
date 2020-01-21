@@ -21,6 +21,19 @@ export default {
     timeout: {
       type: Number,
       default: 10
+    },
+    position: {
+      type: String,
+      default: 'top-center',
+      validator: v =>
+        [
+          'top-left',
+          'top-center',
+          'top-right',
+          'bottom-left',
+          'bottom-center',
+          'bottom-right'
+        ].includes(v)
     }
   },
   mounted() {
@@ -83,13 +96,13 @@ export default {
   },
   render(h) {
     const dataObject = {
-      class: ['f-alert-controller'],
-      style: {
-        top: '15px',
-        width: `${this.width * 0.3}px`,
-        left: '50%',
-        transform: `translateX(-${(this.width * 0.3) / 2}px)`
-      }
+      class: ['f-alert-controller', `f-alert-controller--${this.position}`]
+      // style: {
+      //   top: '15px',
+      //   width: `${this.width * 0.3}px`,
+      //   left: '50%',
+      //   transform: `translateX(-${(this.width * 0.3) / 2}px)`
+      // }
     }
 
     const alert = this.list.map((item, index) => {
@@ -159,10 +172,37 @@ export default {
 
 <style lang="scss" scoped>
 .f-alert-controller {
-  position: absolute;
+  position: fixed;
   &-transition {
     display: flex;
     flex-direction: column-reverse;
+  }
+
+  &--top-left {
+    left: 100px;
+  }
+
+  &--top-center {
+    right: calc(50% - 175px);
+  }
+
+  &--top-right {
+    right: 30px;
+  }
+
+  &--bottom-left {
+    left: 100px;
+    bottom: 20px;
+  }
+
+  &--bottom-center {
+    right: calc(50% - 175px);
+    bottom: 20px;
+  }
+
+  &--bottom-right {
+    right: 30px;
+    bottom: 20px;
   }
 }
 
