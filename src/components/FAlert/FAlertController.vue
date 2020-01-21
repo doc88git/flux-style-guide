@@ -167,6 +167,7 @@ export default {
 <style lang="scss" scoped>
 .f-alert-controller {
   position: fixed;
+  z-index: 5;
   &-transition {
     display: flex;
     flex-direction: column-reverse;
