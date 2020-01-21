@@ -117,7 +117,6 @@ export default {
 
 <style lang="scss">
 .btn {
-  color: var(--color-primary);
   text-align: center;
   padding: 0.5rem 0.75rem;
   height: fit-content;
@@ -192,6 +191,7 @@ export default {
   }
 
   &--outline {
+    color: var(--color-primary);
     border: 1px solid;
     border-radius: 0.25rem;
     padding-left: 1.25rem;
