@@ -6,7 +6,7 @@
     @mouseleave="$emit('mouseleave', { id, e: $event })"
   >
     <div class="f-alert__close" v-if="closable">
-      <f-button flat dense icon="close" :color="textColor" @click="close" />
+      <f-button flat dense icon="close" @click="close" />
     </div>
     <div class="f-alert__header" v-if="hasTitle">
       <slot name="title">{{ title }}</slot>
@@ -32,26 +32,14 @@ export default {
     },
     color: {
       type: String,
-      default: 'primary'
+      default: ''
     },
-    textColor: String,
     fill: Boolean,
-    outline: Boolean,
     closable: Boolean,
     time: Number,
     id: [String, Number]
   },
   computed: {
-    closeColor() {
-      // default
-      if (!this.outline && !this.fill) return this.color
-      // fill
-      if (this.fill) return 'white'
-      // outline
-      if (this.outline) return this.color
-
-      return 'primary'
-    },
     hasTitle() {
       return this.$slots.title || !!this.title
     },
@@ -59,26 +47,14 @@ export default {
       return this.$slots.content || !!this.content
     },
     alertStyle() {
-      let btnDefault = {
-        ['f-alert--default']: !this.outline && !this.fill,
-        [`color--text--${this.color}`]: !this.outline && !this.fill
-      }
-
       let btnFill = {
         ['f-alert--fill']: this.fill === true,
-        [`color--default--${this.color}`]: !!this.color && this.fill
-      }
-
-      let btnOutline = {
-        ['f-alert--outline']: this.outline === true,
-        [`color--outline--${this.color}`]: !!this.color && this.outline
+        [`color--default--${this.color}`]: this.fill === true
       }
 
       return {
-        ...btnDefault,
         ...btnFill,
-        ...btnOutline,
-        [`color--text--${this.textColor}`]: !!this.textColor
+        [`color--outline--${this.color}`]: true
       }
     }
   },
@@ -95,17 +71,21 @@ export default {
 .f-alert {
   position: relative;
   max-width: 100%;
-  padding: 0.5rem;
+  padding: 0.75rem;
   white-space: normal;
   border-radius: 0.5rem;
   margin-right: auto;
   margin-left: auto;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-base);
   margin-bottom: 0.5rem;
   display: flex;
   flex-direction: column;
   width: 350px;
+  border: 1px solid;
+
+  &--fill {
+    color: var(--color-white);
+  }
 
   &__close {
     position: absolute;
@@ -130,33 +110,6 @@ export default {
   &__separator {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
-  }
-
-  &--default {
-    border-radius: 0.25rem;
-    border-width: 1px;
-    border-style: solid;
-    border-color: var(--color-gray-200);
-    background-color: var(--color-white);
-    color: var(--color-gray-700);
-  }
-
-  &--fill {
-  }
-
-  &--outline {
-    border-radius: 0.25rem;
-  }
-
-  &--top {
-  }
-  &--buttom {
-  }
-  &--center {
-  }
-  &--left {
-  }
-  &--right {
   }
 }
 </style>

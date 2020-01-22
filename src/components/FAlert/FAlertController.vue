@@ -14,10 +14,7 @@ export default {
   }),
   props: {
     fill: Boolean,
-    outline: Boolean,
     closable: Boolean,
-    color: String,
-    textColor: String,
     timeout: {
       type: Number,
       default: 10
@@ -71,9 +68,37 @@ export default {
     getTime() {
       return Math.floor(Date.now() / 1000)
     },
-    add(opts) {
+    success(opts) {
       const alert = {
         ...opts,
+        color: 'green',
+        id: uid(),
+        time: this.getTime()
+      }
+      this.list.push(alert)
+    },
+    warning(opts) {
+      const alert = {
+        ...opts,
+        color: 'yellow',
+        id: uid(),
+        time: this.getTime()
+      }
+      this.list.push(alert)
+    },
+    info(opts) {
+      const alert = {
+        ...opts,
+        color: 'blue',
+        id: uid(),
+        time: this.getTime()
+      }
+      this.list.push(alert)
+    },
+    danger(opts) {
+      const alert = {
+        ...opts,
+        color: 'red',
         id: uid(),
         time: this.getTime()
       }
@@ -101,8 +126,8 @@ export default {
 
     const alert = this.list.map((item, index) => {
       let props = {
-        type: 'fill',
-        color: 'primary'
+        fill: this.fill,
+        textColor: 'white'
       }
 
       if (typeof item === 'string') {
@@ -140,8 +165,6 @@ export default {
         props: {
           ...props,
           closable: true,
-          fill: props.type === 'fill',
-          outline: props.type === 'outline',
           id: item.id,
           time: item.time
         }

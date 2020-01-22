@@ -26,11 +26,32 @@ storiesOf('Components|Alerts', module)
     props: {
       position: {
         default: select('position', positionOptions, 'top-center', groupId)
+      },
+      fill: {
+        default: boolean('fill', false, groupId)
       }
     },
     methods: {
-      addAlert() {
-        this.$refs.alertController.add({
+      addAlertSuccess() {
+        this.$refs.alertController.success({
+          title: 'Sou um título',
+          content: `Um conteúdo pontual: ${new Date().toISOString()}`
+        })
+      },
+      addAlertWarning() {
+        this.$refs.alertController.warning({
+          title: 'Sou um título',
+          content: `Um conteúdo pontual: ${new Date().toISOString()}`
+        })
+      },
+      addAlertInfo() {
+        this.$refs.alertController.info({
+          title: 'Sou um título',
+          content: `Um conteúdo pontual: ${new Date().toISOString()}`
+        })
+      },
+      addAlertDanger() {
+        this.$refs.alertController.danger({
           title: 'Sou um título',
           content: `Um conteúdo pontual: ${new Date().toISOString()}`
         })
@@ -38,8 +59,14 @@ storiesOf('Components|Alerts', module)
     },
     template: `
     <div style="padding: 20px;">
-      <FAlertController ref="alertController" :position="position" :alerts="alerts" :timeout="5" />
-      <button @click="addAlert">Add +</button>
+      <FAlertController ref="alertController" :position="position" :fill="fill" :alerts="alerts" :timeout="5" />
+      <button @click="addAlertSuccess">Add Success+</button>
+      <br/>
+      <button @click="addAlertWarning">Add Warning+</button>
+      <br/>
+      <button @click="addAlertInfo">Add Info+</button>
+      <br/>
+      <button @click="addAlertDanger">Add Danger+</button>
     </div>
   `
   }))
@@ -50,17 +77,11 @@ storiesOf('Components|Alerts', module)
       fill: {
         default: boolean('fill', false, groupId)
       },
-      outline: {
-        default: boolean('outline', false, groupId)
-      },
       closable: {
         default: boolean('closable', false, groupId)
       },
       color: {
-        default: text('color', 'primary', groupId)
-      },
-      textColor: {
-        default: text('textColor', 'white', groupId)
+        default: text('color', 'green', groupId)
       },
       title: {
         default: text('title', title, groupId)
@@ -74,8 +95,6 @@ storiesOf('Components|Alerts', module)
       <f-alert
         :fill="fill"
         :color="color"
-        :textColor="textColor"
-        :outline="outline"
         :closable="closable"
         :title="title"
         :content="content" />
