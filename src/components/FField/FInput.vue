@@ -58,6 +58,18 @@ export default {
       default: 'primary'
     }
   },
+  watch: {
+    value: {
+      handler(newValue, oldValue) {
+        if (
+          newValue !== oldValue &&
+          (newValue === '' || (newValue === null && this.$refs.input))
+        ) {
+          this.$refs.input.value = newValue
+        }
+      }
+    }
+  },
   computed: {
     componentIs() {
       return this.isTextarea ? 'textarea' : 'input'
