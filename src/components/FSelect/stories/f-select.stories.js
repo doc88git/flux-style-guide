@@ -37,7 +37,6 @@ storiesOf('Form|Select', module)
         :options="options"
         :type="type"
         v-model="value" />
-      {{ value}}
     </div>
   `
   }))
