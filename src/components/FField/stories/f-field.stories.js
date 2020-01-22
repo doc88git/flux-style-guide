@@ -80,6 +80,9 @@ storiesOf('Form|Field', module)
             :name="name"
             v-model="value" />
         </f-field>
+        <span>Valor: {{ value }}</span>
+        <br/>
+        <button @click="value = ''">Limpa</button>
       </div>
       `
     }),
@@ -381,7 +384,7 @@ storiesOf('Form|Field', module)
         }
       },
       template: `
-        <div style="padding: 20px;" style="width: 400px">
+        <div style="padding: 20px;">
           <f-field label="Name" hint="Name is required">
             <f-input
               placeholder="Your name here"

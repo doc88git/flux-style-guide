@@ -58,6 +58,16 @@ export default {
       default: 'primary'
     }
   },
+  watch: {
+    value: {
+      handler(newValue, oldValue) {
+        if (newValue !== oldValue && (newValue === '' || newValue === null)) {
+          this.innerValue = this.__getInitialMaskedValue()
+        }
+      },
+      immediate: true
+    }
+  },
   computed: {
     componentIs() {
       return this.isTextarea ? 'textarea' : 'input'
