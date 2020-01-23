@@ -85,6 +85,7 @@ export default {
 
   &--fill {
     color: var(--color-white);
+    border-color: transparent;
   }
 
   &__close {
