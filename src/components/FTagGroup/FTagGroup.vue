@@ -22,10 +22,10 @@
 </template>
 
 <script>
-import { FTag } from "../FTag";
+import { FTag } from '../FTag'
 
 export default {
-  name: "FTagGroup",
+  name: 'FTagGroup',
   components: { FTag },
   data: () => ({
     showLegend: false
@@ -38,10 +38,10 @@ export default {
   },
   methods: {
     setShowLegend(bool) {
-      this.showLegend = bool;
+      this.showLegend = bool
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -49,7 +49,6 @@ export default {
   display: flex;
   align-items: center;
   min-height: 57px;
-  min-width: 700px;
   overflow: auto;
   &::-webkit-scrollbar {
     height: 6px;
@@ -66,7 +65,7 @@ export default {
   .FTag {
     position: relative;
     &:before {
-      content: "";
+      content: '';
       width: 20px;
       height: 1px;
       background-color: #c1c1c1;
