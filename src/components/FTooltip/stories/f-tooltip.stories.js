@@ -34,7 +34,7 @@ storiesOf('Components|Tooltip', module)
     },
     template: `
       <div style="padding: 40px; width: 100%; text-align: center;">
-        <f-tooltip click :position="position" label="Button">
+        <f-tooltip showEvent="click" hideEvent="blur" :position="position" label="Button">
           <template v-slot:content>
             tooltip content
           </template>

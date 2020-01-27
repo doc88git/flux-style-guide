@@ -1,6 +1,11 @@
 <template>
   <div class="f-tooltip">
-    <div @click="toggleVisible" @mouseover="show" @mouseleave="hide">
+    <div
+      @click="toggleVisible"
+      v-click-outside="hide"
+      @[showEvent]="show"
+      @[hideEvent]="hide"
+    >
       <slot>
         <f-button @click="toggleVisible" v-bind="[$props, $attrs]"
           >{{ label }}
@@ -43,7 +48,6 @@ export default {
       default: 'default',
       validator: val => ['default', 'secondary'].includes(val)
     },
-    click: Boolean,
     disabled: Boolean,
     bgColor: {
       type: String,
@@ -52,6 +56,18 @@ export default {
     textColor: {
       type: String,
       default: 'white'
+    },
+    clickOutside: {
+      type: Boolean,
+      default: false
+    },
+    showEvent: {
+      type: String,
+      default: 'mouseover'
+    },
+    hideEvent: {
+      type: String,
+      default: 'mouseleave'
     }
   },
   computed: {
@@ -78,13 +94,18 @@ export default {
   },
   methods: {
     toggleVisible() {
-      if (this.click) this.isVisible = !this.isVisible
+      this.isVisible = !this.isVisible
     },
     show() {
-      if (!this.click) this.isVisible = true
+      this.isVisible = true
     },
     hide() {
-      if (!this.click) this.isVisible = false
+      console.log('hide outside')
+      this.isVisible = false
+    },
+    closeOnClickOut() {
+      console.log('clickOut')
+      this.toggleVisible()
     }
   }
 }
