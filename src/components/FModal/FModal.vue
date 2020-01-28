@@ -5,7 +5,7 @@
         <f-image v-if="headerBg" rounded-t :src="headerBg" />
       </slot>
       <slot name="content">
-        <main class="f-modal__body">
+        <main class="f-modal__body" v-click-outside="closeModal">
           <slot></slot>
         </main>
       </slot>
@@ -14,17 +14,29 @@
 </template>
 
 <script>
-import FImage from "../FImage/FImage";
+import FImage from '../FImage/FImage'
 
 export default {
-  name: "f-modal",
+  name: 'f-modal',
+  data: () => ({
+    show: false
+  }),
+  mounted() {
+    console.log('gdfgsdt')
+    this.show = true
+  },
   components: {
     FImage
   },
   props: {
     headerBg: String
+  },
+  methods: {
+    closeModal() {
+      if (this.show) this.$emit('closeModal')
+    }
   }
-};
+}
 </script>
 
 <style lang="scss">
