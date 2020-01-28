@@ -16,7 +16,7 @@ storiesOf('Components|Tooltip', module)
     },
     template: `
       <div style="padding: 40px; width: 100%; text-align: center;">
-        <f-tooltip :position="position" :click="click" label="Button">
+        <f-tooltip :position="position" label="Button">
           <template v-slot:content>
             tooltip content
           </template>

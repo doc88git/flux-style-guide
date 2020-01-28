@@ -1,11 +1,11 @@
-import { storiesOf } from "@storybook/vue";
-import { FButton } from "@/components/FButton";
-import { FModal } from "@/components/FModal";
-import { FSeparator } from "@/components/FSeparator";
-import { FCard, FCardActions, FCardBody, FCardTitle } from "@/components/FCard";
+import { storiesOf } from '@storybook/vue'
+import { FButton } from '@/components/FButton'
+import { FModal } from '@/components/FModal'
+import { FSeparator } from '@/components/FSeparator'
+import { FCard, FCardActions, FCardBody, FCardTitle } from '@/components/FCard'
 
-storiesOf("Components|Modal", module).add(
-  "Default",
+storiesOf('Components|Modal', module).add(
+  'Default',
   () => ({
     data: () => ({
       modal: false
@@ -21,12 +21,12 @@ storiesOf("Components|Modal", module).add(
     },
     methods: {
       toggleModal() {
-        this.modal = !this.modal;
+        this.modal = !this.modal
       }
     },
     template: `
       <div>
-        <button @click="toggleModal">Exibir modal</button>
+        <button @click="toggleModal" v-click-outside="toggleModal">Exibir modal</button>
         <f-modal v-if="modal">
           <f-card>
             <f-card-title>
@@ -58,4 +58,4 @@ storiesOf("Components|Modal", module).add(
         `
     }
   }
-);
+)
