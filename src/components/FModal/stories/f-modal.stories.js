@@ -26,8 +26,8 @@ storiesOf('Components|Modal', module).add(
     },
     template: `
       <div>
-        <button @click="toggleModal">Exibir modal</button>
-        <f-modal v-if="modal" @closeModal="toggleModal">
+        <button @click="toggleModal" v-click-outside="toggleModal">Exibir modal</button>
+        <f-modal v-if="modal>
           <f-card>
             <f-card-title>
             Where does it come from?
