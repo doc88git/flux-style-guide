@@ -1,18 +1,12 @@
 <template>
   <div class="f-tooltip">
-    <div @click="toggleVisible" @mouseover="show" @mouseleave="hide">
+    <div @[showEvent].capture="show" @[hideEvent]="hide" v-click-outside="hide">
       <slot>
-        <f-button @click="toggleVisible" v-bind="[$props, $attrs]"
-          >{{ label }}
-        </f-button>
+        <f-button v-bind="[$props, $attrs]">{{ label }}</f-button>
       </slot>
     </div>
     <transition v-if="isVisible && !disabled" :name="`fade-${transition}`">
-      <div
-        class="f-tooltip__item"
-        :class="[classDynamic, bgColor]"
-        size="large"
-      >
+      <div class="f-tooltip__item" :class="[classDynamic, bgColor]" size="large">
         <slot name="content" />
         <div :class="classDynamicArrow" />
       </div>
@@ -43,7 +37,6 @@ export default {
       default: 'default',
       validator: val => ['default', 'secondary'].includes(val)
     },
-    click: Boolean,
     disabled: Boolean,
     bgColor: {
       type: String,
@@ -52,6 +45,18 @@ export default {
     textColor: {
       type: String,
       default: 'white'
+    },
+    clickOutside: {
+      type: Boolean,
+      default: false
+    },
+    showEvent: {
+      type: String,
+      default: 'mouseover'
+    },
+    hideEvent: {
+      type: String,
+      default: 'mouseleave'
     }
   },
   computed: {
@@ -77,14 +82,12 @@ export default {
     }
   },
   methods: {
-    toggleVisible() {
-      if (this.click) this.isVisible = !this.isVisible
-    },
-    show() {
-      if (!this.click) this.isVisible = true
+    show(e) {
+      if (e.type === 'click' && this.isVisible) this.isVisible = false
+      else this.isVisible = true
     },
     hide() {
-      if (!this.click) this.isVisible = false
+      this.isVisible = false
     }
   }
 }

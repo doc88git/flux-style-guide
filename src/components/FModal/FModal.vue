@@ -1,5 +1,5 @@
 <template>
-  <section class="f-modal">
+  <section class="f-modal" @click="clickOff">
     <div class="f-modal__content">
       <slot name="image-header">
         <f-image v-if="headerBg" rounded-t :src="headerBg" />
@@ -14,17 +14,38 @@
 </template>
 
 <script>
-import FImage from "../FImage/FImage";
+import FImage from '../FImage/FImage'
 
 export default {
-  name: "f-modal",
+  name: 'f-modal',
   components: {
     FImage
   },
   props: {
-    headerBg: String
+    headerBg: String,
+    show: {
+      type: Boolean,
+      default: false
+    }
+  },
+  mounted() {
+    window.addEventListener('keyup', this.onKeyUp)
+  },
+  destroyed() {
+    window.removeEventListener('keyup', this.onKeyUp)
+  },
+  methods: {
+    close() {
+      this.$emit('close')
+    },
+    onKeyUp(e) {
+      if (e.keyCode === 27) this.close()
+    },
+    clickOff(e) {
+      if (e.target.classList[0] === 'f-modal') this.close()
+    }
   }
-};
+}
 </script>
 
 <style lang="scss">
@@ -47,6 +68,8 @@ export default {
 
 .f-modal__content {
   padding: 20px;
+  // width: 100%;
+  // height: 100%;
   margin: auto;
 }
 </style>
