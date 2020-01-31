@@ -32,6 +32,11 @@ export default {
       default: 'top',
       validator: val => ['top', 'bottom', 'left', 'right'].includes(val)
     },
+    // aligned: {
+    //   type: String,
+    //   default: 'center',
+    //   validator: val => ['center', 'bottom', 'left', 'right'].includes(val)
+    // },
     color: {
       type: String,
       default: 'default',

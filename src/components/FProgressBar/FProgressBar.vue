@@ -1,6 +1,13 @@
 <template>
   <div class="FProgressBar">
-    <f-tooltip />
+    <div class="FProgressBar__main">
+      <f-tooltip class="FProgressBar__tooltip">
+        <template>
+          <div class="FProgressBar__content" :style="{ width: progressValue + '%'}"></div>
+        </template>
+        <template v-slot:content>{{ progressValue + '%' }}</template>
+      </f-tooltip>
+    </div>
   </div>
 </template>
 
@@ -9,49 +16,45 @@ import { FTooltip } from '../FTooltip'
 
 export default {
   name: 'FProgressBar',
+  data: () => ({}),
   components: {
     FTooltip
   },
-  props: {},
+  props: {
+    value: {
+      type: Number,
+      default: 0
+    }
+  },
+  computed: {
+    progressValue() {
+      return this.value > 100 ? 100 : this.value
+    }
+  },
   methods: {}
 }
 </script>
 
 <style lang="scss" scoped>
 .FProgressBar {
-  display: inline-block;
-  width: 100%;
-  padding: 10px 0;
-  margin-bottom: 10px;
-  color: var(--color-font-base);
-
-  &__wrapper {
+  &__main {
     display: flex;
-
-    &--before {
-      display: flex;
-      align-items: center;
-      margin-right: 20px;
-    }
-
-    &__text {
-      display: flex;
-      align-items: center;
-      font-size: var(--text-xl);
-      padding: 0;
-      margin: 0;
-    }
-
-    &--after {
-      display: flex;
-      align-items: center;
-      margin-left: 20px;
-    }
+    width: 100%;
+    height: 10px;
+    border-radius: 10px;
+    background-color: var(--color-gray-300);
   }
 
-  &__hr {
-    border-color: #ccc;
-    margin-top: 20px;
+  &__content {
+    height: 10px;
+    border-radius: 10px;
+    background-color: var(--color-primary);
+    transition: 750ms ease-in-out width;
+    cursor: default;
+  }
+
+  &__tooltip {
+    width: 100%;
   }
 }
 </style>

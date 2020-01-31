@@ -26,14 +26,16 @@ $textSizes: (
   '6xl': '4rem'
 );
 
-$shadows: ('base': '0px 5px 25px 0px rgba(0, 0, 0, .1)');
+$shadows: (
+  'base': '0px 5px 25px 0px rgba(0, 0, 0, .1)'
+);
 
 // Color system
 $colors: gray red orange yellow green teal blue indigo purple pink;
 $colors-theme: (
   'primary': #805ad5,
   'primary-light': lighten(#805ad5, 5%),
-  'primary-lighter': lighten(#805ad5, 20%),
+  'primary-lighter': lighten(#805ad5, 30%),
   'primary-dark': darken(#805ad5, 5%),
   'secondary': #3182ce,
   'secondary-light': lighten(#3182ce, 5%),

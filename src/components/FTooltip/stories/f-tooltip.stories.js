@@ -54,7 +54,7 @@ storiesOf('Components|Tooltip', module)
     },
     template: `
       <div style="padding: 40px; width: 100%; text-align: center;">
-        <f-tooltip position="right" label="top" bgColor="primary">
+        <f-tooltip position="top" label="top" bgColor="primary">
           Menu
           <template v-slot:content>
             tooltip on top
