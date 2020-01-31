@@ -46,6 +46,7 @@ export default {
   align-items: center;
   top: 0;
   position: fixed;
+  height: 100%;
   max-height: 70px;
   box-shadow: var(--shadow-base);
   &__title {
