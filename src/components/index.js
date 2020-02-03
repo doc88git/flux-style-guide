@@ -20,13 +20,11 @@ import * as FSelect from './FSelect/index.js'
 import * as FHeader from './FHeader/index.js'
 import * as FChip from './FChip/index.js'
 import * as FModal from './FMoldal/index.js'
-import * as FTableCustom from './FTableCustom/index.js'
 import * as FSeparator from './FSeparator/index.js'
 import * as FTitle from './FTitle/index.js'
 import * as FTag from './FTag/index.js'
 import * as FTagGroup from './FTagGroup/index.js'
 import * as FDatepicker from './FDatepicker/index.js'
-import * as FTablePure from './FTablePure/index.js'
 import * as FToggle from './FToggle/index.js'
 import * as FUpload from './FUpload/index.js'
 
@@ -53,13 +51,11 @@ const components = [
   FHeader,
   FChip,
   FModal,
-  FTableCustom,
   FSeparator,
   FTitle,
   FTag,
   FTagGroup,
   FDatepicker,
-  FTablePure,
   FToggle,
   FUpload
 ]

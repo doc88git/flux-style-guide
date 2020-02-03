@@ -1,31 +1,31 @@
 import { storiesOf } from '@storybook/vue'
 import { text } from '@storybook/addon-knobs'
 import FTable from '../FTable.vue'
-import { FButton } from '../../FButton/index.js'
-import { FPagination } from '../../FPagination//index.js'
-import { FDropdown } from '../../FDropdown//index.js'
-
-import Users from '../../../mocks/userList.json'
 
 const arrList = [
   {
-    label: 'Aprovado',
-    value: 'aprovado'
+    first_name: 'Aprovado',
+    last_name: 'aprovado',
+    open: false
   },
   {
-    label: 'Aguardando conferência',
-    value: 'aguardando'
+    first_name: 'Aprovado',
+    last_name: 'aprovado',
+    open: false
   },
   {
-    label: 'Pago',
-    value: 'pago'
+    first_name: 'Aprovado',
+    last_name: 'aprovado',
+    open: false
   }
 ]
 
 storiesOf('Components|Table', module).add('Default', () => ({
-  components: { FTable, FButton, FPagination, FDropdown },
+  components: {
+    FTable
+  },
   data: () => ({
-    list: arrList,
+    data: arrList,
     caret: true,
     position: 'down',
     type: 'outlined'
@@ -37,23 +37,16 @@ storiesOf('Components|Table', module).add('Default', () => ({
     sortDirection: {
       default: text('sortDirection', 'asc')
     },
-    data: {
-      default: Users
-    },
     header: {
       default: {
         first_name: 'Nome',
-        last_name: 'Sobrenome',
-        title: 'Título',
-        email: 'Email',
-        gender: 'Sexo',
-        phone_number: 'Telefone',
-        birthdate: 'Data de Nascimento',
-        'location.street': 'Endereço',
-        'location.postcode': 'CEP',
-        'location.city': 'Cidade',
-        'location.state': 'Estado'
+        last_name: 'Sobrenome'
       }
+    }
+  },
+  methods: {
+    openAccordion(i) {
+      this.data[i].open = !this.data[i].open
     }
   },
   template: `
@@ -63,19 +56,18 @@ storiesOf('Components|Table', module).add('Default', () => ({
         :sortDirection="sortDirection"
         :data="data"
         :header="header">
-        <template v-slot:header_left>
-          <f-button icon="add">Add</f-button>
-        </template>
-        <template v-slot:header_right>
-          <f-dropdown :list="list" :caret="caret" :position="position" :type="type" />
-        </template>
-        <template v-slot:footer_center>
-          <f-pagination
-            :currentPage="1"
-            :total="100"
-            :perPage="6"
-            :max="10"
-          />
+        <template v-slot:tr="rowObject">
+          <tr @click="openAccordion(rowObject.index)">
+            <td>
+              {{ rowObject.row.first_name }}
+            </td>
+            <td>
+            {{ rowObject.index }}
+            </td>
+          </tr>
+          <div v-show="rowObject.row.open">
+            oi
+          </div>
         </template>
       </f-table>
     </div>`
