@@ -43,6 +43,7 @@ export default {
     height: 10px;
     border-radius: 10px;
     background-color: var(--color-gray-300);
+    margin: 10px;
   }
 
   &__content {
@@ -55,6 +56,7 @@ export default {
 
   &__tooltip {
     width: 100%;
+    right: 10px;
   }
 }
 </style>

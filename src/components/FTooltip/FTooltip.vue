@@ -32,11 +32,11 @@ export default {
       default: 'top',
       validator: val => ['top', 'bottom', 'left', 'right'].includes(val)
     },
-    // aligned: {
-    //   type: String,
-    //   default: 'center',
-    //   validator: val => ['center', 'bottom', 'left', 'right'].includes(val)
-    // },
+    aligned: {
+      type: String,
+      default: 'center',
+      validator: val => ['center', 'prime', 'end'].includes(val)
+    },
     color: {
       type: String,
       default: 'default',
@@ -69,6 +69,7 @@ export default {
       return [
         `f-tooltip--${this.color}`,
         `f-tooltip__item--${this.position}`,
+        `f-tooltip__item--${this.aligned}`,
         `f-tooltip__item--${this.bgColor}`,
         `text-${this.textColor}`
       ]
@@ -78,6 +79,7 @@ export default {
         `f-tooltip__item--${this.position}`,
         'f-tooltip__item__arrow',
         `f-tooltip__item__arrow--${this.position}`,
+        `f-tooltip__item__arrow--${this.aligned}`,
         `f-tooltip__item__arrow--${this.bgColor}`
       ]
     },
@@ -113,9 +115,7 @@ export default {
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     align-self: center;
     text-align: center;
-    width: 7rem;
-    max-width: 10rem;
-    min-width: 3rem;
+    white-space: nowrap;
     left: 100%;
     z-index: 10;
     color: var(--color-white);
@@ -144,10 +144,11 @@ export default {
       bottom: calc(100% + 5px);
       left: 50%;
       transform: translateX(-50%);
+      margin-bottom: 5px;
     }
 
     &--bottom {
-      top: calc(100% + 5px);
+      top: calc(100% + 10px);
       left: 50%;
       transform: translateX(-50%);
     }
@@ -156,12 +157,25 @@ export default {
       top: 50%;
       right: 0%;
       transform: translate(5px, -50%);
+      margin-left: 5px;
     }
 
     &--left {
       top: 50%;
-      left: calc(0% - 5px);
+      left: calc(0% - 10px);
       transform: translate(-100%, -50%);
+    }
+
+    &--center {
+      transform: translateX(0%);
+    }
+
+    &--prime {
+      transform: translateX(-100%);
+    }
+
+    &--end {
+      transform: translate(100%);
     }
 
     &__arrow {
