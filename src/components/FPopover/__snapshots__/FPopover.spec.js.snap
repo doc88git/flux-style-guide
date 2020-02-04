@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component tests Componente não alterado 1`] = `
+"<div class=\\"f-popover\\">
+  <f-tooltip-stub label=\\"Button\\" position=\\"top\\" color=\\"default\\" bgcolor=\\"black\\" textcolor=\\"white\\" showevent=\\"mouseover\\" hideevent=\\"mouseleave\\" class=\\"teste\\"></f-tooltip-stub>
+</div>"
+`;

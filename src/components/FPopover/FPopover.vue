@@ -1,8 +1,8 @@
 <template>
   <div class="f-popover">
-    <f-tooltip position="top" label="Button">
+    <f-tooltip class="teste" position="top" label="Button">
       <template v-slot:content>
-        tooltip content
+        tooltip content sdfhsifhiasdhsaiug
       </template>
     </f-tooltip>
   </div>

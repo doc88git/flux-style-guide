@@ -1,23 +1,21 @@
 module.exports = {
-  moduleFileExtensions: ['js', 'jsx', 'json', 'vue'],
-  transform: {
-    '^.+\\.vue$': 'vue-jest',
-    '.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$':
-      'jest-transform-stub',
-    '^.+\\.(js|jsx)?$': 'babel-jest'
-  },
   moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/src/$1'
+    '^@/(.*)$': '<rootDir>/src/$1',
+    '^vue$': 'vue/dist/vue.common.js'
   },
-  snapshotSerializers: ['jest-serializer-vue'],
-  testMatch: [
-    '<rootDir>/(tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx))'
+  moduleFileExtensions: ['js', 'vue', 'json'],
+  transform: {
+    '^.+\\.js$': 'babel-jest',
+    '.*\\.(vue)$': 'vue-jest',
+    '.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$':
+      'jest-transform-stub',
+    '\\.svg$': '<rootDir>/svgTransformer.js'
+  },
+  testPathIgnorePatterns: ['<rootDir>/node_modules/'],
+  transformIgnorePatterns: [
+    '/node_modules/(?!@doc88/flux-validator-js).+\\.js$'
   ],
-  transformIgnorePatterns: ['<rootDir>/node_modules/'],
-  testURL: 'http://localhost/',
-  watchPlugins: [
-    'jest-watch-typeahead/filename',
-    'jest-watch-typeahead/testname'
-  ]
-  // collectCoverage: true,
+  collectCoverage: true,
+  collectCoverageFrom: ['<rootDir>/src/components/**/*.vue'],
+  timers: 'fake'
 }
