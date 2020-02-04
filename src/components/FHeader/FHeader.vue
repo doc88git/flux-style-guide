@@ -1,8 +1,6 @@
 <template>
   <header class="main-header">
-    <slot name="menu">
-      <f-menu-button />
-    </slot>
+    <slot name="menu"> </slot>
     <div class="main-header__logo" v-if="!!$slots.logo">
       <slot name="logo"></slot>
     </div>
@@ -16,11 +14,8 @@
 </template>
 
 <script>
-import FMenuButton from '../FMenu/FMenuButton'
-
 export default {
   name: 'f-header',
-  components: { FMenuButton },
   props: {
     mainTitle: {
       type: String,
@@ -51,6 +46,7 @@ export default {
   align-items: center;
   top: 0;
   position: fixed;
+  height: 100%;
   max-height: 70px;
   box-shadow: var(--shadow-base);
   &__title {
