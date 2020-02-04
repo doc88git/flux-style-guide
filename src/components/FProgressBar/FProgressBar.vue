@@ -1,13 +1,23 @@
 <template>
-  <div class="FProgressBar">
-    <div class="FProgressBar__main">
-      <f-tooltip class="FProgressBar__tooltip">
-        <template>
-          <div class="FProgressBar__content" :style="{ width: progressValue + '%'}"></div>
-        </template>
-        <template v-slot:content>{{ progressValue + '%' }}</template>
-      </f-tooltip>
+  <div class="FProgressBar" :class="progressTheme">
+    <div v-if="theme == 'text'">
+      <slot>Name Progress:</slot>
+      {{ value | percent }}
     </div>
+    <div class="FProgressBar__main">
+      <component
+        :is="withComponent"
+        class="FProgressBar__content"
+        :style="{ width: progressValue + '%' }"
+        aligned="end"
+      >
+        <template>
+          <div class="FProgressBar__content-filled" />
+        </template>
+        <template v-slot:content>{{ progressValue | percent }}</template>
+      </component>
+    </div>
+    <div v-if="theme == 'side'">{{ value | percent }}</div>
   </div>
 </template>
 
@@ -20,43 +30,63 @@ export default {
   components: {
     FTooltip
   },
+  filters: {
+    percent: val => `${val}%`
+  },
   props: {
     value: {
       type: Number,
       default: 0
+    },
+    theme: {
+      type: String,
+      default: 'tooltip',
+      validator: val => ['tooltip', 'text', 'side'].includes(val)
     }
   },
   computed: {
     progressValue() {
       return this.value > 100 ? 100 : this.value
+    },
+    withComponent() {
+      return this.theme === 'tooltip' ? 'f-tooltip' : 'div'
+    },
+    progressTheme() {
+      return `FProgressBar--${this.theme}`
     }
-  },
-  methods: {}
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .FProgressBar {
+  width: 100%;
+  white-space: nowrap;
+  display: flex;
+
   &__main {
-    display: flex;
     width: 100%;
-    height: 10px;
+    height: 5px;
     border-radius: 10px;
     background-color: var(--color-gray-300);
-    margin: 10px;
+    margin: 6px 10px 0 0;
   }
 
-  &__content {
-    height: 10px;
+  &__content-filled {
+    height: 5px;
     border-radius: 10px;
     background-color: var(--color-primary);
-    transition: 750ms ease-in-out width;
     cursor: default;
   }
 
-  &__tooltip {
+  &__content {
     width: 100%;
-    right: 10px;
+    transition: 750ms ease-in-out width;
+    display: block;
+  }
+
+  &--text {
+    flex-direction: column;
   }
 }
 </style>

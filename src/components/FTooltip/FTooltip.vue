@@ -35,7 +35,7 @@ export default {
     aligned: {
       type: String,
       default: 'center',
-      validator: val => ['center', 'prime', 'end'].includes(val)
+      validator: val => ['center', 'start', 'end'].includes(val)
     },
     color: {
       type: String,
@@ -144,7 +144,7 @@ export default {
       bottom: calc(100% + 5px);
       left: 50%;
       transform: translateX(-50%);
-      margin-bottom: 5px;
+      margin-bottom: 10px;
     }
 
     &--bottom {
@@ -167,15 +167,15 @@ export default {
     }
 
     &--center {
-      transform: translateX(0%);
+      left: 50%;
     }
 
-    &--prime {
-      transform: translateX(-100%);
+    &--start {
+      left: 0%;
     }
 
     &--end {
-      transform: translate(100%);
+      left: 100%;
     }
 
     &__arrow {
