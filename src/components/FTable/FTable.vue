@@ -40,7 +40,7 @@ import collect from 'collect.js'
 import { FIcon } from '../FIcon'
 
 export default {
-  name: 'f-table-pure',
+  name: 'f-table',
   components: {
     FIcon
   },
