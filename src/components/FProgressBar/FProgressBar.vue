@@ -12,7 +12,7 @@
         aligned="end"
       >
         <template>
-          <div class="FProgressBar__content-filled" />
+          <div class="FProgressBar__content-filled" :class="style" />
         </template>
         <template v-slot:content>{{ progressValue | percent }}</template>
       </component>
@@ -42,6 +42,10 @@ export default {
       type: String,
       default: 'tooltip',
       validator: val => ['tooltip', 'text', 'side'].includes(val)
+    },
+    color: {
+      type: String,
+      default: 'primary'
     }
   },
   computed: {
@@ -53,6 +57,9 @@ export default {
     },
     progressTheme() {
       return `FProgressBar--${this.theme}`
+    },
+    style() {
+      return `color--${this.color}`
     }
   }
 }
@@ -75,7 +82,6 @@ export default {
   &__content-filled {
     height: 5px;
     border-radius: 10px;
-    background-color: var(--color-primary);
     cursor: default;
   }
 
