@@ -24,8 +24,8 @@ storiesOf('Components|Progress Bar', module).add(
     },
     methods: {},
     template: `
-        <div style="padding: 60px; width: 400px;">
-          <f-progress-bar :value="value" :color="color" :theme="theme">
+        <div style="padding: 60px; width: 400px; height: 5px;">
+          <f-progress-bar :value="value" :color="color" :theme="theme" style="height: 5px;">
           </f-progress-bar>
         </div>
       `

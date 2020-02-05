@@ -68,19 +68,20 @@ export default {
 <style lang="scss" scoped>
 .FProgressBar {
   width: 100%;
+  height: 100%;
   white-space: nowrap;
   display: flex;
 
   &__main {
     width: 100%;
-    height: 5px;
+    height: 100%;
     border-radius: 10px;
     background-color: var(--color-gray-300);
     margin: 6px 10px 0 0;
   }
 
   &__content-filled {
-    height: 5px;
+    height: 100%;
     border-radius: 10px;
     cursor: default;
   }
@@ -93,6 +94,10 @@ export default {
 
   &--text {
     flex-direction: column;
+  }
+
+  div {
+    height: 100%;
   }
 }
 </style>
