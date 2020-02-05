@@ -8,7 +8,7 @@
       <component
         :is="withComponent"
         class="FProgressBar__content"
-        :style="{ width: progressValue + '%' }"
+        :style="{ width: progressValue + '%', height: height + 'px' }"
         aligned="end"
       >
         <template>
@@ -17,7 +17,7 @@
         <template v-slot:content>{{ progressValue | percent }}</template>
       </component>
     </div>
-    <div v-if="theme == 'side'">{{ value | percent }}</div>
+    <div class="FProgressBar__side-text" v-if="theme == 'side'">{{ value | percent }}</div>
   </div>
 </template>
 
@@ -45,11 +45,15 @@ export default {
     },
     color: {
       type: String,
-      default: ''
+      default: 'primary'
     },
     bgColor: {
       type: String,
       default: 'gray-300'
+    },
+    height: {
+      type: [String, Number],
+      default: 5
     }
   },
   computed: {
@@ -66,7 +70,7 @@ export default {
       return `color--${this.color}`
     },
     backgroundFill() {
-      return `color--${this.color}`
+      return `color--background--${this.bgColor}`
     }
   }
 }
@@ -78,17 +82,17 @@ export default {
   height: 100%;
   white-space: nowrap;
   display: flex;
+  align-items: center;
 
   &__main {
     width: 100%;
     height: 100%;
-    border-radius: 10px;
-    margin: 6px 10px 0 0;
+    border-radius: 17px;
   }
 
   &__content-filled {
     height: 100%;
-    border-radius: 10px;
+    border-radius: 17px;
     cursor: default;
   }
 
@@ -100,10 +104,11 @@ export default {
 
   &--text {
     flex-direction: column;
+    margin-bottom: 6px;
   }
 
-  div {
-    height: 100%;
+  &__side-text {
+    margin-left: 10px;
   }
 }
 </style>
