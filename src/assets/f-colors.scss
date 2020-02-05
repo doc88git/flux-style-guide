@@ -62,6 +62,24 @@
       }
     }
   }
+
+  &--background {
+    &--primary {
+      background-color: var(--color-primary);
+    }
+    &--secondary {
+      background-color: var(--color-secondary);
+    }
+    &--white {
+      background-color: var(--color-white);
+    }
+    &--black {
+      background-color: var(--color-black);
+    }
+    &--gray-300 {
+      background-color: var(--color-gray-300);
+    }
+  }
   @each $color in $colors {
     &--#{$color} {
       background-color: var(--color-#{$color});

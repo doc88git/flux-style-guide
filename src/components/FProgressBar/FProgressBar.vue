@@ -4,7 +4,7 @@
       <slot>Name Progress:</slot>
       {{ value | percent }}
     </div>
-    <div class="FProgressBar__main">
+    <div class="FProgressBar__main" :class="backgroundFill">
       <component
         :is="withComponent"
         class="FProgressBar__content"
@@ -12,7 +12,7 @@
         aligned="end"
       >
         <template>
-          <div class="FProgressBar__content-filled" :class="style" />
+          <div class="FProgressBar__content-filled" :class="colorFill" />
         </template>
         <template v-slot:content>{{ progressValue | percent }}</template>
       </component>
@@ -45,7 +45,11 @@ export default {
     },
     color: {
       type: String,
-      default: 'primary'
+      default: ''
+    },
+    bgColor: {
+      type: String,
+      default: 'gray-300'
     }
   },
   computed: {
@@ -58,7 +62,10 @@ export default {
     progressTheme() {
       return `FProgressBar--${this.theme}`
     },
-    style() {
+    colorFill() {
+      return `color--${this.color}`
+    },
+    backgroundFill() {
       return `color--${this.color}`
     }
   }
@@ -76,7 +83,6 @@ export default {
     width: 100%;
     height: 100%;
     border-radius: 10px;
-    background-color: var(--color-gray-300);
     margin: 6px 10px 0 0;
   }
 

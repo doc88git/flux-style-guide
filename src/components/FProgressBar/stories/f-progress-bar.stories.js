@@ -20,12 +20,15 @@ storiesOf('Components|Progress Bar', module).add(
       },
       color: {
         default: text('color', 'primary')
+      },
+      bgColor: {
+        default: text('color', 'gray-300')
       }
     },
     methods: {},
     template: `
         <div style="padding: 60px; width: 400px; height: 5px;">
-          <f-progress-bar :value="value" :color="color" :theme="theme" style="height: 5px;">
+          <f-progress-bar :value="value" :color="color" :bgColor="color" :theme="theme" style="height: 5px;">
           </f-progress-bar>
         </div>
       `
