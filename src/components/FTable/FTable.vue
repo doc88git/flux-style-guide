@@ -1,81 +1,48 @@
 <template>
   <section class="f-table">
-    <f-card>
-      <div class="f-table__header">
-        <div class="f-table__header__left">
-          <slot name="header_left" />
-        </div>
-        <div class="f-table__header__center">
-          <slot name="header_center" />
-        </div>
-        <div class="f-table__header__right">
-          <slot name="header_right" />
-        </div>
-      </div>
-      <FSeparator />
-      <FCardBody>
-        <div class="f-table__body" style="height: 400px">
-          <table class="f-table__content">
-            <thead>
-              <tr>
-                <th
-                  v-for="head in keysHeaders"
-                  :key="`th:${head}`"
-                  @click="setSortBy(head)"
-                >
-                  <f-icon
-                    dense
-                    :name="sortIcon"
-                    color="gray"
-                    v-if="sortBy === head"
-                  />
-                  {{ header[head] }}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <slot name="tr" v-for="(row, index) in show" v-bind="row">
-                <tr :key="`tr:${index}`">
-                  <td v-for="head in keysHeaders" :key="`td:${head}`">
-                    {{ row[head] }}
-                  </td>
-                </tr>
-              </slot>
-            </tbody>
-          </table>
-        </div>
-      </FCardBody>
-      <FCardActions align="center">
-        <div class="f-table__footer">
-          <div class="f-table__footer__left">
-            <slot name="footer_left" />
-          </div>
-          <div class="f-table__footer__center">
-            <slot name="footer_center" />
-          </div>
-          <div class="f-table__footer__right">
-            <slot name="footer_right" />
-          </div>
-        </div>
-      </FCardActions>
-    </f-card>
+    <div class="f-table__body">
+      <table class="f-table__content">
+        <thead>
+          <tr>
+            <slot
+              name="th"
+              v-for="(head, index) in keysHeaders"
+              v-bind="{ head, index }"
+            >
+              <th :key="`th:${head}`" @click="setSortBy(head)">
+                <f-icon
+                  dense
+                  :name="sortIcon"
+                  color="gray"
+                  v-if="sortBy === head"
+                />
+                {{ header[head] }}
+              </th>
+            </slot>
+          </tr>
+        </thead>
+        <tbody>
+          <slot name="tr" v-for="(row, index) in show" v-bind="{ row, index }">
+            <tr :key="`tr:${index}`">
+              <td v-for="head in keysHeaders" :key="`td:${head}`">
+                {{ row[head] }}
+              </td>
+            </tr>
+          </slot>
+        </tbody>
+      </table>
+    </div>
   </section>
 </template>
 
 <script>
 import collect from 'collect.js'
-import { FCard, FCardBody, FCardActions } from '../FCard'
-import { FSeparator } from '../FSeparator'
 import { FIcon } from '../FIcon'
 
 export default {
   name: 'f-table',
   components: {
-    FCard,
-    FSeparator,
-    FCardBody,
-    FIcon,
-    FCardActions
+    FIcon
   },
   props: {
     data: Array,
@@ -136,27 +103,11 @@ export default {
 
 <style lang="scss" scoped>
 .f-table {
-  &__header,
-  &__footer {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: space-between;
-    &__left {
-      text-align: left;
-    }
-    &__center {
-      text-align: center;
-    }
-    &__right {
-      text-align: right;
-    }
-  }
   &__body {
     overflow: auto;
     table {
       table-layout: auto;
-      background-color: var(--color-white);
+      background: white;
       width: 100%;
       th,
       td {
@@ -164,22 +115,26 @@ export default {
         white-space: nowrap;
         text-align: left;
         vertical-align: middle;
+        color: #666666;
       }
       thead {
-        border-radius: 50px;
-        th {
-          margin-bottom: 1rem;
-          background-color: var(--color-white);
+        tr {
+          color: #666666;
+          border-color: #d2d2d2;
+          margin-bottom: 4px;
+          background: white;
           user-select: none;
-          border-style: solid;
-          border-color: var(--color-gray-500);
+          font-weight: 600;
           border-bottom-width: 1px;
+        }
+
+        th {
           &:hover {
             opacity: 0.75;
             cursor: pointer;
           }
           .f-icon {
-            margin-left: -0.5rem;
+            margin-left: 0.5rem;
             font-size: var(--text-xs);
           }
         }
@@ -187,11 +142,12 @@ export default {
       tbody {
         tr {
           &:hover {
-            background-color: var(--color-gray-100);
+            background: rgba(245, 245, 245, 1);
           }
           td {
-            border-color: var(--color-gray-200);
             border-bottom-width: 1px;
+            border-color: #edf2f7;
+            margin-bottom: 1rem;
           }
         }
       }
