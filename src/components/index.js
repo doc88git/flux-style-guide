@@ -27,6 +27,8 @@ import * as FTagGroup from './FTagGroup/index.js'
 import * as FDatepicker from './FDatepicker/index.js'
 import * as FToggle from './FToggle/index.js'
 import * as FUpload from './FUpload/index.js'
+import * as FProgressBar from './FProgressBar/index.js'
+import * as FSticky from './FSticky/index.js'
 
 const components = [
   Alert,
@@ -57,7 +59,9 @@ const components = [
   FTagGroup,
   FDatepicker,
   FToggle,
-  FUpload
+  FUpload,
+  FSticky,
+  FProgressBar
 ]
 
 export default components
