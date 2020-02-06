@@ -4,20 +4,20 @@
       <slot>Name Progress:</slot>
       {{ value | percent }}
     </div>
-    <div class="FProgressBar__main">
+    <div class="FProgressBar__main" :class="backgroundFill">
       <component
         :is="withComponent"
         class="FProgressBar__content"
-        :style="{ width: progressValue + '%' }"
+        :style="{ width: progressValue + '%', height: height + 'px' }"
         aligned="end"
       >
         <template>
-          <div class="FProgressBar__content-filled" />
+          <div class="FProgressBar__content-filled" :class="colorFill" />
         </template>
         <template v-slot:content>{{ progressValue | percent }}</template>
       </component>
     </div>
-    <div v-if="theme == 'side'">{{ value | percent }}</div>
+    <div class="FProgressBar__side-text" v-if="theme == 'side'">{{ value | percent }}</div>
   </div>
 </template>
 
@@ -42,6 +42,18 @@ export default {
       type: String,
       default: 'tooltip',
       validator: val => ['tooltip', 'text', 'side'].includes(val)
+    },
+    color: {
+      type: String,
+      default: 'primary'
+    },
+    bgColor: {
+      type: String,
+      default: 'gray-300'
+    },
+    height: {
+      type: [String, Number],
+      default: 5
     }
   },
   computed: {
@@ -53,6 +65,12 @@ export default {
     },
     progressTheme() {
       return `FProgressBar--${this.theme}`
+    },
+    colorFill() {
+      return `color--${this.color}`
+    },
+    backgroundFill() {
+      return `color--background--${this.bgColor}`
     }
   }
 }
@@ -61,21 +79,20 @@ export default {
 <style lang="scss" scoped>
 .FProgressBar {
   width: 100%;
+  height: 100%;
   white-space: nowrap;
   display: flex;
+  align-items: center;
 
   &__main {
     width: 100%;
-    height: 5px;
-    border-radius: 10px;
-    background-color: var(--color-gray-300);
-    margin: 6px 10px 0 0;
+    height: 100%;
+    border-radius: 17px;
   }
 
   &__content-filled {
-    height: 5px;
-    border-radius: 10px;
-    background-color: var(--color-primary);
+    height: 100%;
+    border-radius: 17px;
     cursor: default;
   }
 
@@ -87,6 +104,11 @@ export default {
 
   &--text {
     flex-direction: column;
+    margin-bottom: 6px;
+  }
+
+  &__side-text {
+    margin-left: 10px;
   }
 }
 </style>

@@ -1,6 +1,11 @@
 <template>
   <div class="f-tooltip">
-    <div @[showEvent].capture="show" @[hideEvent]="hide" v-click-outside="hide">
+    <div
+      @[showEvent].capture="show"
+      class="f-tooltip__main"
+      @[hideEvent]="hide"
+      v-click-outside="hide"
+    >
       <slot>
         <f-button v-bind="[$props, $attrs]">{{ label }}</f-button>
       </slot>
@@ -105,6 +110,10 @@ export default {
   position: relative;
   cursor: pointer;
   display: inline-block;
+
+  &__main {
+    height: 100%;
+  }
 
   &__item {
     position: absolute;

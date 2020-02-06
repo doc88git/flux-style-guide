@@ -62,6 +62,15 @@
       }
     }
   }
+
+  &--background {
+    @each $color, $value in $colors-theme {
+      &--#{$color} {
+        background-color: #{$value};
+      }
+    }
+  }
+
   @each $color in $colors {
     &--#{$color} {
       background-color: var(--color-#{$color});

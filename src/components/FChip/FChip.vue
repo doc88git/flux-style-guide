@@ -8,11 +8,7 @@
     <div class="f-chip__content">
       <slot>{{ label }}</slot>
     </div>
-    <div
-      class="f-chip__close"
-      v-if="removable"
-      @click="onRemove($event, value)"
-    >
+    <div class="f-chip__close" v-if="removable" @click="onRemove($event, value)">
       <slot name="close">
         <f-icon name="close" size="sm" />
       </slot>
@@ -85,7 +81,6 @@ export default {
   display: inline-flex;
   align-items: center;
   vertical-align: middle;
-  // background-color: var(--color-secondary);
   color: var(--color-white);
   padding: 0.25rem 0.75rem;
   border-radius: 0.5rem;

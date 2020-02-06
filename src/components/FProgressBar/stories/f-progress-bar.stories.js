@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue'
-import { select, number } from '@storybook/addon-knobs'
+import { select, number, text } from '@storybook/addon-knobs'
 import { FProgressBar } from '@/components/FProgressBar'
 
 storiesOf('Components|Progress Bar', module).add(
@@ -17,12 +17,21 @@ storiesOf('Components|Progress Bar', module).add(
     props: {
       theme: {
         default: select('theme', ['tooltip', 'side', 'text'], 'tooltip')
+      },
+      color: {
+        default: text('color', 'primary')
+      },
+      bgColor: {
+        default: text('bgColor', 'gray-300')
+      },
+      height: {
+        default: text('height', '5')
       }
     },
     methods: {},
     template: `
         <div style="padding: 60px; width: 400px;">
-          <f-progress-bar :value="value" :theme="theme">
+          <f-progress-bar :value="value" :color="color" :bgColor="bgColor" :height="height" :theme="theme">
           </f-progress-bar>
         </div>
       `
