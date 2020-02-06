@@ -1,5 +1,5 @@
 <template>
-  <section class="f-card" :class="padding">
+  <section class="f-card" :class="classes">
     <slot name="image-header">
       <f-image v-if="headerBg" rounded-t :src="headerBg" />
     </slot>
@@ -22,7 +22,34 @@ export default {
   props: {
     padding: {
       type: String,
-      default: 'spacing--padding--xl'
+      default: 'p--sm'
+    },
+    borderRadius: {
+      type: String,
+      default: 'br--sm'
+    },
+    margin: {
+      type: String,
+      default: 'm--sm'
+    },
+    bgColor: {
+      type: String,
+      default: 'color--background--white'
+    },
+    textColor: {
+      type: String,
+      default: 'color--text--font-base'
+    }
+  },
+  computed: {
+    classes() {
+      return [
+        this.padding,
+        this.borderRadius,
+        this.margin,
+        this.bgColor,
+        this.textColor
+      ]
     }
   }
 }
@@ -31,10 +58,7 @@ export default {
 <style lang="scss" scoped>
 .f-card {
   max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
   background-color: var(--color-white);
-  border-radius: 0.5rem;
   box-shadow: var(--shadow-base);
   width: 100%;
   .f-card__content {
