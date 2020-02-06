@@ -17,7 +17,7 @@ storiesOf('Components|Card', module)
         FSeparator
       },
       template: `
-        <div style="padding: 20px;" style="width: 600px">
+        <div style="padding: 20px; width: 600px;">
           <f-card>
             <f-card-title>Where does it come from?</f-card-title>
             <f-card-body>
@@ -58,7 +58,7 @@ storiesOf('Components|Card', module)
         FSeparator
       },
       template: `
-        <div style="padding: 20px;" style="width: 600px">
+      <div style="padding: 20px; width: 600px;">
           <f-card
             header-bg="https://altitude-community.aircanada.com/app/webroot/img/default-bg-card.png"
           >
@@ -99,7 +99,7 @@ storiesOf('Components|Card', module)
         FButton
       },
       template: `
-        <div style="padding: 20px;" style="width: 600px">
+      <div style="padding: 20px; width: 600px;">
           <f-card>
             <f-card-title>Where does it come from?</f-card-title>
           </f-card>
@@ -122,7 +122,7 @@ storiesOf('Components|Card', module)
         FButton
       },
       template: `
-        <div style="padding: 20px;" style="width: 600px">
+        <div style="padding: 20px; width: 600px;">
           <f-card>
             <f-card-body>
               Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -156,7 +156,7 @@ storiesOf('Components|Card', module)
         FSeparator
       },
       template: `
-        <div style="padding: 20px;" style="width: 600px">
+        <div style="padding: 20px; width: 600px;">
           <f-card>
             <card-title>Default</card-title>
             <f-card-actions>
@@ -209,7 +209,7 @@ storiesOf('Components|Card', module)
         FSeparator
       },
       template: `
-        <div style="padding: 20px;" style="width: 600px">
+        <div style="padding: 20px; width: 600px;">
           <f-card>
             <template v-slot:image-header>
               <f-image rounded-t src="https://altitude-community.aircanada.com/app/webroot/img/default-bg-card.png" />
