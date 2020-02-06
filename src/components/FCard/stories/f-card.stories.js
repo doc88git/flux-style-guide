@@ -208,6 +208,28 @@ storiesOf('Components|Card', module)
         FImage,
         FSeparator
       },
+      props: {
+        padding: {
+          type: String,
+          default: 'p--sm'
+        },
+        borderRadius: {
+          type: String,
+          default: 'br--sm'
+        },
+        margin: {
+          type: String,
+          default: 'm--sm'
+        },
+        bgColor: {
+          type: String,
+          default: 'color--background--white'
+        },
+        textColor: {
+          type: String,
+          default: 'color--text--font-base'
+        }
+      },
       template: `
         <div style="padding: 20px; width: 600px;">
           <f-card>

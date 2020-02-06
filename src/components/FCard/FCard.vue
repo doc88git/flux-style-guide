@@ -34,7 +34,7 @@ export default {
     },
     bgColor: {
       type: String,
-      default: 'color--background--white'
+      default: 'white'
     },
     textColor: {
       type: String,
@@ -47,8 +47,8 @@ export default {
         this.padding,
         this.borderRadius,
         this.margin,
-        this.bgColor,
-        this.textColor
+        `color--background--${this.bgColor}`,
+        `color--text--${this.textColor}`
       ]
     }
   }
