@@ -17,7 +17,9 @@
         <template v-slot:content>{{ progressValue | percent }}</template>
       </component>
     </div>
-    <div class="FProgressBar__side-text" v-if="theme == 'side'">{{ value | percent }}</div>
+    <div class="FProgressBar__side-text" v-if="theme == 'side'">
+      {{ value | percent }}
+    </div>
   </div>
 </template>
 
@@ -67,7 +69,7 @@ export default {
       return `FProgressBar--${this.theme}`
     },
     colorFill() {
-      return `color--${this.color}`
+      return `color--background--${this.color}`
     },
     backgroundFill() {
       return `color--background--${this.bgColor}`

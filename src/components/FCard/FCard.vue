@@ -1,5 +1,5 @@
 <template>
-  <section class="f-card">
+  <section class="f-card" :class="padding">
     <slot name="image-header">
       <f-image v-if="headerBg" rounded-t :src="headerBg" />
     </slot>
@@ -20,7 +20,10 @@ export default {
     FImage
   },
   props: {
-    headerBg: String
+    padding: {
+      type: String,
+      default: 'spacing--padding--xl'
+    }
   }
 }
 </script>
