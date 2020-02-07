@@ -32,7 +32,11 @@ export default {
     },
     color: {
       type: String,
-      default: ''
+      default: 'white'
+    },
+    textColor: {
+      type: String,
+      default: 'green'
     },
     fill: Boolean,
     closable: Boolean,
@@ -46,16 +50,24 @@ export default {
     hasContent() {
       return this.$slots.content || !!this.content
     },
+    // alertStyle() {
+    //   return [
+    //     `color--background--${this.color}` && `color--text--${this.textColor}`
+    //   ]
+    // },
     alertStyle() {
-      let btnFill = {
-        ['f-alert--fill']: this.fill === true,
-        [`color--default--${this.color}`]: this.fill === true
+      const btnFill = {
+        [`color--background--${this.textColor}`]: true,
+        [`color--text--${this.color}`]: true
       }
 
-      return {
-        ...btnFill,
-        [`color--outline--${this.color}`]: true
+      const empty = {
+        [`color--background--${this.color}`]: true,
+        [`color--text--${this.textColor}`]: true,
+        [`color--border--${this.textColor}`]: true
       }
+
+      return this.fill ? btnFill : empty
     }
   },
   methods: {
@@ -84,8 +96,7 @@ export default {
   border: 1px solid;
 
   &--fill {
-    color: var(--color-white);
-    border-color: transparent;
+    border: 1px solid;
   }
 
   &__close {

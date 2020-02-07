@@ -38,7 +38,7 @@ export default {
     },
     textColor: {
       type: String,
-      default: 'color--text--font-base'
+      default: 'font-base'
     }
   },
   computed: {

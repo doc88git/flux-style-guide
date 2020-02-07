@@ -81,7 +81,7 @@ storiesOf('Components|Alerts', module)
         default: boolean('closable', false, groupId)
       },
       color: {
-        default: text('color', 'green', groupId)
+        default: text('color', 'white', groupId)
       },
       title: {
         default: text('title', title, groupId)
