@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="f-fixed-head"
-    :class="{ 'f-fixed-head--fixed': fixed }"
-    :style="style"
-  >
+  <div class="f-sticky" :class="{ 'f-sticky--fixed': fixed }" :style="style">
     <slot></slot>
   </div>
 </template>
@@ -56,14 +52,16 @@ export default {
 </script>
 
 <style lang="scss">
-.f-fixed-head {
+.f-sticky {
   position: relative;
   width: 100%;
   top: 0;
+  left: 0;
   transition: transform 0.3s linear;
 
   &--fixed {
     position: fixed;
+    z-index: 100;
   }
 }
 </style>
