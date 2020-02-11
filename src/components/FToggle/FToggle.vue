@@ -1,49 +1,49 @@
 <template>
   <div class="FToggle">
-    <div class="FToggle__wrapper">
-      <div v-if="$slots.before" class="FToggle__wrapper--label">
+    <div class="FToggle__wrapper position">
+      <div class="FToggle__wrapper--label" :class="labelPosition" href="#">
         <slot name="before" />
       </div>
-      <div class="FToggle__switch" @click="switchToggle">
-        <div
-          class="FToggle__ball"
-          :class="{ 'FToggle__ball--active': value }"
-        ></div>
+      <div class="FToggle__switch" @click="switchToggle" href="#">
+        <div class="FToggle__ball" :class="{ 'FToggle__ball--active': value }"></div>
       </div>
       <span
-        v-if="!$slots.before && !$slots.after"
         class="FToggle__wrapper--label"
         :class="{ 'FToggle__wrapper--label--active': value }"
-        >{{ labelName }}</span
-      >
-      <div v-if="$slots.after" class="FToggle__wrapper--label">
-        <slot name="after" />
-      </div>
+      >{{ labelName }}</span>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "FToggle",
+  name: 'FToggle',
   components: {},
   props: {
     value: {
       type: Boolean,
       default: false
+    },
+    align: {
+      type: String,
+      default: 'right'
     }
   },
   computed: {
     labelName() {
-      return this.value ? "Ligado" : "Desligado";
+      return this.value ? 'Ligado' : 'Desligado'
+    },
+    labelPosition() {
+      console.log(this.align)
+      return this.position === 1 ? 'b' : 'a'
     }
   },
   methods: {
     switchToggle() {
-      this.$emit("input", !this.value);
+      this.$emit('input', !this.value)
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -52,6 +52,7 @@ export default {
   width: 100%;
   padding: 10px 0;
   margin-bottom: 10px;
+  background: $teste;
 
   &__switch {
     width: 40px;
@@ -81,6 +82,7 @@ export default {
     display: flex;
     align-items: center;
     margin-right: 20px;
+    @include position(1);
 
     &--label {
       display: flex;
