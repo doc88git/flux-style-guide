@@ -95,7 +95,6 @@ describe('FPaginantion tests', () => {
       })
 
       test('Pular para primeira página', () => {
-
         WRAPPER.vm.jumpTo('first')
         expect(WRAPPER.vm.localCurrentPage).toBe(1)
       })
