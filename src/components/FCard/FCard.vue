@@ -22,15 +22,15 @@ export default {
   props: {
     padding: {
       type: String,
-      default: 'p--sm'
+      default: 'sm'
     },
     borderRadius: {
       type: String,
-      default: 'br--sm'
+      default: 'sm'
     },
     margin: {
       type: String,
-      default: 'm--sm'
+      default: 'sm'
     },
     bgColor: {
       type: String,
@@ -44,9 +44,9 @@ export default {
   computed: {
     classes() {
       return [
-        this.padding,
-        this.borderRadius,
-        this.margin,
+        `p--${this.padding}`,
+        `br--${this.borderRadius}`,
+        `m--${this.margin}`,
         `color--background--${this.bgColor}`,
         `color--text--${this.textColor}`
       ]

@@ -50,11 +50,6 @@ export default {
     hasContent() {
       return this.$slots.content || !!this.content
     },
-    // alertStyle() {
-    //   return [
-    //     `color--background--${this.color}` && `color--text--${this.textColor}`
-    //   ]
-    // },
     alertStyle() {
       const btnFill = {
         [`color--background--${this.textColor}`]: true,
