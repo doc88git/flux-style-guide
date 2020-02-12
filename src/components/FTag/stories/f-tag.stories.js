@@ -19,7 +19,15 @@ storiesOf('Components|Tags', module).add(
     props: {},
     template: `
         <div style="padding: 20px;">
-          <f-tag :bg-color="bgColor" :line-color="lineColor" :legend="legend" :icon="icon" :icon-color="iconColor" :text="text" :text-color="textColor"/>
+          <f-tag
+            :bg-color="bgColor"
+            :line-color="lineColor"
+            :legend="legend"
+            :icon="icon"
+            :icon-color="iconColor"
+            :text="text"
+            :text-color="textColor"
+          />
         </div>
       `
   }),

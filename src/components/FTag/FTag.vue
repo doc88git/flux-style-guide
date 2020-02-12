@@ -3,8 +3,8 @@
     <div
       class="FTag__fieldset"
       :style="styleTextColor"
-      @mouseover="onHover = true"
-      @mouseout="onHover = false"
+      @mouseover="toggleHover"
+      @mouseout="toggleHover"
     >
       <div class="FTag__legend" ref="fTagLegend" :style="[styleLegend]">
         {{ legend }}
@@ -31,9 +31,11 @@ import FIcon from '../FIcon/FIcon'
 
 export default {
   name: 'FTag',
+
   components: {
     FIcon
   },
+
   props: {
     bgColor: {
       type: String,
@@ -68,10 +70,12 @@ export default {
       default: false
     }
   },
+
   data: () => ({
     onHover: false,
     legendSize: 50
   }),
+
   computed: {
     styleLegend() {
       return {
@@ -79,32 +83,38 @@ export default {
         visibility: this.onHover || this.showLegend ? 'visible' : 'hidden'
       }
     },
+
     styleLineColor() {
       return {
         borderColor: this.lineColor,
         minWidth: `${this.legendSize}px`
       }
     },
+
     styleTextColor() {
       return 'color: ' + this.textColor
     },
+
     styleBeforeColor() {
       return ':before: ' + this.lineColor
     }
   },
-  mounted() {
-    this.$nextTick(() => {
-      this.setLegendSize()
-    })
-  },
+
   methods: {
-    setLegendSize() {
-      try {
-        this.legendSize = this.$refs.fTagLegend.offsetWidth + 10
-      } catch (e) {
-        this.legendSize = 60
-      }
+    toggleHover () {
+      this.onHover = !this.onHover
+    },
+
+    setLegendSize () {
+      if (this.$refs.fTagLegend)
+        return this.legendSize = this.$refs.fTagLegend.offsetWidth + 10
+
+      this.legendSize = 60
     }
+  },
+
+  mounted() {
+    this.$nextTick(this.setLegendSize)
   }
 }
 </script>
