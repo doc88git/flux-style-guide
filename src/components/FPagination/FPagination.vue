@@ -63,7 +63,7 @@ export default {
     },
 
     isLastPage () {
-      return this.localCurrentPage === this.totalPages
+      return this.localCurrentPage >= this.totalPages
     },
 
     totalPages() {
@@ -72,16 +72,16 @@ export default {
     },
 
     show() {
-      const base = this.localCurrentPage
-      const max = this.max
-      const factor = Math.ceil(max / 2)
+      const factor = Math.ceil(this.max / 2)
 
-      const pgFrom = base - factor
-      const pgTo = base <= this.totalPages ? base + factor : this.totalPages
+      const pgFrom = this.localCurrentPage - factor
+      const pgTo = this.localCurrentPage <= this.totalPages
+        ? this.localCurrentPage + factor
+        : this.totalPages
 
-      const result = Array.from({ length: max }, (e, i) =>
-        pgFrom + max > this.totalPages
-          ? (this.totalPages + 1) - (max - i)
+      const result = Array.from({ length: this.max }, (e, i) =>
+        pgFrom + this.max > this.totalPages
+          ? (this.totalPages + 1) - (this.max - i)
           : pgFrom < 0 ? i + 1 : pgFrom + i)
       
       return result
