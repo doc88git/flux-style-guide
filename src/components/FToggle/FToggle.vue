@@ -1,49 +1,48 @@
 <template>
   <div class="FToggle">
     <div class="FToggle__wrapper">
-      <div v-if="$slots.before" class="FToggle__wrapper--label">
+      <div class="FToggle__wrapper--label" :class="labelPosition" v-if="$slots.before">
         <slot name="before" />
       </div>
       <div class="FToggle__switch" @click="switchToggle">
-        <div
-          class="FToggle__ball"
-          :class="{ 'FToggle__ball--active': value }"
-        ></div>
+        <div class="FToggle__ball" :class="{ 'FToggle__ball--active': value }"></div>
       </div>
       <span
-        v-if="!$slots.before && !$slots.after"
         class="FToggle__wrapper--label"
-        :class="{ 'FToggle__wrapper--label--active': value }"
-        >{{ labelName }}</span
-      >
-      <div v-if="$slots.after" class="FToggle__wrapper--label">
-        <slot name="after" />
-      </div>
+        :class="[{ 'FToggle__wrapper--label--active': value }, labelPosition]"
+      >{{ labelName }}</span>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "FToggle",
+  name: 'FToggle',
   components: {},
   props: {
     value: {
       type: Boolean,
       default: false
+    },
+    align: {
+      type: String,
+      default: 'right'
     }
   },
   computed: {
     labelName() {
-      return this.value ? "Ligado" : "Desligado";
+      return this.value ? 'Ligado' : 'Desligado'
+    },
+    labelPosition() {
+      return `FToggle__wrapper--label--${this.align}`
     }
   },
   methods: {
     switchToggle() {
-      this.$emit("input", !this.value);
+      this.$emit('input', !this.value)
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -60,6 +59,7 @@ export default {
     border-radius: 10px;
     cursor: pointer;
     padding: 1px;
+    order: 1;
   }
 
   &__ball {
@@ -78,24 +78,23 @@ export default {
   &__wrapper {
     display: flex;
     align-items: center;
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
 
     &--label {
       display: flex;
       align-items: center;
 
+      &--left {
+        order: 0;
+        margin-right: 8px;
+      }
+
+      &--right {
+        order: 2;
+        margin-left: 8px;
+      }
+
       &--active {
         color: #79df28;
-      }
-
-      &:first-child {
-        margin-right: 10px;
-      }
-
-      &:last-child {
-        margin-left: 10px;
       }
     }
   }

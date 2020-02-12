@@ -71,7 +71,7 @@ export default {
     success(opts) {
       const alert = {
         ...opts,
-        color: 'green',
+        textColor: 'green',
         id: uid(),
         time: this.getTime()
       }
@@ -80,7 +80,7 @@ export default {
     warning(opts) {
       const alert = {
         ...opts,
-        color: 'yellow',
+        textColor: 'yellow',
         id: uid(),
         time: this.getTime()
       }
@@ -89,7 +89,7 @@ export default {
     info(opts) {
       const alert = {
         ...opts,
-        color: 'blue',
+        textColor: 'blue',
         id: uid(),
         time: this.getTime()
       }
@@ -98,7 +98,7 @@ export default {
     danger(opts) {
       const alert = {
         ...opts,
-        color: 'red',
+        textColor: 'red',
         id: uid(),
         time: this.getTime()
       }
@@ -127,7 +127,7 @@ export default {
     const alert = this.list.map((item, index) => {
       let props = {
         fill: this.fill,
-        textColor: 'white'
+        color: 'white'
       }
 
       if (typeof item === 'string') {
