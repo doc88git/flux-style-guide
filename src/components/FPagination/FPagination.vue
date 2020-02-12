@@ -75,8 +75,10 @@ export default {
       const base = this.localCurrentPage
       const max = this.max
       const factor = Math.ceil(max / 2)
+
       const pgFrom = base - factor
       const pgTo = base <= this.totalPages ? base + factor : this.totalPages
+
       const result = Array.from({ length: max }, (e, i) =>
         pgFrom + max > this.totalPages
           ? (this.totalPages + 1) - (max - i)
@@ -98,10 +100,13 @@ export default {
 
     jumpTo(position) {
       const value = parseInt(this.localCurrentPage)
+
       if (position === 'first') this.setCurrentPage(1)
       if (position === 'last') this.setCurrentPage(this.totalPages)
+
       if (position === 'prev' && value > 0)
         this.setCurrentPage(value - 1)
+
       if (position === 'next' && value <= this.totalPages)
         this.setCurrentPage(value + 1)
     },
@@ -121,21 +126,26 @@ export default {
 <style lang="scss" scoped>
 .f-pagination {
   user-select: none;
+
   &__icon {
     margin: auto;
   }
+
   ul,
   li {
     display: inline-block;
     min-height: 100%;
     text-align: center;
   }
+
   ul {
     display: flex;
     align-items: center;
     align-content: center;
     list-style-type: none;
+
     li {
+
       button {
         text-transform: capitalize;
         padding: 0;
@@ -143,12 +153,15 @@ export default {
         min-width: 35px;
         outline: none;
         color: var(--color-gray);
+
         &.selected {
           color: var(--color-primary);
         }
+
         &:hover {
           color: var(--color-primary-light);
         }
+
         &:disabled {
           opacity: 50%;
           cursor: default;
