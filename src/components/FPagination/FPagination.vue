@@ -79,11 +79,12 @@ export default {
         ? this.localCurrentPage + factor
         : this.totalPages
 
+
       const result = Array.from({ length: this.max }, (e, i) =>
         pgFrom + this.max > this.totalPages
           ? (this.totalPages + 1) - (this.max - i)
-          : pgFrom < 0 ? i + 1 : pgFrom + i)
-      
+          : pgFrom <= 0 ? i + 1 : pgFrom + i)
+
       return result
     }
   },
