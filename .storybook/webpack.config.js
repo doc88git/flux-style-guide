@@ -12,7 +12,14 @@ module.exports = ({ config }) => {
     use: [
       'style-loader',
       'css-loader',
-      'sass-loader'
+      {
+        loader: 'sass-loader',
+        options: {
+          data: `
+						@import "@/assets/settings/settings.scss";
+					`
+        }
+      }
     ],
     include: path.resolve(__dirname, '../')
   })

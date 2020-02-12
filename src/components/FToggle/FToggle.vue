@@ -1,15 +1,15 @@
 <template>
   <div class="FToggle">
-    <div class="FToggle__wrapper position">
-      <div class="FToggle__wrapper--label" :class="labelPosition" href="#">
+    <div class="FToggle__wrapper">
+      <div class="FToggle__wrapper--label" :class="labelPosition" v-if="$slots.before">
         <slot name="before" />
       </div>
-      <div class="FToggle__switch" @click="switchToggle" href="#">
+      <div class="FToggle__switch" @click="switchToggle">
         <div class="FToggle__ball" :class="{ 'FToggle__ball--active': value }"></div>
       </div>
       <span
         class="FToggle__wrapper--label"
-        :class="{ 'FToggle__wrapper--label--active': value }"
+        :class="[{ 'FToggle__wrapper--label--active': value }, labelPosition]"
       >{{ labelName }}</span>
     </div>
   </div>
@@ -34,8 +34,7 @@ export default {
       return this.value ? 'Ligado' : 'Desligado'
     },
     labelPosition() {
-      console.log(this.align)
-      return this.position === 1 ? 'b' : 'a'
+      return `FToggle__wrapper--label--${this.align}`
     }
   },
   methods: {
@@ -52,7 +51,6 @@ export default {
   width: 100%;
   padding: 10px 0;
   margin-bottom: 10px;
-  background: $teste;
 
   &__switch {
     width: 40px;
@@ -61,6 +59,7 @@ export default {
     border-radius: 10px;
     cursor: pointer;
     padding: 1px;
+    order: 1;
   }
 
   &__ball {
@@ -79,25 +78,23 @@ export default {
   &__wrapper {
     display: flex;
     align-items: center;
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-    @include position(1);
 
     &--label {
       display: flex;
       align-items: center;
 
+      &--left {
+        order: 0;
+        margin-right: 8px;
+      }
+
+      &--right {
+        order: 2;
+        margin-left: 8px;
+      }
+
       &--active {
         color: #79df28;
-      }
-
-      &:first-child {
-        margin-right: 10px;
-      }
-
-      &:last-child {
-        margin-left: 10px;
       }
     }
   }
