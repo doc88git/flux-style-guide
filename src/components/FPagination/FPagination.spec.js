@@ -124,7 +124,6 @@ describe('FPaginantion tests', () => {
         expect(WRAPPER.emitted()['update:current_page'][0][0]).toBe(0)
       })
     })
-
   })
 
   test('Componente não alterado', () => {
