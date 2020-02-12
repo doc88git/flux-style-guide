@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/vue'
 import { text, boolean } from '@storybook/addon-knobs'
-import { FField, FInput } from '..'
+import { FField, FInput, FInputType } from '..'
 import { FButton } from '../../FButton'
 import { FAvatar } from '../../FAvatar'
 
@@ -432,3 +432,15 @@ storiesOf('Form|Field', module)
       }
     }
   )
+  .add('Percentage', () => ({
+    components: { FInputType, FField },
+    data: () => ({}),
+    props: {},
+    template: `
+      <div style="padding: 20px;">
+        <f-field>
+          <f-input-type>xfc</f-input-type>
+        </f-field>
+      </div>
+      `
+  }))
