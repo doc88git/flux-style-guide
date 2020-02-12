@@ -66,24 +66,23 @@ export default {
       return this.localCurrentPage >= this.totalPages
     },
 
-    totalPages() {
+    totalPages () {
       if (!this.total || !this.perPage) return 0
       return Math.ceil(this.total / this.perPage)
     },
 
-    show() {
+    pgFrom () {
       const factor = Math.ceil(this.max / 2)
-
       const pgFrom = this.localCurrentPage - factor
-      const pgTo = this.localCurrentPage <= this.totalPages
-        ? this.localCurrentPage + factor
-        : this.totalPages
 
+      return pgFrom
+    },
 
+    show () {
       const result = Array.from({ length: this.max }, (e, i) =>
-        pgFrom + this.max > this.totalPages
+        this.pgFrom + this.max > this.totalPages
           ? (this.totalPages + 1) - (this.max - i)
-          : pgFrom <= 0 ? i + 1 : pgFrom + i)
+          : this.pgFrom <= 0 ? i + 1 : this.pgFrom + i)
 
       return result
     }
@@ -94,12 +93,12 @@ export default {
       return { 'selected': this.localCurrentPage === i }
     },
 
-    setCurrentPage(value) {
+    setCurrentPage (value) {
       this.localCurrentPage = value
       this.$emit('update:current_page', value)
     },
 
-    jumpTo(position) {
+    jumpTo (position) {
       const value = parseInt(this.localCurrentPage)
 
       if (position === 'first') this.setCurrentPage(1)
@@ -118,7 +117,7 @@ export default {
     }
   },
 
-  created() {
+  created () {
     this.initPagination()
   }
 }

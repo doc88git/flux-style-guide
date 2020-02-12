@@ -79,24 +79,36 @@ describe('FPaginantion tests', () => {
 
     describe('Teste do método jumpTo', () => {
       test('Pular para próxima página', () => {
+        const setCurrentPage = jest.fn()
+        WRAPPER.setMethods({ setCurrentPage })
+
         WRAPPER.vm.jumpTo('next')
-        expect(WRAPPER.vm.localCurrentPage).toBe(2)
+        expect(setCurrentPage).toHaveBeenCalledWith(2)
       })
 
       test('Pular para página anterior', () => {
+        const setCurrentPage = jest.fn()
+        WRAPPER.setMethods({ setCurrentPage })
         WRAPPER.setData({ localCurrentPage: 10 })
+
         WRAPPER.vm.jumpTo('prev')
-        expect(WRAPPER.vm.localCurrentPage).toBe(9)
+        expect(setCurrentPage).toHaveBeenCalledWith(9)
       })
 
       test('Pular para ultima página', () => {
+        const setCurrentPage = jest.fn()
+        WRAPPER.setMethods({ setCurrentPage })
+
         WRAPPER.vm.jumpTo('last')
-        expect(WRAPPER.vm.localCurrentPage).toBe(17)
+        expect(setCurrentPage).toHaveBeenCalledWith(17)
       })
 
       test('Pular para primeira página', () => {
+        const setCurrentPage = jest.fn()
+        WRAPPER.setMethods({ setCurrentPage })
+
         WRAPPER.vm.jumpTo('first')
-        expect(WRAPPER.vm.localCurrentPage).toBe(1)
+        expect(setCurrentPage).toHaveBeenCalledWith(1)
       })
     })
 
