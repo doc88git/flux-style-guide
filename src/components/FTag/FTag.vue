@@ -85,7 +85,7 @@ export default {
 
     styleLineColor() {
       return {
-        borderColor: this.lineColor,
+        borderColor: this.lineColor
       }
     },
 
