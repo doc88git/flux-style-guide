@@ -72,10 +72,7 @@ export default {
     },
 
     pgFrom () {
-      const factor = Math.ceil(this.max / 2)
-      const pgFrom = this.localCurrentPage - factor
-
-      return pgFrom
+      return this.localCurrentPage - Math.ceil(this.max / 2)
     },
 
     show () {
