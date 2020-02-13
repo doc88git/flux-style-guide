@@ -108,10 +108,12 @@ export default {
 
 <style lang="scss" scoped>
 .FTag {
+
   &__fieldset {
     display: inline-flex;
     margin-right: 20px;
     white-space: nowrap;
+    position: relative;
   }
 
   &__legend {
@@ -119,11 +121,10 @@ export default {
     padding-right: 4px;
     padding-left: 4px;
     padding-bottom: 0;
-    position: absolute;
-    transform: translateY(-6px);
     margin-left: 0;
     font-size: var(--text-xs);
     z-index: 2;
+    transform: translateY(-6px);
   }
 
   &__slot-div {
@@ -132,9 +133,12 @@ export default {
     padding-right: 5px;
     padding-left: 5px;
     border-radius: 5px;
-    display: inline-flex;
+    display: flex;
     min-height: 30px;
     justify-content: flex-start;
+
+    position: absolute;
+    width: calc(100% + 10px);
   }
 
   &__icon {
