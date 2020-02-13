@@ -72,8 +72,7 @@ export default {
   },
 
   data: () => ({
-    onHover: false,
-    legendSize: 50
+    onHover: false
   }),
 
   computed: {
@@ -87,7 +86,6 @@ export default {
     styleLineColor() {
       return {
         borderColor: this.lineColor,
-        minWidth: `${this.legendSize}px`
       }
     },
 
@@ -103,18 +101,7 @@ export default {
   methods: {
     toggleHover () {
       this.onHover = !this.onHover
-    },
-
-    setLegendSize () {
-      if (this.$refs.fTagLegend)
-        return this.legendSize = this.$refs.fTagLegend.offsetWidth + 10
-
-      this.legendSize = 60
     }
-  },
-
-  mounted() {
-    this.$nextTick(this.setLegendSize)
   }
 }
 </script>
@@ -122,7 +109,7 @@ export default {
 <style lang="scss" scoped>
 .FTag {
   &__fieldset {
-    display: flex;
+    display: inline-flex;
     margin-right: 20px;
     white-space: nowrap;
   }
@@ -145,7 +132,7 @@ export default {
     padding-right: 5px;
     padding-left: 5px;
     border-radius: 5px;
-    display: flex;
+    display: inline-flex;
     min-height: 30px;
     justify-content: flex-start;
   }
@@ -155,6 +142,13 @@ export default {
     padding-left: 1px;
     padding-right: 5px;
     padding-bottom: 1px;
+
+    // This is so the icon doesn't interfere with the tag size
+    // when first loading (flash of unstyled content), since
+    // we're using icon ligatures.
+    // icon size (12px) + padding-right (5px)
+    max-width: 17px;
+    overflow: hidden;
   }
-}
+ }
 </style>
