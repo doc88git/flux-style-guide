@@ -8,7 +8,7 @@
       </li>
       <li>
         <button :disabled="isFirstPage" @click="jumpTo('prev')">
-          <
+          &lt;
         </button>
       </li>
       <li v-for="i in show" :key="i">
@@ -18,7 +18,7 @@
       </li>
       <li>
         <button :disabled="isLastPage" @click="jumpTo('next')">
-          >
+          &gt;
         </button>
       </li>
       <li>
