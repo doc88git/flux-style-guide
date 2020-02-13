@@ -3,8 +3,8 @@
     <div
       class="FTag__fieldset"
       :style="styleTextColor"
-      @mouseover="onHover = true"
-      @mouseout="onHover = false"
+      @mouseover="toggleHover"
+      @mouseout="toggleHover"
     >
       <div class="FTag__legend" ref="fTagLegend" :style="[styleLegend]">
         {{ legend }}
@@ -31,9 +31,11 @@ import FIcon from '../FIcon/FIcon'
 
 export default {
   name: 'FTag',
+
   components: {
     FIcon
   },
+
   props: {
     bgColor: {
       type: String,
@@ -68,10 +70,11 @@ export default {
       default: false
     }
   },
+
   data: () => ({
-    onHover: false,
-    legendSize: 50
+    onHover: false
   }),
+
   computed: {
     styleLegend() {
       return {
@@ -79,31 +82,25 @@ export default {
         visibility: this.onHover || this.showLegend ? 'visible' : 'hidden'
       }
     },
+
     styleLineColor() {
       return {
-        borderColor: this.lineColor,
-        minWidth: `${this.legendSize}px`
+        borderColor: this.lineColor
       }
     },
+
     styleTextColor() {
       return 'color: ' + this.textColor
     },
+
     styleBeforeColor() {
       return ':before: ' + this.lineColor
     }
   },
-  mounted() {
-    this.$nextTick(() => {
-      this.setLegendSize()
-    })
-  },
+
   methods: {
-    setLegendSize() {
-      try {
-        this.legendSize = this.$refs.fTagLegend.offsetWidth + 10
-      } catch (e) {
-        this.legendSize = 60
-      }
+    toggleHover () {
+      this.onHover = !this.onHover
     }
   }
 }
@@ -111,10 +108,12 @@ export default {
 
 <style lang="scss" scoped>
 .FTag {
+
   &__fieldset {
-    display: flex;
+    display: inline-flex;
     margin-right: 20px;
     white-space: nowrap;
+    position: relative;
   }
 
   &__legend {
@@ -122,11 +121,10 @@ export default {
     padding-right: 4px;
     padding-left: 4px;
     padding-bottom: 0;
-    position: absolute;
-    transform: translateY(-6px);
     margin-left: 0;
     font-size: var(--text-xs);
     z-index: 2;
+    transform: translateY(-6px);
   }
 
   &__slot-div {
@@ -138,6 +136,10 @@ export default {
     display: flex;
     min-height: 30px;
     justify-content: flex-start;
+
+    position: absolute;
+    min-width: fit-content;
+    width: calc(100% + 10px);
   }
 
   &__icon {
@@ -145,6 +147,13 @@ export default {
     padding-left: 1px;
     padding-right: 5px;
     padding-bottom: 1px;
+
+    // This is so the icon doesn't interfere with the tag size
+    // when first loading (flash of unstyled content), since
+    // we're using icon ligatures.
+    // icon size (12px) + padding-right (5px)
+    max-width: 17px;
+    overflow: hidden;
   }
 }
 </style>
