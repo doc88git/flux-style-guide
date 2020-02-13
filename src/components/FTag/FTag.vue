@@ -150,5 +150,5 @@ export default {
     max-width: 17px;
     overflow: hidden;
   }
- }
+}
 </style>
