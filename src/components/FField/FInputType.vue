@@ -1,21 +1,31 @@
 <template>
-  <div class="f-input">
-    <div class="f-input__message">Demanda acima de:</div>
-    <input type="number" class="f-input__input" />
+  <div class="f-input" :class="paddingInput">
+    <div class="f-input__message">{{ message }}</div>
+    <input :value="value" type="number" class="f-input__input" />
+    <div class="f-input__unity">{{ unity }}</div>
     <div class="f-input__counter">
-      <button class="f-input__up"></button>
-      <button class="f-input__down"></button>
+      <button @click="counterUp">
+        <f-icon class="f-input__up" :name="iconUp"></f-icon>
+      </button>
+      <button @click="counterDown">
+        <f-icon class="f-input__down" :name="iconDown"></f-icon>
+      </button>
     </div>
   </div>
 </template>
 
 <script>
+import { FIcon } from '../FIcon'
+
 export default {
   name: 'f-input-type',
-  components: {},
-  data() {},
+  components: {
+    FIcon
+  },
+  data: () => ({
+    value: 0
+  }),
   props: {
-    // value: 'a',
     name: {},
     type: {
       default: 'number',
@@ -24,10 +34,57 @@ export default {
     color: {
       type: String,
       default: 'primary'
+    },
+    iconUp: {
+      type: String,
+      default: 'keyboard_arrow_up'
+    },
+    iconDown: {
+      type: String,
+      default: 'keyboard_arrow_down'
+    },
+    message: {
+      type: String,
+      default: 'Demanda acima de:'
+    },
+    unity: {
+      type: String,
+      default: ''
+    },
+    fontSize: {
+      type: String,
+      default: '2xl'
+    },
+    paddingX: {
+      type: String,
+      default: 'sm'
     }
   },
-  computed: {},
-  methods: {}
+  computed: {
+    paddingInput() {
+      return [
+        `p-x--${this.paddingX}`
+        // `br--${this.borderRadius}`,
+        // `m--${this.margin}`,
+        // `color--background--${this.bgColor}`,
+        // `color--text--${this.textColor}`
+      ]
+    }
+    // fontHeight() {
+    //   ``
+    // }
+  },
+  methods: {
+    counterUp() {
+      this.value++
+    },
+    counterDown() {
+      this.value--
+    },
+    inputValue() {
+      this.$emit('input-value', this.value)
+    }
+  }
 }
 </script>
 
@@ -35,24 +92,44 @@ export default {
 .f-input {
   border: 1px solid var(--color-gray-500);
   border-radius: 5px;
-  height: 64px;
-  width: 428px;
+  height: auto;
+  width: 100%;
   display: flex;
   align-items: center;
+  overflow: hidden;
 
   &__input {
-    border: 1px solid var(--color-gray-300);
+    width: 100%;
+    text-align: end;
+    font-size: 40px;
+    font-weight: 300;
   }
 
   &__message {
-    border: 1px solid green;
+    white-space: nowrap;
+  }
+
+  &__unity {
+    padding-top: 13px;
+    border-right: 1px solid var(--color-gray-300);
+    height: 34px;
+    padding-right: 10px;
+    font-size: 15px;
+    font-weight: 300;
   }
 
   &__counter {
-    background: url('../../assets/angle-arrow-down.svg') no-repeat 50% 50%;
-    background-size: 32px 32px;
-    height: 35px;
-    width: 35px;
+  }
+
+  &__up {
+    height: 32px;
+    width: 32px;
+  }
+
+  &__down {
+    height: 32px;
+    width: 32px;
+    font-size: 1.5rem;
   }
 }
 

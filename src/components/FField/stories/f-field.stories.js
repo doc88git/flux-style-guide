@@ -439,7 +439,7 @@ storiesOf('Form|Field', module)
     template: `
       <div style="padding: 20px;">
         <f-field>
-          <f-input-type>xfc</f-input-type>
+          <f-input-type></f-input-type>
         </f-field>
       </div>
       `
