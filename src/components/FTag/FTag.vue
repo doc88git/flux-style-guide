@@ -138,6 +138,7 @@ export default {
     justify-content: flex-start;
 
     position: absolute;
+    min-width: fit-content;
     width: calc(100% + 10px);
   }
 

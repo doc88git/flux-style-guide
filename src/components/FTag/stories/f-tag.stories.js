@@ -9,7 +9,7 @@ storiesOf('Components|Tags', module).add(
     data: () => ({
       bgColor: text('Background', 'white'),
       lineColor: text('Line Color', '#c1c1c1'),
-      legend: text('Label', 'Empresa very long text wow its big very big'),
+      legend: text('Label', 'Empresa ery long text wow its big very big'),
       icon: text('Icon', 'dashboard'),
       iconColor: text('Icon Color', 'purple'),
       text: text('Text', 'Flux Services'),
