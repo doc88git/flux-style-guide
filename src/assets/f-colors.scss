@@ -82,7 +82,7 @@
   &--border {
     @each $color, $value in $colors-theme {
       &--#{$color} {
-        border-color: #{$value};
+        border: 1px solid #{$value};
       }
     }
   }

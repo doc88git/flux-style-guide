@@ -121,3 +121,21 @@
     }
   }
 }
+
+.text {
+  &-size {
+    @each $size, $value in $borderRadius {
+      &--#{$size} {
+        font-size: #{$value};
+      }
+    }
+  }
+
+  &-weight {
+    @each $size, $value in $borderRadius {
+      &--#{$size} {
+        font-weight: #{$value};
+      }
+    }
+  }
+}

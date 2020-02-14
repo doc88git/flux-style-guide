@@ -22,15 +22,15 @@ export default {
   props: {
     padding: {
       type: String,
-      default: 'sm'
+      default: 'base'
     },
     borderRadius: {
       type: String,
-      default: 'sm'
+      default: 'base'
     },
     margin: {
       type: String,
-      default: 'sm'
+      default: ''
     },
     bgColor: {
       type: String,
@@ -62,13 +62,11 @@ export default {
 <style lang="scss" scoped>
 .f-card {
   max-width: 100%;
-  background-color: var(--color-white);
   box-shadow: var(--shadow-base);
   width: 100%;
   .f-card__content {
     display: flex;
     flex-direction: column;
-    padding: 1.5rem;
     height: 100%;
   }
 }
