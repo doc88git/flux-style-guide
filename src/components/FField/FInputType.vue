@@ -70,13 +70,11 @@ export default {
   },
   computed: {
     paddingInput() {
-      return [
-        `p-x--${this.paddingX}`
-        // `br--${this.borderRadius}`,
-        // `m--${this.margin}`,
-        // `color--background--${this.bgColor}`,
-        // `color--text--${this.textColor}`
-      ]
+      return `p-x--${this.paddingX}`
+      // `br--${this.borderRadius}`,
+      // `m--${this.margin}`,
+      // `color--background--${this.bgColor}`,
+      // `color--text--${this.textColor}`
     }
     // fontHeight() {
     //   ``

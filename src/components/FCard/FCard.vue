@@ -1,7 +1,7 @@
 <template>
   <section class="f-card" :class="classes">
     <slot name="image-header">
-      <f-image v-if="headerBg" rounded-t :src="headerBg" />
+      <f-image v-if="headerImage" rounded-t :src="headerImage" />
     </slot>
     <slot name="content">
       <main class="f-card__content">
@@ -39,6 +39,10 @@ export default {
     textColor: {
       type: String,
       default: 'font-base'
+    },
+    headerImage: {
+      type: [String, Function],
+      default: ''
     }
   },
   computed: {
