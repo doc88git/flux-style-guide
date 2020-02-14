@@ -66,17 +66,22 @@ export default {
     paddingX: {
       type: String,
       default: 'sm'
+    },
+    newValue: {
+      type: Number,
+      default: null
     }
+  },
+  mounted() {
+    this.checkPropValue()
   },
   computed: {
     paddingInput() {
-      return [
-        `p-x--${this.paddingX}`
-        // `br--${this.borderRadius}`,
-        // `m--${this.margin}`,
-        // `color--background--${this.bgColor}`,
-        // `color--text--${this.textColor}`
-      ]
+      return `p-x--${this.paddingX}`
+      // `br--${this.borderRadius}`,
+      // `m--${this.margin}`,
+      // `color--background--${this.bgColor}`,
+      // `color--text--${this.textColor}`
     }
     // fontHeight() {
     //   ``
@@ -91,6 +96,9 @@ export default {
     },
     inputValue() {
       this.$emit('input-value', this.value)
+    },
+    checkPropValue() {
+      if (this.newValue != null) this.value = this.newValue
     }
   }
 }
