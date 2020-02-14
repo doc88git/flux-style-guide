@@ -66,7 +66,14 @@ export default {
     paddingX: {
       type: String,
       default: 'sm'
+    },
+    newValue: {
+      type: Number,
+      default: null
     }
+  },
+  mounted() {
+    this.checkPropValue()
   },
   computed: {
     paddingInput() {
@@ -89,6 +96,9 @@ export default {
     },
     inputValue() {
       this.$emit('input-value', this.value)
+    },
+    checkPropValue() {
+      if (this.newValue != null) this.value = this.newValue
     }
   }
 }
