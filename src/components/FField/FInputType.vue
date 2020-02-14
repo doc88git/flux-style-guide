@@ -51,7 +51,15 @@ export default {
       type: String,
       default: ''
     },
-    fontSize: {
+    fontSizeInput: {
+      type: String,
+      default: '2xl'
+    },
+    fontSizeUnity: {
+      type: String,
+      default: '2xl'
+    },
+    fontSizeMessage: {
       type: String,
       default: '2xl'
     },

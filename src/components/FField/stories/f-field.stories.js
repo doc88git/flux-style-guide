@@ -432,15 +432,49 @@ storiesOf('Form|Field', module)
       }
     }
   )
-  .add('Percentage', () => ({
-    components: { FInputType, FField },
-    data: () => ({}),
-    props: {},
-    template: `
+  .add(
+    'Percentage',
+    () => ({
+      components: { FInputType, FField },
+      data: () => ({}),
+      props: {
+        type: {
+          default: 'number'
+        },
+        color: {
+          default: 'primary'
+        },
+        iconUp: {
+          default: 'keyboard_arrow_up'
+        },
+        iconDown: {
+          default: 'keyboard_arrow_down'
+        },
+        message: {
+          default: 'Demanda acima de:'
+        },
+        unity: {
+          default: ''
+        },
+        fontSize: {
+          default: '2xl'
+        },
+        paddingX: {
+          default: 'sm'
+        }
+      },
+      template: `
       <div style="padding: 20px;">
         <f-field>
-          <f-input-type></f-input-type>
+          <f-input-type
+          ></f-input-type>
         </f-field>
       </div>
       `
-  }))
+    }),
+    {
+      info: {
+        summary
+      }
+    }
+  )

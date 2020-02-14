@@ -11,13 +11,13 @@ storiesOf('Components|Toggle', module).add(
     data: () => ({
       isToggled: boolean('toggled', false),
       status: text('Text'),
-      labelPosition: text('position', 'right')
+      align: text('align', 'right')
     }),
     methods: {},
     props: {},
     template: `
         <div style="padding: 20px;">
-          <f-toggle :labelPosition="labelPosition" v-model="isToggled" />
+          <f-toggle :align="align" v-model="isToggled" />
         </div>
       `
   }),
