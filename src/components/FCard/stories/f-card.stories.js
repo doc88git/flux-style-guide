@@ -60,7 +60,7 @@ storiesOf('Components|Card', module)
       template: `
       <div style="padding: 20px; width: 600px;">
           <f-card
-            header-bg="https://altitude-community.aircanada.com/app/webroot/img/default-bg-card.png"
+            header-image="https://altitude-community.aircanada.com/app/webroot/img/default-bg-card.png"
           >
             <f-card-title>Where does it come from?</f-card-title>
             <f-card-body>

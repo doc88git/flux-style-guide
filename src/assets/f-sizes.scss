@@ -121,3 +121,21 @@
     }
   }
 }
+
+.text {
+  &-size {
+    @each $size, $value in $textSizes {
+      &--#{$size} {
+        font-size: #{$value};
+      }
+    }
+  }
+
+  &-weight {
+    @each $size, $value in $weights {
+      &--#{$size} {
+        font-weight: #{$value};
+      }
+    }
+  }
+}
