@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FPaginantion tests Componente não alterado 1`] = `
+"<section class=\\"f-pagination\\">
+  <ul>
+    <li><button disabled=\\"disabled\\">
+        Primeira
+      </button></li>
+    <li><button disabled=\\"disabled\\">
+        &lt;
+      </button></li>
+    <li><button class=\\"selected\\">
+        1
+      </button></li>
+    <li><button class=\\"\\">
+        2
+      </button></li>
+    <li><button class=\\"\\">
+        3
+      </button></li>
+    <li><button class=\\"\\">
+        4
+      </button></li>
+    <li><button class=\\"\\">
+        5
+      </button></li>
+    <li><button class=\\"\\">
+        6
+      </button></li>
+    <li><button class=\\"\\">
+        7
+      </button></li>
+    <li><button class=\\"\\">
+        8
+      </button></li>
+    <li><button class=\\"\\">
+        9
+      </button></li>
+    <li><button class=\\"\\">
+        10
+      </button></li>
+    <li><button>
+        &gt;
+      </button></li>
+    <li><button>
+        Última
+      </button></li>
+  </ul>
+</section>"
+`;
