@@ -15,6 +15,7 @@
     "test:watch": "jest --watchAll"
   },
   "dependencies": {
+    "@doc88/flux-icon": "^1.0.0-beta.2",
     "collect.js": "^4.12.5",
     "core-js": "^3.6.4",
     "fuse.js": "^3.4.5",
@@ -54,10 +55,11 @@
     "prettier": "^1.19.1",
     "sass-loader": "^7.1.0",
     "storybook-addon-vue-info": "^1.2.1",
-    "vue-jest": "^3.0.4",
     "style-loader": "^0.23.1",
+    "vue-jest": "^3.0.4",
     "vue-loader": "^15.7.0",
     "vue-style-loader": "^4.1.2",
+    "vue-svg-loader": "^0.16.0",
     "vue-template-compiler": "^2.6.10"
   }
 }

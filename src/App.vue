@@ -7,6 +7,7 @@
         <a target="_blank" :href="item.url">
           {{ item.name }}
         </a>
+        <icon-base />
       </li>
     </ul>
   </f-container>
@@ -14,11 +15,13 @@
 
 <script>
 import { FContainer } from '../src/components/FContainer'
+import IconBase from '../src/components/FIcon/IconBase'
 
 const styleGuideName = 'Flux Style Guide'
 export default {
   components: {
-    FContainer
+    FContainer,
+    IconBase
   },
   data: () => ({
     styleGuideName,
