@@ -33,6 +33,17 @@
 <script>
 import { FIcon } from '../FIcon'
 
+function precision(a) {
+  if (!isFinite(a)) return 0
+  var e = 1,
+    p = 0
+  while (Math.round(a * e) / e !== a) {
+    e *= 10
+    p++
+  }
+  return p
+}
+
 export default {
   name: 'f-input-type',
   components: {
@@ -116,7 +127,7 @@ export default {
     },
     sum: {
       type: Number,
-      default: 0.01
+      default: 1
     }
   },
   mounted() {
@@ -163,11 +174,15 @@ export default {
   methods: {
     counterUp(e) {
       e.preventDefault()
-      this.value = this.value + this.sum
+      this.value = parseFloat(
+        (this.value + this.sum).toFixed(precision(this.sum))
+      )
     },
     counterDown(e) {
       e.preventDefault()
-      this.value = this.value - this.sum
+      this.value = parseFloat(
+        (this.value - this.sum).toFixed(precision(this.sum))
+      )
     },
     inputValue() {
       this.$emit('input', this.value)
@@ -193,6 +208,7 @@ export default {
     font-size: 40px;
     font-weight: 300;
     background-color: transparent;
+    outline: none;
   }
 
   &__message {
