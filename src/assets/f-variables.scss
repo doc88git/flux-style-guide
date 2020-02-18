@@ -27,7 +27,16 @@ $textSizes: (
 );
 
 $weights: (
-  'base': 'normal'
+  'xs': '100',
+  'sm': '200',
+  'light': '300',
+  'base': 'normal',
+  'lg': '500',
+  'xl': '600',
+  '2xl': 'bold',
+  '3xl': '700',
+  '4xl': '800',
+  '5xl': '900'
 );
 
 $spacingSizes: (
