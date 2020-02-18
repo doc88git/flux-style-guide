@@ -16,7 +16,7 @@ module.exports = ({ config }) => {
         loader: 'sass-loader',
         options: {
           data: `
-						@import "@/assets/settings/settings.scss";
+            @import "@/assets/settings/settings.scss";
 					`
         }
       }
@@ -34,6 +34,11 @@ module.exports = ({ config }) => {
     test: /\.stories\.js$/,
     loaders: [require.resolve('@storybook/addon-storysource/loader')],
     enforce: 'pre'
+  })
+
+  config.module.rules.push({
+    test: /\.svg$/,
+    use: ['babel-loader', 'vue-svg-loader']
   })
 
   return config

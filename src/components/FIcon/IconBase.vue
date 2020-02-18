@@ -25,8 +25,8 @@ export default {
         if (newVal !== oldVal) {
           this.icon = () =>
             import(
-              `@/assets/icons/${this.size}/${this.name}-${this.size}px.svg?inline`
-            );
+              `@doc88/flux-icon/src/assets/${this.size}px/${this.name}-${this.size}px.svg`
+            )
         }
       },
       immediate: true
@@ -34,27 +34,17 @@ export default {
   },
   methods: {
     clickHandler(e) {
-      this.$emit('click', e);
+      this.$emit('click', e)
     }
   },
   render(createElement) {
     return createElement(this.icon, {
-      class: [{ 'icon-base': true }, `color-fill--${this.color}`],
+      class: ['f-icon', `color--fill--${this.color}`],
       key: this.name,
       on: {
         click: this.clickHandler
       }
-    });
-  }
-};
-</script>
-
-<style lang="scss" scoped>
-.color-fill {
-  @each $color, $value in $colors-theme {
-    &--#{$color} {
-      fill: var(--color-#{$color});
-    }
+    })
   }
 }
-</style>
+</script>
