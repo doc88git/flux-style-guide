@@ -2,6 +2,8 @@
   <f-container class="content">
     <h1 class="flux-logo">{{ styleGuideName }}</h1>
 
+    <IconBase name="download" />
+
     <ul class="menu">
       <li v-for="(item, index) in menuItems" :key="index">
         <a target="_blank" :href="item.url">
@@ -14,11 +16,13 @@
 
 <script>
 import { FContainer } from '../src/components/FContainer'
+import IconBase from '../src/components/FIcon/IconBase'
 
 const styleGuideName = 'Flux Style Guide'
 export default {
   components: {
-    FContainer
+    FContainer,
+    IconBase
   },
   data: () => ({
     styleGuideName,

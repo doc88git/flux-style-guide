@@ -2,6 +2,7 @@ import { storiesOf } from '@storybook/vue'
 import { select, text } from '@storybook/addon-knobs'
 
 import FIcon from '../FIcon.vue'
+import IconBase from '../IconBase.vue'
 
 const label = 'Icon Type'
 const defaultValue = 'default'
@@ -14,30 +15,31 @@ const options = {
 }
 const groupId = 'ICON-OPTIONS-ID1'
 
-storiesOf('Components|Icon', module).add(
-  'Icon',
-  () => ({
-    components: { FIcon },
-    props: {
-      name: {
-        default: text('name', 'extension', groupId)
+storiesOf('Components|Icon', module)
+  .add(
+    'Icon',
+    () => ({
+      components: { FIcon },
+      props: {
+        name: {
+          default: text('name', 'extension', groupId)
+        },
+        type: {
+          default: select(label, options, defaultValue, groupId)
+        },
+        lib: {
+          default: select('Lib', { Material: 'material' }, 'material', groupId)
+        }
       },
-      type: {
-        default: select(label, options, defaultValue, groupId)
-      },
-      lib: {
-        default: select('Lib', { Material: 'material' }, 'material', groupId)
-      }
-    },
-    template: `
+      template: `
       <div style="padding: 20px;">
         <f-icon :name="name" :type="type" :lib="lib" />
       </div>
     `
-  }),
-  {
-    info: {
-      summary: `
+    }),
+    {
+      info: {
+        summary: `
           ## Types
           - outlined
           - sharp
@@ -48,6 +50,30 @@ storiesOf('Components|Icon', module).add(
           ## Lib
           - [Material Icons](https://material.io/tools/icons/?style=baseline)
         `
+      }
     }
-  }
-)
+  )
+  .add(
+    'Base Icon',
+    () => ({
+      components: { IconBase },
+      props: {
+        name: {
+          default: text('name', 'download', groupId)
+        },
+        size: {
+          default: select(label, [16, 24], 16, groupId)
+        }
+      },
+      template: `
+      <div style="padding: 20px;">
+        <IconBase :name="name" :size="size" />
+      </div>
+    `
+    }),
+    {
+      info: {
+        summary: `Icon Base - Flux Icon`
+      }
+    }
+  )

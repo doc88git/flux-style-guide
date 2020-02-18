@@ -36,5 +36,10 @@ module.exports = ({ config }) => {
     enforce: 'pre'
   })
 
+  config.module.rules.push({
+    test: /\.svg$/,
+    loader: 'html-loader'
+  })
+
   return config
 }

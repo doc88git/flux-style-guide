@@ -1,14 +1,19 @@
 <script>
+import fluxIcon from '@doc88/flux-icon'
+
 export default {
   name: 'IconBase',
+  data: () => ({
+    icon: null
+  }),
   props: {
     name: {
       type: String,
-      default: 'bell'
+      required: true
     },
     color: {
       type: String,
-      default: 'text'
+      default: 'black'
     },
     size: {
       type: Number,
@@ -16,17 +21,15 @@ export default {
       validator: val => [16, 24].includes(val)
     }
   },
-  data: () => ({
-    icon: null
-  }),
   watch: {
     name: {
       handler(newVal, oldVal) {
-        if (newVal !== oldVal) {
-          this.icon = () =>
-            import(
-              `@/assets/icons/${this.size}/${this.name}-${this.size}px.svg?inline`
-            );
+        try {
+          if (newVal !== oldVal) {
+            this.icon = fluxIcon(this.name, this.size)
+          }
+        } catch (e) {
+          console.log({ e })
         }
       },
       immediate: true
@@ -34,27 +37,50 @@ export default {
   },
   methods: {
     clickHandler(e) {
-      this.$emit('click', e);
+      this.$emit('click', e)
     }
   },
-  render(createElement) {
-    return createElement(this.icon, {
+  render(h) {
+    return h('div', {
       class: [{ 'icon-base': true }, `color-fill--${this.color}`],
       key: this.name,
       on: {
         click: this.clickHandler
-      }
-    });
+      },
+      domProps: { innerHTML: this.icon }
+    })
   }
-};
+}
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .color-fill {
-  @each $color, $value in $colors-theme {
-    &--#{$color} {
-      fill: var(--color-#{$color});
+  &--red {
+    svg {
+      fill: var(--color-red);
+    }
+  }
+  &--green {
+    svg {
+      fill: var(--color-green);
+    }
+  }
+  &--gray {
+    svg {
+      fill: var(--color-gray);
+    }
+  }
+  &--black {
+    svg {
+      fill: var(--color-black);
     }
   }
 }
+// .color-fill {
+//   @each $color, $value in $colors-theme {
+//     &--#{$color} {
+//       fill: var(--color-#{$color});
+//     }
+//   }
+// }
 </style>
