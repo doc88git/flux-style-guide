@@ -177,12 +177,14 @@ export default {
       this.value = parseFloat(
         (this.value + this.sum).toFixed(precision(this.sum))
       )
+      this.inputValue()
     },
     counterDown(e) {
       e.preventDefault()
       this.value = parseFloat(
         (this.value - this.sum).toFixed(precision(this.sum))
       )
+      this.inputValue()
     },
     inputValue() {
       this.$emit('input', this.value)
