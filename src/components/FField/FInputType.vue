@@ -14,7 +14,7 @@
     </div>
     <input
       :value="value"
-      type="number"
+      :placeholder="placeHolder"
       class="f-input__input"
       :class="[colorText, inputFontSize, inputFontWeight]"
       @keydown.up="counterUp($event)"
@@ -132,6 +132,10 @@ export default {
     sum: {
       type: Number,
       default: 1
+    },
+    placeHolder: {
+      type: String,
+      default: ''
     }
   },
   mounted() {
