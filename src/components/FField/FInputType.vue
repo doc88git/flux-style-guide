@@ -9,9 +9,7 @@
       borderRadiusContent
     ]"
   >
-    <div class="f-input__message" :class="[messageFontSize, colorText]">
-      {{ message }}
-    </div>
+    <div class="f-input__message" :class="[messageFontSize, colorText]">{{ message }}</div>
     <input
       :value="value"
       :placeholder="placeHolder"
@@ -20,9 +18,7 @@
       @keydown.up="counterUp($event)"
       @keydown.down="counterDown($event)"
     />
-    <div class="f-input__unity" :class="[unityFontSize, colorText]">
-      {{ unity }}
-    </div>
+    <div class="f-input__unity" :class="[unityFontSize, colorText]">{{ unity }}</div>
     <div class="f-input__counter">
       <button @click="counterUp" :class="colorButton">
         <f-icon class="f-input__up" :name="iconUp"></f-icon>
@@ -95,7 +91,7 @@ export default {
     },
     unity: {
       type: String,
-      default: ''
+      default: '%'
     },
     fontSizeInput: {
       type: String,
@@ -103,7 +99,7 @@ export default {
     },
     fontSizeUnity: {
       type: String,
-      default: 'base'
+      default: 'xl'
     },
     fontSizeMessage: {
       type: String,
@@ -135,7 +131,7 @@ export default {
     },
     placeHolder: {
       type: String,
-      default: ''
+      default: 'Placeholder'
     }
   },
   mounted() {
