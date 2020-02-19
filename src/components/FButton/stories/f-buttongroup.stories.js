@@ -36,13 +36,11 @@ storiesOf('Components|Button', module)
         options
       }),
       methods: {
-        change: value => {
-          console.log({ value })
-        }
+        change: value => console.log({ value })
       },
       template: `
         <div style="padding: 20px;">
-          <f-button-group :default="1" :options="options" @change="change" :size="size" />
+          <f-button-group :default="2" :options="options" @change="change" :size="size" />
         </div>
       `
     }),

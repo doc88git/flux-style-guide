@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FButton Tests Componente não alterado 1`] = `
+"<div class=\\"f-button-group\\">
+  <f-button-stub small=\\"true\\" color=\\"\\" radius=\\"true\\" class=\\"\\">
+    Tab 1
+  </f-button-stub>
+  <f-button-stub small=\\"true\\" color=\\"\\" radius=\\"true\\" class=\\"\\" outline=\\"true\\">
+    Tab 2
+  </f-button-stub>
+  <f-button-stub small=\\"true\\" color=\\"\\" radius=\\"true\\" class=\\"\\">
+    Tab 3
+  </f-button-stub>
+</div>"
+`;

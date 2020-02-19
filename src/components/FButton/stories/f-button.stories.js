@@ -17,6 +17,42 @@ const summary = `
 `
 
 storiesOf('Components|Button', module)
+  .add('Teste',
+    () => ({
+      components: { FButton },
+      props: {
+        link: {
+          default: boolean('link', true, groupId)
+        },
+        label: {
+          default: text('label', 'Button', groupId)
+        },
+        disabled: {
+          default: boolean('disable', false, groupId)
+        },
+        icon: {
+          default: text('icon', '', groupId)
+        },
+        color: {
+          //default: text('color', 'red-500', groupId)
+          default: text('color', 'secondary', groupId)
+        },
+        textColor: {
+          default: text('textColor', 'black', groupId)
+        }
+      },
+      template: `
+        <div style="padding: 20px;">
+          <div class="mt-4">Small:</div> <f-button :link="link" :disabled="disabled" :label="label" :icon="icon" :color="color" :text-color="textColor" />
+          <div class="mt-4">Normal:</div> <f-button :link="link" :label="label" :icon="icon" :color="color" />
+          <div class="mt-4">Bigger:</div> <f-button :text-color="textColor" :link="link" :label="label" :icon="icon" :color="color" :bigger="true" />
+        </div>
+      `
+    }),
+    {
+      info: { summary }
+    }
+  )
   .add(
     'Button',
     () => ({
@@ -32,7 +68,7 @@ storiesOf('Components|Button', module)
           default: text('icon', '', groupId)
         },
         color: {
-          default: text('color', '', groupId)
+          default: text('color', 'secondary-dark', groupId)
         },
         textColor: {
           default: text('textColor', 'white', groupId)

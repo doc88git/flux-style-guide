@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FButton Tests Componente não alterado 1`] = `
+"<button type=\\"button\\" class=\\"btn btn--default\\">
+  <div class=\\"btn__inner\\">
+    <!---->
+    <div class=\\"btn__inner__content\\"> Button </div>
+  </div>
+</button>"
+`;

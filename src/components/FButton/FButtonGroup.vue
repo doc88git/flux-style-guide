@@ -6,9 +6,9 @@
       @click="change(opt.value)"
       :class="{
         ...classes,
-        'f-button-group__tab--selected': isFlat && opt.value === selected
+        'f-button-group__tab--selected': tab && opt.value === selected
       }"
-      v-bind="btnOptions(opt.value)"
+      v-bind="getAttrs(opt.value)"
     >
       {{ opt.label }}
     </f-button>
@@ -40,54 +40,40 @@ export default {
     selected: null
   }),
   computed: {
-    isOutline() {
-      return this.outline
-    },
-    isFlat() {
-      return this.tab
-    },
     isDefault() {
       return !this.outline && !this.tab
     },
     classes() {
       return {
-        'f-button-group__tab': this.isFlat
+        'f-button-group__tab': this.tab
+      }
+    },
+    btnOptions () {
+      return {
+        flat: this.tab,
+        small: this.size === 'small',
+        bigger: this.size === 'bigger'
       }
     }
-  },
-  created() {
-    if (this.default) this.change(this.default)
   },
   methods: {
     change(value) {
       this.selected = value
       this.$emit('change', this.selected)
     },
-    btnOptions(id) {
-      let mustBeO = true
-
-      if (this.isOutline && id === this.selected) {
-        mustBeO = false
-      }
-
-      if (this.isDefault) {
-        mustBeO = id === this.selected
-      }
-
-      if (this.isFlat) {
-        mustBeO = false
-      }
-
-      return {
-        outline: mustBeO,
-        flat: this.isFlat,
-        small: this.size === 'small',
-        bigger: this.size === 'bigger'
-      }
+    getAttrs(id) {
+      return this.tab || this.outline && id === this.selected
+        ? { ...this.btnOptions, outline: false }
+        : this.isDefault
+        ? { ...this.btnOptions, outline: id === this.selected }
+        : { ...this.btnOptions, outline: true }
     },
     isSelected(id) {
       return id === this.selected
     }
+  },
+  mounted() {
+    if (this.default) this.change(this.default)
   }
 }
 </script>

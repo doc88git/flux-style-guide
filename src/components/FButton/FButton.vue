@@ -1,23 +1,22 @@
 <template>
-  <button
+  <component
+    :is="componentType"
     class="btn"
     type="button"
-    :class="[btnStyle]"
-    @click="click"
-    @click.stop="blur"
-    @mouseover="mouseover"
-    @mouseleave="mouseleave"
+    :class="btnStyle"
     :disabled="disabled"
+    v-on="$listeners"
+    v-bind="$attrs"
   >
-    <div class="btn__inner" :class="[btnInnerCenter]">
-      <div class="btn__inner__icon" :class="[btnCenter]" v-if="icon">
+    <div class="btn__inner" :class="btnInnerCenter">
+      <div class="btn__inner__icon" :class="btnCenter" v-if="icon">
         <f-icon :name="icon" />
       </div>
-      <div v-if="label || $slots.default" class="btn__inner__content">
+      <div v-if="hasContent" class="btn__inner__content">
         <slot> {{ label }} </slot>
       </div>
     </div>
-  </button>
+  </component>
 </template>
 
 <script>
@@ -29,6 +28,7 @@ export default {
     FIcon
   },
   props: {
+    link: Boolean,
     outline: Boolean,
     flat: Boolean,
     small: Boolean,
@@ -48,75 +48,62 @@ export default {
     textColor: String
   },
   computed: {
+    componentType() {
+      return this.link ? 'a' : 'button'
+    },
+    hasDefaultSlot() {
+      return !!this.$slots.default
+    },
+    hasContent () {
+      return !!this.label || !!this.hasDefaultSlot
+    },
     hasName() {
       return this.label === ''
     },
     hasBg() {
       return !this.flat && !this.outline
     },
-    btnStyle() {
-      let btnDefault = {
-        ['btn--default']: !this.flat && !this.outline,
-        [`color--default--${this.color}`]: !this.flat && !this.outline
-      }
-
-      let btnFlat = {
-        ['btn--flat']: this.flat === true,
-        [`color--flat--${this.color}`]: !!this.color && this.flat
-      }
-
-      let btnOutline = {
-        ['btn--outline']: this.outline === true,
-        [`color--outline--${this.color}`]: !!this.color && this.outline
-      }
-
-      let btnRadius = {
-        ['btn--noradius']: this.radius === false
-      }
-
+    btnColors () {
       return {
-        ...btnDefault,
-        ...btnOutline,
-        ...btnFlat,
-        ...btnRadius,
-        ['btn--small']: this.small,
-        ['btn--bigger']: this.bigger,
-        ['btn--dense']: this.dense,
-        [`color--text--${this.textColor}`]: !!this.textColor
+        [`color--text--${this.textColor}`]: !!this.textColor,
+        [`color--flat--${this.color}`]: !!this.color && this.flat,
+        [`color--outline--${this.color}`]: !!this.color && this.outline,
+        [`color--default--${this.color}`]: !!this.color && !this.flat && !this.outline,
       }
+    },
+    btnSize () {
+      return {
+        ['btn--small']: this.small,
+        ['btn--bigger']: this.bigger
+      }
+    },
+    btnBox () {
+      return {
+        ['btn--default']: !this.flat && !this.outline,
+        ['btn--outline']: this.outline,
+        ['btn--flat']: this.flat,
+        ['btn--dense']: this.dense,
+        ['btn--noradius']: !this.radius
+      }
+    },
+    btnStyle() {
+      return [{ ...this.btnColors, ...this.btnSize, ...this.btnBox }]
     },
     btnCenter() {
-      if (this.label || this.hasDefaultSlot) return ''
-      return 'btn__inner__icon--center'
+      return this.hasContent ? '' : ['btn__inner__icon--center']
     },
     btnInnerCenter() {
-      if (this.label || this.hasDefaultSlot) return ''
-      return 'btn__inner--center'
+      return this.hasContent ? '' : ['btn__inner--center']
     },
-    hasDefaultSlot() {
-      return !!this.$slots.default
-    }
-  },
-  methods: {
-    blur(e) {
-      e.target.blur()
-    },
-    click(e) {
-      this.$emit('click', e)
-    },
-    mouseover(e) {
-      this.$emit('mouseover', e)
-    },
-    mouseleave(e) {
-      this.blur(e)
-      this.$emit('mouseleave', e)
-    }
   }
 }
 </script>
 
 <style lang="scss">
 .btn {
+  display: inline-flex;
+  align-items: center;
+
   text-align: center;
   padding: 0.5rem 0.75rem;
   height: fit-content;
@@ -126,6 +113,7 @@ export default {
   width: auto;
   border: none;
   cursor: pointer;
+
   &:hover {
     outline: 0;
     opacity: 0.7;
