@@ -8,9 +8,11 @@
       colorText,
       borderRadiusContent
     ]"
+    :disabled="disabled"
   >
     <div class="f-input__message" :class="[messageFontSize, colorText]">{{ message }}</div>
     <input
+      :disabled="disabled"
       :value="value"
       :placeholder="placeHolder"
       class="f-input__input"
@@ -132,6 +134,10 @@ export default {
     placeHolder: {
       type: String,
       default: 'Placeholder'
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   mounted() {

@@ -497,12 +497,16 @@ storiesOf('Form|Field', module)
         },
         placeHolder: {
           default: text('placeHolder', 'Placeholder', groupId)
+        },
+        disabled: {
+          default: boolean('disabled', false, groupId)
         }
       },
       template: `
       <div style="padding: 20px;">
         <f-field>
           <f-input-type
+          :disabled="disabled"
           :type="type"
           :bgColorContent="bgColorContent"
           :borderColorContent="borderColorContent"
