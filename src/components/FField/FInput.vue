@@ -30,10 +30,8 @@ export default {
   },
   props: {
     value: [String, Number],
-
     disabled: Boolean,
     readonly: Boolean,
-
     name: {
       default: '',
       type: String,

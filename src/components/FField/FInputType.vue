@@ -8,17 +8,19 @@
       colorText,
       borderRadiusContent
     ]"
+    :disabled="disabled"
   >
-    <div class="f-input__message">{{ message }}</div>
+    <div class="f-input__message" :class="[messageFontSize, colorText]">{{ message }}</div>
     <input
+      :disabled="disabled"
       :value="value"
-      type="number"
+      :placeholder="placeHolder"
       class="f-input__input"
-      :class="colorText"
+      :class="[colorText, inputFontSize, inputFontWeight]"
       @keydown.up="counterUp($event)"
       @keydown.down="counterDown($event)"
     />
-    <div class="f-input__unity">{{ unity }}</div>
+    <div class="f-input__unity" :class="[unityFontSize, colorText]">{{ unity }}</div>
     <div class="f-input__counter">
       <button @click="counterUp" :class="colorButton">
         <f-icon class="f-input__up" :name="iconUp"></f-icon>
@@ -91,31 +93,31 @@ export default {
     },
     unity: {
       type: String,
-      default: ''
+      default: '%'
     },
     fontSizeInput: {
       type: String,
-      default: '2xl'
+      default: '5xl'
     },
     fontSizeUnity: {
       type: String,
-      default: '2xl'
+      default: 'xl'
     },
     fontSizeMessage: {
       type: String,
-      default: '2xl'
+      default: 'base'
     },
     fontWeightInput: {
       type: String,
-      default: '2xl'
+      default: 'light'
     },
     fontWeightUnity: {
       type: String,
-      default: '2xl'
+      default: 'base'
     },
     fontWeightMessage: {
       type: String,
-      default: '2xl'
+      default: 'base'
     },
     paddingX: {
       type: String,
@@ -128,6 +130,14 @@ export default {
     sum: {
       type: Number,
       default: 1
+    },
+    placeHolder: {
+      type: String,
+      default: 'Placeholder'
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   mounted() {
@@ -207,8 +217,6 @@ export default {
   &__input {
     width: 100%;
     text-align: end;
-    font-size: 40px;
-    font-weight: 300;
     background-color: transparent;
     outline: none;
   }
@@ -222,7 +230,6 @@ export default {
     border-right: 1px solid var(--color-gray-300);
     height: 34px;
     padding-right: 10px;
-    font-size: 15px;
     font-weight: 300;
     background-color: transparent;
   }
@@ -238,7 +245,6 @@ export default {
   &__down {
     height: 32px;
     width: 32px;
-    font-size: 1.5rem;
   }
 }
 
