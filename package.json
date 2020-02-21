@@ -15,11 +15,7 @@
     "test:watch": "jest --watchAll"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@doc88/flux-icon": "^1.0.0",
-=======
-    "@doc88/flux-icon": "^1.0.0-beta.2",
->>>>>>> 1b9f0b3869dc3f3d216666eff23486de2a22de8b
     "collect.js": "^4.12.5",
     "core-js": "^3.6.4",
     "fuse.js": "^3.4.5",

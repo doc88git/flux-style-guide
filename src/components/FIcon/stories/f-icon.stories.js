@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue'
-import { select, text } from '@storybook/addon-knobs'
+import { select, text, boolean } from '@storybook/addon-knobs'
 
 import FIcon from '../FIcon.vue'
 import IconBase from '../IconBase.vue'
@@ -51,7 +51,6 @@ storiesOf('Components|Icon', module)
           - [Material Icons](https://material.io/tools/icons/?style=baseline)
         `
       }
-<<<<<<< HEAD
     }
   )
   .add(
@@ -66,12 +65,12 @@ storiesOf('Components|Icon', module)
           default: select(label, [16, 24], 16, groupId)
         },
         clickable: {
-          default: text('clickable', 'primary', groupId)
+          default: boolean('clickable', true, groupId)
         }
       },
       template: `
       <div style="padding: 20px;">
-        <IconBase :name="name" clickable :size="size" />
+        <IconBase :name="name" :clickable="clickable" :size="size" />
       </div>
     `
     }),
@@ -81,15 +80,3 @@ storiesOf('Components|Icon', module)
       }
     }
   )
-=======
-    }
-  )
-  .add('Icon Test', () => ({
-    components: { IconBase },
-    template: `
-      <div style="padding: 20px;">
-        <icon-base/>
-      </div>
-    `
-  }))
->>>>>>> 1b9f0b3869dc3f3d216666eff23486de2a22de8b
