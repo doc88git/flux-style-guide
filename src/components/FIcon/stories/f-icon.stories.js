@@ -63,11 +63,14 @@ storiesOf('Components|Icon', module)
         },
         size: {
           default: select(label, [16, 24], 16, groupId)
+        },
+        clickable: {
+          default: text('clickable', 'primary', groupId)
         }
       },
       template: `
       <div style="padding: 20px;">
-        <IconBase :name="name" :size="size" />
+        <IconBase :name="name" clickable :size="size" />
       </div>
     `
     }),

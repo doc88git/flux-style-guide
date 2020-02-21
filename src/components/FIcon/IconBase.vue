@@ -1,5 +1,5 @@
 <script>
-import fluxIcon from '@doc88/flux-icon'
+import FluxIcon from '@doc88/flux-icon'
 
 export default {
   name: 'IconBase',
@@ -13,12 +13,16 @@ export default {
     },
     color: {
       type: String,
-      default: 'black'
+      default: 'primary'
     },
     size: {
       type: Number,
       default: 16,
       validator: val => [16, 24].includes(val)
+    },
+    clickable: {
+      type: Boolean,
+      default: false
     }
   },
   watch: {
@@ -26,7 +30,7 @@ export default {
       handler(newVal, oldVal) {
         try {
           if (newVal !== oldVal) {
-            this.icon = fluxIcon(this.name, this.size)
+            this.icon = FluxIcon(this.name, this.size)
           }
         } catch (e) {
           console.log({ e })
@@ -37,12 +41,16 @@ export default {
   },
   methods: {
     clickHandler(e) {
-      this.$emit('click', e)
+      if (this.clickable) this.$emit('click', e)
     }
   },
   render(h) {
-    return h('div', {
-      class: [{ 'icon-base': true }, `color-fill--${this.color}`],
+    return h('i', {
+      class: [
+        'icon-base',
+        { 'icon-base--clickable': this.clickable },
+        `color--fill--${this.color}`
+      ],
       key: this.name,
       on: {
         click: this.clickHandler
@@ -53,34 +61,15 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.color-fill {
-  &--red {
-    svg {
-      fill: var(--color-red);
-    }
-  }
-  &--green {
-    svg {
-      fill: var(--color-green);
-    }
-  }
-  &--gray {
-    svg {
-      fill: var(--color-gray);
-    }
-  }
-  &--black {
-    svg {
-      fill: var(--color-black);
+<style lang="scss" scoped>
+.icon-base {
+  &--clickable {
+    cursor: pointer;
+    transition: opacity 0.2s ease-in-out;
+
+    &:hover {
+      opacity: 0.5;
     }
   }
 }
-// .color-fill {
-//   @each $color, $value in $colors-theme {
-//     &--#{$color} {
-//       fill: var(--color-#{$color});
-//     }
-//   }
-// }
 </style>

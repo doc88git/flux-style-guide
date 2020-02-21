@@ -2,7 +2,7 @@
   <f-container class="content">
     <h1 class="flux-logo">{{ styleGuideName }}</h1>
 
-    <IconBase name="download" />
+    <IconBase name="download" clickable />
 
     <ul class="menu">
       <li v-for="(item, index) in menuItems" :key="index">
