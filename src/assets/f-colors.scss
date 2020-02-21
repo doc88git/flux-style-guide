@@ -90,9 +90,13 @@
   &--fill {
     @each $color, $value in $colors-theme {
       &--#{$color} {
+<<<<<<< HEAD
         svg {
           fill: var(--color-#{$color});
         }
+=======
+        fill: var(--color-#{$color});
+>>>>>>> 1b9f0b3869dc3f3d216666eff23486de2a22de8b
       }
     }
   }

@@ -51,6 +51,7 @@ storiesOf('Components|Icon', module)
           - [Material Icons](https://material.io/tools/icons/?style=baseline)
         `
       }
+<<<<<<< HEAD
     }
   )
   .add(
@@ -80,3 +81,15 @@ storiesOf('Components|Icon', module)
       }
     }
   )
+=======
+    }
+  )
+  .add('Icon Test', () => ({
+    components: { IconBase },
+    template: `
+      <div style="padding: 20px;">
+        <icon-base/>
+      </div>
+    `
+  }))
+>>>>>>> 1b9f0b3869dc3f3d216666eff23486de2a22de8b

@@ -28,12 +28,20 @@ export default {
   watch: {
     name: {
       handler(newVal, oldVal) {
+<<<<<<< HEAD
         try {
           if (newVal !== oldVal) {
             this.icon = FluxIcon(this.name, this.size)
           }
         } catch (e) {
           console.log({ e })
+=======
+        if (newVal !== oldVal) {
+          this.icon = () =>
+            import(
+              `@doc88/flux-icon/src/assets/${this.size}px/${this.name}-${this.size}px.svg`
+            )
+>>>>>>> 1b9f0b3869dc3f3d216666eff23486de2a22de8b
         }
       },
       immediate: true
@@ -41,6 +49,7 @@ export default {
   },
   methods: {
     clickHandler(e) {
+<<<<<<< HEAD
       if (this.clickable) this.$emit('click', e)
     }
   },
@@ -70,6 +79,19 @@ export default {
     &:hover {
       opacity: 0.5;
     }
+=======
+      this.$emit('click', e)
+    }
+  },
+  render(createElement) {
+    return createElement(this.icon, {
+      class: ['f-icon', `color--fill--${this.color}`],
+      key: this.name,
+      on: {
+        click: this.clickHandler
+      }
+    })
+>>>>>>> 1b9f0b3869dc3f3d216666eff23486de2a22de8b
   }
 }
-</style>
+</script>

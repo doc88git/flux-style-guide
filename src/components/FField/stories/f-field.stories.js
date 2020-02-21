@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue'
-import { text, boolean } from '@storybook/addon-knobs'
+import { text, boolean, number } from '@storybook/addon-knobs'
 import { FField, FInput, FInputType } from '..'
 import { FButton } from '../../FButton'
 import { FAvatar } from '../../FAvatar'
@@ -439,34 +439,94 @@ storiesOf('Form|Field', module)
       data: () => ({}),
       props: {
         type: {
-          default: 'number'
+          default: text('type', 'number', groupId)
         },
-        color: {
-          default: 'primary'
+        bgColorContent: {
+          default: text('bgColorContent', 'white', groupId)
+        },
+        borderColorContent: {
+          default: text('borderColorContent', 'gray-500', groupId)
+        },
+        buttonColor: {
+          default: text('buttonColor', 'white', groupId)
+        },
+        textColor: {
+          default: text('textColor', 'font-base', groupId)
+        },
+        borderRadius: {
+          default: text('borderRadius', 'base', groupId)
         },
         iconUp: {
-          default: 'keyboard_arrow_up'
+          default: text('iconUp', 'keyboard_arrow_up', groupId)
         },
         iconDown: {
-          default: 'keyboard_arrow_down'
+          default: text('iconDown', 'keyboard_arrow_down', groupId)
         },
         message: {
-          default: 'Demanda acima de:'
+          default: text('message', 'Demanda acima de:', groupId)
         },
         unity: {
-          default: ''
+          default: text('unity', '', groupId)
         },
-        fontSize: {
-          default: '2xl'
+        fontSizeInput: {
+          default: text('fontSizeInput', '5xl', groupId)
+        },
+        fontSizeUnity: {
+          default: text('fontSizeUnity', 'lg', groupId)
+        },
+        fontSizeMessage: {
+          default: text('fontSizeMessage', 'base', groupId)
+        },
+        fontWeightInput: {
+          default: text('fontWeightInput', 'light', groupId)
+        },
+        fontWeightUnity: {
+          default: text('fontWeightUnity', 'base', groupId)
+        },
+        fontWeightMessage: {
+          default: text('fontWeightMessage', 'base', groupId)
         },
         paddingX: {
-          default: 'sm'
+          default: text('paddingX', 'sm', groupId)
+        },
+        newValue: {
+          default: number('newValue', null, groupId)
+        },
+        sum: {
+          default: number('sum', 1, groupId)
+        },
+        placeHolder: {
+          default: text('placeHolder', 'Placeholder', groupId)
+        },
+        disabled: {
+          default: boolean('disabled', false, groupId)
         }
       },
       template: `
       <div style="padding: 20px;">
         <f-field>
           <f-input-type
+          :disabled="disabled"
+          :type="type"
+          :bgColorContent="bgColorContent"
+          :borderColorContent="borderColorContent"
+          :buttonColor="buttonColor"
+          :textColor="textColor"
+          :borderRadius="borderRadius"
+          :iconUp="iconUp"
+          :iconDown="iconDown"
+          :message="message"
+          :unity="unity"
+          :fontSizeInput="fontSizeInput"
+          :fontSizeUnity="fontSizeUnity"
+          :fontSizeMessage="fontSizeMessage"
+          :fontWeightInput="fontWeightInput"
+          :fontWeightUnity="fontWeightUnity"
+          :fontWeightMessage="fontWeightMessage"
+          :paddingX="paddingX"
+          :newValue="newValue"
+          :sum="sum"
+          :placeHolder="placeHolder"
           ></f-input-type>
         </f-field>
       </div>

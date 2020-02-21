@@ -9,6 +9,7 @@
         <a target="_blank" :href="item.url">
           {{ item.name }}
         </a>
+        <icon-base />
       </li>
     </ul>
   </f-container>

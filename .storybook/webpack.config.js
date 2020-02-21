@@ -16,7 +16,7 @@ module.exports = ({ config }) => {
         loader: 'sass-loader',
         options: {
           data: `
-						@import "@/assets/settings/settings.scss";
+            @import "@/assets/settings/settings.scss";
 					`
         }
       }
@@ -50,7 +50,11 @@ module.exports = ({ config }) => {
 
   config.module.rules.push({
     test: /\.svg$/,
+<<<<<<< HEAD
     use: 'html-loader'
+=======
+    use: ['babel-loader', 'vue-svg-loader']
+>>>>>>> 1b9f0b3869dc3f3d216666eff23486de2a22de8b
   })
 
   return config
