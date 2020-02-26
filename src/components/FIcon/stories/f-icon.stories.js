@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue'
-import { select, text } from '@storybook/addon-knobs'
+import { select, text, boolean } from '@storybook/addon-knobs'
 
 import FIcon from '../FIcon.vue'
 import IconBase from '../IconBase.vue'
@@ -53,11 +53,30 @@ storiesOf('Components|Icon', module)
       }
     }
   )
-  .add('Icon Test', () => ({
-    components: { IconBase },
-    template: `
+  .add(
+    'Base Icon',
+    () => ({
+      components: { IconBase },
+      props: {
+        name: {
+          default: text('name', 'download', groupId)
+        },
+        size: {
+          default: select(label, [16, 24], 16, groupId)
+        },
+        clickable: {
+          default: boolean('clickable', true, groupId)
+        }
+      },
+      template: `
       <div style="padding: 20px;">
-        <icon-base/>
+        <IconBase :name="name" :clickable="clickable" :size="size" />
       </div>
     `
-  }))
+    }),
+    {
+      info: {
+        summary: `Icon Base - Flux Icon`
+      }
+    }
+  )

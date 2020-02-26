@@ -1,50 +1,73 @@
+<template>
+  <i v-html="icon" class="icon-base" :class="classes" @click="clickHandler">
+  </i>
+</template>
 <script>
+import FluxIcon from '@doc88/flux-icon'
+
 export default {
   name: 'IconBase',
+  data: () => ({
+    icon: null
+  }),
   props: {
     name: {
       type: String,
-      default: 'bell'
+      required: true
     },
     color: {
       type: String,
-      default: 'text'
+      default: 'primary'
     },
     size: {
       type: Number,
       default: 16,
       validator: val => [16, 24].includes(val)
+    },
+    clickable: {
+      type: Boolean,
+      default: false
     }
   },
-  data: () => ({
-    icon: null
-  }),
   watch: {
     name: {
       handler(newVal, oldVal) {
-        if (newVal !== oldVal) {
-          this.icon = () =>
-            import(
-              `@doc88/flux-icon/src/assets/${this.size}px/${this.name}-${this.size}px.svg`
-            )
+        try {
+          if (newVal !== oldVal) {
+            this.icon = FluxIcon(this.name, this.size)
+          }
+        } catch (e) {
+          console.log({ e })
         }
       },
       immediate: true
     }
   },
-  methods: {
-    clickHandler(e) {
-      this.$emit('click', e)
+  computed: {
+    classes() {
+      return [
+        { 'icon-base--clickable': this.clickable },
+        `color--fill--${this.color}`
+      ]
     }
   },
-  render(createElement) {
-    return createElement(this.icon, {
-      class: ['f-icon', `color--fill--${this.color}`],
-      key: this.name,
-      on: {
-        click: this.clickHandler
-      }
-    })
+  methods: {
+    clickHandler(e) {
+      if (this.clickable) this.$emit('click', e)
+    }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.icon-base {
+  &--clickable {
+    cursor: pointer;
+    transition: opacity 0.2s ease-in-out;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}
+</style>
