@@ -9,7 +9,7 @@
               v-for="(head, index) in keysHeaders"
               v-bind="{ head, index }"
             >
-              <th :key="`th:${head}`" @click="setSortBy(head)">
+              <th :key="`th:${head}`" :sort="sort" @click="setSortBy(head)">
                 <f-icon
                   dense
                   :name="sortIcon"
@@ -46,7 +46,11 @@ export default {
   },
   props: {
     data: Array,
-    header: Object
+    header: Object,
+    sort: {
+      type: Boolean,
+      default: false
+    }
   },
   data: () => ({
     sortBy: '',
@@ -90,9 +94,17 @@ export default {
 
       return item
     },
+    setSort() {
+      !this.sort ? this.setSortBy : this.$emit('click')
+      console.log(this.sortBy, this.sort, this.sortDirection, 'a')
+    },
     setSortBy(item) {
-      this.sortBy = item
-      this.setSortDirection()
+      !this.sort
+        ? [(this.sortBy = item), this.setSortDirection()]
+        : this.$emit('click')
+      //   this.sortBy = item
+      //   this.setSortDirection()
+      console.log(this.sortBy, this.sort, this.sortDirection, 'b')
     },
     setSortDirection() {
       this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc'

@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue'
-import { text } from '@storybook/addon-knobs'
+import { text, boolean } from '@storybook/addon-knobs'
 import FTable from '../FTable.vue'
 
 const arrList = [
@@ -42,6 +42,9 @@ storiesOf('Components|Table', module).add('Default', () => ({
         first_name: 'Nome',
         last_name: 'Sobrenome'
       }
+    },
+    sort: {
+      default: boolean('sort', false)
     }
   },
   methods: {
