@@ -5,17 +5,17 @@ import FTable from '../FTable.vue'
 const arrList = [
   {
     first_name: 'Aprovado',
-    last_name: 'aprovado',
+    last_name: '1',
     open: false
   },
   {
-    first_name: 'Aprovado',
-    last_name: 'aprovado',
+    first_name: 'BAprovado',
+    last_name: '2',
     open: false
   },
   {
-    first_name: 'Aprovado',
-    last_name: 'aprovado',
+    first_name: 'CAprovado',
+    last_name: '3',
     open: false
   }
 ]
@@ -65,7 +65,7 @@ storiesOf('Components|Table', module).add('Default', () => ({
               {{ rowObject.row.first_name }}
             </td>
             <td>
-            {{ rowObject.index }}
+            {{ rowObject.row.last_name }}
             </td>
           </tr>
           <div v-show="rowObject.row.open">

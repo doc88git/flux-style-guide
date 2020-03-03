@@ -70,12 +70,14 @@ export default {
     show() {
       let data = this.content
 
-      if (this.sortBy) {
-        let method = this.sortDirection === 'desc' ? 'sortByDesc' : 'sortBy'
-        data = this.content[method](this.sortBy)
-      }
+      if (this.sort) {
+        if (this.sortBy) {
+          let method = this.sortDirection === 'desc' ? 'sortByDesc' : 'sortBy'
+          data = this.content[method](this.sortBy)
+        }
 
-      data.keyBy(item => this.getContent(item))
+        data.keyBy(item => this.getContent(item))
+      }
 
       return data.all()
     }
@@ -94,17 +96,10 @@ export default {
 
       return item
     },
-    setSort() {
-      !this.sort ? this.setSortBy : this.$emit('click')
-      console.log(this.sortBy, this.sort, this.sortDirection, 'a')
-    },
     setSortBy(item) {
-      !this.sort
-        ? [(this.sortBy = item), this.setSortDirection()]
-        : this.$emit('click')
-      //   this.sortBy = item
-      //   this.setSortDirection()
-      console.log(this.sortBy, this.sort, this.sortDirection, 'b')
+      this.sortBy = item
+      this.setSortDirection()
+      this.$emit('click', { column: item, sort: this.sortDirection })
     },
     setSortDirection() {
       this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc'
