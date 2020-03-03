@@ -65,7 +65,7 @@ storiesOf('Components|Tooltip', module)
         tooltip on left
         </template>
         </f-tooltip>
-        <f-tooltip position="right" aligned="aligned" label="bottom" bgColor="primary">
+        <f-tooltip position="bottom" aligned="aligned" label="bottom" bgColor="primary">
           <template v-slot:content>
             tooltip on bottom
           </template>

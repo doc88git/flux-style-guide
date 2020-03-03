@@ -12,6 +12,7 @@
         >
           <f-tooltip
             position="right"
+            aligned="end"
             class="Fmenu-side__nav__ul__tooltip"
             :disabled="menuExpand"
             :bgColor="color"
@@ -23,16 +24,14 @@
               :href="menu.url"
               @click="clickButton(menu)"
             >
-              <f-icon
-                class="Fmenu-side__nav__ul__li__link--icon"
+              <icon-base
                 :name="menu.icon"
-                size="xl"
+                class="Fmenu-side__nav__ul__li__link--icon"
                 type="outlined"
-                style="zoom: 1.5;"
               />
-              <span v-show="menuExpand" class="Fmenu-side__nav__ul__li__text">{{
-                menu.name
-              }}</span>
+              <span v-show="menuExpand" class="Fmenu-side__nav__ul__li__text">
+                {{ menu.name }}
+              </span>
             </a>
             <template v-slot:content>{{ menu.name }}</template>
           </f-tooltip>
@@ -43,13 +42,13 @@
 </template>
 
 <script>
-import { FIcon } from '../FIcon'
 import { FTooltip } from '../FTooltip'
+import IconBase from '../FIcon/IconBase'
 
 export default {
   name: 'f-menu',
   components: {
-    FIcon,
+    IconBase,
     FTooltip
   },
   data: () => ({
@@ -60,8 +59,20 @@ export default {
       type: Array,
       default: () => {
         return [
-          { name: 'Home', url: '#', id: 'home', icon: 'home' },
-          { name: 'Empresa', url: '#', id: 'company', icon: 'apartment' }
+          {
+            name: 'Home',
+            url: '#',
+            id: 'home',
+            icon: 'home',
+            clickable: 'true'
+          },
+          {
+            name: 'Empresa',
+            url: '#',
+            id: 'company',
+            icon: 'hardware',
+            clickable: 'true'
+          }
         ]
       }
     },
@@ -182,7 +193,7 @@ span.icon-widget {
           }
 
           &--icon {
-            margin-left: 15px;
+            margin-left: 27px;
             &:hover {
               color: var(--color-primary-lighter);
             }
