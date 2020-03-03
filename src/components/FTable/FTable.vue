@@ -49,7 +49,7 @@ export default {
     header: Object,
     sort: {
       type: Boolean,
-      default: false
+      default: true
     }
   },
   data: () => ({
