@@ -11,7 +11,11 @@
       </slot>
     </div>
     <transition v-if="isVisible && !disabled" :name="`fade-${transition}`">
-      <div class="f-tooltip__item" :class="[classDynamic, bgColor]" size="large">
+      <div
+        class="f-tooltip__item"
+        :class="[classDynamic, bgColor]"
+        size="large"
+      >
         <slot name="content" />
         <div :class="classDynamicArrow" />
       </div>
@@ -90,7 +94,6 @@ export default {
     },
     transition() {
       return this.isVisible ? 'in' : 'out'
-      // return this.click ? "fade" : `slide-${this.position}`;
     }
   },
   methods: {
@@ -118,7 +121,7 @@ export default {
   &__item {
     position: absolute;
     background-color: var(--color-black);
-    padding: 0.25rem 0.5rem;
+    padding: 0.5rem 1rem;
     font-size: var(--text-sm);
     border-radius: 0.5rem;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -164,7 +167,6 @@ export default {
 
     &--right {
       top: 50%;
-      right: 0%;
       transform: translate(5px, -50%);
       margin-left: 5px;
     }
@@ -184,7 +186,7 @@ export default {
     }
 
     &--end {
-      left: 100%;
+      left: 65%;
     }
 
     &__arrow {
@@ -217,7 +219,7 @@ export default {
       &--right {
         top: 50%;
         right: 99%;
-        transform: translate(4px, -50%) rotate(90deg);
+        transform: translate(4px, -51%) rotate(90deg);
       }
       &--left {
         top: 50%;
