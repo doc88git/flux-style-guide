@@ -26,6 +26,7 @@
             >
               <icon-base
                 :name="menu.icon"
+                clickable
                 class="Fmenu-side__nav__ul__li__link--icon"
                 type="outlined"
               />
@@ -63,15 +64,13 @@ export default {
             name: 'Home',
             url: '#',
             id: 'home',
-            icon: 'home',
-            clickable: 'true'
+            icon: 'home'
           },
           {
             name: 'Empresa',
             url: '#',
             id: 'company',
-            icon: 'hardware',
-            clickable: 'true'
+            icon: 'hardware'
           }
         ]
       }
