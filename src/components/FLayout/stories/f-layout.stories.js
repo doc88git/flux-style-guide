@@ -14,12 +14,12 @@ storiesOf('Template|Layout', module).add(
     data: () => ({
       menuItems: [
         { name: 'Home', url: '#', id: 'home', icon: 'home' },
-        { name: 'Empresa', url: '#', id: 'company', icon: 'apartment' },
+        { name: 'Empresa', url: '#', id: 'company', icon: 'bell' },
         {
           name: 'Configurações',
           url: '#',
           id: 'configuration',
-          icon: 'brightness_5'
+          icon: 'hardware'
         }
       ],
       hasMenu: true
