@@ -8,7 +8,7 @@ const tagList = [
     bgColor: 'white',
     lineColor: '#c1c1c1',
     legend: 'Empresa',
-    icon: 'dashboard',
+    icon: 'hardware',
     iconColor: 'purple',
     text: 'Flux Services',
     textColor: '#7F7F7F'

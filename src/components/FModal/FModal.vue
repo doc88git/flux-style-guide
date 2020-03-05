@@ -68,8 +68,6 @@ export default {
 
 .f-modal__content {
   padding: 20px;
-  // width: 100%;
-  // height: 100%;
   margin: auto;
 }
 </style>

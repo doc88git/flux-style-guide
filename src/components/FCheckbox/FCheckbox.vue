@@ -77,8 +77,9 @@ export default {
     }
 
     .f-icon {
+      margin-top: 0.15rem;
       opacity: 0;
-      color: lightseagreen;
+      color: var(--color-primary);
       transform: scale(0.9);
 
       &--base {
@@ -89,7 +90,7 @@ export default {
 
   &:checked {
     ~ .f-checkbox__custom {
-      border: 1px solid lightseagreen;
+      border: 1px solid var(--color-primary);
       .f-icon {
         opacity: 1;
       }
@@ -108,11 +109,11 @@ export default {
     }
 
     .f-icon {
-      color: lightseagreen;
+      color: var(--color-primary);
       &__label {
         display: flex;
         align-items: center;
-        margin-left: 7px;
+        margin-left: 5px;
       }
     }
   }
@@ -129,17 +130,17 @@ export default {
     }
 
     .f-icon {
-      color: lightseagreen;
+      color: var(--color-white);
     }
   }
 
   .f-checkbox {
     &:checked {
       ~ .f-checkbox__custom {
-        background: lightseagreen;
+        background: var(--color-primary);
         border: 1px solid transparent;
         .f-icon {
-          color: #fff;
+          fill: #fff;
         }
       }
     }

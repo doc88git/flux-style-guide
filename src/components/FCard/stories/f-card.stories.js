@@ -76,8 +76,8 @@ storiesOf('Components|Card', module)
             </f-card-body>
             <f-separator />
             <f-card-actions >
-              <f-button label="Ver mais" icon="list" outline></f-button>
-              <f-button label="Cancelar" icon="close"></f-button>
+              <f-button label="Ver mais" icon="list" iconColor="primary" outline></f-button>
+              <f-button label="Cancelar" icon="X" iconColor="white"></f-button>
             </f-card-actions>
           </f-card>
         </div>`
