@@ -122,12 +122,12 @@ storiesOf('Components|Button', module)
         <div style="padding: 20px;">
           <div class="mb-4">
             Normal<br>
-            <f-button :icon="icon" :color="color" :text-color="textColor" />
+            <f-button :icon="icon" :color="color" iconColor="white" :text-color="textColor" />
             <f-button :icon="icon" flat />
           </div>
           <div class="mb-4">
             Dense<br>
-            <f-button dense :icon="icon" :color="color" :text-color="textColor"/>
+            <f-button dense :icon="icon" :color="color" iconColor="white" :text-color="textColor"/>
             <f-button dense :icon="icon" flat />
           </div>
         </div>
@@ -157,7 +157,7 @@ storiesOf('Components|Button', module)
       },
       template: `
         <div style="padding: 20px;">
-          <f-button :label="label" :icon="icon" :color="color" :text-color="textColor" />
+          <f-button :label="label" :icon="icon" iconColor="white" :color="color" :text-color="textColor" />
         </div>
       `
     }),

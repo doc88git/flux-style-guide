@@ -1,72 +1,78 @@
-<template>
-  <span class="f-icon">
-    <f-icon-material
-      v-if="lib === 'material'"
-      v-bind="{ name: $props.name, type: $props.type }"
-      :class="classes"
-    />
-  </span>
-</template>
-
 <script>
-import FIconMaterial from './components/FIconMaterial'
+import FluxIcon from '@doc88/flux-icon'
 
 export default {
-  name: 'f-icon',
-  components: {
-    FIconMaterial
-  },
+  name: 'FIcon',
+  data: () => ({
+    icon: null
+  }),
   props: {
-    color: String,
-    lib: {
-      default: 'material',
-      type: String
-    },
-    type: {
-      default: 'default',
-      type: String
-    },
-    size: {
-      default: 'base',
-      type: String
-    },
     name: {
-      default: '',
       type: String,
       required: true
+    },
+    color: {
+      type: String,
+      default: 'primary'
+    },
+    size: {
+      type: Number,
+      default: 16,
+      validator: val => [16, 24].includes(val)
+    },
+    clickable: {
+      type: Boolean,
+      default: false
+    }
+  },
+  watch: {
+    name: {
+      handler(newVal, oldVal) {
+        try {
+          if (newVal !== oldVal) {
+            this.icon = FluxIcon(this.name, this.size).default
+          }
+        } catch (e) {
+          console.log({ e })
+        }
+      },
+      immediate: true
     }
   },
   computed: {
     classes() {
-      return {
-        [`color--text--${this.color}`]: !!this.color,
-        [`f-icon--${this.size}`]: !!this.size
-      }
+      return [
+        { 'f-icon--clickable': this.clickable },
+        `color--fill--${this.color}`
+      ]
     }
+  },
+  methods: {
+    clickHandler(e) {
+      if (this.clickable) this.$emit('click', e)
+    }
+  },
+  render(createElement) {
+    return createElement(this.icon, {
+      class: ['f-icon', ...this.classes],
+      key: this.name,
+      on: {
+        click: this.clickHandler
+      }
+    })
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .f-icon {
-  padding: 0;
-  margin: 0;
-  line-height: 0;
+  &--clickable {
+    cursor: pointer;
+    transition: opacity 0.2s ease-in-out;
 
-  &--xs {
-    font-size: 0.75rem;
-  }
-
-  &--sm {
-    font-size: 0.875rem;
-  }
-
-  &--base {
-    font-size: 1rem;
-  }
-
-  &--lg {
-    font-size: 1.25rem;
+    &:hover {
+      opacity: 0.5;
+    }
   }
 }
 </style>

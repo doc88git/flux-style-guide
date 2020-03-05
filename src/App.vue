@@ -2,14 +2,19 @@
   <f-container class="content">
     <h1 class="flux-logo">{{ styleGuideName }}</h1>
 
-    <IconBase name="download" clickable />
+    <FIcon name="download" clickable />
 
     <ul class="menu">
       <li v-for="(item, index) in menuItems" :key="index">
         <a target="_blank" :href="item.url">
           {{ item.name }}
         </a>
-        <icon-base />
+        <f-icon
+          :color="item.color"
+          :name="item.icon"
+          :size="item.size"
+          clickable
+        />
       </li>
     </ul>
   </f-container>
@@ -17,36 +22,51 @@
 
 <script>
 import { FContainer } from '../src/components/FContainer'
-import IconBase from '../src/components/FIcon/IconBase'
+import FIcon from '../src/components/FIcon/FIcon'
 
 const styleGuideName = 'Flux Style Guide'
 export default {
   components: {
     FContainer,
-    IconBase
+    FIcon
   },
   data: () => ({
     styleGuideName,
     menuItems: [
       {
         name: 'Documentation',
-        url: 'https://github.com/doc88git/flux-style-guide'
+        url: 'https://github.com/doc88git/flux-style-guide',
+        icon: 'file-text',
+        color: 'orange',
+        size: 24
       },
       {
         name: 'Storybook',
-        url: 'http://flux-dev.doc88.com.br:3001'
+        url: 'http://flux-dev.doc88.com.br:3001',
+        icon: 'star',
+        color: 'green',
+        size: 16
       },
       {
         name: 'Widget Base',
-        url: 'https://github.com/doc88git/flux-widget-base'
+        url: 'https://github.com/doc88git/flux-widget-base',
+        icon: 'apps',
+        color: 'blue',
+        size: 16
       },
       {
         name: 'Flux-CLI',
-        url: 'https://github.com/doc88git/flux-cli'
+        url: 'https://github.com/doc88git/flux-cli',
+        icon: 'energy-distribution',
+        color: 'yellow',
+        size: 16
       },
       {
         name: 'Doc88',
-        url: 'http://doc88.com.br'
+        url: 'http://doc88.com.br',
+        icon: 'factory',
+        color: 'pink',
+        size: 16
       }
     ]
   })

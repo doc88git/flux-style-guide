@@ -2,13 +2,17 @@
   <div class="f-chip" :class="classes" @click="onClick">
     <div class="f-chip__icon" v-if="icon">
       <slot name="icon">
-        <f-icon :name="selected ? 'check' : icon" />
+        <f-icon :color="iconColor" :name="selected ? 'check' : icon" />
       </slot>
     </div>
     <div class="f-chip__content">
       <slot>{{ label }}</slot>
     </div>
-    <div class="f-chip__close" v-if="removable" @click="onRemove($event, value)">
+    <div
+      class="f-chip__close"
+      v-if="removable"
+      @click="onRemove($event, value)"
+    >
       <slot name="close">
         <f-icon name="close" size="sm" />
       </slot>
@@ -29,6 +33,10 @@ export default {
     color: {
       type: String,
       default: 'primary'
+    },
+    iconColor: {
+      type: String,
+      default: 'white'
     },
     textColor: String,
     icon: String,

@@ -8,7 +8,7 @@
       </li>
       <li>
         <button :disabled="isFirstPage" @click="jumpTo('prev')">
-          &lt;
+          <f-icon name="chevron-left" />
         </button>
       </li>
       <li v-for="i in show" :key="i">
@@ -18,7 +18,7 @@
       </li>
       <li>
         <button :disabled="isLastPage" @click="jumpTo('next')">
-          &gt;
+          <f-icon name="chevron-right" />
         </button>
       </li>
       <li>
@@ -31,8 +31,13 @@
 </template>
 
 <script>
+import { FIcon } from '../FIcon'
+
 export default {
   name: 'f-pagination',
+  components: {
+    FIcon
+  },
 
   props: {
     currentPage: {
@@ -58,63 +63,65 @@ export default {
   }),
 
   computed: {
-    isFirstPage () {
+    isFirstPage() {
       return this.localCurrentPage === 1
     },
 
-    isLastPage () {
+    isLastPage() {
       return this.localCurrentPage >= this.totalPages
     },
 
-    totalPages () {
+    totalPages() {
       if (!this.total || !this.perPage) return 0
       return Math.ceil(this.total / this.perPage)
     },
 
-    pgFrom () {
+    pgFrom() {
       return this.localCurrentPage - Math.ceil(this.max / 2)
     },
 
-    show () {
+    show() {
       const result = Array.from({ length: this.max }, (e, i) =>
         this.pgFrom + this.max > this.totalPages
-          ? (this.totalPages + 1) - (this.max - i)
-          : this.pgFrom <= 0 ? i + 1 : this.pgFrom + i)
+          ? this.totalPages + 1 - (this.max - i)
+          : this.pgFrom <= 0
+          ? i + 1
+          : this.pgFrom + i
+      )
 
       return result
     }
   },
 
   methods: {
-    getPageClasses (i) {
-      return { 'selected': this.localCurrentPage === i }
+    getPageClasses(i) {
+      return { selected: this.localCurrentPage === i }
     },
 
-    setCurrentPage (value) {
+    setCurrentPage(value) {
       this.localCurrentPage = value
       this.$emit('update:current_page', value)
     },
 
-    jumpTo (position) {
+    jumpTo(position) {
       const value = parseInt(this.localCurrentPage)
 
       if (position === 'first') this.setCurrentPage(1)
       if (position === 'last') this.setCurrentPage(this.totalPages)
 
-      if (position === 'prev' && value > 0)
-        this.setCurrentPage(value - 1)
+      if (position === 'prev' && value > 0) this.setCurrentPage(value - 1)
 
       if (position === 'next' && value <= this.totalPages)
         this.setCurrentPage(value + 1)
     },
 
-    initPagination () {
+    initPagination() {
       this.localCurrentPage = parseInt(this.currentPage)
       this.lastPage = this.totalPages.length - 1
     }
   },
 
-  created () {
+  created() {
     this.initPagination()
   }
 }
@@ -124,8 +131,23 @@ export default {
 .f-pagination {
   user-select: none;
 
-  &__icon {
-    margin: auto;
+  .f-icon {
+    transform: translateY(2px);
+    min-width: 35px;
+    fill: var(--color-gray);
+
+    &.selected {
+      fill: var(--color-primary);
+    }
+
+    &:hover {
+      fill: var(--color-primary-light);
+    }
+
+    &:disabled {
+      opacity: 50%;
+      cursor: default;
+    }
   }
 
   ul,
@@ -142,7 +164,6 @@ export default {
     list-style-type: none;
 
     li {
-
       button {
         text-transform: capitalize;
         padding: 0;

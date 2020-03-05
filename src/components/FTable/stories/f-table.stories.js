@@ -20,39 +20,41 @@ const arrList = [
   }
 ]
 
-storiesOf('Components|Table', module).add('Default', () => ({
-  components: {
-    FTable
-  },
-  data: () => ({
-    data: arrList,
-    caret: true,
-    position: 'down',
-    type: 'outlined'
-  }),
-  props: {
-    sortBy: {
-      default: text('sortBy', '')
+storiesOf('Components|Table', module).add(
+  'Default',
+  () => ({
+    components: {
+      FTable
     },
-    sortDirection: {
-      default: text('sortDirection', 'asc')
-    },
-    header: {
-      default: {
-        first_name: 'Nome',
-        last_name: 'Sobrenome'
+    data: () => ({
+      data: arrList,
+      caret: true,
+      position: 'down',
+      type: 'outlined'
+    }),
+    props: {
+      sortBy: {
+        default: text('sortBy', '')
+      },
+      sortDirection: {
+        default: text('sortDirection', 'asc')
+      },
+      header: {
+        default: {
+          first_name: 'Nome',
+          last_name: 'Sobrenome'
+        }
+      },
+      sort: {
+        default: boolean('sort', false)
       }
     },
-    sort: {
-      default: boolean('sort', false)
-    }
-  },
-  methods: {
-    openAccordion(i) {
-      this.data[i].open = !this.data[i].open
-    }
-  },
-  template: `
+    methods: {
+      openAccordion(i) {
+        this.data[i].open = !this.data[i].open
+      }
+    },
+    template: `
     <div style="padding: 20px;">
       <f-table
         :sortBy="sortBy"
@@ -74,4 +76,12 @@ storiesOf('Components|Table', module).add('Default', () => ({
         </template>
       </f-table>
     </div>`
-}))
+  }),
+  {
+    info: {
+      summary: `
+        # Tag Groups
+      `
+    }
+  }
+)

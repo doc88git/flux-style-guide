@@ -10,7 +10,7 @@ storiesOf('Components|Tags', module).add(
       bgColor: text('Background', 'white'),
       lineColor: text('Line Color', '#c1c1c1'),
       legend: text('Label', 'Empresa ery long text wow its big very big'),
-      icon: text('Icon', 'dashboard'),
+      icon: text('icon', 'home'),
       iconColor: text('Icon Color', 'purple'),
       text: text('Text', 'Flux Services'),
       textColor: text('Text Color', '#7F7F7F')

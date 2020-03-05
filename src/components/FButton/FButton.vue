@@ -11,7 +11,7 @@
   >
     <div class="btn__inner" :class="[btnInnerCenter]">
       <div class="btn__inner__icon" :class="[btnCenter]" v-if="icon">
-        <f-icon :name="icon" />
+        <f-icon :name="icon" :color="iconColor" />
       </div>
       <div v-if="label || $slots.default" class="btn__inner__content">
         <slot> {{ label }} </slot>
@@ -36,7 +36,14 @@ export default {
     dense: Boolean,
     label: String,
     disabled: Boolean,
-    icon: String,
+    icon: {
+      type: String,
+      default: ''
+    },
+    iconColor: {
+      type: String,
+      default: 'primary'
+    },
     color: {
       type: String,
       default: ''

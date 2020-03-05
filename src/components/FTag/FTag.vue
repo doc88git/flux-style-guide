@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import FIcon from '../FIcon/FIcon'
+import { FIcon } from '../FIcon'
 
 export default {
   name: 'FTag',
@@ -51,7 +51,7 @@ export default {
     },
     icon: {
       type: String,
-      default: ''
+      default: 'home'
     },
     iconColor: {
       type: String,
@@ -99,7 +99,7 @@ export default {
   },
 
   methods: {
-    toggleHover () {
+    toggleHover() {
       this.onHover = !this.onHover
     }
   }
@@ -108,7 +108,6 @@ export default {
 
 <style lang="scss" scoped>
 .FTag {
-
   &__fieldset {
     display: inline-flex;
     margin-right: 20px;

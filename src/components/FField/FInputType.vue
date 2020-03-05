@@ -10,7 +10,9 @@
     ]"
     :disabled="disabled"
   >
-    <div class="f-input__message" :class="[messageFontSize, colorText]">{{ message }}</div>
+    <div class="f-input__message" :class="[messageFontSize, colorText]">
+      {{ message }}
+    </div>
     <input
       :disabled="disabled"
       :value="value"
@@ -20,7 +22,9 @@
       @keydown.up="counterUp($event)"
       @keydown.down="counterDown($event)"
     />
-    <div class="f-input__unity" :class="[unityFontSize, colorText]">{{ unity }}</div>
+    <div class="f-input__unity" :class="[unityFontSize, colorText]">
+      {{ unity }}
+    </div>
     <div class="f-input__counter">
       <button @click="counterUp" :class="colorButton">
         <f-icon class="f-input__up" :name="iconUp"></f-icon>
