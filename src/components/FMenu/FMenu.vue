@@ -24,7 +24,7 @@
               :href="menu.url"
               @click="clickButton(menu)"
             >
-              <f-icon
+              <f-icon-old
                 :name="menu.icon"
                 clickable
                 class="Fmenu-side__nav__ul__li__link--icon"
@@ -44,12 +44,12 @@
 
 <script>
 import { FTooltip } from '../FTooltip'
-import FIcon from '../FIcon/FIcon'
+import FIconOld from '../FIcon/FIconOld'
 
 export default {
   name: 'f-menu',
   components: {
-    FIcon,
+    FIconOld,
     FTooltip
   },
   data: () => ({
