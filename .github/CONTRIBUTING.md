@@ -69,7 +69,7 @@ $ npm test
 
 Há outros scripts disponíveis na sessão `scripts` do arquivo `package.json`.
 
-O script de teste padrão fará o seguinte: lint com ESLint -> verificação de tipo com Flow -> testes de unidade com cobertura -> testes e2e. ** Certifique-se de que esta aprovação seja aprovada com êxito antes de enviar um PR. ** Embora os mesmos testes sejam executados no seu servidor de CI, é melhor fazê-lo funcionar localmente.
+O script de teste padrão fará o seguinte: lint com ESLint -> verificação de tipo com Flow -> testes de unidade com cobertura -> testes e2e. **Certifique-se de que esta aprovação seja aprovada com êxito antes de enviar um PR.** Embora os mesmos testes sejam executados no seu servidor de CI, é melhor fazê-lo funcionar localmente.
 
 ## Estrutura do Projeto
 
