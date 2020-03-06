@@ -22,7 +22,7 @@ Olá! Estamos realmente empolgados por você estar interessado em contribuir com
 
 - Não há problema em ter vários commits pequenos enquanto você trabalha no PR - o GitHub vai fazer os squash antes do merge.
 
-- Tenha certeza que todos os testes `npm test` passaram. (veja [development setup](#configurações-de-desenvolvimento))
+- Tenha certeza que todos os testes `npm test` passaram. (veja [Configurações de desenvolvimento](#configurações-de-desenvolvimento))
 
 - Se você está adicionando novas features:
   - Adicione casos de teste.
