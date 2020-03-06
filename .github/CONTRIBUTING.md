@@ -1,4 +1,4 @@
-# FLUX STYLE GRUIDE - Guia de contribuição
+# FLUX STYLE GUIDE - Guia de contribuição
 
 Olá! Estamos realmente empolgados por você estar interessado em contribuir com o Flux Style Guide. Antes de enviar sua contribuição, reserve um momento e leia as seguintes diretrizes:
 
