@@ -1,27 +1,21 @@
-# Flux Style Guide
+## Flux Style Guide
 
-## Instalação 
-```
-yarn add @doc88/flux-style-guide
-```
+### Documentação
 
-## Documentation
-A documentação, neste momento, se encotra no próprio repositório com o uso do StoryBook.
+A documentação, neste momento, se encotra no próprio repositório com o  uso do StoryBook.
 ```
 yarn storybook
 ```
+### Scripts para executar em seu projeto
 
-## Unit Tests
-```
-yarn test:unit
+``` bash
+# Instalação
+$ yarn add @doc88/flux-style-guide
+
+# Atualização
+$ yarn upgrade-interactive --latest
 ```
 
-## Publish
-```
-npm publish
-```
+## Contribuição
 
-## Atualização de dependências
-```
-yarn upgrade-interactive --latest
-```
+Por favor, leia o nosso [Guia de Contribuição](.github/CONTRIBUTING.md) antes de enviar um pull request.
