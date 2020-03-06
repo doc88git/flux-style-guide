@@ -1,12 +1,12 @@
 # Flux Style Guide
 
-## Install 
+## Instalação 
 ```
 yarn add @doc88/flux-style-guide
-npm install @doc88/flux-style-guide
 ```
 
 ## Documentation
+A documentação, neste momento, se encotra no próprio repositório com o uso do StoryBook.
 ```
 yarn storybook
 ```
@@ -18,9 +18,10 @@ yarn test:unit
 
 ## Publish
 ```
-npm publish --access=public
+npm publish
 ```
-## Update in project
+
+## Atualização de dependências
 ```
 yarn upgrade-interactive --latest
 ```
