@@ -1,8 +1,14 @@
 <script>
 import FluxIcon from '@doc88/flux-icon'
+import FIconMaterial from './components/FIconMaterial'
+// import FIconOld from './FIconOld'
 
 export default {
   name: 'FIcon',
+  components: {
+    FIconMaterial
+    // FIconOld
+  },
   data: () => ({
     icon: null
   }),
@@ -45,6 +51,14 @@ export default {
         { 'f-icon--clickable': this.clickable },
         `color--fill--${this.color}`
       ]
+    },
+    iconLib() {
+      const vueTag = {
+        fluxIcon: 'f-icon',
+        materialIcon: 'f-icon-material'
+      }
+
+      return vueTag
     }
   },
   methods: {

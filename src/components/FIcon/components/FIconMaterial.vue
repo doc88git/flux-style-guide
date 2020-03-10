@@ -16,7 +16,7 @@ export default {
   }),
   props: {
     name: {
-      default: '',
+      default: 'home',
       type: String,
       required: true
     },
@@ -36,5 +36,6 @@ export default {
 <style lang="scss" scoped>
 .material-icons {
   font-size: var(--text-lg);
+  fill: var(--color-primary);
 }
 </style>

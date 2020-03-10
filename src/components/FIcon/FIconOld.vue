@@ -30,7 +30,7 @@ export default {
       type: String
     },
     name: {
-      default: '',
+      default: 'home',
       type: String,
       required: true
     }

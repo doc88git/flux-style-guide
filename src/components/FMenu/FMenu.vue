@@ -18,10 +18,11 @@
             :bgColor="color"
             :label="menu.name"
           >
-            <a
+            <f-link
               class="Fmenu-side__nav__ul__li__link text-gray"
               :class="[menuSelected === menu.id ? textColor : textHoverColor]"
-              :href="menu.url"
+              :link="getUrl('url', menu)"
+              :to="getUrl('to', menu)"
               @click="clickButton(menu)"
             >
               <f-icon-old
@@ -33,7 +34,7 @@
               <span v-show="menuExpand" class="Fmenu-side__nav__ul__li__text">
                 {{ menu.name }}
               </span>
-            </a>
+            </f-link>
             <template v-slot:content>{{ menu.name }}</template>
           </f-tooltip>
         </li>
@@ -45,12 +46,14 @@
 <script>
 import { FTooltip } from '../FTooltip'
 import FIconOld from '../FIcon/FIconOld'
+import { FLink } from '../FLink'
 
 export default {
   name: 'f-menu',
   components: {
     FIconOld,
-    FTooltip
+    FTooltip,
+    FLink
   },
   data: () => ({
     appTitle: 'reembolso'
@@ -99,6 +102,9 @@ export default {
   methods: {
     clickButton(menu) {
       this.$emit('click', menu)
+    },
+    getUrl(type, menu) {
+      return type in menu ? menu[type] : null
     }
   }
 }
