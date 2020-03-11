@@ -1,9 +1,7 @@
 <template>
   <f-container class="content">
     <h1 class="flux-logo">{{ styleGuideName }}</h1>
-    <f-menu :menuItems="menuItems" />
-
-    <FIcon name="download" clickable />
+    <f-menu iconLib="material" :menuItems="menuItems" />
 
     <ul class="menu">
       <li v-for="(item, index) in menuItems" :key="index">
@@ -11,10 +9,10 @@
           {{ item.name }}
         </a>
         <f-icon
+          :lib="iconLib"
           :color="item.color"
           :name="item.icon"
           :size="item.size"
-          clickable
         />
       </li>
     </ul>
@@ -41,41 +39,52 @@ export default {
         to: '#',
         icon: 'file-text',
         color: 'orange',
-        size: 16
+        size: 16,
+        clickable: true
       },
       {
         name: 'Storybook',
         to: '#',
         icon: 'star',
         color: 'green',
-        size: 16
+        size: 16,
+        clickable: true
       },
       {
         name: 'Widget Base',
         to: 'https://github.com/doc88git/flux-widget-base',
         icon: 'apps',
         color: 'blue',
-        size: 16
+        size: 16,
+        clickable: true
       },
       {
         name: 'Flux-CLI',
         to: 'https://github.com/doc88git/flux-cli',
         icon: 'energy-distribution',
         color: 'yellow',
-        size: 16
+        size: 16,
+        clickable: true
       },
       {
         name: 'Doc88',
         to: 'http://doc88.com.br',
         icon: 'factory',
         color: 'pink',
-        size: 16
+        size: 16,
+        clickable: true
       }
     ]
   }),
   link: {
     type: String,
     default: 'https://github.com/doc88git/flux-cli'
+  },
+  props: {
+    iconLib: {
+      type: String,
+      default: 'flux'
+    }
   }
 }
 </script>

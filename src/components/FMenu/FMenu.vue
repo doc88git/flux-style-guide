@@ -25,8 +25,10 @@
               :to="getUrl('to', menu)"
               @click="clickButton(menu)"
             >
-              <f-icon-old
+              <f-icon
+                :lib="iconLib"
                 :name="menu.icon"
+                :color="menu.color"
                 clickable
                 class="Fmenu-side__nav__ul__li__link--icon"
                 type="outlined"
@@ -45,13 +47,13 @@
 
 <script>
 import { FTooltip } from '../FTooltip'
-import FIconOld from '../FIcon/FIconOld'
+import FIcon from '../FIcon/FIcon'
 import { FLink } from '../FLink'
 
 export default {
   name: 'f-menu',
   components: {
-    FIconOld,
+    FIcon,
     FTooltip,
     FLink
   },
@@ -67,13 +69,15 @@ export default {
             name: 'Home',
             url: '#',
             id: 'home',
-            icon: 'home'
+            icon: 'home',
+            color: 'red'
           },
           {
             name: 'Empresa',
             url: '#',
             id: 'company',
-            icon: 'hardware'
+            icon: 'hardware',
+            color: 'blue'
           }
         ]
       }
@@ -89,6 +93,10 @@ export default {
     menuExpand: {
       type: Boolean,
       default: false
+    },
+    iconLib: {
+      type: String,
+      default: 'material'
     }
   },
   computed: {

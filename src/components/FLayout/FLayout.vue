@@ -28,6 +28,7 @@
     </div>
     <div class="f-layout__wrapper">
       <f-menu
+        :iconLib="iconLib"
         :menuItems="menuItems"
         :menuSelected="menuSelected"
         :menuExpand="menuExpand"
@@ -91,6 +92,10 @@ export default {
     styles: {
       type: String,
       default: null
+    },
+    iconLib: {
+      type: String,
+      default: 'flux'
     }
   },
   methods: {
