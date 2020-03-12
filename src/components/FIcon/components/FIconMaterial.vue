@@ -23,10 +23,6 @@ export default {
     type: {
       default: 'default',
       type: String
-    },
-    size: {
-      type: Number,
-      default: 16
     }
   },
   computed: {

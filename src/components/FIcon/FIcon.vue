@@ -9,6 +9,7 @@
       v-if="lib === 'flux'"
       v-bind="{ name: $props.name, type: $props.type }"
       :class="classes"
+      :size="iconSize"
       :clickable="clickable"
     />
   </span>
@@ -38,8 +39,9 @@ export default {
       type: String
     },
     size: {
+      type: String,
       default: 'base',
-      type: String
+      validator: val => ['base', 'sm'].includes(val)
     },
     name: {
       default: 'hardware',
@@ -58,6 +60,9 @@ export default {
         [`color--text--${this.color}`]: !!this.color,
         [`f-icon--${this.size}`]: !!this.size
       }
+    },
+    iconSize() {
+      return this.size === 'sm' ? 16 : 24
     }
   }
 }

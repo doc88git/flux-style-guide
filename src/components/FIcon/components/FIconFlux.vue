@@ -1,5 +1,5 @@
 <script>
-import FluxIcon from '@doc88/flux-icon'
+import importIcon from '@doc88/flux-icon'
 
 export default {
   name: 'FIconFlux',
@@ -30,7 +30,8 @@ export default {
       handler(newVal, oldVal) {
         try {
           if (newVal !== oldVal) {
-            this.icon = FluxIcon(this.name, this.size).default
+            this.icon = importIcon(this.name, this.size)
+            console.log(this.name, this.size)
           }
         } catch (e) {
           console.log({ e })

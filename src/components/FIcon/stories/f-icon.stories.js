@@ -21,16 +21,13 @@ storiesOf('Components|Icon', module)
         color: {
           default: text('color', 'red', groupId)
         },
-        size: {
-          default: select(label, [16, 24], 16, groupId)
-        },
         clickable: {
           default: boolean('clickable', true, groupId)
         }
       },
       template: `
       <div style="padding: 20px;">
-        <FIcon :lib="lib" :color="color" :name="name" :size="size" clickable />
+        <FIcon :lib="lib" :color="color" :name="name" clickable />
       </div>
     `
     }),
@@ -55,7 +52,7 @@ storiesOf('Components|Icon', module)
           default: text('color', 'red', groupId)
         },
         size: {
-          default: select(label, [16, 24], 16, groupId)
+          default: select(label, ['base', 'sm'], groupId)
         },
         clickable: {
           default: boolean('clickable', true, groupId)
