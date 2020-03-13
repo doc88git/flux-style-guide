@@ -52,7 +52,7 @@ storiesOf('Components|Icon', module)
           default: text('color', 'red', groupId)
         },
         size: {
-          default: select(label, ['base', 'sm'], groupId)
+          default: select(label, ['base', 'sm'], 'base', groupId)
         },
         clickable: {
           default: boolean('clickable', true, groupId)

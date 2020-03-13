@@ -27,11 +27,10 @@ export default {
   },
   watch: {
     name: {
-      handler(newVal, oldVal) {
+      async handler(newVal, oldVal) {
         try {
           if (newVal !== oldVal) {
-            this.icon = importIcon(this.name, this.size)
-            console.log(this.name, this.size)
+            this.icon = await importIcon(this.name, this.size)
           }
         } catch (e) {
           console.log({ e })
@@ -53,8 +52,8 @@ export default {
       if (this.clickable) this.$emit('click', e)
     }
   },
-  render(createElement) {
-    return createElement(this.icon, {
+  render(h) {
+    return h(this.icon, {
       class: ['f-icon', ...this.classes],
       key: this.name,
       on: {

@@ -39,7 +39,7 @@ export default {
         to: '#',
         icon: 'file-text',
         color: 'orange',
-        size: 16,
+        size: 'sm',
         clickable: true
       },
       {
@@ -47,7 +47,7 @@ export default {
         to: '#',
         icon: 'star',
         color: 'green',
-        size: 16,
+        size: 'sm',
         clickable: true
       },
       {
@@ -55,7 +55,7 @@ export default {
         to: 'https://github.com/doc88git/flux-widget-base',
         icon: 'apps',
         color: 'blue',
-        size: 16,
+        size: 'sm',
         clickable: true
       },
       {
@@ -63,7 +63,7 @@ export default {
         to: 'https://github.com/doc88git/flux-cli',
         icon: 'energy-distribution',
         color: 'yellow',
-        size: 16,
+        size: 'sm',
         clickable: true
       },
       {
@@ -71,7 +71,7 @@ export default {
         to: 'http://doc88.com.br',
         icon: 'factory',
         color: 'pink',
-        size: 16,
+        size: 'sm',
         clickable: true
       }
     ]
