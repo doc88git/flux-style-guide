@@ -154,7 +154,6 @@ export default {
     },
     debounceInput(value) {
       if (intTimeout) clearTimeout(intTimeout)
-      if (!value) return false
 
       intTimeout = setTimeout(() => {
         this.$emit('search-value', value)

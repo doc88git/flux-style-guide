@@ -43,7 +43,8 @@ storiesOf('Form|Select', module)
   .add('Search', () => ({
     components: { FSelect },
     data: () => ({
-      value: 1
+      value: 1,
+      inputSelect: ''
     }),
     props: {
       options: {
@@ -57,13 +58,22 @@ storiesOf('Form|Select', module)
         default: select('type', typeList, 'default', groupId)
       }
     },
+    methods: {
+      setInputSelect(v) {
+        this.inputSelect = v
+      }
+    },
     template: `
     <div style="padding: 20px;">
+      <p>
+        Search: {{ inputSelect }}
+      </p>
       <f-select
         :options="options"
         :type="type"
         :search="true"
-        v-model="value" />
+        v-model="value"
+        @search-value="setInputSelect" />
     </div>
   `
   }))
