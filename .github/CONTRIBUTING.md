@@ -22,7 +22,7 @@ Olá! Estamos realmente empolgados por você estar interessado em contribuir com
 
 - Não há problema em ter vários commits pequenos enquanto você trabalha no PR - o GitHub vai fazer os squash antes do merge.
 
-- Tenha certeza que todos os testes `npm test` passaram. (veja [Configurações de desenvolvimento](#configurações-de-desenvolvimento))
+- Tenha certeza que todos os testes `yarn test` passaram. (veja [Configurações de desenvolvimento](#configurações-de-desenvolvimento))
 
 - Se você está adicionando novas features:
   - Adicione casos de teste.
@@ -73,7 +73,7 @@ O script de teste padrão fará o seguinte: lint com ESLint -> verificação de 
 
 ## Estrutura do Projeto
 
-- **`public`**: TODO - adicionar descrição
+- **`public`**: Public files - Vue
 - **`src`**:  TODO - adicionar descrição
   - **`assets`**:  TODO - adicionar descrição
     - **`fonts`**:  TODO - adicionar descrição
