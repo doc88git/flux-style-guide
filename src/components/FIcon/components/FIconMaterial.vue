@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'f-icon-material',
+  name: 'FIconMaterial',
   data: () => ({
     types: {
       outlined: 'material-icons-outlined',
@@ -16,7 +16,7 @@ export default {
   }),
   props: {
     name: {
-      default: '',
+      default: 'home',
       type: String,
       required: true
     },
@@ -35,6 +35,7 @@ export default {
 
 <style lang="scss" scoped>
 .material-icons {
-  font-size: var(--text-lg);
+  font-size: var(--text-xl);
+  fill: var(--color-primary);
 }
 </style>
