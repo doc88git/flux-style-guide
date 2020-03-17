@@ -41,7 +41,7 @@ export default {
     size: {
       type: String,
       default: 'base',
-      validator: val => ['base', 'sm'].includes(val)
+      validator: val => ['base', 'sm', 'xs', 'lg'].includes(val)
     },
     name: {
       default: 'hardware',
@@ -58,11 +58,12 @@ export default {
       return {
         [`color--fill--${this.color}`]: !!this.color,
         [`color--text--${this.color}`]: !!this.color,
-        [`f-icon--${this.size}`]: !!this.size
+        [`f-icon--${this.size}`]: !!this.size,
+        [`f-icon-flux--${this.size}`]: this.lib === 'flux' ? this.size : false
       }
     },
     iconSize() {
-      return this.size === 'sm' ? 16 : 24
+      return ['sm', 'xs'].includes(this.size) ? 16 : 24
     }
   }
 }
@@ -73,17 +74,35 @@ export default {
   padding: 0;
   margin: 0;
   line-height: 0;
+  &-flux {
+    &--xs {
+      height: 12px;
+      width: 12px;
+    }
+    &--sm {
+      height: 16px;
+      width: 16px;
+    }
+    &--base {
+      height: 24px;
+      width: 24px;
+    }
+    &--lg {
+      height: 32px;
+      width: 32px;
+    }
+  }
   &--xs {
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
   }
   &--sm {
-    font-size: 0.875rem;
+    font-size: var(--text-sm);
   }
   &--base {
-    font-size: 1rem;
+    font-size: var(--text-base);
   }
   &--lg {
-    font-size: 1.25rem;
+    font-size: var(--text-lg);
   }
 }
 </style>
