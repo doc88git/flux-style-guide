@@ -111,6 +111,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../assets/f-variables.scss';
+
 .f-layout {
   display: flex;
   flex-direction: column;

@@ -29,6 +29,7 @@
                 :lib="iconLib"
                 :name="menu.icon"
                 :color="menu.color"
+                size="sm"
                 clickable
                 class="Fmenu-side__nav__ul__li__link--icon"
                 type="outlined"
