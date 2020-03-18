@@ -161,6 +161,7 @@ span.icon-widget {
       position: fixed;
       top: 70px;
       left: -100%;
+      padding-top: 35px;
 
       @media screen and (min-width: map-get($sizes, 'tablet' )) {
         position: absolute;
