@@ -1,45 +1,37 @@
 <template>
   <aside class="Fmenu-side">
     <nav class="Fmenu-side__nav">
-      <ul
-        class="Fmenu-side__nav__ul"
-        :class="{ 'Fmenu-side__nav__ul--expand': menuExpand }"
-      >
+      <ul :class="menuListClasses">
         <li
           v-for="menu in menuItems"
           :key="menu.id"
           class="Fmenu-side__nav__ul__li"
         >
-          <f-tooltip
-            position="right"
-            aligned="end"
-            class="Fmenu-side__nav__ul__tooltip"
-            :disabled="menuExpand"
-            :bgColor="color"
-            :label="menu.name"
-          >
-            <f-link
-              class="Fmenu-side__nav__ul__li__link text-gray"
-              :class="[menuSelected === menu.id ? textColor : textHoverColor]"
-              :link="getUrl('url', menu)"
-              :to="getUrl('to', menu)"
-              @click="clickButton(menu)"
+          <f-menu-item
+            :menu-item="menu"
+            :icon-lib="iconLib"
+            :menu-expand="menuExpand"
+            :is-selected="isItemSelected(menu)"
+            :bg-color="color"
+            @click="handleItemClick"
+          />
+
+          <ul v-if="hasSubMenu(menu)" :class="subMenuClasses(menu)">
+            <li
+              v-for="subMenu in menu.subItems"
+              :key="subMenu.id"
+              class="Fmenu-side__nav__ul__li__ul__li"
             >
-              <f-icon
-                :lib="iconLib"
-                :name="menu.icon"
-                :color="menu.color"
-                size="sm"
-                clickable
-                class="Fmenu-side__nav__ul__li__link--icon"
-                type="outlined"
+              <f-menu-item
+                is-sub
+                :menu-item="subMenu"
+                :icon-lib="iconLib"
+                :menu-expand="menuExpand"
+                :is-selected="menuSelected === menu.id"
+                :bg-color="color"
               />
-              <span v-show="menuExpand" class="Fmenu-side__nav__ul__li__text">
-                {{ menu.name }}
-              </span>
-            </f-link>
-            <template v-slot:content>{{ menu.name }}</template>
-          </f-tooltip>
+            </li>
+          </ul>
         </li>
       </ul>
     </nav>
@@ -50,38 +42,30 @@
 import { FTooltip } from '../FTooltip'
 import FIcon from '../FIcon/FIcon'
 import { FLink } from '../FLink'
+import FMenuItem from './FMenuItem'
 
 export default {
   name: 'f-menu',
   components: {
-    FIcon,
+    FMenuItem,
     FTooltip,
+    FIcon,
     FLink
   },
+
   data: () => ({
-    appTitle: 'reembolso'
+    appTitle: 'reembolso',
+    expandItem: ''
   }),
+
   props: {
+    subItemsLimit: {
+      type: Number,
+      default: 10
+    },
     menuItems: {
       type: Array,
-      default: () => {
-        return [
-          {
-            name: 'Home',
-            url: '#',
-            id: 'home',
-            icon: 'home',
-            color: 'red'
-          },
-          {
-            name: 'Empresa',
-            url: '#',
-            id: 'company',
-            icon: 'hardware',
-            color: 'blue'
-          }
-        ]
-      }
+      default: () => ({})
     },
     menuSelected: {
       type: String,
@@ -100,20 +84,45 @@ export default {
       default: 'material'
     }
   },
+
   computed: {
-    textHoverColor() {
-      return `hover:text-${this.color}`
-    },
-    textColor() {
-      return `color--text--${this.color}`
+    menuListClasses() {
+      return [
+        'Fmenu-side__nav__ul',
+        { 'Fmenu-side__nav__ul--expand': this.menuExpand }
+      ]
     }
   },
+
   methods: {
-    clickButton(menu) {
-      this.$emit('click', menu)
+    subMenuClasses(menu) {
+      const isSelected = this.expandItem === menu.id
+      const subItems = menu.subItems || []
+      const allowHide =
+        !!subItems.length && subItems.length >= this.subItemsLimit
+
+      console.log({
+        isSelected,
+        allowHide,
+        subItems,
+        limit: this.subItemsLimit
+      })
+
+      return [
+        'Fmenu-side__nav__ul__li__ul',
+        { 'Fmenu-side__nav__ul__li__ul--hidden': !isSelected && allowHide }
+      ]
     },
-    getUrl(type, menu) {
-      return type in menu ? menu[type] : null
+    hasSubMenu(menu) {
+      return !!(menu.subItems || []).length
+    },
+    isItemSelected({ id }) {
+      return this.menuSelected === id
+    },
+    handleItemClick(ev) {
+      console.log({ ev, expandItem: this.expandItem })
+      if (!(ev.subItems || []).length) return this.$emit('click', ev)
+      this.expandItem = ev.id !== this.expandItem ? ev.id : ''
     }
   }
 }
@@ -183,46 +192,30 @@ span.icon-widget {
         }
       }
 
-      &__tooltip {
-        width: 100%;
-      }
-
       &__li {
-        margin: 0px 0 20px;
+        margin-left: 27px;
+        margin-bottom: 35px;
         width: 100%;
 
-        &__link {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 100%;
+        &__ul {
+          overflow: visible;
+          max-height: 900px;
+          transition: max-height 300ms ease, margin 300ms ease 300ms,
+            overflow 350ms ease;
 
-          @media screen and (min-width: map-get($sizes, 'tablet' )) {
-            justify-content: flex-start;
-            &:hover {
-              .Fmenu-side__nav__ul__li__text {
-                margin-left: 7px;
-              }
-            }
+          &--hidden {
+            overflow: hidden;
+            max-height: 0px;
+            margin: 0;
           }
 
-          &--icon {
-            margin-left: 27px;
-            &:hover {
-              color: var(--color-primary-lighter);
-            }
+          &__li:first-child {
+            margin-top: 20px;
           }
 
-          &--selected {
-            font-weight: bold;
+          &__li:not(:last-child) {
+            margin-bottom: 15px;
           }
-        }
-
-        &__text {
-          font-size: var(--text-base);
-          position: relative;
-          margin-left: 5px;
-          @include transition(0.1s);
         }
       }
     }
