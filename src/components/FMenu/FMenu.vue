@@ -12,7 +12,7 @@
             :icon-lib="iconLib"
             :menu-expand="menuExpand"
             :is-selected="isItemSelected(menu)"
-            :bg-color="color"
+            :color="color"
             @click="handleItemClick"
           />
 
@@ -101,13 +101,6 @@ export default {
       const allowHide =
         !!subItems.length && subItems.length >= this.subItemsLimit
 
-      console.log({
-        isSelected,
-        allowHide,
-        subItems,
-        limit: this.subItemsLimit
-      })
-
       return [
         'Fmenu-side__nav__ul__li__ul',
         { 'Fmenu-side__nav__ul__li__ul--hidden': !isSelected && allowHide }
@@ -120,7 +113,6 @@ export default {
       return this.menuSelected === id
     },
     handleItemClick(ev) {
-      console.log({ ev, expandItem: this.expandItem })
       if (!(ev.subItems || []).length) return this.$emit('click', ev)
       this.expandItem = ev.id !== this.expandItem ? ev.id : ''
     }
@@ -131,6 +123,7 @@ export default {
 <style lang="scss" scoped>
 @import '../../assets/f-variables.scss';
 @import '../../assets/f-transitions.scss';
+
 span.icon-widget {
   height: 100px;
   width: 10px;

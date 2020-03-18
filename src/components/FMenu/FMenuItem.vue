@@ -5,7 +5,7 @@
     :class="['FMenuItem']"
     :disabled="menuExpand"
     :label="menuItem.name"
-    :bg-color="bgColor"
+    :bg-color="color"
   >
     <f-link
       class="FMenuItem__link text-gray"
@@ -60,7 +60,7 @@ export default {
       type: Object,
       required: true
     },
-    bgColor: String,
+    color: String,
     isSub: Boolean,
     iconLib: String,
     menuExpand: Boolean,
