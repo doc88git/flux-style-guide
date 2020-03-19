@@ -61,7 +61,7 @@ export default {
   props: {
     subItemsLimit: {
       type: Number,
-      default: 10
+      default: 1
     },
     menuItems: {
       type: Array,
@@ -189,7 +189,7 @@ span.icon-widget {
       &__li {
         margin-left: 27px;
         margin-bottom: 35px;
-        width: 100%;
+        width: calc(100% - 27px);
 
         &__ul {
           overflow: visible;
