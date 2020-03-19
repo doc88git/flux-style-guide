@@ -1,21 +1,24 @@
 ## Flux Style Guide
 
-### Documentação
+Design by Doc88 for Vue.js
 
-A documentação, neste momento, se encotra no próprio repositório com o  uso do StoryBook.
+### Documentation
+
+This documentation, at this moment, is found in the repository itself using the [StoryBook for Vue](https://storybook.js.org/docs/guides/guide-vue/).
 ```
 yarn storybook
 ```
-### Scripts para executar em seu projeto
+### Scripts to run in your project
 
 ``` bash
-# Instalação
+# Instalation
 $ yarn add @doc88/flux-style-guide
 
-# Atualização
+# Update dependence
 $ yarn upgrade-interactive --latest
 ```
 
-## Contribuição
+## Contribuition
 
-Por favor, leia o nosso [Guia de Contribuição](.github/CONTRIBUTING.md) antes de enviar um pull request.
+- 🇺🇸 Please read our [Contribution Guide](.github/en/CONTRIBUTING.md) before submitting a pull request.
+- 🇧🇷 Por favor, leia o [Guia de Contribuição](.github/en/CONTRIBUTING.md) antes de enviar um pull request.
