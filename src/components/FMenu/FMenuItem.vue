@@ -21,7 +21,6 @@
         :color="menuItem.color"
         type="outlined"
         clickable
-        size="sm"
         class="FMenuItem__link--icon"
       />
 
@@ -92,7 +91,6 @@ export default {
 @import '../../assets/f-transitions.scss';
 
 .FMenuItem {
-
   &__link {
     display: flex;
     justify-content: center;
