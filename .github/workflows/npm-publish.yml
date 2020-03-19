@@ -1,4 +1,4 @@
-name: npm-publish
+name: Publish version to NPM
 on:
   release:
     types: [published]
