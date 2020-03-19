@@ -48,7 +48,7 @@ describe('FTag tests', () => {
     })
 
     test('Teste da computed styleLineColor', () => {
-      const computedExpect = { borderColor: '#C1C1C1' }
+      const computedExpect = { borderColor: '#C1C1C1', minWidth: '10px' }
       expect(WRAPPER.vm.styleLineColor).toEqual(computedExpect)
     })
 
@@ -62,9 +62,9 @@ describe('FTag tests', () => {
   })
 
   describe('Teste de métodos', () => {
-    test('Teste do método toggleHover', () => {
-      WRAPPER.vm.toggleHover()
-      expect(WRAPPER.vm.onHover).toBe(true)
+    test('Teste do método setLegendSize', () => {
+      WRAPPER.vm.setLegendSize()
+      expect(typeof WRAPPER.vm.legendSize).toBe("number")
     })
   })
 })
