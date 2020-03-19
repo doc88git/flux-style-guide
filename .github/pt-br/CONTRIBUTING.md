@@ -2,7 +2,7 @@
 
 Olá! Estamos realmente empolgados por você estar interessado em contribuir com o Flux Style Guide. Antes de enviar sua contribuição, reserve um momento e leia as seguintes diretrizes:
 
-- [Código de Conduta](https://github.com/vuejs/vue/blob/dev/.github/pt-br/CODE_OF_CONDUCT.md)
+- [Código de Conduta](CODE_OF_CONDUCT.md)
 - [Diretrizes para novas Issues](#diretrizes-para-novas-issues)
 - [Guia para Pull Request](#guia-para-pull-request)
 - [Configurações de desenvolvimento](#configurações-de-desenvolvimento)
