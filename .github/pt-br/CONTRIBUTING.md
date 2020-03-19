@@ -2,7 +2,7 @@
 
 Olá! Estamos realmente empolgados por você estar interessado em contribuir com o Flux Style Guide. Antes de enviar sua contribuição, reserve um momento e leia as seguintes diretrizes:
 
-- [Código de Conduta](https://github.com/vuejs/vue/blob/dev/.github/CODE_OF_CONDUCT.md)
+- [Código de Conduta](CODE_OF_CONDUCT.md)
 - [Diretrizes para novas Issues](#diretrizes-para-novas-issues)
 - [Guia para Pull Request](#guia-para-pull-request)
 - [Configurações de desenvolvimento](#configurações-de-desenvolvimento)
@@ -18,25 +18,17 @@ Olá! Estamos realmente empolgados por você estar interessado em contribuir com
 
 - Faça o checkout de uma branch de tópico relevante, ex. `dev`, e faça o merge de volta para a mesma branch.
 
-- Trabalhe apenas no diretório `src` e **NÃO** inclua o diretório `dist` nos commits.
+- Tenha certeza que todos os testes `npm test` passaram. (veja [Configurações de desenvolvimento](#configurações-de-desenvolvimento))
 
-- Não há problema em ter vários commits pequenos enquanto você trabalha no PR - o GitHub vai fazer os squash antes do merge.
+- Idealmente, antes do desenvolvimento, abra uma issue de sugestão de funcionalidade, melhoria ou correção.
 
-- Tenha certeza que todos os testes `yarn test` passaram. (veja [Configurações de desenvolvimento](#configurações-de-desenvolvimento))
-
-- Se você está adicionando novas features:
-  - Adicione casos de teste.
-  - Forneça um motivo convincente para adicionar esse recurso. Idealmente, você deve abrir uma issue de sugestão primeiro e tê-lo aprovado antes de trabalhar nele
-
-- Se você está adicionando novas bugfix:
-  - Se você estiver resolvendo um problema especial, adicione `(fix #xxxx[,#xxxx])` (#xxxx é a id da issue) no título da sua PR para uma melhor release, comente, por ex. `atualizar entidades encoding/decoding (fix #3899)`.
-  - Forneça uma descrição detalhada do bug no PR. preferencialmente em uma demonstraçao.
-  - Adicione cobertura de teste apropriada, se aplicável.
+- Adicione cobertura de teste apropriada, se aplicável
 
 
 ## Configurações de desenvolvimento
 
-Você precisará de [Node.js](http://nodejs.org) **version 8+**, [Java Runtime Environment](http://www.oracle.com/technetwork/java/javase/downloads/index.html) (para executar Selenium server durante e2e testes) e [yarn](https://yarnpkg.com/en/docs/install).
+- [Node.js](http://nodejs.org) **(versão 8 ou superior)**
+- [Java Runtime Environment](http://www.oracle.com/technetwork/java/javase/downloads/index.html) (execução Selenium server durante e2e testes).
 
 After cloning the repo, run:
 
@@ -46,7 +38,7 @@ $ yarn # install the dependencies of the project
 
 ### Committing Changes
 
-As mensagens de commit devem seguir a [convenção de mensagem de commit](./COMMIT_CONVENTION.md) para que os registros de alterações possam ser gerados automaticamente. As mensagens de commit serão validadas automaticamente após o commit.
+As mensagens de commit devem seguir a [Convenção sobre mensagens Git Commit](./COMMIT_CONVENTION.md) para que os registros de alterações possam ser gerados automaticamente. As mensagens de commit serão validadas automaticamente após o commit.
 
 ### Commonly used NPM scripts
 

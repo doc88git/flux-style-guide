@@ -1,1 +1,0 @@
-## Convenção sobre Git Commit Message
