@@ -76,7 +76,7 @@ export default {
     },
     menuSubItemsLimit: {
       type: Number,
-      default: 10
+      default: 1
     },
     color: {
       type: String,
