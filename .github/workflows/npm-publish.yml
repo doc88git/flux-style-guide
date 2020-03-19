@@ -27,7 +27,11 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
+          scope: doc88
       - run: npm ci
-      - run: npm publish
+      - run: npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
+      - run: npm config set scope "@doc88"
+      - run: npm config list
+      - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
