@@ -7,7 +7,7 @@ exports[`FPaginantion tests Componente não alterado 1`] = `
         Primeira
       </button></li>
     <li><button disabled=\\"disabled\\">
-        &lt;
+        <f-icon-stub name=\\"chevron-left\\" color=\\"primary\\" size=\\"16\\"></f-icon-stub>
       </button></li>
     <li><button class=\\"selected\\">
         1
@@ -40,7 +40,7 @@ exports[`FPaginantion tests Componente não alterado 1`] = `
         10
       </button></li>
     <li><button>
-        &gt;
+        <f-icon-stub name=\\"chevron-right\\" color=\\"primary\\" size=\\"16\\"></f-icon-stub>
       </button></li>
     <li><button>
         Última
