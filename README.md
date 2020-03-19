@@ -21,4 +21,4 @@ $ yarn upgrade-interactive --latest
 ## Contribuition
 
 - 🇺🇸 Please read our [Contribution Guide](.github/en/CONTRIBUTING.md) before submitting a pull request.
-- 🇧🇷 Por favor, leia o [Guia de Contribuição](.github/en/CONTRIBUTING.md) antes de enviar um pull request.
+- 🇧🇷 Por favor, leia o [Guia de Contribuição](.github/pt-br/CONTRIBUTING.md) antes de enviar um pull request.
