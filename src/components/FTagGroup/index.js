@@ -1,3 +1,3 @@
-import FTagGroup from "./FTagGroup";
+import FTagGroup from './FTagGroup'
 
-export { FTagGroup };
+export { FTagGroup }

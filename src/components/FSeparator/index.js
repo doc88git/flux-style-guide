@@ -1,3 +1,3 @@
-import FSeparator from "./FSeparator";
+import FSeparator from './FSeparator'
 
-export { FSeparator };
+export { FSeparator }

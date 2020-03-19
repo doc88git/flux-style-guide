@@ -1,3 +1,3 @@
-import FToggle from "./FToggle";
+import FToggle from './FToggle'
 
-export { FToggle };
+export { FToggle }

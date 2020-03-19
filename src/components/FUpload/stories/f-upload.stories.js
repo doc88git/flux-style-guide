@@ -1,9 +1,9 @@
-import { storiesOf } from "@storybook/vue";
+import { storiesOf } from '@storybook/vue'
 // import { select, boolean } from "@storybook/addon-knobs";
-import { FUpload } from "../index.js";
-import { FButton } from "../../FButton/index.js";
+import { FUpload } from '../index.js'
+import { FButton } from '../../FButton/index.js'
 
-storiesOf("Components|Upload", module).add("Default", () => ({
+storiesOf('Components|Upload', module).add('Default', () => ({
   components: { FUpload, FButton },
   data: () => ({}),
   props: {},
@@ -21,4 +21,4 @@ storiesOf("Components|Upload", module).add("Default", () => ({
         </f-upload>
       </div>
     `
-}));
+}))

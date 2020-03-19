@@ -12,9 +12,7 @@ module.exports = {
     '\\.svg$': '<rootDir>/svgTransformer.js'
   },
   testPathIgnorePatterns: ['<rootDir>/node_modules/'],
-  transformIgnorePatterns: [
-    '/node_modules/(?!@doc88/).+\\.(js|vue)$'
-  ],
+  transformIgnorePatterns: ['/node_modules/(?!@doc88/).+\\.(js|vue)$'],
   collectCoverage: true,
   collectCoverageFrom: ['<rootDir>/src/components/**/*.vue'],
   timers: 'fake'
