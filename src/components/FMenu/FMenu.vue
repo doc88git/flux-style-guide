@@ -39,18 +39,12 @@
 </template>
 
 <script>
-import { FTooltip } from '../FTooltip'
-import FIcon from '../FIcon/FIcon'
-import { FLink } from '../FLink'
 import FMenuItem from './FMenuItem'
 
 export default {
   name: 'f-menu',
   components: {
-    FMenuItem,
-    FTooltip,
-    FIcon,
-    FLink
+    FMenuItem
   },
 
   data: () => ({
