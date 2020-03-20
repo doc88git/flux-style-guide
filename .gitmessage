@@ -1,0 +1,29 @@
+VERBO - Título do commit
+
+# Link da tarefa no Jira. A história já explica por si.
+# Altere o CODIGO-TASK pelo código da tarega no jira.
+Task:
+https://comerc.atlassian.net/browse/CODIGO-TASK
+
+# O que foi feito nesta alteração? Resumidamente, explique.
+O que foi feito:
+-
+
+# ## Manual Doc88 do commit ##
+#
+# OBSERVAÇÃO IMPORTANTE: Evite ser prolixo.
+#
+# Linha de assunto, verbos em maiúsculas:
+#
+#   ADICIONA = CRIAR um recurso.
+#   REMOVE = EXCLUIR um recurso.
+#   IMPACTA = Alteração deve ser apenas para upgrade ou downgrade de versões das dependências e infra.
+#   DOCUMENTA = Uma alteração que deve ser apenas sobre documentação.
+#   ALTERA = Uma mudança que deve ser apenas uma refatoração ou melhoria.
+#
+# Para a linha do assunto:
+#   * 50 caracteres no máximo.
+#
+# Para o corpo do commit:
+#   * Use quantas linhas precisar.
+#   * 72 caracteres no máximo por linha.
