@@ -41,7 +41,7 @@ export default {
     size: {
       type: String,
       default: 'base',
-      validator: val => ['base', 'sm', 'xs', 'lg'].includes(val)
+      validator: val => ['xs', 'sm', 'base', 'lg', 'xl', '2xl'].includes(val)
     },
     name: {
       default: 'hardware',
@@ -63,7 +63,15 @@ export default {
       }
     },
     iconSize() {
-      return ['sm', 'xs'].includes(this.size) ? 16 : 24
+      /* icon sizes
+        xs: 8
+        sm: 12
+        base: 16
+        lg: 24
+        xl: 32
+        2xl: 48
+      */
+      return ['xs', 'base', 'xl'].includes(this.size) ? 16 : 24
     }
   }
 }
@@ -76,20 +84,28 @@ export default {
   line-height: 0;
   &-flux {
     &--xs {
+      height: 8px;
+      width: 8px;
+    }
+    &--sm {
       height: 12px;
       width: 12px;
     }
-    &--sm {
+    &--base {
       height: 16px;
       width: 16px;
     }
-    &--base {
+    &--lg {
       height: 24px;
       width: 24px;
     }
-    &--lg {
+    &--xl {
       height: 32px;
       width: 32px;
+    }
+    &--2xl {
+      height: 48px;
+      width: 48px;
     }
   }
   &--xs {
@@ -103,6 +119,12 @@ export default {
   }
   &--lg {
     font-size: var(--text-lg);
+  }
+  &--xl {
+    font-size: var(--text-xl);
+  }
+  &--2xl {
+    font-size: var(--text-2xl);
   }
 }
 </style>

@@ -33,6 +33,7 @@
         :menuSelected="menuSelected"
         :menuExpand="menuExpand"
         :color="color"
+        :sub-items-limit="menuSubItemsLimit"
         @click="handleClickMenuItem"
         class="f-layout__wrapper__menu"
         v-if="menuItems.length || hasMenu"
@@ -72,6 +73,10 @@ export default {
     menuSelected: {
       type: String,
       default: 'home'
+    },
+    menuSubItemsLimit: {
+      type: Number,
+      default: 1
     },
     color: {
       type: String,
