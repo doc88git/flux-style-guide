@@ -28,10 +28,12 @@
     </div>
     <div class="f-layout__wrapper">
       <f-menu
+        :iconLib="iconLib"
         :menuItems="menuItems"
         :menuSelected="menuSelected"
         :menuExpand="menuExpand"
         :color="color"
+        :sub-items-limit="menuSubItemsLimit"
         @click="handleClickMenuItem"
         class="f-layout__wrapper__menu"
         v-if="menuItems.length || hasMenu"
@@ -72,6 +74,10 @@ export default {
       type: String,
       default: 'home'
     },
+    menuSubItemsLimit: {
+      type: Number,
+      default: 1
+    },
     color: {
       type: String,
       default: 'primary'
@@ -91,6 +97,10 @@ export default {
     styles: {
       type: String,
       default: null
+    },
+    iconLib: {
+      type: String,
+      default: 'flux'
     }
   },
   methods: {
@@ -106,6 +116,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../assets/f-variables.scss';
+
 .f-layout {
   display: flex;
   flex-direction: column;
