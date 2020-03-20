@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue'
-import { text, object } from '@storybook/addon-knobs'
+import { object } from '@storybook/addon-knobs'
 import FTagGroup from '../FTagGroup.vue'
 import { FTag } from '@/components/FTag'
 

@@ -1,16 +1,24 @@
 <template>
   <div class="FToggle">
     <div class="FToggle__wrapper">
-      <div class="FToggle__wrapper--label" :class="labelPosition" v-if="$slots.before">
+      <div
+        class="FToggle__wrapper--label"
+        :class="labelPosition"
+        v-if="$slots.before"
+      >
         <slot name="before" />
       </div>
       <div class="FToggle__switch" @click="switchToggle">
-        <div class="FToggle__ball" :class="{ 'FToggle__ball--active': value }"></div>
+        <div
+          class="FToggle__ball"
+          :class="{ 'FToggle__ball--active': value }"
+        ></div>
       </div>
       <span
         class="FToggle__wrapper--label"
         :class="[{ 'FToggle__wrapper--label--active': value }, labelPosition]"
-      >{{ labelName }}</span>
+        >{{ labelName }}</span
+      >
     </div>
   </div>
 </template>

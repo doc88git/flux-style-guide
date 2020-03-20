@@ -31,8 +31,7 @@ storiesOf('Components|Datepicker', module)
     }),
     methods: {
       printValue(payload) {
-        console.log(payload);
-        return payload;
+        return payload
       }
     },
     template: `

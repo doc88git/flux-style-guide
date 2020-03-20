@@ -24,21 +24,21 @@ storiesOf('Components|Menu', module)
             {
               name: 'Unidades',
               url: '#',
-              id: 'units',
+              id: 'units'
             },
             {
               name: 'Departamentos',
               url: '#',
-              id: 'departments',
+              id: 'departments'
             },
             {
               name: 'Regionais',
               url: '#',
-              id: 'regionals',
-            },
+              id: 'regionals'
+            }
           ]
         },
-        { name: 'Empresa', url: '#', id: 'company', icon: 'bell' },
+        { name: 'Empresa', url: '#', id: 'company', icon: 'bell' }
       ]
     }),
     props: {

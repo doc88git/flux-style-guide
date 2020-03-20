@@ -1,3 +1,3 @@
-import FTitle from "./FTitle";
+import FTitle from './FTitle'
 
-export { FTitle };
+export { FTitle }
