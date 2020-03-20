@@ -1,3 +1,3 @@
-import FModal from "./FModal";
+import FModal from './FModal'
 
-export { FModal };
+export { FModal }

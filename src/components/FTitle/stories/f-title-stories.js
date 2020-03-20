@@ -1,13 +1,13 @@
-import { storiesOf } from "@storybook/vue";
-import { text } from "@storybook/addon-knobs";
-import { FTitle } from "@/components/FTitle";
+import { storiesOf } from '@storybook/vue'
+import { text } from '@storybook/addon-knobs'
+import { FTitle } from '@/components/FTitle'
 
-storiesOf("Components|Title", module).add(
-  "Title",
+storiesOf('Components|Title', module).add(
+  'Title',
   () => ({
     components: { FTitle },
     data: () => ({
-      text: text("Text", "Flux Services")
+      text: text('Text', 'Flux Services')
     }),
     methods: {},
     props: {},
@@ -27,4 +27,4 @@ storiesOf("Components|Title", module).add(
         `
     }
   }
-);
+)

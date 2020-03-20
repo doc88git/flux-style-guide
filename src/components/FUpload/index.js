@@ -1,3 +1,3 @@
-import FUpload from "./FUpload";
+import FUpload from './FUpload'
 
-export { FUpload };
+export { FUpload }
