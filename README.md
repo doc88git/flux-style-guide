@@ -45,6 +45,34 @@ import FluxStyleGuide from "@doc88/flux-style-guide"
 Vue.use(FluxStyleGuide)
 ```
 
+### CSS SASS Configuration
+
+To use a simple configuration
+
+``` css
+@import '~@doc88/flux-style-guide/src/assets/f-style-guide.scss';
+```
+
+To customize styles
+
+``` css
+@import '~@doc88/flux-style-guide/src/assets/f-variables';
+
+/*
+Custom variables
+*/
+
+@import '~@doc88/flux-style-guide/src/assets/f-reset';
+@import '~@doc88/flux-style-guide/src/assets/f-root';
+@import '~@doc88/flux-style-guide/src/assets/f-colors';
+@import '~@doc88/flux-style-guide/src/assets/f-sizes';
+@import '~@doc88/flux-style-guide/src/assets/f-transitions';
+@import '~@doc88/flux-style-guide/src/assets/settings/settings';
+
+@import '~@doc88/flux-style-guide/src/assets/f-base';
+
+```
+
 ### Update
 
 ``` bash
