@@ -15,7 +15,7 @@ storiesOf('Components|Tooltip', module)
       }
     },
     template: `
-      <div style="padding: 40px; width: 100%; text-align: center;">
+      <div style="margin-top: 100px; padding: 100px; width: 100%; text-align: center;">
         <f-tooltip :position="position" label="Button">
           <template v-slot:content>
             tooltip content
@@ -33,7 +33,7 @@ storiesOf('Components|Tooltip', module)
       }
     },
     template: `
-      <div style="padding: 40px; width: 100%; text-align: center;">
+      <div style="margin-top: 100px; padding: 100px;  width: 100%; text-align: center;">
         <f-tooltip showEvent="click" hideEvent="blur" :position="position" label="Button">
           <template v-slot:content>
             tooltip content
@@ -53,7 +53,7 @@ storiesOf('Components|Tooltip', module)
       }
     },
     template: `
-      <div style="padding: 40px; width: 100%; text-align: center;">
+      <div style="margin-top: 100px; padding: 100px;  width: 100%; text-align: center;">
         <f-tooltip position="top" aligned="aligned" label="top" bgColor="primary">
           Menu
           <template v-slot:content>
@@ -68,6 +68,11 @@ storiesOf('Components|Tooltip', module)
         <f-tooltip position="bottom" aligned="aligned" label="bottom" bgColor="primary">
           <template v-slot:content>
             tooltip on bottom
+          </template>
+        </f-tooltip>
+        <f-tooltip position="top" aligned="aligned" label="top" bgColor="primary">
+          <template v-slot:content>
+            tooltip on top
           </template>
         </f-tooltip>
         <f-tooltip position="right" aligned="aligned" label="right" bgColor="primary">
