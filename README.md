@@ -45,7 +45,7 @@ import FluxStyleGuide from "@doc88/flux-style-guide"
 Vue.use(FluxStyleGuide)
 ```
 
-### CSS SASS Configuration
+### CSS Sass Configuration
 
 To use a simple configuration
 
