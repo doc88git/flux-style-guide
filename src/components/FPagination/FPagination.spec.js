@@ -3,18 +3,18 @@ import FPagination from './FPagination'
 
 const WRAPPER_PROPS = { currentPage: 1, total: 100, perPage: 6, max: 10 }
 
-
 describe('FPaginantion tests', () => {
   let WRAPPER
 
-  beforeEach(() => WRAPPER = shallowMount(FPagination, { propsData: WRAPPER_PROPS }))
+  beforeEach(
+    () => (WRAPPER = shallowMount(FPagination, { propsData: WRAPPER_PROPS }))
+  )
 
   test('Componente existe', () => {
     expect(WRAPPER.exists()).toBe(true)
   })
 
   describe('Teste de computeds', () => {
-
     describe('Computed totalPages', () => {
       test('totalPages quando a prop total: 100 e perPage: 6', () => {
         expect(WRAPPER.vm.totalPages).toBe(17)
@@ -38,17 +38,50 @@ describe('FPaginantion tests', () => {
 
       test('show quando localCurrentPage: 11', () => {
         WRAPPER.setData({ localCurrentPage: 11 })
-        expect(WRAPPER.vm.show).toStrictEqual([6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
+        expect(WRAPPER.vm.show).toStrictEqual([
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ])
       })
 
       test('show quando localCurrentPage: 15', () => {
         WRAPPER.setData({ localCurrentPage: 15 })
-        expect(WRAPPER.vm.show).toStrictEqual([8, 9, 10, 11, 12, 13, 14, 15, 16, 17])
+        expect(WRAPPER.vm.show).toStrictEqual([
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ])
       })
 
       test('show quando localCurrentPage: 18', () => {
         WRAPPER.setData({ localCurrentPage: 18 })
-        expect(WRAPPER.vm.show).toStrictEqual([8, 9, 10, 11, 12, 13, 14, 15, 16, 17])
+        expect(WRAPPER.vm.show).toStrictEqual([
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ])
       })
     })
 
@@ -76,7 +109,6 @@ describe('FPaginantion tests', () => {
   })
 
   describe('Teste de métodos', () => {
-
     describe('Teste do método jumpTo', () => {
       test('Pular para próxima página', () => {
         const setCurrentPage = jest.fn()
@@ -113,7 +145,6 @@ describe('FPaginantion tests', () => {
     })
 
     describe('Teste do método setCurrentPage', () => {
-
       test('setCurrentPage com argumento 10 e emissão do evento update:current_page', async () => {
         WRAPPER.vm.setCurrentPage(10)
         expect(WRAPPER.vm.localCurrentPage).toBe(10)

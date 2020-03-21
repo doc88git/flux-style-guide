@@ -1,41 +1,37 @@
 <template>
   <aside class="Fmenu-side">
     <nav class="Fmenu-side__nav">
-      <ul
-        class="Fmenu-side__nav__ul"
-        :class="{ 'Fmenu-side__nav__ul--expand': menuExpand }"
-      >
+      <ul :class="menuListClasses">
         <li
           v-for="menu in menuItems"
           :key="menu.id"
           class="Fmenu-side__nav__ul__li"
         >
-          <f-tooltip
-            position="right"
-            aligned="end"
-            class="Fmenu-side__nav__ul__tooltip"
-            :disabled="menuExpand"
-            :bgColor="color"
-            :label="menu.name"
-          >
-            <a
-              class="Fmenu-side__nav__ul__li__link text-gray"
-              :class="[menuSelected === menu.id ? textColor : textHoverColor]"
-              :href="menu.url"
-              @click="clickButton(menu)"
+          <f-menu-item
+            :menu-item="menu"
+            :icon-lib="iconLib"
+            :menu-expand="menuExpand"
+            :is-selected="isItemSelected(menu)"
+            :color="color"
+            @click="handleItemClick"
+          />
+
+          <ul v-if="hasSubMenu(menu)" :class="subMenuClasses(menu)">
+            <li
+              v-for="subMenu in menu.subItems"
+              :key="subMenu.id"
+              class="Fmenu-side__nav__ul__li__ul__li"
             >
-              <f-icon-old
-                :name="menu.icon"
-                clickable
-                class="Fmenu-side__nav__ul__li__link--icon"
-                type="outlined"
+              <f-menu-item
+                is-sub
+                :menu-item="subMenu"
+                :icon-lib="iconLib"
+                :menu-expand="menuExpand"
+                :is-selected="menuSelected === menu.id"
+                :bg-color="color"
               />
-              <span v-show="menuExpand" class="Fmenu-side__nav__ul__li__text">
-                {{ menu.name }}
-              </span>
-            </a>
-            <template v-slot:content>{{ menu.name }}</template>
-          </f-tooltip>
+            </li>
+          </ul>
         </li>
       </ul>
     </nav>
@@ -43,37 +39,27 @@
 </template>
 
 <script>
-import { FTooltip } from '../FTooltip'
-import FIconOld from '../FIcon/FIconOld'
+import FMenuItem from './FMenuItem'
 
 export default {
   name: 'f-menu',
   components: {
-    FIconOld,
-    FTooltip
+    FMenuItem
   },
+
   data: () => ({
-    appTitle: 'reembolso'
+    appTitle: 'reembolso',
+    expandItem: ''
   }),
+
   props: {
+    subItemsLimit: {
+      type: Number,
+      default: 1
+    },
     menuItems: {
       type: Array,
-      default: () => {
-        return [
-          {
-            name: 'Home',
-            url: '#',
-            id: 'home',
-            icon: 'home'
-          },
-          {
-            name: 'Empresa',
-            url: '#',
-            id: 'company',
-            icon: 'hardware'
-          }
-        ]
-      }
+      default: () => ({})
     },
     menuSelected: {
       type: String,
@@ -86,19 +72,43 @@ export default {
     menuExpand: {
       type: Boolean,
       default: false
-    }
-  },
-  computed: {
-    textHoverColor() {
-      return `hover:text-${this.color}`
     },
-    textColor() {
-      return `color--text--${this.color}`
+    iconLib: {
+      type: String,
+      default: 'material'
     }
   },
+
+  computed: {
+    menuListClasses() {
+      return [
+        'Fmenu-side__nav__ul',
+        { 'Fmenu-side__nav__ul--expand': this.menuExpand }
+      ]
+    }
+  },
+
   methods: {
-    clickButton(menu) {
-      this.$emit('click', menu)
+    subMenuClasses(menu) {
+      const isSelected = this.expandItem === menu.id
+      const subItems = menu.subItems || []
+      const allowHide =
+        !!subItems.length && subItems.length >= this.subItemsLimit
+
+      return [
+        'Fmenu-side__nav__ul__li__ul',
+        { 'Fmenu-side__nav__ul__li__ul--hidden': !isSelected && allowHide }
+      ]
+    },
+    hasSubMenu(menu) {
+      return !!(menu.subItems || []).length
+    },
+    isItemSelected({ id }) {
+      return this.menuSelected === id
+    },
+    handleItemClick(ev) {
+      if (!(ev.subItems || []).length) return this.$emit('click', ev)
+      this.expandItem = ev.id !== this.expandItem ? ev.id : ''
     }
   }
 }
@@ -107,6 +117,7 @@ export default {
 <style lang="scss" scoped>
 @import '../../assets/f-variables.scss';
 @import '../../assets/f-transitions.scss';
+
 span.icon-widget {
   height: 100px;
   width: 10px;
@@ -144,6 +155,7 @@ span.icon-widget {
       position: fixed;
       top: 70px;
       left: -100%;
+      padding-top: 35px;
 
       @media screen and (min-width: map-get($sizes, 'tablet' )) {
         position: absolute;
@@ -168,46 +180,30 @@ span.icon-widget {
         }
       }
 
-      &__tooltip {
-        width: 100%;
-      }
-
       &__li {
-        margin: 0px 0 20px;
-        width: 100%;
+        margin-left: 27px;
+        margin-bottom: 35px;
+        width: calc(100% - 27px);
 
-        &__link {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 100%;
+        &__ul {
+          overflow: visible;
+          max-height: 900px;
+          transition: max-height 300ms ease, margin 300ms ease 300ms,
+            overflow 350ms ease;
 
-          @media screen and (min-width: map-get($sizes, 'tablet' )) {
-            justify-content: flex-start;
-            &:hover {
-              .Fmenu-side__nav__ul__li__text {
-                margin-left: 7px;
-              }
-            }
+          &--hidden {
+            overflow: hidden;
+            max-height: 0px;
+            margin: 0;
           }
 
-          &--icon {
-            margin-left: 27px;
-            &:hover {
-              color: var(--color-primary-lighter);
-            }
+          &__li:first-child {
+            margin-top: 20px;
           }
 
-          &--selected {
-            font-weight: bold;
+          &__li:not(:last-child) {
+            margin-bottom: 15px;
           }
-        }
-
-        &__text {
-          font-size: var(--text-base);
-          position: relative;
-          margin-left: 5px;
-          @include transition(0.1s);
         }
       }
     }

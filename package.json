@@ -1,6 +1,6 @@
 {
   "name": "@doc88/flux-style-guide",
-  "version": "1.0.0-beta.29.5",
+  "version": "1.0.0",
   "license": "MIT",
   "main": "src/index.esm.js",
   "scripts": {
@@ -10,16 +10,22 @@
     "eslint": "eslint --ext .js,.vue --ignore-path .gitignore ./src --fix",
     "storybook": "start-storybook --port 3001 --debug-webpack",
     "build:storybook": "build-storybook -c .storybook",
-    "eyes": "eyes-storybook",
+    "eyes-storybook": "eyes-storybook",
     "test": "jest",
     "test:snapshot": "jest --updateSnapshot",
     "test:watch": "jest --watchAll"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint; npm run test"
+    }
+  },
   "dependencies": {
-    "@doc88/flux-icon": "^1.0.1",
+    "@doc88/flux-icon": "^1.1.3",
     "collect.js": "^4.12.5",
     "core-js": "^3.6.4",
     "fuse.js": "^3.4.5",
+    "v-click-outside": "^3.0.1",
     "vee-validate": "^2.2.11",
     "vue": "^2.6.10",
     "vue-i18n": "^8.11.2",
@@ -50,6 +56,7 @@
     "eslint-loader": "^3.0.3",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-vue": "^6.1.2",
+    "husky": "^4.2.3",
     "jest": "^24.8.0",
     "jest-transform-stub": "^2.0.0",
     "node-sass": "^4.12.0",

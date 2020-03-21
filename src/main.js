@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VuePlugin from './vue-plugin'
+import vClickOutside from 'v-click-outside'
+import VueRouter from 'vue-router'
+
+Vue.use(VueRouter)
+Vue.use(vClickOutside)
 
 import '@/assets/f-style-guide.scss'
 

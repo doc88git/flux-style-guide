@@ -2,7 +2,13 @@
   <div class="f-chip" :class="classes" @click="onClick">
     <div class="f-chip__icon" v-if="icon">
       <slot name="icon">
-        <f-icon :color="iconColor" :name="selected ? 'check' : icon" />
+        <f-icon
+          lib="flux"
+          size="xs"
+          :clickable="false"
+          :color="iconColor"
+          :name="selected ? 'check' : icon"
+        />
       </slot>
     </div>
     <div class="f-chip__content">
@@ -21,7 +27,8 @@
 </template>
 
 <script>
-import { FIcon } from '..'
+import FIcon from '../FIcon/FIcon'
+
 export default {
   name: 'f-chip',
   components: {
@@ -108,9 +115,6 @@ export default {
     padding: 0;
     margin-right: 0.5rem;
     line-height: 1.5;
-    i {
-      font-size: var(--text-xl);
-    }
   }
   &__content {
     display: flex;
