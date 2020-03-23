@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue'
-import { text, boolean, number } from '@storybook/addon-knobs'
+import { text, boolean, number, select } from '@storybook/addon-knobs'
 import { FField, FInput, FInputType } from '..'
 import { FButton } from '../../FButton'
 import { FAvatar } from '../../FAvatar'
@@ -490,16 +490,19 @@ storiesOf('Form|Field', module)
           default: text('paddingX', 'sm', groupId)
         },
         newValue: {
-          default: number('newValue', null, groupId)
+          default: number('newValue', null, {}, groupId)
         },
         sum: {
-          default: number('sum', 1, groupId)
+          default: number('sum', 1, {}, groupId)
         },
         placeHolder: {
           default: text('placeHolder', 'Placeholder', groupId)
         },
         disabled: {
           default: boolean('disabled', false, groupId)
+        },
+        numberType: {
+          default: select('numberType', ['int', 'float'], 'int', groupId)
         }
       },
       template: `

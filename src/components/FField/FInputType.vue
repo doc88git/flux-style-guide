@@ -26,10 +26,10 @@
       {{ unity }}
     </div>
     <div class="f-input__counter">
-      <button @click="counterUp" :class="colorButton">
+      <button @click="counterUp" :class="colorButton" :name="iconUp">
         <f-icon class="f-input__up" :name="iconUp"></f-icon>
       </button>
-      <button @click="counterDown">
+      <button @click="counterDown" :name="iconDown">
         <f-icon class="f-input__down" :name="iconDown"></f-icon>
       </button>
     </div>
@@ -142,6 +142,11 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    numberType: {
+      type: String,
+      default: 'float',
+      validator: val => ['int', 'float'].includes(val)
     }
   },
   mounted() {
@@ -183,21 +188,22 @@ export default {
     },
     colorButton() {
       return `color--background--${this.buttonColor}`
+    },
+    getPrecision() {
+      return this.numberType === 'int' ? precision(this.sum) : 2
     }
   },
   methods: {
     counterUp(e) {
       e.preventDefault()
-      this.value = parseFloat(
-        (this.value + this.sum).toFixed(precision(this.sum))
-      )
+      const p = this.getPrecision
+      this.value = parseFloat((this.value + this.sum).toFixed(p))
       this.inputValue()
     },
     counterDown(e) {
       e.preventDefault()
-      this.value = parseFloat(
-        (this.value - this.sum).toFixed(precision(this.sum))
-      )
+      const p = this.getPrecision
+      this.value = parseFloat((this.value - this.sum).toFixed(p))
       this.inputValue()
     },
     inputValue() {
