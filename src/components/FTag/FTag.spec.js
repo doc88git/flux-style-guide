@@ -11,11 +11,10 @@ const WRAPPER_PROPS = {
   textColor: '#7F7F7F'
 }
 
-
 describe('FTag tests', () => {
   let WRAPPER
 
-  beforeEach(() => WRAPPER = shallowMount(FTag, { propsData: WRAPPER_PROPS }))
+  beforeEach(() => (WRAPPER = shallowMount(FTag, { propsData: WRAPPER_PROPS })))
 
   test('Componente existe', () => {
     expect(WRAPPER.exists()).toBe(true)
@@ -26,11 +25,10 @@ describe('FTag tests', () => {
   })
 
   describe('Teste de computeds', () => {
-
     describe('Teste da computed styleLegend', () => {
       test('styleLegend durante evento mouseOut', () => {
         const fTagLegend = WRAPPER.find('.FTag__legend')
-        const styleExpect = "background-color: white; visibility: hidden;"
+        const styleExpect = 'background-color: white; visibility: hidden;'
 
         expect(fTagLegend.attributes('style')).toEqual(styleExpect)
       })
@@ -38,7 +36,7 @@ describe('FTag tests', () => {
       test('styleLegend durante evento mouseOver', async () => {
         const fTagFieldset = WRAPPER.find('.FTag__fieldset')
         const fTagLegend = WRAPPER.find('.FTag__legend')
-        const styleExpect = "background-color: white; visibility: visible;"
+        const styleExpect = 'background-color: white; visibility: visible;'
 
         fTagFieldset.trigger('mouseover')
         await WRAPPER.vm.$nextTick()
@@ -48,7 +46,7 @@ describe('FTag tests', () => {
     })
 
     test('Teste da computed styleLineColor', () => {
-      const computedExpect = { borderColor: '#C1C1C1' }
+      const computedExpect = { borderColor: '#C1C1C1', minWidth: '10px' }
       expect(WRAPPER.vm.styleLineColor).toEqual(computedExpect)
     })
 
@@ -62,9 +60,9 @@ describe('FTag tests', () => {
   })
 
   describe('Teste de métodos', () => {
-    test('Teste do método toggleHover', () => {
-      WRAPPER.vm.toggleHover()
-      expect(WRAPPER.vm.onHover).toBe(true)
+    test('Teste do método setLegendSize', () => {
+      WRAPPER.vm.setLegendSize()
+      expect(typeof WRAPPER.vm.legendSize).toBe('number')
     })
   })
 })

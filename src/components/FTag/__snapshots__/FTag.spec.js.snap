@@ -6,8 +6,8 @@ exports[`FTag tests Componente não alterado 1`] = `
     <div class=\\"FTag__legend\\" style=\\"background-color: white; visibility: hidden;\\">
       Empresa
     </div>
-    <div class=\\"FTag__slot-div\\" style=\\"border-color: #c1c1c1;\\">
-      <f-icon-stub color=\\"purple\\" lib=\\"material\\" type=\\"default\\" size=\\"base\\" name=\\"dashboard\\" class=\\"FTag__icon\\"></f-icon-stub>
+    <div class=\\"FTag__slot-div\\" style=\\"border-color: #c1c1c1; min-width: 10px;\\">
+      <f-icon-stub color=\\"purple\\" lib=\\"material\\" type=\\"default\\" size=\\"base\\" name=\\"dashboard\\" clickable=\\"true\\" class=\\"FTag__icon\\"></f-icon-stub>
       <div class=\\"FTag__text\\">
         Flux Services
       </div>

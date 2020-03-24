@@ -14,18 +14,46 @@ storiesOf('Template|Layout', module).add(
     data: () => ({
       menuItems: [
         { name: 'Home', url: '#', id: 'home', icon: 'home' },
-        { name: 'Empresa', url: '#', id: 'company', icon: 'bell' },
         {
           name: 'Configurações',
           url: '#',
           id: 'configuration',
           icon: 'hardware'
-        }
+        },
+        {
+          name: 'Cadastro',
+          url: '#',
+          id: 'register',
+          icon: 'adjustments',
+          subItems: [
+            {
+              name: 'Unidades',
+              url: '#',
+              id: 'units'
+            },
+            {
+              name: 'Departamentos',
+              url: '#',
+              id: 'departments'
+            },
+            {
+              name: 'Regionais',
+              url: '#',
+              id: 'regionals'
+            }
+          ]
+        },
+        { name: 'Empresa', url: '#', id: 'company', icon: 'bell' }
       ],
       hasMenu: true
     }),
     template: `
-      <f-layout :menuItems="menuItems" :hasMenu="hasMenu" mainTitle="Main Title">
+      <f-layout
+        :menuItems="menuItems"
+        :hasMenu="hasMenu"
+        :menu-sub-items-limit="3"
+        mainTitle="Main Title"
+      >
         <template v-slot:settings>
           <f-widget></f-widget>
           <f-avatar></f-avatar>

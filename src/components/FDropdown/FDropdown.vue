@@ -158,7 +158,7 @@ export default {
       }
     },
     isClickedIn(e, classItem) {
-      let isClicked = e.path.filter(item => {
+      let isClicked = e.composedPath().filter(item => {
         return item.classList ? item.classList.contains(classItem) : false
       })
 

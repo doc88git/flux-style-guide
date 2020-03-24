@@ -9,7 +9,7 @@ export const queues = {
 
 export const $f = {
   version,
-  linkComponent: 'nuxt'
+  linkComponent: 'vue'
 }
 
 export default function(Vue, opts = {}) {

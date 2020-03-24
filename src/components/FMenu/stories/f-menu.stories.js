@@ -6,7 +6,41 @@ import FMenuButton from '../FMenuButton.vue'
 storiesOf('Components|Menu', module)
   .add('Default', () => ({
     components: { FMenu },
-    data: () => ({}),
+    data: () => ({
+      menuItems: [
+        { name: 'Home', url: '#', id: 'home', icon: 'home' },
+        {
+          name: 'Configurações',
+          url: '#',
+          id: 'configuration',
+          icon: 'hardware'
+        },
+        {
+          name: 'Cadastro',
+          url: '#',
+          id: 'register',
+          icon: 'adjustments',
+          subItems: [
+            {
+              name: 'Unidades',
+              url: '#',
+              id: 'units'
+            },
+            {
+              name: 'Departamentos',
+              url: '#',
+              id: 'departments'
+            },
+            {
+              name: 'Regionais',
+              url: '#',
+              id: 'regionals'
+            }
+          ]
+        },
+        { name: 'Empresa', url: '#', id: 'company', icon: 'bell' }
+      ]
+    }),
     props: {
       color: {
         default: text('color', 'primary')
@@ -14,7 +48,13 @@ storiesOf('Components|Menu', module)
     },
     template: `
       <div style="padding: 20px;">
-        <f-menu :action="showSidebar" :color="color"/>
+        <f-menu
+          :action="showSidebar"
+          :color="color"
+          :menu-items="menuItems"
+          :sub-items-limit="3"
+          icon-lib="flux"
+        />
       </div>
     `,
     methods: {
@@ -42,7 +82,7 @@ storiesOf('Components|Menu', module)
     },
     template: `
       <div style="padding: 20px;">
-        <f-menu-button :color="color"/>
+        <f-menu-button :color="color" />
       </div>
     `,
     methods: {}

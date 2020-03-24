@@ -121,7 +121,7 @@ export default {
   &__item {
     position: absolute;
     background-color: var(--color-black);
-    padding: 0.5rem 1rem;
+    padding: 12px;
     font-size: var(--text-sm);
     border-radius: 0.5rem;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -156,11 +156,11 @@ export default {
       bottom: calc(100% + 5px);
       left: 50%;
       transform: translateX(-50%);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     &--bottom {
-      top: calc(100% + 10px);
+      top: calc(100% + 17px);
       left: 50%;
       transform: translateX(-50%);
     }
@@ -168,13 +168,14 @@ export default {
     &--right {
       top: 50%;
       transform: translate(5px, -50%);
-      margin-left: 5px;
+      margin-left: 12px;
     }
 
     &--left {
       top: 50%;
-      left: calc(0% - 10px);
+      left: calc(0% - 17px);
       transform: translate(-100%, -50%);
+      margin-right: 12px;
     }
 
     &--center {

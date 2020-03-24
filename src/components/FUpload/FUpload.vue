@@ -31,12 +31,9 @@
 </template>
 
 <script>
-import { FButton } from '../FButton'
 export default {
   name: 'f-upload',
-  components: {
-    FButton
-  },
+  components: {},
   data: () => ({
     files: null,
     path: null,
