@@ -24,7 +24,7 @@
                 :menu-item="subItem"
                 :icon-lib="iconLib"
                 :menu-expand="menuExpand"
-                :is-selected="menuSelected === item.id"
+                :is-selected="menuSelected === subItem.id"
                 :bg-color="color"
               />
             </template>
