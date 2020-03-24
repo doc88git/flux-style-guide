@@ -79,15 +79,6 @@ export default {
     }
   },
 
-  computed: {
-    menuListClasses() {
-      return [
-        'Fmenu-side__nav__ul',
-        { 'Fmenu-side__nav__ul--expand': this.menuExpand }
-      ]
-    }
-  },
-
   methods: {
     hideSubItems(menu) {
       const isSelected = this.expandItem === menu.id
