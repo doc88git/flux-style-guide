@@ -74,6 +74,8 @@ export default {
     }
 
     &__li {
+      display: flex;
+      flex-direction: column;
       margin-bottom: 35px;
       width: 100%;
     }
