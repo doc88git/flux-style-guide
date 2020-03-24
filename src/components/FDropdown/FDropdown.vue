@@ -98,11 +98,17 @@ export default {
     textColor: {
       type: String,
       default: 'white'
+    },
+    enableEnter: {
+      type: Boolean,
+      default: false
     }
   },
   mounted() {
     document.addEventListener('keyup', this.itemNavigation)
-    document.addEventListener('keypress', this.onEnter)
+    if (this.enableEnter) {
+      document.addEventListener('keypress', this.onEnter)
+    }
   },
   computed: {
     isOutlined() {
