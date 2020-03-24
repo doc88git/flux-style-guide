@@ -181,9 +181,9 @@ span.icon-widget {
       }
 
       &__li {
-        margin-left: 27px;
         margin-bottom: 35px;
-        width: calc(100% - 27px);
+        width: 100%;
+        height: 20px;
 
         &__ul {
           overflow: visible;

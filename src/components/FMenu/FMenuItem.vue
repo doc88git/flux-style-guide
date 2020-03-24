@@ -2,7 +2,7 @@
   <f-tooltip
     position="right"
     aligned="end"
-    :class="['FMenuItem']"
+    class="FMenuItem"
     :disabled="menuExpand"
     :label="menuItem.name"
     :bg-color="color"
@@ -91,11 +91,17 @@ export default {
 @import '../../assets/f-transitions.scss';
 
 .FMenuItem {
+  height: 20px;
+  width: 100%;
+
   &__link {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    height: 100%;
     width: 100%;
+    padding-left: 27px;
 
     @media screen and (min-width: map-get($sizes, 'tablet' )) {
       justify-content: flex-start;
