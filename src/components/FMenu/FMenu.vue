@@ -1,49 +1,49 @@
 <template>
   <aside class="Fmenu-side">
     <nav class="Fmenu-side__nav">
-      <ul :class="menuListClasses">
-        <li
-          v-for="menu in menuItems"
-          :key="menu.id"
-          class="Fmenu-side__nav__ul__li"
-        >
+      <f-menu-list :expand="menuExpand" :items="menuItems">
+        <template v-slot:li="{ item }">
           <f-menu-item
-            :menu-item="menu"
+            :menu-item="item"
             :icon-lib="iconLib"
             :menu-expand="menuExpand"
-            :is-selected="isItemSelected(menu)"
+            :is-selected="isItemSelected(item)"
             :color="color"
             @click="handleItemClick"
           />
 
-          <ul v-if="hasSubMenu(menu)" :class="subMenuClasses(menu)">
-            <li
-              v-for="subMenu in menu.subItems"
-              :key="subMenu.id"
-              class="Fmenu-side__nav__ul__li__ul__li"
-            >
+          <f-menu-list
+            v-if="hasSubMenu(item)"
+            :hide-sub-items="hideSubItems(item)"
+            :items="item.subItems || []"
+            is-sub
+          >
+            <template v-slot:li="{ item: subItem }">
               <f-menu-item
                 is-sub
-                :menu-item="subMenu"
+                :menu-item="subItem"
                 :icon-lib="iconLib"
                 :menu-expand="menuExpand"
-                :is-selected="menuSelected === menu.id"
+                :is-selected="menuSelected === item.id"
                 :bg-color="color"
               />
-            </li>
-          </ul>
-        </li>
-      </ul>
+            </template>
+          </f-menu-list>
+        </template>
+      </f-menu-list>
     </nav>
   </aside>
 </template>
 
 <script>
+import FMenuList from './FMenuList'
 import FMenuItem from './FMenuItem'
 
 export default {
   name: 'f-menu',
+
   components: {
+    FMenuList,
     FMenuItem
   },
 
@@ -89,16 +89,13 @@ export default {
   },
 
   methods: {
-    subMenuClasses(menu) {
+    hideSubItems(menu) {
       const isSelected = this.expandItem === menu.id
       const subItems = menu.subItems || []
       const allowHide =
         !!subItems.length && subItems.length >= this.subItemsLimit
 
-      return [
-        'Fmenu-side__nav__ul__li__ul',
-        { 'Fmenu-side__nav__ul__li__ul--hidden': !isSelected && allowHide }
-      ]
+      return !isSelected && allowHide
     },
     hasSubMenu(menu) {
       return !!(menu.subItems || []).length
@@ -146,67 +143,6 @@ span.icon-widget {
     width: 100%;
     height: auto;
     flex-grow: 1;
-
-    &__ul {
-      width: 100%;
-      height: 100%;
-      padding: 25px 0 0;
-      background-color: #fff;
-      position: fixed;
-      top: 70px;
-      left: -100%;
-      padding-top: 35px;
-
-      @media screen and (min-width: map-get($sizes, 'tablet' )) {
-        position: absolute;
-        top: 0;
-        left: 0;
-        @include transition(0.1s);
-        box-shadow: var(--shadow-base);
-      }
-
-      &::-webkit-scrollbar {
-        width: 0px;
-      }
-
-      &--expand {
-        left: 0;
-        @include transition(0.1s);
-        text-align: center;
-
-        @media screen and (min-width: map-get($sizes, 'tablet' )) {
-          width: 230px;
-          text-align: left;
-        }
-      }
-
-      &__li {
-        margin-bottom: 35px;
-        width: 100%;
-        height: 20px;
-
-        &__ul {
-          overflow: visible;
-          max-height: 900px;
-          transition: max-height 300ms ease, margin 300ms ease 300ms,
-            overflow 350ms ease;
-
-          &--hidden {
-            overflow: hidden;
-            max-height: 0px;
-            margin: 0;
-          }
-
-          &__li:first-child {
-            margin-top: 20px;
-          }
-
-          &__li:not(:last-child) {
-            margin-bottom: 15px;
-          }
-        }
-      }
-    }
   }
 }
 </style>
