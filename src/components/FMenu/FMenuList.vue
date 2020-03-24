@@ -11,10 +11,9 @@
 </template>
 
 <script>
-
 export default {
   name: 'f-menu-list',
-  
+
   props: {
     items: {
       type: Array,
@@ -37,15 +36,15 @@ export default {
         }
       ]
     },
-     menuListItemClasses() {
+    menuListItemClasses() {
       return [
         'FMenuList__li',
         {
           'FMenuList--sub__li': this.isSub,
-          'FMenuList--parent__li': !this.isSub,
+          'FMenuList--parent__li': !this.isSub
         }
       ]
-    },
+    }
   }
 }
 </script>
