@@ -81,8 +81,10 @@ export default {
     },
 
     show() {
-      const result = Array.from({ length: this.max }, (e, i) =>
-        this.pgFrom + this.max > this.totalPages
+      const length = Math.min(this.totalPages, this.max)
+
+      const result = Array.from({ length }, (e, i) =>
+        this.pgFrom + length > this.totalPages
           ? this.totalPages + 1 - (this.max - i)
           : this.pgFrom <= 0
           ? i + 1
