@@ -7,7 +7,7 @@
       class="btn"
       :class="{ selected: item.selected }"
       :value="item.label"
-      @click="change"
+      @click="change(item)"
     >
       {{ item.label }}
     </button>
@@ -17,7 +17,7 @@
 <script>
 export default {
   name: 'f-display-per-page',
-  components: {},
+
   props: {
     options: {
       type: Array,
@@ -39,9 +39,9 @@ export default {
       default: null
     }
   },
-  data: () => ({
-    selected: null
-  }),
+
+  data: () => ({ selected: null }),
+
   computed: {
     isOutline() {
       return this.outline
@@ -53,9 +53,11 @@ export default {
       return !this.outline && !this.tab
     }
   },
+
   mounted() {
     if (this.default) this.change(this.default)
   },
+
   methods: {
     btnOptions(id) {
       let mustBeO = true
