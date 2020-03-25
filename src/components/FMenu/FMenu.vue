@@ -5,27 +5,25 @@
         <template v-slot:li="{ item }">
           <f-menu-item
             :menu-item="item"
-            :icon-lib="iconLib"
             :menu-expand="menuExpand"
             :is-selected="isItemSelected(item)"
-            :color="color"
+            v-bind="$attrs"
             @click="handleItemClick"
           />
 
           <f-menu-list
             v-if="hasSubMenu(item)"
             :hide-sub-items="hideSubItems(item)"
-            :items="item.subItems || []"
+            :items="item.subItems"
             is-sub
           >
             <template v-slot:li="{ item: subItem }">
               <f-menu-item
                 is-sub
                 :menu-item="subItem"
-                :icon-lib="iconLib"
                 :menu-expand="menuExpand"
-                :is-selected="menuSelected === subItem.id"
-                :bg-color="color"
+                :is-selected="isItemSelected(subItem)"
+                v-bind="$attrs"
               />
             </template>
           </f-menu-list>
@@ -47,10 +45,7 @@ export default {
     FMenuItem
   },
 
-  data: () => ({
-    appTitle: 'reembolso',
-    expandItem: ''
-  }),
+  data: () => ({ expandItem: '' }),
 
   props: {
     subItemsLimit: {
@@ -65,17 +60,9 @@ export default {
       type: String,
       default: 'company'
     },
-    color: {
-      type: String,
-      default: 'primary'
-    },
     menuExpand: {
       type: Boolean,
       default: false
-    },
-    iconLib: {
-      type: String,
-      default: 'material'
     }
   },
 

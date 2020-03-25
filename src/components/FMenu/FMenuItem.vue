@@ -59,9 +59,15 @@ export default {
       type: Object,
       required: true
     },
-    color: String,
+    color: {
+      type: String,
+      default: 'primary'
+    },
+    iconLib: {
+      type: String,
+      default: 'material'
+    },
     isSub: Boolean,
-    iconLib: String,
     menuExpand: Boolean,
     isSelected: Boolean
   },
