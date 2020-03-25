@@ -58,17 +58,13 @@ export default {
     }
   },
 
-  data: () => ({
-    localCurrentPage: 0
-  }),
-
   computed: {
     isFirstPage() {
-      return this.localCurrentPage === 1
+      return this.currentPage === 1
     },
 
     isLastPage() {
-      return this.localCurrentPage >= this.totalPages
+      return this.currentPage >= this.totalPages
     },
 
     totalPages() {
@@ -77,7 +73,7 @@ export default {
     },
 
     pgFrom() {
-      return this.localCurrentPage - Math.ceil(this.max / 2)
+      return this.currentPage - Math.ceil(this.max / 2)
     },
 
     show() {
@@ -97,16 +93,15 @@ export default {
 
   methods: {
     getPageClasses(i) {
-      return { selected: this.localCurrentPage === i }
+      return { selected: this.currentPage === i }
     },
 
     setCurrentPage(value) {
-      this.localCurrentPage = value
       this.$emit('update:current_page', value)
     },
 
     jumpTo(position) {
-      const value = parseInt(this.localCurrentPage)
+      const value = parseInt(this.currentPage)
 
       if (position === 'first') this.setCurrentPage(1)
       if (position === 'last') this.setCurrentPage(this.totalPages)
@@ -118,7 +113,6 @@ export default {
     },
 
     initPagination() {
-      this.localCurrentPage = parseInt(this.currentPage)
       this.lastPage = this.totalPages.length - 1
     }
   },
