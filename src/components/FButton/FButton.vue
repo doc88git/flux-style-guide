@@ -11,7 +11,7 @@
   >
     <div class="btn__inner" :class="[btnInnerCenter]">
       <div class="btn__inner__icon" :class="[btnCenter]" v-if="icon">
-        <f-icon :name="icon" :color="iconColor" />
+        <f-icon :name="icon" lib="flux" :color="iconColor" />
       </div>
       <div v-if="label || $slots.default" class="btn__inner__content">
         <slot> {{ label }} </slot>

@@ -1,56 +1,51 @@
 <template>
   <aside class="Fmenu-side">
     <nav class="Fmenu-side__nav">
-      <ul :class="menuListClasses">
-        <li
-          v-for="menu in menuItems"
-          :key="menu.id"
-          class="Fmenu-side__nav__ul__li"
-        >
+      <f-menu-list :expand="menuExpand" :items="menuItems">
+        <template v-slot:li="{ item }">
           <f-menu-item
-            :menu-item="menu"
-            :icon-lib="iconLib"
+            :menu-item="item"
             :menu-expand="menuExpand"
-            :is-selected="isItemSelected(menu)"
-            :color="color"
+            :is-selected="isItemSelected(item)"
+            v-bind="$attrs"
             @click="handleItemClick"
           />
 
-          <ul v-if="hasSubMenu(menu)" :class="subMenuClasses(menu)">
-            <li
-              v-for="subMenu in menu.subItems"
-              :key="subMenu.id"
-              class="Fmenu-side__nav__ul__li__ul__li"
-            >
+          <f-menu-list
+            v-if="hasSubMenu(item)"
+            :hide-sub-items="hideSubItems(item)"
+            :items="item.subItems"
+            is-sub
+          >
+            <template v-slot:li="{ item: subItem }">
               <f-menu-item
                 is-sub
-                :menu-item="subMenu"
-                :icon-lib="iconLib"
+                :menu-item="subItem"
                 :menu-expand="menuExpand"
-                :is-selected="menuSelected === menu.id"
-                :bg-color="color"
+                :is-selected="isItemSelected(subItem)"
+                v-bind="$attrs"
               />
-            </li>
-          </ul>
-        </li>
-      </ul>
+            </template>
+          </f-menu-list>
+        </template>
+      </f-menu-list>
     </nav>
   </aside>
 </template>
 
 <script>
+import FMenuList from './FMenuList'
 import FMenuItem from './FMenuItem'
 
 export default {
   name: 'f-menu',
+
   components: {
+    FMenuList,
     FMenuItem
   },
 
-  data: () => ({
-    appTitle: 'reembolso',
-    expandItem: ''
-  }),
+  data: () => ({ expandItem: '' }),
 
   props: {
     subItemsLimit: {
@@ -65,40 +60,20 @@ export default {
       type: String,
       default: 'company'
     },
-    color: {
-      type: String,
-      default: 'primary'
-    },
     menuExpand: {
       type: Boolean,
       default: false
-    },
-    iconLib: {
-      type: String,
-      default: 'material'
-    }
-  },
-
-  computed: {
-    menuListClasses() {
-      return [
-        'Fmenu-side__nav__ul',
-        { 'Fmenu-side__nav__ul--expand': this.menuExpand }
-      ]
     }
   },
 
   methods: {
-    subMenuClasses(menu) {
+    hideSubItems(menu) {
       const isSelected = this.expandItem === menu.id
       const subItems = menu.subItems || []
       const allowHide =
         !!subItems.length && subItems.length >= this.subItemsLimit
 
-      return [
-        'Fmenu-side__nav__ul__li__ul',
-        { 'Fmenu-side__nav__ul__li__ul--hidden': !isSelected && allowHide }
-      ]
+      return !isSelected && allowHide
     },
     hasSubMenu(menu) {
       return !!(menu.subItems || []).length
@@ -115,9 +90,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../assets/f-variables.scss';
-@import '../../assets/f-transitions.scss';
-
 span.icon-widget {
   height: 100px;
   width: 10px;
@@ -146,67 +118,6 @@ span.icon-widget {
     width: 100%;
     height: auto;
     flex-grow: 1;
-
-    &__ul {
-      width: 100%;
-      height: 100%;
-      padding: 25px 0 0;
-      background-color: #fff;
-      position: fixed;
-      top: 70px;
-      left: -100%;
-      padding-top: 35px;
-
-      @media screen and (min-width: map-get($sizes, 'tablet' )) {
-        position: absolute;
-        top: 0;
-        left: 0;
-        @include transition(0.1s);
-        box-shadow: var(--shadow-base);
-      }
-
-      &::-webkit-scrollbar {
-        width: 0px;
-      }
-
-      &--expand {
-        left: 0;
-        @include transition(0.1s);
-        text-align: center;
-
-        @media screen and (min-width: map-get($sizes, 'tablet' )) {
-          width: 230px;
-          text-align: left;
-        }
-      }
-
-      &__li {
-        margin-left: 27px;
-        margin-bottom: 35px;
-        width: calc(100% - 27px);
-
-        &__ul {
-          overflow: visible;
-          max-height: 900px;
-          transition: max-height 300ms ease, margin 300ms ease 300ms,
-            overflow 350ms ease;
-
-          &--hidden {
-            overflow: hidden;
-            max-height: 0px;
-            margin: 0;
-          }
-
-          &__li:first-child {
-            margin-top: 20px;
-          }
-
-          &__li:not(:last-child) {
-            margin-bottom: 15px;
-          }
-        }
-      }
-    }
   }
 }
 </style>
