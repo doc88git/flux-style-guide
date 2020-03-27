@@ -1,7 +1,7 @@
 <template>
   <f-tooltip
     position="right"
-    aligned="end"
+    aligned="center"
     class="FMenuItem"
     :disabled="menuExpand"
     :label="menuItem.name"

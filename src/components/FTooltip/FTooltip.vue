@@ -5,15 +5,19 @@
       class="f-tooltip__main"
       @[hideEvent]="hide"
       v-click-outside="hide"
+      ref="mainContent"
     >
       <slot>
         <f-button v-bind="[$props, $attrs]">{{ label }}</f-button>
       </slot>
     </div>
-    <transition v-if="isVisible && !disabled" :name="`fade-${transition}`">
+
+    <transition v-if="showTooltip" :name="`fade-${transition}`">
       <div
         class="f-tooltip__item"
         :class="[classDynamic, bgColor]"
+        :style="tooltipPosition"
+        ref="tipContent"
         size="large"
       >
         <slot name="content" />
@@ -31,9 +35,15 @@ export default {
   components: {
     FButton
   },
+
   data: () => ({
-    isVisible: false
+    isVisible: false,
+    tooltipPosition: {
+      top: 0,
+      left: 0
+    }
   }),
+
   props: {
     label: String,
     position: {
@@ -73,7 +83,25 @@ export default {
       default: 'mouseleave'
     }
   },
+
+  watch: {
+    showTooltip(show) {
+      this.$nextTick(this.setTooltipPosition)
+    }
+  },
+
+  created() {
+    window.addEventListener('resize', this.setTooltipPosition)
+  },
+
+  beforeDestroy() {
+    window.removeEventListener('resize', this.setTooltipPosition)
+  },
+
   computed: {
+    showTooltip() {
+      return this.isVisible && !this.disabled
+    },
     classDynamic() {
       return [
         `f-tooltip--${this.color}`,
@@ -97,6 +125,42 @@ export default {
     }
   },
   methods: {
+    setTooltipPosition() {
+      if (
+        !this.showTooltip ||
+        !this.$refs.mainContent ||
+        !this.$refs.tipContent
+      )
+        return
+
+      const target = this.$refs.mainContent.getBoundingClientRect()
+      const tooltip = this.$refs.tipContent.getBoundingClientRect()
+
+      this.tooltipPosition = {
+        top: this.getTopPosition({ target, tooltip }) + 'px',
+        left: this.getLeftPosition({ target, tooltip }) + 'px'
+      }
+    },
+    getTopPosition({ target, tooltip }) {
+      if (this.position === 'top') return target.top - (8 + tooltip.height)
+
+      if (this.position === 'bottom') return target.top + (8 + target.height)
+
+      return target.top - tooltip.height / 2 + target.height / 2
+    },
+    getLeftPosition({ target, tooltip }) {
+      if (this.aligned === 'start') return target.left
+
+      if (this.aligned === 'end')
+        return target.left + (target.width - tooltip.width)
+
+      if (['top', 'bottom'].includes(this.position))
+        return target.left - tooltip.width / 2 + target.width / 2
+
+      if (this.position === 'left') return target.left - tooltip.width
+
+      return target.left + target.width
+    },
     show(e) {
       if (e.type === 'click' && this.isVisible) this.isVisible = false
       else this.isVisible = true
@@ -119,7 +183,7 @@ export default {
   }
 
   &__item {
-    position: absolute;
+    position: fixed;
     background-color: var(--color-black);
     padding: 12px;
     font-size: var(--text-sm);
@@ -150,44 +214,6 @@ export default {
           background-color: var(--color-secondary);
         }
       }
-    }
-
-    &--top {
-      bottom: calc(100% + 5px);
-      left: 50%;
-      transform: translateX(-50%);
-      margin-bottom: 12px;
-    }
-
-    &--bottom {
-      top: calc(100% + 17px);
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    &--right {
-      top: 50%;
-      transform: translate(5px, -50%);
-      margin-left: 12px;
-    }
-
-    &--left {
-      top: 50%;
-      left: calc(0% - 17px);
-      transform: translate(-100%, -50%);
-      margin-right: 12px;
-    }
-
-    &--center {
-      left: 50%;
-    }
-
-    &--start {
-      left: 0%;
-    }
-
-    &--end {
-      left: 65%;
     }
 
     &__arrow {
