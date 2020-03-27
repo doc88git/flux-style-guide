@@ -1,5 +1,6 @@
 <template>
   <f-tooltip
+    overlap
     position="right"
     aligned="center"
     class="FMenuItem"

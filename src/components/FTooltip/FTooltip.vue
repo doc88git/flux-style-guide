@@ -51,6 +51,10 @@ export default {
       default: 'top',
       validator: val => ['top', 'bottom', 'left', 'right'].includes(val)
     },
+    overlap: {
+      type: Boolean,
+      default: false
+    },
     aligned: {
       type: String,
       default: 'center',
@@ -99,6 +103,9 @@ export default {
   },
 
   computed: {
+    arrowDistance() {
+      return this.overlap ? -5 : 5
+    },
     showTooltip() {
       return this.isVisible && !this.disabled
     },
@@ -142,9 +149,11 @@ export default {
       }
     },
     getTopPosition({ target, tooltip }) {
-      if (this.position === 'top') return target.top - (8 + tooltip.height)
+      if (this.position === 'top')
+        return target.top - (this.arrowDistance + tooltip.height)
 
-      if (this.position === 'bottom') return target.top + (8 + target.height)
+      if (this.position === 'bottom')
+        return target.top + (this.arrowDistance + target.height)
 
       return target.top - tooltip.height / 2 + target.height / 2
     },
@@ -157,9 +166,10 @@ export default {
       if (['top', 'bottom'].includes(this.position))
         return target.left - tooltip.width / 2 + target.width / 2
 
-      if (this.position === 'left') return target.left - tooltip.width
+      if (this.position === 'left')
+        return target.left - tooltip.width - this.arrowDistance
 
-      return target.left + target.width
+      return target.left + target.width + this.arrowDistance
     },
     show(e) {
       if (e.type === 'click' && this.isVisible) this.isVisible = false
