@@ -32,12 +32,12 @@ describe('FPaginantion tests', () => {
     })
 
     describe('Computed show', () => {
-      test('show quando localCurrentPage: 1', () => {
+      test('show quando currentPage: 1', () => {
         expect(WRAPPER.vm.show).toStrictEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
       })
 
-      test('show quando localCurrentPage: 11', () => {
-        WRAPPER.setData({ localCurrentPage: 11 })
+      test('show quando currentPage: 11', () => {
+        WRAPPER.setProps({ currentPage: 11 })
         expect(WRAPPER.vm.show).toStrictEqual([
           6,
           7,
@@ -52,8 +52,8 @@ describe('FPaginantion tests', () => {
         ])
       })
 
-      test('show quando localCurrentPage: 15', () => {
-        WRAPPER.setData({ localCurrentPage: 15 })
+      test('show quando currentPage: 15', () => {
+        WRAPPER.setProps({ currentPage: 15 })
         expect(WRAPPER.vm.show).toStrictEqual([
           8,
           9,
@@ -68,8 +68,8 @@ describe('FPaginantion tests', () => {
         ])
       })
 
-      test('show quando localCurrentPage: 18', () => {
-        WRAPPER.setData({ localCurrentPage: 18 })
+      test('show quando currentPage: 18', () => {
+        WRAPPER.setProps({ currentPage: 18 })
         expect(WRAPPER.vm.show).toStrictEqual([
           8,
           9,
@@ -86,23 +86,23 @@ describe('FPaginantion tests', () => {
     })
 
     describe('Computed isFirstPage', () => {
-      test('isFirstPage quando localCurrentPage: 1', () => {
+      test('isFirstPage quando currentPage: 1', () => {
         expect(WRAPPER.vm.isFirstPage).toBeTruthy()
       })
 
-      test('isFirstPage quando localCurrentPage: 10', () => {
-        WRAPPER.setData({ localCurrentPage: 10 })
+      test('isFirstPage quando currentPage: 10', () => {
+        WRAPPER.setProps({ currentPage: 10 })
         expect(WRAPPER.vm.isFirstPage).toBeFalsy()
       })
     })
 
     describe('Computed isLastPage', () => {
-      test('isLastPage quando localCurrentPage: 1', () => {
+      test('isLastPage quando currentPage: 1', () => {
         expect(WRAPPER.vm.isLastPage).toBeFalsy()
       })
 
-      test('isLastPage quando localCurrentPage: 17', () => {
-        WRAPPER.setData({ localCurrentPage: 17 })
+      test('isLastPage quando currentPage: 17', () => {
+        WRAPPER.setProps({ currentPage: 17 })
         expect(WRAPPER.vm.isLastPage).toBeTruthy()
       })
     })
@@ -121,7 +121,7 @@ describe('FPaginantion tests', () => {
       test('Pular para página anterior', () => {
         const setCurrentPage = jest.fn()
         WRAPPER.setMethods({ setCurrentPage })
-        WRAPPER.setData({ localCurrentPage: 10 })
+        WRAPPER.setProps({ currentPage: 10 })
 
         WRAPPER.vm.jumpTo('prev')
         expect(setCurrentPage).toHaveBeenCalledWith(9)
@@ -147,7 +147,6 @@ describe('FPaginantion tests', () => {
     describe('Teste do método setCurrentPage', () => {
       test('setCurrentPage com argumento 10 e emissão do evento update:current_page', async () => {
         WRAPPER.vm.setCurrentPage(10)
-        expect(WRAPPER.vm.localCurrentPage).toBe(10)
 
         // Wait util $emit has been handled and check for
         // event emission.
@@ -160,8 +159,6 @@ describe('FPaginantion tests', () => {
 
       test('setCurrentPage com argumento 0 e emissão do evento update:current_page', async () => {
         WRAPPER.vm.setCurrentPage(0)
-        expect(WRAPPER.vm.localCurrentPage).toBe(0)
-
         await WRAPPER.vm.$nextTick()
         expect(WRAPPER.emitted()['update:current_page'][0][0]).toBe(0)
       })
