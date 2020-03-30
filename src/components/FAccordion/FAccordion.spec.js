@@ -63,7 +63,7 @@ describe('FAccordion tests', () => {
         const expectData = [
           'BasicAccordion__header__icon',
           {
-            'BasicAccordion__header__icon--rotate': false 
+            'BasicAccordion__header__icon--rotate': false
           }
         ]
 
