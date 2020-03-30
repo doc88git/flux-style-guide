@@ -1,57 +1,55 @@
 {
-    "vetur.validation.style": false,
-    "vetur.validation.template": false,
-    "eslint.run": "onType",
-    "eslint.packageManager": "yarn",
-    "csscomb.ignoreFilesOnSave": [
-      "src/assets/styles/vendor/**"
-    ],
-    "csscomb.syntaxAssociations": {
-      "sass": "scss"
-    },
-    "sasslint.enable": true,
-    "editor.emptySelectionClipboard": false,
-    "editor.renderWhitespace": "boundary",
-    "editor.tabSize": 2,
-    "eslint.options": {
-      "extensions": [".js", ".vue"]
-    },
-    "[opacc-was]": {
-      "files.encoding": "utf8"
-    },
-    "prettier.singleQuote": true,
-    "search.exclude": {
-      "**/dist": true,
-      "**/.nuxt": true,
-      "**/node_modules": true,
-      "**/bower_components": true,
-      "**/public/[abcdefghjklmnopqrstuvwxyz]*": true,
-      "**/public/i[abcdefghijklmopqrstuvwxyz]*": true,
-      "**/vendor/[abcdefghijkmnopqrstuvwxyz]*": true,
-      "**/vendor/l[bcdefghijklmnopqrstuvwxyz]*": true,
-      "storage/framework/views": true
-    },
-    "git.confirmSync": false,
-    "css.validate": false,
-    "scss.validate": false,
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "javascript.updateImportsOnFileMove.enabled": "never",
-    "[javascript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[json]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "npm.packageManager": "yarn",
-    "sasslint.packageManager": "yarn",
-    "tslint.packageManager": "yarn",
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
-    },
-    "[vue]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[scss]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+  "vetur.validation.style": false,
+  "vetur.validation.template": false,
+  "eslint.run": "onType",
+  "eslint.packageManager": "yarn",
+  "csscomb.ignoreFilesOnSave": ["src/assets/styles/vendor/**"],
+  "csscomb.syntaxAssociations": {
+    "sass": "scss"
+  },
+  "sasslint.enable": true,
+  "editor.emptySelectionClipboard": false,
+  "editor.renderWhitespace": "boundary",
+  "editor.tabSize": 2,
+  "eslint.options": {
+    "extensions": [".js", ".vue"]
+  },
+  "[opacc-was]": {
+    "files.encoding": "utf8"
+  },
+  "prettier.singleQuote": true,
+  "search.exclude": {
+    "**/dist": true,
+    "**/.nuxt": true,
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/public/[abcdefghjklmnopqrstuvwxyz]*": true,
+    "**/public/i[abcdefghijklmopqrstuvwxyz]*": true,
+    "**/vendor/[abcdefghijkmnopqrstuvwxyz]*": true,
+    "**/vendor/l[bcdefghijklmnopqrstuvwxyz]*": true,
+    "storage/framework/views": true
+  },
+  "git.confirmSync": false,
+  "css.validate": false,
+  "scss.validate": false,
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "npm.packageManager": "yarn",
+  "sasslint.packageManager": "yarn",
+  "tslint.packageManager": "yarn",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

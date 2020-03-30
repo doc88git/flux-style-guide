@@ -8,13 +8,13 @@ module.exports = {
   },
   extends: ['plugin:vue/essential', '@vue/prettier'],
   rules: {
-    'no-console': process.env.NODE_ENV !== 'production' ? 0 : 2,
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-useless-escape': 0,
-    'no-empty': 0
+    'no-empty': 0,
+    'comma-dangle': ['error', 'never']
   },
   parserOptions: {
-    parser: require.resolve('babel-eslint'),
-    ecmaVersion: 2018,
-    sourceType: 'module'
+    parser: 'babel-eslint'
   }
 }
