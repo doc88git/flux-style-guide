@@ -8,16 +8,14 @@ import '@storybook/addon-storysource/register'
 import { addons } from '@storybook/addons'
 import { create } from '@storybook/theming/create'
 
-import logo from '../src/assets/flux-logo.png'
-
 addons.setConfig({
   isFullscreen: false,
   showAddonsPanel: true,
   panelPosition: 'right',
   theme: create({
     base: 'light',
-    brandTitle: 'Flux Style Guide',
-    brandImage: logo,
+    brandTitle: 'Flux',
+    brandImage: '/flux-logo.png',
     gridCellSize: 12
-  }),
+  })
 })

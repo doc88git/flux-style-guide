@@ -8,7 +8,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint --fix",
     "eslint": "eslint --ext .js,.vue --ignore-path .gitignore ./src --fix",
-    "storybook": "start-storybook --port 3001",
+    "storybook": "start-storybook -s ./public,./static --port 3001",
     "build:storybook": "build-storybook -c .storybook",
     "eyes-storybook": "eyes-storybook",
     "test": "jest",
