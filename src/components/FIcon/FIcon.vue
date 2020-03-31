@@ -32,7 +32,7 @@ export default {
     },
     lib: {
       default: 'material',
-      type: String
+      validator: val => ['flux', 'material'].includes(val)
     },
     type: {
       default: 'default',
