@@ -146,7 +146,7 @@ export default {
       position: relative;
       margin-left: 5px;
       @include transition(0.1s);
-      color: #A8ABB0;
+      color: #a8abb0;
 
       &:hover {
         transform: translateX(2px);
