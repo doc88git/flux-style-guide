@@ -15,7 +15,7 @@ storiesOf(`Welcome|Flux Style Guide`, module).add('About', () => ({
     urls: {
       doc88: 'https://doc88.com.br',
       fsgGithub: 'https://github.com/doc88git/flux-style-guide',
-      iconsGithub: 'https://github.com/doc88git/flux-icons'
+      iconsGithub: 'https://github.com/doc88git/flux-icon'
     }
   }),
   props: {},
