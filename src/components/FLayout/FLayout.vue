@@ -107,8 +107,9 @@ export default {
     handleMenu() {
       this.menuExpand = !this.menuExpand
     },
-    handleClickMenuItem() {
+    handleClickMenuItem(ev) {
       this.menuExpand = false
+      this.$emit('menu-item-click', ev)
     }
   }
 }

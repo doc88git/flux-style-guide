@@ -76,7 +76,7 @@ export default {
     &__li {
       display: flex;
       flex-direction: column;
-      margin-bottom: 35px;
+      margin-bottom: 30px;
       width: 100%;
     }
   }

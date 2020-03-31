@@ -21,7 +21,7 @@
         :color="menuItem.color"
         type="outlined"
         clickable
-        class="FMenuItem__link--icon"
+        class="FMenuItem__link__icon"
       />
 
       <span v-else class="FMenuItem__link__bullet" />
@@ -35,6 +35,16 @@
       >
         {{ menuItem.name }}
       </span>
+
+      <f-icon
+        v-if="hasSubItems && menuExpand"
+        :lib="iconLib"
+        name="chevron-right"
+        :color="isSelected ? menuItem.color : 'gray'"
+        type="outlined"
+        size="sm"
+        class="FMenuItem__link__sub_icon"
+      />
     </f-link>
     <template v-slot:content>{{ menuItem.name }}</template>
   </f-tooltip>
@@ -65,7 +75,7 @@ export default {
     },
     iconLib: {
       type: String,
-      default: 'material'
+      default: 'flux'
     },
     isSub: Boolean,
     menuExpand: Boolean,
@@ -78,6 +88,9 @@ export default {
     },
     textColor() {
       return `color--text--${this.color}`
+    },
+    hasSubItems() {
+      return !!(this.menuItem.subItems || []).length
     }
   },
 
@@ -118,7 +131,11 @@ export default {
       }
     }
 
-    &--icon {
+    &--selected {
+      font-weight: bold;
+    }
+
+    &__icon {
       margin-right: 10px;
 
       &:hover {
@@ -126,8 +143,9 @@ export default {
       }
     }
 
-    &--selected {
-      font-weight: bold;
+    &__sub_icon {
+      margin-left: auto;
+      margin-right: 20px;
     }
 
     &__bullet {
