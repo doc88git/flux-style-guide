@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue'
 import { text, boolean } from '@storybook/addon-knobs'
 import { FToggle } from '@/components/FToggle'
 
-storiesOf('Components|Toggle', module).add(
+storiesOf('Template|Toggle', module).add(
   'Toggle',
   () => ({
     components: {

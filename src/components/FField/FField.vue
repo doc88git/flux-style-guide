@@ -2,7 +2,7 @@
   <div class="f-field" rules="required|email" mode="eager">
     <div
       v-if="$slots.before"
-      class="f-field__before "
+      class="f-field__before"
       :class="{ 'f-field__marginal': $slots.label || label }"
     >
       <slot name="before"> </slot>
