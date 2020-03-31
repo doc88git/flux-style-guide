@@ -102,6 +102,8 @@ span.icon-widget {
   display: flex;
   flex-direction: column;
 
+  font-family: var(--font-primary);
+
   &__button {
     margin: 0;
     width: 100%;
