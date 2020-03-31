@@ -5,23 +5,23 @@
       :color="color"
       :textColor="textColor"
       :type="type"
-      @selected="setValue"
       :closeOnClick="closeOnClick"
+      @selected="setValue"
       @status="setStatus"
     >
       <div v-show="showLabel" class="f-select__label">
         {{ labelSelected || customLabel }}
       </div>
 
-      <div v-show="multiple" class="f-select__multiple">
+      <div v-show="multiple" class="f-select__multiple" ref="multipleInput">
         <f-chip
           v-for="item in multipleList"
           :key="item.id"
           :label="item.label"
           :value="item.value"
           :removable="true"
-          color="white"
-          textColor="primary"
+          color="gray"
+          textColor="white"
           @remove="removeChip"
         />
       </div>
@@ -76,10 +76,6 @@ export default {
     },
     color: String,
     textColor: String,
-    // iconStatus: {
-    //   type: String,
-    //   default: 'check'
-    // },
     options: {
       type: Array,
       required: true
@@ -169,6 +165,7 @@ export default {
       if (this.list.includes(value)) return false
 
       this.list.push(value)
+      this.selected = this.list
     },
     setFocus() {
       this.selectedOld = this.selected
@@ -204,6 +201,10 @@ export default {
 <style lang="scss" scoped>
 .f-select {
   max-width: 100%;
+
+  &:focus {
+    outline: none;
+  }
 
   &__label {
     padding-right: 100%;
