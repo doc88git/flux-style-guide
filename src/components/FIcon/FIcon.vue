@@ -1,9 +1,5 @@
 <template>
-  <span
-    class="f-icon"
-    @mouseover="setHover(true)"
-    @mouseleave="setHover(false)"
-  >
+  <span class="f-icon">
     <f-icon-material
       v-if="lib === 'material'"
       v-bind="{ name: $props.name, type: $props.type }"
@@ -29,15 +25,8 @@ export default {
     FIconMaterial,
     FIconFlux
   },
-  data: () => ({
-    hover: {}
-  }),
   props: {
     color: {
-      type: String,
-      deafult: 'primary'
-    },
-    hoverColor: {
       type: String,
       deafult: 'primary'
     },
@@ -70,8 +59,8 @@ export default {
     },
     classes() {
       return {
-        [`color--fill--${this.color}`]: !this.isHover ? !!this.color : '',
-        [`color--text--${this.color}`]: !this.isHover ? !!this.color : '',
+        [`color--fill--${this.color}`]: !!this.color,
+        [`color--text--${this.color}`]: !!this.color,
         [`f-icon--${this.size}`]: !!this.size,
         [`f-icon-flux--${this.size}`]: this.lib === 'flux' ? this.size : false
       }
@@ -86,16 +75,6 @@ export default {
         2xl: 48
       */
       return ['xs', 'base', 'xl'].includes(this.size) ? 16 : 24
-    }
-  },
-  methods: {
-    setHover(status) {
-      if (!status) return (this.hover = {})
-
-      this.hover = {
-        [`color--fill--${this.hoverColor}`]: !!this.hoverColor,
-        [`color--text--${this.hoverColor}`]: !!this.hoverColor
-      }
     }
   }
 }

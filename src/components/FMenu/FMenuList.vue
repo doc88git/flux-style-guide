@@ -58,12 +58,11 @@ export default {
 
   &--parent {
     height: 100%;
-    padding: 25px 0 0;
+    padding: 10px 0 0;
     background-color: #fff;
     position: fixed;
     top: 70px;
     left: -100%;
-    padding-top: 35px;
     overflow: scroll;
 
     @media screen and (min-width: map-get($sizes, 'tablet' )) {
@@ -77,7 +76,7 @@ export default {
     &__li {
       display: flex;
       flex-direction: column;
-      margin-bottom: 30px;
+      //margin-bottom: 30px;
       width: 100%;
     }
   }
@@ -88,6 +87,7 @@ export default {
     transition: max-height 300ms ease, margin 300ms ease 300ms,
       overflow 350ms ease;
 
+    /*
     &__li {
       &:first-child {
         margin-top: 20px;
@@ -97,6 +97,7 @@ export default {
         margin-bottom: 15px;
       }
     }
+    */
   }
 
   &--expand {

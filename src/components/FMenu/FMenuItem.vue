@@ -3,13 +3,15 @@
     overlap
     position="right"
     aligned="center"
-    class="FMenuItem"
+    :class="menuItemClasses"
     :disabled="menuExpand"
     :label="menuItem.name"
     :bg-color="color"
+    @mouseenter.native="toggleMouseHover"
+    @mouseleave.native="toggleMouseHover"
   >
     <f-link
-      :class="linkClasses"
+      class="FMenuItem__link text-gray"
       :link="getUrl('url', menuItem)"
       :to="getUrl('to', menuItem)"
       @click.native="clickButton(menuItem)"
@@ -18,13 +20,12 @@
         v-if="!isSub"
         :lib="iconLib"
         :name="menuItem.icon"
-        :color="menuItem.color"
+        :color="isSelected || mouseHover ? menuItem.color : 'gray'"
+        :class="iconClasses"
         type="outlined"
-        clickable
-        class="FMenuItem__link__icon"
       />
 
-      <span v-else class="FMenuItem__link__bullet" />
+      <span v-else :class="bulletClasses" />
 
       <span v-show="menuExpand" :class="linkTextClasses">
         {{ menuItem.name }}
@@ -51,6 +52,8 @@ import FIcon from '../FIcon/FIcon'
 
 export default {
   name: 'f-menu-item',
+
+  data: () => ({ mouseHover: false }),
 
   components: {
     FLink,
@@ -86,11 +89,11 @@ export default {
     hasSubItems() {
       return !!(this.menuItem.subItems || []).length
     },
-    linkClasses() {
+    menuItemClasses() {
       return [
-        'FMenuItem__link text-gray',
+        'FMenuItem',
         {
-          'FMenuItem__link--selected': this.isSelected
+          'FMenuItem--sub': this.isSub
         }
       ]
     },
@@ -130,6 +133,9 @@ export default {
   },
 
   methods: {
+    toggleMouseHover() {
+      this.mouseHover = !this.mouseHover
+    },
     clickButton(menu) {
       this.$emit('click', menu)
     },
@@ -145,8 +151,27 @@ export default {
 @import '../../assets/f-transitions.scss';
 
 .FMenuItem {
-  height: 20px;
   width: 100%;
+  height: 52px;
+
+  &--sub {
+    height: 30px;
+  }
+
+  &:hover {
+    .FMenuItem__link__text {
+      transform: translateX(2px);
+      color: var(--color-primary);
+    }
+
+    .FMenuItem__link__icon svg {
+      fill: var(--color-primary);
+    }
+
+    .FMenuItem__link__sub_icon svg {
+      fill: var(--color-primary);
+    }
+  }
 
   &__link {
     display: flex;
@@ -159,23 +184,10 @@ export default {
 
     @media screen and (min-width: map-get($sizes, 'tablet' )) {
       justify-content: flex-start;
-      &:hover {
-        .Fmenu-side__nav__ul__li__text {
-          margin-left: 7px;
-        }
-      }
-    }
-
-    &--selected &__icon {
-      color: red !important;
     }
 
     &__icon {
       margin-right: 10px;
-
-      &:hover {
-        color: var(--color-primary-lighter);
-      }
     }
 
     &__sub_icon {
@@ -213,11 +225,6 @@ export default {
       }
 
       &--selected {
-        color: var(--color-primary);
-      }
-
-      &:hover {
-        transform: translateX(2px);
         color: var(--color-primary);
       }
     }
