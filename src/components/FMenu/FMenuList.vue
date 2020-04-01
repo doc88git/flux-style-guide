@@ -76,7 +76,6 @@ export default {
     &__li {
       display: flex;
       flex-direction: column;
-      //margin-bottom: 30px;
       width: 100%;
     }
   }
@@ -86,18 +85,6 @@ export default {
     max-height: 900px;
     transition: max-height 300ms ease, margin 300ms ease 300ms,
       overflow 350ms ease;
-
-    /*
-    &__li {
-      &:first-child {
-        margin-top: 20px;
-      }
-
-      &:not(:last-child) {
-        margin-bottom: 15px;
-      }
-    }
-    */
   }
 
   &--expand {

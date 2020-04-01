@@ -74,7 +74,9 @@ export default {
       const isSelected = this.isItemSelected(menu)
       const allowHide = !!(menu.subItems || []).length && !menu.openByDefault
 
-      return !isSelected && allowHide
+      return (
+        (!menu.openByDefault && !this.menuExpand) || (!isSelected && allowHide)
+      )
     },
     hasSubMenu(menu) {
       return !!(menu.subItems || []).length
