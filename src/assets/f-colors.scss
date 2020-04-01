@@ -72,6 +72,12 @@
   }
 
   &--text {
+    &--primary {
+      color: var(--color-primary);
+    }
+    &--secondary {
+      color: var(--color-secondary);
+    }
     @each $color, $value in $colors-theme {
       &--#{$color} {
         color: #{$value};
@@ -80,6 +86,12 @@
   }
 
   &--border {
+    &--primary {
+      border: 1px solid var(--color-primary);
+    }
+    &--secondary {
+      border: 1px solid var(--color-secondary);
+    }
     @each $color, $value in $colors-theme {
       &--#{$color} {
         border: 1px solid #{$value};
@@ -88,6 +100,12 @@
   }
 
   &--fill {
+    &--primary {
+      fill: var(--color-primary);
+    }
+    &--secondary {
+      fill: var(--color-secondary);
+    }
     @each $color, $value in $colors-theme {
       &--#{$color} {
         fill: var(--color-#{$color});
