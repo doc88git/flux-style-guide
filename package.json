@@ -13,11 +13,13 @@
     "eyes-storybook": "eyes-storybook",
     "test": "jest",
     "test:snapshot": "jest --updateSnapshot",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "docs:dev": "vuepress dev docs --no-cache",
+    "docs:build": "vuepress build docs"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run eslint; npm run test"
+      "pre-commit": "yarn eslint; yarn test"
     }
   },
   "repository": {
@@ -50,6 +52,7 @@
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",
     "@vue/cli-service": "^4.1.0",
+    "@vue/component-compiler-utils": "^3.1.1",
     "@vue/eslint-config-prettier": "^5.0.0",
     "@vue/test-utils": "^1.0.0-beta.30",
     "babel-core": "7.0.0-bridge.0",
@@ -57,6 +60,7 @@
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",
     "babel-preset-vue": "^2.0.2",
+    "buble": "^0.20.0",
     "css-loader": "^2.1.1",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.9.0",
@@ -66,6 +70,7 @@
     "husky": "^4.2.3",
     "jest": "^24.8.0",
     "jest-transform-stub": "^2.0.0",
+    "markdown-it-custom-block": "^0.1.1",
     "node-sass": "^4.12.0",
     "prettier": "^1.19.1",
     "sass-loader": "^7.1.0",
@@ -74,7 +79,9 @@
     "vue-jest": "^3.0.4",
     "vue-loader": "^15.7.0",
     "vue-style-loader": "^4.1.2",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.10",
+    "vuepress": "^1.4.0",
+    "vuepress-bar": "^0.2.4"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
