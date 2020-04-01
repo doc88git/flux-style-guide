@@ -3,12 +3,12 @@
     <f-icon-material
       v-if="lib === 'material'"
       v-bind="{ name: $props.name, type: $props.type }"
-      :class="{ ...hover, ...classes }"
+      :class="classes"
     />
     <f-icon-flux
       v-if="lib === 'flux'"
       v-bind="{ name: $props.name, type: $props.type }"
-      :class="{ ...hover, ...classes }"
+      :class="classes"
       :size="iconSize"
       :clickable="clickable"
     />
@@ -54,9 +54,6 @@ export default {
     }
   },
   computed: {
-    isHover() {
-      return Object.keys(this.hover).length
-    },
     classes() {
       return {
         [`color--fill--${this.color}`]: !!this.color,

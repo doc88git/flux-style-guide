@@ -3,12 +3,12 @@
     overlap
     position="right"
     aligned="center"
-    :class="menuItemClasses"
+    :class="menuItemClass"
     :disabled="menuExpand"
     :label="menuItem.name"
     :bg-color="color"
-    @mouseenter.native="toggleMouseHover"
-    @mouseleave.native="toggleMouseHover"
+    @mouseenter.native="toggleMouseHover(true)"
+    @mouseleave.native="toggleMouseHover(false)"
   >
     <f-link
       class="FMenuItem__link text-gray"
@@ -20,14 +20,14 @@
         v-if="!isSub"
         :lib="iconLib"
         :name="menuItem.icon"
-        :color="isSelected || mouseHover ? menuItem.color : 'gray'"
-        :class="iconClasses"
+        :color="iconColor"
+        class="FMenuItem__link__icon"
         type="outlined"
       />
 
-      <span v-else :class="bulletClasses" />
+      <span v-else :class="bulletClass" />
 
-      <span v-show="menuExpand" :class="linkTextClasses">
+      <span v-show="menuExpand" :class="linkTextClass">
         {{ menuItem.name }}
       </span>
 
@@ -38,7 +38,7 @@
         :color="isSelected ? menuItem.color : 'gray'"
         type="outlined"
         size="sm"
-        :class="subIconClasses"
+        :class="subIconClass"
       />
     </f-link>
     <template v-slot:content>{{ menuItem.name }}</template>
@@ -80,6 +80,9 @@ export default {
   },
 
   computed: {
+    iconColor() {
+      return this.isSelected || this.mouseHover ? this.menuItem.color : 'gray'
+    },
     textHoverColor() {
       return `hover:text-${this.color}`
     },
@@ -89,7 +92,7 @@ export default {
     hasSubItems() {
       return !!(this.menuItem.subItems || []).length
     },
-    menuItemClasses() {
+    menuItemClass() {
       return [
         'FMenuItem',
         {
@@ -97,7 +100,7 @@ export default {
         }
       ]
     },
-    linkTextClasses() {
+    linkTextClass() {
       return [
         'FMenuItem__link__text',
         {
@@ -106,15 +109,7 @@ export default {
         }
       ]
     },
-    iconClasses() {
-      return [
-        'FMenuItem__link__icon',
-        {
-          'FMenuItem__link__icon--selected': this.isSelected
-        }
-      ]
-    },
-    bulletClasses() {
+    bulletClass() {
       return [
         'FMenuItem__link__bullet',
         {
@@ -122,7 +117,7 @@ export default {
         }
       ]
     },
-    subIconClasses() {
+    subIconClass() {
       return [
         'FMenuItem__link__sub_icon',
         {
@@ -133,8 +128,8 @@ export default {
   },
 
   methods: {
-    toggleMouseHover() {
-      this.mouseHover = !this.mouseHover
+    toggleMouseHover(value) {
+      this.mouseHover = value
     },
     clickButton(menu) {
       this.$emit('click', menu)
@@ -159,17 +154,10 @@ export default {
   }
 
   &:hover {
+    color: var(--color-primary);
+
     .FMenuItem__link__text {
       transform: translateX(2px);
-      color: var(--color-primary);
-    }
-
-    .FMenuItem__link__icon svg {
-      fill: var(--color-primary);
-    }
-
-    .FMenuItem__link__sub_icon svg {
-      fill: var(--color-primary);
     }
   }
 
@@ -209,6 +197,10 @@ export default {
 
       margin-left: 5px;
       margin-right: 15px;
+
+      &--selected {
+        background: var(--color-primary);
+      }
     }
 
     &__text {

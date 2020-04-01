@@ -12,7 +12,7 @@ storiesOf('Template|Layout', module).add(
   () => ({
     components: { FLayout, FWidget, FAvatar },
     data: () => ({
-      menuSelected: 'units',
+      menuSelected: 'home',
       menuItems: [
         { name: 'Home', url: '#', id: 'home', icon: 'home' },
         {
@@ -44,7 +44,30 @@ storiesOf('Template|Layout', module).add(
             }
           ]
         },
-        { name: 'Empresa', url: '#', id: 'company', icon: 'bell' }
+        { name: 'Empresa', url: '#', id: 'company', icon: 'bell' },
+        {
+          name: 'Posições',
+          id: 'positions',
+          icon: 'group',
+          openByDefault: true,
+          subItems: [
+            {
+              name: 'Formações',
+              url: '#',
+              id: 'formations'
+            },
+            {
+              name: 'Formações complementares',
+              url: '#',
+              id: 'additionalFormations'
+            },
+            {
+              name: 'Instituições Educacionais',
+              url: '#',
+              id: 'educationalInstitutions'
+            }
+          ]
+        }
       ],
       hasMenu: true
     }),
@@ -52,7 +75,6 @@ storiesOf('Template|Layout', module).add(
     methods: {
       updateSelected(item) {
         this.menuSelected = item.id
-        console.log({ item, selected: this.menuSelected })
       }
     },
 
@@ -60,7 +82,6 @@ storiesOf('Template|Layout', module).add(
       <f-layout
         :menuItems="menuItems"
         :hasMenu="hasMenu"
-        :menu-sub-items-limit="3"
         :menu-selected="menuSelected"
         mainTitle="Main Title"
         @menu-item-click="updateSelected"

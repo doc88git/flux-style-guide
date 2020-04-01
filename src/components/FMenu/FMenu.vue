@@ -49,17 +49,13 @@ export default {
   data: () => ({ expandItem: '' }),
 
   props: {
-    subItemsLimit: {
-      type: Number,
-      default: 1
-    },
     menuItems: {
       type: Array,
       default: () => ({})
     },
     menuSelected: {
       type: String,
-      default: 'company'
+      default: ''
     },
     menuExpand: {
       type: Boolean,
@@ -76,9 +72,7 @@ export default {
   methods: {
     hideSubItems(menu) {
       const isSelected = this.isItemSelected(menu)
-      const subItems = menu.subItems || []
-      const allowHide =
-        !!subItems.length && subItems.length >= this.subItemsLimit
+      const allowHide = !!(menu.subItems || []).length && !menu.openByDefault
 
       return !isSelected && allowHide
     },
@@ -94,7 +88,6 @@ export default {
       )
     },
     handleItemClick(ev) {
-      console.log('ev')
       if (!(ev.subItems || []).length) return this.$emit('click', ev)
 
       this.expandItem = ev.id !== this.expandItem ? ev.id : ''
