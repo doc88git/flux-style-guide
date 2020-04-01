@@ -3,7 +3,7 @@ import { text } from '@storybook/addon-knobs'
 import FMenu from '../FMenu.vue'
 import FMenuButton from '../FMenuButton.vue'
 
-storiesOf('Components|Menu', module)
+storiesOf('Template|Menu', module)
   .add('Default', () => ({
     components: { FMenu },
     data: () => ({

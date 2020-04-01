@@ -29,6 +29,7 @@ import * as FToggle from './FToggle/index.js'
 import * as FUpload from './FUpload/index.js'
 import * as FProgressBar from './FProgressBar/index.js'
 import * as FSticky from './FSticky/index.js'
+import * as FAccordion from './FAccordion/index.js'
 
 const components = [
   Alert,
@@ -61,7 +62,8 @@ const components = [
   FToggle,
   FUpload,
   FSticky,
-  FProgressBar
+  FProgressBar,
+  FAccordion
 ]
 
 export default components

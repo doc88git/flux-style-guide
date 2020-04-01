@@ -1,7 +1,8 @@
 <template>
   <f-tooltip
+    overlap
     position="right"
-    aligned="end"
+    aligned="center"
     class="FMenuItem"
     :disabled="menuExpand"
     :label="menuItem.name"

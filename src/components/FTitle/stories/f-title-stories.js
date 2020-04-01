@@ -7,15 +7,17 @@ storiesOf('Components|Title', module).add(
   () => ({
     components: { FTitle },
     data: () => ({
-      text: text('Text', 'Flux Services')
+      text: text('Text', 'Flux Services'),
+      before: text('before', ''),
+      after: text('after', '')
     }),
     methods: {},
     props: {},
     template: `
         <div style="padding: 20px;">
           <f-title :text="text">
-            <template v-slot:before>before</template>
-            <template v-slot:after>after</template>
+            <template v-slot:before>{{before}}</template>
+            <template v-slot:after>{{after}}</template>
           </f-title>
         </div>
       `

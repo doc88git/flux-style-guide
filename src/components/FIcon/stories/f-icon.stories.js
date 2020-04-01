@@ -21,13 +21,13 @@ storiesOf('Components|Icon', module)
         color: {
           default: text('color', 'red', groupId)
         },
-        clickable: {
-          default: boolean('clickable', true, groupId)
+        hoverColor: {
+          default: text('hoverColor', 'primary', groupId)
         }
       },
       template: `
       <div style="padding: 20px;">
-        <FIcon :lib="lib" :color="color" :name="name" clickable />
+        <FIcon :lib="lib" :color="color" :hoverColor="hoverColor" :name="name" />
       </div>
     `
     }),
@@ -49,13 +49,16 @@ storiesOf('Components|Icon', module)
           default: text('name', 'star', groupId)
         },
         color: {
-          default: text('color', 'red', groupId)
+          default: text('color', 'gray', groupId)
+        },
+        hoverColor: {
+          default: text('hoverColor', 'primary', groupId)
         },
         size: {
           default: select(
             label,
             ['xs', 'sm', 'base', 'lg', 'xl', '2xl'],
-            'base',
+            'xl',
             groupId
           )
         },
@@ -65,7 +68,7 @@ storiesOf('Components|Icon', module)
       },
       template: `
       <div style="padding: 20px;">
-        <FIcon :lib="lib" :color="color" :name="name" :size="size" clickable />
+        <FIcon :lib="lib" :color="color" :hoverColor="hoverColor" :name="name" :size="size" :clickable="clickable" />
       </div>
     `
     }),
