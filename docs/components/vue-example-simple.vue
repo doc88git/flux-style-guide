@@ -1,25 +1,21 @@
 <template>
   <div>
     <template v-if="!playgroundOnly">
-      <CodeBlock
-        v-for="(code, lang) in blocks"
-        v-if="code"
-        :key="lang"
-        :lang="lang"
-        :code="code"
-        :disabled="codeBlockDisabled(lang)"
-      />
+      <div v-for="(code, lang) in blocks" :key="lang">
+        <CodeBlock
+          v-if="code"
+          :lang="lang"
+          :code="code"
+          :disabled="codeBlockDisabled(lang)"
+        />
+      </div>
       <ExampleResult
         v-if="shouldRenderResult"
         :name="name"
         v-bind="compatBlocks"
       />
     </template>
-    <PlaygroundButton
-      v-if="shouldRenderResult"
-      :name="name"
-      v-bind="blocks"
-    />
+    <PlaygroundButton v-if="shouldRenderResult" :name="name" v-bind="blocks" />
   </div>
 </template>
 
@@ -33,100 +29,100 @@ export default {
   components: {
     CodeBlock,
     ExampleResult,
-    PlaygroundButton,
+    PlaygroundButton
   },
   props: {
     name: {
       type: String,
-      required: true,
+      required: true
     },
     html: {
       type: String,
-      default: '',
+      default: ''
     },
     es5Js: {
       type: String,
-      default: '',
+      default: ''
     },
     modernJs: {
       type: String,
-      default: '',
+      default: ''
     },
     css: {
       type: String,
-      default: '',
+      default: ''
     },
     htmlDisabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     jsDisabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     cssDisabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     htmlOnly: {
       type: Boolean,
-      default: false,
+      default: false
     },
     jsOnly: {
       type: Boolean,
-      default: false,
+      default: false
     },
     cssOnly: {
       type: Boolean,
-      default: false,
+      default: false
     },
     resultDisabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     resultOnly: {
       type: Boolean,
-      default: false,
+      default: false
     },
     playgroundOnly: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   computed: {
     langVariants() {
       return {
         html: {
-          default: this.unsanitize(this.html),
+          default: this.unsanitize(this.html)
         },
         js: {
           es5: this.unsanitize(this.es5Js),
-          modern: this.unsanitize(this.modernJs),
+          modern: this.unsanitize(this.modernJs)
         },
         css: {
-          default: this.unsanitize(this.css),
-        },
+          default: this.unsanitize(this.css)
+        }
       }
     },
     blocks() {
       return {
         html: this.formatDirectives(this.langVariants.html.default),
         js: this.formatDirectives(this.langVariants.js[store.jsStyle]),
-        css: this.langVariants.css.default,
+        css: this.langVariants.css.default
       }
     },
     compatBlocks() {
       return {
         html: this.langVariants.html.default,
         js: this.langVariants.js.es5,
-        css: this.langVariants.css.default,
+        css: this.langVariants.css.default
       }
     },
     shouldRenderResult() {
       return (
         !this.resultDisabled && !this.htmlOnly && !this.jsOnly && !this.cssOnly
       )
-    },
+    }
   },
   methods: {
     unsanitize(code) {
@@ -148,7 +144,7 @@ export default {
       return store.useDirectiveShorthands
         ? code.replace(/\bv-bind:\b/g, ':').replace(/\bv-on:\b/g, '@')
         : code
-    },
-  },
+    }
+  }
 }
 </script>
