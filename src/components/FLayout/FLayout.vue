@@ -35,6 +35,7 @@
         :color="color"
         :sub-items-limit="menuSubItemsLimit"
         @click="handleClickMenuItem"
+        @expand="handleMenu"
         class="f-layout__wrapper__menu"
         v-if="menuItems.length || hasMenu"
       />

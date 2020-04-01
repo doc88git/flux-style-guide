@@ -8,8 +8,7 @@
     :bg-color="color"
   >
     <f-link
-      class="FMenuItem__link text-gray"
-      :class="isSelected ? textColor : textHoverColor"
+      :class="linkClasses"
       :link="getUrl('url', menuItem)"
       :to="getUrl('to', menuItem)"
       @click.native="clickButton(menuItem)"
@@ -26,13 +25,7 @@
 
       <span v-else class="FMenuItem__link__bullet" />
 
-      <span
-        v-show="menuExpand"
-        :class="[
-          'FMenuItem__link__text',
-          { 'FMenuItem__link__text--sub': isSub }
-        ]"
-      >
+      <span v-show="menuExpand" :class="linkTextClasses">
         {{ menuItem.name }}
       </span>
 
@@ -43,7 +36,7 @@
         :color="isSelected ? menuItem.color : 'gray'"
         type="outlined"
         size="sm"
-        class="FMenuItem__link__sub_icon"
+        :class="subIconClasses"
       />
     </f-link>
     <template v-slot:content>{{ menuItem.name }}</template>
@@ -91,6 +84,47 @@ export default {
     },
     hasSubItems() {
       return !!(this.menuItem.subItems || []).length
+    },
+    linkClasses() {
+      return [
+        'FMenuItem__link text-gray',
+        {
+          'FMenuItem__link--selected': this.isSelected
+        }
+      ]
+    },
+    linkTextClasses() {
+      return [
+        'FMenuItem__link__text',
+        {
+          'FMenuItem__link__text--sub': this.isSub,
+          'FMenuItem__link__text--selected': this.isSelected
+        }
+      ]
+    },
+    iconClasses() {
+      return [
+        'FMenuItem__link__icon',
+        {
+          'FMenuItem__link__icon--selected': this.isSelected
+        }
+      ]
+    },
+    bulletClasses() {
+      return [
+        'FMenuItem__link__bullet',
+        {
+          'FMenuItem__link__bullet--selected': this.isSelected
+        }
+      ]
+    },
+    subIconClasses() {
+      return [
+        'FMenuItem__link__sub_icon',
+        {
+          'FMenuItem__link__sub_icon--rotate': this.isSelected
+        }
+      ]
     }
   },
 
@@ -131,8 +165,8 @@ export default {
       }
     }
 
-    &--selected {
-      font-weight: bold;
+    &--selected &__icon {
+      color: red !important;
     }
 
     &__icon {
@@ -146,6 +180,11 @@ export default {
     &__sub_icon {
       margin-left: auto;
       margin-right: 20px;
+      transition: transform ease 300ms;
+
+      &--rotate {
+        transform: rotate(90deg);
+      }
     }
 
     &__bullet {
@@ -160,20 +199,25 @@ export default {
     }
 
     &__text {
-      font-size: var(--text-base);
+      font-size: 13px;
+      font-weight: bold;
       position: relative;
       margin-left: 5px;
       @include transition(0.1s);
-      color: #a8abb0;
+
+      &--sub {
+        color: #a8abb0;
+        font-size: var(--text-base);
+        font-weight: normal;
+      }
+
+      &--selected {
+        color: var(--color-primary);
+      }
 
       &:hover {
         transform: translateX(2px);
-      }
-
-      &:not(&--sub) {
-        color: unset;
-        font-size: 13px;
-        font-weight: bold;
+        color: var(--color-primary);
       }
     }
   }

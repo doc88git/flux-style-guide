@@ -24,6 +24,7 @@
                 :menu-expand="menuExpand"
                 :is-selected="isItemSelected(subItem)"
                 v-bind="$attrs"
+                @click="handleItemClick"
               />
             </template>
           </f-menu-list>
@@ -66,9 +67,15 @@ export default {
     }
   },
 
+  watch: {
+    menuExpand(expand) {
+      if (!expand) this.expandItem = ''
+    }
+  },
+
   methods: {
     hideSubItems(menu) {
-      const isSelected = this.expandItem === menu.id
+      const isSelected = this.isItemSelected(menu)
       const subItems = menu.subItems || []
       const allowHide =
         !!subItems.length && subItems.length >= this.subItemsLimit
@@ -78,12 +85,20 @@ export default {
     hasSubMenu(menu) {
       return !!(menu.subItems || []).length
     },
-    isItemSelected({ id }) {
-      return this.menuSelected === id
+    isItemSelected({ id, subItems }) {
+      if (this.expandItem) return this.expandItem === id
+
+      return (
+        this.menuSelected === id ||
+        !!(subItems || []).find(sub => sub.id === this.menuSelected)
+      )
     },
     handleItemClick(ev) {
+      console.log('ev')
       if (!(ev.subItems || []).length) return this.$emit('click', ev)
+
       this.expandItem = ev.id !== this.expandItem ? ev.id : ''
+      if (!this.menuExpand) this.$emit('expand')
     }
   }
 }
