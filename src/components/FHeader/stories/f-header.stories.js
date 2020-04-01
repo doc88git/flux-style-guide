@@ -5,7 +5,7 @@ import FWidget from '../../FWidget/FWidget.vue'
 import FAvatar from '../../FAvatar/FAvatar.vue'
 import FMenu from '../../FMenu/FMenu.vue'
 
-storiesOf('Components|Header', module).add('Default', () => ({
+storiesOf('Template|Header', module).add('Default', () => ({
   components: { FHeader, FMenu, FWidget, FAvatar },
   props: {
     label: {

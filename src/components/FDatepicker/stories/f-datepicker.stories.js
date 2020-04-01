@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue'
 
 import FDatepicker from '../FDatepicker'
 
-storiesOf('Components|Datepicker', module)
+storiesOf('Form|Datepicker', module)
   .add('Default', () => ({
     components: {
       FDatepicker

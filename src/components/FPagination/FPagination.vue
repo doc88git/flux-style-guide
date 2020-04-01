@@ -73,7 +73,9 @@ export default {
     },
 
     pgFrom() {
-      return this.currentPage - Math.ceil(this.max / 2)
+      return this.totalPages > this.max
+        ? this.currentPage - Math.ceil(this.max / 2)
+        : 0
     },
 
     show() {
