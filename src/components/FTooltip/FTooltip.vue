@@ -89,7 +89,7 @@ export default {
   },
 
   watch: {
-    showTooltip(show) {
+    showTooltip() {
       this.$nextTick(this.setTooltipPosition)
     }
   },
