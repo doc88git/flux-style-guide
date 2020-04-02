@@ -7,5 +7,4 @@ Design by Doc88 for Vue.js
 - [CSS](./01.guide/get-start.html#css)
 - [Update](./01.guide/get-start.html#update)
 
-@[example](examples/intro-attribute-binding)
-@[example](intro-attribute-binding, playground-only)
+@[example](intro-attribute-binding)

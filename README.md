@@ -7,14 +7,16 @@ Design by Doc88 for Vue.js
 ## Documentation
 
 This documentation, at this moment, is found in the repository itself using the [StoryBook for Vue](https://storybook.js.org/docs/guides/guide-vue/).
-```
+
+``` bash
 yarn storybook
 ```
+
 ## Instalation
 
 ``` bash
 # Instalation
-$ yarn add @doc88/flux-style-guide
+yarn add @doc88/flux-style-guide
 ```
 
 You can use with `Vue.js 2.x` and `Nuxt.js 2.x`.
@@ -79,7 +81,7 @@ Custom variables
 
 ``` bash
 # Update dependence
-$ yarn upgrade-interactive --latest
+yarn upgrade-interactive --latest
 ```
 
 ## Contribuition

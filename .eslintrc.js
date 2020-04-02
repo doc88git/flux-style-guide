@@ -18,5 +18,17 @@ module.exports = {
     parser: require.resolve('babel-eslint'),
     ecmaVersion: 2018,
     sourceType: 'module'
-  }
+  },
+  overrides: [
+    {
+      files: [`docs/.vuepress/components/**/*`, `docs/.vuepress/store.js`],
+      parserOptions: {
+        parser: 'babel-eslint',
+        sourceType: 'module',
+      },
+      env: {
+        browser: true,
+      },
+    },
+  ]
 }

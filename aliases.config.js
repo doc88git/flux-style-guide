@@ -1,8 +1,6 @@
 const path = require('path')
 
-function resolveSrc(_path) {
-  return path.join(__dirname, _path)
-}
+const resolveSrc = _path => path.join(__dirname, _path)
 
 const aliases = {
   '@store': 'docs/.vuepress/store.js'
