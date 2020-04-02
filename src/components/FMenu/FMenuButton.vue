@@ -16,11 +16,14 @@
 export default {
   name: 'f-menu-button',
   data: () => ({
-    isOpen: false,
     arrowMenu: '',
     time: ''
   }),
   props: {
+    isOpen: {
+      type: Boolean,
+      default: false
+    },
     color: {
       type: String,
       default: 'primary'
@@ -33,12 +36,11 @@ export default {
   },
   methods: {
     main($event) {
-      this.isOpen = !this.isOpen
       this.setArrowMenu()
       this.$emit('click', $event)
     },
     setArrowMenu() {
-      if (this.isOpen) {
+      if (!this.isOpen) {
         this.arrowMenu = 'FMenuButton__container--open'
         return
       }

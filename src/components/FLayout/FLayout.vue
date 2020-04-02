@@ -14,8 +14,8 @@
         <template v-slot:menu v-if="menuItems.length || hasMenu">
           <f-menu-button
             @click="handleMenu"
-            :expanded="menuExpand"
             :color="color"
+            :is-open="menuExpand"
           />
         </template>
         <template v-slot:logo>
