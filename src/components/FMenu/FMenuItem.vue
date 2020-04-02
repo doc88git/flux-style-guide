@@ -180,7 +180,7 @@ export default {
       transition: transform ease 300ms;
 
       &--rotate {
-        transform: rotate(90deg);
+        transform: rotate(-90deg);
       }
     }
 
