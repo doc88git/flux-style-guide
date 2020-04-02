@@ -1,5 +1,5 @@
 <template>
-  <div class="FMenuButton" :class="btnContainerClass">
+  <div class="FMenuButton" :class="btnClass">
     <div
       class="FMenuButton__container"
       @click="emitClick"
