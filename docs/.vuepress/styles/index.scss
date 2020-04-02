@@ -1,0 +1,17 @@
+@import '../../../src/assets/f-variables';
+
+/*
+Custom variables
+*/
+$textSizes: (
+  'base': '16px'
+);
+
+@import '../../../src/assets/f-reset';
+@import '../../../src/assets/f-root';
+@import '../../../src/assets/f-colors';
+@import '../../../src/assets/f-sizes';
+@import '../../../src/assets/f-transitions';
+@import '../../../src/assets/settings/settings';
+
+@import '../../../src/assets/f-base';
