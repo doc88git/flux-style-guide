@@ -204,6 +204,8 @@ export default {
       font-weight: bold;
       position: relative;
       margin-left: 5px;
+      white-space: nowrap;
+      overflow-x: hidden;
       @include transition(0.1s);
 
       &--sub {
