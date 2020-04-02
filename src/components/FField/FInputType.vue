@@ -14,13 +14,12 @@
       {{ message }}
     </div>
     <input
+      :type="type"
+      v-model="value"
       :disabled="disabled"
-      :value="value"
       :placeholder="placeHolder"
       class="f-input__input"
       :class="[colorText, inputFontSize, inputFontWeight]"
-      @keydown.up="counterUp($event)"
-      @keydown.down="counterDown($event)"
     />
     <div class="f-input__unity" :class="[unityFontSize, colorText]">
       {{ unity }}
