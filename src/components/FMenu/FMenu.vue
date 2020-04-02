@@ -89,10 +89,10 @@ export default {
         !!(subItems || []).find(sub => sub.id === this.menuSelected)
       )
     },
-    handleItemClick(ev) {
-      if (!(ev.subItems || []).length) return this.$emit('click', ev)
+    handleItemClick(menu) {
+      if (!(menu.subItems || []).length) return this.$emit('click', menu)
 
-      this.expandItem = ev.id !== this.expandItem ? ev.id : ''
+      this.expandItem = !this.isItemSelected(menu) ? menu.id : ''
       if (!this.menuExpand) this.$emit('expand')
     }
   }

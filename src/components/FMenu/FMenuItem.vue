@@ -83,12 +83,6 @@ export default {
     iconColor() {
       return this.isSelected || this.mouseHover ? this.menuItem.color : 'gray'
     },
-    textHoverColor() {
-      return `hover:text-${this.color}`
-    },
-    textColor() {
-      return `color--text--${this.color}`
-    },
     hasSubItems() {
       return !!(this.menuItem.subItems || []).length
     },
@@ -121,7 +115,8 @@ export default {
       return [
         'FMenuItem__link__sub_icon',
         {
-          'FMenuItem__link__sub_icon--rotate': this.isSelected
+          'FMenuItem__link__sub_icon--rotate':
+            this.isSelected || this.menuItem.openByDefault
         }
       ]
     }
