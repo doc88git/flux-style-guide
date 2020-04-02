@@ -57,21 +57,17 @@ export default {
   width: 100%;
 
   &--parent {
+    position: absolute;
+    top: 0;
+    left: 0;
+
     height: 100%;
     padding: 10px 0 0;
     background-color: #fff;
-    position: fixed;
-    top: 70px;
-    left: -100%;
     overflow: scroll;
 
-    @media screen and (min-width: map-get($sizes, 'tablet' )) {
-      position: absolute;
-      top: 0;
-      left: 0;
-      @include transition(0.1s);
-      box-shadow: var(--shadow-base);
-    }
+    @include transition(0.1s);
+    box-shadow: var(--shadow-base);
 
     &__li {
       display: flex;
@@ -88,14 +84,11 @@ export default {
   }
 
   &--expand {
+    width: 250px;
+    text-align: left;
     left: 0;
     @include transition(0.1s);
     text-align: center;
-
-    @media screen and (min-width: map-get($sizes, 'tablet' )) {
-      width: 230px;
-      text-align: left;
-    }
   }
 
   &--hide-sub {
