@@ -20,14 +20,11 @@ storiesOf('Components|Icon', module)
         },
         color: {
           default: text('color', 'red', groupId)
-        },
-        hoverColor: {
-          default: text('hoverColor', 'primary', groupId)
         }
       },
       template: `
       <div style="padding: 20px;">
-        <FIcon :lib="lib" :color="color" :hoverColor="hoverColor" :name="name" />
+        <FIcon :lib="lib" :color="color" :name="name" />
       </div>
     `
     }),
@@ -51,9 +48,6 @@ storiesOf('Components|Icon', module)
         color: {
           default: text('color', 'gray', groupId)
         },
-        hoverColor: {
-          default: text('hoverColor', 'primary', groupId)
-        },
         size: {
           default: select(
             label,
@@ -68,7 +62,7 @@ storiesOf('Components|Icon', module)
       },
       template: `
       <div style="padding: 20px;">
-        <FIcon :lib="lib" :color="color" :hoverColor="hoverColor" :name="name" :size="size" :clickable="clickable" />
+        <FIcon :lib="lib" :color="color" :name="name" :size="size" :clickable="clickable" />
       </div>
     `
     }),
