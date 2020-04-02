@@ -200,7 +200,7 @@ export default {
     }
 
     &__text {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: bold;
       position: relative;
       margin-left: 5px;
