@@ -6,13 +6,12 @@ module.exports = {
     browser: true,
     jest: true
   },
-  extends: ['plugin:vue/essential', '@vue/prettier'],
+  extends: ['plugin:vue/essential', 'eslint:recommended', '@vue/prettier'],
   rules: {
     'no-console': process.env.NODE_ENV !== 'production' ? 0 : 2,
     'no-debugger': process.env.NODE_ENV === 'production' ? 0 : 2,
     'no-useless-escape': 0,
-    'no-empty': 0,
-    'comma-dangle': ['error', 'never']
+    'no-empty': 0
   },
   parserOptions: {
     parser: require.resolve('babel-eslint'),
@@ -24,11 +23,11 @@ module.exports = {
       files: [`docs/.vuepress/components/**/*`, `docs/.vuepress/store.js`],
       parserOptions: {
         parser: 'babel-eslint',
-        sourceType: 'module',
+        sourceType: 'module'
       },
       env: {
-        browser: true,
-      },
-    },
+        browser: true
+      }
+    }
   ]
 }
