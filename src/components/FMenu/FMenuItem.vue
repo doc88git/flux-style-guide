@@ -143,6 +143,7 @@ export default {
 .FMenuItem {
   width: 100%;
   height: 52px;
+  color: #787878;
 
   &--sub {
     height: 30px;
