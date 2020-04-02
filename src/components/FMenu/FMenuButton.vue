@@ -1,12 +1,16 @@
 <template>
-  <div class="FMenuButton" :class="arrowMenu">
-    <div class="FMenuButton__container" @click="main" :class="btnStyle">
+  <div class="FMenuButton" :class="btnContainerClass">
+    <div
+      class="FMenuButton__container"
+      @click="emitClick"
+      :class="btnContainerClass"
+    >
       <div class="FMenuButton__icon">
         <div
           v-for="(line, index) in 3"
           :key="index"
           class="FMenuButton__line"
-        ></div>
+        />
       </div>
     </div>
   </div>
@@ -15,10 +19,6 @@
 <script>
 export default {
   name: 'f-menu-button',
-  data: () => ({
-    arrowMenu: '',
-    time: ''
-  }),
   props: {
     isOpen: {
       type: Boolean,
@@ -30,28 +30,21 @@ export default {
     }
   },
   computed: {
-    btnStyle() {
+    btnClass() {
+      return [
+        {
+          'FMenuButton__container--open': this.isOpen,
+          'FMenuButton__container--close': !this.isOpen
+        }
+      ]
+    },
+    btnContainerClass() {
       return `color--${this.color}`
     }
   },
   methods: {
-    main($event) {
-      this.setArrowMenu()
-      this.$emit('click', $event)
-    },
-    setArrowMenu() {
-      if (!this.isOpen) {
-        this.arrowMenu = 'FMenuButton__container--open'
-        return
-      }
-      this.arrowMenu = 'FMenuButton__container--close'
-      this.reset()
-    },
-    reset() {
-      clearTimeout(this.time)
-      this.time = setTimeout(() => {
-        this.arrowMenu = ''
-      }, 300)
+    emitClick() {
+      this.$emit('click')
     }
   }
 }

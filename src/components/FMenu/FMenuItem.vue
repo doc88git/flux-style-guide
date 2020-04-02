@@ -140,6 +140,12 @@ export default {
 @import '../../assets/f-variables.scss';
 @import '../../assets/f-transitions.scss';
 
+@mixin tablet {
+  @media screen and (min-width: map-get($sizes, 'tablet')) {
+    @content;
+  }
+}
+
 .FMenuItem {
   width: 100%;
   height: 52px;
@@ -166,7 +172,7 @@ export default {
     width: 100%;
     padding-left: 27px;
 
-    @media screen and (min-width: map-get($sizes, 'tablet' )) {
+    @include tablet {
       justify-content: flex-start;
     }
 
@@ -175,12 +181,16 @@ export default {
     }
 
     &__sub_icon {
-      margin-left: auto;
+      margin-left: 20px;
       margin-right: 20px;
       transition: transform ease 300ms;
 
       &--rotate {
         transform: rotate(-90deg);
+      }
+
+      @include tablet {
+        margin-left: auto;
       }
     }
 
