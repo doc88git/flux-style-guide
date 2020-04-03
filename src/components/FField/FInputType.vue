@@ -1,16 +1,10 @@
 <template>
   <div
-    class="f-input"
-    :class="[
-      paddingInput,
-      contentBbColor,
-      contentBorderColor,
-      colorText,
-      borderRadiusContent
-    ]"
+    class="f-input-type"
+    :class="[paddingInput, contentBbColor, contentBorderColor, colorText]"
     :disabled="disabled"
   >
-    <div class="f-input__message" :class="[messageFontSize, colorText]">
+    <div class="f-input-type__message" :class="[messageFontSize, colorText]">
       {{ message }}
     </div>
     <input
@@ -18,25 +12,33 @@
       v-model="value"
       :disabled="disabled"
       :placeholder="placeHolder"
-      class="f-input__input"
+      class="f-input-type__input"
       :class="[colorText, inputFontSize, inputFontWeight]"
     />
-    <div class="f-input__unity" :class="[unityFontSize, colorText]">
+    <div class="f-input-type__unity" :class="[unityFontSize, colorText]">
       {{ unity }}
     </div>
-    <div class="f-input__counter">
-      <button @click="counterUp" :class="colorButton" :name="iconUp">
-        <f-icon class="f-input__up" :name="iconUp"></f-icon>
-      </button>
-      <button @click="counterDown" :name="iconDown">
-        <f-icon class="f-input__down" :name="iconDown"></f-icon>
-      </button>
+    <div class="f-input-type__counter">
+      <f-button
+        :class="colorButton"
+        class="f-input-type__button"
+        @click="counterUp"
+        flat
+        :icon="iconUp"
+      ></f-button>
+      <f-button
+        class="f-input-type__button"
+        @click="counterDown"
+        :class="colorButton"
+        flat
+        :icon="iconDown"
+      ></f-button>
     </div>
   </div>
 </template>
 
 <script>
-import { FIcon } from '../FIcon'
+import { FButton } from '../FButton'
 
 function precision(a) {
   if (!isFinite(a)) return 0
@@ -52,7 +54,7 @@ function precision(a) {
 export default {
   name: 'f-input-type',
   components: {
-    FIcon
+    FButton
   },
   data: () => ({
     value: 0
@@ -78,17 +80,13 @@ export default {
       type: String,
       default: 'font-base'
     },
-    borderRadius: {
-      type: String,
-      default: 'base'
-    },
     iconUp: {
       type: String,
-      default: 'keyboard_arrow_up'
+      default: 'chevron-up'
     },
     iconDown: {
       type: String,
-      default: 'keyboard_arrow_down'
+      default: 'chevron-down'
     },
     message: {
       type: String,
@@ -136,7 +134,7 @@ export default {
     },
     placeHolder: {
       type: String,
-      default: 'Placeholder'
+      default: 'Valor'
     },
     disabled: {
       type: Boolean,
@@ -182,9 +180,6 @@ export default {
     contentBorderColor() {
       return `color--border--${this.borderColorContent}`
     },
-    borderRadiusContent() {
-      return `br--${this.borderRadius}`
-    },
     colorButton() {
       return `color--background--${this.buttonColor}`
     },
@@ -216,10 +211,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.f-input {
+.f-input-type {
+  border-width: 1px;
+  border-radius: 0.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  color: var(--color-font-base);
+  line-height: 1.25;
   height: auto;
-  width: 100%;
   display: flex;
+  width: 100%;
   align-items: center;
   overflow: hidden;
 
@@ -228,6 +231,11 @@ export default {
     text-align: end;
     background-color: transparent;
     outline: none;
+  }
+
+  &__button {
+    padding: 0;
+    margin: 0;
   }
 
   &__message {
@@ -241,9 +249,11 @@ export default {
     padding-right: 10px;
     font-weight: 300;
     background-color: transparent;
+    margin-right: 8px;
   }
 
   &__counter {
+    display: grid;
   }
 
   &__up {
