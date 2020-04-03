@@ -55,14 +55,11 @@
 <script>
 import { FHeader } from '../FHeader'
 import { FMenu, FMenuButton } from '../FMenu'
-import MediaQuery from '../../mixins/mediaQuery'
 
 export default {
   name: 'f-layout',
 
   components: { FHeader, FMenu, FMenuButton },
-
-  mixins: [MediaQuery],
 
   data: () => ({
     menuExpand: false
@@ -112,8 +109,8 @@ export default {
   },
 
   watch: {
-    isMobile() {
-      this.menuExpand = false
+    '$f.screen.width': function(width) {
+      if (width < 413 && this.menuExpand) this.menuExpand = false
     }
   },
 
