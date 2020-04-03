@@ -55,13 +55,19 @@
 <script>
 import { FHeader } from '../FHeader'
 import { FMenu, FMenuButton } from '../FMenu'
+import MediaQuery from '../../mixins/mediaQuery'
 
 export default {
   name: 'f-layout',
+
   components: { FHeader, FMenu, FMenuButton },
+
+  mixins: [MediaQuery],
+
   data: () => ({
     menuExpand: false
   }),
+
   props: {
     menuItems: {
       type: Array,
@@ -104,6 +110,13 @@ export default {
       default: 'flux'
     }
   },
+
+  watch: {
+    isMobile() {
+      this.menuExpand = false
+    }
+  },
+
   methods: {
     handleMenu() {
       this.menuExpand = !this.menuExpand
