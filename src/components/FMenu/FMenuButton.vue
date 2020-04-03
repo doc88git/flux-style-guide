@@ -19,6 +19,9 @@
 <script>
 export default {
   name: 'f-menu-button',
+
+  data: () => ({ noHover: false, time: null }),
+
   props: {
     isOpen: {
       type: Boolean,
@@ -29,12 +32,22 @@ export default {
       default: 'primary'
     }
   },
+
+  watch: {
+    isOpen(open) {
+      if (open) return
+
+      this.noHover = true
+      this.resetHover()
+    }
+  },
+
   computed: {
     btnClass() {
       return [
         {
           'FMenuButton__container--open': this.isOpen,
-          'FMenuButton__container--close': !this.isOpen
+          'FMenuButton__container--no-hover': this.noHover
         }
       ]
     },
@@ -45,6 +58,12 @@ export default {
   methods: {
     emitClick() {
       this.$emit('click')
+    },
+    resetHover() {
+      clearTimeout(this.time)
+      this.time = setTimeout(() => {
+        this.noHover = false
+      }, 300)
     }
   }
 }
@@ -67,14 +86,12 @@ $timeTransition: 0.2s;
     cursor: pointer;
 
     &:hover {
-      .FMenuButton__icon {
-        .FMenuButton__line {
-          &:nth-child(2) {
-            transform: translateX($middleLineW - $lineW);
-          }
-          &:nth-child(3) {
-            transform: translateX($lastLineW - $lineW);
-          }
+      .FMenuButton__line {
+        &:nth-child(2) {
+          transform: translateX($middleLineW - $lineW);
+        }
+        &:nth-child(3) {
+          transform: translateX($lastLineW - $lineW);
         }
       }
     }
@@ -93,7 +110,7 @@ $timeTransition: 0.2s;
       }
     }
 
-    &--close {
+    &--no-hover {
       .FMenuButton__line {
         &:nth-child(1) {
           animation-name: disableLineTop;
@@ -107,6 +124,7 @@ $timeTransition: 0.2s;
       }
     }
   }
+
   &__icon {
     width: $lineW;
     height: 14px;
