@@ -12,6 +12,7 @@ storiesOf('Template|Layout', module).add(
   () => ({
     components: { FLayout, FWidget, FAvatar },
     data: () => ({
+      menuSelected: 'home',
       menuItems: [
         { name: 'Home', url: '#', id: 'home', icon: 'home' },
         {
@@ -43,16 +44,47 @@ storiesOf('Template|Layout', module).add(
             }
           ]
         },
-        { name: 'Empresa', url: '#', id: 'company', icon: 'bell' }
+        { name: 'Empresa', url: '#', id: 'company', icon: 'bell' },
+        {
+          name: 'Posições',
+          id: 'positions',
+          icon: 'group',
+          openByDefault: true,
+          subItems: [
+            {
+              name: 'Formações',
+              url: '#',
+              id: 'formations'
+            },
+            {
+              name: 'Formações complementares',
+              url: '#',
+              id: 'additionalFormations'
+            },
+            {
+              name: 'Instituições Educacionais',
+              url: '#',
+              id: 'educationalInstitutions'
+            }
+          ]
+        }
       ],
       hasMenu: true
     }),
+
+    methods: {
+      updateSelected(item) {
+        this.menuSelected = item.id
+      }
+    },
+
     template: `
       <f-layout
         :menuItems="menuItems"
         :hasMenu="hasMenu"
-        :menu-sub-items-limit="3"
+        :menu-selected="menuSelected"
         mainTitle="Main Title"
+        @menu-item-click="updateSelected"
       >
         <template v-slot:settings>
           <f-widget></f-widget>

@@ -14,8 +14,8 @@
         <template v-slot:menu v-if="menuItems.length || hasMenu">
           <f-menu-button
             @click="handleMenu"
-            :expanded="menuExpand"
             :color="color"
+            :is-open="menuExpand"
           />
         </template>
         <template v-slot:logo>
@@ -35,6 +35,7 @@
         :color="color"
         :sub-items-limit="menuSubItemsLimit"
         @click="handleClickMenuItem"
+        @expand="handleMenu"
         class="f-layout__wrapper__menu"
         v-if="menuItems.length || hasMenu"
       />
@@ -57,10 +58,13 @@ import { FMenu, FMenuButton } from '../FMenu'
 
 export default {
   name: 'f-layout',
+
   components: { FHeader, FMenu, FMenuButton },
+
   data: () => ({
     menuExpand: false
   }),
+
   props: {
     menuItems: {
       type: Array,
@@ -103,12 +107,21 @@ export default {
       default: 'flux'
     }
   },
+
+  watch: {
+    '$f.screen.width': function(width) {
+      const { sm } = this.$f.screen.sizes
+      if (width < sm && this.menuExpand) this.menuExpand = false
+    }
+  },
+
   methods: {
     handleMenu() {
       this.menuExpand = !this.menuExpand
     },
-    handleClickMenuItem() {
+    handleClickMenuItem(ev) {
       this.menuExpand = false
+      this.$emit('menu-item-click', ev)
     }
   }
 }

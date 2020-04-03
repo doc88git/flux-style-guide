@@ -24,6 +24,7 @@
                 :menu-expand="menuExpand"
                 :is-selected="isItemSelected(subItem)"
                 v-bind="$attrs"
+                @click="handleItemClick"
               />
             </template>
           </f-menu-list>
@@ -48,17 +49,13 @@ export default {
   data: () => ({ expandItem: '' }),
 
   props: {
-    subItemsLimit: {
-      type: Number,
-      default: 1
-    },
     menuItems: {
       type: Array,
       default: () => ({})
     },
     menuSelected: {
       type: String,
-      default: 'company'
+      default: ''
     },
     menuExpand: {
       type: Boolean,
@@ -66,24 +63,37 @@ export default {
     }
   },
 
+  watch: {
+    menuExpand(expand) {
+      if (!expand) this.expandItem = ''
+    }
+  },
+
   methods: {
     hideSubItems(menu) {
-      const isSelected = this.expandItem === menu.id
-      const subItems = menu.subItems || []
-      const allowHide =
-        !!subItems.length && subItems.length >= this.subItemsLimit
+      const isSelected = this.isItemSelected(menu)
+      const allowHide = !!(menu.subItems || []).length && !menu.openByDefault
 
-      return !isSelected && allowHide
+      return (
+        (!menu.openByDefault && !this.menuExpand) || (!isSelected && allowHide)
+      )
     },
     hasSubMenu(menu) {
       return !!(menu.subItems || []).length
     },
-    isItemSelected({ id }) {
-      return this.menuSelected === id
+    isItemSelected({ id, subItems }) {
+      if (this.expandItem) return this.expandItem === id
+
+      return (
+        this.menuSelected === id ||
+        !!(subItems || []).find(sub => sub.id === this.menuSelected)
+      )
     },
-    handleItemClick(ev) {
-      if (!(ev.subItems || []).length) return this.$emit('click', ev)
-      this.expandItem = ev.id !== this.expandItem ? ev.id : ''
+    handleItemClick(menu) {
+      if (!(menu.subItems || []).length) return this.$emit('click', menu)
+
+      this.expandItem = !this.isItemSelected(menu) ? menu.id : ''
+      if (!this.menuExpand) this.$emit('expand')
     }
   }
 }
@@ -101,6 +111,8 @@ span.icon-widget {
   min-height: 300px;
   display: flex;
   flex-direction: column;
+
+  font-family: var(--font-primary);
 
   &__button {
     margin: 0;
