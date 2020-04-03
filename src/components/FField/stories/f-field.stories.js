@@ -454,9 +454,6 @@ storiesOf('Form|Field', module)
         textColor: {
           default: text('textColor', 'font-base', groupId)
         },
-        iconLib: {
-          default: text('iconLib', 'flux', groupId)
-        },
         iconUp: {
           default: text('iconUp', 'chevron-up', groupId)
         },
@@ -516,7 +513,6 @@ storiesOf('Form|Field', module)
           :borderColorContent="borderColorContent"
           :buttonColor="buttonColor"
           :textColor="textColor"
-          :iconLib="iconLib"
           :iconUp="iconUp"
           :iconDown="iconDown"
           :message="message"

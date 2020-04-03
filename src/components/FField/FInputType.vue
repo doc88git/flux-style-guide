@@ -19,22 +19,26 @@
       {{ unity }}
     </div>
     <div class="f-input-type__counter">
-      <button @click="counterUp" :class="colorButton">
-        <f-icon class="f-input-type__up" :lib="iconLib" :name="iconUp"></f-icon>
-      </button>
-      <button @click="counterDown">
-        <f-icon
-          class="f-input-type__down"
-          :lib="iconLib"
-          :name="iconDown"
-        ></f-icon>
-      </button>
+      <f-button
+        :class="colorButton"
+        class="f-input-type__button"
+        @click="counterUp"
+        flat
+        :icon="iconUp"
+      ></f-button>
+      <f-button
+        class="f-input-type__button"
+        @click="counterDown"
+        :class="colorButton"
+        flat
+        :icon="iconDown"
+      ></f-button>
     </div>
   </div>
 </template>
 
 <script>
-import { FIcon } from '../FIcon'
+import { FButton } from '../FButton'
 
 function precision(a) {
   if (!isFinite(a)) return 0
@@ -50,7 +54,7 @@ function precision(a) {
 export default {
   name: 'f-input-type',
   components: {
-    FIcon
+    FButton
   },
   data: () => ({
     value: 0
@@ -75,10 +79,6 @@ export default {
     textColor: {
       type: String,
       default: 'font-base'
-    },
-    iconLib: {
-      type: String,
-      default: 'flux'
     },
     iconUp: {
       type: String,
@@ -134,7 +134,7 @@ export default {
     },
     placeHolder: {
       type: String,
-      default: 'Placeholder'
+      default: 'Valor'
     },
     disabled: {
       type: Boolean,
@@ -231,6 +231,11 @@ export default {
     text-align: end;
     background-color: transparent;
     outline: none;
+  }
+
+  &__button {
+    padding: 0;
+    margin: 0;
   }
 
   &__message {
