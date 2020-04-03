@@ -5,17 +5,17 @@ export default {
   }),
 
   methods: {
-    setBreakpoint() {
+    __setBreakpoint() {
       this.isMobile = this.mobileMedia && this.mobileMedia.matches
     }
   },
 
   beforeDestroy() {
-    this.mobileMedia.removeListener(this.setBreakpoint)
+    this.mobileMedia.removeListener(this.__setBreakpoint)
   },
 
   mounted() {
-    this.mobileMedia.addListener(this.setBreakpoint)
-    this.setBreakpoint()
+    this.mobileMedia.addListener(this.__setBreakpoint)
+    this.__setBreakpoint()
   }
 }
