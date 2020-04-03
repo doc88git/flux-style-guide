@@ -15,6 +15,7 @@
     "test": "jest",
     "test:snapshot": "jest --updateSnapshot",
     "test:watch": "jest --watchAll",
+    "predocs:dev": "yarn vue-docgen -c docgen.config.js",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
@@ -80,6 +81,7 @@
     "sass-loader": "^8.0.2",
     "storybook-addon-vue-info": "^1.2.1",
     "style-loader": "^0.23.1",
+    "vue-docgen-cli": "^4.15.1",
     "vue-jest": "^3.0.4",
     "vue-loader": "^15.7.0",
     "vue-style-loader": "^4.1.2",

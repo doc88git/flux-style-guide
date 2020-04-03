@@ -7,18 +7,14 @@ const barConfig = getConfig(`${__dirname}/..`)
 
 module.exports = {
   themeConfig: {
-    head: [
-      ['link', { rel: 'icon', href: '/favico.ico' }]
-    ],
+    head: [['link', { rel: 'icon', href: '/favico.ico' }]],
     logo: '/flux-logo.png',
-    sidebar: [
-      ...barConfig.sidebar
-    ]
+    sidebar: [...barConfig.sidebar]
   },
   configureWebpack: {
     resolve: {
-      alias: require(`${__dirname}/../../aliases.config`).webpack,
-    },
+      alias: require(`${__dirname}/../../aliases.config`).webpack
+    }
   },
   markdown: {
     extendMarkdown,

@@ -34,6 +34,11 @@ export default {
   components: { FIcon },
 
   props: {
+    /**
+     * Accordion title
+     * @values string
+     * @required true
+     */
     title: {
       type: String,
       required: true
