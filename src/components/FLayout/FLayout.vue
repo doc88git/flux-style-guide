@@ -110,7 +110,8 @@ export default {
 
   watch: {
     '$f.screen.width': function(width) {
-      if (width < 413 && this.menuExpand) this.menuExpand = false
+      const { sm } = this.$f.screen.sizes
+      if (width < sm && this.menuExpand) this.menuExpand = false
     }
   },
 
