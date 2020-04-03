@@ -3,6 +3,7 @@ import { text, boolean, number, select } from '@storybook/addon-knobs'
 import { FField, FInput, FInputType } from '..'
 import { FButton } from '../../FButton'
 import { FAvatar } from '../../FAvatar'
+import { FIcon } from '../../FIcon'
 
 const groupId = 'FIELD-OPTIONS-ID1'
 const summary = `
@@ -435,7 +436,7 @@ storiesOf('Form|Field', module)
   .add(
     'Percentage',
     () => ({
-      components: { FInputType, FField },
+      components: { FInputType, FField, FIcon },
       data: () => ({}),
       props: {
         type: {
@@ -453,20 +454,20 @@ storiesOf('Form|Field', module)
         textColor: {
           default: text('textColor', 'font-base', groupId)
         },
-        borderRadius: {
-          default: text('borderRadius', 'base', groupId)
+        iconLib: {
+          default: text('iconLib', 'flux', groupId)
         },
         iconUp: {
-          default: text('iconUp', 'keyboard_arrow_up', groupId)
+          default: text('iconUp', 'chevron-up', groupId)
         },
         iconDown: {
-          default: text('iconDown', 'keyboard_arrow_down', groupId)
+          default: text('iconDown', 'chevron-down', groupId)
         },
         message: {
           default: text('message', 'Demanda acima de:', groupId)
         },
         unity: {
-          default: text('unity', '', groupId)
+          default: text('unity', '%', groupId)
         },
         fontSizeInput: {
           default: text('fontSizeInput', '5xl', groupId)
@@ -515,7 +516,7 @@ storiesOf('Form|Field', module)
           :borderColorContent="borderColorContent"
           :buttonColor="buttonColor"
           :textColor="textColor"
-          :borderRadius="borderRadius"
+          :iconLib="iconLib"
           :iconUp="iconUp"
           :iconDown="iconDown"
           :message="message"
