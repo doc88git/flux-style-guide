@@ -65,7 +65,7 @@
 
   &--background {
     @each $color, $value in $colors-theme {
-      &--#{$color} {
+      &#{'--' + $color} {
         background-color: #{$value};
       }
     }
@@ -73,7 +73,7 @@
 
   &--text {
     @each $color, $value in $colors-theme {
-      &--#{$color} {
+      &#{'--' + $color} {
         color: #{$value};
       }
     }
@@ -81,7 +81,7 @@
 
   &--border {
     @each $color, $value in $colors-theme {
-      &--#{$color} {
+      &#{'--' + $color} {
         border: 1px solid #{$value};
       }
     }
@@ -89,14 +89,14 @@
 
   &--fill {
     @each $color, $value in $colors-theme {
-      &--#{$color} {
+      &#{'--' + $color} {
         fill: var(--color-#{$color});
       }
     }
   }
 
   @each $color in $colors {
-    &--#{$color} {
+    &#{'--' + $color} {
       background-color: var(--color-#{$color});
       &:hover {
         background-color: var(--color-#{$color}-400);
@@ -106,7 +106,7 @@
       }
     }
     &--text {
-      &--#{$color} {
+      &#{'--' + $color} {
         color: var(--color-#{$color}) !important;
         &:hover {
           color: var(--color-#{$color}-400);
@@ -117,7 +117,7 @@
       }
     }
     &--flat {
-      &--#{$color} {
+      &#{'--' + $color} {
         background-color: var(--color-transparent);
         color: var(--color-#{$color});
         &:hover {
@@ -129,7 +129,7 @@
       }
     }
     &--outline {
-      &--#{$color} {
+      &#{'--' + $color} {
         background-color: var(--color-transparent);
         color: var(--color-#{$color});
         border-width: 1px;
@@ -150,7 +150,7 @@
       }
     }
     &--default {
-      &--#{$color} {
+      &#{'--' + $color} {
         background-color: var(--color-#{$color});
         &:hover {
           background-color: var(--color-#{$color}-400);
