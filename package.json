@@ -74,6 +74,8 @@
     "husky": "^4.2.3",
     "jest": "^24.8.0",
     "jest-transform-stub": "^2.0.0",
+    "markdown-it": "^10.0.0",
+    "markdown-it-container": "^2.0.0",
     "markdown-it-custom-block": "^0.1.1",
     "markdownlint-cli": "^0.22.0",
     "prettier": "^1.19.1",

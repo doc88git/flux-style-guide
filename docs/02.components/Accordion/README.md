@@ -1,1 +1,7 @@
-# Component
+# Accordion
+
+## Instalation
+
+## Usage
+
+# FAccordion API
