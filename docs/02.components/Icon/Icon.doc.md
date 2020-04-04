@@ -1,4 +1,4 @@
-# Icon API
+# FIcon API
 
 ## Props
 

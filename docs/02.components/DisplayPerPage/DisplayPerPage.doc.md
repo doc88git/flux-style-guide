@@ -1,4 +1,4 @@
-# Display per page API
+# FDisplayPerPage API
 
 ## Props
 

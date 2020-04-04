@@ -1,4 +1,4 @@
-# Toggle API
+# FToggle API
 
 ## Props
 

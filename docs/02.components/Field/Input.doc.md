@@ -1,4 +1,4 @@
-# Input API
+# FInput API
 
 ## Props
 

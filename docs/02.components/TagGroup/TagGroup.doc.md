@@ -1,4 +1,4 @@
-# Tag Group API
+# FTagGroup API
 
 ## Props
 

@@ -1,4 +1,4 @@
-# Icon Flux API
+# FIconFlux API
 
 ## Props
 

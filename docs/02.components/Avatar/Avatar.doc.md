@@ -1,4 +1,4 @@
-# Avatar API
+# FAvatar API
 
 ## Props
 

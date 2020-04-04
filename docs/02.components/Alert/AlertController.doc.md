@@ -1,4 +1,4 @@
-# Alert controller API
+# FAlertController API
 
 ## Props
 

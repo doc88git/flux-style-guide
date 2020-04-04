@@ -1,4 +1,4 @@
-# Button group API
+# FButtonGroup API
 
 ## Props
 

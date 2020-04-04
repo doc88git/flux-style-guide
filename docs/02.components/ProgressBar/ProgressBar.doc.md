@@ -1,4 +1,4 @@
-# Progress Bar API
+# FProgressBar API
 
 ## Props
 

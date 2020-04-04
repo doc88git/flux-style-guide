@@ -1,4 +1,4 @@
-# Sticky API
+# FSticky API
 
 ## Props
 

@@ -1,4 +1,4 @@
-# Badge API
+# FBadge API
 
 ## Props
 

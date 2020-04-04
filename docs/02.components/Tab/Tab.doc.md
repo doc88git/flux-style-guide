@@ -1,4 +1,4 @@
-# Tab API
+# FTab API
 
 ## Props
 

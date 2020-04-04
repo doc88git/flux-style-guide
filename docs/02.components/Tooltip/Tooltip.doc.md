@@ -1,4 +1,4 @@
-# Tooltip API
+# FTooltip API
 
 ## Props
 

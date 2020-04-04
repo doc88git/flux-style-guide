@@ -1,4 +1,4 @@
-# Banner API
+# FBanner API
 
 ## Props
 

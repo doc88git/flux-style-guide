@@ -1,4 +1,4 @@
-# Icon Material API
+# FIconMaterial API
 
 ## Props
 

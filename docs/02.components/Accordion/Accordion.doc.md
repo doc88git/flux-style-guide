@@ -1,4 +1,4 @@
-# Accordion API
+# FAccordion API
 
 ## Props
 

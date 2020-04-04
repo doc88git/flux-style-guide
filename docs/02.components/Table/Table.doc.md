@@ -1,4 +1,4 @@
-# Table API
+# FTable API
 
 ## Props
 

@@ -1,4 +1,4 @@
-# Image API
+# FImage API
 
 ## Props
 
