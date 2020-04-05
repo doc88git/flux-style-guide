@@ -1,17 +1,14 @@
 const path = require('path')
-const remoteF = s => s.replace(/\/F/g, '/')
 
 module.exports = {
   componentsRoot: 'src/components',
   components: '(**|**/**)/[A-Z]*.vue',
-  outDir: 'docs/02.components',
+  outDir: 'docs/.vuepress/apiComponents',
   getDocFileName: componentPath => {
-    let fileName = componentPath.replace(/\.vue$/, '.md')
-    return remoteF(fileName)
+    return componentPath.replace(/\.vue$/, '.md')
   },
   getDestFile: (file, config) => {
-    let destFile = path.join(config.outDir, file).replace(/\.vue$/, '.doc.md')
-    return remoteF(destFile)
+    return path.join(config.outDir, file).replace(/\.vue$/, '.doc.md')
   },
   templates: {
     component: require('./docgen.components.template.js')
