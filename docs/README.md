@@ -8,3 +8,4 @@ Design by Doc88 for Vue.js
 - [Update](./01.guide/get-start.html#update)
 
 @[example](intro-attribute-binding)
+
