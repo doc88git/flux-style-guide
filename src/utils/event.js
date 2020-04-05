@@ -4,6 +4,10 @@ export const listenOpts = {
   notPassiveCapture: true
 }
 
+if (typeof process === 'undefined') {
+  var process = {}
+}
+
 try {
   var opts = Object.defineProperty({}, 'passive', {
     get() {

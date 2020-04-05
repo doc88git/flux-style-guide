@@ -1,26 +1,30 @@
+<template>
+  <div :class="$style.result" v-html="resultIFrameHtml" />
+</template>
+
 <script>
 export default {
   props: {
     name: {
       type: String,
-      required: true,
+      required: true
     },
     html: {
       type: String,
-      required: true,
+      required: true
     },
     js: {
       type: String,
-      required: true,
+      required: true
     },
     css: {
       type: String,
-      required: true,
-    },
+      required: true
+    }
   },
   data() {
     return {
-      showResult: false,
+      showResult: false
     }
   },
   computed: {
@@ -31,6 +35,8 @@ export default {
         <body>
           ${this.html}
           <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"><\/script>
+          <script src="/chunk-vendors.js"><\/script>
+          <script src="/app.js"><\/script>
           <script>${this.js}<\/script>
           <script>
             (function(){
@@ -41,12 +47,14 @@ export default {
                 }
                 window.parent.window['app' + appNum] = app
                 var appNoticeEl = document.createElement('div')
-                appNoticeEl.style = 'position:fixed;top:0;right:0'
+                appNoticeEl.style = 'position:fixed;top:0;right:0;color:rgba(0,0,0,0.5);font-size:12px;font-family:arial;cursor:default'
                 appNoticeEl.textContent = 'app' + appNum
                 document.body.appendChild(appNoticeEl)
               }
             })()
           <\/script>
+
+          <link rel="stylesheet" type="text/css" href="/app.css">
           <style>
             ${this.css}
           </style>
@@ -54,23 +62,10 @@ export default {
       `
       iframe.name = this.name
       return iframe.outerHTML
-    },
-  },
+    }
+  }
 }
 </script>
-
-<template>
-  <button
-    v-if="!showResult"
-    :class="$style.button"
-    @click.stop="showResult = true"
-  >Show Result</button>
-  <div
-    v-else
-    :class="$style.result"
-    v-html="resultIFrameHtml"
-  />
-</template>
 
 <style lang="scss" module>
 .result {

@@ -1,17 +1,17 @@
-@import '../../../src/assets/f-variables';
+@import '@flux/assets/f-variables';
 
 /*
 Custom variables
 */
 $textSizes: (
-  'base': '16px'
+  'base': '14px'
 );
 
-@import '../../../src/assets/f-reset';
-@import '../../../src/assets/f-root';
-@import '../../../src/assets/f-colors';
-@import '../../../src/assets/f-sizes';
-@import '../../../src/assets/f-transitions';
-@import '../../../src/assets/settings/settings';
+@import '@flux/assets/f-reset';
+@import '@flux/assets/f-root';
+@import '@flux/assets/f-colors';
+@import '@flux/assets/f-sizes';
+@import '@flux/assets/f-transitions';
+@import '@flux/assets/settings/settings';
 
-@import '../../../src/assets/f-base';
+@import '@flux/assets/f-base';

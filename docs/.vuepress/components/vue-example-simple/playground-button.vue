@@ -1,3 +1,18 @@
+<template>
+  <div class="Playgroud">
+    <div>
+      <f-button
+        flat
+        class="Playgroud-Button"
+        @click="openPlayground"
+        icon="external-link"
+      >
+        Open Playground
+      </f-button>
+    </div>
+  </div>
+</template>
+
 <script>
 import store from '@store'
 
@@ -5,20 +20,20 @@ export default {
   props: {
     name: {
       type: String,
-      required: true,
+      required: true
     },
     html: {
       type: String,
-      required: true,
+      required: true
     },
     js: {
       type: String,
-      required: true,
+      required: true
     },
     css: {
       type: String,
-      required: true,
-    },
+      required: true
+    }
   },
   methods: {
     openPlayground() {
@@ -49,29 +64,26 @@ export default {
 
         // CSS
         css: this.css,
-        css_prefix: 'autoprefixer',
+        css_prefix: 'autoprefixer'
       })
 
       form.appendChild(input)
       document.body.appendChild(form)
       form.submit()
       form.parentNode.removeChild(form)
-    },
-  },
+    }
+  }
 }
 </script>
 
-<template>
-  <button
-    :class="$style.button"
-    @click="openPlayground"
-  >
-    Open Playground
-  </button>
-</template>
+<style lang="scss">
+.Playgroud {
+  margin: auto;
+  display: flex;
+  justify-content: flex-end;
 
-<style lang="scss" module>
-.button {
-  width: 100%;
+  &-Button {
+    width: 200px;
+  }
 }
 </style>

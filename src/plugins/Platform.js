@@ -4,6 +4,10 @@
 
 import Vue from 'vue'
 
+if (typeof process === 'undefined') {
+  var process = {}
+}
+
 export const isSSR = process.server && typeof window === 'undefined'
 export let fromSSR = false
 export let onSSR = isSSR

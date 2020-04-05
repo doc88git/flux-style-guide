@@ -14,7 +14,7 @@
           @change="setSelected"
         />
       </FCardTitle>
-      <FSeparator />
+      <FSeparator margin="sm" />
       <FCardBody
         v-for="(item, index) in options"
         :key="index"
@@ -30,7 +30,7 @@
 
 <script>
 import { FCard, FCardBody, FCardTitle } from '../FCard'
-import { FSeparator } from '@/components/FSeparator'
+import { FSeparator } from '../FSeparator'
 import { FButtonGroup } from '../FButton'
 
 export default {
@@ -93,6 +93,7 @@ export default {
 .f-tab {
   &__header {
     overflow: auto;
+    margin-bottom: 0px;
   }
 }
 </style>

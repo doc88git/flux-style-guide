@@ -4,6 +4,8 @@
 
 ## Usage
 
+@[example](FIconExample)
+
 ## FIcon API
 
 @[import](FIcon/FIcon)

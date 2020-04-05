@@ -9,6 +9,7 @@ export const queues = {
 
 export const $f = {
   version,
+  linkComponent: 'vue',
   config: {}
 }
 

@@ -3,10 +3,12 @@
   "version": "1.2.0-beta.1",
   "license": "MIT",
   "main": "src/index.esm.js",
-  "module": "src/index.esm.js",
+  "module": "src/index.umd.js",
+  "unpkg": "dist/index.min.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "postbuild": "cp dist/app.js docs/.vuepress/public/app.js && cp dist/app.js docs/.vuepress/public/chunk-vendors.js && cp dist/app.css docs/.vuepress/public/app.css",
     "lint": "vue-cli-service lint --fix",
     "eslint": "eslint --ext .js,.vue --ignore-path .gitignore ./src --fix && yarn lint:md",
     "lint:md": "markdownlint docs/*.md *.md",

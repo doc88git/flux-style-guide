@@ -4,6 +4,7 @@
       v-for="opt in options"
       :key="opt.value"
       @click="change(opt.value)"
+      :icon="opt.icon"
       :class="{
         ...classes,
         'f-button-group__tab--selected': isFlat && opt.value === selected
@@ -31,9 +32,10 @@ export default {
     outline: Boolean,
     tab: Boolean,
     default: [String, Number],
+    icon: String,
     size: {
       type: String,
-      default: ''
+      default: 'default'
     }
   },
   data: () => ({

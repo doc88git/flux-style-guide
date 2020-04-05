@@ -1,7 +1,5 @@
 # Flux Style Guide
 
-@[example](examples/intro-attribute-binding)
-
 Design by Doc88 for Vue.js
 
 ## Documentation

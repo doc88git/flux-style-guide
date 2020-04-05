@@ -1,19 +1,26 @@
 <template>
-  <div>
+  <div class="VueExample">
     <template v-if="!playgroundOnly">
-      <div v-for="(code, lang) in blocks" :key="lang">
-        <CodeBlock
-          v-if="code"
-          :lang="lang"
-          :code="code"
-          :disabled="codeBlockDisabled(lang)"
-        />
-      </div>
-      <ExampleResult
-        v-if="shouldRenderResult"
-        :name="name"
-        v-bind="compatBlocks"
-      />
+      <f-tab :options="options">
+        <template slot="content-1">
+          <ExampleResult
+            v-if="shouldRenderResult"
+            :name="name"
+            v-bind="compatBlocks"
+          />
+        </template>
+        <template slot="content-2">
+          <div v-for="(code, lang) in blocks" :key="lang">
+            <CodeBlock
+              v-if="code"
+              :lang="lang"
+              :code="code"
+              :disabled="codeBlockDisabled(lang)"
+            />
+          </div>
+        </template>
+        <!-- <template slot="content-3">Content C</template> -->
+      </f-tab>
     </template>
     <PlaygroundButton v-if="shouldRenderResult" :name="name" v-bind="blocks" />
   </div>
@@ -52,6 +59,8 @@ export default {
       type: String,
       default: ''
     },
+    fluxJs: String,
+    fluxCss: String,
     htmlDisabled: {
       type: Boolean,
       default: false
@@ -89,6 +98,18 @@ export default {
       default: false
     }
   },
+  data: () => ({
+    options: [
+      {
+        label: 'Example',
+        value: 1
+      },
+      {
+        label: 'Code',
+        value: 2
+      }
+    ]
+  }),
   computed: {
     langVariants() {
       return {
@@ -148,3 +169,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.VueExample {
+  margin: 20px 0;
+}
+</style>
