@@ -56,7 +56,6 @@ const components = [
   FSeparator,
   FTitle,
   FTag,
-  FTagGroup,
   FDatepicker,
   FToggle,
   FUpload,
