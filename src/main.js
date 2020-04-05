@@ -1,11 +1,7 @@
 import Vue from 'vue'
-import App from './App.vue'
 import VuePlugin from './vue-plugin'
-import vClickOutside from 'v-click-outside'
-import VueRouter from 'vue-router'
-
-Vue.use(VueRouter)
-Vue.use(vClickOutside)
+import App from './dev/App.vue'
+import router from './dev/router'
 
 import '@/assets/f-style-guide.scss'
 
@@ -15,7 +11,7 @@ import * as plugins from './plugins.js'
 Vue.config.productionTip = false
 
 Vue.prototype.$f = {
-  linkComponent: 'vue' // nuxt
+  linkComponent: 'vue'
 }
 
 VuePlugin.install(Vue, {
@@ -24,5 +20,6 @@ VuePlugin.install(Vue, {
 })
 
 new Vue({
-  render: h => h(App)
+  render: h => h(App),
+  router
 }).$mount('#app')
