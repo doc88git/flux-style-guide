@@ -1,10 +1,10 @@
 <template>
-  <component class="f-list-item" :is="tag" :to="to" :link="link" tabindex="0">
+  <component class="FListItem" :is="tag" :to="to" :link="link" tabindex="0">
     <slot>
-      <p v-if="title" class="f-list-item__item--title">
+      <p v-if="title" class="FListItem__item--title">
         {{ title }}
       </p>
-      <p class="f-list-item__item--label">
+      <p class="FListItem__item--label">
         {{ label }}
       </p>
     </slot>
@@ -15,7 +15,7 @@
 import { FLink } from '../FLink'
 
 export default {
-  name: 'f-item',
+  name: 'FListItem',
   props: {
     title: String,
     label: String,
@@ -34,7 +34,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.f-list-item {
+.FListItem {
   display: block;
   padding: 0.5rem 1rem;
   border-bottom-width: 1px;

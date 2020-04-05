@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import FIconFlux from './components/FIconFlux'
-import FIconMaterial from './components/FIconMaterial'
+import FIconFlux from './FIconFlux'
+import FIconMaterial from './FIconMaterial'
 
 export default {
   name: 'f-icon',
