@@ -9,6 +9,7 @@
 <script>
 import { FContainer } from '@/components/FContainer'
 import { FAvatar } from '@/components/FAvatar'
+
 export default {
   components: {
     FContainer,

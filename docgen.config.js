@@ -5,10 +5,14 @@ module.exports = {
   components: '(**|**/**)/[A-Z]*.vue',
   outDir: 'docs/.vuepress/apiComponents',
   getDocFileName: componentPath => {
-    return componentPath.replace(/\.vue$/, '.md')
+    const item = componentPath.replace(/\.vue$/, '.md')
+    if (item.includes('.example.')) return ''
+    return item
   },
   getDestFile: (file, config) => {
-    return path.join(config.outDir, file).replace(/\.vue$/, '.doc.md')
+    const item = path.join(config.outDir, file).replace(/\.vue$/, '.doc.md')
+    if (item.includes('.example.')) return ''
+    return item
   },
   templates: {
     component: require('./docgen.components.template.js')

@@ -1,4 +1,4 @@
-@import '@flux/assets/f-variables';
+@import '@/assets/f-variables';
 
 /*
 Custom variables
@@ -7,11 +7,11 @@ $textSizes: (
   'base': '14px'
 );
 
-@import '@flux/assets/f-reset';
-@import '@flux/assets/f-root';
-@import '@flux/assets/f-colors';
-@import '@flux/assets/f-sizes';
-@import '@flux/assets/f-transitions';
-@import '@flux/assets/settings/settings';
+@import '@/assets/f-reset';
+@import '@/assets/f-root';
+@import '@/assets/f-colors';
+@import '@/assets/f-sizes';
+@import '@/assets/f-transitions';
+@import '@/assets/settings/settings';
 
-@import '@flux/assets/f-base';
+@import '@/assets/f-base';

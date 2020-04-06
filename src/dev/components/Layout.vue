@@ -1,10 +1,15 @@
 <template>
   <div class="Layout">
     <div class="Layout--logo">
-      <h1>FSG</h1>
+      <router-link to="/">
+        <h1>FSG</h1>
+      </router-link>
     </div>
+
     <div class="Layout--head"></div>
+
     <LayoutMenu class="Layout--menu" />
+
     <f-container class="Layout--content">
       <slot />
     </f-container>

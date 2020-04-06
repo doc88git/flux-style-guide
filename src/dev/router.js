@@ -1,28 +1,24 @@
 import VueRouter from 'vue-router'
-
-import PageNotFound from './components/404'
-import loadExamples from './loadExamples'
+import loadExamples from './scripts/loadExamples'
 
 const routes = [
   {
+    path: '/',
+    component: () => import('./components/Home')
+  },
+  {
     path: '*',
-    component: PageNotFound
+    component: () => import('./components/404')
   }
 ]
 
 export default Vue => {
   Vue.use(VueRouter)
 
-  let examples = []
-
-  examples = loadExamples().map(c => {
-    return {
-      ...c,
-      component: () => import('@/components/' + c.component)
-    }
-  })
-
-  console.log(examples)
+  const examples = loadExamples().map(c => ({
+    ...c,
+    component: () => import('@/components/' + c.component)
+  }))
 
   return new VueRouter({
     routes: [...routes, ...examples]
