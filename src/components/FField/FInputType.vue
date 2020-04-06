@@ -57,12 +57,29 @@ export default {
     FButton
   },
   data: () => ({
-    value: 0
+    value: 0,
+    timeout: null
   }),
+  watch: {
+    value: {
+      handler() {
+        clearTimeout(this.timeout)
+        this.timeout = setTimeout(() => {
+          this.$emit('input', this.value)
+          clearTimeout(this.timeout)
+        }, parseInt(this.delay))
+      }
+    }
+  },
+
   props: {
     type: {
       type: String,
       default: 'number'
+    },
+    delay: {
+      type: [String, Number],
+      default: 500
     },
     bgColorContent: {
       type: String,
@@ -192,16 +209,11 @@ export default {
       e.preventDefault()
       const p = this.getPrecision
       this.value = parseFloat((this.value + this.sum).toFixed(p))
-      this.inputValue()
     },
     counterDown(e) {
       e.preventDefault()
       const p = this.getPrecision
       this.value = parseFloat((this.value - this.sum).toFixed(p))
-      this.inputValue()
-    },
-    inputValue() {
-      this.$emit('input', this.value)
     },
     checkPropValue() {
       if (this.newValue != null) this.value = this.newValue
