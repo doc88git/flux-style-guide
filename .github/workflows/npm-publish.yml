@@ -29,7 +29,6 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            return JSON.stringfy(context.payload)
             const tagName = context.ref.replace(/\/refs\/tags\//, '');
             const versions = ['alpha', 'beta', 'latest', 'next']
             const whatIs = versions.filter(t => tagName.includes(t))
