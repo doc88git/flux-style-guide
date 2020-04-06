@@ -144,10 +144,6 @@ export default {
       width: 70px;
       z-index: 90;
       height: calc(100vh - 70px);
-
-      @media screen and (max-width: map-get($sizes, 'tablet' )) {
-        position: fixed;
-      }
     }
 
     &__content {
@@ -155,10 +151,6 @@ export default {
       position: relative;
       z-index: 10;
       padding: 10px 10px 10px 80px;
-
-      @media screen and (max-width: map-get($sizes, 'tablet' )) {
-        padding: 1.25rem;
-      }
 
       &--no-extra-padding {
         padding: 1.25rem;
