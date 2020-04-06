@@ -10,13 +10,16 @@ storiesOf('Components|Tooltip', module)
       position: {
         default: select('position', ['top', 'bottom', 'left', 'right'], 'top')
       },
+      size: {
+        default: select('size', ['default', 'sm'], 'default')
+      },
       click: {
         default: boolean('click', false)
       }
     },
     template: `
       <div style="margin-top: 100px; padding: 100px; width: 100%; text-align: center;">
-        <f-tooltip :position="position" label="Button">
+        <f-tooltip :position="position" label="Button" :size="size">
           <template v-slot:content>
             tooltip content
           </template>
@@ -30,11 +33,14 @@ storiesOf('Components|Tooltip', module)
     props: {
       position: {
         default: select('position', ['top', 'bottom', 'left', 'right'], 'top')
+      },
+      size: {
+        default: select('size', ['default', 'sm'], 'default')
       }
     },
     template: `
       <div style="margin-top: 100px; padding: 100px;  width: 100%; text-align: center;">
-        <f-tooltip showEvent="click" hideEvent="blur" :position="position" label="Button">
+        <f-tooltip showEvent="click" hideEvent="blur" :position="position" label="Button" :size="size">
           <template v-slot:content>
             tooltip content
           </template>
@@ -50,32 +56,35 @@ storiesOf('Components|Tooltip', module)
     props: {
       position: {
         default: select('position', ['top', 'bottom', 'left', 'right'], 'top')
+      },
+      size: {
+        default: select('size', ['default', 'sm'], 'default')
       }
     },
     template: `
       <div style="margin-top: 100px; padding: 100px;  width: 100%; text-align: center;">
-        <f-tooltip position="top" aligned="aligned" label="top" bgColor="primary">
+        <f-tooltip position="top" aligned="aligned" label="top" bgColor="primary" :size="size">
           Menu
           <template v-slot:content>
             tooltip on top
           </template>
         </f-tooltip>
-        <f-tooltip position="left" aligned="aligned" label="left" bgColor="primary">
+        <f-tooltip position="left" aligned="aligned" label="left" bgColor="primary" :size="size">
         <template v-slot:content>
         tooltip on left
         </template>
         </f-tooltip>
-        <f-tooltip position="bottom" aligned="aligned" label="bottom" bgColor="primary">
+        <f-tooltip position="bottom" aligned="aligned" label="bottom" bgColor="primary" :size="size">
           <template v-slot:content>
             tooltip on bottom
           </template>
         </f-tooltip>
-        <f-tooltip position="top" aligned="aligned" label="top" bgColor="primary">
+        <f-tooltip position="top" aligned="aligned" label="top" bgColor="primary" :size="size">
           <template v-slot:content>
             tooltip on top
           </template>
         </f-tooltip>
-        <f-tooltip position="right" aligned="aligned" label="right" bgColor="primary">
+        <f-tooltip position="right" aligned="aligned" label="right" bgColor="primary" :size="size">
           <template v-slot:content>
             tooltip on right
           </template>

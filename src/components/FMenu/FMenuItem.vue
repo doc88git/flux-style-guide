@@ -3,14 +3,15 @@
     overlap
     position="right"
     aligned="center"
-    class="FMenuItem"
+    :class="menuItemClass"
     :disabled="menuExpand"
     :label="menuItem.name"
     :bg-color="color"
+    @mouseenter.native="toggleMouseHover(true)"
+    @mouseleave.native="toggleMouseHover(false)"
   >
     <f-link
       class="FMenuItem__link text-gray"
-      :class="isSelected ? textColor : textHoverColor"
       :link="getUrl('url', menuItem)"
       :to="getUrl('to', menuItem)"
       @click.native="clickButton(menuItem)"
@@ -19,23 +20,26 @@
         v-if="!isSub"
         :lib="iconLib"
         :name="menuItem.icon"
-        :color="menuItem.color"
+        :color="iconColor"
+        class="FMenuItem__link__icon"
         type="outlined"
-        clickable
-        class="FMenuItem__link--icon"
       />
 
-      <span v-else class="FMenuItem__link__bullet" />
+      <span v-else :class="bulletClass" />
 
-      <span
-        v-show="menuExpand"
-        :class="[
-          'FMenuItem__link__text',
-          { 'FMenuItem__link__text--sub': isSub }
-        ]"
-      >
+      <span v-show="menuExpand" :class="linkTextClass">
         {{ menuItem.name }}
       </span>
+
+      <f-icon
+        v-if="displaySubIcon"
+        :lib="iconLib"
+        name="chevron-right"
+        :color="isSelected ? menuItem.color : 'gray'"
+        type="outlined"
+        size="sm"
+        :class="subIconClass"
+      />
     </f-link>
     <template v-slot:content>{{ menuItem.name }}</template>
   </f-tooltip>
@@ -48,6 +52,8 @@ import FIcon from '../FIcon/FIcon'
 
 export default {
   name: 'f-menu-item',
+
+  data: () => ({ mouseHover: false }),
 
   components: {
     FLink,
@@ -66,7 +72,7 @@ export default {
     },
     iconLib: {
       type: String,
-      default: 'material'
+      default: 'flux'
     },
     isSub: Boolean,
     menuExpand: Boolean,
@@ -74,15 +80,54 @@ export default {
   },
 
   computed: {
-    textHoverColor() {
-      return `hover:text-${this.color}`
+    displaySubIcon() {
+      const hasSubItems = !!(this.menuItem.subItems || []).length
+      const openByDefault = this.menuItem.openByDefault
+
+      return hasSubItems && this.menuExpand && !openByDefault
     },
-    textColor() {
-      return `color--text--${this.color}`
+    iconColor() {
+      return this.isSelected || this.mouseHover ? this.menuItem.color : 'gray'
+    },
+    menuItemClass() {
+      return [
+        'FMenuItem',
+        {
+          'FMenuItem--sub': this.isSub
+        }
+      ]
+    },
+    linkTextClass() {
+      return [
+        'FMenuItem__link__text',
+        {
+          'FMenuItem__link__text--sub': this.isSub,
+          'FMenuItem__link__text--selected': this.isSelected
+        }
+      ]
+    },
+    bulletClass() {
+      return [
+        'FMenuItem__link__bullet',
+        {
+          'FMenuItem__link__bullet--selected': this.isSelected
+        }
+      ]
+    },
+    subIconClass() {
+      return [
+        'FMenuItem__link__sub_icon',
+        {
+          'FMenuItem__link__sub_icon--rotate': this.isSelected
+        }
+      ]
     }
   },
 
   methods: {
+    toggleMouseHover(value) {
+      this.mouseHover = value
+    },
     clickButton(menu) {
       this.$emit('click', menu)
     },
@@ -98,37 +143,43 @@ export default {
 @import '../../assets/f-transitions.scss';
 
 .FMenuItem {
-  height: 20px;
   width: 100%;
+  height: 52px;
+  color: #787878;
+
+  &--sub {
+    height: 30px;
+  }
+
+  &:hover {
+    color: var(--color-primary);
+
+    .FMenuItem__link__text {
+      transform: translateX(2px);
+    }
+  }
 
   &__link {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 
     height: 100%;
     width: 100%;
     padding-left: 27px;
 
-    @media screen and (min-width: map-get($sizes, 'tablet' )) {
-      justify-content: flex-start;
-      &:hover {
-        .Fmenu-side__nav__ul__li__text {
-          margin-left: 7px;
-        }
-      }
-    }
-
-    &--icon {
+    &__icon {
       margin-right: 10px;
-
-      &:hover {
-        color: var(--color-primary-lighter);
-      }
     }
 
-    &--selected {
-      font-weight: bold;
+    &__sub_icon {
+      margin-left: auto;
+      margin-right: 20px;
+      transition: transform ease 300ms;
+
+      &--rotate {
+        transform: rotate(-90deg);
+      }
     }
 
     &__bullet {
@@ -140,20 +191,29 @@ export default {
 
       margin-left: 5px;
       margin-right: 15px;
+
+      &--selected {
+        background: var(--color-primary);
+      }
     }
 
     &__text {
-      font-size: var(--text-base);
+      font-size: 14px;
+      font-weight: bold;
       position: relative;
       margin-left: 5px;
+      white-space: nowrap;
+      overflow-x: hidden;
       @include transition(0.1s);
 
-      &:hover {
-        transform: translateX(2px);
+      &--sub {
+        color: #a8abb0;
+        font-size: var(--text-base);
+        font-weight: normal;
       }
 
-      &:not(&--sub) {
-        font-weight: bold;
+      &--selected {
+        color: var(--color-primary);
       }
     }
   }

@@ -1,12 +1,16 @@
 <template>
-  <div class="FMenuButton" :class="arrowMenu">
-    <div class="FMenuButton__container" @click="main" :class="btnStyle">
+  <div class="FMenuButton" :class="btnClass">
+    <div
+      class="FMenuButton__container"
+      @click="emitClick"
+      :class="btnContainerClass"
+    >
       <div class="FMenuButton__icon">
         <div
           v-for="(line, index) in 3"
           :key="index"
           class="FMenuButton__line"
-        ></div>
+        />
       </div>
     </div>
   </div>
@@ -15,40 +19,50 @@
 <script>
 export default {
   name: 'f-menu-button',
-  data: () => ({
-    isOpen: false,
-    arrowMenu: '',
-    time: ''
-  }),
+
+  data: () => ({ noHover: false, time: null }),
+
   props: {
+    isOpen: {
+      type: Boolean,
+      default: false
+    },
     color: {
       type: String,
       default: 'primary'
     }
   },
+
+  watch: {
+    isOpen(open) {
+      if (open) return
+
+      this.noHover = true
+      this.resetHover()
+    }
+  },
+
   computed: {
-    btnStyle() {
+    btnClass() {
+      return [
+        {
+          'FMenuButton__container--open': this.isOpen,
+          'FMenuButton__container--no-hover': this.noHover
+        }
+      ]
+    },
+    btnContainerClass() {
       return `color--${this.color}`
     }
   },
   methods: {
-    main($event) {
-      this.isOpen = !this.isOpen
-      this.setArrowMenu()
-      this.$emit('click', $event)
+    emitClick() {
+      this.$emit('click')
     },
-    setArrowMenu() {
-      if (this.isOpen) {
-        this.arrowMenu = 'FMenuButton__container--open'
-        return
-      }
-      this.arrowMenu = 'FMenuButton__container--close'
-      this.reset()
-    },
-    reset() {
+    resetHover() {
       clearTimeout(this.time)
       this.time = setTimeout(() => {
-        this.arrowMenu = ''
+        this.noHover = false
       }, 300)
     }
   }
@@ -72,14 +86,12 @@ $timeTransition: 0.2s;
     cursor: pointer;
 
     &:hover {
-      .FMenuButton__icon {
-        .FMenuButton__line {
-          &:nth-child(2) {
-            transform: translateX($middleLineW - $lineW);
-          }
-          &:nth-child(3) {
-            transform: translateX($lastLineW - $lineW);
-          }
+      .FMenuButton__line {
+        &:nth-child(2) {
+          transform: translateX($middleLineW - $lineW);
+        }
+        &:nth-child(3) {
+          transform: translateX($lastLineW - $lineW);
         }
       }
     }
@@ -98,7 +110,7 @@ $timeTransition: 0.2s;
       }
     }
 
-    &--close {
+    &--no-hover {
       .FMenuButton__line {
         &:nth-child(1) {
           animation-name: disableLineTop;
@@ -112,6 +124,7 @@ $timeTransition: 0.2s;
       }
     }
   }
+
   &__icon {
     width: $lineW;
     height: 14px;
