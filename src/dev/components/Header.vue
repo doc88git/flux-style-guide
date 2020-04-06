@@ -1,7 +1,5 @@
 <template>
-  <div class="Menu">
-    menu
-  </div>
+  <div class="Header"><h1>Flux Style Guide</h1></div>
 </template>
 
 <script>
@@ -9,6 +7,6 @@ export default {}
 </script>
 
 <style lang="scss" scoped>
-.Menu {
+.Header {
 }
 </style>

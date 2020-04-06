@@ -1,6 +1,6 @@
 <template>
-  <layout>
-    content
+  <layout class="FApp">
+    <router-view />
   </layout>
 </template>
 

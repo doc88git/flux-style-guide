@@ -38,7 +38,6 @@ export default {
   display: block;
   padding: 0.5rem 1rem;
   border-bottom-width: 1px;
-  font-size: var(--text-sm);
   &:hover,
   &:focus {
     background-color: var(--color-gray-300);
