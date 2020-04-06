@@ -1,6 +1,9 @@
 <template>
   <div class="Layout">
-    <LayoutHeader class="Layout--top-header" />
+    <div class="Layout--logo">
+      <h1>FSG</h1>
+    </div>
+    <div class="Layout--head"></div>
     <LayoutMenu class="Layout--menu" />
     <f-container class="Layout--content">
       <slot />
@@ -9,42 +12,53 @@
 </template>
 
 <script>
-import LayoutHeader from './Header'
 import LayoutMenu from './Menu'
 
 export default {
-  components: { LayoutMenu, LayoutHeader }
+  components: { LayoutMenu }
 }
 </script>
 
 <style lang="scss" scoped>
 $header-height: 100px;
+$grid-gap: 16px;
+$menu-width: 200px;
 
 .Layout {
   display: grid;
   grid-template-areas:
-    'top-header top-header top-header top-header top-header top-header'
-    'menu content content content content content';
-  grid-column-gap: 16px;
+    'logo head-content'
+    'menu content';
+  grid-column-gap: $grid-gap;
   height: 100vh;
 
-  &--top-header {
-    grid-area: top-header;
+  &--logo {
+    grid-area: logo;
+    width: $menu-width;
+    height: 100px;
+    margin: auto;
+    padding: 16px;
+  }
+
+  &--head {
+    grid-area: head-content;
     width: 100vw;
-    height: $header-height;
-    background: rgba(47, 49, 153, 0.05);
+    height: 100px;
     padding: 10px;
   }
 
   &--menu {
     grid-area: menu;
-    height: calc(100vh - #{$header-height});
+    width: $menu-width;
+    height: calc(100vh - (#{$header-height} + #{$grid-gap}));
+    background: rgba(47, 49, 153, 0.05);
   }
 
   &--content {
     grid-area: content;
-    height: calc(100vh - #{$header-height});
-    margin-top: 50px;
+    width: calc(100vw - (#{$menu-width} + #{$grid-gap}));
+    height: calc(100vh - (#{$header-height} + #{$grid-gap}));
+    padding: 32px;
   }
 }
 </style>

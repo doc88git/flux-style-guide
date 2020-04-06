@@ -1,7 +1,6 @@
 <template>
   <div class="AppMenu">
     <f-list>
-      <f-list-item to="/">Home</f-list-item>
       <f-list-item
         v-for="(item, key) in clenedRoutes"
         :key="key"
@@ -27,5 +26,6 @@ export default {
 
 <style lang="scss" scoped>
 .AppMenu {
+  padding-top: 8px;
 }
 </style>

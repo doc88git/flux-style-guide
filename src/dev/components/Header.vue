@@ -1,5 +1,5 @@
 <template>
-  <div class="Header"><h1>Flux Style Guide</h1></div>
+  <div class="Header"></div>
 </template>
 
 <script>
