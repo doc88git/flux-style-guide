@@ -32,7 +32,7 @@
       </span>
 
       <f-icon
-        v-if="hasSubItems && menuExpand"
+        v-if="displaySubIcon"
         :lib="iconLib"
         name="chevron-right"
         :color="isSelected ? menuItem.color : 'gray'"
@@ -80,11 +80,14 @@ export default {
   },
 
   computed: {
+    displaySubIcon() {
+      const hasSubItems = !!(this.menuItem.subItems || []).length
+      const openByDefault = this.menuItem.openByDefault
+
+      return hasSubItems && this.menuExpand && !openByDefault
+    },
     iconColor() {
       return this.isSelected || this.mouseHover ? this.menuItem.color : 'gray'
-    },
-    hasSubItems() {
-      return !!(this.menuItem.subItems || []).length
     },
     menuItemClass() {
       return [
@@ -115,8 +118,7 @@ export default {
       return [
         'FMenuItem__link__sub_icon',
         {
-          'FMenuItem__link__sub_icon--rotate':
-            this.isSelected || this.menuItem.openByDefault
+          'FMenuItem__link__sub_icon--rotate': this.isSelected
         }
       ]
     }
