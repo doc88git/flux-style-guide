@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue'
 
 import { FInputTag } from '@/components/FInputTag'
 
-storiesOf('Components|InputTag', module).add('Default', () => ({
+storiesOf('Form|InputTag', module).add('Default', () => ({
   components: {
     FInputTag
   },
@@ -12,10 +12,10 @@ storiesOf('Components|InputTag', module).add('Default', () => ({
   }),
 
   methods: {
-    handler(value) {
+    addTag(value) {
       this.tags.push(value)
     },
-    handler2(index) {
+    delTag(index) {
       this.tags.splice(index, 1)
     }
   },
@@ -23,8 +23,8 @@ storiesOf('Components|InputTag', module).add('Default', () => ({
   template: `
       <div style="padding: 20px;">
         <f-input-tag           
-        @addToParent="handler"
-        @delToParent="handler2"
+        @add="addTag"
+        @del="delTag"
         :tags="tags"/>
       </div>
       `

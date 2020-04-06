@@ -1,23 +1,17 @@
 <template>
-  <div id="customComponentId" class="customComponent" @click="listenClick">
-    <div class="tagInput">
-      <div class="tags">
-        <div v-for="(tag, index) in tags" :key="tag.id" class="tag">
-          <f-chip style="height: 30px;">
-            {{ tag }}
-            <button
-              style="margin-left: 10px; outline: 0;"
-              @click="delTag(index)"
-            >
-              X
-            </button>
-          </f-chip>
+  <div class="FInputTag" @click="listenClick">
+    <div class="FInputTag__body">
+      <div class="FInputTag__tags">
+        <div v-for="(tag, index) in tags" :key="tag.id" class="FInputTag__tag">
+          <f-chip :label="tag" removable @remove="delTag(index)" />
         </div>
-        <input
+        <f-input
+          name="tagsinput"
           id="tagsInput"
-          v-model="sectorInput"
-          class="inputTags"
-          @change="addTag"
+          v-model="arrayInput"
+          class="FInputTag__input"
+          @keypress.native.enter="addTag"
+          @input="arrayInput = $event"
           type="text"
           :placeholder="placeholder"
         />
@@ -28,15 +22,17 @@
 
 <script>
 import { FChip } from '../FChip'
+import { FInput } from '../FField'
 
 export default {
   components: {
-    FChip
+    FChip,
+    FInput
   },
 
   data() {
     return {
-      sectorInput: ''
+      arrayInput: ''
     }
   },
 
@@ -53,13 +49,13 @@ export default {
 
   methods: {
     addTag() {
-      if (!this.sectorInput) return
-      this.$emit('addToParent', this.sectorInput)
-      this.sectorInput = ''
+      if (!this.arrayInput) return
+      this.$emit('add', this.arrayInput)
+      this.arrayInput = ''
     },
 
     delTag(index) {
-      this.$emit('delToParent', index)
+      this.$emit('del', index)
     },
 
     listenClick() {
@@ -70,7 +66,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.inputTags {
+.FInputTag__input {
   outline: 0;
   height: 25px;
   font-size: 15px;
@@ -80,7 +76,7 @@ export default {
   border: none;
 }
 
-.tagInput {
+.FInputTag__body {
   display: flex;
   align-items: center;
   border: 1px solid #e2e8f0;
@@ -88,24 +84,16 @@ export default {
   border-radius: 5px;
 }
 
-.tagInput:hover {
+.FInputTag__body:hover {
   border: 1px solid var(--color-primary);
   cursor: text;
 }
 
-.tagsInputTitle {
-  margin-bottom: 5px;
-  display: block;
-  letter-spacing: 0.025em;
-  font-weight: 700;
-  color: var(--color-font-base);
-}
-
-.tag {
+.FInputTag__tag {
   display: inline-block;
   margin: 2px;
 }
-.tags {
+.FInputTag__tags {
   max-width: 100%;
   font-size: 0;
 }
