@@ -1,9 +1,14 @@
+const webpack = require('webpack')
+const CopyPlugin = require('copy-webpack-plugin')
 const extendMarkdown = require('./utils/use-markdown-it-vue-example.js')
 const getConfig = require('vuepress-bar')
+const getExamples = require('./utils/get-examples')
+const WriteFilePlugin = require('write-file-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+
+const examples = getExamples()
 
 const barConfig = getConfig(`${__dirname}/..`)
-
-// console.log(JSON.stringify(barConfig.sidebar, null, 2))
 
 module.exports = {
   themeConfig: {
@@ -14,7 +19,21 @@ module.exports = {
   configureWebpack: {
     resolve: {
       alias: require(`${__dirname}/../../aliases.config`).webpack
-    }
+    },
+    plugins: [
+      new CleanWebpackPlugin({
+        cleanStaleWebpackAssets: false
+      }),
+      new WriteFilePlugin(),
+      new CopyPlugin(examples, { logLevel: 'debug' }),
+      new webpack.LoaderOptionsPlugin({
+        options: {
+          babel: {
+            plugins: ['require-context-hook']
+          }
+        }
+      })
+    ]
   },
   markdown: {
     extendMarkdown,

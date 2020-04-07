@@ -7,5 +7,3 @@ Design by Doc88 for Vue.js
 - [CSS](./01.guide/get-start.html#css)
 - [Update](./01.guide/get-start.html#update)
 
-@[example](intro-attribute-binding)
-

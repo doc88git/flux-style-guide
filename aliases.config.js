@@ -4,7 +4,8 @@ const resolveSrc = _path => path.join(__dirname, _path)
 
 const aliases = {
   '@store': 'docs/.vuepress/store.js',
-  '@': 'src'
+  '@': 'src',
+  '@docs': 'docs'
 }
 
 module.exports = {

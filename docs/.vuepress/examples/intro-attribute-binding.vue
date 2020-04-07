@@ -9,10 +9,11 @@
 </template>
 
 <script>
-// const app = new Vue({
-//   el: '#app',
-//   data: {
-//     message: 'You loaded this page on ' + new Date().toLocaleString()
-//   }
-// })
+
+const app = new Vue({
+  el: '#app',
+  data: {
+    message: 'You loaded this page on ' + new Date().toLocaleString()
+  }
+})
 </script>

@@ -21,6 +21,7 @@ export default Vue => {
   }))
 
   return new VueRouter({
+    mode: 'history',
     routes: [...routes, ...examples]
   })
 }

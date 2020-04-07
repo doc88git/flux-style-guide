@@ -1,16 +1,16 @@
 <template>
-  <div class="Layout">
-    <div class="Layout--logo">
+  <div :class="{ Layout: true, 'Layout--hideLayout': hideLayout }">
+    <div v-if="!hideLayout" class="Layout__logo">
       <router-link to="/">
         <h1>FSG</h1>
       </router-link>
     </div>
 
-    <div class="Layout--head"></div>
+    <div v-if="!hideLayout" class="Layout__head"></div>
 
-    <LayoutMenu class="Layout--menu" />
+    <LayoutMenu v-if="!hideLayout" class="Layout__menu" />
 
-    <f-container class="Layout--content">
+    <f-container class="Layout__content">
       <slot />
     </f-container>
   </div>
@@ -20,7 +20,12 @@
 import LayoutMenu from './Menu'
 
 export default {
-  components: { LayoutMenu }
+  components: { LayoutMenu },
+  computed: {
+    hideLayout() {
+      return typeof this.$route.query.hideLayout !== 'undefined'
+    }
+  }
 }
 </script>
 
@@ -37,7 +42,17 @@ $menu-width: 200px;
   grid-column-gap: $grid-gap;
   height: 100vh;
 
-  &--logo {
+  &--hideLayout {
+    display: block;
+    .Layout--content {
+      width: 100%;
+      height: auto;
+      margin: 10px;
+      padding: 0;
+    }
+  }
+
+  &__logo {
     grid-area: logo;
     width: $menu-width;
     height: 100px;
@@ -45,21 +60,21 @@ $menu-width: 200px;
     padding: 16px;
   }
 
-  &--head {
+  &__head {
     grid-area: head-content;
     width: 100vw;
     height: 100px;
     padding: 10px;
   }
 
-  &--menu {
+  &__menu {
     grid-area: menu;
     width: $menu-width;
     height: calc(100vh - (#{$header-height} + #{$grid-gap}));
     background: rgba(47, 49, 153, 0.05);
   }
 
-  &--content {
+  &__content {
     grid-area: content;
     width: calc(100vw - (#{$menu-width} + #{$grid-gap}));
     height: calc(100vh - (#{$header-height} + #{$grid-gap}));

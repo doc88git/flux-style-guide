@@ -4,7 +4,7 @@
 
 ## Usage
 
-@[example](FIconExample)
+@[example](FIcon)
 
 ## FIcon API
 

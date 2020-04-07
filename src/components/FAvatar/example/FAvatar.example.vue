@@ -1,8 +1,6 @@
 <template>
   <f-container>
-    <f-avatar
-      src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Elliot_Grieveson.png"
-    />
+    <f-avatar :src="image" />
   </f-container>
 </template>
 
@@ -14,7 +12,11 @@ export default {
   components: {
     FContainer,
     FAvatar
-  }
+  },
+  data: () => ({
+    image:
+      'https://upload.wikimedia.org/wikipedia/commons/e/e4/Elliot_Grieveson.png'
+  })
 }
 </script>
 

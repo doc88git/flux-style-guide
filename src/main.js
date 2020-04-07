@@ -9,8 +9,6 @@ Vue.use(FluxStyleGuide)
 
 const r = router(Vue)
 
-console.log({ r })
-
 new Vue({
   render: h => h(App),
   router: r

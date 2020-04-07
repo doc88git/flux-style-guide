@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import CodeBlock from './vue-example-simple/code-block'
+import CodeBlock from './vue-exa  mple-simple/code-block'
 import ExampleResult from './vue-example-simple/example-result'
 import PlaygroundButton from './vue-example-simple/playground-button'
 import store from '@store'

@@ -3,7 +3,7 @@ const prettierParserBabylon = require('prettier/parser-babylon')
 
 module.exports = function prettifyJs(code) {
   return prettier.format(code, {
-    parser: 'babylon',
+    parser: 'babel',
     plugins: [prettierParserBabylon],
     printWidth: 80,
     tabWidth: 2,

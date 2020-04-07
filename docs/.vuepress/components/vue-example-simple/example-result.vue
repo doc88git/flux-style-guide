@@ -29,14 +29,20 @@ export default {
   },
   computed: {
     resultIFrameHtml() {
+      if (typeof document === 'undefined') return ''
+
       const iframe = document.createElement('iframe')
+      iframe.src=`/${this.name}`
       iframe.srcdoc = `
         <!DOCTYPE html>
-        <body>
-          ${this.html}
+        <head>
           <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"><\/script>
           <script src="/chunk-vendors.js"><\/script>
           <script src="/app.js"><\/script>
+          <link rel="stylesheet" href="/app.css">
+        </head>
+        <body>
+          ${this.html}
           <script>${this.js}<\/script>
           <script>
             (function(){
@@ -53,8 +59,6 @@ export default {
               }
             })()
           <\/script>
-
-          <link rel="stylesheet" type="text/css" href="/app.css">
           <style>
             ${this.css}
           </style>
