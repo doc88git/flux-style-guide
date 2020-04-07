@@ -249,7 +249,6 @@ export default {
     width: 100%;
     text-align: end;
     background-color: transparent;
-    outline: none;
     border: none;
     outline: none;
   }
