@@ -30,11 +30,12 @@
 
 <script>
 import { FCard, FCardBody, FCardTitle } from '../FCard'
-import { FSeparator } from '@/components/FSeparator'
+import { FSeparator } from '../FSeparator'
 import { FButtonGroup } from '../FButton'
 
 export default {
   name: 'f-tab',
+
   components: {
     FCard,
     FCardBody,
@@ -42,10 +43,14 @@ export default {
     FButtonGroup,
     FCardTitle
   },
+
   props: {
     options: Array,
     fill: Boolean
   },
+
+  data: () => ({ selected: null }),
+
   computed: {
     isFill() {
       return this.fill
@@ -63,13 +68,7 @@ export default {
         : 0
     }
   },
-  data: () => ({
-    selected: null
-  }),
-  mounted() {
-    // console.log({ self: this });
-    // console.log({ btnGroupSize: this.btnGroupSize });
-  },
+
   methods: {
     setSelected(id) {
       this.selected = id
