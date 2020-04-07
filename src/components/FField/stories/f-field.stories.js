@@ -442,6 +442,9 @@ storiesOf('Form|Field', module)
         type: {
           default: text('type', 'number', groupId)
         },
+        name: {
+          default: text('name', '', groupId)
+        },
         bgColorContent: {
           default: text('bgColorContent', 'white', groupId)
         },
@@ -509,6 +512,7 @@ storiesOf('Form|Field', module)
           <f-input-type
           :disabled="disabled"
           :type="type"
+          :name="name"
           :bgColorContent="bgColorContent"
           :borderColorContent="borderColorContent"
           :buttonColor="buttonColor"
