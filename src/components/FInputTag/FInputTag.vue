@@ -66,35 +66,38 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.FInputTag__input {
-  outline: 0;
-  height: 25px;
-  font-size: 15px;
-  max-width: 165px;
-  padding: 19px;
-  margin-left: 5px;
-  border: none;
-}
+.FInputTag {
+  &__input {
+    outline: 0;
+    height: 25px;
+    font-size: var(--text-base);
+    max-width: 165px;
+    padding: 19px;
+    margin-left: 5px;
+    border: none;
+  }
 
-.FInputTag__body {
-  display: flex;
-  align-items: center;
-  border: 1px solid #e2e8f0;
-  max-width: 100%;
-  border-radius: 5px;
-}
+  &__body {
+    display: flex;
+    align-items: center;
+    border: 1px solid #e2e8f0;
+    max-width: 100%;
+    border-radius: 5px;
 
-.FInputTag__body:hover {
-  border: 1px solid var(--color-primary);
-  cursor: text;
-}
+    &:hover {
+      border: 1px solid var(--color-primary);
+      cursor: text;
+    }
+  }
 
-.FInputTag__tag {
-  display: inline-block;
-  margin: 2px;
-}
-.FInputTag__tags {
-  max-width: 100%;
-  font-size: 0;
+  &__tag {
+    display: inline-block;
+    margin: 2px;
+  }
+
+  &__tags {
+    max-width: 100%;
+    font-size: 0;
+  }
 }
 </style>
