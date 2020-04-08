@@ -29,6 +29,7 @@ export default {
     FIcon
   },
   props: {
+    underline: Boolean,
     outline: Boolean,
     flat: Boolean,
     small: Boolean,
@@ -211,9 +212,11 @@ export default {
     align-items: center;
     align-content: center;
     width: 100%;
+
     &--center {
       justify-content: center;
     }
+
     &__icon {
       height: 100%;
       display: flex;
@@ -224,6 +227,7 @@ export default {
         margin-right: 0;
       }
     }
+
     &__content {
       height: 100%;
       text-align: center;

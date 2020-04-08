@@ -95,12 +95,15 @@ export default {
 <style lang="scss" scoped>
 .f-button-group {
   display: flex;
+
   &__tab {
     border-radius: 0;
     color: var(--color-gray);
+
     &--selected {
       color: var(--color-primary);
       border-bottom-width: 1px;
+      border-bottom-style: solid;
       border-color: var(--color-primary);
     }
   }
