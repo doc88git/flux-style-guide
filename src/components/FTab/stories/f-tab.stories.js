@@ -60,3 +60,32 @@ storiesOf('Components|Tab', module)
     </div>
   `
   }))
+  .add('No Separator', () => ({
+    components: { FTab },
+    data: () => ({
+      options: [
+        {
+          label: 'Produtos',
+          value: 1
+        },
+        {
+          label: 'Vendas',
+          value: 2
+        },
+        {
+          label: 'Vacas',
+          value: 3
+        }
+      ]
+    }),
+    props: {},
+    template: `
+    <div style="padding: 20px;">
+      <f-tab no-separator :options="options">
+        <template slot="content-1">Content A</template>
+        <template slot="content-2">Content B</template>
+        <template slot="content-3">Content C</template>
+      </f-tab>
+    </div>
+  `
+  }))

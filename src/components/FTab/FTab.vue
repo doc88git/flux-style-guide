@@ -14,7 +14,7 @@
           @change="setSelected"
         />
       </FCardTitle>
-      <FSeparator />
+      <FSeparator v-if="!noSeparator" />
       <FCardBody
         v-for="(item, index) in options"
         :key="index"
@@ -45,16 +45,14 @@ export default {
   },
 
   props: {
+    fill: Boolean,
     options: Array,
-    fill: Boolean
+    noSeparator: Boolean
   },
 
   data: () => ({ selected: null }),
 
   computed: {
-    isFill() {
-      return this.fill
-    },
     headerSize() {
       console.log({ b: this.$refs.tabHeader })
       return this.$refs.tabHeader && this.$refs.tabHeader.$el
@@ -72,7 +70,6 @@ export default {
   methods: {
     setSelected(id) {
       this.selected = id
-      console.log(id)
     },
     drag(e) {
       console.log(this.$refs)
