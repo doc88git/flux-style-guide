@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ Layout: true, 'Layout--hideLayout': hideLayout }">
+  <f-container :class="{ Layout: true, 'Layout--hideLayout': hideLayout }">
     <div v-if="!hideLayout" class="Layout__logo">
       <router-link to="/">
         <h1>FSG</h1>
@@ -10,10 +10,10 @@
 
     <LayoutMenu v-if="!hideLayout" class="Layout__menu" />
 
-    <f-container class="Layout__content">
+    <div class="Layout__content">
       <slot />
-    </f-container>
-  </div>
+    </div>
+  </f-container>
 </template>
 
 <script>
@@ -60,25 +60,25 @@ $menu-width: 200px;
     padding: 16px;
   }
 
-  &__head {
-    grid-area: head-content;
-    width: 100vw;
-    height: 100px;
-    padding: 10px;
-  }
-
   &__menu {
     grid-area: menu;
     width: $menu-width;
-    height: calc(100vh - (#{$header-height} + #{$grid-gap}));
+    height: 100vh;
     background: rgba(47, 49, 153, 0.05);
+  }
+
+  &__head {
+    grid-area: head-content;
+    width: calc(100vw - (#{$menu-width} + #{$grid-gap}));
+    height: 100px;
+    padding: 10px;
   }
 
   &__content {
     grid-area: content;
     width: calc(100vw - (#{$menu-width} + #{$grid-gap}));
-    height: calc(100vh - (#{$header-height} + #{$grid-gap}));
-    padding: 32px;
+    overflow: auto;
+    // height: calc(100vh - (#{$header-height} + #{$grid-gap}));
   }
 }
 </style>

@@ -26,28 +26,40 @@ export default {
     FIconFlux
   },
   props: {
+    /**
+     * The color for the icon.
+     */
     color: {
       type: String,
       deafult: 'primary'
     },
+    /**
+     * The lib used for icon
+     * @values flux, material
+     */
     lib: {
       default: 'material',
       validator: val => ['flux', 'material'].includes(val)
     },
-    type: {
-      default: 'default',
-      type: String
-    },
+    /**
+     * The size of icon
+     * @values xs, sm, base, lg, xl, 2xl
+     */
     size: {
       type: String,
       default: 'base',
       validator: val => ['xs', 'sm', 'base', 'lg', 'xl', '2xl'].includes(val)
     },
+    /**
+     * The file name of icon
+     */
     name: {
-      default: 'hardware',
       type: String,
       required: true
     },
+    /**
+     * If icon is clickable, for opacity on mouse over
+     */
     clickable: {
       type: Boolean,
       default: true

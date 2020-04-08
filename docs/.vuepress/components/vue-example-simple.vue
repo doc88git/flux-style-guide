@@ -4,7 +4,7 @@
       <f-tab :options="options">
         <template slot="content-1">
           <ClientOnly>
-            <component v-if="dynamicComponent" :is="dynamicComponent" />
+            <component class="VueExample__content" v-if="dynamicComponent" :is="dynamicComponent" />
           </ClientOnly>
           <!-- <ExampleResult
             v-if="shouldRenderResult"
@@ -182,5 +182,8 @@ export default {
 <style lang="scss" scoped>
 .VueExample {
   margin: 20px 0;
+  &__content {
+    padding: 24px 8px;
+  }
 }
 </style>
