@@ -203,7 +203,7 @@ export default {
       position: relative;
       margin-left: 5px;
       white-space: nowrap;
-      overflow-x: hidden;
+      overflow: hidden;
       @include transition(0.1s);
 
       &--sub {

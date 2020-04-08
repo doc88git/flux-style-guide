@@ -133,3 +133,31 @@ storiesOf('Form|Select', module)
     </div>
   `
   }))
+  .add('Label', () => ({
+    components: { FSelect },
+    data: () => ({
+      value: 1
+    }),
+    props: {
+      options: {
+        default: array(
+          'options',
+          arr.map((v, i) => ({ value: ++i, label: v }))
+        )
+      },
+      type: {
+        default: select('type', typeList, 'outlined')
+      }
+    },
+    template: `
+    <div style="padding: 20px;">
+      <f-select
+        label="Bruxaria"
+        gray
+        :options="options"
+        :type="type"
+        :close-on-click="true"
+        v-model="value" />
+    </div>
+  `
+  }))

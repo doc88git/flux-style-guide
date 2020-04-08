@@ -30,6 +30,7 @@ import * as FUpload from './FUpload/index.js'
 import * as FProgressBar from './FProgressBar/index.js'
 import * as FSticky from './FSticky/index.js'
 import * as FAccordion from './FAccordion/index.js'
+import * as FTab from './FTab/index.js'
 
 const components = [
   Alert,
@@ -63,7 +64,8 @@ const components = [
   FUpload,
   FSticky,
   FProgressBar,
-  FAccordion
+  FAccordion,
+  FTab
 ]
 
 export default components

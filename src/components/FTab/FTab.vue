@@ -11,10 +11,15 @@
           :tab="!fill"
           :options="options"
           :default="1"
+          v-bind="$attrs"
           @change="setSelected"
         />
+
+        <div v-if="$slots['header-addon']" class="f-tab__header__addon">
+          <slot name="header-addon" />
+        </div>
       </FCardTitle>
-      <FSeparator />
+      <FSeparator v-if="!noSeparator" />
       <FCardBody
         v-for="(item, index) in options"
         :key="index"
@@ -30,11 +35,12 @@
 
 <script>
 import { FCard, FCardBody, FCardTitle } from '../FCard'
-import { FSeparator } from '@/components/FSeparator'
+import { FSeparator } from '../FSeparator'
 import { FButtonGroup } from '../FButton'
 
 export default {
   name: 'f-tab',
+
   components: {
     FCard,
     FCardBody,
@@ -42,14 +48,16 @@ export default {
     FButtonGroup,
     FCardTitle
   },
+
   props: {
+    fill: Boolean,
     options: Array,
-    fill: Boolean
+    noSeparator: Boolean
   },
+
+  data: () => ({ selected: null }),
+
   computed: {
-    isFill() {
-      return this.fill
-    },
     headerSize() {
       console.log({ b: this.$refs.tabHeader })
       return this.$refs.tabHeader && this.$refs.tabHeader.$el
@@ -63,17 +71,10 @@ export default {
         : 0
     }
   },
-  data: () => ({
-    selected: null
-  }),
-  mounted() {
-    // console.log({ self: this });
-    // console.log({ btnGroupSize: this.btnGroupSize });
-  },
+
   methods: {
     setSelected(id) {
       this.selected = id
-      console.log(id)
     },
     drag(e) {
       console.log(this.$refs)
@@ -92,6 +93,9 @@ export default {
 <style lang="scss" scoped>
 .f-tab {
   &__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
     overflow: auto;
   }
 }

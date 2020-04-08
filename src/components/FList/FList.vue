@@ -8,8 +8,7 @@
 
 <script>
 export default {
-  name: 'f-list',
-  components: {}
+  name: 'f-list'
 }
 </script>
 
@@ -18,6 +17,7 @@ export default {
   display: flex;
   align-items: center;
   width: 100%;
+
   &__content {
     overflow: hidden;
     background-color: var(--color-white);
