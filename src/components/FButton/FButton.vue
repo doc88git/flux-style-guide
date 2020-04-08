@@ -29,7 +29,6 @@ export default {
     FIcon
   },
   props: {
-    underline: Boolean,
     outline: Boolean,
     flat: Boolean,
     small: Boolean,
