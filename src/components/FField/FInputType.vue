@@ -7,7 +7,8 @@
     <div class="f-input-type__message" :class="[messageFontSize, colorText]">
       {{ message }}
     </div>
-    <input
+    <f-input
+      :name="name"
       :type="type"
       v-model="value"
       :disabled="disabled"
@@ -39,6 +40,7 @@
 
 <script>
 import { FButton } from '../FButton'
+import FInput from './FInput'
 
 function precision(a) {
   if (!isFinite(a)) return 0
@@ -54,7 +56,8 @@ function precision(a) {
 export default {
   name: 'f-input-type',
   components: {
-    FButton
+    FButton,
+    FInput
   },
   data: () => ({
     value: 0,
@@ -76,6 +79,10 @@ export default {
     type: {
       type: String,
       default: 'number'
+    },
+    name: {
+      type: String,
+      default: ''
     },
     delay: {
       type: [String, Number],
@@ -242,6 +249,7 @@ export default {
     width: 100%;
     text-align: end;
     background-color: transparent;
+    border: none;
     outline: none;
   }
 
