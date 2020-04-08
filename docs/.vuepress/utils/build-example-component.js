@@ -8,6 +8,6 @@ module.exports = function buildExampleComponent(args) {
   let exampleArgs = buildExampleAttrs(fileBaseName, example, attrs)
 
   return `<ClientOnly>
-            <vue-example-simple ${exampleArgs} />
+            <style-guide-example ${exampleArgs} />
           </ClientOnly>`
 }

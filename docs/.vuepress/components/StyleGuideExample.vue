@@ -4,7 +4,11 @@
       <f-tab :options="options">
         <template slot="content-1">
           <ClientOnly>
-            <component class="VueExample__content" v-if="dynamicComponent" :is="dynamicComponent" />
+            <component
+              class="VueExample__content"
+              v-if="dynamicComponent"
+              :is="dynamicComponent"
+            />
           </ClientOnly>
           <!-- <ExampleResult
             v-if="shouldRenderResult"
@@ -30,9 +34,9 @@
 </template>
 
 <script>
-import CodeBlock from './vue-example-simple/code-block'
-import ExampleResult from './vue-example-simple/example-result'
-// import PlaygroundButton from './vue-example-simple/playground-button'
+import CodeBlock from './StyleGuideExample/code-block'
+import ExampleResult from './StyleGuideExample/example-result'
+// import PlaygroundButton from './StyleGuideExample/playground-button'
 import store from '@store'
 
 export default {
@@ -102,19 +106,18 @@ export default {
     }
   },
   data: () => ({
-    options: [
-      {
-        label: 'Example',
-        value: 1
-      },
-      {
-        label: 'Code',
-        value: 2
-      }
-    ],
     dynamicComponent: null
   }),
   computed: {
+    options() {
+      let arr = [{ label: 'Example', value: 1 }]
+
+      if (!this.resultOnly) {
+        arr.push({ label: 'Code', value: 1 })
+      }
+
+      return arr
+    },
     langVariants() {
       return {
         html: {

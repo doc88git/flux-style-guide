@@ -1,21 +1,21 @@
 # Icon
 
-Flux Icon uses [Flux Icons](https://github.com/doc88git/flux-icon) and [Material Icon](https://material.io/resources/icons/?style=baseline) as icon library.
+O [Flux Icons](https://github.com/doc88git/flux-icon) foi criados exclusivamente para o Flux Style Guide com suporte também ao [Material Icon](https://material.io/resources/icons/?style=baseline) como biblioteca de ícones opcionais.
 
-### Sizes
+### Tamanhos
 
 | | xs | sm | base | lg | xl | 2xl |
 |----|-----|---|---|---|---|---|
-| Component Size | 8px | 12px | 16px | 24px | 32px | 48px |
-| SVG Size File | 16px | 24px | 16px | 24px | 16px | 24px |
+| Componente | 8px | 12px | 16px | 24px | 32px | 48px |
+| Arquivo SVG | 16px | 24px | 16px | 24px | 16px | 24px |
 
-## Instalation
+## Instalação
 
 ```html
 <f-icon name="IconName" size="sm" lib="flux">
 ```
 
-## Usage
+## Uso
 
 @[example](FIcon)
 
