@@ -223,7 +223,7 @@ export default {
     background: white;
     padding: 0 4px;
     user-select: none;
-    color: #cccccc;
+    color: var(--color-gray-400);
     font-size: 10px;
   }
 
@@ -250,10 +250,6 @@ export default {
 
   &--input {
     color: var(--color-black);
-  }
-
-  &--input {
-    color: #cccccc;
   }
 }
 </style>

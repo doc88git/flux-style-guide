@@ -15,7 +15,9 @@
           @change="setSelected"
         />
 
-        <slot name="header-addon" />
+        <div v-if="$slots['header-addon']" class="f-tab__header__addon">
+          <slot name="header-addon" />
+        </div>
       </FCardTitle>
       <FSeparator v-if="!noSeparator" />
       <FCardBody
@@ -91,6 +93,9 @@ export default {
 <style lang="scss" scoped>
 .f-tab {
   &__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
     overflow: auto;
   }
 }
