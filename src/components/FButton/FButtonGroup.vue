@@ -31,6 +31,10 @@ export default {
     outline: Boolean,
     tab: Boolean,
     default: [String, Number],
+    textUppercase: {
+      type: Boolean,
+      default: true
+    },
     size: {
       type: String,
       default: ''
@@ -82,7 +86,8 @@ export default {
         outline: mustBeO,
         flat: this.isFlat,
         small: this.size === 'small',
-        bigger: this.size === 'bigger'
+        bigger: this.size === 'bigger',
+        textUppercase: this.textUppercase
       }
     },
     isSelected(id) {

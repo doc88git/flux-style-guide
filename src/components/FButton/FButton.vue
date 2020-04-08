@@ -52,6 +52,10 @@ export default {
       type: Boolean,
       default: true
     },
+    textUppercase: {
+      type: Boolean,
+      default: true
+    },
     textColor: String
   },
   computed: {
@@ -89,6 +93,7 @@ export default {
         ['btn--small']: this.small,
         ['btn--bigger']: this.bigger,
         ['btn--dense']: this.dense,
+        ['btn--text-uppercas']: this.textUppercase,
         [`color--text--${this.textColor}`]: !!this.textColor
       }
     },

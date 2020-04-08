@@ -11,8 +11,11 @@
           :tab="!fill"
           :options="options"
           :default="1"
+          v-bind="$attrs"
           @change="setSelected"
         />
+
+        <slot name="header-addon" />
       </FCardTitle>
       <FSeparator v-if="!noSeparator" />
       <FCardBody
