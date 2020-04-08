@@ -2,7 +2,7 @@ import Vue from 'vue'
 
 const globalSettingsScope = '__vueExampleGlobalSettings'
 const data = {
-  jsStyle: 'es5',
+  jsStyle: 'modern',
   useDirectiveShorthands: false,
 }
 

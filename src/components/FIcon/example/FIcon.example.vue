@@ -9,7 +9,7 @@ import { FIcon } from '@/components/FIcon'
 
 export default {
   name: 'FIconExample',
-  components: FIcon
+  components: { FIcon }
 }
 </script>
 

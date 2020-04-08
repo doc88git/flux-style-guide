@@ -11,15 +11,8 @@ module.exports = function buildExampleAttrs(
   return `
     name="${fileBaseName}"
     html="${sanitizeAttrValue(html)}"
-    es5-js="${flow(
-      modernToEs5,
-      prettifyJs,
-      sanitizeAttrValue
-    )(js)}"
-    modern-js="${flow(
-      prettifyJs,
-      sanitizeAttrValue
-    )(js)}"
+    es5-js="${flow(modernToEs5, prettifyJs, sanitizeAttrValue)(js)}"
+    modern-js="${flow(prettifyJs, sanitizeAttrValue)(js)}"
     css="${sanitizeAttrValue(css)}"
     ${attrs.replace(/,/g, ' ')}
   `

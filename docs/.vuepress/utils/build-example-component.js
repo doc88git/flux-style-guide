@@ -7,8 +7,6 @@ module.exports = function buildExampleComponent(args) {
   const example = parseExample(fileBaseName)
   let exampleArgs = buildExampleAttrs(fileBaseName, example, attrs)
 
-  console.log({exampleArgs})
-
   return `<ClientOnly>
             <vue-example-simple ${exampleArgs} />
           </ClientOnly>`

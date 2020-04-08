@@ -1,2 +1,3 @@
 dist/
 examples/*.example.vue
+components/*.example.vue

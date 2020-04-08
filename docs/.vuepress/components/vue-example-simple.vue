@@ -3,11 +3,14 @@
     <template v-if="!playgroundOnly">
       <f-tab :options="options">
         <template slot="content-1">
-          <ExampleResult
+          <ClientOnly>
+            <component v-if="dynamicComponent" :is="dynamicComponent" />
+          </ClientOnly>
+          <!-- <ExampleResult
             v-if="shouldRenderResult"
             :name="name"
             v-bind="compatBlocks"
-          />
+          /> -->
         </template>
         <template slot="content-2">
           <div v-for="(code, lang) in blocks" :key="lang">
@@ -22,21 +25,21 @@
         <!-- <template slot="content-3">Content C</template> -->
       </f-tab>
     </template>
-    <PlaygroundButton v-if="shouldRenderResult" :name="name" v-bind="blocks" />
+    <!-- <PlaygroundButton v-if="shouldRenderResult" :name="name" v-bind="blocks" /> -->
   </div>
 </template>
 
 <script>
-import CodeBlock from './vue-exa  mple-simple/code-block'
+import CodeBlock from './vue-example-simple/code-block'
 import ExampleResult from './vue-example-simple/example-result'
-import PlaygroundButton from './vue-example-simple/playground-button'
+// import PlaygroundButton from './vue-example-simple/playground-button'
 import store from '@store'
 
 export default {
   components: {
     CodeBlock,
-    ExampleResult,
-    PlaygroundButton
+    ExampleResult
+    // PlaygroundButton
   },
   props: {
     name: {
@@ -108,7 +111,8 @@ export default {
         label: 'Code',
         value: 2
       }
-    ]
+    ],
+    dynamicComponent: null
   }),
   computed: {
     langVariants() {
@@ -144,6 +148,11 @@ export default {
         !this.resultDisabled && !this.htmlOnly && !this.jsOnly && !this.cssOnly
       )
     }
+  },
+  mounted() {
+    import(`./${this.name}.example.vue`).then(module => {
+      this.dynamicComponent = module.default
+    })
   },
   methods: {
     unsanitize(code) {

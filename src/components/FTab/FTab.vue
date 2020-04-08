@@ -51,13 +51,11 @@ export default {
       return this.fill
     },
     headerSize() {
-      console.log({ b: this.$refs.tabHeader })
       return this.$refs.tabHeader && this.$refs.tabHeader.$el
         ? this.$refs.tabHeader.$el.clientWidth
         : 0
     },
     btnGroupSize() {
-      console.log({ b: this.$refs.btnGroup })
       return this.$refs.btnGroup && this.$refs.btnGroup.$el
         ? this.$refs.btnGroup.$el.clientWidth
         : 0
@@ -73,17 +71,15 @@ export default {
   methods: {
     setSelected(id) {
       this.selected = id
-      console.log(id)
     },
     drag(e) {
-      console.log(this.$refs)
-      console.log({ e })
+      return e
     },
     stopDrag(e) {
-      console.log({ e })
+      return e
     },
     userSwiped(e) {
-      console.log({ userSwiped: e })
+      return e
     }
   }
 }

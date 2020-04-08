@@ -1,13 +1,11 @@
-const { transform } = require('buble')
+const { transformSync } = require('@babel/core')
 
 module.exports = function modernToEs5(code) {
-  console.log({code})
-  return code
-  // return transform(code, {
-  //   target: { ie: 9 },
-  //   transforms: {
-  //     templateString: false,
-  //   },
-  //   namedFunctionExpressions: false,
-  // }).code.replace(/\bthis\$1\b/g, 'vm')
+  let result = transformSync(code, {
+    filename: 'file.js',
+    ast: true,
+    code: true,
+    presets: ['@babel/env']
+  })
+  return result.code.replace(/\bthis\$1\b/g, 'vm')
 }
