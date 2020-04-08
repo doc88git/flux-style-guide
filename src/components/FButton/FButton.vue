@@ -93,7 +93,7 @@ export default {
         ['btn--small']: this.small,
         ['btn--bigger']: this.bigger,
         ['btn--dense']: this.dense,
-        ['btn--text-uppercas']: this.textUppercase,
+        ['btn--text-uppercase']: this.textUppercase,
         [`color--text--${this.textColor}`]: !!this.textColor
       }
     },
@@ -134,7 +134,6 @@ export default {
   height: fit-content;
   margin: 0.25rem;
   border-radius: 0.25rem;
-  text-transform: uppercase;
   width: auto;
   border: none;
   cursor: pointer;
@@ -154,6 +153,10 @@ export default {
   &:disabled {
     opacity: 50%;
     cursor: default;
+  }
+
+  &--text-uppercase {
+    text-transform: uppercase;
   }
 
   &--noradius {
