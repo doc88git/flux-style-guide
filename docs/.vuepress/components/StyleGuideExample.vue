@@ -113,7 +113,7 @@ export default {
       let arr = [{ label: 'Example', value: 1 }]
 
       if (!this.resultOnly) {
-        arr.push({ label: 'Code', value: 1 })
+        arr.push({ label: 'Code', value: 2 })
       }
 
       return arr
