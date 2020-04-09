@@ -1,7 +1,21 @@
 <template>
   <div class="FIconExample">
     <div>
-      <f-input v-model="search" name="search" placeholder="Pesquisar" />
+      <ul class="FIconExample__example-1">
+        <li v-for="(size, index) in sizes" :key="index">
+          <f-icon
+            name="home"
+            color="blue"
+            :size="size"
+            lib="flux"
+            class="FIconExample__icon-example"
+          />
+          <div>{{ size }}</div>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <f-input v-model="search" name="search" placeholder="Search" />
     </div>
     <h2>16px</h2>
     <div class="FIconExample__list">
@@ -53,7 +67,8 @@ export default {
   components: { FIcon, FInput },
   data: () => ({
     list,
-    search: ''
+    search: '',
+    sizes: ['xs', 'sm', 'base', 'lg', 'xl', '2xl'].reverse()
   }),
   computed: {
     icons16() {
@@ -83,6 +98,21 @@ export default {
 .FIconExample {
   h2 {
     margin: 16px 0;
+  }
+  &__example-1 {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    li {
+      justify-self: center;
+      margin: 0 16px;
+      text-align: center;
+
+      .FIconExample__icon-example {
+        display: inline-block;
+      }
+    }
   }
   &__list {
     max-width: 100%;
