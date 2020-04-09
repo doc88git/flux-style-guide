@@ -34,12 +34,13 @@
 </template>
 
 <script>
-import CodeBlock from './StyleGuideExample/code-block'
-import ExampleResult from './StyleGuideExample/example-result'
-// import PlaygroundButton from './StyleGuideExample/playground-button'
+import CodeBlock from './core/code-block'
+import ExampleResult from './core/example-result'
+// import PlaygroundButton from './core/playground-button'
 import store from '@store'
 
 export default {
+  name: 'style-guide-example',
   components: {
     CodeBlock,
     ExampleResult

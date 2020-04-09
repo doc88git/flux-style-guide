@@ -92,5 +92,6 @@ h3 {
 .text {
   text-transform: lowercase;
   text-align: center;
+  font-size: var(--text-sm);
 }
 </style>
