@@ -1,0 +1,7 @@
+docs/
+.storybook
+dist/
+src/dev
+.vscode
+.github
+docgen.*
