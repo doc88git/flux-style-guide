@@ -125,56 +125,56 @@
     }
     &--text {
       &#{'--' + $prop} {
-        color: var(--color-#{$color}) !important;
+        color: var(--color-#{$prop}) !important;
         &:hover {
-          color: var(--color-#{$color}-400);
+          color: var(--color-#{$prop}-400);
         }
         &:focus {
-          color: var(--color-#{$color}-600);
+          color: var(--color-#{$prop}-600);
         }
       }
     }
     &--flat {
       &#{'--' + $prop} {
         background-color: var(--color-transparent);
-        color: var(--color-#{$color});
+        color: var(--color-#{$prop});
         &:hover {
-          color: var(--color-#{$color}-400);
+          color: var(--color-#{$prop}-400);
         }
         &:focus {
-          color: var(--color-#{$color}-600);
+          color: var(--color-#{$prop}-600);
         }
       }
     }
     &--outline {
       &#{'--' + $prop} {
         background-color: var(--color-transparent);
-        color: var(--color-#{$color});
+        color: var(--color-#{$prop});
         border-width: 1px;
         border-style: solid;
-        border-color: var(--color-#{$color});
+        border-color: var(--color-#{$prop});
         &:hover {
-          color: var(--color-#{$color}-400);
+          color: var(--color-#{$prop}-400);
           border-width: 1px;
           border-style: solid;
-          border-color: var(--color-#{$color}-400);
+          border-color: var(--color-#{$prop}-400);
         }
         &:focus {
-          color: var(--color-#{$color}-600);
+          color: var(--color-#{$prop}-600);
           border-width: 1px;
           border-style: solid;
-          border-color: var(--color-#{$color}-600);
+          border-color: var(--color-#{$prop}-600);
         }
       }
     }
     &--default {
       &#{'--' + $prop} {
-        background-color: var(--color-#{$color});
+        background-color: var(--color-#{$prop});
         &:hover {
-          background-color: var(--color-#{$color}-400);
+          background-color: var(--color-#{$prop}-400);
         }
         &:focus {
-          background-color: var(--color-#{$color}-600);
+          background-color: var(--color-#{$prop}-600);
         }
       }
     }
