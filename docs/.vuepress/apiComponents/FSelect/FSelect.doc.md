@@ -2,6 +2,8 @@
 
 | Prop name    | Description | Type    | Values | Default     |
 | ------------ | ----------- | ------- | ------ | ----------- |
+| gray         |             | boolean | -      |             |
+| label        |             | string  | -      |             |
 | name         |             | string  | -      |             |
 | type         |             | string  | -      | 'input'     |
 | customLabel  |             | string  | -      | 'Selecione' |

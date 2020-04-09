@@ -1,14 +1,14 @@
 ### Props
 
-| Prop name     | Description | Type    | Values | Default   |
-| ------------- | ----------- | ------- | ------ | --------- |
-| subItemsLimit |             | number  | -      | 1         |
-| menuItems     |             | array   | -      | {}        |
-| menuSelected  |             | string  | -      | 'company' |
-| menuExpand    |             | boolean | -      | false     |
+| Prop name    | Description | Type    | Values | Default |
+| ------------ | ----------- | ------- | ------ | ------- |
+| menuItems    |             | array   | -      | {}      |
+| menuSelected |             | string  | -      | ''      |
+| menuExpand   |             | boolean | -      | false   |
 
 ### Events
 
 | Event name | Type      | Description |
 | ---------- | --------- | ----------- |
 | click      | undefined |
+| expand     |           |

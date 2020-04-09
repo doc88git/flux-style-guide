@@ -1,13 +1,13 @@
 ### Props
 
-| Prop name | Description | Type           | Values | Default   |
-| --------- | ----------- | -------------- | ------ | --------- |
-| options   |             | array          | -      |           |
-| outline   |             | boolean        | -      |           |
-| tab       |             | boolean        | -      |           |
-| default   |             | string\|number | -      |           |
-| icon      |             | string         | -      |           |
-| size      |             | string         | -      | 'default' |
+| Prop name     | Description | Type           | Values | Default   |
+| ------------- | ----------- | -------------- | ------ | --------- |
+| options       |             | array          | -      |           |
+| outline       |             | boolean        | -      |           |
+| tab           |             | boolean        | -      |           |
+| default       |             | string\|number | -      |           |
+| textUppercase |             | boolean        | -      | true      |
+| size          |             | string         | -      | 'default' |
 
 ### Events
 

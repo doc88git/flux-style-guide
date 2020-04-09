@@ -13,6 +13,12 @@
 | styles            |             | string  | -      | null      |
 | iconLib           |             | string  | -      | 'flux'    |
 
+### Events
+
+| Event name      | Type      | Description |
+| --------------- | --------- | ----------- |
+| menu-item-click | undefined |
+
 ### Slots
 
 | Name     | Description | Bindings |

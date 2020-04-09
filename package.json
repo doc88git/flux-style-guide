@@ -24,7 +24,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn eslint; yarn test"
+      "pre-commit": "yarn eslint; yarn test; yarn predocs:dev"
     }
   },
   "repository": {

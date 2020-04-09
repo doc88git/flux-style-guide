@@ -6,6 +6,7 @@
 | closeOnClick |             | boolean | -      | true      |
 | input        |             | boolean | -      |           |
 | open         |             | boolean | -      |           |
+| gray         |             | boolean | -      |           |
 | caret        |             | boolean | -      | true      |
 | type         |             | string  | -      | 'default' |
 | position     |             | string  | -      | 'down'    |

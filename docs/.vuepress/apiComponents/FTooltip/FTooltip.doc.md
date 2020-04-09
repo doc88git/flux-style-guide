@@ -6,6 +6,7 @@
 | position     |             | string  | -      | 'top'        |
 | overlap      |             | boolean | -      | false        |
 | aligned      |             | string  | -      | 'center'     |
+| size         |             | string  | -      | 'default'    |
 | color        |             | string  | -      | 'default'    |
 | disabled     |             | boolean | -      |              |
 | bgColor      |             | string  | -      | 'black'      |
