@@ -38,15 +38,19 @@ export default {
   display: block;
   padding: 0.5rem 1rem;
   border-bottom-width: 1px;
+  font-size: var(--text-sm);
+
   &:hover,
   &:focus {
     background-color: var(--color-gray-300);
   }
+
   &__item {
     &--title {
       font-weight: 600;
       margin-bottom: 0.25rem;
     }
+
     &--label {
       margin-bottom: 0.25rem;
       color: var(--color-gray-800);

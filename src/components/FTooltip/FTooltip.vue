@@ -60,6 +60,11 @@ export default {
       default: 'center',
       validator: val => ['center', 'start', 'end'].includes(val)
     },
+    size: {
+      type: String,
+      default: 'default',
+      validator: val => ['default', 'sm'].includes(val)
+    },
     color: {
       type: String,
       default: 'default',
@@ -115,6 +120,7 @@ export default {
         `f-tooltip__item--${this.position}`,
         `f-tooltip__item--${this.aligned}`,
         `f-tooltip__item--${this.bgColor}`,
+        `f-tooltip__item--${this.size}`,
         `text-${this.textColor}`
       ]
     },
@@ -195,7 +201,6 @@ export default {
   &__item {
     position: fixed;
     background-color: var(--color-black);
-    padding: 12px;
     font-size: var(--text-sm);
     border-radius: 0.5rem;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -205,6 +210,14 @@ export default {
     left: 100%;
     z-index: 10;
     color: var(--color-white);
+
+    &--sm {
+      padding: 4px 8px;
+    }
+
+    &--default {
+      padding: 12px;
+    }
 
     &--primary {
       background-color: var(--color-primary);

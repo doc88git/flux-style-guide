@@ -4,7 +4,7 @@
       <slot name="icon">
         <f-icon
           lib="flux"
-          size="xs"
+          size="sm"
           :clickable="false"
           :color="iconColor"
           :name="selected ? 'check' : icon"
@@ -20,7 +20,7 @@
       @click="onRemove($event, value)"
     >
       <slot name="close">
-        <f-icon name="close" size="sm" />
+        <f-icon name="X" lib="flux" size="xs" :color="textColor" />
       </slot>
     </div>
   </div>
@@ -106,6 +106,7 @@ export default {
   border-width: 1px;
   transition: 0.3s;
   min-height: 23px;
+  margin: 0 1px;
 
   &__icon {
     display: flex;
@@ -123,7 +124,7 @@ export default {
     white-space: nowrap;
 
     color: var(--color-white);
-    font-size: 0.875rem;
+    font-size: var(--text-base);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     line-height: 1;

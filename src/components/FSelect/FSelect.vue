@@ -1,27 +1,30 @@
 <template>
   <div class="f-select" tabindex="-1">
+    <span v-if="label" class="f-select__label">{{ label }}</span>
+
     <f-dropdown
       :list="optionsFiltered"
       :color="color"
       :textColor="textColor"
       :type="type"
-      @selected="setValue"
       :closeOnClick="closeOnClick"
+      :gray="gray"
+      @selected="setValue"
       @status="setStatus"
     >
-      <div v-show="showLabel" class="f-select__label">
+      <div v-show="showLabel" class="f-select__placeholder">
         {{ labelSelected || customLabel }}
       </div>
 
-      <div v-show="multiple" class="f-select__multiple">
+      <div v-show="multiple" class="f-select__multiple" ref="multipleInput">
         <f-chip
           v-for="item in multipleList"
           :key="item.id"
           :label="item.label"
           :value="item.value"
           :removable="true"
-          color="white"
-          textColor="primary"
+          color="gray"
+          textColor="white"
           @remove="removeChip"
         />
       </div>
@@ -65,6 +68,8 @@ export default {
     list: []
   }),
   props: {
+    gray: Boolean,
+    label: String,
     name: String,
     type: {
       type: String,
@@ -76,10 +81,6 @@ export default {
     },
     color: String,
     textColor: String,
-    // iconStatus: {
-    //   type: String,
-    //   default: 'check'
-    // },
     options: {
       type: Array,
       required: true
@@ -130,7 +131,8 @@ export default {
     inputClasses() {
       return {
         ['f-select--outlined']: this.type === 'outlined',
-        ['f-select--input']: this.type === 'input'
+        ['f-select--input']: this.type === 'input',
+        ['f-select--gray']: this.gray
       }
     },
     multipleList() {
@@ -169,6 +171,7 @@ export default {
       if (this.list.includes(value)) return false
 
       this.list.push(value)
+      this.selected = this.list
     },
     setFocus() {
       this.selectedOld = this.selected
@@ -203,11 +206,31 @@ export default {
 
 <style lang="scss" scoped>
 .f-select {
+  position: relative;
   max-width: 100%;
 
+  &:focus {
+    outline: none;
+  }
+
   &__label {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+    margin-top: -8px;
+    margin-left: 5px;
+    background: white;
+    padding: 0 4px;
+    user-select: none;
+    color: var(--color-gray-400);
+    font-size: 10px;
+  }
+
+  &__placeholder {
     padding-right: 100%;
   }
+
   &__input {
     background-color: transparent;
     border-style: none;
@@ -216,6 +239,7 @@ export default {
     margin: 0;
     height: 1.5rem;
   }
+
   &__multiple {
     flex-wrap: wrap;
   }

@@ -14,11 +14,11 @@ storiesOf('Components|Chip', module)
         bus: false,
         train: false
       },
-      list: ['car', 'bus', 'train'],
+      list: ['hardware', 'home', 'base'],
       icons: {
-        car: 'directions_car',
-        bus: 'directions_bus',
-        train: 'train'
+        hardware: 'hardware',
+        home: 'home',
+        data: 'base'
       }
     }),
     methods: {
@@ -87,15 +87,15 @@ storiesOf('Components|Chip', module)
     data: () => ({
       value: 2,
       select: {
-        car: false,
-        bus: false,
-        train: false
+        alarm: false,
+        apps: false,
+        badge: false
       },
-      list: ['car', 'bus', 'train'],
+      list: ['alarm', 'apps', 'badge'],
       icons: {
-        car: 'directions_car',
-        bus: 'directions_bus',
-        train: 'train'
+        alarm: 'alarm',
+        apps: 'apps',
+        badge: 'badge'
       }
     }),
     methods: {
@@ -131,13 +131,11 @@ storiesOf('Components|Chip', module)
           :label="item"
           :icon="icons[item]"
           :selected.sync="select[item]"
-
-          @remove="remove(item)"
-
           :color="color"
           :textColor="textColor"
           :removable="removable"
           :disable="disable"
+          @remove="remove(item)"
         />
       </div>
     `

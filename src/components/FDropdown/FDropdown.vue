@@ -10,7 +10,7 @@
         <slot>{{ labelSelected }}</slot>
       </div>
       <div v-if="caret" class="f-dropdown__inner__append">
-        <f-icon :name="iconName" :color="iconColor" />
+        <f-icon :name="iconName" :color="gray ? 'gray-600' : iconColor" />
       </div>
     </div>
     <transition :name="`slide-${position}`">
@@ -76,6 +76,7 @@ export default {
     },
     input: Boolean,
     open: Boolean,
+    gray: Boolean,
     caret: {
       type: Boolean,
       default: true
@@ -137,7 +138,8 @@ export default {
     classes() {
       return {
         'f-dropdown--outlined': this.type === 'outlined',
-        'f-dropdown--input': this.type === 'input'
+        'f-dropdown--input': this.type === 'input',
+        'f-dropdown--gray': this.gray
       }
       // return this.isOutlined ? "f-dropdown--outlined" : "";
     }
@@ -365,6 +367,17 @@ export default {
           }
         }
       }
+    }
+  }
+
+  &--gray {
+    .f-dropdown__inner {
+      border: 1px solid var(--color-gray-400);
+      color: var(--color-gray-600);
+    }
+
+    .f-dropdown__list {
+      border-color: var(--color-gray-400);
     }
   }
 }

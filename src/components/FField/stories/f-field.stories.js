@@ -3,6 +3,7 @@ import { text, boolean, number, select } from '@storybook/addon-knobs'
 import { FField, FInput, FInputType } from '..'
 import { FButton } from '../../FButton'
 import { FAvatar } from '../../FAvatar'
+import { FIcon } from '../../FIcon'
 
 const groupId = 'FIELD-OPTIONS-ID1'
 const summary = `
@@ -435,11 +436,14 @@ storiesOf('Form|Field', module)
   .add(
     'Percentage',
     () => ({
-      components: { FInputType, FField },
+      components: { FInputType, FField, FIcon },
       data: () => ({}),
       props: {
         type: {
           default: text('type', 'number', groupId)
+        },
+        name: {
+          default: text('name', '', groupId)
         },
         bgColorContent: {
           default: text('bgColorContent', 'white', groupId)
@@ -453,20 +457,17 @@ storiesOf('Form|Field', module)
         textColor: {
           default: text('textColor', 'font-base', groupId)
         },
-        borderRadius: {
-          default: text('borderRadius', 'base', groupId)
-        },
         iconUp: {
-          default: text('iconUp', 'keyboard_arrow_up', groupId)
+          default: text('iconUp', 'chevron-up', groupId)
         },
         iconDown: {
-          default: text('iconDown', 'keyboard_arrow_down', groupId)
+          default: text('iconDown', 'chevron-down', groupId)
         },
         message: {
           default: text('message', 'Demanda acima de:', groupId)
         },
         unity: {
-          default: text('unity', '', groupId)
+          default: text('unity', '%', groupId)
         },
         fontSizeInput: {
           default: text('fontSizeInput', '5xl', groupId)
@@ -511,11 +512,11 @@ storiesOf('Form|Field', module)
           <f-input-type
           :disabled="disabled"
           :type="type"
+          :name="name"
           :bgColorContent="bgColorContent"
           :borderColorContent="borderColorContent"
           :buttonColor="buttonColor"
           :textColor="textColor"
-          :borderRadius="borderRadius"
           :iconUp="iconUp"
           :iconDown="iconDown"
           :message="message"
