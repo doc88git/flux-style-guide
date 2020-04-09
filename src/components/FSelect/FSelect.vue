@@ -209,6 +209,9 @@ export default {
   position: relative;
   max-width: 100%;
 
+  font-family: var(--font-secondary);
+  font-weight: normal;
+
   &:focus {
     outline: none;
   }
