@@ -4,20 +4,19 @@
 
 import Vue from 'vue'
 
-if (typeof process === 'undefined') {
-  var process = {}
-}
-
-export const isSSR = process.server && typeof window === 'undefined'
+export const isSSR = typeof window === 'undefined'
 export let fromSSR = false
 export let onSSR = isSSR
 
+export let iosEmulated = false
+export let iosCorrection
+
 function getMatch(userAgent, platformMatch) {
   const match =
-    /(edge)\/([\w.]+)/.exec(userAgent) ||
+    /(edge|edga|edgios)\/([\w.]+)/.exec(userAgent) ||
     /(opr)[\/]([\w.]+)/.exec(userAgent) ||
     /(vivaldi)[\/]([\w.]+)/.exec(userAgent) ||
-    /(chrome)[\/]([\w.]+)/.exec(userAgent) ||
+    /(chrome|crios)[\/]([\w.]+)/.exec(userAgent) ||
     /(iemobile)[\/]([\w.]+)/.exec(userAgent) ||
     /(version)(applewebkit)[\/]([\w.]+).*(safari)[\/]([\w.]+)/.exec(
       userAgent
@@ -25,6 +24,7 @@ function getMatch(userAgent, platformMatch) {
     /(webkit)[\/]([\w.]+).*(version)[\/]([\w.]+).*(safari)[\/]([\w.]+)/.exec(
       userAgent
     ) ||
+    /(firefox|fxios)[\/]([\w.]+)/.exec(userAgent) ||
     /(webkit)[\/]([\w.]+)/.exec(userAgent) ||
     /(opera)(?:.*version|)[\/]([\w.]+)/.exec(userAgent) ||
     /(msie) ([\w.]+)/.exec(userAgent) ||
@@ -62,14 +62,29 @@ function getPlatformMatch(userAgent) {
   )
 }
 
-function getPlatform(userAgent) {
-  userAgent = (
-    userAgent ||
-    navigator.userAgent ||
-    navigator.vendor ||
-    window.opera
-  ).toLowerCase()
+const hasTouch =
+  isSSR === false
+    ? 'ontouchstart' in window || window.navigator.maxTouchPoints > 0
+    : false
 
+function applyIosCorrection(is) {
+  iosCorrection = { is: Object.assign({}, is) }
+
+  delete is.mac
+  delete is.desktop
+
+  const platform =
+    Math.min(window.innerHeight, window.innerWidth) > 414 ? 'ipad' : 'iphone'
+
+  Object.assign(is, {
+    mobile: true,
+    ios: true,
+    platform,
+    [platform]: true
+  })
+}
+
+function getPlatform(userAgent) {
   const platformMatch = getPlatformMatch(userAgent),
     matched = getMatch(userAgent, platformMatch),
     browser = {}
@@ -86,6 +101,7 @@ function getPlatform(userAgent) {
 
   const knownMobiles =
     browser.android ||
+    browser.ios ||
     browser.bb ||
     browser.blackberry ||
     browser.ipad ||
@@ -99,6 +115,17 @@ function getPlatform(userAgent) {
   // These are all considered mobile platforms, meaning they run a mobile browser
   if (knownMobiles === true || userAgent.indexOf('mobile') > -1) {
     browser.mobile = true
+
+    if (browser.edga || browser.edgios) {
+      browser.edge = true
+      matched.browser = 'edge'
+    } else if (browser.crios) {
+      browser.chrome = true
+      matched.browser = 'chrome'
+    } else if (browser.fxios) {
+      browser.firefox = true
+      matched.browser = 'firefox'
+    }
   }
   // If it's not mobile we should consider it's desktop platform, meaning it runs a desktop browser
   // It's a workaround for anonymized user agents
@@ -133,12 +160,6 @@ function getPlatform(userAgent) {
   if (browser.rv || browser.iemobile) {
     matched.browser = 'ie'
     browser.ie = true
-  }
-
-  // Edge is officially known as Microsoft Edge, so rewrite the key to match
-  if (browser.edge) {
-    matched.browser = 'edge'
-    browser.edge = true
   }
 
   // Blackberry browsers are marked as Safari on BlackBerry
@@ -186,102 +207,141 @@ function getPlatform(userAgent) {
   browser.name = matched.browser
   browser.platform = matched.platform
 
-  if (process.isClient) {
-    if (
-      window.process &&
-      window.process.versions &&
-      window.process.versions.electron
-    ) {
+  if (isSSR === false) {
+    if (userAgent.indexOf('electron') > -1) {
       browser.electron = true
-    } else if (document.location.href.indexOf('chrome-extension://') === 0) {
-      browser.chromeExt = true
-    } else if (window._cordovaNative || window.cordova) {
+    } else if (document.location.href.indexOf('-extension://') > -1) {
+      browser.bex = true
+    } else if (window.Capacitor !== void 0) {
+      browser.capacitor = true
+      browser.nativeMobile = true
+      browser.nativeMobileWrapper = 'capacitor'
+    } else if (window._cordovaNative !== void 0 || window.cordova !== void 0) {
       browser.cordova = true
+      browser.nativeMobile = true
+      browser.nativeMobileWrapper = 'cordova'
+    } else if (
+      hasTouch === true &&
+      browser.desktop === true &&
+      browser.mac === true &&
+      browser.safari === true
+    ) {
+      /*
+       * Correction needed for iOS since the default
+       * setting on iPad is to request desktop view; if we have
+       * touch support and the user agent says it's a
+       * desktop, we infer that it's an iPhone/iPad with desktop view
+       * so we must fix the false positives
+       */
+      applyIosCorrection(browser)
     }
 
     fromSSR =
-      browser.cordova === void 0 &&
+      browser.nativeMobile === void 0 &&
       browser.electron === void 0 &&
       !!document.querySelector('[data-server-rendered]')
 
-    fromSSR === true && (onSSR = true)
+    if (fromSSR === true) {
+      onSSR = true
+    }
   }
 
   return browser
 }
 
-let webStorage
+const userAgent =
+  isSSR === false
+    ? (navigator.userAgent || navigator.vendor || window.opera).toLowerCase()
+    : ''
 
-export function hasWebStorage() {
-  if (webStorage !== void 0) {
-    return webStorage
-  }
-
-  try {
-    if (window.localStorage) {
-      webStorage = true
-      return true
-    }
-  } catch (e) {
-    console.log({ e })
-  }
-
-  webStorage = false
-  return false
-}
-
-function getClientProperties() {
-  return {
-    has: {
-      touch: (() =>
-        'ontouchstart' in window || window.navigator.maxTouchPoints > 0)(),
-      webStorage: hasWebStorage()
-    },
-    within: {
-      iframe: window.self !== window.top
-    }
-  }
-}
-
-export default {
+const ssrClient = {
   has: {
     touch: false,
     webStorage: false
   },
-  within: { iframe: false },
+  within: { iframe: false }
+}
 
-  parseSSR(/* ssrContext */ ssr) {
-    return ssr
-      ? {
-          is: getPlatform(ssr.req.headers['user-agent']),
-          has: this.has,
-          within: this.within
+// We export "client" for hydration error-free parts,
+// like touch directives who do not (and must NOT) wait
+// for the client takeover;
+// Do NOT import this directly in your app, unless you really know
+// what you are doing.
+export const client =
+  isSSR === false
+    ? {
+        userAgent,
+        is: getPlatform(userAgent),
+        has: {
+          touch: hasTouch,
+          webStorage: (() => {
+            try {
+              if (window.localStorage) {
+                return true
+              }
+            } catch (e) {}
+            return false
+          })()
+        },
+        within: {
+          iframe: window.self !== window.top
         }
-      : {
-          is: getPlatform(),
-          ...getClientProperties()
-        }
-  },
+      }
+    : ssrClient
 
+const Platform = {
   install($f, queues) {
     if (isSSR === true) {
+      // we're on server-side, so we push
+      // to the server queue instead of
+      // applying directly
       queues.server.push((q, ctx) => {
         q.platform = this.parseSSR(ctx.ssr)
       })
-      return
-    }
+    } else if (fromSSR === true) {
+      // must match with server-side before
+      // client taking over in order to prevent
+      // hydration errors
+      Object.assign(this, client, iosCorrection, ssrClient)
 
-    this.is = getPlatform()
-
-    if (fromSSR === true) {
+      // takeover should increase accuracy for
+      // the rest of the props; we also avoid
+      // hydration errors
       queues.takeover.push(q => {
         onSSR = fromSSR = false
-        Object.assign(q.platform, getClientProperties())
+        Object.assign(q.platform, client)
+        iosCorrection = void 0
       })
+
+      // we need to make platform reactive
+      // for the takeover phase
       Vue.util.defineReactive($f, 'platform', this)
     } else {
-      Object.assign(this, getClientProperties())
+      // we don't have any business with SSR, so
+      // directly applying...
+      Object.assign(this, client)
       $f.platform = this
     }
   }
 }
+
+if (isSSR === true) {
+  Platform.parseSSR = (/* ssrContext */ ssr) => {
+    const userAgent = (
+      ssr.req.headers['user-agent'] ||
+      ssr.req.headers['User-Agent'] ||
+      ''
+    ).toLowerCase()
+    return {
+      ...client,
+      userAgent,
+      is: getPlatform(userAgent)
+    }
+  }
+} else {
+  iosEmulated =
+    client.is.ios === true &&
+    window.navigator.vendor.toLowerCase().indexOf('apple') === -1
+}
+
+export default Platform

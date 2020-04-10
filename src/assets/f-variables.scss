@@ -69,6 +69,19 @@ $shadows: (
   'base': '0px 5px 25px 0px rgba(0, 0, 0, .1)'
 );
 
+$zindex-theme: (
+  'z-fab': '990',
+  'z-side': '1000',
+  'z-marginals': '2000',
+  'z-fixed-drawer': '3000',
+  'z-fullscreen': '6000',
+  'z-menu': '6000',
+  'z-top': '7000',
+  'z-tooltip': '9000',
+  'z-notify': '9500',
+  'z-max': '9998'
+);
+
 // Color system
 $gray: #a0aec0;
 $red: #f56565;
@@ -123,7 +136,8 @@ $colors-theme: (
   'red-200': #fed7d7,
   'red-300': #feb2b2,
   'red-400': #fc8181,
-  'red-500': #f56565,
+  'red-500': $red,
+  'red': $red,
   'red-600': #e53e3e,
   'red-700': #c53030,
   'red-800': #9b2c2c,

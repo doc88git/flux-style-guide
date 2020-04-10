@@ -4,10 +4,6 @@ export const listenOpts = {
   notPassiveCapture: true
 }
 
-if (typeof process === 'undefined') {
-  var process = {}
-}
-
 try {
   var opts = Object.defineProperty({}, 'passive', {
     get() {
@@ -18,16 +14,14 @@ try {
         passiveCapture: { passive: true, capture: true },
         notPassiveCapture: { passive: false, capture: true }
       })
-      return true
+      return {}
     }
   })
-  if (process.isClient) {
-    window.addEventListener('ftest', null, opts)
-    window.removeEventListener('ftest', null, opts)
-  }
-} catch (e) {
-  console.log({ e })
-}
+  window.addEventListener('qtest', null, opts)
+  window.removeEventListener('qtest', null, opts)
+} catch (e) {}
+
+export function noop() {}
 
 export function leftClick(e) {
   return e.button === 0
@@ -46,6 +40,8 @@ export function position(e) {
     e = e.touches[0]
   } else if (e.changedTouches && e.changedTouches[0]) {
     e = e.changedTouches[0]
+  } else if (e.targetTouches && e.targetTouches[0]) {
+    e = e.targetTouches[0]
   }
 
   return {
@@ -112,16 +108,47 @@ export function stopAndPrevent(e) {
   e.stopPropagation()
 }
 
+export function preventDraggable(el, status) {
+  if (el === void 0 || (status === true && el.__dragPrevented === true)) {
+    return
+  }
+
+  const fn =
+    status === true
+      ? el => {
+          el.__dragPrevented = true
+          el.addEventListener(
+            'dragstart',
+            prevent,
+            listenOpts.notPassiveCapture
+          )
+        }
+      : el => {
+          delete el.__dragPrevented
+          el.removeEventListener(
+            'dragstart',
+            prevent,
+            listenOpts.notPassiveCapture
+          )
+        }
+
+  el.querySelectorAll('a, img').forEach(fn)
+}
+
 export function create(name, { bubbles = false, cancelable = false } = {}) {
   try {
     return new Event(name, { bubbles, cancelable })
   } catch (e) {
-    // IE doesn't support `new Event()`, so...`
+    // IE doesn't support `new Event()`, so...
     const evt = document.createEvent('Event')
     evt.initEvent(name, bubbles, cancelable)
     return evt
   }
 }
+
+/*
+ * also update /types/utils/event.d.ts
+ */
 
 export default {
   listenOpts,
@@ -134,5 +161,6 @@ export default {
   stop,
   prevent,
   stopAndPrevent,
+  preventDraggable,
   create
 }

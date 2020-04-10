@@ -10,7 +10,11 @@
                 class="block"
                 :class="{ [`color--background--${color[0]}`]: true }"
               />
-              <div class="text">{{ color[0] }}</div>
+              <div class="text">
+                <span class="text-hash">{{ color[1] }}</span>
+                <br />
+                {{ color[0] }}
+              </div>
             </li>
           </ul>
         </li>
@@ -72,26 +76,34 @@ export default {
 <style lang="scss" scoped>
 h3 {
   text-transform: capitalize;
-  margin: 20px 0;
+  margin: 4px 0 24px 0;
 }
 .block-colors {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-  grid-auto-rows: minmax(62px, auto);
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
+  grid-auto-rows: minmax(auto, auto);
   margin: auto;
-  width: 500px;
+  width: 100%;
 }
 .block {
   width: 48px;
   height: 48px;
-  border-radius: 10px;
   margin: auto;
   border: 1px solid var(--color-gray-200);
+  border-radius: 10px;
 }
 .text {
   text-transform: lowercase;
   text-align: center;
   font-size: var(--text-sm);
+  line-height: var(--text-lg);
+  margin: auto;
+  padding: 4px 0;
+
+  &-hash {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
 }
 </style>

@@ -3,13 +3,26 @@ const fs = require('fs')
 const { parse } = require('@vue/component-compiler-utils')
 const VueTemplateCompiler = require('vue-template-compiler')
 
+const getComponents = dir => {
+  try {
+    const filePath = path.resolve(__dirname, dir)
+    const content = fs.readFileSync(filePath, { encoding: 'utf8' })
+    return { filePath, content }
+  } catch (e) {
+    return null
+  }
+}
+
 module.exports = function parseExample(fileBaseName) {
-  const filePathString = `../components/${fileBaseName}.example.vue`
-  const filePath = path.resolve(__dirname, filePathString)
-  const componentSource = fs.readFileSync(filePath, { encoding: 'utf8' })
+  const pathComponents = `../components/${fileBaseName}.example.vue`
+  const pathExamples = `../components/examples/${fileBaseName}.example.vue`
+  const componentSource = getComponents(pathComponents) || getComponents(pathExamples)
+
+  const { filePath, content } = componentSource
+
   const { template, script, styles } = parse({
     filename: filePath,
-    source: componentSource,
+    source: content,
     compiler: VueTemplateCompiler,
     needMap: false
   })

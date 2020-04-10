@@ -20,6 +20,11 @@
     --size-#{$name}: #{$size};
   }
 
+  // custom z-index theme
+  @each $prop, $value in $zindex-theme {
+    --#{$prop}: #{$value};
+  }
+
   // custom font
   --font-primary: #{$font-primary};
   --font-secondary: #{$font-secondary};

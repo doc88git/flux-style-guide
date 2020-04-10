@@ -154,11 +154,18 @@ export default {
     }
   },
   mounted() {
-    import(`./${this.name}.example.vue`).then(module => {
-      this.dynamicComponent = module.default
-    })
+    this.importComponent(`./${this.name}.example.vue`)
   },
   methods: {
+    async importComponent(path) {
+      let m
+      try {
+        m = await import(`./${this.name}.example.vue`)
+      } catch (e) {
+        m = await import(`./examples/${this.name}.example.vue`)
+      }
+      this.dynamicComponent = m.default
+    },
     unsanitize(code) {
       return code
         .replace(/&quot;/g, '"')
@@ -187,7 +194,7 @@ export default {
 .VueExample {
   margin: 20px 0;
   &__content {
-    padding: 24px 8px;
+    padding: 16px 8px;
   }
 }
 </style>
