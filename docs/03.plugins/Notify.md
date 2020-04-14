@@ -79,3 +79,9 @@ dismiss()
 ```
 
 ## Notify API
+
+### Injection
+
+```js
+$f.notify
+```

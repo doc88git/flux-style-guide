@@ -1,5 +1,5 @@
 <template>
-  <div class="f-field" rules="required|email" mode="eager">
+  <div class="f-field" :rules="rules" mode="eager">
     <div
       v-if="$slots.before"
       class="f-field__before"
