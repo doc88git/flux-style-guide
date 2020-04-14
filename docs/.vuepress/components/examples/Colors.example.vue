@@ -78,6 +78,9 @@ h3 {
   text-transform: capitalize;
   margin: 4px 0 24px 0;
 }
+ul {
+  list-style: none;
+}
 .block-colors {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

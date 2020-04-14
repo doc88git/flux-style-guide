@@ -1,6 +1,6 @@
 <template>
   <div class="p--base">
-    <div class="m--b--xl">
+    <div class="m-b--xl">
       Browser User Agent: "<strong>{{ $f.platform.userAgent }}</strong
       >"
     </div>
@@ -21,7 +21,7 @@
       </tbody>
     </table>
 
-    <div class="m-t--base">
+    <div class="m-t--xl">
       The device which you are using to view this website
       <strong>{{ touch }}</strong> touch capability.
     </div>
