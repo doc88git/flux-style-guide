@@ -1,7 +1,5 @@
 # Screen
 
-You don’t need to do anything. The Screen plugin gets installed automatically.
-
 ## Instalation
 
 ```
