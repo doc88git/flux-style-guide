@@ -4,4 +4,6 @@
 
 ## Usage
 
+@[example](ClickOutside)
+
 ## ClickOutside API
