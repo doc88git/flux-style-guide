@@ -1,12 +1,8 @@
 import Vue from 'vue'
 
-// import QAvatar from '../components/avatar/QAvatar.js'
-// import QIcon from '../components/icon/QIcon.js'
-// import QBtn from '../components/btn/QBtn.js'
-
-const QAvatar = { name: 'QAvatar', render: h => h('div', {}, 'QAvatar') }
-const QIcon = { name: 'QIcon', render: h => h('div', {}, 'QIcon') }
-const QBtn = import('../components/FButton')
+import { FButton } from '../components/FButton'
+import { FIcon } from '../components/FIcon'
+import { FAvatar } from '../components/FAvatar'
 
 import { noop } from '../utils/event.js'
 import { isSSR } from './Platform.js'
@@ -387,7 +383,7 @@ const Notifications = {
             if (meta.hasMedia === true) {
               if (notif.icon) {
                 mainChild.push(
-                  h(QIcon, {
+                  h(FIcon, {
                     staticClass: 'f-notification__icon flex-auto',
                     attrs: { role: 'img' },
                     props: { name: notif.icon }
@@ -396,7 +392,7 @@ const Notifications = {
               } else if (notif.avatar) {
                 mainChild.push(
                   h(
-                    QAvatar,
+                    FAvatar,
                     { staticClass: 'f-notification__avatar flex-auto' },
                     [
                       h('img', {
@@ -431,7 +427,9 @@ const Notifications = {
                   {
                     staticClass: meta.actionsClass
                   },
-                  notif.actions.map(a => h(QBtn, { props: a.props, on: a.on }))
+                  notif.actions.map(a =>
+                    h(FButton, { props: a.props, on: a.on })
+                  )
                 )
               )
 
