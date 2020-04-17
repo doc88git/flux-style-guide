@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div>
+    <f-button label="Click me" click-outside />
+  </div>
 </template>
 
 <script>

@@ -1,2 +1,1 @@
-module.exports = () =>
-  require.context(`../../components`, true, /.example.vue$/).keys()
+module.exports = () => require.context('../..', true, /.example.vue$/).keys()

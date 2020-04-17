@@ -1,11 +1,18 @@
 <template>
   <div class="AppMenu">
     <f-list>
-      <f-list-item
-        v-for="(item, key) in clenedRoutes"
-        :key="key"
-        :to="item.path"
-        >{{ item.path }}
+      <f-list-item v-for="(f, key) in clenedRoutes" :key="key">
+        {{ f.name }}
+
+        <f-list>
+          <f-list-item
+            v-for="(c, i) in f.children"
+            :key="i"
+            :to="`${f.path}${c.path}`"
+          >
+            {{ c.name }}
+          </f-list-item>
+        </f-list>
       </f-list-item>
     </f-list>
   </div>
@@ -18,7 +25,14 @@ export default {
       return this.$router.options.routes
     },
     clenedRoutes() {
-      return this.routes.filter(i => i.path.startsWith('/F'))
+      return this.routes.filter(i => !['*', '/'].includes(i.path))
+    }
+  },
+  watch: {
+    $route: {
+      handler(n) {
+        console.log({ n })
+      }
     }
   }
 }
