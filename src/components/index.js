@@ -31,6 +31,7 @@ import * as FProgressBar from './FProgressBar/index.js'
 import * as FSticky from './FSticky/index.js'
 import * as FInputTag from './FInputTag/index.js'
 import * as FAccordion from './FAccordion/index.js'
+import * as FTab from './FTab/index.js'
 
 const components = [
   Alert,
@@ -65,7 +66,8 @@ const components = [
   FInputTag,
   FProgressBar,
   FSticky,
-  FAccordion
+  FAccordion,
+  FTab
 ]
 
 export default components

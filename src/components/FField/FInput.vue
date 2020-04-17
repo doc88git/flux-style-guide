@@ -6,6 +6,7 @@
     :disabled="disabled"
     :readonly="readonly"
     :name="name"
+    v-html="['textarea'].includes(type) && value"
     v-bind="[$attrs, $props]"
     @input="runMask"
     @focus="$emit('focus', $event)"
