@@ -5,7 +5,7 @@ const removeExample = f => {
   return s[s.length - 1].replace('.example.vue', '')
 }
 
-const withChildrens = [
+const groups = [
   'components',
   'plugins',
   'directives',
@@ -14,34 +14,35 @@ const withChildrens = [
   'utils'
 ]
 
-const fathers = withChildrens.map(i => ({
-  path: `/${i}/`,
-  name: i,
-  children: []
-}))
+const getGroup = i => {
+  let group = groups.filter(c => i.includes(c))
+  return group[0] || ''
+}
 
-const addToFather = (s, obj) =>
-  fathers.forEach(i => {
-    if (!s.includes(i.name)) return false
+const getSubgroup = s => {
+  let split = s.split('/')
+  let file = removeExample(s)
+  let folder = split[split.length - 2]
 
-    // obj = {
-    //   ...obj,
-    //   path: `/${i.name}/${obj.path}/`
-    // }
+  return file.includes(folder) ? folder : ''
+}
 
-    i.children.push(obj)
-  })
+const captalize = s => s.charAt(0).toUpperCase() + s.slice(1)
 
 const loadExamples = () => {
-  listExamples().forEach(f =>
-    addToFather(f, {
-      path: removeExample(f),
-      name: removeExample(f),
-      component: f.replace('./', '')
-    })
-  )
+  return listExamples().map(f => {
+    const name = removeExample(f)
+    const group = getGroup(f)
+    const path = `/${group ? `${group}/${name}` : name}`
+    const component = f.replace('./', '')
 
-  return fathers
+    return {
+      path,
+      name: captalize(name),
+      component: () => import('@/' + component),
+      meta: { group: captalize(group), subgroup: getSubgroup(component) }
+    }
+  })
 }
 
 module.exports = loadExamples

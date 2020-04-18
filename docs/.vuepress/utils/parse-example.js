@@ -15,8 +15,7 @@ const getComponents = dir => {
 
 module.exports = function parseExample(fileBaseName) {
   const pathComponents = `../components/${fileBaseName}.example.vue`
-  const pathExamples = `../components/examples/${fileBaseName}.example.vue`
-  const componentSource = getComponents(pathComponents) || getComponents(pathExamples)
+  const componentSource = getComponents(pathComponents)
 
   const { filePath, content } = componentSource
 
