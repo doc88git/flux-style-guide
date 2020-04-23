@@ -3,10 +3,19 @@ import { text } from '@storybook/addon-knobs'
 import FMenu from '../FMenu.vue'
 import FMenuButton from '../FMenuButton.vue'
 
-storiesOf('Components|Menu', module)
+storiesOf('Template|Menu', module)
   .add('Default', () => ({
     components: { FMenu },
+
+    props: {
+      color: {
+        default: text('color', 'primary')
+      }
+    },
+
     data: () => ({
+      menuSelected: 'home',
+      menuExpand: false,
       menuItems: [
         { name: 'Home', url: '#', id: 'home', icon: 'home' },
         {
@@ -38,37 +47,52 @@ storiesOf('Components|Menu', module)
             }
           ]
         },
-        { name: 'Empresa', url: '#', id: 'company', icon: 'bell' }
+        { name: 'Empresa', url: '#', id: 'company', icon: 'bell' },
+        {
+          name: 'Posições',
+          id: 'positions',
+          icon: 'group',
+          openByDefault: true,
+          subItems: [
+            {
+              name: 'Formações',
+              url: '#',
+              id: 'formations'
+            },
+            {
+              name: 'Formações complementares',
+              url: '#',
+              id: 'additionalFormations'
+            },
+            {
+              name: 'Instituições Educacionais',
+              url: '#',
+              id: 'educationalInstitutions'
+            }
+          ]
+        }
       ]
     }),
-    props: {
-      color: {
-        default: text('color', 'primary')
+
+    methods: {
+      updateSelected(item) {
+        this.menuSelected = item.id
+        this.menuExpand = false
       }
     },
+
     template: `
       <div style="padding: 20px;">
         <f-menu
-          :action="showSidebar"
-          :color="color"
-          :menu-items="menuItems"
-          :sub-items-limit="3"
           icon-lib="flux"
+          :menu-items="menuItems"
+          :menu-expand="menuExpand"
+          :menu-selected="menuSelected"
+          @click="updateSelected"
+          @expand="menuExpand = true"
         />
       </div>
-    `,
-    methods: {
-      showSidebar(payload) {
-        console.log(payload)
-        this.$emit('click', payload)
-      },
-      showMenu() {
-        console.log('Menu is open')
-      },
-      showNavbar() {
-        console.log('Navbar visible')
-      }
-    }
+    `
   }))
   .add('Menu Button', () => ({
     components: {

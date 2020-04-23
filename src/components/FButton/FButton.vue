@@ -52,6 +52,10 @@ export default {
       type: Boolean,
       default: true
     },
+    textUppercase: {
+      type: Boolean,
+      default: true
+    },
     textColor: String
   },
   computed: {
@@ -89,6 +93,7 @@ export default {
         ['btn--small']: this.small,
         ['btn--bigger']: this.bigger,
         ['btn--dense']: this.dense,
+        ['btn--text-uppercase']: this.textUppercase,
         [`color--text--${this.textColor}`]: !!this.textColor
       }
     },
@@ -129,7 +134,6 @@ export default {
   height: fit-content;
   margin: 0.25rem;
   border-radius: 0.25rem;
-  text-transform: uppercase;
   width: auto;
   border: none;
   cursor: pointer;
@@ -149,6 +153,10 @@ export default {
   &:disabled {
     opacity: 50%;
     cursor: default;
+  }
+
+  &--text-uppercase {
+    text-transform: uppercase;
   }
 
   &--noradius {
@@ -211,9 +219,11 @@ export default {
     align-items: center;
     align-content: center;
     width: 100%;
+
     &--center {
       justify-content: center;
     }
+
     &__icon {
       height: 100%;
       display: flex;
@@ -224,6 +234,7 @@ export default {
         margin-right: 0;
       }
     }
+
     &__content {
       height: 100%;
       text-align: center;

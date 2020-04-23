@@ -9,6 +9,7 @@
       v-if="lib === 'flux'"
       v-bind="{ name: $props.name, type: $props.type }"
       :class="classes"
+      :color="color"
       :size="iconSize"
       :clickable="clickable"
     />
@@ -32,7 +33,7 @@ export default {
     },
     lib: {
       default: 'material',
-      type: String
+      validator: val => ['flux', 'material'].includes(val)
     },
     type: {
       default: 'default',
@@ -50,7 +51,7 @@ export default {
     },
     clickable: {
       type: Boolean,
-      default: true
+      default: false
     }
   },
   computed: {

@@ -3,7 +3,7 @@ import { withKnobs, text, boolean } from '@storybook/addon-knobs'
 
 import FCheckbox from '../FCheckbox.vue'
 
-const stories = storiesOf('Components|Checkbox', module)
+const stories = storiesOf('Form|Checkbox', module)
 
 stories.addDecorator(withKnobs)
 

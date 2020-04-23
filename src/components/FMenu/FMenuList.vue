@@ -57,26 +57,21 @@ export default {
   width: 100%;
 
   &--parent {
-    height: 100%;
-    padding: 25px 0 0;
-    background-color: #fff;
-    position: fixed;
-    top: 70px;
-    left: -100%;
-    padding-top: 35px;
+    position: absolute;
+    top: 0;
+    left: 0;
 
-    @media screen and (min-width: map-get($sizes, 'tablet' )) {
-      position: absolute;
-      top: 0;
-      left: 0;
-      @include transition(0.1s);
-      box-shadow: var(--shadow-base);
-    }
+    height: 100%;
+    padding: 10px 0 0;
+    background-color: #fff;
+    overflow: scroll;
+
+    @include transition(0.1s);
+    box-shadow: var(--shadow-base);
 
     &__li {
       display: flex;
       flex-direction: column;
-      margin-bottom: 35px;
       width: 100%;
     }
   }
@@ -86,27 +81,14 @@ export default {
     max-height: 900px;
     transition: max-height 300ms ease, margin 300ms ease 300ms,
       overflow 350ms ease;
-
-    &__li {
-      &:first-child {
-        margin-top: 20px;
-      }
-
-      &:not(:last-child) {
-        margin-bottom: 15px;
-      }
-    }
   }
 
   &--expand {
+    width: 250px;
+    text-align: left;
     left: 0;
     @include transition(0.1s);
     text-align: center;
-
-    @media screen and (min-width: map-get($sizes, 'tablet' )) {
-      width: 230px;
-      text-align: left;
-    }
   }
 
   &--hide-sub {

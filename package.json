@@ -1,14 +1,14 @@
 {
   "name": "@doc88/flux-style-guide",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "license": "MIT",
   "main": "src/index.esm.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
+    "lint": "vue-cli-service lint --fix",
     "eslint": "eslint --ext .js,.vue --ignore-path .gitignore ./src --fix",
-    "storybook": "start-storybook --port 3001 --debug-webpack",
+    "storybook": "start-storybook -s ./public,./static --port 3001",
     "build:storybook": "build-storybook -c .storybook",
     "eyes-storybook": "eyes-storybook",
     "test": "jest",
@@ -17,11 +17,18 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint; npm run test"
+      "pre-commit": "npm run eslint; npm run test"
     }
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doc88git/flux-style-guide.git"
+  },
+  "bugs": {
+    "url": "https://github.com/doc88git/flux-style-guide/issues"
+  },
   "dependencies": {
-    "@doc88/flux-icon": "^1.1.3",
+    "@doc88/flux-icon": "^1.3.2",
     "collect.js": "^4.12.5",
     "core-js": "^3.6.4",
     "fuse.js": "^3.4.5",
@@ -68,5 +75,8 @@
     "vue-loader": "^15.7.0",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.10"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }

@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/vue'
 import { FUpload } from '../index.js'
 import { FButton } from '../../FButton/index.js'
 
-storiesOf('Components|Upload', module).add('Default', () => ({
+storiesOf('Form|Upload', module).add('Default', () => ({
   components: { FUpload, FButton },
   data: () => ({}),
   props: {},
