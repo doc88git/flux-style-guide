@@ -10,7 +10,7 @@
           ref="btnGroup"
           :tab="!fill"
           :options="options"
-          :default="1"
+          :default="initialValue"
           v-bind="$attrs"
           @change="setSelected"
         />
@@ -52,7 +52,11 @@ export default {
   props: {
     fill: Boolean,
     options: Array,
-    noSeparator: Boolean
+    noSeparator: Boolean,
+    initialValue: {
+      type: [Number, String],
+      default: 1
+    }
   },
 
   data: () => ({ selected: null }),
@@ -75,6 +79,7 @@ export default {
   methods: {
     setSelected(id) {
       this.selected = id
+      this.$emit('change', id)
     },
     drag(e) {
       console.log(this.$refs)

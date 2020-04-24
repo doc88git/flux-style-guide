@@ -60,7 +60,7 @@ export default {
     }
   },
   created() {
-    if (this.default) this.change(this.default)
+    if (this.default != null) this.change(this.default)
   },
   methods: {
     change(value) {
