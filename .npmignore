@@ -1,3 +1,5 @@
+._*
+.DS_Store
 docs/
 .storybook
 dist/
@@ -5,3 +7,5 @@ src/dev
 .vscode
 .github
 docgen.*
+public/
+src/**/example/*

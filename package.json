@@ -1,6 +1,6 @@
 {
   "name": "@doc88/flux-style-guide",
-  "version": "1.2.0-beta.7",
+  "version": "2.0-alpha.1",
   "license": "MIT",
   "module": "src/index.esm.js",
   "main": "src/index.umd.js",
@@ -17,7 +17,7 @@
     "test": "jest",
     "test:snapshot": "jest --updateSnapshot",
     "test:watch": "jest --watchAll",
-    "predocs:dev": "yarn vue-docgen -c docgen.config.js",
+    "predocs:dev": "yarn vue-docgen -c scripts/docgen.config.js",
     "docs:dev": "vuepress dev docs --no-cache --debug",
     "docs:build": "vuepress build docs"
   },
