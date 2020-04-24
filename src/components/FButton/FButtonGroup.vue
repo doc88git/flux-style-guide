@@ -60,7 +60,8 @@ export default {
     }
   },
   created() {
-    if (this.default != null) this.change(this.default)
+    if (this.default !== null && this.default !== undefined)
+      this.change(this.default)
   },
   methods: {
     change(value) {
