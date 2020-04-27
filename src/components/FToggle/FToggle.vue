@@ -10,16 +10,10 @@
       </div>
 
       <div class="FToggle__switch" @click="switchToggle">
-        <div class="FToggle__ball" :class="{ 'FToggle__ball--active': value }">
-          <f-icon
-            v-if="!!value"
-            name="check"
-            lib="flux"
-            type="outlined"
-            color="white"
-            size="xs"
-          />
-        </div>
+        <div
+          class="FToggle__ball"
+          :class="{ 'FToggle__ball--active': value }"
+        />
       </div>
 
       <span
@@ -34,17 +28,11 @@
 </template>
 
 <script>
-import { FIcon } from '../FIcon'
-
 const hasKeys = (obj, keys) =>
   (keys || []).every(key => Object.keys(obj).includes(key))
 
 export default {
   name: 'FToggle',
-
-  components: {
-    FIcon
-  },
 
   props: {
     value: {
