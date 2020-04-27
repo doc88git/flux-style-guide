@@ -49,7 +49,6 @@ export default {
     },
     labels: {
       type: Object,
-      required: true,
       default: () => ({ on: 'Ligado', off: 'Desligado' }),
       validator: v => hasKeys(v, ['on', 'off'])
     }
@@ -102,6 +101,7 @@ export default {
     border-radius: 10px;
     background-color: #c1c1c1;
     transition: transform 0.1s ease-in-out;
+    transform: translateX(1px);
 
     &--active {
       transform: translateX(145%);
