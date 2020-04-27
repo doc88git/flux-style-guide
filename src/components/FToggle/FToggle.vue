@@ -8,25 +8,41 @@
       >
         <slot name="before" />
       </div>
+
       <div class="FToggle__switch" @click="switchToggle">
-        <div
-          class="FToggle__ball"
-          :class="{ 'FToggle__ball--active': value }"
-        ></div>
+        <div class="FToggle__ball" :class="{ 'FToggle__ball--active': value }">
+          <f-icon
+            v-if="!!value"
+            name="check"
+            lib="flux"
+            type="outlined"
+            color="white"
+            size="xs"
+          />
+        </div>
       </div>
+
       <span
+        v-if="!hideLabel"
         class="FToggle__wrapper--label"
         :class="[{ 'FToggle__wrapper--label--active': value }, labelPosition]"
-        >{{ labelName }}</span
       >
+        {{ labelName }}
+      </span>
     </div>
   </div>
 </template>
 
 <script>
+import { FIcon } from '../FIcon'
+
 export default {
   name: 'FToggle',
-  components: {},
+
+  components: {
+    FIcon
+  },
+
   props: {
     value: {
       type: Boolean,
@@ -35,8 +51,13 @@ export default {
     align: {
       type: String,
       default: 'right'
+    },
+    hideLabel: {
+      type: Boolean,
+      default: false
     }
   },
+
   computed: {
     labelName() {
       return this.value ? 'Ligado' : 'Desligado'
@@ -45,6 +66,7 @@ export default {
       return `FToggle__wrapper--label--${this.align}`
     }
   },
+
   methods: {
     switchToggle() {
       this.$emit('input', !this.value)
@@ -61,6 +83,9 @@ export default {
   margin-bottom: 10px;
 
   &__switch {
+    display: flex;
+    align-items: center;
+
     width: 40px;
     border: 1px solid #c1c1c1;
     height: 20px;
@@ -71,15 +96,19 @@ export default {
   }
 
   &__ball {
-    height: 16px;
-    width: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 14px;
+    width: 14px;
     border-radius: 10px;
     background-color: #c1c1c1;
     transition: transform 0.1s ease-in-out;
 
     &--active {
-      transform: translateX(125%);
-      background-color: #79df28;
+      transform: translateX(145%);
+      background-color: #00f300;
     }
   }
 
