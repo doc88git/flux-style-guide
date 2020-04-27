@@ -36,6 +36,9 @@
 <script>
 import { FIcon } from '../FIcon'
 
+const hasKeys = (obj, keys) =>
+  (keys || []).every(key => Object.keys(obj).includes(key))
+
 export default {
   name: 'FToggle',
 
@@ -55,12 +58,18 @@ export default {
     hideLabel: {
       type: Boolean,
       default: false
+    },
+    labels: {
+      type: Object,
+      required: true,
+      default: () => ({ on: 'Ligado', off: 'Desligado' }),
+      validator: v => hasKeys(v, ['on', 'off'])
     }
   },
 
   computed: {
     labelName() {
-      return this.value ? 'Ligado' : 'Desligado'
+      return this.value ? this.labels.on : this.labels.off
     },
     labelPosition() {
       return `FToggle__wrapper--label--${this.align}`
