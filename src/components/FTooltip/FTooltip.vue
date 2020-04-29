@@ -207,6 +207,8 @@ export default {
     align-self: center;
     text-align: center;
     white-space: nowrap;
+    user-select: none;
+    pointer-events: none;
     left: 100%;
     z-index: 10;
     color: var(--color-white);
