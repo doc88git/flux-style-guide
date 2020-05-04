@@ -1,7 +1,6 @@
 <template>
   <div class="f-select" tabindex="-1">
     <span v-if="label" class="f-select__label">{{ label }}</span>
-
     <f-dropdown
       :list="optionsFiltered"
       :color="color"
@@ -151,6 +150,9 @@ export default {
       return false
     }
   },
+  mounted() {
+    if (this.multiple) this.initMultiple()
+  },
   methods: {
     clearAll() {
       this.list = []
@@ -176,6 +178,12 @@ export default {
       this.selected = value
 
       this.emitSelected()
+    },
+    initMultiple() {
+      const value = this.$attrs.value
+      if (!Array.isArray(value)) return false
+
+      value.map(item => this.addMultiple(item))
     },
     addMultiple(value) {
       if (this.list.includes(value)) return false
@@ -256,6 +264,7 @@ export default {
   }
 
   &__multiple {
+    display: flex;
     flex-wrap: wrap;
   }
 

@@ -109,7 +109,7 @@ storiesOf('Form|Select', module)
   .add('Multiple', () => ({
     components: { FSelect },
     data: () => ({
-      value: 1
+      value: [1]
     }),
     props: {
       options: {

@@ -94,6 +94,7 @@ export default {
 .f-chip {
   flex-wrap: nowrap;
   display: inline-flex;
+  justify-content: space-between;
   align-items: center;
   vertical-align: middle;
   color: var(--color-white);
