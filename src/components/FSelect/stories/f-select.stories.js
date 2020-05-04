@@ -130,7 +130,6 @@ storiesOf('Form|Select', module)
           value: index,
           label: `New Item ${index}`
         })
-        console.log(this.options)
       }
     },
     template: `
