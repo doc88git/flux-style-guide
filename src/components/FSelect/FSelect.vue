@@ -110,7 +110,8 @@ export default {
       handler: function() {
         this.debounceInput(this.innerValue)
       }
-    }
+    },
+    options: 'clearAll'
   },
   computed: {
     dropdownType() {
@@ -151,6 +152,12 @@ export default {
     }
   },
   methods: {
+    clearAll() {
+      this.list = []
+      this.selected = null
+
+      this.emitSelected()
+    },
     removeChip(value) {
       this.list = this.list.filter(item => item !== value)
     },
@@ -161,17 +168,22 @@ export default {
         this.$emit('search-value', value)
       }, 100)
     },
+    emitSelected() {
+      this.$emit('input', this.selected)
+    },
     setValue(value) {
       if (this.multiple) return this.addMultiple(value)
       this.selected = value
 
-      this.$emit('input', value)
+      this.emitSelected()
     },
     addMultiple(value) {
       if (this.list.includes(value)) return false
 
       this.list.push(value)
       this.selected = this.list
+
+      this.emitSelected()
     },
     setFocus() {
       this.selectedOld = this.selected
