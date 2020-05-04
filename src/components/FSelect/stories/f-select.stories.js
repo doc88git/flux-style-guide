@@ -44,6 +44,7 @@ storiesOf('Form|Select', module)
       inputSelect: ''
     }),
     props: {
+      baseArray: arr,
       options: {
         default: array(
           'options',
@@ -108,7 +109,7 @@ storiesOf('Form|Select', module)
   .add('Multiple', () => ({
     components: { FSelect },
     data: () => ({
-      value: 1
+      value: [1]
     }),
     props: {
       options: {
@@ -121,9 +122,22 @@ storiesOf('Form|Select', module)
         default: select('type', typeList, 'outlined')
       }
     },
+    methods: {
+      addOption() {
+        let index = this.options.length + 1
+
+        this.options.push({
+          value: index,
+          label: `New Item ${index}`
+        })
+      }
+    },
     template: `
     <div style="padding: 20px;">
-      {{ value }}
+      <button @click="addOption">Add Option</button>
+
+      <p>{{ value }}</p>
+
       <f-select
         :multiple="true"
         :options="options"
