@@ -63,6 +63,8 @@ const matches = (word, words) => {
   return regularSplit || noAccentsSplit
 }
 
+let intTimeout = 0
+
 export default {
   name: 'FMultiSelect',
 
@@ -125,6 +127,14 @@ export default {
     multiple: {
       type: Boolean,
       default: true
+    },
+
+    /**
+     * Emit search to parent.
+     */
+    searchRequest: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -177,7 +187,9 @@ export default {
   watch: {
     displayOptions(display) {
       if (display) this.sortOptions()
-    }
+    },
+    searchQuery: 'debounceInput',
+    options: 'sortOptions'
   },
 
   methods: {
@@ -214,7 +226,7 @@ export default {
       this.displayOptions = false
     },
     sortOptions() {
-      this.sortedOptions = this.sortedOptions.sort((a, b) => {
+      this.sortedOptions = this.options.sort((a, b) => {
         if (this.isOptionSelected(a) && this.isOptionSelected(b)) return 0
         if (this.isOptionSelected(a)) return -1
         if (this.isOptionSelected(b)) return 1
@@ -227,6 +239,15 @@ export default {
     },
     search(query) {
       this.searchQuery = query
+    },
+    debounceInput() {
+      if (!this.searchRequest) return false
+
+      if (intTimeout) clearTimeout(intTimeout)
+
+      intTimeout = setTimeout(() => {
+        this.$emit('request', this.searchQuery)
+      }, 100)
     }
   }
 }
