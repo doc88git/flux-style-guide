@@ -231,7 +231,7 @@ export default {
     cursor: pointer;
 
     color: #999;
-    font-size: 14px;
+    font-size: var(--text-base);
     transition: top 200ms ease, font-size 200ms ease, left 200ms ease,
       padding 200ms ease;
 
@@ -243,7 +243,7 @@ export default {
     &--top {
       top: -7px;
       left: 8px;
-      font-size: 10px;
+      font-size: var(--text-xs);
       padding: 0 5px;
       transform: translateY(0px);
 
