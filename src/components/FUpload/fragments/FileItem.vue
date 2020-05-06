@@ -25,12 +25,16 @@
 </template>
 
 <script>
+import { FIcon } from '../../FIcon'
+
 const is = (value, constructor) => {
   return Object.prototype.toString.call(value) === `[object ${constructor}]`
 }
 
 export default {
   name: 'FileItem',
+
+  components: { FIcon },
 
   props: {
     /**
