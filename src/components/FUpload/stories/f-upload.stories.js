@@ -1,24 +1,49 @@
 import { storiesOf } from '@storybook/vue'
-// import { select, boolean } from "@storybook/addon-knobs";
 import { FUpload } from '../index.js'
-import { FButton } from '../../FButton/index.js'
 
-storiesOf('Form|Upload', module).add('Default', () => ({
-  components: { FUpload, FButton },
-  data: () => ({}),
-  props: {},
-  template: `
+storiesOf('Form|Upload', module)
+  .add('Multiple', () => ({
+    components: { FUpload },
+    data: () => ({ files: [] }),
+    methods: {
+      updateFiles(file) {
+        this.files.push(file)
+      },
+      deleteFile({ index }) {
+        this.files.splice(index, 1)
+      }
+    },
+    template: `
       <div style="padding: 40px; width: 100%; text-align: center;">
-        <f-upload>
-          <f-button
-            :disabled="false"
-            color="standard"
-            text-color="white"
-            icon="delete"
-            :small="true"
-            @click="clearFiles()"
-          />
-        </f-upload>
+        <f-upload
+          multiple
+          :value="files"
+          :extensions="['.jpg', '.png', '.zip', '.rar', '.txt']"
+          @upload="updateFiles"
+          @delete="deleteFile"
+        />
       </div>
     `
-}))
+  }))
+  .add('Simple', () => ({
+    components: { FUpload },
+    data: () => ({ file: '' }),
+    methods: {
+      updateFile(file) {
+        this.file = file
+      },
+      deleteFile() {
+        this.file = ''
+      }
+    },
+    template: `
+      <div style="padding: 40px;">
+        <f-upload
+          :value="file"
+          :extensions="['.jpg', '.png', '.zip', '.rar', '.txt']"
+          @upload="updateFile"
+          @delete="deleteFile"
+        />
+      </div>
+    `
+  }))
