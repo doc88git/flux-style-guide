@@ -140,7 +140,7 @@ export default {
 
   data() {
     return {
-      sortedOptions: JSON.parse(JSON.stringify(this.options || [])),
+      sortedOptions: [],
       displayOptions: false,
       searchQuery: ''
     }
@@ -189,10 +189,13 @@ export default {
       if (display) this.sortOptions()
     },
     searchQuery: 'debounceInput',
-    options: 'sortOptions'
+    options: 'setSortedOptions'
   },
 
   methods: {
+    setSortedOptions() {
+      this.sortedOptions = JSON.parse(JSON.stringify(this.options || []))
+    },
     addItem(item) {
       if (this.multiple)
         return this.$emit('input', [...(this.value || []), item])
@@ -226,7 +229,7 @@ export default {
       this.displayOptions = false
     },
     sortOptions() {
-      this.sortedOptions = this.options.sort((a, b) => {
+      this.sortedOptions = this.sortedOptions.sort((a, b) => {
         if (this.isOptionSelected(a) && this.isOptionSelected(b)) return 0
         if (this.isOptionSelected(a)) return -1
         if (this.isOptionSelected(b)) return 1
