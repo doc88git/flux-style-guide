@@ -31,5 +31,6 @@ export * from './components/FChip/index.js'
 export * from './components/FProgressBar/index.js'
 export * from './components/FSticky/index.js'
 export * from './components/FTab/index.js'
-export * from './components/FAccordion/index.js'
+export * from './components/FAccordion/index.js',
+export * from './components/FMultiSelect/index.js',
 export * from './components/FUpload/index.js'
