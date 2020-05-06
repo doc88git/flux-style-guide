@@ -229,6 +229,7 @@ export default {
       this.displayOptions = false
     },
     sortOptions() {
+      this.setSortedOptions()
       this.sortedOptions = this.sortedOptions.sort((a, b) => {
         if (this.isOptionSelected(a) && this.isOptionSelected(b)) return 0
         if (this.isOptionSelected(a)) return -1
@@ -258,6 +259,7 @@ export default {
 
 <style lang="scss">
 .FMultiSelect {
+  z-index: 0;
   min-width: 250px;
   height: fit-content;
 }
