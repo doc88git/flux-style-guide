@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue'
-import FMultiSelect from '../index.vue'
+import FMultiSelect from '../FMultiSelect.vue'
 import optionsMock from './mock.js'
 
 storiesOf('Form|MultiSelect', module)
