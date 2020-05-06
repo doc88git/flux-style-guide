@@ -19,6 +19,23 @@ storiesOf('Form|MultiSelect', module)
       </div>
     `
   }))
+  .add('Searchable', () => ({
+    components: { FMultiSelect },
+    data: () => ({ value: [], options: optionsMock }),
+    props: {},
+    template: `
+      <div style="padding: 30px; max-width: 400px; height: 100vh; margin: 0 auto;">
+        <f-multi-select
+          v-model="value"
+          :options="options"
+          label="Coisas"
+          type="check"
+          multiple
+          searchable
+        />
+      </div>
+    `
+  }))
   .add('Type: Photo', () => ({
     components: { FMultiSelect },
     data: () => ({ value: [], options: optionsMock }),
