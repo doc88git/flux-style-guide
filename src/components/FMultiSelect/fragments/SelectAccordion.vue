@@ -1,5 +1,5 @@
 <template>
-  <div v-click-outside="emitClose" class="SelectAccordion">
+  <div v-click-outside="emitClose" class="SelectAccordion" :class="parentStyle">
     <div ref="header" class="SelectAccordion__header">
       <slot name="header" />
     </div>
@@ -46,6 +46,11 @@ export default {
         }
       ]
     },
+    parentStyle() {
+      return {
+        'SelectAccordion__parent--active': this.showContent
+      }
+    },
     contentStyle() {
       return {
         paddingTop: `${this.contentPadding - 2}px`
@@ -82,6 +87,14 @@ export default {
   position: relative;
   display: flex;
   flex-direction: column;
+  z-index: 0;
+
+  transition: z-index 1s ease;
+
+  &__parent--active {
+    z-index: 1;
+    transition: z-index 1ms ease;
+  }
 
   border-radius: 5px;
 

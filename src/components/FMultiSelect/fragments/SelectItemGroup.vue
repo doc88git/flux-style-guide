@@ -93,6 +93,7 @@ export default {
 .SelectItemGroup {
   width: 100%;
   max-height: calc(100% - 1px);
+  z-index: 10;
 
   &__clear {
     display: flex;
