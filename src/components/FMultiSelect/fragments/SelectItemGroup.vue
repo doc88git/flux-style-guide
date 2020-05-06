@@ -119,7 +119,7 @@ export default {
 
     &__text {
       margin-left: 8px;
-      font-size: 10.5px;
+      font-size: var(--text-sm);
       user-select: none;
     }
   }

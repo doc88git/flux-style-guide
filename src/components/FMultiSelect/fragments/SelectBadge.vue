@@ -30,7 +30,7 @@ export default {
 
   &__number {
     color: #fff;
-    font-size: 11px;
+    font-size: var(--text-sm);
     line-height: 11px;
   }
 }

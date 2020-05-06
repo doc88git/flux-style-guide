@@ -119,7 +119,7 @@ export default {
   &__name {
     display: flex;
     align-items: center;
-    font-size: 15px;
+    font-size: var(--text-base);
     width: 185px;
   }
 }
