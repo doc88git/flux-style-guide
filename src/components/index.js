@@ -32,6 +32,7 @@ import * as FSticky from './FSticky/index.js'
 import * as FInputTag from './FInputTag/index.js'
 import * as FAccordion from './FAccordion/index.js'
 import * as FTab from './FTab/index.js'
+import * as FMultiSelect from './FMultiSelect/index.js'
 
 const components = [
   Alert,
@@ -67,7 +68,8 @@ const components = [
   FProgressBar,
   FSticky,
   FAccordion,
-  FTab
+  FTab,
+  FMultiSelect
 ]
 
 export default components
