@@ -4,7 +4,7 @@
     @mouseenter="setHover(true)"
     @mouseleave="setHover(false)"
   >
-    <div :class="labelClasses" @click="emitToggle">
+    <div :class="labelClasses" @click.once="emitToggle">
       {{ label }}
     </div>
     <div class="SelectInput__content">
@@ -28,12 +28,16 @@
         </f-field>
       </div>
 
-      <div v-else class="SelectInput__placeholder" @click="emitToggle">
+      <div v-else class="SelectInput__placeholder" @click.once="emitToggle">
         <div :class="placeholderClasses">
           {{ placeholderText }}
         </div>
 
-        <select-badge v-if="numSelected" :number="numSelected" />
+        <f-chip
+          v-if="numSelected"
+          :label="numSelected"
+          class="SelectInput__badge"
+        />
 
         <f-icon
           clickable
@@ -49,7 +53,7 @@
 </template>
 
 <script>
-import SelectBadge from './SelectBadge'
+import { FChip } from '../../FChip'
 import { FIcon } from '../../FIcon'
 import { FField, FInput } from '../../FField'
 
@@ -57,7 +61,7 @@ export default {
   name: 'SelectInput',
 
   components: {
-    SelectBadge,
+    FChip,
     FField,
     FInput,
     FIcon
@@ -222,13 +226,18 @@ export default {
   align-items: center;
   justify-content: flex-end;
 
+  cursor: pointer;
+
+  &__badge {
+    transform: translateX(-15px);
+  }
+
   &__label {
     position: absolute;
     top: 50%;
     left: 15px;
     transform: translateY(-50%);
     user-select: none;
-    cursor: pointer;
 
     color: #999;
     font-size: var(--text-base);

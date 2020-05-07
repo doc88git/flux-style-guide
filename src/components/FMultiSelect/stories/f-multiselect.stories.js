@@ -32,6 +32,7 @@ storiesOf('Form|MultiSelect', module)
           type="check"
           multiple
           searchable
+          select-all
         />
       </div>
     `

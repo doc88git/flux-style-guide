@@ -2,12 +2,22 @@
   <div class="SelectItemGroup">
     <div
       :class="clearItemClasses"
-      @mouseenter="setHover(true)"
-      @mouseleave="setHover(false)"
+      @mouseenter="setHover('clear', true)"
+      @mouseleave="setHover('clear', false)"
       @click="emitClear"
     >
       <f-icon name="X" lib="flux" size="sm" :color="clearIconColor" />
       <span class="SelectItemGroup__clear__text">Limpar seleção</span>
+    </div>
+
+    <div
+      :class="selectAllItemClasses"
+      @mouseenter="setHover('selectAll', true)"
+      @mouseleave="setHover('selectAll', false)"
+      @click="emitSelectAll"
+    >
+      <f-icon name="check" lib="flux" size="sm" :color="selectAllIconColor" />
+      <span class="SelectItemGroup__select-all__text">Selecionar todos</span>
     </div>
 
     <ul :class="ulClasses">
@@ -46,6 +56,13 @@ export default {
       default: false
     },
     /**
+     * Whether or not the display the "Select all" section
+     */
+    selectAll: {
+      type: Boolean,
+      default: false
+    },
+    /**
      * The property to use as the option's trackBy value
      */
     trackBy: {
@@ -54,7 +71,12 @@ export default {
     }
   },
 
-  data: () => ({ hover: false }),
+  data: () => ({
+    hover: {
+      clear: false,
+      selectAll: false
+    }
+  }),
 
   computed: {
     clearItemClasses() {
@@ -65,25 +87,40 @@ export default {
         }
       ]
     },
+    selectAllItemClasses() {
+      return [
+        'SelectItemGroup__select-all',
+        {
+          'SelectItemGroup__select-all--hide': !this.selectAll
+        }
+      ]
+    },
     ulClasses() {
       return [
         'SelectItemGroup__ul',
         {
-          'SelectItemGroup__ul--has-selected': this.displayClear
+          'SelectItemGroup__ul--has-selected':
+            this.displayClear || this.selectAll
         }
       ]
     },
     clearIconColor() {
-      return this.hover ? 'red-500' : 'gray-500'
+      return this.hover.clear ? 'red-500' : 'gray-500'
+    },
+    selectAllIconColor() {
+      return this.hover.selectAll ? 'primary' : 'gray-500'
     }
   },
 
   methods: {
-    setHover(value) {
-      this.hover = value
+    setHover(item, value) {
+      this.hover[item] = value
     },
     emitClear() {
       this.$emit('clear')
+    },
+    emitSelectAll() {
+      this.$emit('select-all')
     }
   }
 }
@@ -95,6 +132,7 @@ export default {
   max-height: calc(100% - 1px);
   z-index: 10;
 
+  &__select-all,
   &__clear {
     display: flex;
     align-items: center;
@@ -108,19 +146,28 @@ export default {
     transition: height 300ms ease, margin 300ms, opacity 100ms;
 
     &--hide {
+      display: none;
       opacity: 0;
       height: 0px;
       margin: 0px;
-    }
-
-    &:hover {
-      color: var(--color-red-500);
     }
 
     &__text {
       margin-left: 8px;
       font-size: var(--text-sm);
       user-select: none;
+    }
+  }
+
+  &__select-all {
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+
+  &__clear {
+    &:hover {
+      color: var(--color-red-500);
     }
   }
 
