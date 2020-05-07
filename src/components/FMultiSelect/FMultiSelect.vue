@@ -173,7 +173,7 @@ export default {
     optionsByQuery() {
       if (!this.searchQuery) return this.sortedOptions
 
-      const words = this.searchQuery.trim().split('')
+      const words = this.searchQuery.trim().split(' ')
       const options = this.sortedOptions.filter(({ label }) =>
         words.every(word => matches(word.toLowerCase(), label.toLowerCase()))
       )
@@ -255,10 +255,11 @@ export default {
     },
     setSelectAll() {
       this.displayOptions = true
-      let selected = [...(this.value || []), ...this.sortedOptions].map(
+      const mappedOptions = this.sortedOptions.map(
         option => option[this.trackBy]
       )
-      this.$emit('input', selected)
+
+      this.$emit('input', [...(this.value || []), ...mappedOptions])
     },
     clearValues() {
       this.$emit('input', [])

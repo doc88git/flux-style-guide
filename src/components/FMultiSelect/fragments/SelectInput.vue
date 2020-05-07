@@ -33,8 +33,7 @@
           {{ placeholderText }}
         </div>
 
-        <!-- <select-badge v-if="numSelected" :number="numSelected" /> -->
-        <f-Chip
+        <f-chip
           v-if="numSelected"
           :label="numSelected"
           class="SelectInput__badge"
@@ -54,7 +53,6 @@
 </template>
 
 <script>
-// import SelectBadge from './SelectBadge'
 import { FChip } from '../../FChip'
 import { FIcon } from '../../FIcon'
 import { FField, FInput } from '../../FField'
@@ -63,7 +61,6 @@ export default {
   name: 'SelectInput',
 
   components: {
-    // SelectBadge,
     FChip,
     FField,
     FInput,
