@@ -1,141 +1,123 @@
 <template>
   <div
-    id="drop_zone"
-    ref="file"
-    :class="{ active: hover }"
-    @drop="dropHandler"
-    @dragover="dragHandlerOver"
-    @dragleave="dragLeave"
+    class="FUpload"
+    @drop.prevent.stop
+    @dragover.prevent.stop
+    @dragenter.prevent.stop
+    @dragleave.prevent.stop
+    @input.prevent.stop
   >
-    <div class="upload">
-      <div v-if="files" class="files">
-        <img :src="path" alt="" class="thumb" />
-        {{ files }}
-        <slot></slot>
-      </div>
-      <div v-else>
-        Arraste aqui seu arquivo ou
-        <label id="label-upload" for="fileElem"
-          >procure no seus documentos</label
-        >
-        <input
-          id="fileElem"
-          ref="file"
-          type="file"
-          accept="image/*"
-          @change="handleUpload"
-        />
-      </div>
-    </div>
+    <transition name="FUpload--fade">
+      <drop-zone
+        v-if="!hasFiles || multiple"
+        :multiple="multiple"
+        :extensions="extensions"
+        @upload="handleUpload"
+      >
+        <file-list v-if="multiple" :files="value" v-on="$listeners" />
+      </drop-zone>
+    </transition>
+
+    <transition name="FUpload--fade">
+      <file-item v-if="!multiple && value" :file="value" v-on="$listeners" />
+    </transition>
   </div>
 </template>
 
 <script>
+import DropZone from './fragments/DropZone'
+import FileList from './fragments/FileList'
+import FileItem from './fragments/FileItem'
+
 export default {
-  name: 'f-upload',
-  components: {},
-  data: () => ({
-    files: null,
-    path: null,
-    hover: false
-  }),
+  name: 'FUpload',
+
+  components: {
+    DropZone,
+    FileList,
+    FileItem
+  },
+
+  props: {
+    /**
+     * List of files.
+     */
+    value: {
+      type: [File, String, Array],
+      required: true
+    },
+
+    /**
+     * Allowed file extensions
+     */
+    extensions: {
+      type: Array,
+      required: true
+    },
+
+    /**
+     * Whether the component should support multiple files or not
+     */
+    multiple: {
+      type: Boolean,
+      default: false
+    },
+
+    /**
+     * Limits the amount of files that the component should accept
+     * in case it is multipe.
+     */
+    fileLimit: {
+      type: [Number, String],
+      default: ''
+    }
+  },
+
+  computed: {
+    hasFiles() {
+      if (!Array.isArray(this.value)) return !!this.value
+
+      return !!(
+        (this.value || []).length &&
+        this.value.some(f => f && Object.keys(f).length)
+      )
+    }
+  },
+
   methods: {
-    dropHandler(e) {
-      // Prevent default behavior (Prevent file from being opened)
+    handleUpload({ files }) {
+      if (this.overLimit(files)) return
+      Array.from(files).forEach(file => this.$emit('upload', file))
+    },
+    overLimit(files) {
+      if (!Array.isArray(this.values) || !this.fileLimit) return false
+      if (this.fileLimit && (this.value || []).length >= +this.fileLimit)
+        return true
 
-      e.preventDefault()
-      const file = e.dataTransfer.files[0]
-
-      if (file.type.match('image.*')) {
-        this.readFile(file)
-      }
-      this.hover = false
-    },
-    dragHandlerOver(e) {
-      // Prevent default behavior (Prevent file from being opened)
-      this.hover = true
-      e.preventDefault()
-    },
-    dragLeave() {
-      this.hover = false
-    },
-    handleUpload(e) {
-      // const fileName = e.target.files[0].name
-      const file = e.target.files[0]
-      this.readFile(file)
-    },
-    readFile(file) {
-      const reader = new FileReader()
-      this.files = file.name
-      reader.onload = e => {
-        this.path = e.target.result
-        this.$emit('upload_data', e.target.result)
-      }
-      this.$emit('upload_label', this.files)
-      reader.readAsDataURL(file)
-    },
-    clearFiles() {
-      this.files = null
-      this.path = null
-      this.$emit('upload_label', this.files)
-      this.$emit('upload_data', this.path)
+      return (
+        Array.from(files).length + (this.value || []).length >= +this.fileLimit
+      )
     }
   }
 }
 </script>
 
-<style lang="scss" scoped>
-#drop_zone {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 150px;
-  border: 1px dashed;
-  border-radius: 5px;
-  text-align: center;
-  font-size: var(--text-base);
-  padding: 0 3em;
-  transition: all 0.2s ease-out;
+<style lang="scss">
+.FUpload {
+  position: relative;
 
-  &:hover {
-    border-color: var(--color-primary);
-  }
+  &--fade {
+    &-enter-active,
+    &-leave-active {
+      position: absolute;
+      width: 100%;
+      transition: opacity 200ms;
+    }
 
-  &.active {
-    box-shadow: 0 0 10px var(--color-secondary-lighter);
-    border-color: var(--color-primary);
-  }
-}
-
-.files {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  box-shadow: 0 0 10px #ccc;
-  border-radius: 5px;
-  width: 100%;
-}
-
-#fileElem {
-  display: none;
-}
-
-.upload {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.thumb {
-  max-width: 70px;
-}
-
-#label-upload {
-  cursor: pointer;
-  color: var(--color-primary);
-  &:hover {
-    text-decoration: underline;
+    &-enter,
+    &-leave-to {
+      opacity: 0;
+    }
   }
 }
 </style>
