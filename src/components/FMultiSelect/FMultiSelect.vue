@@ -21,8 +21,10 @@
       slot="content"
       :options="optionsByQuery"
       :display-clear="displayClearList"
+      :select-all="displaySelectAll"
       :track-by="trackBy"
       @clear="clearValues"
+      @select-all="setSelectAll"
     >
       <template v-slot:option="{ option, index }">
         <slot name="option" v-bind="{ option, index }">
@@ -114,6 +116,14 @@ export default {
     },
 
     /**
+     * Defines the property of the option object to select all items
+     */
+    selectAll: {
+      type: Boolean,
+      default: false
+    },
+
+    /**
      * Defines the property of the option object to use as the value
      */
     trackBy: {
@@ -181,6 +191,10 @@ export default {
     },
     displayClearList() {
       return this.multiple && !!(this.value || []).length
+    },
+    displaySelectAll() {
+      if (!this.multiple || this.searchQuery) return false
+      return !this.displayClearList && this.selectAll
     }
   },
 
@@ -230,6 +244,7 @@ export default {
     },
     sortOptions() {
       this.setSortedOptions()
+
       this.sortedOptions = this.sortedOptions.sort((a, b) => {
         if (this.isOptionSelected(a) && this.isOptionSelected(b)) return 0
         if (this.isOptionSelected(a)) return -1
@@ -237,6 +252,13 @@ export default {
 
         return 0
       })
+    },
+    setSelectAll() {
+      this.displayOptions = true
+      let selected = [...(this.value || []), ...this.sortedOptions].map(
+        option => option[this.trackBy]
+      )
+      this.$emit('input', selected)
     },
     clearValues() {
       this.$emit('input', [])
