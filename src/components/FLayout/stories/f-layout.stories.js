@@ -72,10 +72,6 @@ storiesOf('Template|Layout', module).add(
       hasMenu: true
     }),
 
-    mounted() {
-      console.log('story: ', this)
-    },
-
     methods: {
       updateSelected(item) {
         this.menuSelected = item.id
