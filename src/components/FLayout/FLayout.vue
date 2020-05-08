@@ -6,28 +6,23 @@
         :align="align"
         :weight="weight"
         :styles="styles"
-        class="f-layout__header"
-        :class="{
-          'f-layout__header--no-menu': menuItems.length === 0 || !hasMenu
-        }"
+        :class="headerClasses"
       >
-        <template v-slot:menu v-if="menuItems.length || hasMenu">
-          <f-menu-button
-            @click="handleMenu"
-            :color="color"
-            :is-open="menuExpand"
-          />
-        </template>
-        <template v-slot:logo>
-          <slot name="logo"></slot>
-        </template>
-        <template v-slot:settings>
-          <slot name="settings"></slot>
-        </template>
+        <f-menu-button
+          v-if="!!menuItems.length || hasMenu"
+          slot="menu"
+          :color="color"
+          :is-open="menuExpand"
+          @click="handleMenu"
+        />
+        <slot slot="logo" name="logo" />
+        <slot slot="settings" name="settings" />
       </f-header>
     </div>
+
     <div class="f-layout__wrapper">
       <f-menu
+        v-if="menuItems.length || hasMenu"
         :iconLib="iconLib"
         :menuItems="menuItems"
         :menuSelected="menuSelected"
@@ -37,16 +32,11 @@
         @click="handleClickMenuItem"
         @expand="handleMenu"
         class="f-layout__wrapper__menu"
-        v-if="menuItems.length || hasMenu"
-      />
-      <div
-        class="f-layout__wrapper__content"
-        :class="{
-          'f-layout__wrapper__content--no-extra-padding':
-            menuItems.length === 0 && !hasMenu
-        }"
       >
-        <slot name="content"></slot>
+        <slot name="menu-prepend" slot="prepend" />
+      </f-menu>
+      <div :class="contentWrapperClasses">
+        <slot name="content" />
       </div>
     </div>
   </section>
@@ -112,6 +102,27 @@ export default {
     '$f.screen.width': function(width) {
       const { sm } = this.$f.screen.sizes
       if (width < sm && this.menuExpand) this.menuExpand = false
+    }
+  },
+
+  computed: {
+    contentWrapperClasses() {
+      return [
+        'f-layout__wrapper__content',
+        {
+          'f-layout__wrapper__content--no-extra-padding':
+            this.menuItems.length === 0 && !this.hasMenu
+        }
+      ]
+    },
+    headerClasses() {
+      return [
+        'f-layout__header',
+        {
+          'f-layout__header--no-menu':
+            this.menuItems.length === 0 || !this.hasMenu
+        }
+      ]
     }
   },
 
