@@ -221,15 +221,13 @@ export default {
         : !this.displayOptions
     },
     removeItem({ option }) {
-      if (this.multiple) {
-        const index = (this.value || []).indexOf(option[this.trackBy])
-        const value = JSON.parse(JSON.stringify(this.value || []))
-        value.splice(index, 1)
+      if (!this.multiple) return
 
-        return this.$emit('input', value)
-      }
+      const index = (this.value || []).indexOf(option[this.trackBy])
+      const value = JSON.parse(JSON.stringify(this.value || []))
+      value.splice(index, 1)
 
-      this.$emit('input', null)
+      return this.$emit('input', value)
     },
     isOptionSelected(option) {
       return this.multiple
