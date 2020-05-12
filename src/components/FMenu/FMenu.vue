@@ -1,7 +1,9 @@
 <template>
-  <aside class="Fmenu-side">
-    <nav class="Fmenu-side__nav">
+  <aside class="FMenu">
+    <nav class="FMenu__nav">
       <f-menu-list :expand="menuExpand" :items="menuItems">
+        <slot slot="prepend" name="prepend" />
+
         <template v-slot:li="{ item }">
           <f-menu-item
             :menu-item="item"
@@ -100,12 +102,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/*
 span.icon-widget {
   height: 100px;
   width: 10px;
 }
+*/
 
-.Fmenu-side {
+.FMenu {
   width: 70px;
   height: 100%;
   min-height: 300px;

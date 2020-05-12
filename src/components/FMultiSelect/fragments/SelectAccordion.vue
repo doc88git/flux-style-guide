@@ -88,15 +88,12 @@ export default {
   display: flex;
   flex-direction: column;
   z-index: 0;
-
   transition: z-index 1s ease;
 
   &__parent--active {
     z-index: 1;
     transition: z-index 1ms ease;
   }
-
-  border-radius: 5px;
 
   &:hover .SelectAccordion__content {
     border-color: var(--color-primary);
@@ -122,7 +119,7 @@ export default {
 
     background: #fff;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 4px;
 
     padding-top: 46px;
 

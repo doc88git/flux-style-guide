@@ -3,12 +3,13 @@
     :class="rootClasses"
     @mouseenter="setHover(true)"
     @mouseleave="setHover(false)"
+    @click="emitToggle"
   >
-    <div :class="labelClasses" @click.once="emitToggle">
+    <div :class="labelClasses">
       {{ label }}
     </div>
     <div class="SelectInput__content">
-      <div v-if="displaySearch" class="SelectInput__search">
+      <div v-if="displaySearch" class="SelectInput__search" @click.stop>
         <f-field class="SelectInput__field">
           <f-input
             class="SelectInput__input"
@@ -28,7 +29,7 @@
         </f-field>
       </div>
 
-      <div v-else class="SelectInput__placeholder" @click.once="emitToggle">
+      <div v-else class="SelectInput__placeholder">
         <div :class="placeholderClasses">
           {{ placeholderText }}
         </div>

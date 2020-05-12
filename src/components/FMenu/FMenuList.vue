@@ -1,5 +1,9 @@
 <template>
   <ul :class="menuListClasses">
+    <li v-if="$slots.prepend" class="FMenuList__prepend">
+      <slot name="prepend" />
+    </li>
+
     <li
       v-for="(item, index) in items"
       :key="item.id"
@@ -53,6 +57,8 @@ export default {
 @import '../../assets/f-variables.scss';
 @import '../../assets/f-transitions.scss';
 
+$listWidth: 250px;
+
 .FMenuList {
   width: 100%;
 
@@ -61,13 +67,21 @@ export default {
     top: 0;
     left: 0;
 
+    width: $listWidth;
+    left: -$listWidth;
+
     height: 100%;
     padding: 10px 0 0;
-    background-color: #fff;
     overflow: scroll;
+    background-color: #fff;
 
-    @include transition(0.1s);
     box-shadow: var(--shadow-base);
+    transition: width 300ms ease, left 300ms ease, text-align 300ms ease;
+
+    @media screen and (min-width: map-get($sizes, 'tablet')) {
+      left: 0px;
+      width: 100%;
+    }
 
     &__li {
       display: flex;
@@ -84,10 +98,8 @@ export default {
   }
 
   &--expand {
-    width: 250px;
-    text-align: left;
-    left: 0;
-    @include transition(0.1s);
+    width: $listWidth;
+    left: 0px;
     text-align: center;
   }
 

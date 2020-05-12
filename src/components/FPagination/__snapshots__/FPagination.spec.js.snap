@@ -1,50 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FPaginantion tests Componente não alterado 1`] = `
-"<section class=\\"f-pagination\\">
-  <ul>
-    <li><button disabled=\\"disabled\\">
-        Primeira
-      </button></li>
-    <li><button disabled=\\"disabled\\">
-        <f-icon-stub lib=\\"material\\" type=\\"default\\" size=\\"base\\" name=\\"chevron-left\\"></f-icon-stub>
-      </button></li>
-    <li><button class=\\"selected\\">
+"<section class=\\"FPagination\\">
+  <div class=\\"FPagination__sectionPrevious\\"><button disabled=\\"disabled\\" class=\\"FPagination__sectionBtn\\">
+      Primeira
+    </button> <button disabled=\\"disabled\\" class=\\"FPagination__sectionBtn\\">
+      <f-icon-stub color=\\"gray-300\\" lib=\\"flux\\" type=\\"default\\" size=\\"base\\" name=\\"chevron-left\\"></f-icon-stub>
+    </button></div>
+  <ul class=\\"FPagination__ul\\">
+    <li class=\\"FPagination__li\\"><button class=\\"FPagination__pageBtn FPagination__pageBtn--selected\\">
         1
       </button></li>
-    <li><button class=\\"\\">
+    <li class=\\"FPagination__li\\"><button class=\\"FPagination__pageBtn\\">
         2
       </button></li>
-    <li><button class=\\"\\">
+    <li class=\\"FPagination__li\\"><button class=\\"FPagination__pageBtn\\">
         3
       </button></li>
-    <li><button class=\\"\\">
+    <li class=\\"FPagination__li\\"><button class=\\"FPagination__pageBtn\\">
         4
       </button></li>
-    <li><button class=\\"\\">
+    <li class=\\"FPagination__li\\"><button class=\\"FPagination__pageBtn\\">
         5
       </button></li>
-    <li><button class=\\"\\">
+    <li class=\\"FPagination__li\\"><button class=\\"FPagination__pageBtn\\">
         6
       </button></li>
-    <li><button class=\\"\\">
+    <li class=\\"FPagination__li\\"><button class=\\"FPagination__pageBtn\\">
         7
       </button></li>
-    <li><button class=\\"\\">
+    <li class=\\"FPagination__li\\"><button class=\\"FPagination__pageBtn\\">
         8
       </button></li>
-    <li><button class=\\"\\">
+    <li class=\\"FPagination__li\\"><button class=\\"FPagination__pageBtn\\">
         9
       </button></li>
-    <li><button class=\\"\\">
+    <li class=\\"FPagination__li\\"><button class=\\"FPagination__pageBtn\\">
         10
       </button></li>
-    <li><button>
-        <f-icon-stub lib=\\"material\\" type=\\"default\\" size=\\"base\\" name=\\"chevron-right\\"></f-icon-stub>
-      </button></li>
-    <li><button>
-        Última
-      </button></li>
   </ul>
+  <div class=\\"FPagination__sectionNext\\"><button class=\\"FPagination__sectionBtn\\">
+      <f-icon-stub color=\\"gray\\" lib=\\"flux\\" type=\\"default\\" size=\\"base\\" name=\\"chevron-right\\"></f-icon-stub>
+    </button> <button class=\\"FPagination__sectionBtn\\">
+      Última
+    </button></div>
 </section>"
 `;
