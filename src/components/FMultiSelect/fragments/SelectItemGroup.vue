@@ -23,7 +23,7 @@
     <ul :class="ulClasses">
       <li
         v-for="(option, index) in options"
-        :key="option[trackBy]"
+        :key="getItemKey(option)"
         class="SelectItemGroup__ul__li"
       >
         <slot name="option" v-bind="{ option, index }" />
@@ -118,6 +118,9 @@ export default {
     },
     emitClear() {
       this.$emit('clear')
+    },
+    getItemKey(item) {
+      return JSON.stringify(item[this.trackBy])
     },
     emitSelectAll() {
       this.$emit('select-all')
