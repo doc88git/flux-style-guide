@@ -88,8 +88,6 @@ export default {
   display: flex;
   flex-direction: column;
   z-index: 0;
-
-  border-radius: 4px;
   transition: z-index 1s ease;
 
   &__parent--active {
