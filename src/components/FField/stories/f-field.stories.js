@@ -67,20 +67,17 @@ storiesOf('Form|Field', module)
       },
       template: `
       <div style="padding: 20px;">
-        <f-field
+        <f-input
           :label="label"
           :hint="hint"
           :rules="rules"
           :hasError="hasError"
           :errorMessage="errorMessage"
-          >
-          <f-input
-            placeholder="Seu nome aqui"
-            :type="type"
-            :mask="mask"
-            :name="name"
-            v-model="value" />
-        </f-field>
+          :type="type"
+          :mask="mask"
+          :name="name"
+          v-model="value"
+        />
         <span>Valor: {{ value }}</span>
         <br/>
         <button @click="value = ''">Limpa</button>
@@ -138,18 +135,18 @@ storiesOf('Form|Field', module)
       },
       template: `
       <div style="padding: 20px;">
-        <f-field
+        <f-input
           :label="label"
           :hint="hint"
           :rules="rules"
           :hasError="hasError"
           :errorMessage="errorMessage"
-          >
-          <f-input placeholder="Seu nome aqui" :type="type" :mask="mask" v-model="value" />
-          <template v-slot:before>
-            <f-avatar :src="avatar" v-if="avatar" />
-          </template>
-        </f-field>
+          :type="type"
+          :mask="mask"
+          v-model="value"
+        >
+          <f-avatar slot="before" :src="avatar" v-if="avatar" />
+        </f-input>
       </div>
       `
     }),
@@ -204,18 +201,18 @@ storiesOf('Form|Field', module)
       },
       template: `
       <div style="padding: 20px;">
-        <f-field
+        <f-input
           :label="label"
           :hint="hint"
           :rules="rules"
           :hasError="hasError"
           :errorMessage="errorMessage"
-          >
-          <f-input placeholder="Seu nome aqui" :type="type" :mask="mask" v-model="value" />
-          <template v-slot:after>
-            <f-button>Salvar</f-button>
-          </template>
-        </f-field>
+          :type="type"
+          :mask="mask"
+          v-model="value"
+        >
+          <f-button slot="after">Salvar</f-button>
+        </f-input>
       </div>
       `
     }),
@@ -270,18 +267,18 @@ storiesOf('Form|Field', module)
       },
       template: `
       <div style="padding: 20px;">
-        <f-field
+        <f-input
           :label="label"
           :hint="hint"
           :rules="rules"
           :hasError="hasError"
           :errorMessage="errorMessage"
-          >
-          <f-input placeholder="Seu nome aqui" :type="type" :mask="mask" v-model="value" />
-          <template v-slot:append>
-            <f-button flat :icon="icon" />
-          </template>
-        </f-field>
+          :type="type"
+          :mask="mask"
+          v-model="value"
+        >
+          <f-button slot="append" flat :icon="icon" />
+        </f-input>
       </div>
       `
     }),
@@ -336,24 +333,20 @@ storiesOf('Form|Field', module)
       },
       template: `
       <div style="padding: 20px;">
-        <f-field
+        <f-input
           :label="label"
           :hint="hint"
           :rules="rules"
           :hasError="hasError"
           :errorMessage="errorMessage"
-          >
-          <f-input placeholder="Seu nome aqui" :type="type" :mask="mask" v-model="value" />
-          <template v-slot:before>
-            <f-avatar :src="avatar" v-if="avatar" />
-          </template>
-          <template v-slot:after>
-            <f-button>Salvar</f-button>
-          </template>
-          <template v-slot:append>
-            <f-button flat :icon="icon" />
-          </template>
-        </f-field>
+          :type="type"
+          :mask="mask"
+          v-model="value"
+        >
+          <f-avatar slot="before" :src="avatar" v-if="avatar" />
+          <f-button slot="after">Salvar</f-button>
+          <f-button slot="append" flat :icon="icon" />
+        </f-input>
       </div>
       `
     }),
@@ -386,42 +379,42 @@ storiesOf('Form|Field', module)
       },
       template: `
         <div style="padding: 20px;">
-          <f-field label="Name" hint="Name is required">
-            <f-input
-              placeholder="Your name here"
-              v-model="form.name"
-              v-validate="'required'"
-              name="name"
-            />
+          <f-input
+            label="Name"
+            hint="Name is required"
+            v-model="form.name"
+            v-validate="'required'"
+            name="name"
+          >
             <template v-slot:error>
               {{ errors.first("name") }}
             </template>
-          </f-field>
+          </f-input>
 
-          <f-field label="E-mail" hint="E-mail is required">
-            <f-input
-              placeholder="Your email here"
-              v-model="form.email"
-              v-validate="'required|email'"
-              name="email"
-            />
+          <f-input
+            label="E-mail"
+            hint="E-mail is required"
+            v-model="form.email"
+            v-validate="'required|email'"
+            name="email"
+          >
             <template v-slot:error>
               {{ errors.first("email") }}
             </template>
-          </f-field>
+          </f-input>
 
-          <f-field label="Age" hint="Only numbers please">
-            <f-input
-              placeholder="Your age here"
-              v-model="form.age"
-              v-validate="'required|numeric|max:2'"
-              name="age"
-              :mask="'##'"
-            />
+          <f-input
+            label="Age"
+            hint="Only numbers please"
+            v-model="form.age"
+            v-validate="'required|numeric|max:2'"
+            name="age"
+            :mask="'##'"
+          >
             <template v-slot:error>
               {{ errors.first("age") }}
             </template>
-          </f-field>
+          </f-input>
 
           <f-button @click="submit" label="send" /> {{ message }}
         </div>
