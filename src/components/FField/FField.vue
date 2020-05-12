@@ -231,7 +231,7 @@ $fieldHeight: 48px;
     }
 
     &--hasLabel {
-      .f-field__inner__input::placeholder {
+      .f-field__inner__input ::placeholder {
         display: none;
         visibility: hidden;
       }
