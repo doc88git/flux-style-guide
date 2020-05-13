@@ -188,6 +188,7 @@ $fieldHeight: 48px;
         letter-spacing: 0.025em;
         font-weight: 700;
         color: var(--color-font-base);
+        margin-bottom: 10px;
       }
 
       &--floating {
