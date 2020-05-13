@@ -1,5 +1,9 @@
 <template>
-  <f-field v-bind="$attrs" :is-active="!!value || hasFocus">
+  <f-field
+    v-bind="$attrs"
+    :is-active="!!value || hasFocus"
+    label-style="floating"
+  >
     <template v-for="slotName in fieldSlots" :slot="slotName">
       <slot :name="slotName" />
     </template>

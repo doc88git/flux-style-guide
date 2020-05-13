@@ -59,6 +59,12 @@ export default {
       default: false
     },
 
+    labelStyle: {
+      type: String,
+      default: 'standard',
+      validator: v => ['floating', 'standard'].includes(v)
+    },
+
     /**
      * The hint text to display below the field
      */
@@ -77,6 +83,9 @@ export default {
   },
 
   computed: {
+    isLabelFloated() {
+      return ['floating'].includes(this.labelStyle)
+    },
     hasError() {
       if (!this.$slots.error) return false
 
@@ -91,13 +100,22 @@ export default {
       return !!this.$slots.label || !!this.label
     },
     innerClasses() {
-      return ['f-field__inner', { 'f-field__inner--hasLabel': this.hasLabel }]
+      return [
+        'f-field__inner',
+        {
+          'f-field__inner--hasLabel': this.hasLabel,
+          'f-field__inner--floatingLabel': this.isLabelFloated
+        }
+      ]
     },
     innerLabelClasses() {
       return [
         'f-field__inner__label',
         {
-          'f-field__inner__label--top': this.isActive
+          'f-field__inner__label--standard': !this.isLabelFloated,
+          'f-field__inner__label--floating': this.isLabelFloated,
+          'f-field__inner__label--floating--top':
+            this.isLabelFloated && this.isActive
         }
       ]
     },
@@ -105,6 +123,7 @@ export default {
       return [
         'f-field__inner__field',
         {
+          'f-field__inner__field--floatingLabel': this.isLabelFloated,
           'f-field__inner--hasAppend': this.$slots.append,
           'f-field__inner--hasError': this.hasError
         }
@@ -153,39 +172,51 @@ $fieldHeight: 48px;
 
     &__field {
       position: relative;
-      height: 48px;
 
-      &:hover .f-field__inner__label {
-        color: var(--color-primary);
+      &--floatingLabel {
+        height: $fieldHeight;
+
+        &:hover .f-field__inner__label {
+          color: var(--color-primary);
+        }
       }
     }
 
     &__label {
-      position: absolute;
-      z-index: 20;
-      top: 50%;
-      left: 15px;
-      transform: translateY(-50%);
-      user-select: none;
-
-      color: var(--color-gray);
-      font-size: var(--text-base);
-      transition: top 200ms ease, font-size 200ms ease, left 200ms ease,
-        padding 200ms ease;
-
-      &--active,
-      &--top {
-        color: var(--color-primary);
+      &--standard {
+        display: block;
+        letter-spacing: 0.025em;
+        font-weight: 700;
+        color: var(--color-font-base);
       }
 
-      &--top {
-        top: -7px;
-        left: 8px;
-        font-size: var(--text-xs);
-        padding: 0 5px;
-        transform: translateY(0px);
+      &--floating {
+        position: absolute;
+        z-index: 20;
+        top: 50%;
+        left: 15px;
+        transform: translateY(-50%);
+        user-select: none;
 
-        background-color: #fff;
+        color: var(--color-gray);
+        font-size: var(--text-base);
+        transition: top 200ms ease, font-size 200ms ease, left 200ms ease,
+          padding 200ms ease;
+
+        &--active,
+        &--top {
+          color: var(--color-primary);
+        }
+
+        &--top {
+          top: -7px;
+          left: 8px;
+          font-size: var(--text-xs);
+          padding: 0 5px;
+          transform: translateY(0px);
+
+          background-color: #fff;
+        }
       }
     }
 
@@ -238,8 +269,10 @@ $fieldHeight: 48px;
     }
 
     &--hasError {
-      input {
-        border: 1px solid var(--color-red);
+      &--floatingLabel {
+        input {
+          border: 1px solid var(--color-red);
+        }
       }
     }
 
