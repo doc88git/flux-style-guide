@@ -5,7 +5,7 @@
     label-style="floating"
   >
     <template v-for="slotName in fieldSlots" :slot="slotName">
-      <slot :name="slotName" />
+      <slot v-if="$slots[slotName]" :name="slotName" />
     </template>
 
     <component

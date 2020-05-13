@@ -25,7 +25,7 @@
         <slot name="hint">{{ hint }}</slot>
       </div>
 
-      <div v-if="hasError" class="f-field__inner__error">
+      <div v-if="$slots.error || hasError" class="f-field__inner__error">
         <slot name="error">
           {{ errorMessage || 'Há um erro neste campo' }}
         </slot>
