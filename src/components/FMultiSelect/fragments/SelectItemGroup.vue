@@ -23,7 +23,7 @@
     <ul :class="ulClasses">
       <li
         v-for="(option, index) in options"
-        :key="option[trackBy]"
+        :key="getItemKey(option)"
         class="SelectItemGroup__ul__li"
       >
         <slot name="option" v-bind="{ option, index }" />
@@ -119,6 +119,9 @@ export default {
     emitClear() {
       this.$emit('clear')
     },
+    getItemKey(item) {
+      return JSON.stringify(item[this.trackBy])
+    },
     emitSelectAll() {
       this.$emit('select-all')
     }
@@ -146,7 +149,6 @@ export default {
     transition: height 300ms ease, margin 300ms, opacity 100ms;
 
     &--hide {
-      display: none;
       opacity: 0;
       height: 0px;
       margin: 0px;
@@ -154,7 +156,7 @@ export default {
 
     &__text {
       margin-left: 8px;
-      font-size: var(--text-sm);
+      font-size: var(--text-xxs);
       user-select: none;
     }
   }

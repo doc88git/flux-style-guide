@@ -1,11 +1,11 @@
 export default [
   {
-    value: 1,
+    value: { number: 1 },
     label: 'São Paulo',
     photo: 'https://i.ya-webdesign.com/images/avatar-png-1.png'
   },
   {
-    value: 2,
+    value: { number: 2 },
     label: 'Rio de Janeiro',
     photo: 'https://i.ya-webdesign.com/images/avatar-png-1.png'
   },
@@ -15,7 +15,7 @@ export default [
     photo: 'https://i.ya-webdesign.com/images/avatar-png-1.png'
   },
   {
-    value: 4,
+    value: { id: 'bla' },
     label: 'Bahia',
     photo: 'https://i.ya-webdesign.com/images/avatar-png-1.png'
   },

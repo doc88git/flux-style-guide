@@ -1,7 +1,9 @@
 <template>
   <div v-click-outside="emitClose" class="SelectAccordion" :class="parentStyle">
-    <div ref="header" class="SelectAccordion__header">
-      <slot name="header" />
+    <div class="SelectAccordion__header">
+      <div ref="header" class="SelectAccordion__header__inner">
+        <slot name="header" />
+      </div>
     </div>
 
     <div :class="contentClasses" :style="contentStyle">
@@ -106,8 +108,14 @@ export default {
     z-index: 20;
 
     display: flex;
-    min-height: 48px;
+    height: 48px;
+    overflow: visible;
     justify-content: space-between;
+
+    &__inner {
+      position: absolute;
+      width: 100%;
+    }
   }
 
   &__content {

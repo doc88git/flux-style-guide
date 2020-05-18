@@ -65,6 +65,10 @@ const matches = (word, words) => {
   return regularSplit || noAccentsSplit
 }
 
+const is = (value, constructor) => {
+  return Object.prototype.toString.call(value) === `[object ${constructor}]`
+}
+
 let intTimeout = 0
 
 export default {
@@ -85,7 +89,6 @@ export default {
      * Current value, must be an array if it is multiple
      */
     value: {
-      type: [Object, String, Number, Array],
       required: true
     },
 
@@ -230,6 +233,14 @@ export default {
       return this.$emit('input', value)
     },
     isOptionSelected(option) {
+      if (is(option[this.trackBy], 'Object')) {
+        return !this.multiple
+          ? JSON.stringify(this.value) === JSON.stringify(option[this.trackBy])
+          : !!(this.value || []).find(
+              v => JSON.stringify(v) === JSON.stringify(option[this.trackBy])
+            )
+      }
+
       return this.multiple
         ? (this.value || []).includes(option[this.trackBy])
         : this.value === option[this.trackBy]

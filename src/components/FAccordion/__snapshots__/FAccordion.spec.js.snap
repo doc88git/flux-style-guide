@@ -6,6 +6,7 @@ exports[`FAccordion tests Componente não alterado 1`] = `
     <p class=\\"BasicAccordion__header__p\\">
       Test
     </p>
+    <div class=\\"BasicAccordion__header__info\\"></div>
     <f-icon-stub color=\\"black\\" lib=\\"flux\\" type=\\"outlined\\" size=\\"lg\\" name=\\"chevron-up\\" clickable=\\"true\\" class=\\"BasicAccordion__header__icon\\"></f-icon-stub>
   </div>
   <div class=\\"BasicAccordion__content\\">

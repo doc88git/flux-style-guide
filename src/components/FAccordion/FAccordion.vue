@@ -4,7 +4,9 @@
       <p class="BasicAccordion__header__p">
         {{ title }}
       </p>
-
+      <div class="BasicAccordion__header__info">
+        <slot name="info" />
+      </div>
       <f-icon
         :class="iconClasses"
         lib="flux"
@@ -83,6 +85,13 @@ export default {
     display: flex;
     height: 60px;
     padding: 0 35px 0 20px;
+
+    &__info {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 20px;
+    }
 
     &__p {
       display: flex;

@@ -239,6 +239,7 @@ export default {
     left: 15px;
     transform: translateY(-50%);
     user-select: none;
+    z-index: 10;
 
     color: #999;
     font-size: var(--text-base);
