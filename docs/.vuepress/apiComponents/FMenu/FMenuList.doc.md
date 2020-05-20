@@ -9,6 +9,7 @@
 
 ### Slots
 
-| Name | Description | Bindings                                                               |
-| ---- | ----------- | ---------------------------------------------------------------------- |
-| li   |             | [<br> {<br> "name": "item"<br> },<br> {<br> "name": "index"<br> }<br>] |
+| Name    | Description | Bindings                                                               |
+| ------- | ----------- | ---------------------------------------------------------------------- |
+| prepend |             |                                                                        |
+| li      |             | [<br> {<br> "name": "item"<br> },<br> {<br> "name": "index"<br> }<br>] |

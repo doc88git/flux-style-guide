@@ -2,7 +2,7 @@
 
 | Prop name | Description | Type           | Values | Default   |
 | --------- | ----------- | -------------- | ------ | --------- |
-| label     |             | string         | -      |           |
+| label     |             | string\|number | -      |           |
 | value     |             | string\|number | -      |           |
 | color     |             | string         | -      | 'primary' |
 | iconColor |             | string         | -      | 'white'   |

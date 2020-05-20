@@ -12,3 +12,9 @@
 | ---------- | --------- | ----------- |
 | click      | undefined |
 | expand     |           |
+
+### Slots
+
+| Name    | Description | Bindings                              |
+| ------- | ----------- | ------------------------------------- |
+| prepend |             | [<br> {<br> "name": "slot"<br> }<br>] |

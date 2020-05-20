@@ -1,9 +1,11 @@
 ### Props
 
-| Prop name | Description | Type    | Values | Default |
-| --------- | ----------- | ------- | ------ | ------- |
-| value     |             | boolean | -      | false   |
-| align     |             | string  | -      | 'right' |
+| Prop name | Description | Type    | Values | Default                            |
+| --------- | ----------- | ------- | ------ | ---------------------------------- |
+| value     |             | boolean | -      | false                              |
+| align     |             | string  | -      | 'right'                            |
+| hideLabel |             | boolean | -      | false                              |
+| labels    |             | object  | -      | { on: 'Ligado', off: 'Desligado' } |
 
 ### Events
 

@@ -17,8 +17,13 @@
 
 | Event name | Type      | Description |
 | ---------- | --------- | ----------- |
-| focus      |           |
-| blur       |           |
 | keyup      |           |
 | input      | undefined |
 | keydown    | undefined |
+| focus      | undefined |
+
+### Slots
+
+| Name     | Description | Bindings |
+| -------- | ----------- | -------- |
+| slotName |             |          |
