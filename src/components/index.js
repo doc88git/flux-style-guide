@@ -30,7 +30,6 @@ import * as FSticky from './FSticky/index.js'
 import * as FAccordion from './FAccordion/index.js'
 import * as FTab from './FTab/index.js'
 import * as FInputTag from './FInputTag/index.js'
-import * as FTab from './FTab/index.js'
 import * as FMultiSelect from './FMultiSelect/index.js'
 
 const components = [
@@ -66,7 +65,6 @@ const components = [
   FSticky,
   FProgressBar,
   FAccordion,
-  FTab
   FTab,
   FMultiSelect
 ]
