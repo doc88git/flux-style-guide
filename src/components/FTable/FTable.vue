@@ -3,23 +3,25 @@
     <div class="f-table__body">
       <table class="f-table__content">
         <thead>
-          <tr>
-            <slot
-              name="th"
-              v-for="(head, index) in keysHeaders"
-              v-bind="{ head, index }"
-            >
-              <th :key="`th:${head}`" :sort="sort" @click="setSortBy(head)">
-                <f-icon
-                  dense
-                  :name="sortIcon"
-                  color="gray"
-                  v-if="sortBy === head"
-                />
-                {{ header[head] }}
-              </th>
-            </slot>
-          </tr>
+          <slot name="thead">
+            <tr>
+              <slot
+                name="th"
+                v-for="(head, index) in keysHeaders"
+                v-bind="{ head, index }"
+              >
+                <th :key="`th:${head}`" :sort="sort" @click="setSortBy(head)">
+                  <f-icon
+                    dense
+                    :name="sortIcon"
+                    color="gray"
+                    v-if="sortBy === head"
+                  />
+                  {{ header[head] }}
+                </th>
+              </slot>
+            </tr>
+          </slot>
         </thead>
         <tbody>
           <slot name="tr" v-for="(row, index) in show" v-bind="{ row, index }">

@@ -149,7 +149,6 @@ export default {
     transition: height 300ms ease, margin 300ms, opacity 100ms;
 
     &--hide {
-      display: none;
       opacity: 0;
       height: 0px;
       margin: 0px;
@@ -157,7 +156,7 @@ export default {
 
     &__text {
       margin-left: 8px;
-      font-size: var(--text-sm);
+      font-size: var(--text-xxs);
       user-select: none;
     }
   }
