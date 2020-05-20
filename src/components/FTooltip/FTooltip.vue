@@ -202,11 +202,13 @@ export default {
     position: fixed;
     background-color: var(--color-black);
     font-size: var(--text-sm);
-    border-radius: 0.5rem;
+    border-radius: 4px;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     align-self: center;
     text-align: center;
     white-space: nowrap;
+    user-select: none;
+    pointer-events: none;
     left: 100%;
     z-index: 10;
     color: var(--color-white);
@@ -216,7 +218,7 @@ export default {
     }
 
     &--default {
-      padding: 12px;
+      padding: 9px;
     }
 
     &--primary {

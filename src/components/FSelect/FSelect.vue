@@ -110,7 +110,8 @@ export default {
       handler: function() {
         this.debounceInput(this.innerValue)
       }
-    }
+    },
+    options: 'clearAll'
   },
   computed: {
     dropdownType() {
@@ -150,7 +151,16 @@ export default {
       return false
     }
   },
+  mounted() {
+    if (this.multiple) this.initMultiple()
+  },
   methods: {
+    clearAll() {
+      this.list = []
+      this.selected = null
+
+      this.emitSelected()
+    },
     removeChip(value) {
       this.list = this.list.filter(item => item !== value)
     },
@@ -161,17 +171,28 @@ export default {
         this.$emit('search-value', value)
       }, 100)
     },
+    emitSelected() {
+      this.$emit('input', this.selected)
+    },
     setValue(value) {
       if (this.multiple) return this.addMultiple(value)
       this.selected = value
 
-      this.$emit('input', value)
+      this.emitSelected()
+    },
+    initMultiple() {
+      const value = this.$attrs.value
+      if (!Array.isArray(value)) return false
+
+      value.map(item => this.addMultiple(item))
     },
     addMultiple(value) {
       if (this.list.includes(value)) return false
 
       this.list.push(value)
       this.selected = this.list
+
+      this.emitSelected()
     },
     setFocus() {
       this.selectedOld = this.selected
@@ -209,6 +230,9 @@ export default {
   position: relative;
   max-width: 100%;
 
+  font-family: var(--font-secondary);
+  font-weight: normal;
+
   &:focus {
     outline: none;
   }
@@ -241,6 +265,7 @@ export default {
   }
 
   &__multiple {
+    display: flex;
     flex-wrap: wrap;
   }
 

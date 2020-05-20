@@ -1,32 +1,56 @@
 <template>
-  <section class="f-pagination">
-    <ul>
-      <li>
-        <button :disabled="isFirstPage" @click="jumpTo('first')">
-          Primeira
-        </button>
-      </li>
-      <li>
-        <button :disabled="isFirstPage" @click="jumpTo('prev')">
-          <f-icon name="chevron-left" />
-        </button>
-      </li>
-      <li v-for="i in show" :key="i">
+  <section class="FPagination">
+    <div class="FPagination__sectionPrevious">
+      <button
+        class="FPagination__sectionBtn"
+        :disabled="isFirstPage"
+        @click="jumpTo('first')"
+      >
+        Primeira
+      </button>
+
+      <button
+        class="FPagination__sectionBtn"
+        :disabled="isFirstPage"
+        @click="jumpTo('prev')"
+      >
+        <f-icon
+          lib="flux"
+          name="chevron-left"
+          :color="isFirstPage ? 'gray-300' : 'gray'"
+        />
+      </button>
+    </div>
+
+    <ul class="FPagination__ul">
+      <li v-for="i in show" :key="i" class="FPagination__li">
         <button :class="getPageClasses(i)" @click="setCurrentPage(i)">
           {{ i }}
         </button>
       </li>
-      <li>
-        <button :disabled="isLastPage" @click="jumpTo('next')">
-          <f-icon name="chevron-right" />
-        </button>
-      </li>
-      <li>
-        <button :disabled="isLastPage" @click="jumpTo('last')">
-          Última
-        </button>
-      </li>
     </ul>
+
+    <div class="FPagination__sectionNext">
+      <button
+        class="FPagination__sectionBtn"
+        :disabled="isLastPage"
+        @click="jumpTo('next')"
+      >
+        <f-icon
+          lib="flux"
+          name="chevron-right"
+          :color="isLastPage ? 'gray-300' : 'gray'"
+        />
+      </button>
+
+      <button
+        class="FPagination__sectionBtn"
+        :disabled="isLastPage"
+        @click="jumpTo('last')"
+      >
+        Última
+      </button>
+    </div>
   </section>
 </template>
 
@@ -95,7 +119,12 @@ export default {
 
   methods: {
     getPageClasses(i) {
-      return { selected: this.currentPage === i }
+      return [
+        'FPagination__pageBtn',
+        {
+          'FPagination__pageBtn--selected': this.currentPage === i
+        }
+      ]
     },
 
     setCurrentPage(value) {
@@ -126,8 +155,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.f-pagination {
+.FPagination {
+  display: flex;
+  align-items: center;
   user-select: none;
+
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--color-gray);
 
   .f-icon {
     transform: translateY(2px);
@@ -148,41 +183,73 @@ export default {
     }
   }
 
-  ul,
-  li {
+  &__sectionPrevious {
+    display: inline-flex;
+    align-items: center;
+
+    & > :first-child {
+      margin-right: 24px;
+    }
+
+    & > :last-child {
+      margin-right: 11px;
+    }
+  }
+
+  &__sectionNext {
+    display: inline-flex;
+    align-items: center;
+
+    & > *:last-child {
+      margin-left: 24px;
+    }
+
+    & > :first-child {
+      margin-left: 11px;
+    }
+  }
+
+  &__sectionBtn {
+    outline: 0;
+  }
+
+  &__ul,
+  &__li {
     display: inline-block;
     min-height: 100%;
     text-align: center;
   }
 
-  ul {
+  &__ul {
     display: flex;
     align-items: center;
     align-content: center;
     list-style-type: none;
+  }
 
-    li {
-      button {
-        text-transform: capitalize;
-        padding: 0;
-        text-align: center;
-        min-width: 35px;
-        outline: none;
-        color: var(--color-gray);
+  &__li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-        &.selected {
-          color: var(--color-primary);
-        }
+  &__pageBtn {
+    text-transform: capitalize;
+    text-align: center;
+    padding: 0 9px;
+    outline: none;
 
-        &:hover {
-          color: var(--color-primary-light);
-        }
+    &--selected {
+      color: var(--color-primary);
+    }
 
-        &:disabled {
-          opacity: 50%;
-          cursor: default;
-        }
-      }
+    &:hover {
+      color: var(--color-primary-light);
+    }
+
+    &:disabled {
+      opacity: 50%;
+      cursor: default;
     }
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@doc88/flux-style-guide",
-  "version": "2.0-alpha.1",
+  "version": "2.0.0-beta.3",
   "license": "MIT",
   "module": "src/index.esm.js",
   "main": "src/index.umd.js",

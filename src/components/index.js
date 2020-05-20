@@ -29,6 +29,9 @@ import * as FProgressBar from './FProgressBar/index.js'
 import * as FSticky from './FSticky/index.js'
 import * as FAccordion from './FAccordion/index.js'
 import * as FTab from './FTab/index.js'
+import * as FInputTag from './FInputTag/index.js'
+import * as FTab from './FTab/index.js'
+import * as FMultiSelect from './FMultiSelect/index.js'
 
 const components = [
   FAlert,
@@ -58,10 +61,14 @@ const components = [
   FDatepicker,
   FToggle,
   FUpload,
+  FInputTag,
+  FProgressBar,
   FSticky,
   FProgressBar,
   FAccordion,
   FTab
+  FTab,
+  FMultiSelect
 ]
 
 export default components

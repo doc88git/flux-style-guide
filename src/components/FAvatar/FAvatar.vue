@@ -1,10 +1,17 @@
 <template>
-  <img :src="src" @click="click" class="f-avatar" />
+  <img
+    class="f-avatar"
+    :src="src"
+    :style="imgStyles"
+    v-bind="$attrs"
+    @click="click"
+  />
 </template>
 
 <script>
 export default {
   name: 'f-avatar',
+
   props: {
     src: {
       type: String,
@@ -13,6 +20,19 @@ export default {
     click: {
       type: Function,
       default: () => ({})
+    },
+    size: {
+      type: [String, Number],
+      default: 50
+    }
+  },
+
+  computed: {
+    imgStyles() {
+      return {
+        width: `${+this.size}px`,
+        height: `${+this.size}px`
+      }
     }
   }
 }
@@ -20,17 +40,20 @@ export default {
 
 <style lang="scss" scoped>
 .f-avatar {
-  align-items: center;
-  border-width: 2px;
+  display: inline-block;
+
   position: relative;
   vertical-align: middle;
-  display: inline-block;
-  border-radius: 9999px;
   object-fit: cover;
   background-position: center;
-  height: 50px;
-  width: 50px;
+
+  border-width: 2px;
+  border-radius: 100%;
+
   font-size: var(--text-5xl);
   padding: 1px;
+
+  height: 50px;
+  width: 50px;
 }
 </style>

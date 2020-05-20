@@ -1,6 +1,10 @@
 <template>
   <div class="f-chip" :class="classes" @click="onClick">
-    <div class="f-chip__icon" v-if="icon">
+    <div
+      class="f-chip__icon"
+      :class="{ 'f-chip__icon-selectable': selected }"
+      v-if="icon"
+    >
       <slot name="icon">
         <f-icon
           lib="flux"
@@ -35,7 +39,7 @@ export default {
     FIcon
   },
   props: {
-    label: String,
+    label: [String, Number],
     value: [String, Number],
     color: {
       type: String,
@@ -94,16 +98,15 @@ export default {
 .f-chip {
   flex-wrap: nowrap;
   display: inline-flex;
+  justify-content: space-between;
   align-items: center;
   vertical-align: middle;
   color: var(--color-white);
   padding: 0.25rem 0.75rem;
-  border-radius: 0.5rem;
+  border-radius: 12px;
   outline: 0;
   position: relative;
   user-select: none;
-  cursor: pointer;
-  border-width: 1px;
   transition: 0.3s;
   min-height: 23px;
   margin: 0 1px;
@@ -116,6 +119,9 @@ export default {
     padding: 0;
     margin-right: 0.5rem;
     line-height: 1.5;
+    &-selectable {
+      cursor: pointer;
+    }
   }
   &__content {
     display: flex;
@@ -130,6 +136,7 @@ export default {
     line-height: 1;
   }
   &__close {
+    cursor: pointer;
     display: flex;
     vertical-align: middle;
     margin: 0;
