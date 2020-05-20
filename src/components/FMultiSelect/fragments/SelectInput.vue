@@ -10,15 +10,13 @@
     </div>
     <div class="SelectInput__content">
       <div v-if="displaySearch" class="SelectInput__search" @click.stop>
-        <f-field class="SelectInput__field">
-          <f-input
-            class="SelectInput__input"
-            placeholder="Pesquisar"
-            name="searchField"
-            :value="searchQuery"
-            @input="emitSearch"
-          />
-
+        <f-input
+          class="SelectInput__searchInput"
+          placeholder="Pesquisar"
+          name="searchField"
+          :value="searchQuery"
+          @input="emitSearch"
+        >
           <f-icon
             slot="append"
             size="base"
@@ -26,7 +24,7 @@
             name="search"
             color="gray-500"
           />
-        </f-field>
+        </f-input>
       </div>
 
       <div v-else class="SelectInput__placeholder">
@@ -56,14 +54,13 @@
 <script>
 import { FChip } from '../../FChip'
 import { FIcon } from '../../FIcon'
-import { FField, FInput } from '../../FField'
+import { FInput } from '../../FField'
 
 export default {
   name: 'SelectInput',
 
   components: {
     FChip,
-    FField,
     FInput,
     FIcon
   },
@@ -239,6 +236,7 @@ export default {
     left: 15px;
     transform: translateY(-50%);
     user-select: none;
+    z-index: 10;
 
     color: #999;
     font-size: var(--text-base);
@@ -275,7 +273,7 @@ export default {
     animation: 500ms fadeIn;
   }
 
-  &__field {
+  &__searchInput {
     height: 35px;
 
     .f-field__inner__field,

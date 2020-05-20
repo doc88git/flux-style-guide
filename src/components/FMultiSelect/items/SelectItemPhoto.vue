@@ -19,9 +19,6 @@
 <script>
 import { FIcon } from '../../FIcon'
 
-const hasKeys = (obj, keys) =>
-  (keys || []).every(key => Object.keys(obj).includes(key))
-
 export default {
   name: 'SelectItemPhoto',
 
@@ -30,8 +27,7 @@ export default {
   props: {
     option: {
       type: Object,
-      required: true,
-      validator: v => hasKeys(v, ['value', 'label'])
+      required: true
     },
 
     index: {

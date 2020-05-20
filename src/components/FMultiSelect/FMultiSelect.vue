@@ -89,7 +89,6 @@ export default {
      * Current value, must be an array if it is multiple
      */
     value: {
-      type: [Object, String, Number, Array],
       required: true
     },
 
