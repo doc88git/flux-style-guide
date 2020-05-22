@@ -12,11 +12,6 @@ storiesOf('Components|Accordion', module).add('Default', () => ({
   template: `
       <div style="max-width: 500px; margin: 70px auto">
         <f-accordion :title="title">
-          <template slot="info">
-            <span>
-              ativado
-            </span>
-          </template>
           <h4>Conteúdo</h4>
           <h4>Conteúdo</h4>
           <h4>Conteúdo</h4>
