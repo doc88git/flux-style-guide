@@ -139,8 +139,6 @@ export default {
 
   padding-left: 0.75rem;
   padding-right: 0.75rem;
-  //padding-top: 0.5rem;
-  //padding-bottom: 0.5rem;
 
   &:focus {
     outline: 0;
