@@ -234,14 +234,14 @@ export function setBrand(color, value, element = document.body) {
     throw new TypeError('Expected a DOM element')
   }
 
-  element.style.setProperty(`--q-color-${color}`, value)
+  element.style.setProperty(`--color-${color}`, value)
   switch (color) {
     case 'negative':
     case 'warning':
-      element.style.setProperty(`--q-color-${color}-l`, lighten(value, 46))
+      element.style.setProperty(`--color-${color}-l`, lighten(value, 46))
       break
     case 'light':
-      element.style.setProperty(`--q-color-${color}-d`, lighten(value, -10))
+      element.style.setProperty(`--color-${color}-d`, lighten(value, -10))
   }
 }
 
@@ -255,7 +255,7 @@ export function getBrand(color, element = document.body) {
 
   return (
     getComputedStyle(element)
-      .getPropertyValue(`--q-color-${color}`)
+      .getPropertyValue(`--color-${color}`)
       .trim() || null
   )
 }

@@ -10,7 +10,7 @@ export default {
         ctx.enabled !== false &&
           setTimeout(() => {
             const vm = (vnode.componentInstance || vnode.context).$root
-            vm.__qClosePopup !== void 0 && vm.__qClosePopup(evt)
+            vm.__fClosePopup !== void 0 && vm.__fClosePopup(evt)
           })
       },
 
@@ -19,27 +19,27 @@ export default {
       }
     }
 
-    if (el.__qclosepopup !== void 0) {
-      el.__qclosepopup_old = el.__qclosepopup
+    if (el.__fclosepopup !== void 0) {
+      el.__fclosepopup_old = el.__fclosepopup
     }
 
-    el.__qclosepopup = ctx
+    el.__fclosepopup = ctx
     el.addEventListener('click', ctx.handler)
     el.addEventListener('keyup', ctx.handlerKey)
   },
 
   update(el, { value }) {
-    if (el.__qclosepopup !== void 0) {
-      el.__qclosepopup.enabled = value !== false
+    if (el.__fclosepopup !== void 0) {
+      el.__fclosepopup.enabled = value !== false
     }
   },
 
   unbind(el) {
-    const ctx = el.__qclosepopup_old || el.__qclosepopup
+    const ctx = el.__fclosepopup_old || el.__fclosepopup
     if (ctx !== void 0) {
       el.removeEventListener('click', ctx.handler)
       el.removeEventListener('keyup', ctx.handlerKey)
-      delete el[el.__qclosepopup_old ? '__qclosepopup_old' : '__qclosepopup']
+      delete el[el.__fclosepopup_old ? '__fclosepopup_old' : '__fclosepopup']
     }
   }
 }

@@ -1,6 +1,7 @@
 <template>
   <div class="f-select" tabindex="-1">
     <span v-if="label" class="f-select__label">{{ label }}</span>
+
     <f-dropdown
       :list="optionsFiltered"
       :color="color"

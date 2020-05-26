@@ -10,11 +10,11 @@
 </template>
 
 <script>
-import DatePicker from 'vue2-datepicker'
-
 export default {
   name: 'f-datepicker',
-  components: { DatePicker },
+  components: {
+    DatePicker: () => import('vue2-datepicker')
+  },
   props: {
     range: {
       default: false

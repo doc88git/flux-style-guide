@@ -105,27 +105,6 @@ export default {
     }
   },
 
-  computed: {
-    contentWrapperClasses() {
-      return [
-        'f-layout__wrapper__content',
-        {
-          'f-layout__wrapper__content--no-extra-padding':
-            this.menuItems.length === 0 && !this.hasMenu
-        }
-      ]
-    },
-    headerClasses() {
-      return [
-        'f-layout__header',
-        {
-          'f-layout__header--no-menu':
-            this.menuItems.length === 0 || !this.hasMenu
-        }
-      ]
-    }
-  },
-
   methods: {
     handleMenu() {
       this.menuExpand = !this.menuExpand
@@ -162,10 +141,6 @@ export default {
       position: relative;
       z-index: 10;
       padding: 10px;
-
-      @media screen and (min-width: map-get($sizes, 'tablet')) {
-        padding: 10px 10px 10px 80px;
-      }
 
       &--no-extra-padding {
         padding: 1.25rem;

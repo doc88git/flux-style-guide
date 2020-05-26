@@ -4,7 +4,7 @@ import { getScrollTarget } from '../utils/scroll.js'
 import { listenOpts } from '../utils/event.js'
 
 function updateBinding(el, { value, oldValue }) {
-  const ctx = el.__qscrollfire
+  const ctx = el.__fscrollfire
 
   if (typeof value !== 'function') {
     ctx.scrollTarget.removeEventListener('scroll', ctx.scroll)
@@ -47,15 +47,15 @@ export default {
       }, 25)
     }
 
-    if (el.__qscrollfire) {
-      el.__qscrollfire_old = el.__qscrollfire
+    if (el.__fscrollfire) {
+      el.__fscrollfire_old = el.__fscrollfire
     }
 
-    el.__qscrollfire = ctx
+    el.__fscrollfire = ctx
   },
 
   inserted(el, binding) {
-    let ctx = el.__qscrollfire
+    let ctx = el.__fscrollfire
     ctx.scrollTarget = getScrollTarget(el)
     updateBinding(el, binding)
   },
@@ -67,14 +67,14 @@ export default {
   },
 
   unbind(el) {
-    let ctx = el.__qscrollfire_old || el.__qscrollfire
+    let ctx = el.__fscrollfire_old || el.__fscrollfire
     if (ctx !== void 0) {
       ctx.scrollTarget.removeEventListener(
         'scroll',
         ctx.scroll,
         listenOpts.passive
       )
-      delete el[el.__qscrollfire_old ? '__qscrollfire_old' : '__qscrollfire']
+      delete el[el.__fscrollfire_old ? '__fscrollfire_old' : '__fscrollfire']
     }
   }
 }
