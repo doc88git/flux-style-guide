@@ -8,4 +8,5 @@
 
 | Name    | Description | Bindings |
 | ------- | ----------- | -------- |
+| info    |             |          |
 | default |             |          |

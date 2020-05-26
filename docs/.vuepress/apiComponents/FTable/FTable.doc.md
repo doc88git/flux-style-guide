@@ -14,7 +14,8 @@
 
 ### Slots
 
-| Name | Description | Bindings                                                               |
-| ---- | ----------- | ---------------------------------------------------------------------- |
-| th   |             | [<br> {<br> "name": "head"<br> },<br> {<br> "name": "index"<br> }<br>] |
-| tr   |             | [<br> {<br> "name": "row"<br> },<br> {<br> "name": "index"<br> }<br>]  |
+| Name  | Description | Bindings                                                               |
+| ----- | ----------- | ---------------------------------------------------------------------- |
+| thead |             |                                                                        |
+| th    |             | [<br> {<br> "name": "head"<br> },<br> {<br> "name": "index"<br> }<br>] |
+| tr    |             | [<br> {<br> "name": "row"<br> },<br> {<br> "name": "index"<br> }<br>]  |
