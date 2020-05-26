@@ -6,7 +6,7 @@ import {
 import { listenOpts } from '../utils/event.js'
 
 function updateBinding(el, { value, oldValue }) {
-  const ctx = el.__qscroll
+  const ctx = el.__fscroll
 
   if (typeof value !== 'function') {
     ctx.scrollTarget.removeEventListener(
@@ -37,15 +37,15 @@ export default {
       }
     }
 
-    if (el.__qscroll) {
-      el.__qscroll_old = el.__qscroll
+    if (el.__fscroll) {
+      el.__fscroll_old = el.__fscroll
     }
 
-    el.__qscroll = ctx
+    el.__fscroll = ctx
   },
 
   inserted(el, binding) {
-    let ctx = el.__qscroll
+    let ctx = el.__fscroll
     ctx.scrollTarget = getScrollTarget(el)
     updateBinding(el, binding)
   },
@@ -57,14 +57,14 @@ export default {
   },
 
   unbind(el) {
-    let ctx = el.__qscroll_old || el.__qscroll
+    let ctx = el.__fscroll_old || el.__fscroll
     if (ctx !== void 0) {
       ctx.scrollTarget.removeEventListener(
         'scroll',
         ctx.scroll,
         listenOpts.passive
       )
-      delete el[el.__qscroll_old ? '__qscroll_old' : '__qscroll']
+      delete el[el.__fscroll_old ? '__fscroll_old' : '__fscroll']
     }
   }
 }

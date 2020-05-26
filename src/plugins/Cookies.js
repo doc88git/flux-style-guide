@@ -32,25 +32,61 @@ function read(string) {
 
   try {
     string = JSON.parse(string)
-  } catch (e) {
-    console.log({ e })
-  }
+  } catch (e) {}
 
   return string
+}
+
+function getString(msOffset) {
+  const time = new Date()
+  time.setMilliseconds(time.getMilliseconds() + msOffset)
+  return time.toUTCString()
+}
+
+function parseExpireString(str) {
+  let timestamp = 0
+
+  const days = str.match(/(\d+)d/)
+  const hours = str.match(/(\d+)h/)
+  const minutes = str.match(/(\d+)m/)
+  const seconds = str.match(/(\d+)s/)
+
+  if (days) {
+    timestamp += days[1] * 864e5
+  }
+  if (hours) {
+    timestamp += hours[1] * 36e5
+  }
+  if (minutes) {
+    timestamp += minutes[1] * 6e4
+  }
+  if (seconds) {
+    timestamp += seconds[1] * 1000
+  }
+
+  return timestamp === 0 ? str : getString(timestamp)
 }
 
 function set(key, val, opts = {}, ssr) {
   let expire, expireValue
 
   if (opts.expires !== void 0) {
-    expireValue = parseFloat(opts.expires)
-
-    if (isNaN(expireValue)) {
-      expire = opts.expires
-    } else {
-      expire = new Date()
-      expire.setMilliseconds(expire.getMilliseconds() + expireValue * 864e5)
-      expire = expire.toUTCString()
+    // if it's a Date Object
+    if (Object.prototype.toString.call(opts.expires) === '[object Date]') {
+      expire = opts.expires.toUTCString()
+    }
+    // if it's a String (eg. "15m", "1h", "13d", "1d 15m", "31s")
+    // possible units: d (days), h (hours), m (minutes), s (seconds)
+    else if (typeof opts.expires === 'string') {
+      expire = parseExpireString(opts.expires)
+    }
+    // otherwise it must be a Number (defined in days)
+    else {
+      expireValue = parseFloat(opts.expires)
+      expire =
+        isNaN(expireValue) === false
+          ? getString(expireValue * 864e5)
+          : opts.expires
     }
   }
 
@@ -61,8 +97,10 @@ function set(key, val, opts = {}, ssr) {
     expire !== void 0 ? '; Expires=' + expire : '', // use expires attribute, max-age is not supported by IE
     opts.path ? '; Path=' + opts.path : '',
     opts.domain ? '; Domain=' + opts.domain : '',
+    opts.sameSite ? '; SameSite=' + opts.sameSite : '',
     opts.httpOnly ? '; HttpOnly' : '',
-    opts.secure ? '; Secure' : ''
+    opts.secure ? '; Secure' : '',
+    opts.other ? '; ' + opts.other : ''
   ].join('')
 
   if (ssr) {
@@ -98,7 +136,7 @@ function set(key, val, opts = {}, ssr) {
 }
 
 function get(key, ssr) {
-  let result = key ? undefined : {},
+  let result = key ? null : {},
     cookieSource = ssr ? ssr.req.headers : document,
     cookies = cookieSource.cookie ? cookieSource.cookie.split('; ') : [],
     i = 0,
@@ -124,11 +162,11 @@ function get(key, ssr) {
 }
 
 function remove(key, options, ssr) {
-  set(key, '', { ...options, expires: -1 }, ssr)
+  set(key, '', { expires: -1, ...options }, ssr)
 }
 
 function has(key, ssr) {
-  return get(key, ssr) !== undefined
+  return get(key, ssr) !== null
 }
 
 export function getObject(ctx = {}) {

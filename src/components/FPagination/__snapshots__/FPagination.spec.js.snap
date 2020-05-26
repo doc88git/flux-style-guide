@@ -5,7 +5,7 @@ exports[`FPaginantion tests Componente não alterado 1`] = `
   <div class=\\"FPagination__sectionPrevious\\"><button disabled=\\"disabled\\" class=\\"FPagination__sectionBtn\\">
       Primeira
     </button> <button disabled=\\"disabled\\" class=\\"FPagination__sectionBtn\\">
-      <f-icon-stub color=\\"gray-300\\" lib=\\"flux\\" type=\\"default\\" size=\\"base\\" name=\\"chevron-left\\"></f-icon-stub>
+      <f-icon-stub color=\\"gray-300\\" lib=\\"flux\\" size=\\"base\\" name=\\"chevron-left\\"></f-icon-stub>
     </button></div>
   <ul class=\\"FPagination__ul\\">
     <li class=\\"FPagination__li\\"><button class=\\"FPagination__pageBtn FPagination__pageBtn--selected\\">
@@ -40,7 +40,7 @@ exports[`FPaginantion tests Componente não alterado 1`] = `
       </button></li>
   </ul>
   <div class=\\"FPagination__sectionNext\\"><button class=\\"FPagination__sectionBtn\\">
-      <f-icon-stub color=\\"gray\\" lib=\\"flux\\" type=\\"default\\" size=\\"base\\" name=\\"chevron-right\\"></f-icon-stub>
+      <f-icon-stub color=\\"gray\\" lib=\\"flux\\" size=\\"base\\" name=\\"chevron-right\\"></f-icon-stub>
     </button> <button class=\\"FPagination__sectionBtn\\">
       Última
     </button></div>

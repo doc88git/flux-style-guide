@@ -1,24 +1,24 @@
 function encode(value) {
   if (Object.prototype.toString.call(value) === '[object Date]') {
-    return '__q_date|' + value.toUTCString()
+    return '__f_date|' + value.toUTCString()
   }
   if (Object.prototype.toString.call(value) === '[object RegExp]') {
-    return '__q_expr|' + value.source
+    return '__f_expr|' + value.source
   }
   if (typeof value === 'number') {
-    return '__q_numb|' + value
+    return '__f_numb|' + value
   }
   if (typeof value === 'boolean') {
-    return '__q_bool|' + (value ? '1' : '0')
+    return '__f_bool|' + (value ? '1' : '0')
   }
   if (typeof value === 'string') {
-    return '__q_strn|' + value
+    return '__f_strn|' + value
   }
   if (typeof value === 'function') {
-    return '__q_strn|' + value.toString()
+    return '__f_strn|' + value.toString()
   }
   if (value === Object(value)) {
-    return '__q_objt|' + JSON.stringify(value)
+    return '__f_objt|' + JSON.stringify(value)
   }
 
   // hmm, we don't know what to do with it,
@@ -39,22 +39,22 @@ function decode(value) {
   source = value.substring(9)
 
   switch (type) {
-    case '__q_date':
+    case '__f_date':
       return new Date(source)
 
-    case '__q_expr':
+    case '__f_expr':
       return new RegExp(source)
 
-    case '__q_numb':
+    case '__f_numb':
       return Number(source)
 
-    case '__q_bool':
+    case '__f_bool':
       return Boolean(source === '1')
 
-    case '__q_strn':
+    case '__f_strn':
       return '' + source
 
-    case '__q_objt':
+    case '__f_objt':
       return JSON.parse(source)
 
     default:
