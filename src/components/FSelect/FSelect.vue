@@ -203,7 +203,10 @@ export default {
     },
     currentValue() {
       return !this.multiple && this.value
-        ? this.options.find(opt => opt[this.trackBy] === this.value)
+        ? this.options.find(
+            opt =>
+              JSON.stringify(opt[this.trackBy]) === JSON.stringify(this.value)
+          )
         : null
     },
     optionsByQuery() {
@@ -274,6 +277,10 @@ export default {
     },
     isOptionSelected(option) {
       if (is(option[this.trackBy], 'Object')) {
+        console.log({
+          value: JSON.stringify(this.value),
+          option: JSON.stringify(option[this.trackBy])
+        })
         return !this.multiple
           ? JSON.stringify(this.value) === JSON.stringify(option[this.trackBy])
           : !!(this.value || []).find(

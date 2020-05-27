@@ -3,6 +3,15 @@
     <div class="FMultiSelectExample__box">
       <f-select
         :options="optionsMock"
+        :multiple="false"
+        v-model="valueZero"
+        label="Cidades"
+      />
+    </div>
+
+    <div class="FMultiSelectExample__box">
+      <f-select
+        :options="optionsMock"
         v-model="valueOne"
         label="Cidades"
         type="check"
@@ -83,6 +92,7 @@ export default {
 
   data: () => ({
     optionsMock,
+    valueZero: '',
     valueOne: [],
     valueTwo: [],
     valueThree: []
