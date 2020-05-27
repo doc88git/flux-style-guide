@@ -15,7 +15,7 @@
         <slot name="prepend" />
       </div>
 
-      <span> {{ option[displayBy] }} </span>
+      <span class="SelectItemPhoto__nameText">{{ option[displayBy] }}</span>
 
       <div v-if="$slots.append" class="SelectItemPhoto__append">
         <slot name="append" />
@@ -88,6 +88,7 @@ export default {
   color: #999;
   cursor: pointer;
 
+  &--selected,
   &:hover {
     color: var(--color-primary);
   }
@@ -107,10 +108,11 @@ export default {
   }
 
   &__photo {
-    width: 26px;
+    width: 25px;
     height: 25px;
-    border-radius: 15px;
+    border-radius: 100%;
     margin-right: 12px;
+    flex-shrink: 0;
   }
 
   &__photoDimensions {
@@ -123,8 +125,24 @@ export default {
   &__name {
     display: flex;
     align-items: center;
+    flex-grow: 1;
+    //width: 185px;
+  }
+
+  &__prepend {
+    margin-right: 10px;
+  }
+
+  &__append {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-grow: 1;
+  }
+
+  &__nameText {
     font-size: var(--text-base);
-    width: 185px;
+    flex-shrink: 0;
   }
 }
 

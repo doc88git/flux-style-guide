@@ -18,6 +18,46 @@
         type="check"
         multiple
       >
+        <template v-slot:option-prepend="{ isSelected }">
+          <f-icon
+            slot="option-append"
+            lib="flux"
+            name="map-pin"
+            size="sm"
+            :color="isSelected ? 'primary' : 'gray-500'"
+          />
+        </template>
+
+        <template v-slot:option-append="{ isSelected }">
+          <f-icon
+            slot="option-append"
+            lib="flux"
+            name="star"
+            size="sm"
+            :color="isSelected ? 'primary' : 'gray-500'"
+          />
+        </template>
+      </f-select>
+    </div>
+
+    <div class="FMultiSelectExample__box">
+      <f-select
+        :options="optionsMock"
+        v-model="valueThree"
+        label="Cidades"
+        type="photo"
+        multiple
+      >
+        <template v-slot:option-prepend="{ isSelected }">
+          <f-icon
+            slot="option-append"
+            lib="flux"
+            name="map-pin"
+            size="sm"
+            :color="isSelected ? 'primary' : 'gray-500'"
+          />
+        </template>
+
         <template v-slot:option-append="{ isSelected }">
           <f-icon
             slot="option-append"
@@ -44,7 +84,8 @@ export default {
   data: () => ({
     optionsMock,
     valueOne: [],
-    valueTwo: []
+    valueTwo: [],
+    valueThree: []
   }),
 
   methods: {}
