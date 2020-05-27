@@ -14,3 +14,10 @@
 | ---------- | --------- | ----------- |
 | remove     | undefined |
 | input      | undefined |
+
+### Slots
+
+| Name    | Description | Bindings |
+| ------- | ----------- | -------- |
+| prepend |             |          |
+| append  |             |          |

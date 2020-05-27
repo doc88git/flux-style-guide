@@ -1,7 +1,7 @@
 <template>
   <div class="FMultiSelectExample">
     <div class="FMultiSelectExample__box">
-      <f-multi-select
+      <f-select
         :options="optionsMock"
         v-model="valueOne"
         label="Cidades"
@@ -11,7 +11,7 @@
     </div>
 
     <div class="FMultiSelectExample__box">
-      <f-multi-select
+      <f-select
         :options="optionsMock"
         v-model="valueTwo"
         label="Cidades"
@@ -27,19 +27,19 @@
             :color="isSelected ? 'primary' : 'gray-500'"
           />
         </template>
-      </f-multi-select>
+      </f-select>
     </div>
   </div>
 </template>
 
 <script>
-import { FMultiSelect } from '@/components/FMultiSelect'
-import optionsMock from '@/components/FMultiSelect/examples/mock'
+import { FSelect } from '@/components/FSelect'
+import optionsMock from '@/components/FSelect/examples/mock'
 
 export default {
   name: 'FMultiSelectExample',
 
-  components: { FMultiSelect },
+  components: { FSelect },
 
   data: () => ({
     optionsMock,

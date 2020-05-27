@@ -22,7 +22,9 @@
 
 ### Slots
 
-| Name     | Description | Bindings                                                                 |
-| -------- | ----------- | ------------------------------------------------------------------------ |
-| slotName |             |                                                                          |
-| option   |             | [<br> {<br> "name": "option"<br> },<br> {<br> "name": "index"<br> }<br>] |
+| Name           | Description | Bindings                                                                                                                                       |
+| -------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| slotName       |             |                                                                                                                                                |
+| option         |             | [<br> {<br> "name": "option"<br> },<br> {<br> "name": "index"<br> },<br> {<br> "name": "isSelected"<br> }<br>]                                 |
+| option-prepend |             | [<br> {<br> "name": "slot"<br> },<br> {<br> "name": "option"<br> },<br> {<br> "name": "index"<br> },<br> {<br> "name": "isSelected"<br> }<br>] |
+| option-append  |             | [<br> {<br> "name": "slot"<br> },<br> {<br> "name": "option"<br> },<br> {<br> "name": "index"<br> },<br> {<br> "name": "isSelected"<br> }<br>] |
