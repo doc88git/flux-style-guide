@@ -11,7 +11,10 @@ export default {
   components: {
     Layout
   },
-  data: () => ({})
+
+  created() {
+    document.title = 'Flux Style Guide'
+  }
 }
 </script>
 

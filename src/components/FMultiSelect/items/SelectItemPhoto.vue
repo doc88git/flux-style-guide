@@ -11,7 +11,15 @@
       </div>
     </div>
     <div class="SelectItemPhoto__name">
+      <div v-if="$slots.prepend" class="SelectItemPhoto__prepend">
+        <slot name="prepend" />
+      </div>
+
       <span> {{ option[displayBy] }} </span>
+
+      <div v-if="$slots.append" class="SelectItemPhoto__append">
+        <slot name="append" />
+      </div>
     </div>
   </div>
 </template>
@@ -76,7 +84,7 @@ export default {
 <style lang="scss" scoped>
 .SelectItemPhoto {
   display: flex;
-  padding: 4px 10px 4px 15px;
+  padding: 4px 15px 4px 15px;
   color: #999;
   cursor: pointer;
 

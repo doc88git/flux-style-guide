@@ -33,7 +33,10 @@
         @select-all="setSelectAll"
       >
         <template v-slot:option="{ option, index }">
-          <slot name="option" v-bind="{ option, index }">
+          <slot
+            name="option"
+            v-bind="{ option, index, isSelected: isOptionSelected(option) }"
+          >
             <component
               :is="optionComponent"
               :option="option"
@@ -43,7 +46,19 @@
               :track-by="trackBy"
               @input="addItem"
               @remove="removeItem"
-            />
+            >
+              <slot
+                name="option-prepend"
+                slot="prepend"
+                v-bind="{ option, index, isSelected: isOptionSelected(option) }"
+              />
+
+              <slot
+                name="option-append"
+                slot="append"
+                v-bind="{ option, index, isSelected: isOptionSelected(option) }"
+              />
+            </component>
           </slot>
         </template>
       </select-item-group>

@@ -8,7 +8,15 @@
       />
     </div>
     <div class="SelectItemCheck__label">
-      {{ option[displayBy] }}
+      <div v-if="$slots.prepend" class="SelectItemCheck__prepend">
+        <slot name="prepend" />
+      </div>
+
+      <span class="SelectItemCheck__labelText">{{ option[displayBy] }}</span>
+
+      <div v-if="$slots.append" class="SelectItemCheck__append">
+        <slot name="append" />
+      </div>
     </div>
   </div>
 </template>
@@ -77,7 +85,7 @@ export default {
   color: #999;
   cursor: pointer;
 
-  padding: 8px 10px 8px 15px;
+  padding: 8px 15px 8px 15px;
 
   &--selected,
   &:hover {
@@ -86,9 +94,27 @@ export default {
 
   &__value {
     margin-right: 10px;
+    flex-shrink: 0;
   }
 
   &__label {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+  }
+
+  &__append {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-grow: 1;
+  }
+
+  &__prepend {
+  }
+
+  &__labelText {
+    flex-shrink: 0;
     user-select: none;
   }
 }
