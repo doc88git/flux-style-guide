@@ -128,6 +128,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../assets/f-variables';
+
 .btn {
   text-align: center;
   padding: 0.5rem 0.75rem;
@@ -211,6 +213,13 @@ export default {
     border-radius: 0.25rem;
     padding-left: 1.25rem;
     padding-right: 1.25rem;
+  }
+
+  @each $name, $color in $colors-theme {
+    &.color--outline--#{$name} {
+      color: var(--color-#{$name});
+      border-color: var(--color-#{$name});
+    }
   }
 
   &__inner {

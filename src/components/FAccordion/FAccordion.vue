@@ -5,7 +5,7 @@
         {{ title }}
       </p>
       <div class="BasicAccordion__header__info">
-        <slot name="info" />
+        <slot v-if="hideContent" name="info" />
       </div>
       <f-icon
         :class="iconClasses"

@@ -1,50 +1,59 @@
 <template>
-  <select-accordion
-    class="FMultiSelect"
-    :show-content="displayOptions"
-    :is-active="hasValue"
-    @close="hideOptions"
-  >
-    <select-input
-      slot="header"
-      :is-active="displayOptions"
-      :search-query="searchQuery"
-      :current-value="currentValue"
-      :display-by="displayBy"
-      :num-selected="itemsSelected"
-      v-bind="$attrs"
-      @toggle-options="toggleOptions"
-      @search="search"
-    />
+  <f-field :is-active="displayOptions" v-bind="$attrs">
+    <template v-for="slotName in fieldSlots" :slot="slotName">
+      <slot v-if="$slots[slotName]" :name="slotName" />
+    </template>
 
-    <select-item-group
-      slot="content"
-      :options="optionsByQuery"
-      :display-clear="displayClearList"
-      :select-all="displaySelectAll"
-      :track-by="trackBy"
-      @clear="clearValues"
-      @select-all="setSelectAll"
+    <select-accordion
+      class="FMultiSelect"
+      :show-content="displayOptions"
+      :is-active="hasValue"
+      @close="hideOptions"
     >
-      <template v-slot:option="{ option, index }">
-        <slot name="option" v-bind="{ option, index }">
-          <component
-            :is="optionComponent"
-            :option="option"
-            :index="index"
-            :is-selected="isOptionSelected(option)"
-            :display-by="displayBy"
-            :track-by="trackBy"
-            @input="addItem"
-            @remove="removeItem"
-          />
-        </slot>
-      </template>
-    </select-item-group>
-  </select-accordion>
+      <select-input
+        slot="header"
+        :is-active="displayOptions"
+        :search-query="searchQuery"
+        :current-value="currentValue"
+        :display-by="displayBy"
+        :num-selected="itemsSelected"
+        :label="label"
+        v-bind="$attrs"
+        @toggle-options="toggleOptions"
+        @search="search"
+      />
+
+      <select-item-group
+        slot="content"
+        :options="optionsByQuery"
+        :display-clear="displayClearList"
+        :select-all="displaySelectAll"
+        :track-by="trackBy"
+        @clear="clearValues"
+        @select-all="setSelectAll"
+      >
+        <template v-slot:option="{ option, index }">
+          <slot name="option" v-bind="{ option, index }">
+            <component
+              :is="optionComponent"
+              :option="option"
+              :index="index"
+              :is-selected="isOptionSelected(option)"
+              :display-by="displayBy"
+              :track-by="trackBy"
+              @input="addItem"
+              @remove="removeItem"
+            />
+          </slot>
+        </template>
+      </select-item-group>
+    </select-accordion>
+  </f-field>
 </template>
 
 <script>
+import { FField } from '../FField'
+
 import SelectAccordion from './fragments/SelectAccordion'
 import SelectItemGroup from './fragments/SelectItemGroup'
 import SelectInput from './fragments/SelectInput'
@@ -75,6 +84,7 @@ export default {
   name: 'FMultiSelect',
 
   components: {
+    FField,
     SelectAccordion,
     SelectItemGroup,
     SelectInput,
@@ -90,6 +100,14 @@ export default {
      */
     value: {
       required: true
+    },
+
+    /**
+     * The field's label
+     */
+    label: {
+      type: String,
+      default: ''
     },
 
     /**
@@ -198,12 +216,16 @@ export default {
     displaySelectAll() {
       if (!this.multiple || this.searchQuery) return false
       return !this.displayClearList && this.selectAll
+    },
+    fieldSlots() {
+      return ['before', 'after', 'label', 'append', 'error', 'hint']
     }
   },
 
   watch: {
     displayOptions(display) {
       if (display) this.sortOptions()
+      else this.emitBlur()
     },
     searchQuery: 'debounceInput',
     options: 'setSortedOptions'
@@ -231,6 +253,9 @@ export default {
       value.splice(index, 1)
 
       return this.$emit('input', value)
+    },
+    emitBlur() {
+      this.$emit('blur')
     },
     isOptionSelected(option) {
       if (is(option[this.trackBy], 'Object')) {

@@ -1,5 +1,5 @@
 <template>
-  <div class="f-field">
+  <div :class="rootClasses">
     <div v-if="$slots.before" class="f-field__before">
       <slot name="before" />
     </div>
@@ -25,7 +25,7 @@
         <slot name="hint">{{ hint }}</slot>
       </div>
 
-      <div v-if="$slots.error || hasError" class="f-field__inner__error">
+      <div v-if="$slots.error || hasError" :class="errorClasses">
         <slot name="error">
           {{ errorMessage || 'Há um erro neste campo' }}
         </slot>
@@ -99,6 +99,9 @@ export default {
     hasLabel() {
       return !!this.$slots.label || !!this.label
     },
+    rootClasses() {
+      return ['f-field', { 'f-field--isActive': this.isActive }]
+    },
     innerClasses() {
       return [
         'f-field__inner',
@@ -128,6 +131,14 @@ export default {
           'f-field__inner--hasError': this.hasError
         }
       ]
+    },
+    errorClasses() {
+      return [
+        'f-field__inner__error',
+        {
+          'f-field__inner__error--hasError': this.hasError
+        }
+      ]
     }
   }
 }
@@ -139,6 +150,14 @@ $fieldHeight: 48px;
 .f-field {
   display: flex;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 0;
+  transition: z-index 0ms ease 300ms;
+
+  &--isActive {
+    z-index: 1;
+    transition: z-index 0ms ease 0ms;
+  }
 
   &__before {
     display: flex;
@@ -235,8 +254,12 @@ $fieldHeight: 48px;
       letter-spacing: 0.025em;
       color: var(--color-red);
       font-size: 0.875rem;
-      margin-bottom: 0.5rem;
-      margin-top: 0.5rem;
+      margin: 0;
+
+      &--hasError {
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
+      }
     }
 
     &__input {
