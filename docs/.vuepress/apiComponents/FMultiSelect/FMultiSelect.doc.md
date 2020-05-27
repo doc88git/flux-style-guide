@@ -3,6 +3,7 @@
 | Prop name     | Description                                                                      | Type    | Values | Default |
 | ------------- | -------------------------------------------------------------------------------- | ------- | ------ | ------- |
 | value         | Current value, must be an array if it is multiple                                |         | -      |         |
+| label         | The field's label                                                                | string  | -      | ''      |
 | options       | Array of Option objects.                                                         | array   | -      | []      |
 | type          | Defines the variation of the MultiSelect item's                                  | string  | -      | 'base'  |
 | displayBy     | Defines the property of the option object to use to be<br>displayed as the label | string  | -      | 'label' |
@@ -16,10 +17,12 @@
 | Event name | Type      | Description |
 | ---------- | --------- | ----------- |
 | input      | undefined |
+| blur       |           |
 | request    | undefined |
 
 ### Slots
 
-| Name   | Description | Bindings                                                                 |
-| ------ | ----------- | ------------------------------------------------------------------------ |
-| option |             | [<br> {<br> "name": "option"<br> },<br> {<br> "name": "index"<br> }<br>] |
+| Name     | Description | Bindings                                                                 |
+| -------- | ----------- | ------------------------------------------------------------------------ |
+| slotName |             |                                                                          |
+| option   |             | [<br> {<br> "name": "option"<br> },<br> {<br> "name": "index"<br> }<br>] |
