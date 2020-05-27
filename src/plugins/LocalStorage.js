@@ -1,10 +1,10 @@
-import { isSSR, hasWebStorage } from './Platform.js'
+import { isSSR, client } from './Platform.js'
 import { getEmptyStorage, getStorage } from '../utils/web-storage.js'
 
 export default {
   install({ $f }) {
     const storage =
-      isSSR === true || hasWebStorage() === false
+      isSSR === true || client.has.webStorage === false
         ? getEmptyStorage()
         : getStorage('local')
 

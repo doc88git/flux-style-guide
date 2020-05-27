@@ -65,7 +65,7 @@
 
   &--background {
     @each $color, $value in $colors-theme {
-      &--#{$color} {
+      &#{'--' + $color} {
         background-color: #{$value};
       }
     }
@@ -79,7 +79,7 @@
       color: var(--color-secondary);
     }
     @each $color, $value in $colors-theme {
-      &--#{$color} {
+      &#{'--' + $color} {
         color: #{$value};
       }
     }
@@ -93,7 +93,7 @@
       border: 1px solid var(--color-secondary);
     }
     @each $color, $value in $colors-theme {
-      &--#{$color} {
+      &#{'--' + $color} {
         border: 1px solid #{$value};
       }
     }
@@ -107,14 +107,14 @@
       fill: var(--color-secondary);
     }
     @each $color, $value in $colors-theme {
-      &--#{$color} {
+      &#{'--' + $color} {
         fill: var(--color-#{$color});
       }
     }
   }
 
-  @each $color in $colors {
-    &--#{$color} {
+  @each $prop, $color in $colors {
+    &#{'--' + $prop} {
       background-color: var(--color-#{$color});
       &:hover {
         background-color: var(--color-#{$color}-400);
@@ -124,57 +124,57 @@
       }
     }
     &--text {
-      &--#{$color} {
-        color: var(--color-#{$color}) !important;
+      &#{'--' + $prop} {
+        color: var(--color-#{$prop}) !important;
         &:hover {
-          color: var(--color-#{$color}-400);
+          color: var(--color-#{$prop}-400);
         }
         &:focus {
-          color: var(--color-#{$color}-600);
+          color: var(--color-#{$prop}-600);
         }
       }
     }
     &--flat {
-      &--#{$color} {
+      &#{'--' + $prop} {
         background-color: var(--color-transparent);
-        color: var(--color-#{$color});
+        color: var(--color-#{$prop});
         &:hover {
-          color: var(--color-#{$color}-400);
+          color: var(--color-#{$prop}-400);
         }
         &:focus {
-          color: var(--color-#{$color}-600);
+          color: var(--color-#{$prop}-600);
         }
       }
     }
     &--outline {
-      &--#{$color} {
+      &#{'--' + $prop} {
         background-color: var(--color-transparent);
-        color: var(--color-#{$color});
+        color: var(--color-#{$prop});
         border-width: 1px;
         border-style: solid;
-        border-color: var(--color-#{$color});
+        border-color: var(--color-#{$prop});
         &:hover {
-          color: var(--color-#{$color}-400);
+          color: var(--color-#{$prop}-400);
           border-width: 1px;
           border-style: solid;
-          border-color: var(--color-#{$color}-400);
+          border-color: var(--color-#{$prop}-400);
         }
         &:focus {
-          color: var(--color-#{$color}-600);
+          color: var(--color-#{$prop}-600);
           border-width: 1px;
           border-style: solid;
-          border-color: var(--color-#{$color}-600);
+          border-color: var(--color-#{$prop}-600);
         }
       }
     }
     &--default {
-      &--#{$color} {
-        background-color: var(--color-#{$color});
+      &#{'--' + $prop} {
+        background-color: var(--color-#{$prop});
         &:hover {
-          background-color: var(--color-#{$color}-400);
+          background-color: var(--color-#{$prop}-400);
         }
         &:focus {
-          background-color: var(--color-#{$color}-600);
+          background-color: var(--color-#{$prop}-600);
         }
       }
     }

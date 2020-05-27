@@ -33,8 +33,8 @@ export default {
   name: 'touch-swipe',
 
   bind(el, { value, arg, modifiers }) {
-    if (el.__qtouchswipe) {
-      el.__qtouchswipe_old = el.__qtouchswipe
+    if (el.__ftouchswipe) {
+      el.__ftouchswipe_old = el.__ftouchswipe
     }
 
     // early return, we don't need to do anything
@@ -208,7 +208,7 @@ export default {
       }
     }
 
-    el.__qtouchswipe = ctx
+    el.__ftouchswipe = ctx
 
     if (modifiers.mouse === true) {
       el.addEventListener('mousedown', ctx.mouseStart, modifiers.mouseCapture)
@@ -226,7 +226,7 @@ export default {
   },
 
   update(el, binding) {
-    const ctx = el.__qtouchswipe
+    const ctx = el.__ftouchswipe
 
     if (ctx !== void 0) {
       updateModifiers(ctx, binding)
@@ -234,7 +234,7 @@ export default {
   },
 
   unbind(el, { modifiers }) {
-    const ctx = el.__qtouchswipe_old || el.__qtouchswipe
+    const ctx = el.__ftouchswipe_old || el.__ftouchswipe
 
     if (ctx !== void 0) {
       removeObserver(ctx)
@@ -262,7 +262,7 @@ export default {
         el.removeEventListener('touchend', ctx.end, opts)
       }
 
-      delete el[el.__qtouchswipe_old ? '__qtouchswipe_old' : '__qtouchswipe']
+      delete el[el.__ftouchswipe_old ? '__ftouchswipe_old' : '__ftouchswipe']
     }
   }
 }

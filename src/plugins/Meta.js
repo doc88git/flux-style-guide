@@ -150,8 +150,9 @@ function parseMeta(component, meta) {
   }
 
   // if it has meta
-  if (component.__qMeta !== void 0) {
-    extend(true, meta, component.__qMeta)
+  if (hasMeta(component) === true) {
+    extend(true, meta, component.__fMeta)
+
     if (component.$options.meta.stopPropagation === true) {
       return
     }
@@ -165,7 +166,7 @@ function parseMeta(component, meta) {
 function updateClient() {
   if (ssrTakeover === true) {
     ssrTakeover = false
-    this.$root.__currentMeta = window.__Q_META__
+    this.$root.__currentMeta = window.__F_META__
     document.body.querySelector('script[data-qmeta-init]').remove()
     return
   }
@@ -246,7 +247,7 @@ function getServerMeta(app, html) {
             `<noscript data-qmeta="${name}">${meta.noscript[name]}</noscript>`
         )
         .join('') +
-      `<script data-qmeta-init>window.__Q_META__=${delete meta.noscript &&
+      `<script data-qmeta-init>window.__F_META__=${delete meta.noscript &&
         JSON.stringify(meta)}</script>`
   }
 
@@ -262,9 +263,9 @@ function beforeCreate() {
     if (this.$options.computed === void 0) {
       this.$options.computed = {}
     }
-    this.$options.computed.__qMeta = this.$options.meta
+    this.$options.computed.__fMeta = this.$options.meta
   } else if (hasMeta(this) === true) {
-    this.__qMeta = this.$options.meta
+    this.__fMeta = this.$options.meta
   }
 }
 
@@ -274,7 +275,7 @@ function hasMeta(vm) {
 }
 
 function triggerMeta() {
-  hasMeta(this) === true && this.__qMetaUpdate()
+  hasMeta(this) === true && this.__fMetaUpdate()
 }
 
 export default {
@@ -298,7 +299,7 @@ export default {
         beforeCreate,
         created() {
           if (hasMeta(this) === true) {
-            this.__qMetaUnwatch = this.$watch('__qMeta', this.__qMetaUpdate)
+            this.__fMetaUnwatch = this.$watch('__fMeta', this.__fMetaUpdate)
           }
         },
         activated: triggerMeta,
@@ -306,12 +307,12 @@ export default {
         beforeMount: triggerMeta,
         destroyed() {
           if (hasMeta(this) === true) {
-            this.__qMetaUnwatch()
-            this.__qMetaUpdate()
+            this.__fMetaUnwatch()
+            this.__fMetaUpdate()
           }
         },
         methods: {
-          __qMetaUpdate() {
+          __fMetaUpdate() {
             clearTimeout(updateId)
             updateId = setTimeout(updateClient.bind(this), 50)
           }
