@@ -7,7 +7,7 @@
     <select-accordion
       class="FMultiSelect"
       :show-content="displayOptions"
-      :is-active="hasValue"
+      :is-active="hasValue || nullOptionSelected"
       @close="hideOptions"
     >
       <select-input
@@ -17,6 +17,9 @@
         :current-value="currentValue"
         :display-by="displayBy"
         :num-selected="itemsSelected"
+        :is-null-selected="nullOptionSelected && displayNullOption"
+        :null-option-text="nullOptionText"
+        :null-option-icon="nullOptionIcon"
         :label="label"
         v-bind="$attrs"
         @toggle-options="toggleOptions"
@@ -35,7 +38,7 @@
         :track-by="trackBy"
         @clear="clearValues"
         @select-all="setSelectAll"
-        @toggle-null-option="nullOptionSelected = !nullOptionSelected"
+        @toggle-null-option="toggleNullOption"
       >
         <slot
           v-if="$slots['list-prepend']"
@@ -289,6 +292,13 @@ export default {
       this.displayOptions = this.multiple
         ? this.displayOptions
         : !this.displayOptions
+    },
+    toggleNullOption() {
+      if (!this.nullOptionSelected)
+        this.$emit('input', this.multiple ? [] : null)
+
+      this.nullOptionSelected = !this.nullOptionSelected
+      this.displayOptions = !this.displayOptions
     },
     removeItem({ option }) {
       if (!this.multiple) return

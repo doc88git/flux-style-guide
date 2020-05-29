@@ -30,6 +30,15 @@
 
       <div v-else class="SelectInput__placeholder">
         <div :class="placeholderClasses">
+          <f-icon
+            v-if="isNullSelected && nullOptionIcon"
+            :name="nullOptionIcon"
+            lib="flux"
+            size="sm"
+            color="primary"
+            class="SelectItemGroup__ul__nullOption__icon"
+          />
+
           {{ placeholderText }}
         </div>
 
@@ -140,6 +149,21 @@ export default {
     showSelectedPics: {
       type: Boolean,
       default: false
+    },
+
+    isNullSelected: {
+      type: Boolean,
+      default: false
+    },
+
+    nullOptionText: {
+      type: String,
+      default: ''
+    },
+
+    nullOptionIcon: {
+      type: String,
+      default: ''
     }
   },
 
@@ -159,7 +183,8 @@ export default {
       return [
         'SelectInput__label',
         {
-          'SelectInput__label--top': this.isActive || this.hasCurrentValue,
+          'SelectInput__label--top':
+            this.isActive || this.hasCurrentValue || this.isNullSelected,
           'SelectInput__label--active': !!this.numSelected || this.hover
         }
       ]
@@ -170,8 +195,11 @@ export default {
         'SelectInput__placeholderText',
         {
           'SelectInput__placeholderText--hide':
-            !this.label || this.hasCurrentValue ? false : !this.isActive,
-          'SelectInput__placeholderText--active': this.hasCurrentValue,
+            this.isNullSelected || !this.label || this.hasCurrentValue
+              ? false
+              : !this.isActive,
+          'SelectInput__placeholderText--active':
+            this.hasCurrentValue || this.isNullSelected,
           'SelectInput__placeholderText--main': !this.label
         }
       ]
@@ -187,7 +215,10 @@ export default {
     },
 
     iconColor() {
-      return this.hasCurrentValue || this.isActive || this.hover
+      return this.isNullSelected ||
+        this.hasCurrentValue ||
+        this.isActive ||
+        this.hover
         ? 'primary'
         : 'gray-500'
     },
@@ -202,6 +233,8 @@ export default {
     placeholderText() {
       return this.hasCurrentValue
         ? this.currentValue[this.displayBy]
+        : this.isNullSelected
+        ? this.nullOptionText
         : this.placeholder
     }
   },
@@ -309,6 +342,9 @@ export default {
   }
 
   &__placeholderText {
+    display: flex;
+    align-items: center;
+
     margin-right: auto;
     transition: opacity 400ms;
     user-select: none;
