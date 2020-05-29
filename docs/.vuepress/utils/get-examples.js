@@ -11,7 +11,6 @@ module.exports = function getExamples() {
   const examplesDir = resolveSrc('../../../src/components/')
   const outuptExamples = resolveSrc('../components/examples/')
   const files = requireContext(examplesDir, true, /.example.vue$/).keys()
-  console.log({ files, ex: getFileName(files[0]) })
 
   return files.map(item => ({
     from: item,

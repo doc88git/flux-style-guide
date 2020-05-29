@@ -11,9 +11,9 @@
 | trackBy           | Defines the property of the option object to use as the value                    | string  | -      | 'value'  |
 | multiple          | Whether or not the select is multiple.                                           | boolean | -      | true     |
 | searchRequest     | Emit search to parent.                                                           | boolean | -      | false    |
-| displayNullOption |                                                                                  | boolean | -      | false    |
-| nullOptionIcon    |                                                                                  | string  | -      | ''       |
-| nullOptionText    |                                                                                  | string  | -      | 'Nenhum' |
+| displayNullOption | Whether or not to display an option to indicate that the field will be empty     | boolean | -      | false    |
+| nullOptionIcon    | NullOption's icon, if any                                                        | string  | -      | ''       |
+| nullOptionText    | NullOption's label text                                                          | string  | -      | 'Nenhum' |
 
 ### Events
 

@@ -156,11 +156,17 @@ export default {
       default: false
     },
 
+    /**
+     * NullOption's label text
+     */
     nullOptionText: {
       type: String,
       default: ''
     },
 
+    /**
+     * NullOption's icon, if any
+     */
     nullOptionIcon: {
       type: String,
       default: ''

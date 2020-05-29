@@ -197,16 +197,25 @@ export default {
       default: false
     },
 
+    /**
+     * Whether or not to display an option to indicate that the field will be empty
+     */
     displayNullOption: {
       type: Boolean,
       default: false
     },
 
+    /**
+     * NullOption's icon, if any
+     */
     nullOptionIcon: {
       type: String,
       default: ''
     },
 
+    /**
+     * NullOption's label text
+     */
     nullOptionText: {
       type: String,
       default: 'Nenhum'

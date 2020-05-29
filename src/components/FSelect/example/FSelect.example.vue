@@ -58,8 +58,8 @@
         searchable
         multiple
         display-null-option
-        null-option-text="Nenhum"
-        null-option-icon="user-cancel"
+        null-option-text="Nenhuma"
+        null-option-icon="not-interested"
       >
         <template v-slot:option-prepend="{ isSelected }">
           <f-icon
