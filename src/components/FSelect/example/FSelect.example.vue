@@ -100,13 +100,11 @@ export default {
     valueOne: [],
     valueTwo: [],
     valueThree: []
-  }),
-
-  methods: {}
+  })
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .FMultiSelectExample {
   &__box {
     &:not(:last-child) {
