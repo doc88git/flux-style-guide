@@ -284,6 +284,8 @@ export default {
       this.sortedOptions = JSON.parse(JSON.stringify(this.options || []))
     },
     addItem(item) {
+      if (this.nullOptionSelected) this.nullOptionSelected = false
+
       if (this.multiple)
         return this.$emit('input', [...(this.value || []), item])
 

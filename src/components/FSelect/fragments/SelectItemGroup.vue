@@ -27,7 +27,7 @@
 
       <li
         v-if="displayNullOption && !displayClear"
-        class="SelectItemGroup__ul__nullOption"
+        :class="nullOptionClasses"
         @click="$emit('toggle-null-option')"
       >
         <f-icon
@@ -35,7 +35,7 @@
           :name="nullOptionIcon"
           lib="flux"
           size="sm"
-          color="gray-500"
+          :color="isNullSelected ? 'primary' : 'gray-500'"
           class="SelectItemGroup__ul__nullOption__icon"
         />
 
@@ -49,11 +49,7 @@
         :key="getItemKey(option)"
         class="SelectItemGroup__ul__li"
       >
-        <slot
-          name="option"
-          v-bind="{ option, index }"
-          @input="toggleNullOption"
-        />
+        <slot name="option" v-bind="{ option, index }" />
       </li>
     </ul>
   </div>
@@ -126,6 +122,14 @@ export default {
   }),
 
   computed: {
+    nullOptionClasses() {
+      return [
+        'SelectItemGroup__ul__nullOption',
+        {
+          'SelectItemGroup__ul__nullOption--selected': this.isNullSelected
+        }
+      ]
+    },
     clearItemClasses() {
       return [
         'SelectItemGroup__clear',
@@ -171,10 +175,6 @@ export default {
     },
     emitSelectAll() {
       this.$emit('select-all')
-    },
-    toggleNullOption(ev) {
-      if (this.isNullSelected) this.$emit('toggle-null-option')
-      this.$emit('input', ev)
     }
   }
 }
@@ -207,7 +207,7 @@ export default {
 
     &__text {
       margin-left: 8px;
-      font-size: var(--text-xxs);
+      font-size: var(--text-sm);
       user-select: none;
     }
   }
@@ -237,9 +237,15 @@ export default {
     &__nullOption {
       display: flex;
       align-items: center;
-      padding: 4px 15px 4px 15px;
+      padding: 8px 15px;
       color: #999;
       cursor: pointer;
+
+      &--selected,
+      &:hover {
+        color: var(--color-primary);
+        background-color: #f0f0f0;
+      }
 
       &__icon {
         padding: 0 7px !important;

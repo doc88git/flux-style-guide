@@ -3,7 +3,7 @@
     <div class="SelectItemPhoto__photo">
       <img class="SelectItemPhoto__photoDimensions" :src="option.photo" />
       <div v-if="isSelected" class="SelectItemPhoto__checkDiv">
-        <f-icon size="sm" name="check" lib="flux" color="white" />
+        <f-icon size="xs" name="check" lib="flux" color="white" />
       </div>
     </div>
     <div class="SelectItemPhoto__name">
@@ -87,6 +87,7 @@ export default {
   &--selected,
   &:hover {
     color: var(--color-primary);
+    background-color: #f0f0f0;
   }
 
   &__checkDiv {
@@ -96,8 +97,8 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50%;
-    width: 50%;
+    height: 13px;
+    width: 13px;
     border-radius: 15px;
     background-color: var(--color-primary);
     -webkit-animation: fadeIn 1s ease-in-out;
