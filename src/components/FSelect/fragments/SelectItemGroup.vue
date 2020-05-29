@@ -21,12 +21,39 @@
     </div>
 
     <ul :class="ulClasses">
+      <li v-if="$slots['list-prepend']" class="SelectItemGroup__ul__prepend">
+        <slot name="list-prepend" />
+      </li>
+
+      <li
+        v-if="displayNullOption && !displayClear"
+        class="SelectItemGroup__ul__nullOption"
+        @click="$emit('toggle-null-option')"
+      >
+        <f-icon
+          v-if="nullOptionIcon"
+          :name="nullOptionIcon"
+          lib="flux"
+          size="sm"
+          color="gray-500"
+          class="SelectItemGroup__ul__nullOption__icon"
+        />
+
+        <span class="SelectItemGroup__ul__nullOption__text">
+          {{ nullOptionText }}
+        </span>
+      </li>
+
       <li
         v-for="(option, index) in options"
         :key="getItemKey(option)"
         class="SelectItemGroup__ul__li"
       >
-        <slot name="option" v-bind="{ option, index }" />
+        <slot
+          name="option"
+          v-bind="{ option, index }"
+          @input="toggleNullOption"
+        />
       </li>
     </ul>
   </div>
@@ -68,6 +95,26 @@ export default {
     trackBy: {
       type: String,
       required: true
+    },
+
+    displayNullOption: {
+      type: Boolean,
+      default: false
+    },
+
+    isNullSelected: {
+      type: Boolean,
+      default: false
+    },
+
+    nullOptionIcon: {
+      type: String,
+      default: ''
+    },
+
+    nullOptionText: {
+      type: String,
+      default: ''
     }
   },
 
@@ -124,6 +171,10 @@ export default {
     },
     emitSelectAll() {
       this.$emit('select-all')
+    },
+    toggleNullOption(ev) {
+      if (this.isNullSelected) this.$emit('toggle-null-option')
+      this.$emit('input', ev)
     }
   }
 }
@@ -181,6 +232,22 @@ export default {
 
     &--has-selected {
       height: calc(100% - 22px);
+    }
+
+    &__nullOption {
+      display: flex;
+      align-items: center;
+      padding: 4px 15px 4px 15px;
+      color: #999;
+      cursor: pointer;
+
+      &__icon {
+        padding: 0 7px !important;
+      }
+
+      &__text {
+        margin-left: 11px;
+      }
     }
 
     &::-webkit-scrollbar {

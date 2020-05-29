@@ -8,6 +8,7 @@
     <div :class="labelClasses">
       {{ label }}
     </div>
+
     <div class="SelectInput__content">
       <div v-if="displaySearch" class="SelectInput__search" @click.stop>
         <f-input
@@ -130,6 +131,15 @@ export default {
     searchQuery: {
       type: String,
       default: ''
+    },
+
+    /**
+     * Whether or not to show the selected option's pictures
+     * (only works for `type="photo"`)
+     */
+    showSelectedPics: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -159,10 +169,10 @@ export default {
       return [
         'SelectInput__placeholderText',
         {
-          'SelectInput__placeholderText--hide': this.hasCurrentValue
-            ? false
-            : !this.isActive,
-          'SelectInput__placeholderText--active': this.hasCurrentValue
+          'SelectInput__placeholderText--hide':
+            !this.label || this.hasCurrentValue ? false : !this.isActive,
+          'SelectInput__placeholderText--active': this.hasCurrentValue,
+          'SelectInput__placeholderText--main': !this.label
         }
       ]
     },
@@ -254,8 +264,7 @@ export default {
       font-size: var(--text-xs);
       padding: 0 5px;
       transform: translateY(0px);
-
-      background-color: #fff;
+      background-color: var(--color-white);
     }
   }
 
@@ -304,6 +313,10 @@ export default {
     transition: opacity 400ms;
     user-select: none;
     color: #ccc;
+
+    &--main {
+      color: #999;
+    }
 
     &--hide {
       opacity: 0;

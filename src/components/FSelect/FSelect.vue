@@ -25,13 +25,24 @@
 
       <select-item-group
         slot="content"
+        :display-null-option="displayNullOption"
+        :is-null-selected="nullOptionSelected"
+        :null-option-text="nullOptionText"
+        :null-option-icon="nullOptionIcon"
         :options="optionsByQuery"
         :display-clear="displayClearList"
         :select-all="displaySelectAll"
         :track-by="trackBy"
         @clear="clearValues"
         @select-all="setSelectAll"
+        @toggle-null-option="nullOptionSelected = !nullOptionSelected"
       >
+        <slot
+          v-if="$slots['list-prepend']"
+          slot="list-prepend"
+          name="list-prepend"
+        />
+
         <template v-slot:option="{ option, index }">
           <slot
             name="option"
@@ -181,13 +192,29 @@ export default {
     searchRequest: {
       type: Boolean,
       default: false
+    },
+
+    displayNullOption: {
+      type: Boolean,
+      default: false
+    },
+
+    nullOptionIcon: {
+      type: String,
+      default: ''
+    },
+
+    nullOptionText: {
+      type: String,
+      default: 'Nenhum'
     }
   },
 
   data() {
     return {
-      sortedOptions: [],
+      nullOptionSelected: false,
       displayOptions: false,
+      sortedOptions: [],
       searchQuery: ''
     }
   },
@@ -277,10 +304,6 @@ export default {
     },
     isOptionSelected(option) {
       if (is(option[this.trackBy], 'Object')) {
-        console.log({
-          value: JSON.stringify(this.value),
-          option: JSON.stringify(option[this.trackBy])
-        })
         return !this.multiple
           ? JSON.stringify(this.value) === JSON.stringify(option[this.trackBy])
           : !!(this.value || []).find(

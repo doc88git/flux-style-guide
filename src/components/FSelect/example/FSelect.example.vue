@@ -5,7 +5,7 @@
         :options="optionsMock"
         :multiple="false"
         v-model="valueZero"
-        label="Cidades"
+        placeholder="Cidades"
       />
     </div>
 
@@ -55,7 +55,11 @@
         v-model="valueThree"
         label="Cidades"
         type="photo"
+        searchable
         multiple
+        display-null-option
+        null-option-text="Nenhum"
+        null-option-icon="user-cancel"
       >
         <template v-slot:option-prepend="{ isSelected }">
           <f-icon
@@ -83,7 +87,7 @@
 
 <script>
 import { FSelect } from '@/components/FSelect'
-import optionsMock from '@/components/FSelect/examples/mock'
+import optionsMock from '@/components/FSelect/example/mock'
 
 export default {
   name: 'FMultiSelectExample',
