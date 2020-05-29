@@ -7,14 +7,15 @@ const getFileName = f => {
 }
 
 module.exports = function getExamples() {
-  const resolveSrc = _path => path.join(__dirname, _path)
+  const resolveSrc = _path => path.resolve(__dirname, _path)
   const examplesDir = resolveSrc('../../../src/components/')
-  const outuptExamples = resolveSrc('../components/')
+  const outuptExamples = resolveSrc('../components/examples/')
   const files = requireContext(examplesDir, true, /.example.vue$/).keys()
+  console.log({ files, ex: getFileName(files[0]) })
 
   return files.map(item => ({
     from: item,
-    to: `${outuptExamples}${getFileName(item)}`,
+    to: `${outuptExamples}/${getFileName(item)}`,
     toType: 'file'
   }))
 }
