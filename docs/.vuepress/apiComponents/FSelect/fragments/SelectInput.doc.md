@@ -11,6 +11,9 @@
 | searchable       | Whether or not it is searchable                                                                      | boolean | -      | false        |
 | searchQuery      | The search query in case it is searchable                                                            | string  | -      | ''           |
 | showSelectedPics | Whether or not to show the selected option's pictures<br>(only works for `type="photo"`)             | boolean | -      | false        |
+| isNullSelected   |                                                                                                      | boolean | -      | false        |
+| nullOptionText   |                                                                                                      | string  | -      | ''           |
+| nullOptionIcon   |                                                                                                      | string  | -      | ''           |
 
 ### Events
 

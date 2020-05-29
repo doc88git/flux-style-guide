@@ -1,11 +1,7 @@
 <template>
   <div :class="rootClasses" class="SelectItemPhoto" @click="emitInput">
     <div class="SelectItemPhoto__photo">
-      <img
-        v-if="!isSelected"
-        class="SelectItemPhoto__photoDimensions"
-        :src="option.photo"
-      />
+      <img class="SelectItemPhoto__photoDimensions" :src="option.photo" />
       <div v-if="isSelected" class="SelectItemPhoto__checkDiv">
         <f-icon size="sm" name="check" lib="flux" color="white" />
       </div>
@@ -94,11 +90,14 @@ export default {
   }
 
   &__checkDiv {
+    position: relative;
+    top: -8px;
+    left: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    width: 100%;
+    height: 50%;
+    width: 50%;
     border-radius: 15px;
     background-color: var(--color-primary);
     -webkit-animation: fadeIn 1s ease-in-out;
