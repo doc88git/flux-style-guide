@@ -11,7 +11,12 @@
       hidden
     />
     <span class="f-checkbox__custom">
-      <f-icon name="check" class="f-checkbox__custom__icon"></f-icon>
+      <f-icon
+        lib="flux"
+        name="check"
+        size="sm"
+        class="f-checkbox__custom__icon"
+      />
     </span>
     <div class="f-checkbox__label" v-if="$slots.label">
       <slot name="label"></slot>
@@ -66,7 +71,7 @@ export default {
     cursor: pointer;
     height: 15px;
     width: 15px;
-    background-color: transparent;
+    background-color: var(--color-white);
     border-radius: 3px;
     display: inline-flex;
     border: 1px solid #cdcdcd;
@@ -77,10 +82,10 @@ export default {
     }
 
     .f-icon {
-      margin-top: 0.15rem;
       opacity: 0;
       color: var(--color-primary);
-      transform: scale(0.9);
+      transform: scale(0.85);
+      margin: 1px;
 
       &--base {
         font-size: var(--text-xl);

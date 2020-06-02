@@ -1,3 +1,1 @@
-import FSelect from './FSelect'
-
-export { FSelect }
+export { default as FSelect } from './FSelect'

@@ -5,7 +5,7 @@
         {{ title }}
       </p>
       <div class="BasicAccordion__header__info">
-        <slot name="info" />
+        <slot v-if="hideContent" name="info" />
       </div>
       <f-icon
         :class="iconClasses"
@@ -36,6 +36,11 @@ export default {
   components: { FIcon },
 
   props: {
+    /**
+     * Accordion title
+     * @values string
+     * @required true
+     */
     title: {
       type: String,
       required: true

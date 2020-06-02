@@ -34,8 +34,8 @@ export default {
   name: 'touch-repeat',
 
   bind(el, { modifiers, value, arg }) {
-    if (el.__qtouchrepeat) {
-      el.__qtouchrepeat_old = el.__qtouchrepeat
+    if (el.__ftouchrepeat) {
+      el.__ftouchrepeat_old = el.__ftouchrepeat
     }
 
     const keyboard = Object.keys(modifiers).reduce((acc, key) => {
@@ -203,7 +203,7 @@ export default {
       }
     }
 
-    el.__qtouchrepeat = ctx
+    el.__ftouchrepeat = ctx
 
     if (modifiers.mouse === true) {
       el.addEventListener('mousedown', ctx.mouseStart, modifiers.mouseCapture)
@@ -225,7 +225,7 @@ export default {
   },
 
   update(el, binding) {
-    let ctx = el.__qtouchrepeat
+    let ctx = el.__ftouchrepeat
 
     if (ctx !== void 0 && binding.oldValue !== binding.value) {
       ctx.handler = binding.value
@@ -233,7 +233,7 @@ export default {
   },
 
   unbind(el, { modifiers }) {
-    let ctx = el.__qtouchrepeat_old || el.__qtouchrepeat
+    let ctx = el.__ftouchrepeat_old || el.__ftouchrepeat
 
     if (ctx !== void 0) {
       removeObserver(ctx)
@@ -282,7 +282,7 @@ export default {
         el.removeEventListener('touchend', ctx.end, opts)
       }
 
-      delete el[el.__qtouchrepeat_old ? '__qtouchrepeat_old' : '__qtouchrepeat']
+      delete el[el.__ftouchrepeat_old ? '__ftouchrepeat_old' : '__ftouchrepeat']
     }
   }
 }

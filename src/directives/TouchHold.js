@@ -9,7 +9,7 @@ import { setObserver, removeObserver } from '../utils/touch.js'
 import { clearSelection } from '../utils/selection.js'
 
 function update(el, binding) {
-  const ctx = el.__qtouchhold
+  const ctx = el.__ftouchhold
 
   if (ctx !== void 0) {
     if (binding.oldValue !== binding.value) {
@@ -34,8 +34,8 @@ export default {
   name: 'touch-hold',
 
   bind(el, { modifiers, ...rest }) {
-    if (el.__qtouchhold) {
-      el.__qtouchhold_old = el.__qtouchhold
+    if (el.__ftouchhold) {
+      el.__ftouchhold_old = el.__ftouchhold
     }
 
     // early return, we don't need to do anything
@@ -122,7 +122,7 @@ export default {
       }
     }
 
-    el.__qtouchhold = ctx
+    el.__ftouchhold = ctx
     update(el, rest)
 
     if (modifiers.mouse === true) {
@@ -143,7 +143,7 @@ export default {
   update,
 
   unbind(el, { modifiers }) {
-    let ctx = el.__qtouchhold_old || el.__qtouchhold
+    let ctx = el.__ftouchhold_old || el.__ftouchhold
     if (ctx !== void 0) {
       removeObserver(ctx)
       clearTimeout(ctx.timer)
@@ -171,7 +171,7 @@ export default {
         el.removeEventListener('touchend', ctx.end, opts)
       }
 
-      delete el[el.__qtouchhold_old ? '__qtouchhold_old' : '__qtouchhold']
+      delete el[el.__ftouchhold_old ? '__ftouchhold_old' : '__ftouchhold']
     }
   }
 }

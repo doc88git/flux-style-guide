@@ -9,7 +9,8 @@ export const queues = {
 
 export const $f = {
   version,
-  linkComponent: 'vue'
+  linkComponent: 'vue',
+  config: {}
 }
 
 export default function(Vue, opts = {}) {
@@ -23,10 +24,6 @@ export default function(Vue, opts = {}) {
     ...cfg
   }
 
-  // required plugins
-  Platform.install($f, queues)
-  Screen.install($f, queues)
-
   if (isSSR === true) {
     Vue.mixin({
       beforeCreate() {
@@ -34,6 +31,9 @@ export default function(Vue, opts = {}) {
       }
     })
   } else {
+    // required plugins
+    Platform.install($f, queues)
+    Screen.install($f, queues)
     Vue.prototype.$f = $f
   }
 
