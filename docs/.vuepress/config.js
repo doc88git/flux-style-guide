@@ -2,12 +2,11 @@ const webpack = require('webpack')
 const CopyPlugin = require('copy-webpack-plugin')
 const extendMarkdown = require('./utils/use-markdown-it-vue-example.js')
 const getConfig = require('vuepress-bar')
-const getExamples = require('./utils/get-examples')
 const WriteFilePlugin = require('write-file-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
+const getExamples = require('./utils/get-examples')
 const examples = getExamples()
-
 const barConfig = getConfig(`${__dirname}/..`)
 
 module.exports = {

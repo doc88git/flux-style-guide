@@ -111,6 +111,7 @@ export default {
   }
 
   &__prepend {
+    margin-right: 10px;
   }
 
   &__labelText {

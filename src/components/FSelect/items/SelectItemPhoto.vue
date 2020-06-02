@@ -3,7 +3,7 @@
     <div class="SelectItemPhoto__photo">
       <img class="SelectItemPhoto__photoDimensions" :src="option.photo" />
       <div v-if="isSelected" class="SelectItemPhoto__checkDiv">
-        <f-icon size="sm" name="check" lib="flux" color="white" />
+        <f-icon size="xs" name="check" lib="flux" color="white" />
       </div>
     </div>
     <div class="SelectItemPhoto__name">
@@ -11,7 +11,7 @@
         <slot name="prepend" />
       </div>
 
-      <span> {{ option[displayBy] }} </span>
+      <span class="SelectItemPhoto__nameText">{{ option[displayBy] }}</span>
 
       <div v-if="$slots.append" class="SelectItemPhoto__append">
         <slot name="append" />
@@ -87,6 +87,7 @@ export default {
   &--selected,
   &:hover {
     color: var(--color-primary);
+    background-color: #f0f0f0;
   }
 
   &__checkDiv {
@@ -96,8 +97,8 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50%;
-    width: 50%;
+    height: 13px;
+    width: 13px;
     border-radius: 15px;
     background-color: var(--color-primary);
     -webkit-animation: fadeIn 1s ease-in-out;
@@ -107,10 +108,11 @@ export default {
   }
 
   &__photo {
-    width: 26px;
+    width: 25px;
     height: 25px;
-    border-radius: 15px;
+    border-radius: 100%;
     margin-right: 12px;
+    flex-shrink: 0;
   }
 
   &__photoDimensions {
@@ -123,8 +125,24 @@ export default {
   &__name {
     display: flex;
     align-items: center;
+    flex-grow: 1;
+    //width: 185px;
+  }
+
+  &__prepend {
+    margin-right: 10px;
+  }
+
+  &__append {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-grow: 1;
+  }
+
+  &__nameText {
     font-size: var(--text-base);
-    width: 185px;
+    flex-shrink: 0;
   }
 }
 

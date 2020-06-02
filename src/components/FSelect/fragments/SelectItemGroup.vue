@@ -21,6 +21,29 @@
     </div>
 
     <ul :class="ulClasses">
+      <li v-if="$slots['list-prepend']" class="SelectItemGroup__ul__prepend">
+        <slot name="list-prepend" />
+      </li>
+
+      <li
+        v-if="displayNullOption && !displayClear"
+        :class="nullOptionClasses"
+        @click="$emit('toggle-null-option')"
+      >
+        <f-icon
+          v-if="nullOptionIcon"
+          :name="nullOptionIcon"
+          lib="flux"
+          size="sm"
+          :color="isNullSelected ? 'primary' : 'gray-500'"
+          class="SelectItemGroup__ul__nullOption__icon"
+        />
+
+        <span class="SelectItemGroup__ul__nullOption__text">
+          {{ nullOptionText }}
+        </span>
+      </li>
+
       <li
         v-for="(option, index) in options"
         :key="getItemKey(option)"
@@ -68,6 +91,35 @@ export default {
     trackBy: {
       type: String,
       required: true
+    },
+
+    /**
+     * Whether or not to display an option to indicate that the field will be empty
+     */
+    displayNullOption: {
+      type: Boolean,
+      default: false
+    },
+
+    isNullSelected: {
+      type: Boolean,
+      default: false
+    },
+
+    /**
+     * NullOption's icon, if any
+     */
+    nullOptionIcon: {
+      type: String,
+      default: ''
+    },
+
+    /**
+     * NullOption's label text
+     */
+    nullOptionText: {
+      type: String,
+      default: ''
     }
   },
 
@@ -79,6 +131,14 @@ export default {
   }),
 
   computed: {
+    nullOptionClasses() {
+      return [
+        'SelectItemGroup__ul__nullOption',
+        {
+          'SelectItemGroup__ul__nullOption--selected': this.isNullSelected
+        }
+      ]
+    },
     clearItemClasses() {
       return [
         'SelectItemGroup__clear',
@@ -156,7 +216,7 @@ export default {
 
     &__text {
       margin-left: 8px;
-      font-size: var(--text-xxs);
+      font-size: var(--text-sm);
       user-select: none;
     }
   }
@@ -181,6 +241,28 @@ export default {
 
     &--has-selected {
       height: calc(100% - 22px);
+    }
+
+    &__nullOption {
+      display: flex;
+      align-items: center;
+      padding: 8px 15px;
+      color: #999;
+      cursor: pointer;
+
+      &--selected,
+      &:hover {
+        color: var(--color-primary);
+        background-color: #f0f0f0;
+      }
+
+      &__icon {
+        padding: 0 7px !important;
+      }
+
+      &__text {
+        margin-left: 11px;
+      }
     }
 
     &::-webkit-scrollbar {

@@ -7,7 +7,7 @@
     <select-accordion
       class="FMultiSelect"
       :show-content="displayOptions"
-      :is-active="hasValue"
+      :is-active="hasValue || nullOptionSelected"
       @close="hideOptions"
     >
       <select-input
@@ -17,6 +17,9 @@
         :current-value="currentValue"
         :display-by="displayBy"
         :num-selected="itemsSelected"
+        :is-null-selected="nullOptionSelected && displayNullOption"
+        :null-option-text="nullOptionText"
+        :null-option-icon="nullOptionIcon"
         :label="label"
         v-bind="$attrs"
         @toggle-options="toggleOptions"
@@ -25,13 +28,24 @@
 
       <select-item-group
         slot="content"
+        :display-null-option="displayNullOption"
+        :is-null-selected="nullOptionSelected"
+        :null-option-text="nullOptionText"
+        :null-option-icon="nullOptionIcon"
         :options="optionsByQuery"
         :display-clear="displayClearList"
         :select-all="displaySelectAll"
         :track-by="trackBy"
         @clear="clearValues"
         @select-all="setSelectAll"
+        @toggle-null-option="toggleNullOption"
       >
+        <slot
+          v-if="$slots['list-prepend']"
+          slot="list-prepend"
+          name="list-prepend"
+        />
+
         <template v-slot:option="{ option, index }">
           <slot
             name="option"
@@ -181,13 +195,38 @@ export default {
     searchRequest: {
       type: Boolean,
       default: false
+    },
+
+    /**
+     * Whether or not to display an option to indicate that the field will be empty
+     */
+    displayNullOption: {
+      type: Boolean,
+      default: false
+    },
+
+    /**
+     * NullOption's icon, if any
+     */
+    nullOptionIcon: {
+      type: String,
+      default: ''
+    },
+
+    /**
+     * NullOption's label text
+     */
+    nullOptionText: {
+      type: String,
+      default: 'Nenhum'
     }
   },
 
   data() {
     return {
-      sortedOptions: [],
+      nullOptionSelected: false,
       displayOptions: false,
+      sortedOptions: [],
       searchQuery: ''
     }
   },
@@ -203,7 +242,10 @@ export default {
     },
     currentValue() {
       return !this.multiple && this.value
-        ? this.options.find(opt => opt[this.trackBy] === this.value)
+        ? this.options.find(
+            opt =>
+              JSON.stringify(opt[this.trackBy]) === JSON.stringify(this.value)
+          )
         : null
     },
     optionsByQuery() {
@@ -251,6 +293,8 @@ export default {
       this.sortedOptions = JSON.parse(JSON.stringify(this.options || []))
     },
     addItem(item) {
+      if (this.nullOptionSelected) this.nullOptionSelected = false
+
       if (this.multiple)
         return this.$emit('input', [...(this.value || []), item])
 
@@ -259,6 +303,13 @@ export default {
       this.displayOptions = this.multiple
         ? this.displayOptions
         : !this.displayOptions
+    },
+    toggleNullOption() {
+      if (!this.nullOptionSelected)
+        this.$emit('input', this.multiple ? [] : null)
+
+      this.nullOptionSelected = !this.nullOptionSelected
+      this.displayOptions = !this.displayOptions
     },
     removeItem({ option }) {
       if (!this.multiple) return

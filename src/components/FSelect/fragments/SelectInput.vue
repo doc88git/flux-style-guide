@@ -8,6 +8,7 @@
     <div :class="labelClasses">
       {{ label }}
     </div>
+
     <div class="SelectInput__content">
       <div v-if="displaySearch" class="SelectInput__search" @click.stop>
         <f-input
@@ -29,6 +30,15 @@
 
       <div v-else class="SelectInput__placeholder">
         <div :class="placeholderClasses">
+          <f-icon
+            v-if="isNullSelected && nullOptionIcon"
+            :name="nullOptionIcon"
+            lib="flux"
+            size="sm"
+            color="primary"
+            class="SelectItemGroup__ul__nullOption__icon"
+          />
+
           {{ placeholderText }}
         </div>
 
@@ -130,6 +140,36 @@ export default {
     searchQuery: {
       type: String,
       default: ''
+    },
+
+    /**
+     * Whether or not to show the selected option's pictures
+     * (only works for `type="photo"`)
+     */
+    showSelectedPics: {
+      type: Boolean,
+      default: false
+    },
+
+    isNullSelected: {
+      type: Boolean,
+      default: false
+    },
+
+    /**
+     * NullOption's label text
+     */
+    nullOptionText: {
+      type: String,
+      default: ''
+    },
+
+    /**
+     * NullOption's icon, if any
+     */
+    nullOptionIcon: {
+      type: String,
+      default: ''
     }
   },
 
@@ -149,7 +189,8 @@ export default {
       return [
         'SelectInput__label',
         {
-          'SelectInput__label--top': this.isActive || this.hasCurrentValue,
+          'SelectInput__label--top':
+            this.isActive || this.hasCurrentValue || this.isNullSelected,
           'SelectInput__label--active': !!this.numSelected || this.hover
         }
       ]
@@ -159,10 +200,13 @@ export default {
       return [
         'SelectInput__placeholderText',
         {
-          'SelectInput__placeholderText--hide': this.hasCurrentValue
-            ? false
-            : !this.isActive,
-          'SelectInput__placeholderText--active': this.hasCurrentValue
+          'SelectInput__placeholderText--hide':
+            this.isNullSelected || !this.label || this.hasCurrentValue
+              ? false
+              : !this.isActive,
+          'SelectInput__placeholderText--active':
+            this.hasCurrentValue || this.isNullSelected,
+          'SelectInput__placeholderText--main': !this.label
         }
       ]
     },
@@ -177,7 +221,10 @@ export default {
     },
 
     iconColor() {
-      return this.hasCurrentValue || this.isActive || this.hover
+      return this.isNullSelected ||
+        this.hasCurrentValue ||
+        this.isActive ||
+        this.hover
         ? 'primary'
         : 'gray-500'
     },
@@ -192,6 +239,8 @@ export default {
     placeholderText() {
       return this.hasCurrentValue
         ? this.currentValue[this.displayBy]
+        : this.isNullSelected
+        ? this.nullOptionText
         : this.placeholder
     }
   },
@@ -254,8 +303,7 @@ export default {
       font-size: var(--text-xs);
       padding: 0 5px;
       transform: translateY(0px);
-
-      background-color: #fff;
+      background-color: var(--color-white);
     }
   }
 
@@ -300,10 +348,17 @@ export default {
   }
 
   &__placeholderText {
+    display: flex;
+    align-items: center;
+
     margin-right: auto;
     transition: opacity 400ms;
     user-select: none;
     color: #ccc;
+
+    &--main {
+      color: #999;
+    }
 
     &--hide {
       opacity: 0;

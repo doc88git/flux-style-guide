@@ -11,7 +11,7 @@
 ```
 
 ## Usage
-@[example](FMultiSelect)
+@[example](FSelect)
 
 
 ## FSelect API
