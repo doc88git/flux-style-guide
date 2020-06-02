@@ -1,17 +1,21 @@
 <template>
   <div :class="rootClasses" class="SelectItemPhoto" @click="emitInput">
     <div class="SelectItemPhoto__photo">
-      <img
-        v-if="!isSelected"
-        class="SelectItemPhoto__photoDimensions"
-        :src="option.photo"
-      />
+      <img class="SelectItemPhoto__photoDimensions" :src="option.photo" />
       <div v-if="isSelected" class="SelectItemPhoto__checkDiv">
         <f-icon size="sm" name="check" lib="flux" color="white" />
       </div>
     </div>
     <div class="SelectItemPhoto__name">
+      <div v-if="$slots.prepend" class="SelectItemPhoto__prepend">
+        <slot name="prepend" />
+      </div>
+
       <span> {{ option[displayBy] }} </span>
+
+      <div v-if="$slots.append" class="SelectItemPhoto__append">
+        <slot name="append" />
+      </div>
     </div>
   </div>
 </template>
@@ -76,20 +80,24 @@ export default {
 <style lang="scss" scoped>
 .SelectItemPhoto {
   display: flex;
-  padding: 4px 10px 4px 15px;
+  padding: 4px 15px 4px 15px;
   color: #999;
   cursor: pointer;
 
+  &--selected,
   &:hover {
     color: var(--color-primary);
   }
 
   &__checkDiv {
+    position: relative;
+    top: -8px;
+    left: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    width: 100%;
+    height: 50%;
+    width: 50%;
     border-radius: 15px;
     background-color: var(--color-primary);
     -webkit-animation: fadeIn 1s ease-in-out;

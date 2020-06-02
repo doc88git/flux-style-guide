@@ -968,6 +968,22 @@
   resolved "https://registry.yarnpkg.com/@doc88/flux-icon/-/flux-icon-1.3.2.tgz#9550b79399be35b556c3766c869b50e4ad993afb"
   integrity sha512-Dh9hS8NCHj/1E+VTfs28ZQsHJmINyBSE1XiNie9jYjbZASOEI+p/mTsA2jbqqZSZAuzw7eJBgS3wqBvgCh37AQ==
 
+"@doc88/flux-style-guide@2.0.0-next.2":
+  version "2.0.0-next.2"
+  resolved "https://registry.yarnpkg.com/@doc88/flux-style-guide/-/flux-style-guide-2.0.0-next.2.tgz#809e2d63a0dda536f984fa9944d9e648bf2d1002"
+  integrity sha512-8k2Efwl9CBZWMOrTy4bCK66N9FTmhCCtZH0JGzdf5RWNP5sYJe+fQwbm5PhgYhzdcfRaGH00cdVQJmcYnHD5AQ==
+  dependencies:
+    "@doc88/flux-icon" "^1.3.2"
+    collect.js "^4.12.5"
+    core-js "^3.6.4"
+    fuse.js "^3.4.5"
+    require-context "^1.1.0"
+    v-click-outside "^3.0.1"
+    vee-validate "^2.2.11"
+    vue "^2.6.10"
+    vue-i18n "^8.11.2"
+    vue2-datepicker "^2.12.0"
+
 "@emotion/cache@^10.0.27", "@emotion/cache@^10.0.9":
   version "10.0.29"
   resolved "https://registry.yarnpkg.com/@emotion/cache/-/cache-10.0.29.tgz#87e7e64f412c060102d589fe7c6dc042e6f9d1e0"

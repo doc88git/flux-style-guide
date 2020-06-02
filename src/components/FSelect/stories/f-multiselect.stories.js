@@ -1,15 +1,15 @@
 import { storiesOf } from '@storybook/vue'
-import FMultiSelect from '../FMultiSelect.vue'
+import FSelect from '../FSelect.vue'
 import optionsMock from './mock.js'
 
 storiesOf('Form|MultiSelect', module)
   .add('Type: Checkbox', () => ({
-    components: { FMultiSelect },
+    components: { FSelect },
     data: () => ({ value: [], options: optionsMock }),
     props: {},
     template: `
       <div style="padding: 30px; max-width: 400px; height: 100vh; margin: 0 auto;">
-        <f-multi-select
+        <f-select
           v-model="value"
           :options="options"
           label="Coisas"
@@ -20,12 +20,12 @@ storiesOf('Form|MultiSelect', module)
     `
   }))
   .add('Searchable', () => ({
-    components: { FMultiSelect },
+    components: { FSelect },
     data: () => ({ value: [], options: optionsMock }),
     props: {},
     template: `
       <div style="padding: 30px; max-width: 400px; height: 100vh; margin: 0 auto;">
-        <f-multi-select
+        <f-select
           v-model="value"
           :options="options"
           label="Coisas"
@@ -38,12 +38,12 @@ storiesOf('Form|MultiSelect', module)
     `
   }))
   .add('Type: Photo', () => ({
-    components: { FMultiSelect },
+    components: { FSelect },
     data: () => ({ value: [], options: optionsMock }),
     props: {},
     template: `
         <div style="padding: 30px; max-width: 400px; height: 100vh; margin: 0 auto;">
-          <f-multi-select
+          <f-select
             v-model="value"
             :options="options"
             label="Coisas"
@@ -54,12 +54,12 @@ storiesOf('Form|MultiSelect', module)
       `
   }))
   .add('Simple', () => ({
-    components: { FMultiSelect },
+    components: { FSelect },
     data: () => ({ value: [], options: optionsMock }),
     props: {},
     template: `
         <div style="padding: 30px; max-width: 400px; height: 100vh; margin: 0 auto;">
-          <f-multi-select
+          <f-select
             v-model="value"
             :options="options"
             :multiple="false"

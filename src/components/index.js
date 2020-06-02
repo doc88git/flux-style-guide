@@ -15,7 +15,6 @@ import * as FPagination from './FPagination/index.js'
 import * as FTable from './FTable/index.js'
 import * as FBadge from './FBadge/index.js'
 import * as FTooltip from './FTooltip/index.js'
-import * as FSelect from './FSelect/index.js'
 import * as FHeader from './FHeader/index.js'
 import * as FChip from './FChip/index.js'
 // import * as FModal from './FMoldal/index.js'
@@ -30,7 +29,7 @@ import * as FSticky from './FSticky/index.js'
 import * as FAccordion from './FAccordion/index.js'
 import * as FTab from './FTab/index.js'
 import * as FInputTag from './FInputTag/index.js'
-import * as FMultiSelect from './FMultiSelect/index.js'
+import * as FSelect from './FSelect/index.js'
 
 const components = [
   FAlert,
@@ -65,8 +64,7 @@ const components = [
   FSticky,
   FProgressBar,
   FAccordion,
-  FTab,
-  FMultiSelect
+  FTab
 ]
 
 export default components

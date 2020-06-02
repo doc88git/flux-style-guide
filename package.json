@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "@doc88/flux-icon": "^1.3.2",
+    "@doc88/flux-style-guide": "2.0.0-next.2",
     "collect.js": "^4.12.5",
     "core-js": "^3.6.4",
     "fuse.js": "^3.4.5",

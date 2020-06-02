@@ -76,8 +76,9 @@ $menu-width: 200px;
 
   &__content {
     grid-area: content;
-    width: calc(100vw - (#{$menu-width} + #{$grid-gap}));
+    width: calc(100vw - (#{$menu-width} + #{$grid-gap * 2}));
     overflow: auto;
+    padding: 20px;
     // height: calc(100vh - (#{$header-height} + #{$grid-gap}));
   }
 }
