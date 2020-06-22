@@ -10,7 +10,7 @@
     </div>
 
     <div class="SelectInput__content">
-      <div v-if="displaySearch" class="SelectInput__search" @click.stop>
+      <div v-show="displaySearch" class="SelectInput__search" @click.stop>
         <f-input
           class="SelectInput__searchInput"
           placeholder="Pesquisar"
@@ -28,7 +28,7 @@
         </f-input>
       </div>
 
-      <div v-else class="SelectInput__placeholder">
+      <div v-show="!displaySearch" class="SelectInput__placeholder">
         <div :class="placeholderClasses">
           <f-icon
             v-if="isNullSelected && nullOptionIcon"
