@@ -87,14 +87,16 @@ export default {
       return ['floating'].includes(this.labelStyle)
     },
     hasError() {
-      if (!this.$slots.error) return false
+      const getSlotErrorText = () => {
+        if (!this.$slots.error) return ''
 
-      let slotText = this.$slots.error
-        .map(item => item.text)
-        .join('')
-        .trim()
+        return this.$slots.error
+          .map(item => item.text)
+          .join('')
+          .trim()
+      }
 
-      return !!slotText || !!this.errorMessage
+      return getSlotErrorText() || !!this.errorMessage
     },
     hasLabel() {
       return !!this.$slots.label || !!this.label
