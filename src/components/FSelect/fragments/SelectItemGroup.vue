@@ -269,6 +269,7 @@ export default {
       background: #f0f0f0;
       border-radius: 12px;
       width: 5px;
+      height: 5px;
     }
 
     &::-webkit-scrollbar-button {
@@ -279,6 +280,7 @@ export default {
       background-color: var(--color-primary);
       border-radius: 12px;
       width: 5px;
+      height: 5px;
     }
 
     &::-webkit-scrollbar-corner {
