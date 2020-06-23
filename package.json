@@ -1,6 +1,6 @@
 {
   "name": "@doc88/flux-style-guide",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "license": "MIT",
   "main": "src/index.esm.js",
   "scripts": {
@@ -28,7 +28,7 @@
     "url": "https://github.com/doc88git/flux-style-guide/issues"
   },
   "dependencies": {
-    "@doc88/flux-icon": "^1.4.3",
+    "@doc88/flux-icon": "^1.4.4",
     "collect.js": "^4.12.5",
     "core-js": "^3.6.4",
     "fuse.js": "^3.4.5",
