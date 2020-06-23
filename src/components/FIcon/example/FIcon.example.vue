@@ -60,7 +60,7 @@
 <script>
 import { FIcon } from '@/components/FIcon'
 import { FInput } from '@/components/FField'
-import list from '@doc88/flux-icon/dist/_icons'
+import list from '@doc88/flux-icon/dist/list.json'
 
 export default {
   name: 'FIconExample',
