@@ -6,7 +6,11 @@
 
     <div :class="innerClasses">
       <div :class="innerFieldClasses">
-        <label v-if="hasLabel" :class="innerLabelClasses">
+        <label
+          v-if="hasLabel"
+          :class="innerLabelClasses"
+          @click="delegateFocus"
+        >
           <slot name="label">{{ label || '&nbsp;' }}</slot>
         </label>
 
@@ -141,6 +145,15 @@ export default {
           'f-field__inner__error--hasError': this.hasError
         }
       ]
+    }
+  },
+
+  methods: {
+    delegateFocus() {
+      const slotEl = this.$slots.default[1]
+      if (!slotEl) return
+
+      slotEl.elm.focus()
     }
   }
 }
