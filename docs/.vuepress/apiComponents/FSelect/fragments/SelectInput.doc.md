@@ -21,3 +21,4 @@
 | -------------- | --------- | ----------- |
 | toggle-options |           |
 | search         | undefined |
+| search-input   | undefined |
