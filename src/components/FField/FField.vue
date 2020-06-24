@@ -96,7 +96,7 @@ export default {
         .join('')
         .trim()
 
-      return slotText || !!this.errorMessage
+      return !!slotText || !!this.errorMessage
     },
     hasLabel() {
       return !!this.$slots.label || !!this.label
