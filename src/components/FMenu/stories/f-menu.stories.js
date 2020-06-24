@@ -2,6 +2,7 @@ import { storiesOf } from '@storybook/vue'
 import { text } from '@storybook/addon-knobs'
 import FMenu from '../FMenu.vue'
 import FMenuButton from '../FMenuButton.vue'
+import FMenuToggle from '../FMenuToggle.vue'
 
 storiesOf('Template|Menu', module)
   .add('Default', () => ({
@@ -107,6 +108,23 @@ storiesOf('Template|Menu', module)
     template: `
       <div style="padding: 20px;">
         <f-menu-button :color="color" />
+      </div>
+    `,
+    methods: {}
+  }))
+  .add('Menu Toggle', () => ({
+    components: {
+      FMenuToggle
+    },
+    data: () => ({}),
+    props: {
+      color: {
+        default: text('color', 'primary')
+      }
+    },
+    template: `
+      <div style="padding: 20px;">
+        <f-menu-toggle />
       </div>
     `,
     methods: {}
