@@ -91,16 +91,12 @@ export default {
       return ['floating'].includes(this.labelStyle)
     },
     hasError() {
-      const getSlotErrorText = () => {
-        if (!this.$slots.error) return ''
+      const slotText = (this.$slots.error || [])
+        .map(item => item.text)
+        .join('')
+        .trim()
 
-        return this.$slots.error
-          .map(item => item.text)
-          .join('')
-          .trim()
-      }
-
-      return getSlotErrorText() || !!this.errorMessage
+      return slotText || !!this.errorMessage
     },
     hasLabel() {
       return !!this.$slots.label || !!this.label

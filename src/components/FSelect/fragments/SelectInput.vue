@@ -17,6 +17,7 @@
           name="searchField"
           :value="searchQuery"
           @input="emitSearch"
+          @keyup.enter="emitInput"
         >
           <f-icon
             slot="append"
@@ -251,6 +252,9 @@ export default {
     },
     emitSearch(query) {
       this.$emit('search', query)
+    },
+    emitInput(query) {
+      this.$emit('search-input', query)
     },
     setHover(value) {
       this.hover = value
