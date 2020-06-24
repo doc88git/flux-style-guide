@@ -13,7 +13,7 @@
       <div v-show="displaySearch" class="SelectInput__search" @click.stop>
         <f-input
           class="SelectInput__searchInput"
-          placeholder="Pesquisar"
+          :placeholder="searchPlaceholder"
           name="searchField"
           :value="searchQuery"
           @input="emitSearch"
@@ -135,6 +135,11 @@ export default {
       default: false
     },
 
+    searchPlaceholder: {
+      type: String,
+      default: 'Pesquisar'
+    },
+
     /**
      * The search query in case it is searchable
      */
@@ -254,7 +259,7 @@ export default {
       this.$emit('search', query)
     },
     emitInput(query) {
-      this.$emit('search-input', query)
+      this.$emit('search-input', this.searchQuery)
     },
     setHover(value) {
       this.hover = value
