@@ -258,7 +258,7 @@ export default {
     emitSearch(query) {
       this.$emit('search', query)
     },
-    emitInput(query) {
+    emitInput() {
       this.$emit('search-input', this.searchQuery)
     },
     setHover(value) {
