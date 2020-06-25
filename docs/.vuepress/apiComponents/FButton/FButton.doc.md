@@ -7,8 +7,10 @@
 | small         |             | boolean | -      |           |
 | bigger        |             | boolean | -      |           |
 | dense         |             | boolean | -      |           |
+| circle        |             | boolean | -      |           |
 | label         |             | string  | -      |           |
 | disabled      |             | boolean | -      |           |
+| inverseColor  |             | boolean | -      |           |
 | icon          |             | string  | -      | ''        |
 | iconColor     |             | string  | -      | 'primary' |
 | color         |             | string  | -      | ''        |

@@ -236,7 +236,7 @@ export default {
   &--circle {
     border-radius: 100%;
   }
-  
+
   @each $name, $color in $colors-theme {
     &.color--outline--#{$name} {
       color: var(--color-#{$name});
