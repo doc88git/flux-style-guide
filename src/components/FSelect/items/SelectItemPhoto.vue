@@ -124,13 +124,14 @@ export default {
 
   &__name {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     flex-grow: 1;
-    //width: 185px;
+    padding-top: 5px;
   }
 
   &__prepend {
     margin-right: 10px;
+    margin-top: 2px;
   }
 
   &__append {
@@ -143,6 +144,8 @@ export default {
   &__nameText {
     font-size: var(--text-base);
     flex-shrink: 0;
+    max-width: calc(100% - 40px);
+    word-break: break-word;
   }
 }
 

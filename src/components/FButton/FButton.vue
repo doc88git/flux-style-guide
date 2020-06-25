@@ -34,8 +34,10 @@ export default {
     small: Boolean,
     bigger: Boolean,
     dense: Boolean,
+    circle: Boolean,
     label: String,
     disabled: Boolean,
+    inverseColor: Boolean,
     icon: {
       type: String,
       default: ''
@@ -90,6 +92,8 @@ export default {
         ...btnOutline,
         ...btnFlat,
         ...btnRadius,
+        ['btn--circle']: this.circle,
+        ['btn--inverse-color']: this.inverseColor,
         ['btn--small']: this.small,
         ['btn--bigger']: this.bigger,
         ['btn--dense']: this.dense,
@@ -173,6 +177,20 @@ export default {
     border: 1px solid var(--color-primary);
   }
 
+  &--inverse-color {
+    border: none;
+    background-color: var(--color-white);
+
+    &:hover {
+      background-color: var(--color-primary);
+      opacity: 1;
+
+      svg {
+        fill: var(--color-white);
+      }
+    }
+  }
+
   &--small {
     text-align: center;
     padding: 0.25rem 1.25rem;
@@ -215,6 +233,10 @@ export default {
     padding-right: 1.25rem;
   }
 
+  &--circle {
+    border-radius: 100%;
+  }
+  
   @each $name, $color in $colors-theme {
     &.color--outline--#{$name} {
       color: var(--color-#{$name});

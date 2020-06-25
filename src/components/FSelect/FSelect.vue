@@ -22,6 +22,7 @@
         :null-option-icon="nullOptionIcon"
         :label="label"
         v-bind="$attrs"
+        v-on="$listeners"
         @toggle-options="toggleOptions"
         @search="search"
       />
@@ -281,6 +282,8 @@ export default {
 
   watch: {
     displayOptions(display) {
+      this.searchQuery = ''
+
       if (display) this.sortOptions()
       else this.emitBlur()
     },

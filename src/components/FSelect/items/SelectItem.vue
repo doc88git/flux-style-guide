@@ -68,7 +68,7 @@ export default {
 <style lang="scss" scoped>
 .SelectItem {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   color: #999;
   cursor: pointer;
 
@@ -83,10 +83,13 @@ export default {
   &__label {
     flex-shrink: 0;
     user-select: none;
+    max-width: calc(100% - 40px);
+    word-break: break-word;
   }
 
   &__prepend {
     margin-right: 10px;
+    margin-top: 2px;
   }
 
   &__append {
