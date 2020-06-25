@@ -11,7 +11,7 @@
       @click="changeOpened()"
     />
     <div class="FMenuToggle__content" v-if="openMenu">
-      content
+      <slot name="content" />
     </div>
   </div>
 </template>
@@ -32,10 +32,6 @@ export default {
 
   props: {
     isOpen: Boolean,
-    color: {
-      type: String,
-      default: 'primary'
-    },
     iconOpened: {
       type: String,
       default: 'arrow-left'
