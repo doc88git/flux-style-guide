@@ -105,6 +105,7 @@ export default {
 <style lang="scss">
 .FUpload {
   position: relative;
+  width: 100%;
 
   &--fade {
     &-enter-active,

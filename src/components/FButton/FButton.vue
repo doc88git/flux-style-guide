@@ -132,6 +132,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../assets/f-variables';
+
 .btn {
   text-align: center;
   padding: 0.5rem 0.75rem;
@@ -233,6 +235,13 @@ export default {
 
   &--circle {
     border-radius: 100%;
+  }
+  
+  @each $name, $color in $colors-theme {
+    &.color--outline--#{$name} {
+      color: var(--color-#{$name});
+      border-color: var(--color-#{$name});
+    }
   }
 
   &__inner {

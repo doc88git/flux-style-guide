@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/vue'
 import { text } from '@storybook/addon-knobs'
-import { FList, FItem } from '..'
+import { FList, FListItem } from '..'
 import { FCard, FCardBody } from '@/components/FCard'
 
 const groupId = 'FIELD-LIST-ID1'
@@ -8,7 +8,7 @@ const groupId = 'FIELD-LIST-ID1'
 storiesOf('Components|List', module).add(
   'List',
   () => ({
-    components: { FList, FItem, FCard, FCardBody },
+    components: { FList, FListItem, FCard, FCardBody },
     props: {
       title: {
         default: text('title', 'This is a title', groupId)
@@ -28,13 +28,13 @@ storiesOf('Components|List', module).add(
         <f-card>
           <f-card-body>
             <f-list>
-              <f-item :title="title" :link="link">{{ label }}</f-item>
-              <f-item :title="title" :label="label" :to="to" />
-              <f-item>
+              <f-list-item :title="title" :link="link">{{ label }}</f-list-item>
+              <f-list-item :title="title" :label="label" :to="to" />
+              <f-list-item>
                 <div>
                   Slot Label
                 </div>
-              </f-item>
+              </f-list-item>
             </f-list>
           </f-card-body>
         </f-card>

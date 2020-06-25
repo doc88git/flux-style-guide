@@ -1,23 +1,25 @@
-## Flux Style Guide
+# Flux Style Guide
 
 Design by Doc88 for Vue.js
 
-### Documentation
+## Documentation
 
 This documentation, at this moment, is found in the repository itself using the [StoryBook for Vue](https://storybook.js.org/docs/guides/guide-vue/).
-```
+
+``` bash
 yarn storybook
 ```
-### Instalation
+
+## Instalation
 
 ``` bash
 # Instalation
-$ yarn add @doc88/flux-style-guide
+yarn add @doc88/flux-style-guide
 ```
 
 You can use with `Vue.js 2.x` and `Nuxt.js 2.x`.
 
-#### Nuxt.js
+### Nuxt.js
 
 We create the file `plugins/flux-style-guide.js`:
 
@@ -36,7 +38,7 @@ export default {
 }
 ```
 
-#### Vue.js
+### Vue.js
 
 ``` js
 import Vue from 'vue'
@@ -45,7 +47,7 @@ import FluxStyleGuide from "@doc88/flux-style-guide"
 Vue.use(FluxStyleGuide)
 ```
 
-### CSS Sass Configuration
+## CSS Sass Configuration
 
 To use a simple configuration
 
@@ -73,11 +75,11 @@ Custom variables
 
 ```
 
-### Update
+## Update
 
 ``` bash
 # Update dependence
-$ yarn upgrade-interactive --latest
+yarn upgrade-interactive --latest
 ```
 
 ## Contribuition

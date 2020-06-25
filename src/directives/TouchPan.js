@@ -101,8 +101,8 @@ export default {
   name: 'touch-pan',
 
   bind(el, { value, modifiers }) {
-    if (el.__qtouchpan) {
-      el.__qtouchpan_old = el.__qtouchpan
+    if (el.__ftouchpan) {
+      el.__ftouchpan_old = el.__ftouchpan
     }
 
     // early return, we don't need to do anything
@@ -258,7 +258,7 @@ export default {
       }
     }
 
-    el.__qtouchpan = ctx
+    el.__ftouchpan = ctx
 
     if (modifiers.mouse === true) {
       el.addEventListener(
@@ -279,14 +279,14 @@ export default {
   },
 
   update(el, binding) {
-    const ctx = el.__qtouchpan
+    const ctx = el.__ftouchpan
     if (ctx !== void 0) {
       updateModifiers(ctx, binding)
     }
   },
 
   unbind(el, { modifiers }) {
-    let ctx = el.__qtouchpan_old || el.__qtouchpan
+    let ctx = el.__ftouchpan_old || el.__ftouchpan
 
     if (ctx !== void 0) {
       removeObserver(ctx)
@@ -323,7 +323,7 @@ export default {
         el.removeEventListener('touchend', ctx.end, modifiers.capture)
       }
 
-      delete el[el.__qtouchpan_old ? '__qtouchpan_old' : '__qtouchpan']
+      delete el[el.__ftouchpan_old ? '__ftouchpan_old' : '__ftouchpan']
     }
   }
 }
