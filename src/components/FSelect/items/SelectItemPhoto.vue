@@ -1,7 +1,7 @@
 <template>
   <div :class="rootClasses" class="SelectItemPhoto" @click="emitInput">
     <div class="SelectItemPhoto__photo">
-      <img class="SelectItemPhoto__photoDimensions" :src="option.photo" />
+      <div class="SelectItemPhoto__photoDimensions" :style="backgroundImage" />
       <div v-if="isSelected" class="SelectItemPhoto__checkDiv">
         <f-icon size="xs" name="check" lib="flux" color="white" />
       </div>
@@ -63,6 +63,11 @@ export default {
           'SelectItemPhoto--selected': this.isSelected
         }
       ]
+    },
+    backgroundImage() {
+      return {
+        backgroundImage: `url(${this.option.photo})`
+      }
     }
   },
 
@@ -120,6 +125,10 @@ export default {
     width: 100%;
     border-radius: 15px;
     animation: fadeIn 1s ease-in-out;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
   &__name {

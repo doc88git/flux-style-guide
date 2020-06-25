@@ -20,6 +20,7 @@
         :is-null-selected="nullOptionSelected && displayNullOption"
         :null-option-text="nullOptionText"
         :null-option-icon="nullOptionIcon"
+        :show-selected-pics="['photo'].includes(type)"
         :label="label"
         v-bind="$attrs"
         v-on="$listeners"
@@ -242,7 +243,14 @@ export default {
         : this.value !== null && this.value !== undefined && !!this.value
     },
     currentValue() {
-      return !this.multiple && this.value
+      if (this.multiple)
+        return this.options.filter(option =>
+          (this.value || [])
+            .map(v => JSON.stringify(v))
+            .includes(JSON.stringify(option[this.trackBy]))
+        )
+
+      return this.value
         ? this.options.find(
             opt =>
               JSON.stringify(opt[this.trackBy]) === JSON.stringify(this.value)
