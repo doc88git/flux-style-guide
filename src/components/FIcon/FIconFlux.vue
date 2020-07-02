@@ -53,12 +53,12 @@ export default {
     }
   },
   render(h) {
-    if (!this.icon) return h('span', '[X]')
+    if (!this.icon) return false
 
     return h({
       ...this.icon,
+      name: `f-icon-${this.icon.name}`,
       class: ['f-icon', ...this.classes],
-      key: this.name,
       on: {
         click: this.clickHandler
       }

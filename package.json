@@ -23,7 +23,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn eslint; yarn test; yarn predocs:dev"
+      "pre-commit": "yarn eslint && yarn test && yarn predocs:dev"
     }
   },
   "repository": {
@@ -36,9 +36,8 @@
   "dependencies": {
     "@doc88/flux-icon": "^v1.4.6",
     "@doc88/flux-style-guide": "2.0.0-next.2",
-    "collect.js": "^4.12.5",
+    "collect.js": "^4.27.4",
     "core-js": "^3.6.4",
-    "fuse.js": "^3.4.5",
     "require-context": "^1.1.0",
     "v-click-outside": "^3.0.1",
     "vee-validate": "^2.2.11",
@@ -47,20 +46,20 @@
     "vue2-datepicker": "^2.12.0"
   },
   "devDependencies": {
-    "@applitools/eyes-storybook": "^3.2.3",
-    "@babel/core": "^7.8.3",
-    "@babel/parser": "^7.9.4",
+    "@applitools/eyes-storybook": "^3.8.2",
+    "@babel/core": "^7.10.4",
+    "@babel/parser": "^7.10.4",
     "@storybook/addon-a11y": "^5.3.3",
     "@storybook/addon-backgrounds": "^5.3.3",
     "@storybook/addon-knobs": "^5.3.3",
     "@storybook/addon-storysource": "^5.3.3",
     "@storybook/addon-viewport": "^5.3.3",
     "@storybook/vue": "^5.3.3",
-    "@vue/cli-plugin-babel": "~4.2.0",
-    "@vue/cli-plugin-eslint": "~4.2.0",
-    "@vue/cli-plugin-router": "~4.2.0",
-    "@vue/cli-plugin-vuex": "~4.2.0",
-    "@vue/cli-service": "~4.2.0",
+    "@vue/cli-plugin-babel": "~4.4.6",
+    "@vue/cli-plugin-eslint": "~4.4.6",
+    "@vue/cli-plugin-router": "~4.4.6",
+    "@vue/cli-plugin-vuex": "~4.4.6",
+    "@vue/cli-service": "~4.4.6",
     "@vue/component-compiler-utils": "^3.1.1",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/test-utils": "^1.0.0-beta.30",
@@ -82,23 +81,23 @@
     "husky": "^4.2.3",
     "jest": "^24.8.0",
     "jest-transform-stub": "^2.0.0",
-    "markdown-it": "^10.0.0",
-    "markdown-it-container": "^2.0.0",
+    "markdown-it": "^11.0.0",
+    "markdown-it-container": "^3.0.0",
     "markdown-it-custom-block": "^0.1.1",
-    "markdownlint-cli": "^0.22.0",
+    "markdownlint-cli": "^0.23.2",
     "prettier": "^1.19.1",
     "sass": "^1.25.0",
     "sass-loader": "^8.0.2",
     "storybook-addon-vue-info": "^1.2.1",
     "style-loader": "^0.23.1",
-    "vue-docgen-cli": "^4.15.1",
+    "vue-docgen-cli": "^4.26.1",
     "vue-jest": "^3.0.4",
     "vue-loader": "^15.7.0",
     "vue-router": "^3.1.6",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.11",
     "vuepress": "^1.4.0",
-    "vuepress-bar": "^0.2.4",
+    "vuepress-bar": "^0.3.1",
     "write-file-webpack-plugin": "^4.5.1"
   },
   "publishConfig": {
