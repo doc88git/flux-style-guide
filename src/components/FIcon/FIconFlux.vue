@@ -53,7 +53,10 @@ export default {
     }
   },
   render(h) {
-    return h(this.icon, {
+    if (!this.icon) return h('span', '[X]')
+
+    return h({
+      ...this.icon,
       class: ['f-icon', ...this.classes],
       key: this.name,
       on: {

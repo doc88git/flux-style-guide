@@ -18,7 +18,7 @@
     "test:snapshot": "jest --updateSnapshot",
     "test:watch": "jest --watchAll",
     "predocs:dev": "yarn vue-docgen -c scripts/docgen.config.js",
-    "docs:dev": "vuepress dev docs --no-cache --debug",
+    "docs:dev": "vuepress dev docs --no-cache",
     "docs:build": "vuepress build docs"
   },
   "husky": {
