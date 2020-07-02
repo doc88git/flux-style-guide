@@ -31,7 +31,7 @@
 <script>
 export default {
   computed: {
-    touch () {
+    touch() {
       return this.$f.platform.has.touch ? 'has' : 'does not have'
     }
   }

@@ -34,7 +34,6 @@ export default {
   },
   methods: {
     toggle(e) {
-      console.log({f: this.$f.fullscreen})
       const target = e.target.parentNode.parentNode.parentNode
 
       this.$f.fullscreen

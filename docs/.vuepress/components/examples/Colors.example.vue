@@ -24,8 +24,6 @@
 </template>
 
 <script>
-import SassVariables from '@/assets/f-variables.scss'
-
 const baseColors = [
   'primary',
   'secondary',
@@ -46,16 +44,18 @@ export default {
   data: () => ({
     sassColos: [],
     colors: [],
-    obj: []
+    obj: [],
+    sassVariables: []
+    // sassVariables: import('@/assets/f-variables.scss')
   }),
   mounted() {
     Promise.all([this.getSassColors(), this.mountColorsObject()])
   },
   methods: {
     async getSassColors() {
-      Object.keys(SassVariables).map(key => {
+      Object.keys(this.sassVariables).map(key => {
         const colorName = key.replace('colors-theme-', '')
-        this.colors.push([colorName, SassVariables[key]])
+        this.colors.push([colorName, this.sassVariables[key]])
       })
     },
     async mountColorsObject() {

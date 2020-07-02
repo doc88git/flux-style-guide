@@ -15,9 +15,7 @@
 </template>
 
 <script>
-const pad = number => {
-  return (number < 10 ? '0' : '') + number
-}
+const pad = number => (number < 10 ? '0' : '') + number
 
 export default {
   data() {
