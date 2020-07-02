@@ -6,6 +6,7 @@
 | label             | The field's label                                                                | string  | -      | ''       |
 | options           | Array of Option objects.                                                         | array   | -      | []       |
 | type              | Defines the variation of the MultiSelect item's                                  | string  | -      | 'base'   |
+| disabled          | Locks the select field if true                                                   | boolean | -      | false    |
 | displayBy         | Defines the property of the option object to use to be<br>displayed as the label | string  | -      | 'label'  |
 | selectAll         | Defines the property of the option object to select all items                    | boolean | -      | false    |
 | trackBy           | Defines the property of the option object to use as the value                    | string  | -      | 'value'  |
