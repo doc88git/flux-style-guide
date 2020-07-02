@@ -1,11 +1,11 @@
 ### Props
 
-| Prop name | Description | Type    | Values     | Default   |
-| --------- | ----------- | ------- | ---------- | --------- |
-| name      |             | string  | -          |           |
-| color     |             | string  | -          | 'primary' |
-| size      |             | number  | `16`, `24` | 16        |
-| clickable |             | boolean | -          | false     |
+| Prop name | Description | Type    | Values | Default   |
+| --------- | ----------- | ------- | ------ | --------- |
+| name      |             | string  | -      |           |
+| color     |             | string  | -      | 'primary' |
+| size      |             | number  | -      | 16        |
+| clickable |             | boolean | -      | false     |
 
 ### Events
 
