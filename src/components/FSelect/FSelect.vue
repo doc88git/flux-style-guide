@@ -5,7 +5,7 @@
     </template>
 
     <select-accordion
-      class="FMultiSelect"
+      :class="rootClasses"
       :show-content="displayOptions"
       :is-active="hasValue || nullOptionSelected"
       @close="hideOptions"
@@ -159,6 +159,14 @@ export default {
     },
 
     /**
+     * Locks the select field if true
+     */
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+
+    /**
      * Defines the property of the option object to use to be
      * displayed as the label
      */
@@ -234,6 +242,9 @@ export default {
   },
 
   computed: {
+    rootClasses() {
+      return ['FSelect', { 'FSelect--disabled': this.disabled }]
+    },
     itemsSelected() {
       return this.multiple ? (this.value || []).length : 0
     },
@@ -392,9 +403,15 @@ export default {
 </script>
 
 <style lang="scss">
-.FMultiSelect {
+.FSelect {
   z-index: 0;
   min-width: 220px;
   height: fit-content;
+
+  &--disabled {
+    user-select: none;
+    pointer-events: none;
+    opacity: 0.3;
+  }
 }
 </style>
