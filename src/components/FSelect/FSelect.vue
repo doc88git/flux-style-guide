@@ -394,7 +394,7 @@ export default {
 <style lang="scss">
 .FMultiSelect {
   z-index: 0;
-  min-width: 250px;
+  min-width: 220px;
   height: fit-content;
 }
 </style>
