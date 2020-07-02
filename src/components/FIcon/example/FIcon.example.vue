@@ -62,18 +62,6 @@ export default {
         .filter(i => i.name.includes('16px'))
         .map(item => item.name.replace(/-16px.vue$/, ''))
         .filter(item => this.iconSearch(item))
-    },
-    icons16() {
-      return list
-        .filter(i => i.name.includes('16px'))
-        .map(item => item.name.replace(/-16px.vue$/, ''))
-        .filter(item => this.iconSearch(item))
-    },
-    icons24() {
-      return list
-        .filter(i => i.name.includes('24px'))
-        .map(item => item.name.replace(/-24px.vue$/, ''))
-        .filter(item => this.iconSearch(item))
     }
   },
   methods: {

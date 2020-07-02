@@ -1164,26 +1164,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@doc88/flux-icon@^1.3.2", "@doc88/flux-icon@^v1.4.6":
+"@doc88/flux-icon@^1.4.6":
   version "1.4.6"
   resolved "https://registry.yarnpkg.com/@doc88/flux-icon/-/flux-icon-1.4.6.tgz#dd460a5312d6982d66d56a8c599c78e826d764a3"
   integrity sha512-kASierY2twXTVme7PwirOQSHTJillD1F/fRS4hf5gfHdEmrS/dnhFEpYxLIJ/bd0xArii27OutSIFa8Kq8zSsA==
-
-"@doc88/flux-style-guide@2.0.0-next.2":
-  version "2.0.0-next.2"
-  resolved "https://registry.yarnpkg.com/@doc88/flux-style-guide/-/flux-style-guide-2.0.0-next.2.tgz#809e2d63a0dda536f984fa9944d9e648bf2d1002"
-  integrity sha512-8k2Efwl9CBZWMOrTy4bCK66N9FTmhCCtZH0JGzdf5RWNP5sYJe+fQwbm5PhgYhzdcfRaGH00cdVQJmcYnHD5AQ==
-  dependencies:
-    "@doc88/flux-icon" "^1.3.2"
-    collect.js "^4.12.5"
-    core-js "^3.6.4"
-    fuse.js "^3.4.5"
-    require-context "^1.1.0"
-    v-click-outside "^3.0.1"
-    vee-validate "^2.2.11"
-    vue "^2.6.10"
-    vue-i18n "^8.11.2"
-    vue2-datepicker "^2.12.0"
 
 "@emotion/cache@^10.0.27", "@emotion/cache@^10.0.9":
   version "10.0.29"
@@ -5011,11 +4995,6 @@ code-point-at@^1.0.0:
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
   integrity sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
 
-collect.js@^4.12.5:
-  version "4.27.3"
-  resolved "https://registry.yarnpkg.com/collect.js/-/collect.js-4.27.3.tgz#e81efff5c4c92a713f83ecef6648cdaded03ed34"
-  integrity sha512-2nmoyhUJbhjVVE0W9W0cSBeg8/PL3ObGe1ijj9WDlLG3RrpvePsBZd6p3uTm1dTAUKJVd3qT8mnH6iXCdENEHQ==
-
 collect.js@^4.27.4:
   version "4.27.4"
   resolved "https://registry.yarnpkg.com/collect.js/-/collect.js-4.27.4.tgz#210c70010c49350fd8b91bbff80a7194407d2c29"
@@ -7257,7 +7236,7 @@ functions-have-names@^1.2.0:
   resolved "https://registry.yarnpkg.com/functions-have-names/-/functions-have-names-1.2.1.tgz#a981ac397fa0c9964551402cdc5533d7a4d52f91"
   integrity sha512-j48B/ZI7VKs3sgeI2cZp7WXWmZXu7Iq5pl5/vptV5N2mq+DGFuS/ulaDjtaoLpYzuD6u8UgrUKHfgo7fDTSiBA==
 
-fuse.js@^3.4.5, fuse.js@^3.4.6:
+fuse.js@^3.4.6:
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/fuse.js/-/fuse.js-3.6.1.tgz#7de85fdd6e1b3377c23ce010892656385fd9b10c"
   integrity sha512-hT9yh/tiinkmirKrlv4KWOjztdoZo1mx9Qh4KvWqC7isoXwdUY3PNWUxceF4/qO9R6riA2C29jdTOeQOIROjgw==
