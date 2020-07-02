@@ -1,11 +1,15 @@
 <template>
   <div :class="rootClasses">
     <div :class="previewClasses">
-      <div
-        v-if="previewable"
-        :style="imgStyle"
-        class="FileItem__preview__img"
-      />
+      <template v-if="previewable">
+        <div
+          v-if="isDataURL"
+          :style="previewStyle"
+          class="FileItem__preview__img"
+        />
+        <img v-else :src="filePath" class="FileItem__preview__img" />
+      </template>
+
       <f-icon
         v-else
         name="file"
@@ -78,20 +82,24 @@ export default {
         }
       ]
     },
-    imgStyle() {
-      if (!this.previewable || this.loading) return {}
+    previewStyle() {
+      if (!this.isDataURL || this.loading) return {}
 
       return { backgroundImage: `url(${this.filePath})` }
     },
     previewable() {
-      if (this.loading || !this.fileObj.type) return
-
-      return this.fileObj.type.includes('image')
+      if (this.loading) return
+      return is(this.file, 'String') || this.fileObj.type.includes('image')
+    },
+    isDataURL() {
+      return !is(this.file, 'String')
     },
     filePath() {
       if (!this.previewable || this.loading) return ''
 
-      return URL.createObjectURL(this.fileObj) || ''
+      return is(this.file, 'String')
+        ? this.file
+        : URL.createObjectURL(this.fileObj)
     },
     fileName() {
       return this.loading ? '' : this.fileObj.name.replace(/\//g, '')
