@@ -5,7 +5,7 @@
     </template>
 
     <select-accordion
-      class="FMultiSelect"
+      :class="rootClasses"
       :show-content="displayOptions"
       :is-active="hasValue || nullOptionSelected"
       @close="hideOptions"
@@ -20,6 +20,7 @@
         :is-null-selected="nullOptionSelected && displayNullOption"
         :null-option-text="nullOptionText"
         :null-option-icon="nullOptionIcon"
+        :show-selected-pics="['photo'].includes(type)"
         :label="label"
         v-bind="$attrs"
         v-on="$listeners"
@@ -158,6 +159,14 @@ export default {
     },
 
     /**
+     * Locks the select field if true
+     */
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+
+    /**
      * Defines the property of the option object to use to be
      * displayed as the label
      */
@@ -233,6 +242,9 @@ export default {
   },
 
   computed: {
+    rootClasses() {
+      return ['FSelect', { 'FSelect--disabled': this.disabled }]
+    },
     itemsSelected() {
       return this.multiple ? (this.value || []).length : 0
     },
@@ -242,7 +254,14 @@ export default {
         : this.value !== null && this.value !== undefined && !!this.value
     },
     currentValue() {
-      return !this.multiple && this.value
+      if (this.multiple)
+        return this.options.filter(option =>
+          (this.value || [])
+            .map(v => JSON.stringify(v))
+            .includes(JSON.stringify(option[this.trackBy]))
+        )
+
+      return this.value
         ? this.options.find(
             opt =>
               JSON.stringify(opt[this.trackBy]) === JSON.stringify(this.value)
@@ -384,9 +403,15 @@ export default {
 </script>
 
 <style lang="scss">
-.FMultiSelect {
+.FSelect {
   z-index: 0;
-  min-width: 250px;
+  min-width: 220px;
   height: fit-content;
+
+  &--disabled {
+    user-select: none;
+    pointer-events: none;
+    opacity: 0.3;
+  }
 }
 </style>

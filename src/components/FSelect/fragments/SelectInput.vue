@@ -13,7 +13,7 @@
       <div v-show="displaySearch" class="SelectInput__search" @click.stop>
         <f-input
           class="SelectInput__searchInput"
-          placeholder="Pesquisar"
+          :placeholder="searchPlaceholder"
           name="searchField"
           :value="searchQuery"
           @input="emitSearch"
@@ -29,25 +29,31 @@
         </f-input>
       </div>
 
+      <div v-show="displayAvatarRow" class="SelectInput__avatarRow">
+        <avatar-list :avatars="currentValue || []" />
+      </div>
+
       <div v-show="!displaySearch" class="SelectInput__placeholder">
-        <div :class="placeholderClasses">
-          <f-icon
-            v-if="isNullSelected && nullOptionIcon"
-            :name="nullOptionIcon"
-            lib="flux"
-            size="sm"
-            color="primary"
-            class="SelectItemGroup__ul__nullOption__icon"
+        <template v-if="!displayAvatarRow">
+          <div :class="placeholderClasses">
+            <f-icon
+              v-if="isNullSelected && nullOptionIcon"
+              :name="nullOptionIcon"
+              lib="flux"
+              size="sm"
+              color="primary"
+              class="SelectItemGroup__ul__nullOption__icon"
+            />
+
+            {{ placeholderText }}
+          </div>
+
+          <f-chip
+            v-if="numSelected"
+            :label="numSelected"
+            class="SelectInput__badge"
           />
-
-          {{ placeholderText }}
-        </div>
-
-        <f-chip
-          v-if="numSelected"
-          :label="numSelected"
-          class="SelectInput__badge"
-        />
+        </template>
 
         <f-icon
           clickable
@@ -67,13 +73,16 @@ import { FChip } from '../../FChip'
 import { FIcon } from '../../FIcon'
 import { FInput } from '../../FField'
 
+import AvatarList from './AvatarList'
+
 export default {
   name: 'SelectInput',
 
   components: {
     FChip,
     FInput,
-    FIcon
+    FIcon,
+    AvatarList
   },
 
   props: {
@@ -98,7 +107,7 @@ export default {
      * Current value to be displayed, in case it isn't a multiple select.
      */
     currentValue: {
-      type: Object,
+      type: [Object, Array],
       default: () => ({})
     },
 
@@ -135,6 +144,11 @@ export default {
       default: false
     },
 
+    searchPlaceholder: {
+      type: String,
+      default: 'Pesquisar'
+    },
+
     /**
      * The search query in case it is searchable
      */
@@ -152,6 +166,9 @@ export default {
       default: false
     },
 
+    /**
+     * Whether or not the null optionis selected
+     */
     isNullSelected: {
       type: Boolean,
       default: false
@@ -177,6 +194,17 @@ export default {
   data: () => ({ hover: false, badgeNumber: 10 }),
 
   computed: {
+    displayAvatarRow() {
+      if (
+        !this.showSelectedPics ||
+        !this.currentValue ||
+        !Array.isArray(this.currentValue)
+      )
+        return
+
+      return !this.displaySearch && !!(this.currentValue || []).length
+    },
+
     rootClasses() {
       return [
         'SelectInput',
@@ -235,7 +263,11 @@ export default {
     },
 
     hasCurrentValue() {
-      return !!(this.currentValue || {})[this.displayBy]
+      if (!this.currentValue) return
+
+      return Array.isArray(this.currentValue)
+        ? this.showSelectedPics && !!(this.currentValue || []).length
+        : !!(this.currentValue || {})[this.displayBy]
     },
     placeholderText() {
       return this.hasCurrentValue
@@ -253,8 +285,8 @@ export default {
     emitSearch(query) {
       this.$emit('search', query)
     },
-    emitInput(query) {
-      this.$emit('search-input', query)
+    emitInput() {
+      this.$emit('search-input', this.searchQuery)
     },
     setHover(value) {
       this.hover = value
@@ -342,11 +374,17 @@ export default {
     }
   }
 
+  &__avatarRow {
+    width: 100%;
+    flex-grow: 1;
+  }
+
   &__placeholder {
     display: flex;
     align-items: center;
+    flex-grow: 1;
 
-    width: 100%;
+    margin: auto 0;
     height: 100%;
     cursor: pointer;
   }
