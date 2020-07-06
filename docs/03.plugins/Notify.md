@@ -31,23 +31,23 @@ this.$f.notify('Message')
 this.$f.notify({...})
 ```
 
-@[example](Notify/NotifyBasic)
+@[example](NotifyBasic)
 
 ### With caption
 
-@[example](Notify/NotifyCaption)
+@[example](NotifyCaption)
 
 ### With Icon or Avatar
 
-@[example](Notify/NotifyIconAvatar)
+@[example](NotifyIconAvatar)
 
 ### With actions
 
-@[example](Notify/NotifyActions)
+@[example](NotifyActions)
 
 ### Multline
 
-@[example](Notify/NotifyMultiline)
+@[example](NotifyMultiline)
 
 ### Grouping
 
@@ -55,19 +55,19 @@ Each notification has an underlying unique group which is computed out of the me
 
 However, if you wish to disable this behavior, specify group: false. In the example below, the first button triggers the same notification twice each time is clicked. The second button has grouping disabled. The third button, however, has a custom group name so each subsequent notification replaces the old one and increments the badge number.
 
-@[example](Notify/NotifyGrouping)
+@[example](NotifyGrouping)
 
 ### Timeout progress
 
 Should you wish, there is a way to tell the user when the notification will disappear from the screen. That’s for the cases when timeout is not set to 0.
 
-@[example](Notify/NotifyTimeout)
+@[example](NotifyTimeout)
 
 ### Using HTML
 
 You can use HTML on message if you specify the html: true prop. Please note that this can lead to XSS attacks, so make sure that you sanitize the message by yourself.
 
-@[example](Notify/NotifyHtml)
+@[example](NotifyHtml)
 
 ### Programmatically closing
 

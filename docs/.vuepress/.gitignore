@@ -1,3 +1,6 @@
 dist/
-examples/*.example.vue
-components/*.example.vue
+apiComponents/*
+components/examples/*
+
+!apiComponents/README.md
+!components/examples/README.md

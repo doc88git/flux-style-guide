@@ -8,7 +8,7 @@ const getFileName = f => {
 
 module.exports = function getExamples() {
   const resolveSrc = _path => path.resolve(__dirname, _path)
-  const examplesDir = resolveSrc('../../../src/components/')
+  const examplesDir = resolveSrc('../../../src/')
   const outuptExamples = resolveSrc('../components/examples/')
   const files = requireContext(examplesDir, true, /.example.vue$/).keys()
 
