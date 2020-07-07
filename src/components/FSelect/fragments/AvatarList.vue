@@ -6,7 +6,7 @@
       tag="div"
     >
       <f-tooltip
-        v-for="(avatar, index) in displayAvatars"
+        v-for="avatar in displayAvatars"
         :key="getAvatarKey(avatar)"
         position="bottom"
         aligned="center"
