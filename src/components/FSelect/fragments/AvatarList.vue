@@ -7,7 +7,7 @@
     >
       <f-tooltip
         v-for="(avatar, index) in displayAvatars"
-        :key="index"
+        :key="getAvatarKey(avatar)"
         position="bottom"
         aligned="center"
         bg-color="primary"
@@ -59,6 +59,12 @@ export default {
     },
     remainingAvatars() {
       return `${(this.avatars || []).length - this.showLimit}`
+    }
+  },
+
+  methods: {
+    getAvatarKey(avatar) {
+      return JSON.stringify(avatar)
     }
   },
 
