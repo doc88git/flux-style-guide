@@ -1,7 +1,7 @@
 ._*
 .DS_Store
 docs/
-.storybook
+.storybook/
 dist/
 src/dev
 .vscode
@@ -9,3 +9,4 @@ src/dev
 docgen.*
 public/
 src/**/example/*
+coverage/

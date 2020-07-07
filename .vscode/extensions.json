@@ -14,8 +14,8 @@
     // https://github.com/vuejs/vetur
     "octref.vetur",
     // Lint-on-save with Stylelint
-    // https://github.com/shinnn/vscode-stylelint
-    "shinnn.stylelint",
+    // https://github.com/stylelint/vscode-stylelint
+    "stylelint.vscode-stylelint",
     // SCSS intellisense
     "mrmlnc.vscode-scss",
     // Lint markdown in README files

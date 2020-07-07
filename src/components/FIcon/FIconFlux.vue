@@ -53,9 +53,12 @@ export default {
     }
   },
   render(h) {
-    return h(this.icon, {
+    if (!this.icon) return false
+
+    return h({
+      ...this.icon,
+      name: `f-icon-${this.icon.name}`,
       class: ['f-icon', ...this.classes],
-      key: this.name,
       on: {
         click: this.clickHandler
       }
