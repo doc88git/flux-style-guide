@@ -55,7 +55,7 @@ export default {
 
   computed: {
     displayAvatars() {
-      return this.avatars.slice(0, this.showLimit)
+      return (this.avatars || []).slice(0, this.showLimit)
     },
     remainingAvatars() {
       return `${(this.avatars || []).length - this.showLimit}`
