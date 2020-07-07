@@ -55,6 +55,8 @@ export default {
 
   computed: {
     displayAvatars() {
+      if (!this.avatars || !Array.isArray(this.avatars)) return 0
+
       return (this.avatars || []).slice(0, this.showLimit)
     },
     remainingAvatars() {
