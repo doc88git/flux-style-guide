@@ -19,10 +19,7 @@ function read(string) {
 
   if (string.indexOf('"') === 0) {
     // This is a quoted cookie as according to RFC2068, unescape...
-    string = string
-      .slice(1, -1)
-      .replace(/\\"/g, '"')
-      .replace(/\\\\/g, '\\')
+    string = string.slice(1, -1).replace(/\\"/g, '"').replace(/\\\\/g, '\\')
   }
 
   // Replace server-side written pluses with spaces.

@@ -1,4 +1,4 @@
-export default function(fn) {
+export default function (fn) {
   let wait = false,
     frame
 

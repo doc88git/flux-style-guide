@@ -9,7 +9,7 @@ const ssrAPI = {
   hide: () => ssrAPI
 }
 
-export default function(DefaultComponent) {
+export default function (DefaultComponent) {
   return ({ className, class: klass, style, component, root, ...props }) => {
     if (isSSR === true) {
       return ssrAPI

@@ -43,7 +43,7 @@ export default {
   },
   watch: {
     $route: {
-      handler: function() {
+      handler: function () {
         this.makeGroups()
       },
       immediate: true

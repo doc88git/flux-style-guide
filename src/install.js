@@ -13,7 +13,7 @@ export const $f = {
   config: {}
 }
 
-export default function(Vue, opts = {}) {
+export default function (Vue, opts = {}) {
   if (this.__installed) return
   this.__installed = true
 

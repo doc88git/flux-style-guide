@@ -254,9 +254,8 @@ export function getBrand(color, element = document.body) {
   }
 
   return (
-    getComputedStyle(element)
-      .getPropertyValue(`--color-${color}`)
-      .trim() || null
+    getComputedStyle(element).getPropertyValue(`--color-${color}`).trim() ||
+    null
   )
 }
 

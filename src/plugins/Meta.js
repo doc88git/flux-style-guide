@@ -247,8 +247,9 @@ function getServerMeta(app, html) {
             `<noscript data-qmeta="${name}">${meta.noscript[name]}</noscript>`
         )
         .join('') +
-      `<script data-qmeta-init>window.__F_META__=${delete meta.noscript &&
-        JSON.stringify(meta)}</script>`
+      `<script data-qmeta-init>window.__F_META__=${
+        delete meta.noscript && JSON.stringify(meta)
+      }</script>`
   }
 
   Object.keys(tokens).forEach(key => {

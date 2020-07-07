@@ -4,7 +4,7 @@ function s4() {
     .substring(1)
 }
 
-export default function() {
+export default function () {
   return (
     s4() +
     s4() +

@@ -22,7 +22,7 @@ storiesOf('Form|InputTag', module).add('Default', () => ({
 
   template: `
       <div style="padding: 20px;">
-        <f-input-tag           
+        <f-input-tag
         @add="addTag"
         @del="delTag"
         :tags="tags"/>

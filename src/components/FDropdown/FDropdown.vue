@@ -146,7 +146,7 @@ export default {
   },
   watch: {
     open: {
-      handler: function(value) {
+      handler: function (value) {
         if (value) return this.openList()
         return this.closeList()
         // this.toggleDropdown(null, value);

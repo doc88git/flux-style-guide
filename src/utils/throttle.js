@@ -1,8 +1,8 @@
-export default function(fn, limit = 250) {
+export default function (fn, limit = 250) {
   let wait = false
   let result
 
-  return function(...args) {
+  return function (...args) {
     if (wait) {
       return result
     }
