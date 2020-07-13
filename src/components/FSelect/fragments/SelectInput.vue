@@ -30,7 +30,7 @@
       </div>
 
       <div v-show="displayAvatarRow" class="SelectInput__avatarRow">
-        <avatar-list :avatars="currentValue || []" />
+        <avatar-list :avatars="displayAvatarRow ? currentValue : []" />
       </div>
 
       <div v-show="!displaySearch" class="SelectInput__placeholder">
