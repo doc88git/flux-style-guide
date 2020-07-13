@@ -43,8 +43,8 @@
 </template>
 
 <script>
-import { FIcon } from '@/components/FIcon'
-import { FInput } from '@/components/FField'
+import FIcon from '../FIcon'
+import { FInput } from '../../FField'
 import list from '@doc88/flux-icon/dist/list.json'
 
 export default {
