@@ -287,6 +287,7 @@ export default {
     },
     emitInput() {
       this.$emit('search-input', this.searchQuery)
+      this.$emit('toggle-options', false)
     },
     setHover(value) {
       this.hover = value
