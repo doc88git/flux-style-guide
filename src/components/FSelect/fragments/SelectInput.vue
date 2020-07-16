@@ -30,7 +30,7 @@
       </div>
 
       <div v-show="displayAvatarRow" class="SelectInput__avatarRow">
-        <avatar-list :avatars="currentValue || []" />
+        <avatar-list :avatars="displayAvatarRow ? currentValue : []" />
       </div>
 
       <div v-show="!displaySearch" class="SelectInput__placeholder">
@@ -287,6 +287,7 @@ export default {
     },
     emitInput() {
       this.$emit('search-input', this.searchQuery)
+      this.$emit('toggle-options', false)
     },
     setHover(value) {
       this.hover = value
