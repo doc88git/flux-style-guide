@@ -12,6 +12,7 @@
         v-if="!hasFiles || multiple"
         :multiple="multiple"
         :extensions="extensions"
+        v-bind="$attrs"
         @upload="handleUpload"
       >
         <file-list v-if="multiple" :files="value" v-on="$listeners" />

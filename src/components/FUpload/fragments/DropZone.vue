@@ -2,7 +2,7 @@
   <div class="DropZone">
     <div class="DropZone__box" @click="triggerInput">
       <p class="DropZone__text">
-        Arraste aqui seu arquivo ou clique
+        {{ placeholderText }} ou clique
         <span class="DropZone__textHighlight">
           para abrir os documentos
         </span>
@@ -30,11 +30,26 @@ export default {
   name: 'DropZone',
 
   props: {
+    /**
+     * The file extensions to be accepted
+     */
     extensions: {
       type: Array,
       required: true
     },
 
+    /**
+     * The first half of the text displayed as placeholder
+     * when no files are present.
+     */
+    placeholderText: {
+      type: String,
+      default: 'Arraste aqui seu arquivo'
+    },
+
+    /**
+     * Whether it accepts multiple files or not
+     */
     multiple: {
       type: Boolean,
       default: false
