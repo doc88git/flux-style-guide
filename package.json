@@ -28,7 +28,7 @@
     "url": "https://github.com/doc88git/flux-style-guide/issues"
   },
   "dependencies": {
-    "@doc88/flux-icon": "^1.4.4.1",
+    "@doc88/flux-icon": "^1.4.4-beta.1",
     "collect.js": "^4.12.5",
     "core-js": "^3.6.4",
     "fuse.js": "^3.4.5",
