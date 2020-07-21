@@ -2,11 +2,18 @@
   <div class="DropZone">
     <div class="DropZone__box" @click="triggerInput">
       <p class="DropZone__text">
-        Arraste aqui seu arquivo ou clique
+        <slot name="placeholder-pre">
+          Arraste aqui seu arquivo ou clique
+        </slot>
         <span class="DropZone__textHighlight">
-          para abrir os documentos
+          <slot name="placeholder-highlight">
+            para abrir os documentos
+          </slot>
         </span>
-        para fazer upload do arquivo
+
+        <slot name="placeholder-pos">
+          para fazer upload do arquivo
+        </slot>
       </p>
 
       <input
@@ -30,11 +37,17 @@ export default {
   name: 'DropZone',
 
   props: {
+    /**
+     * The file extensions to be accepted
+     */
     extensions: {
       type: Array,
       required: true
     },
 
+    /**
+     * Whether it accepts multiple files or not
+     */
     multiple: {
       type: Boolean,
       default: false

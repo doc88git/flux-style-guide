@@ -216,6 +216,7 @@ $fieldHeight: 48px;
       &--standard {
         display: block;
         letter-spacing: 0.025em;
+        text-align: start;
         font-weight: 700;
         color: var(--color-font-base);
         margin-bottom: 10px;
@@ -296,7 +297,7 @@ $fieldHeight: 48px;
       }
     }
 
-    &--hasLabel {
+    &--floatingLabel {
       .f-field__inner__input ::placeholder {
         display: none;
         visibility: hidden;
