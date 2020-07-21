@@ -15,6 +15,24 @@
         v-bind="$attrs"
         @upload="handleUpload"
       >
+        <slot
+          v-if="$slots['placeholder-pre']"
+          name="placeholder-pre"
+          slot="placeholder-pre"
+        />
+
+        <slot
+          v-if="$slots['placeholder-highlight']"
+          name="placeholder-highlight"
+          slot="placeholder-highlight"
+        />
+
+        <slot
+          v-if="$slots['placeholder-pos']"
+          name="placeholder-pos"
+          slot="placeholder-pos"
+        />
+
         <file-list v-if="multiple" :files="value" v-on="$listeners" />
       </drop-zone>
     </transition>
