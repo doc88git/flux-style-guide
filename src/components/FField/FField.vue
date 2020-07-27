@@ -87,9 +87,6 @@ export default {
   },
 
   computed: {
-    isLabelFloated() {
-      return ['floating'].includes(this.labelStyle)
-    },
     hasError() {
       const slotText = (this.$slots.error || [])
         .map(item => item.text)
@@ -97,6 +94,9 @@ export default {
         .trim()
 
       return !!slotText || !!this.errorMessage
+    },
+    isLabelFloated() {
+      return ['floating'].includes(this.labelStyle)
     },
     hasLabel() {
       return !!this.$slots.label || !!this.label

@@ -257,10 +257,10 @@ export default {
       }
 
       &__icon {
-        padding: 0 7px !important;
+        margin: 0 7px !important;
       }
 
-      &__text {
+      &__text:not(:only-child) {
         margin-left: 11px;
       }
     }

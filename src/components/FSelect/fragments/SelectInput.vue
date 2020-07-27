@@ -10,11 +10,13 @@
     </div>
 
     <div class="SelectInput__content">
-      <div v-show="displaySearch" class="SelectInput__search" @click.stop>
+      <div v-show="displaySearch" :class="searchClasses" @click.stop>
         <f-input
-          class="SelectInput__searchInput"
-          :placeholder="searchPlaceholder"
           name="searchField"
+          ref="searchField"
+          :placeholder="searchPlaceholder"
+          :class="searchInputClasses"
+          :type="textarea ? 'textarea' : 'text'"
           :value="searchQuery"
           @input="emitSearch"
           @keyup.enter="emitInput"
@@ -188,12 +190,34 @@ export default {
     nullOptionIcon: {
       type: String,
       default: ''
+    },
+
+    textarea: {
+      type: Boolean,
+      default: false
+    },
+
+    textareaCharLimit: {
+      type: Number,
+      default: 140
     }
   },
 
   data: () => ({ hover: false, badgeNumber: 10 }),
 
   computed: {
+    searchClasses() {
+      return [
+        'SelectInput__search',
+        { 'SelectInput__search--textarea': this.textarea }
+      ]
+    },
+    searchInputClasses() {
+      return [
+        'SelectInput__searchInput',
+        { 'SelectInput__searchInput--textarea': this.textarea }
+      ]
+    },
     displayAvatarRow() {
       if (
         !this.showSelectedPics ||
@@ -282,7 +306,15 @@ export default {
     emitToggle() {
       this.$emit('toggle-options')
     },
+    clipSearchQuery(query) {
+      const elm = this.$refs.searchField.$refs.input
+      const clippedQuery = query.slice(0, this.textareaCharLimit)
+      elm.value = clippedQuery
+    },
     emitSearch(query) {
+      if (this.textarea && query.length > this.textareaCharLimit)
+        return this.clipSearchQuery(query)
+
       this.$emit('search', query)
     },
     emitInput() {
@@ -356,13 +388,18 @@ export default {
     margin-top: 15px;
     margin-bottom: 15px;
     animation: 500ms fadeIn;
+
+    &--textarea {
+      height: 65px;
+    }
   }
 
   &__searchInput {
     height: 35px;
 
     .f-field__inner__field,
-    .f-field__inner__input {
+    .f-field__inner__input,
+    .f-input {
       height: 100%;
     }
 
@@ -372,6 +409,14 @@ export default {
 
     .f-input::placeholder {
       font-style: italic;
+    }
+
+    &--textarea {
+      .f-input {
+        resize: none;
+        height: 65px;
+        padding: 5px 30px 5px 10px;
+      }
     }
   }
 

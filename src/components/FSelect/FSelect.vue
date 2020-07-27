@@ -272,8 +272,10 @@ export default {
       if (!this.searchQuery) return this.sortedOptions
 
       const words = this.searchQuery.trim().split(' ')
-      const options = this.sortedOptions.filter(({ label }) =>
-        words.every(word => matches(word.toLowerCase(), label.toLowerCase()))
+      const options = this.sortedOptions.filter(opt =>
+        words.every(word =>
+          matches(word.toLowerCase(), opt[this.displayBy].toLowerCase())
+        )
       )
 
       return options

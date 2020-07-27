@@ -31,7 +31,7 @@
         :sub-items-limit="menuSubItemsLimit"
         @click="handleClickMenuItem"
         @expand="handleMenu"
-        class="f-layout__wrapper__menu"
+        :class="menuWrapperClasses"
       >
         <slot name="menu-prepend" slot="prepend" />
       </f-menu>
@@ -106,6 +106,12 @@ export default {
   },
 
   computed: {
+    menuWrapperClasses() {
+      return [
+        'f-layout__wrapper__menu',
+        { 'f-layout__wrapper__menu--expanded': this.menuExpand }
+      ]
+    },
     contentWrapperClasses() {
       return [
         'f-layout__wrapper__content',
@@ -153,8 +159,11 @@ export default {
       position: fixed;
       flex-grow: 0;
       width: 70px;
-      z-index: 90;
       height: calc(100vh - 70px);
+
+      &--expanded {
+        z-index: 90;
+      }
     }
 
     &__content {
