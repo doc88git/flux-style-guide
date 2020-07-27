@@ -43,13 +43,10 @@
 </template>
 
 <script>
-import FIcon from '../FIcon'
-import { FInput } from '../../FField'
 import list from '@doc88/flux-icon/dist/list.json'
 
 export default {
   name: 'FIconExample',
-  components: { FIcon, FInput },
   data: () => ({
     list,
     search: '',
