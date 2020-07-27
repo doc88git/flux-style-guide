@@ -1,7 +1,7 @@
 <template>
   <section class="f-table">
     <div class="f-table__body">
-      <table class="f-table__content">
+      <table class="f-table__content" v-bind="$attrs">
         <thead>
           <tr>
             <slot
