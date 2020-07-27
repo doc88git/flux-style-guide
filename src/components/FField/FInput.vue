@@ -1,8 +1,8 @@
 <template>
   <f-field
-    v-bind="$attrs"
     :is-active="!!value || hasFocus"
-    label-style="floating"
+    :label-style="labelStyle"
+    v-bind="$attrs"
   >
     <template v-for="slotName in fieldSlots" :slot="slotName">
       <slot v-if="$slots[slotName]" :name="slotName" />
@@ -49,6 +49,10 @@ export default {
     value: [String, Number],
     disabled: Boolean,
     readonly: Boolean,
+    labelStyle: {
+      type: String,
+      default: 'floating'
+    },
     name: {
       default: '',
       type: String,
@@ -135,7 +139,7 @@ export default {
   line-height: 1.25;
   display: inline-block;
   width: 100%;
-  height: 100%;
+  height: 48px;
 
   padding-left: 0.75rem;
   padding-right: 0.75rem;
