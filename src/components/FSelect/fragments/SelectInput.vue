@@ -28,6 +28,10 @@
             name="search"
             color="gray-500"
           />
+
+          <template v-if="textarea" slot="hint">
+            Restam {{ textareaCharactersRemaining }} caracteres
+          </template>
         </f-input>
       </div>
 
@@ -286,6 +290,9 @@ export default {
       return this.isActive && this.searchable
     },
 
+    textareaCharactersRemaining() {
+      return this.textareaCharLimit - (this.searchQuery || '').length
+    },
     hasCurrentValue() {
       if (!this.currentValue) return
 
@@ -391,12 +398,18 @@ export default {
 
     &--textarea {
       height: 65px;
+      margin-bottom: 25px;
     }
   }
 
   &__searchInput {
     height: 35px;
 
+    &--textarea {
+      height: 65px;
+    }
+
+    .f-field__inner,
     .f-field__inner__field,
     .f-field__inner__input,
     .f-input {
@@ -409,6 +422,12 @@ export default {
 
     .f-input::placeholder {
       font-style: italic;
+    }
+
+    .f-field__inner__hint {
+      text-align: right;
+      font-size: 12px;
+      color: #999;
     }
 
     &--textarea {
