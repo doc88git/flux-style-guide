@@ -196,11 +196,16 @@ export default {
       default: ''
     },
 
+    /**
+     * Wether to use a textarea for the search field
+     */
     textarea: {
       type: Boolean,
       default: false
     },
-
+    /**
+     * The textarea's character limit
+     */
     textareaCharLimit: {
       type: Number,
       default: 140
@@ -457,9 +462,6 @@ export default {
   }
 
   &__placeholderText {
-    display: block;
-    align-items: center;
-
     margin-right: auto;
     transition: opacity 400ms;
     user-select: none;
