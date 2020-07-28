@@ -153,8 +153,8 @@ export default {
       position: fixed;
       flex-grow: 0;
       width: 70px;
-      z-index: 90;
       height: calc(100vh - 70px);
+      z-index: 90;
     }
 
     &__content {

@@ -10,11 +10,13 @@
     </div>
 
     <div class="SelectInput__content">
-      <div v-show="displaySearch" class="SelectInput__search" @click.stop>
+      <div v-show="displaySearch" :class="searchClasses" @click.stop>
         <f-input
-          class="SelectInput__searchInput"
-          :placeholder="searchPlaceholder"
           name="searchField"
+          ref="searchField"
+          :placeholder="searchPlaceholder"
+          :class="searchInputClasses"
+          :type="textarea ? 'textarea' : 'text'"
           :value="searchQuery"
           @input="emitSearch"
           @keyup.enter="emitInput"
@@ -26,6 +28,10 @@
             name="search"
             color="gray-500"
           />
+
+          <template v-if="textarea" slot="hint">
+            Restam {{ textareaCharactersRemaining }} caracteres
+          </template>
         </f-input>
       </div>
 
@@ -35,7 +41,7 @@
 
       <div v-show="!displaySearch" class="SelectInput__placeholder">
         <template v-if="!displayAvatarRow">
-          <div :class="placeholderClasses">
+          <p :class="placeholderClasses">
             <f-icon
               v-if="isNullSelected && nullOptionIcon"
               :name="nullOptionIcon"
@@ -46,7 +52,7 @@
             />
 
             {{ placeholderText }}
-          </div>
+          </p>
 
           <f-chip
             v-if="numSelected"
@@ -188,12 +194,39 @@ export default {
     nullOptionIcon: {
       type: String,
       default: ''
+    },
+
+    /**
+     * Wether to use a textarea for the search field
+     */
+    textarea: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * The textarea's character limit
+     */
+    textareaCharLimit: {
+      type: Number,
+      default: 140
     }
   },
 
   data: () => ({ hover: false, badgeNumber: 10 }),
 
   computed: {
+    searchClasses() {
+      return [
+        'SelectInput__search',
+        { 'SelectInput__search--textarea': this.textarea }
+      ]
+    },
+    searchInputClasses() {
+      return [
+        'SelectInput__searchInput',
+        { 'SelectInput__searchInput--textarea': this.textarea }
+      ]
+    },
     displayAvatarRow() {
       if (
         !this.showSelectedPics ||
@@ -262,6 +295,9 @@ export default {
       return this.isActive && this.searchable
     },
 
+    textareaCharactersRemaining() {
+      return this.textareaCharLimit - (this.searchQuery || '').length
+    },
     hasCurrentValue() {
       if (!this.currentValue) return
 
@@ -282,7 +318,16 @@ export default {
     emitToggle() {
       this.$emit('toggle-options')
     },
+    clipSearchQuery(query) {
+      const elm = this.$refs.searchField.$refs.input
+      const clippedQuery = query.slice(0, this.textareaCharLimit)
+      elm.value = clippedQuery
+      this.$emit('search', clippedQuery)
+    },
     emitSearch(query) {
+      if (this.textarea && query.length > this.textareaCharLimit)
+        return this.clipSearchQuery(query)
+
       this.$emit('search', query)
     },
     emitInput() {
@@ -335,7 +380,7 @@ export default {
     }
 
     &--top {
-      top: -7px;
+      top: -10%;
       left: 8px;
       font-size: var(--text-xs);
       padding: 0 5px;
@@ -356,13 +401,24 @@ export default {
     margin-top: 15px;
     margin-bottom: 15px;
     animation: 500ms fadeIn;
+
+    &--textarea {
+      height: 70px;
+      margin-bottom: 25px;
+    }
   }
 
   &__searchInput {
     height: 35px;
 
+    &--textarea {
+      height: 70px;
+    }
+
+    .f-field__inner,
     .f-field__inner__field,
-    .f-field__inner__input {
+    .f-field__inner__input,
+    .f-input {
       height: 100%;
     }
 
@@ -372,6 +428,20 @@ export default {
 
     .f-input::placeholder {
       font-style: italic;
+    }
+
+    .f-field__inner__hint {
+      text-align: right;
+      font-size: 12px;
+      color: #999;
+    }
+
+    &--textarea {
+      .f-input {
+        resize: none;
+        height: 70px;
+        padding: 5px 30px 5px 10px;
+      }
     }
   }
 
@@ -384,6 +454,7 @@ export default {
     display: flex;
     align-items: center;
     flex-grow: 1;
+    max-width: 100%;
 
     margin: auto 0;
     height: 100%;
@@ -391,13 +462,15 @@ export default {
   }
 
   &__placeholderText {
-    display: flex;
-    align-items: center;
-
     margin-right: auto;
     transition: opacity 400ms;
     user-select: none;
     color: #ccc;
+
+    width: calc(100% - 25px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
     &--main {
       color: #999;

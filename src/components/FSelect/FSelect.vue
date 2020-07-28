@@ -272,8 +272,10 @@ export default {
       if (!this.searchQuery) return this.sortedOptions
 
       const words = this.searchQuery.trim().split(' ')
-      const options = this.sortedOptions.filter(({ label }) =>
-        words.every(word => matches(word.toLowerCase(), label.toLowerCase()))
+      const options = this.sortedOptions.filter(opt =>
+        words.every(word =>
+          matches(word.toLowerCase(), opt[this.displayBy].toLowerCase())
+        )
       )
 
       return options
@@ -405,7 +407,7 @@ export default {
 <style lang="scss">
 .FSelect {
   z-index: 0;
-  min-width: 220px;
+  min-width: 210px;
   height: fit-content;
 
   &--disabled {
