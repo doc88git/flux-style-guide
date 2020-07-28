@@ -407,7 +407,7 @@ export default {
 <style lang="scss">
 .FSelect {
   z-index: 0;
-  min-width: 220px;
+  min-width: 210px;
   height: fit-content;
 
   &--disabled {

@@ -317,6 +317,7 @@ export default {
       const elm = this.$refs.searchField.$refs.input
       const clippedQuery = query.slice(0, this.textareaCharLimit)
       elm.value = clippedQuery
+      this.$emit('search', clippedQuery)
     },
     emitSearch(query) {
       if (this.textarea && query.length > this.textareaCharLimit)
@@ -374,7 +375,7 @@ export default {
     }
 
     &--top {
-      top: -7px;
+      top: -10%;
       left: 8px;
       font-size: var(--text-xs);
       padding: 0 5px;
@@ -397,7 +398,7 @@ export default {
     animation: 500ms fadeIn;
 
     &--textarea {
-      height: 65px;
+      height: 70px;
       margin-bottom: 25px;
     }
   }
@@ -406,7 +407,7 @@ export default {
     height: 35px;
 
     &--textarea {
-      height: 65px;
+      height: 70px;
     }
 
     .f-field__inner,
@@ -433,7 +434,7 @@ export default {
     &--textarea {
       .f-input {
         resize: none;
-        height: 65px;
+        height: 70px;
         padding: 5px 30px 5px 10px;
       }
     }
