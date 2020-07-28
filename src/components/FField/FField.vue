@@ -108,8 +108,7 @@ export default {
       return [
         'f-field__inner',
         {
-          'f-field__inner--hasLabel': this.hasLabel,
-          'f-field__inner--floatingLabel': this.isLabelFloated
+          'f-field__inner--floatingLabel': this.isLabelFloated && this.hasLabel
         }
       ]
     },
