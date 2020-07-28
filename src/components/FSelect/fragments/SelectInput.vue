@@ -41,7 +41,7 @@
 
       <div v-show="!displaySearch" class="SelectInput__placeholder">
         <template v-if="!displayAvatarRow">
-          <div :class="placeholderClasses">
+          <p :class="placeholderClasses">
             <f-icon
               v-if="isNullSelected && nullOptionIcon"
               :name="nullOptionIcon"
@@ -52,7 +52,7 @@
             />
 
             {{ placeholderText }}
-          </div>
+          </p>
 
           <f-chip
             v-if="numSelected"
@@ -449,6 +449,7 @@ export default {
     display: flex;
     align-items: center;
     flex-grow: 1;
+    max-width: 100%;
 
     margin: auto 0;
     height: 100%;
@@ -456,13 +457,18 @@ export default {
   }
 
   &__placeholderText {
-    display: flex;
+    display: block;
     align-items: center;
 
     margin-right: auto;
     transition: opacity 400ms;
     user-select: none;
     color: #ccc;
+
+    width: calc(100% - 25px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
     &--main {
       color: #999;

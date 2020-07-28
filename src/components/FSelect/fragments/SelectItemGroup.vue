@@ -257,7 +257,8 @@ export default {
       }
 
       &__icon {
-        margin: 0 7px !important;
+        display: inline-block;
+        margin: 0 7px 1px 7px !important;
       }
 
       &__text:not(:only-child) {
