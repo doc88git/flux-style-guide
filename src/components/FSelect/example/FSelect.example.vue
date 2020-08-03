@@ -100,7 +100,11 @@ export default {
     valueOne: [],
     valueTwo: [],
     valueThree: []
-  })
+  }),
+
+  mounted() {
+    setTimeout(() => (this.valueZero = optionsMock[3].value), 5000)
+  }
 }
 </script>
 
