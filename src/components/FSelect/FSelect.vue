@@ -308,6 +308,9 @@ export default {
       if (display) this.sortOptions()
       else this.emitBlur()
     },
+    value(newValue) {
+      this.$emit('input', newValue)
+    },
     searchQuery: 'debounceInput',
     options: 'setSortedOptions'
   },
