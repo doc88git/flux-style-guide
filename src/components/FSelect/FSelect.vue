@@ -234,6 +234,7 @@ export default {
 
   data() {
     return {
+      internalValue: null,
       nullOptionSelected: false,
       displayOptions: false,
       sortedOptions: [],
@@ -308,8 +309,18 @@ export default {
       if (display) this.sortOptions()
       else this.emitBlur()
     },
-    value(newValue) {
-      this.$emit('input', newValue)
+    value: {
+      handler: function(newValue) {
+        this.internalValue = newValue
+      },
+      deep: true,
+      immediate: true
+    },
+    internalValue: {
+      handler: function(newValue) {
+        this.$emit('input', newValue)
+      },
+      deep: true
     },
     searchQuery: 'debounceInput',
     options: 'setSortedOptions'
@@ -321,11 +332,9 @@ export default {
     },
     addItem(item) {
       if (this.nullOptionSelected) this.nullOptionSelected = false
+      if (this.multiple) this.internalValue = [...(this.value || []), item]
 
-      if (this.multiple)
-        return this.$emit('input', [...(this.value || []), item])
-
-      this.$emit('input', item)
+      this.internalValue = item
 
       this.displayOptions = this.multiple
         ? this.displayOptions
@@ -333,7 +342,7 @@ export default {
     },
     toggleNullOption() {
       if (!this.nullOptionSelected)
-        this.$emit('input', this.multiple ? [] : null)
+        this.internalValue = this.multiple ? [] : null
 
       this.nullOptionSelected = !this.nullOptionSelected
       this.displayOptions = !this.displayOptions
@@ -345,7 +354,7 @@ export default {
       const value = JSON.parse(JSON.stringify(this.value || []))
       value.splice(index, 1)
 
-      return this.$emit('input', value)
+      this.internalValue = value
     },
     emitBlur() {
       this.$emit('blur')
@@ -386,7 +395,7 @@ export default {
         option => option[this.trackBy]
       )
 
-      this.$emit('input', [...(this.value || []), ...mappedOptions])
+      this.internalValue = [...(this.value || []), ...mappedOptions]
     },
     clearValues() {
       this.$emit('input', [])
