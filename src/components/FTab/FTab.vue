@@ -10,7 +10,7 @@
           ref="btnGroup"
           :tab="!fill"
           :options="options"
-          :default="initialValue"
+          :default="value"
           v-bind="$attrs"
           @change="setSelected"
         />
@@ -53,7 +53,7 @@ export default {
     fill: Boolean,
     options: Array,
     noSeparator: Boolean,
-    initialValue: {
+    value: {
       type: [Number, String],
       default: 1
     }
@@ -78,6 +78,7 @@ export default {
     setSelected(id) {
       this.selected = id
       this.$emit('change', id)
+      this.$emit('input', id)
     },
     drag(e) {
       return e

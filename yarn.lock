@@ -987,10 +987,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@doc88/flux-icon@^1.4.6":
-  version "1.4.6"
-  resolved "https://registry.yarnpkg.com/@doc88/flux-icon/-/flux-icon-1.4.6.tgz#dd460a5312d6982d66d56a8c599c78e826d764a3"
-  integrity sha512-kASierY2twXTVme7PwirOQSHTJillD1F/fRS4hf5gfHdEmrS/dnhFEpYxLIJ/bd0xArii27OutSIFa8Kq8zSsA==
+"@doc88/flux-icon@^1.4.8":
+  version "1.4.8"
+  resolved "https://registry.yarnpkg.com/@doc88/flux-icon/-/flux-icon-1.4.8.tgz#db7b93f4906984f76ed108f9a2547e518e9d862c"
+  integrity sha512-M/Us09RVOndaOCchtUpqjBODzL+gruz6W2HR8iQj8AXBSdppjpSLolUMYOsW73KMgwGBOpNYnLZkY5JKGkBmsA==
 
 "@emotion/cache@^10.0.27", "@emotion/cache@^10.0.9":
   version "10.0.29"
