@@ -1,6 +1,6 @@
 <template>
   <f-container>
-    <f-tab :options="tabOptions" v-model="test" />
+    <f-tab :options="tabOptions" v-model="activeTab" />
   </f-container>
 </template>
 
@@ -14,7 +14,7 @@ export default {
     FTab
   },
   data: () => ({
-    test: 1,
+    activeTab: 1,
     tabOptions: [
       {
         label: 'Medição',
