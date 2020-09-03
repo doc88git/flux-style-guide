@@ -74,6 +74,10 @@ export default {
     }
   },
 
+  created() {
+    this.selected = this.value || 1
+  },
+
   methods: {
     setSelected(id) {
       this.selected = id
