@@ -10,7 +10,7 @@
           ref="btnGroup"
           :tab="!fill"
           :options="options"
-          :default="value"
+          :default.sync="selected"
           v-bind="$attrs"
           @change="setSelected"
         />
