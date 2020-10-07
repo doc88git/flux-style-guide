@@ -52,19 +52,7 @@ export default {
     list: {
       type: Array,
       required: true,
-      validator: list => {
-        let required = ['label', 'value']
-
-        let filter = list.filter(() => {
-          return (
-            list.filter(item => {
-              return required.filter(r => !!item[r]).length === required.length
-            }).length === list.length
-          )
-        })
-
-        return filter.length === list.length
-      }
+      validator: list => list.every(item => 'label' in item && 'value' in item)
     },
     // iconStatus: {
     //   type: String,
