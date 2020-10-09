@@ -6,7 +6,7 @@ Design by Doc88 for Vue.js
 
 This documentation, at this moment, is found in the repository itself using the [StoryBook for Vue](https://storybook.js.org/docs/guides/guide-vue/).
 
-#### Check the storybook for flux [here!](https://doc88git.github.com/flux-style-guide/)
+#### Check the storybook for flux [here!](https://doc88git.github.io/flux-style-guide)
 
 ```
 yarn storybook
