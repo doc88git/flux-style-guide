@@ -110,7 +110,7 @@ export default {
         this.debounceInput(this.innerValue)
       }
     },
-    options: 'clearAll'
+    options: 'changedOptions'
   },
   computed: {
     dropdownType() {
@@ -154,6 +154,16 @@ export default {
     if (this.multiple) this.initMultiple()
   },
   methods: {
+    changedOptions () {
+      if (!this.multiple) {
+        const hasValue = this.options.find(elem => elem.value === this.selected)
+        if (!hasValue && this.selected) {
+          this.clearAll()
+        }
+      } else {
+        this.clearAll()
+      }
+    },
     clearAll() {
       this.list = []
       this.selected = null
