@@ -119,7 +119,7 @@ export default {
     options: 'changedOptions'
   },
   computed: {
-    canClear () {
+    canClear() {
       return this.clearable ? this.selected !== null : false
     },
     dropdownType() {
@@ -163,7 +163,7 @@ export default {
     if (this.multiple) this.initMultiple()
   },
   methods: {
-    changedOptions () {
+    changedOptions() {
       if (!this.multiple) {
         const hasValue = this.options.find(elem => elem.value === this.selected)
         if (!hasValue && this.selected) {
