@@ -175,3 +175,30 @@ storiesOf('Form|Select', module)
     </div>
   `
   }))
+  .add('Clearable', () => ({
+    components: { FSelect },
+    data: () => ({
+      value: null
+    }),
+    props: {
+      options: {
+        default: array(
+          'options',
+          arr.map((v, i) => ({ value: ++i, label: v }))
+        )
+      },
+      type: {
+        default: select('type', typeList, 'input')
+      }
+    },
+    template: `
+    <div style="padding: 20px;">
+      <f-select
+        :search="false"
+        clearable
+        :options="options"
+        :type="type"
+        v-model="value" />
+    </div>
+  `
+  }))
