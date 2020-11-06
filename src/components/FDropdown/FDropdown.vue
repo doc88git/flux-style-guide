@@ -12,7 +12,11 @@
           <slot>{{ labelSelected }}</slot>
         </div>
         <div v-if="caret" class="f-dropdown__inner__append">
-          <f-icon v-show="!clearable" :name="iconName" :color="gray ? 'gray-600' : iconColor" />
+          <f-icon
+            v-show="!clearable"
+            :name="iconName"
+            :color="gray ? 'gray-600' : iconColor"
+          />
         </div>
       </div>
 
