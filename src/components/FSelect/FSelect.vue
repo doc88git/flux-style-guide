@@ -8,8 +8,10 @@
       :type="type"
       :closeOnClick="closeOnClick"
       :gray="gray"
+      :clearable="canClear"
       @selected="setValue"
       @status="setStatus"
+      @clear="clearAll"
     >
       <div v-show="showLabel" class="f-select__placeholder">
         {{ labelSelected || customLabel }}
@@ -67,6 +69,10 @@ export default {
     list: []
   }),
   props: {
+    clearable: {
+      type: Boolean,
+      default: false
+    },
     gray: Boolean,
     label: String,
     name: String,
@@ -113,6 +119,9 @@ export default {
     options: 'changedOptions'
   },
   computed: {
+    canClear() {
+      return this.clearable ? this.selected !== null : false
+    },
     dropdownType() {
       return this.type === 'fill' ? 'default' : 'this.type'
     },
@@ -154,7 +163,7 @@ export default {
     if (this.multiple) this.initMultiple()
   },
   methods: {
-    changedOptions () {
+    changedOptions() {
       if (!this.multiple) {
         const hasValue = this.options.find(elem => elem.value === this.selected)
         if (!hasValue && this.selected) {
