@@ -152,7 +152,8 @@ export default {
     return {
       sortedOptions: [],
       displayOptions: false,
-      searchQuery: ''
+      searchQuery: '',
+      toggling: false
     }
   },
 
@@ -200,7 +201,11 @@ export default {
 
   watch: {
     displayOptions(display) {
+      this.toggling = true
       if (display) this.sortOptions()
+      setTimeout(() => {
+        this.toggling = false
+      }, 100)
     },
     searchQuery: 'debounceInput',
     options: 'setSortedOptions'
@@ -238,7 +243,9 @@ export default {
       this.displayOptions = value || !this.displayOptions
     },
     hideOptions() {
-      this.displayOptions = false
+      if (!this.toggling) {
+        this.displayOptions = false
+      }
     },
     sortOptions() {
       this.setSortedOptions()
