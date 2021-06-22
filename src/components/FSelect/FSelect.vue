@@ -304,8 +304,6 @@ export default {
 
   watch: {
     displayOptions(display) {
-      this.searchQuery = ''
-
       if (display) this.sortOptions()
       else this.emitBlur()
     },
